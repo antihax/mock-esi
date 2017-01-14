@@ -2,30 +2,118 @@ package swaggerServer
 
 import (
 	"net/http"
-
+	"github.com/gorilla/mux"
 )
+
+var _ = mux.NewRouter
 
 func DeleteCharactersCharacterIdMailLabelsLabelId(w http.ResponseWriter, r *http.Request) {
 
-	j := (``)
-		w.Header().Set("Content-Type", "")
-		w.WriteHeader(http.StatusOK)
+	var (
+		localV interface{}
+		err error
+		characterId int32
+		labelId int32
+		datasource string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
 
-		w.Write([]byte(j))
+	j := ``
+	vars := mux.Vars(r)
+	localV, err = processParameters(characterId, vars["characterId"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	characterId = localV.(int32)
+	localV, err = processParameters(labelId, vars["labelId"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	labelId = localV.(int32)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
+
+	w.Header().Set("Content-Type", "")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
 }
 
 func DeleteCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Request) {
 
-	j := (``)
-		w.Header().Set("Content-Type", "")
-		w.WriteHeader(http.StatusOK)
+	var (
+		localV interface{}
+		err error
+		characterId int32
+		mailId int32
+		datasource string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
 
-		w.Write([]byte(j))
+	j := ``
+	vars := mux.Vars(r)
+	localV, err = processParameters(characterId, vars["characterId"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	characterId = localV.(int32)
+	localV, err = processParameters(mailId, vars["mailId"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	mailId = localV.(int32)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
+
+	w.Header().Set("Content-Type", "")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
 }
 
 func GetCharactersCharacterIdMail(w http.ResponseWriter, r *http.Request) {
 
-	j := (`[ {
+	var (
+		localV interface{}
+		err error
+		characterId int32
+		labels []int64
+		lastMailId int32
+		datasource string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
+
+	j := `[ {
   "from" : 90000001,
   "is_read" : true,
   "labels" : [ 3 ],
@@ -36,16 +124,62 @@ func GetCharactersCharacterIdMail(w http.ResponseWriter, r *http.Request) {
   } ],
   "subject" : "Title for EVE Mail",
   "timestamp" : "2015-09-30T16:07:00Z"
-} ]`)
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(http.StatusOK)
+} ]`
+	vars := mux.Vars(r)
+	localV, err = processParameters(characterId, vars["characterId"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	characterId = localV.(int32)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("labels") != "" {
+		localV, err = processParameters(labels, r.Form.Get("labels"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		labels = localV.([]int64)
+	}
+	if r.Form.Get("lastMailId") != "" {
+		localV, err = processParameters(lastMailId, r.Form.Get("lastMailId"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		lastMailId = localV.(int32)
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
 
-		w.Write([]byte(j))
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
 }
 
 func GetCharactersCharacterIdMailLabels(w http.ResponseWriter, r *http.Request) {
 
-	j := (`{
+	var (
+		localV interface{}
+		err error
+		characterId int32
+		datasource string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
+
+	j := `{
   "labels" : [ {
     "color_hex" : "#660066",
     "label_id" : 16,
@@ -58,66 +192,250 @@ func GetCharactersCharacterIdMailLabels(w http.ResponseWriter, r *http.Request) 
     "unread_count" : 1
   } ],
   "total_unread_count" : 5
-}`)
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(http.StatusOK)
+}`
+	vars := mux.Vars(r)
+	localV, err = processParameters(characterId, vars["characterId"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	characterId = localV.(int32)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
 
-		w.Write([]byte(j))
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
 }
 
 func GetCharactersCharacterIdMailLists(w http.ResponseWriter, r *http.Request) {
 
-	j := (`[ {
+	var (
+		localV interface{}
+		err error
+		characterId int32
+		datasource string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
+
+	j := `[ {
   "mailing_list_id" : 1,
   "name" : "test_mailing_list"
-} ]`)
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(http.StatusOK)
+} ]`
+	vars := mux.Vars(r)
+	localV, err = processParameters(characterId, vars["characterId"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	characterId = localV.(int32)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
 
-		w.Write([]byte(j))
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
 }
 
 func GetCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Request) {
 
-	j := (`{
+	var (
+		localV interface{}
+		err error
+		characterId int32
+		mailId int32
+		datasource string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
+
+	j := `{
   "body" : "blah blah blah",
   "from" : 90000001,
   "labels" : [ 2, 32 ],
   "read" : false,
   "subject" : "test",
   "timestamp" : "2015-09-30T16:07:00Z"
-}`)
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(http.StatusOK)
+}`
+	vars := mux.Vars(r)
+	localV, err = processParameters(characterId, vars["characterId"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	characterId = localV.(int32)
+	localV, err = processParameters(mailId, vars["mailId"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	mailId = localV.(int32)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
 
-		w.Write([]byte(j))
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
 }
 
 func PostCharactersCharacterIdMail(w http.ResponseWriter, r *http.Request) {
 
-	j := (`13`)
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(http.StatusOK)
+	var (
+		localV interface{}
+		err error
+		characterId int32
+		datasource string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
 
-		w.Write([]byte(j))
+	j := `13`
+	vars := mux.Vars(r)
+	localV, err = processParameters(characterId, vars["characterId"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	characterId = localV.(int32)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
 }
 
 func PostCharactersCharacterIdMailLabels(w http.ResponseWriter, r *http.Request) {
 
-	j := (`128`)
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(http.StatusOK)
+	var (
+		localV interface{}
+		err error
+		characterId int32
+		datasource string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
 
-		w.Write([]byte(j))
+	j := `128`
+	vars := mux.Vars(r)
+	localV, err = processParameters(characterId, vars["characterId"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	characterId = localV.(int32)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
 }
 
 func PutCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Request) {
 
-	j := (``)
-		w.Header().Set("Content-Type", "")
-		w.WriteHeader(http.StatusOK)
+	var (
+		localV interface{}
+		err error
+		characterId int32
+		mailId int32
+		datasource string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
 
-		w.Write([]byte(j))
+	j := ``
+	vars := mux.Vars(r)
+	localV, err = processParameters(characterId, vars["characterId"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	characterId = localV.(int32)
+	localV, err = processParameters(mailId, vars["mailId"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	mailId = localV.(int32)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
+
+	w.Header().Set("Content-Type", "")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
 }
 
 

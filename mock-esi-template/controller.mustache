@@ -3,27 +3,90 @@ package swaggerServer
 {{#operations}}
 import (
 	"net/http"
-
+	"github.com/gorilla/mux"
 )
+
+var _ = mux.NewRouter
 
 {{#operation}}
 func {{nickname}}(w http.ResponseWriter, r *http.Request) {
 
-	j := (`{{#examples}}{{{example}}}{{/examples}}`)
-		w.Header().Set("Content-Type", "{{#responses}}{{#isDefault}}{{#examples}}{{{contentType}}}{{/examples}}{{/isDefault}}{{/responses}}")
-		w.WriteHeader(http.StatusOK)
+	var (
+		localV interface{}
+		err error
+		{{#allParams}}
+		{{^isBodyParam}}
+		{{^isHeaderParam}}
+		{{paramName}} {{dataType}}
+		{{/isHeaderParam}}
+		{{/isBodyParam}}
+		{{/allParams}}
+	)
+	// shut up warnings
+	localV = localV
+	err = err
 
-		w.Write([]byte(j))
+	j := `{{#examples}}{{{example}}}{{/examples}}`
+	{{#hasPathParams}}
+	vars := mux.Vars(r)
+	{{#pathParams}}
+	{{#required}}
+	localV, err = processParameters({{paramName}}, vars["{{paramName}}"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	{{paramName}} = localV.({{dataType}})
+	{{/required}}
+	{{^required}}
+	if vars["{{paramName}}"] != nil {
+		localV, err = processParameters({{paramName}}, vars["{{paramName}}"])
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		{{paramName}} = localV.({{dataType}})
+	}
+	{{/required}}
+	{{/pathParams}}
+	{{/hasPathParams}}
+	{{#hasQueryParams}}
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	{{#queryParams}}
+	{{#required}}
+	localV, err = processParameters({{paramName}}, r.Form.Get("{{paramName}}"))
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	{{/required}}
+	{{^required}}
+	if r.Form.Get("{{paramName}}") != "" {
+		localV, err = processParameters({{paramName}}, r.Form.Get("{{paramName}}"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		{{paramName}} = localV.({{dataType}})
+	}
+	{{/required}}
+	{{/queryParams}}
+	{{/hasQueryParams}}
+
+	w.Header().Set("Content-Type", "{{#responses}}{{#isDefault}}{{#examples}}{{{contentType}}}{{/examples}}{{/isDefault}}{{/responses}}")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
 }
 
 {{/operation}}
 {{/operations}}
 
-{{#models}}{{#imports}}
-import ({{/imports}}{{#imports}}
-	"{{import}}"{{/imports}}{{#imports}}
-)
-{{/imports}}{{#model}}{{#description}}
+{{#models}}
+{{#model}}{{#description}}
 // {{{description}}}{{/description}}
 type {{classname}} struct {
 {{#vars}}{{#description}}

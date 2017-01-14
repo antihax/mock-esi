@@ -2,53 +2,206 @@ package swaggerServer
 
 import (
 	"net/http"
-
+	"github.com/gorilla/mux"
 )
+
+var _ = mux.NewRouter
 
 func DeleteFleetsFleetIdMembersMemberId(w http.ResponseWriter, r *http.Request) {
 
-	j := (``)
-		w.Header().Set("Content-Type", "")
-		w.WriteHeader(http.StatusOK)
+	var (
+		localV interface{}
+		err error
+		fleetId int64
+		memberId int32
+		datasource string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
 
-		w.Write([]byte(j))
+	j := ``
+	vars := mux.Vars(r)
+	localV, err = processParameters(fleetId, vars["fleetId"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	fleetId = localV.(int64)
+	localV, err = processParameters(memberId, vars["memberId"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	memberId = localV.(int32)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
+
+	w.Header().Set("Content-Type", "")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
 }
 
 func DeleteFleetsFleetIdSquadsSquadId(w http.ResponseWriter, r *http.Request) {
 
-	j := (``)
-		w.Header().Set("Content-Type", "")
-		w.WriteHeader(http.StatusOK)
+	var (
+		localV interface{}
+		err error
+		fleetId int64
+		squadId int64
+		datasource string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
 
-		w.Write([]byte(j))
+	j := ``
+	vars := mux.Vars(r)
+	localV, err = processParameters(fleetId, vars["fleetId"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	fleetId = localV.(int64)
+	localV, err = processParameters(squadId, vars["squadId"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	squadId = localV.(int64)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
+
+	w.Header().Set("Content-Type", "")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
 }
 
 func DeleteFleetsFleetIdWingsWingId(w http.ResponseWriter, r *http.Request) {
 
-	j := (``)
-		w.Header().Set("Content-Type", "")
-		w.WriteHeader(http.StatusOK)
+	var (
+		localV interface{}
+		err error
+		fleetId int64
+		wingId int64
+		datasource string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
 
-		w.Write([]byte(j))
+	j := ``
+	vars := mux.Vars(r)
+	localV, err = processParameters(fleetId, vars["fleetId"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	fleetId = localV.(int64)
+	localV, err = processParameters(wingId, vars["wingId"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	wingId = localV.(int64)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
+
+	w.Header().Set("Content-Type", "")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
 }
 
 func GetFleetsFleetId(w http.ResponseWriter, r *http.Request) {
 
-	j := (`{
+	var (
+		localV interface{}
+		err error
+		fleetId int64
+		datasource string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
+
+	j := `{
   "is_free_move" : false,
   "is_registered" : false,
   "is_voice_enabled" : false,
   "motd" : "This is an <b>awesome</b> fleet!"
-}`)
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(http.StatusOK)
+}`
+	vars := mux.Vars(r)
+	localV, err = processParameters(fleetId, vars["fleetId"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	fleetId = localV.(int64)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
 
-		w.Write([]byte(j))
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
 }
 
 func GetFleetsFleetIdMembers(w http.ResponseWriter, r *http.Request) {
 
-	j := (`[ {
+	var (
+		localV interface{}
+		err error
+		fleetId int64
+		datasource string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
+
+	j := `[ {
   "character_id" : 93265215,
   "join_time" : "2016-04-29T12:34:56Z",
   "role" : "squad_commander",
@@ -59,94 +212,382 @@ func GetFleetsFleetIdMembers(w http.ResponseWriter, r *http.Request) {
   "station_id" : 61000180,
   "takes_fleet_warp" : true,
   "wing_id" : 2073711261968
-} ]`)
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(http.StatusOK)
+} ]`
+	vars := mux.Vars(r)
+	localV, err = processParameters(fleetId, vars["fleetId"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	fleetId = localV.(int64)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
 
-		w.Write([]byte(j))
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
 }
 
 func GetFleetsFleetIdWings(w http.ResponseWriter, r *http.Request) {
 
-	j := (`[ {
+	var (
+		localV interface{}
+		err error
+		fleetId int64
+		datasource string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
+
+	j := `[ {
   "id" : 2073711261968,
   "name" : "Wing 1",
   "squads" : [ {
     "id" : 3129411261968,
     "name" : "Squad 1"
   } ]
-} ]`)
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(http.StatusOK)
+} ]`
+	vars := mux.Vars(r)
+	localV, err = processParameters(fleetId, vars["fleetId"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	fleetId = localV.(int64)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
 
-		w.Write([]byte(j))
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
 }
 
 func PostFleetsFleetIdMembers(w http.ResponseWriter, r *http.Request) {
 
-	j := (``)
-		w.Header().Set("Content-Type", "")
-		w.WriteHeader(http.StatusOK)
+	var (
+		localV interface{}
+		err error
+		fleetId int64
+		datasource string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
 
-		w.Write([]byte(j))
+	j := ``
+	vars := mux.Vars(r)
+	localV, err = processParameters(fleetId, vars["fleetId"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	fleetId = localV.(int64)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
+
+	w.Header().Set("Content-Type", "")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
 }
 
 func PostFleetsFleetIdWings(w http.ResponseWriter, r *http.Request) {
 
-	j := (`{
-  "wing_id" : 123
-}`)
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(http.StatusOK)
+	var (
+		localV interface{}
+		err error
+		fleetId int64
+		datasource string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
 
-		w.Write([]byte(j))
+	j := `{
+  "wing_id" : 123
+}`
+	vars := mux.Vars(r)
+	localV, err = processParameters(fleetId, vars["fleetId"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	fleetId = localV.(int64)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
 }
 
 func PostFleetsFleetIdWingsWingIdSquads(w http.ResponseWriter, r *http.Request) {
 
-	j := (`{
-  "squad_id" : 123
-}`)
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(http.StatusOK)
+	var (
+		localV interface{}
+		err error
+		fleetId int64
+		wingId int64
+		datasource string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
 
-		w.Write([]byte(j))
+	j := `{
+  "squad_id" : 123
+}`
+	vars := mux.Vars(r)
+	localV, err = processParameters(fleetId, vars["fleetId"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	fleetId = localV.(int64)
+	localV, err = processParameters(wingId, vars["wingId"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	wingId = localV.(int64)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
 }
 
 func PutFleetsFleetId(w http.ResponseWriter, r *http.Request) {
 
-	j := (``)
-		w.Header().Set("Content-Type", "")
-		w.WriteHeader(http.StatusOK)
+	var (
+		localV interface{}
+		err error
+		fleetId int64
+		datasource string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
 
-		w.Write([]byte(j))
+	j := ``
+	vars := mux.Vars(r)
+	localV, err = processParameters(fleetId, vars["fleetId"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	fleetId = localV.(int64)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
+
+	w.Header().Set("Content-Type", "")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
 }
 
 func PutFleetsFleetIdMembersMemberId(w http.ResponseWriter, r *http.Request) {
 
-	j := (``)
-		w.Header().Set("Content-Type", "")
-		w.WriteHeader(http.StatusOK)
+	var (
+		localV interface{}
+		err error
+		fleetId int64
+		memberId int32
+		datasource string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
 
-		w.Write([]byte(j))
+	j := ``
+	vars := mux.Vars(r)
+	localV, err = processParameters(fleetId, vars["fleetId"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	fleetId = localV.(int64)
+	localV, err = processParameters(memberId, vars["memberId"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	memberId = localV.(int32)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
+
+	w.Header().Set("Content-Type", "")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
 }
 
 func PutFleetsFleetIdSquadsSquadId(w http.ResponseWriter, r *http.Request) {
 
-	j := (``)
-		w.Header().Set("Content-Type", "")
-		w.WriteHeader(http.StatusOK)
+	var (
+		localV interface{}
+		err error
+		fleetId int64
+		squadId int64
+		datasource string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
 
-		w.Write([]byte(j))
+	j := ``
+	vars := mux.Vars(r)
+	localV, err = processParameters(fleetId, vars["fleetId"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	fleetId = localV.(int64)
+	localV, err = processParameters(squadId, vars["squadId"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	squadId = localV.(int64)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
+
+	w.Header().Set("Content-Type", "")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
 }
 
 func PutFleetsFleetIdWingsWingId(w http.ResponseWriter, r *http.Request) {
 
-	j := (``)
-		w.Header().Set("Content-Type", "")
-		w.WriteHeader(http.StatusOK)
+	var (
+		localV interface{}
+		err error
+		fleetId int64
+		wingId int64
+		datasource string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
 
-		w.Write([]byte(j))
+	j := ``
+	vars := mux.Vars(r)
+	localV, err = processParameters(fleetId, vars["fleetId"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	fleetId = localV.(int64)
+	localV, err = processParameters(wingId, vars["wingId"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	wingId = localV.(int64)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
+
+	w.Header().Set("Content-Type", "")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
 }
 
 

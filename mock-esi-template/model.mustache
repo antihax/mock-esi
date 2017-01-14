@@ -1,0 +1,15 @@
+package swaggerServer
+
+import "time"
+var _ time.Time
+
+{{#models}}
+{{#model}}/* {{#description}}
+{{{description}}}{{/description}} */
+type {{classname}} struct {
+{{#vars}}/*{{#description}}
+	 {{{description}}}{{/description}} */
+	{{name}} {{{datatype}}} `json:"{{baseName}},omitempty"`
+{{/vars}}
+}
+{{/model}}{{/models}}
