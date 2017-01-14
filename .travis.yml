@@ -1,0 +1,18 @@
+sudo: required
+language: go
+go: master
+
+services:
+  - docker
+
+install:
+  - docker build -t antihax/mock-esi .
+  - docker run -d -p 127.0.0.1:80:8080 --name mock-esi antihax/mock-esi
+
+script:
+
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker push antihax/mock-esi;
+    fi

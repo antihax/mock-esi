@@ -1,0 +1,34 @@
+package swaggerServer
+
+{{#operations}}
+import (
+	"net/http"
+
+)
+
+{{#operation}}
+func {{nickname}}(w http.ResponseWriter, r *http.Request) {
+
+	j := (`{{#examples}}{{{example}}}{{/examples}}`)
+		w.Header().Set("Content-Type", "{{#responses}}{{#isDefault}}{{#examples}}{{{contentType}}}{{/examples}}{{/isDefault}}{{/responses}}")
+		w.WriteHeader(http.StatusOK)
+
+		w.Write([]byte(j))
+}
+
+{{/operation}}
+{{/operations}}
+
+{{#models}}{{#imports}}
+import ({{/imports}}{{#imports}}
+	"{{import}}"{{/imports}}{{#imports}}
+)
+{{/imports}}{{#model}}{{#description}}
+// {{{description}}}{{/description}}
+type {{classname}} struct {
+{{#vars}}{{#description}}
+	// {{{description}}}{{/description}}
+	{{name}} {{{datatype}}} `json:"{{baseName}},omitempty"`
+{{/vars}}
+}
+{{/model}}{{/models}}
