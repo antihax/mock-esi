@@ -10,6 +10,7 @@ install:
   - docker run -d -p 127.0.0.1:80:8080 --name mock-esi antihax/mock-esi
 
 script:
+  - go test 
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
