@@ -1,7 +1,7 @@
 package main
 
 import (
-	sw "github.com/antihax/mock-esi/go"
+	"github.com/antihax/mock-esi/swaggerServer"
 	"log"
 	"net/http"
 )
@@ -9,7 +9,7 @@ import (
 func main() {
 	log.Printf("Server started")
 
-	router := sw.NewRouter()
+	router := swaggerServer.NewRouter()
 	
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
