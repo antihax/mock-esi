@@ -11,5 +11,5 @@ func main() {
 
 	router := swaggerServer.NewRouter()
 	
-	log.Fatal(http.ListenAndServe(":8080", router))
+	log.Fatal(http.ListenAndServeTLS(":8080", "server.crt", "server.key", router))
 }
