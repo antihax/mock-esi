@@ -47,6 +47,25 @@ func DeleteFleetsFleetIdMembersMemberId(w http.ResponseWriter, r *http.Request) 
 		datasource = localV.(string)
 	}
 
+	if r.Form.Get("page") != "" {
+		var (
+			localPage int32 
+			localIntPage interface{}
+		)
+		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		localPage = localIntPage.(int32)
+		if localPage > 1 {
+			w.Header().Set("Content-Type", "")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("[]"))
+			return
+		}
+	} 
+
 	w.Header().Set("Content-Type", "")
 	w.WriteHeader(http.StatusOK)
 
@@ -92,6 +111,25 @@ func DeleteFleetsFleetIdSquadsSquadId(w http.ResponseWriter, r *http.Request) {
 		}
 		datasource = localV.(string)
 	}
+
+	if r.Form.Get("page") != "" {
+		var (
+			localPage int32 
+			localIntPage interface{}
+		)
+		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		localPage = localIntPage.(int32)
+		if localPage > 1 {
+			w.Header().Set("Content-Type", "")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("[]"))
+			return
+		}
+	} 
 
 	w.Header().Set("Content-Type", "")
 	w.WriteHeader(http.StatusOK)
@@ -139,6 +177,25 @@ func DeleteFleetsFleetIdWingsWingId(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+	if r.Form.Get("page") != "" {
+		var (
+			localPage int32 
+			localIntPage interface{}
+		)
+		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		localPage = localIntPage.(int32)
+		if localPage > 1 {
+			w.Header().Set("Content-Type", "")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("[]"))
+			return
+		}
+	} 
+
 	w.Header().Set("Content-Type", "")
 	w.WriteHeader(http.StatusOK)
 
@@ -182,6 +239,25 @@ func GetFleetsFleetId(w http.ResponseWriter, r *http.Request) {
 		}
 		datasource = localV.(string)
 	}
+
+	if r.Form.Get("page") != "" {
+		var (
+			localPage int32 
+			localIntPage interface{}
+		)
+		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		localPage = localIntPage.(int32)
+		if localPage > 1 {
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("[]"))
+			return
+		}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -233,6 +309,25 @@ func GetFleetsFleetIdMembers(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+	if r.Form.Get("page") != "" {
+		var (
+			localPage int32 
+			localIntPage interface{}
+		)
+		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		localPage = localIntPage.(int32)
+		if localPage > 1 {
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("[]"))
+			return
+		}
+	} 
+
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 
@@ -279,6 +374,25 @@ func GetFleetsFleetIdWings(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+	if r.Form.Get("page") != "" {
+		var (
+			localPage int32 
+			localIntPage interface{}
+		)
+		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		localPage = localIntPage.(int32)
+		if localPage > 1 {
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("[]"))
+			return
+		}
+	} 
+
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 
@@ -317,6 +431,25 @@ func PostFleetsFleetIdMembers(w http.ResponseWriter, r *http.Request) {
 		}
 		datasource = localV.(string)
 	}
+
+	if r.Form.Get("page") != "" {
+		var (
+			localPage int32 
+			localIntPage interface{}
+		)
+		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		localPage = localIntPage.(int32)
+		if localPage > 1 {
+			w.Header().Set("Content-Type", "")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("[]"))
+			return
+		}
+	} 
 
 	w.Header().Set("Content-Type", "")
 	w.WriteHeader(http.StatusOK)
@@ -358,6 +491,25 @@ func PostFleetsFleetIdWings(w http.ResponseWriter, r *http.Request) {
 		}
 		datasource = localV.(string)
 	}
+
+	if r.Form.Get("page") != "" {
+		var (
+			localPage int32 
+			localIntPage interface{}
+		)
+		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		localPage = localIntPage.(int32)
+		if localPage > 1 {
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("[]"))
+			return
+		}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -407,6 +559,25 @@ func PostFleetsFleetIdWingsWingIdSquads(w http.ResponseWriter, r *http.Request) 
 		datasource = localV.(string)
 	}
 
+	if r.Form.Get("page") != "" {
+		var (
+			localPage int32 
+			localIntPage interface{}
+		)
+		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		localPage = localIntPage.(int32)
+		if localPage > 1 {
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("[]"))
+			return
+		}
+	} 
+
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 
@@ -445,6 +616,25 @@ func PutFleetsFleetId(w http.ResponseWriter, r *http.Request) {
 		}
 		datasource = localV.(string)
 	}
+
+	if r.Form.Get("page") != "" {
+		var (
+			localPage int32 
+			localIntPage interface{}
+		)
+		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		localPage = localIntPage.(int32)
+		if localPage > 1 {
+			w.Header().Set("Content-Type", "")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("[]"))
+			return
+		}
+	} 
 
 	w.Header().Set("Content-Type", "")
 	w.WriteHeader(http.StatusOK)
@@ -492,6 +682,25 @@ func PutFleetsFleetIdMembersMemberId(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+	if r.Form.Get("page") != "" {
+		var (
+			localPage int32 
+			localIntPage interface{}
+		)
+		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		localPage = localIntPage.(int32)
+		if localPage > 1 {
+			w.Header().Set("Content-Type", "")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("[]"))
+			return
+		}
+	} 
+
 	w.Header().Set("Content-Type", "")
 	w.WriteHeader(http.StatusOK)
 
@@ -538,6 +747,25 @@ func PutFleetsFleetIdSquadsSquadId(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+	if r.Form.Get("page") != "" {
+		var (
+			localPage int32 
+			localIntPage interface{}
+		)
+		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		localPage = localIntPage.(int32)
+		if localPage > 1 {
+			w.Header().Set("Content-Type", "")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("[]"))
+			return
+		}
+	} 
+
 	w.Header().Set("Content-Type", "")
 	w.WriteHeader(http.StatusOK)
 
@@ -583,6 +811,25 @@ func PutFleetsFleetIdWingsWingId(w http.ResponseWriter, r *http.Request) {
 		}
 		datasource = localV.(string)
 	}
+
+	if r.Form.Get("page") != "" {
+		var (
+			localPage int32 
+			localIntPage interface{}
+		)
+		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		localPage = localIntPage.(int32)
+		if localPage > 1 {
+			w.Header().Set("Content-Type", "")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("[]"))
+			return
+		}
+	} 
 
 	w.Header().Set("Content-Type", "")
 	w.WriteHeader(http.StatusOK)

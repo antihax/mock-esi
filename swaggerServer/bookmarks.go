@@ -55,6 +55,25 @@ func GetCharactersCharacterIdBookmarks(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+	if r.Form.Get("page") != "" {
+		var (
+			localPage int32 
+			localIntPage interface{}
+		)
+		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		localPage = localIntPage.(int32)
+		if localPage > 1 {
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("[]"))
+			return
+		}
+	} 
+
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 
@@ -97,6 +116,25 @@ func GetCharactersCharacterIdBookmarksFolders(w http.ResponseWriter, r *http.Req
 		}
 		datasource = localV.(string)
 	}
+
+	if r.Form.Get("page") != "" {
+		var (
+			localPage int32 
+			localIntPage interface{}
+		)
+		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		localPage = localIntPage.(int32)
+		if localPage > 1 {
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("[]"))
+			return
+		}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
