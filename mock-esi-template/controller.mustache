@@ -31,7 +31,7 @@ func {{nickname}}(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	{{#pathParams}}
 	{{#required}}
-	localV, err = processParameters({{paramName}}, vars["{{paramName}}"])
+	localV, err = processParameters({{paramName}}, vars["{{baseName}}"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -40,7 +40,7 @@ func {{nickname}}(w http.ResponseWriter, r *http.Request) {
 	{{/required}}
 	{{^required}}
 	if vars["{{paramName}}"] != nil {
-		localV, err = processParameters({{paramName}}, vars["{{paramName}}"])
+		localV, err = processParameters({{paramName}}, vars["{{baseName}}"])
 		if err != nil {
 			errorOut(w, r, err)
 			return
@@ -57,7 +57,7 @@ func {{nickname}}(w http.ResponseWriter, r *http.Request) {
 	}
 	{{#queryParams}}
 	{{#required}}
-	localV, err = processParameters({{paramName}}, r.Form.Get("{{paramName}}"))
+	localV, err = processParameters({{paramName}}, r.Form.Get("{{baseName}}"))
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -65,7 +65,7 @@ func {{nickname}}(w http.ResponseWriter, r *http.Request) {
 	{{/required}}
 	{{^required}}
 	if r.Form.Get("{{paramName}}") != "" {
-		localV, err = processParameters({{paramName}}, r.Form.Get("{{paramName}}"))
+		localV, err = processParameters({{paramName}}, r.Form.Get("{{baseName}}"))
 		if err != nil {
 			errorOut(w, r, err)
 			return

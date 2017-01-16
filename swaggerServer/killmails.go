@@ -29,7 +29,7 @@ func GetCharactersCharacterIdKillmailsRecent(w http.ResponseWriter, r *http.Requ
   "killmail_id" : 1
 } ]`
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["characterId"])
+	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -40,7 +40,7 @@ func GetCharactersCharacterIdKillmailsRecent(w http.ResponseWriter, r *http.Requ
 		return
 	}
 	if r.Form.Get("maxCount") != "" {
-		localV, err = processParameters(maxCount, r.Form.Get("maxCount"))
+		localV, err = processParameters(maxCount, r.Form.Get("max_count"))
 		if err != nil {
 			errorOut(w, r, err)
 			return
@@ -48,7 +48,7 @@ func GetCharactersCharacterIdKillmailsRecent(w http.ResponseWriter, r *http.Requ
 		maxCount = localV.(int32)
 	}
 	if r.Form.Get("maxKillId") != "" {
-		localV, err = processParameters(maxKillId, r.Form.Get("maxKillId"))
+		localV, err = processParameters(maxKillId, r.Form.Get("max_kill_id"))
 		if err != nil {
 			errorOut(w, r, err)
 			return
@@ -136,13 +136,13 @@ func GetKillmailsKillmailIdKillmailHash(w http.ResponseWriter, r *http.Request) 
   }
 }`
 	vars := mux.Vars(r)
-	localV, err = processParameters(killmailId, vars["killmailId"])
+	localV, err = processParameters(killmailId, vars["killmail_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
 	}
 	killmailId = localV.(int32)
-	localV, err = processParameters(killmailHash, vars["killmailHash"])
+	localV, err = processParameters(killmailHash, vars["killmail_hash"])
 	if err != nil {
 		errorOut(w, r, err)
 		return

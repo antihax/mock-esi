@@ -39,7 +39,7 @@ func GetCharactersCharacterIdSkillqueue(w http.ResponseWriter, r *http.Request) 
   "start_date" : "2016-07-15T10:47:00Z"
 } ]`
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["characterId"])
+	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -108,7 +108,7 @@ func GetCharactersCharacterIdSkills(w http.ResponseWriter, r *http.Request) {
   "total_sp" : 20000
 }`
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["characterId"])
+	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return

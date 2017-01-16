@@ -95,7 +95,7 @@ func GetWarsWarId(w http.ResponseWriter, r *http.Request) {
   "open_for_allies" : false
 }`
 	vars := mux.Vars(r)
-	localV, err = processParameters(warId, vars["warId"])
+	localV, err = processParameters(warId, vars["war_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -160,7 +160,7 @@ func GetWarsWarIdKillmails(w http.ResponseWriter, r *http.Request) {
   "killmail_id" : 1
 } ]`
 	vars := mux.Vars(r)
-	localV, err = processParameters(warId, vars["warId"])
+	localV, err = processParameters(warId, vars["war_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return

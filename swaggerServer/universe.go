@@ -24,7 +24,7 @@ func GetUniverseStationsStationId(w http.ResponseWriter, r *http.Request) {
   "station_name" : "Jita IV Moon IV - Caldari Navy Assembly Plant"
 }`
 	vars := mux.Vars(r)
-	localV, err = processParameters(stationId, vars["stationId"])
+	localV, err = processParameters(stationId, vars["station_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -135,7 +135,7 @@ func GetUniverseStructuresStructureId(w http.ResponseWriter, r *http.Request) {
   "solar_system_id" : 30000142
 }`
 	vars := mux.Vars(r)
-	localV, err = processParameters(structureId, vars["structureId"])
+	localV, err = processParameters(structureId, vars["structure_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -195,7 +195,7 @@ func GetUniverseSystemsSystemId(w http.ResponseWriter, r *http.Request) {
   "solar_system_name" : "Jita"
 }`
 	vars := mux.Vars(r)
-	localV, err = processParameters(systemId, vars["systemId"])
+	localV, err = processParameters(systemId, vars["system_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -259,7 +259,7 @@ func GetUniverseTypesTypeId(w http.ResponseWriter, r *http.Request) {
   "type_name" : "Rifter"
 }`
 	vars := mux.Vars(r)
-	localV, err = processParameters(typeId, vars["typeId"])
+	localV, err = processParameters(typeId, vars["type_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return

@@ -22,13 +22,13 @@ func DeleteCharactersCharacterIdMailLabelsLabelId(w http.ResponseWriter, r *http
 
 	j := ``
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["characterId"])
+	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
 	}
 	characterId = localV.(int32)
-	localV, err = processParameters(labelId, vars["labelId"])
+	localV, err = processParameters(labelId, vars["label_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -87,13 +87,13 @@ func DeleteCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Reques
 
 	j := ``
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["characterId"])
+	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
 	}
 	characterId = localV.(int32)
-	localV, err = processParameters(mailId, vars["mailId"])
+	localV, err = processParameters(mailId, vars["mail_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -164,7 +164,7 @@ func GetCharactersCharacterIdMail(w http.ResponseWriter, r *http.Request) {
   "timestamp" : "2015-09-30T16:07:00Z"
 } ]`
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["characterId"])
+	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -183,7 +183,7 @@ func GetCharactersCharacterIdMail(w http.ResponseWriter, r *http.Request) {
 		labels = localV.([]int64)
 	}
 	if r.Form.Get("lastMailId") != "" {
-		localV, err = processParameters(lastMailId, r.Form.Get("lastMailId"))
+		localV, err = processParameters(lastMailId, r.Form.Get("last_mail_id"))
 		if err != nil {
 			errorOut(w, r, err)
 			return
@@ -251,7 +251,7 @@ func GetCharactersCharacterIdMailLabels(w http.ResponseWriter, r *http.Request) 
   "total_unread_count" : 5
 }`
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["characterId"])
+	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -312,7 +312,7 @@ func GetCharactersCharacterIdMailLists(w http.ResponseWriter, r *http.Request) {
   "name" : "test_mailing_list"
 } ]`
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["characterId"])
+	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -378,13 +378,13 @@ func GetCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Request) 
   "timestamp" : "2015-09-30T16:07:00Z"
 }`
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["characterId"])
+	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
 	}
 	characterId = localV.(int32)
-	localV, err = processParameters(mailId, vars["mailId"])
+	localV, err = processParameters(mailId, vars["mail_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -442,7 +442,7 @@ func PostCharactersCharacterIdMail(w http.ResponseWriter, r *http.Request) {
 
 	j := `13`
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["characterId"])
+	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -500,7 +500,7 @@ func PostCharactersCharacterIdMailLabels(w http.ResponseWriter, r *http.Request)
 
 	j := `128`
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["characterId"])
+	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -559,13 +559,13 @@ func PutCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Request) 
 
 	j := ``
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["characterId"])
+	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
 	}
 	characterId = localV.(int32)
-	localV, err = processParameters(mailId, vars["mailId"])
+	localV, err = processParameters(mailId, vars["mail_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return

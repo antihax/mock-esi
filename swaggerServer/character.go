@@ -30,7 +30,7 @@ func GetCharactersCharacterId(w http.ResponseWriter, r *http.Request) {
   "race_id" : 2
 }`
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["characterId"])
+	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -98,7 +98,7 @@ func GetCharactersCharacterIdCorporationhistory(w http.ResponseWriter, r *http.R
   "start_date" : "2016-07-26T20:00:00Z"
 } ]`
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["characterId"])
+	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -161,7 +161,7 @@ func GetCharactersCharacterIdPortrait(w http.ResponseWriter, r *http.Request) {
   "px64x64" : "https://imageserver.eveonline.com/Character/95465499_64.jpg"
 }`
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["characterId"])
+	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -225,7 +225,7 @@ func GetCharactersNames(w http.ResponseWriter, r *http.Request) {
 		errorOut(w, r, err)
 		return
 	}
-	localV, err = processParameters(characterIds, r.Form.Get("characterIds"))
+	localV, err = processParameters(characterIds, r.Form.Get("character_ids"))
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -280,7 +280,7 @@ func PostCharactersCharacterIdCspa(w http.ResponseWriter, r *http.Request) {
   "cost" : 295000
 }`
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["characterId"])
+	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return

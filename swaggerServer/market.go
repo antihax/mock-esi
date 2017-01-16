@@ -83,7 +83,7 @@ func GetMarketsRegionIdHistory(w http.ResponseWriter, r *http.Request) {
   "volume" : 16276782035
 } ]`
 	vars := mux.Vars(r)
-	localV, err = processParameters(regionId, vars["regionId"])
+	localV, err = processParameters(regionId, vars["region_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -93,7 +93,7 @@ func GetMarketsRegionIdHistory(w http.ResponseWriter, r *http.Request) {
 		errorOut(w, r, err)
 		return
 	}
-	localV, err = processParameters(typeId, r.Form.Get("typeId"))
+	localV, err = processParameters(typeId, r.Form.Get("type_id"))
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -161,7 +161,7 @@ func GetMarketsRegionIdOrders(w http.ResponseWriter, r *http.Request) {
   "volume_total" : 2000000
 } ]`
 	vars := mux.Vars(r)
-	localV, err = processParameters(regionId, vars["regionId"])
+	localV, err = processParameters(regionId, vars["region_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -172,14 +172,14 @@ func GetMarketsRegionIdOrders(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if r.Form.Get("typeId") != "" {
-		localV, err = processParameters(typeId, r.Form.Get("typeId"))
+		localV, err = processParameters(typeId, r.Form.Get("type_id"))
 		if err != nil {
 			errorOut(w, r, err)
 			return
 		}
 		typeId = localV.(int32)
 	}
-	localV, err = processParameters(orderType, r.Form.Get("orderType"))
+	localV, err = processParameters(orderType, r.Form.Get("order_type"))
 	if err != nil {
 		errorOut(w, r, err)
 		return

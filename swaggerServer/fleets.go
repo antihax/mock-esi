@@ -22,13 +22,13 @@ func DeleteFleetsFleetIdMembersMemberId(w http.ResponseWriter, r *http.Request) 
 
 	j := ``
 	vars := mux.Vars(r)
-	localV, err = processParameters(fleetId, vars["fleetId"])
+	localV, err = processParameters(fleetId, vars["fleet_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
 	}
 	fleetId = localV.(int64)
-	localV, err = processParameters(memberId, vars["memberId"])
+	localV, err = processParameters(memberId, vars["member_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -87,13 +87,13 @@ func DeleteFleetsFleetIdSquadsSquadId(w http.ResponseWriter, r *http.Request) {
 
 	j := ``
 	vars := mux.Vars(r)
-	localV, err = processParameters(fleetId, vars["fleetId"])
+	localV, err = processParameters(fleetId, vars["fleet_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
 	}
 	fleetId = localV.(int64)
-	localV, err = processParameters(squadId, vars["squadId"])
+	localV, err = processParameters(squadId, vars["squad_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -152,13 +152,13 @@ func DeleteFleetsFleetIdWingsWingId(w http.ResponseWriter, r *http.Request) {
 
 	j := ``
 	vars := mux.Vars(r)
-	localV, err = processParameters(fleetId, vars["fleetId"])
+	localV, err = processParameters(fleetId, vars["fleet_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
 	}
 	fleetId = localV.(int64)
-	localV, err = processParameters(wingId, vars["wingId"])
+	localV, err = processParameters(wingId, vars["wing_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -221,7 +221,7 @@ func GetFleetsFleetId(w http.ResponseWriter, r *http.Request) {
   "motd" : "This is an <b>awesome</b> fleet!"
 }`
 	vars := mux.Vars(r)
-	localV, err = processParameters(fleetId, vars["fleetId"])
+	localV, err = processParameters(fleetId, vars["fleet_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -290,7 +290,7 @@ func GetFleetsFleetIdMembers(w http.ResponseWriter, r *http.Request) {
   "wing_id" : 2073711261968
 } ]`
 	vars := mux.Vars(r)
-	localV, err = processParameters(fleetId, vars["fleetId"])
+	localV, err = processParameters(fleetId, vars["fleet_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -355,7 +355,7 @@ func GetFleetsFleetIdWings(w http.ResponseWriter, r *http.Request) {
   } ]
 } ]`
 	vars := mux.Vars(r)
-	localV, err = processParameters(fleetId, vars["fleetId"])
+	localV, err = processParameters(fleetId, vars["fleet_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -413,7 +413,7 @@ func PostFleetsFleetIdMembers(w http.ResponseWriter, r *http.Request) {
 
 	j := ``
 	vars := mux.Vars(r)
-	localV, err = processParameters(fleetId, vars["fleetId"])
+	localV, err = processParameters(fleetId, vars["fleet_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -473,7 +473,7 @@ func PostFleetsFleetIdWings(w http.ResponseWriter, r *http.Request) {
   "wing_id" : 123
 }`
 	vars := mux.Vars(r)
-	localV, err = processParameters(fleetId, vars["fleetId"])
+	localV, err = processParameters(fleetId, vars["fleet_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -534,13 +534,13 @@ func PostFleetsFleetIdWingsWingIdSquads(w http.ResponseWriter, r *http.Request) 
   "squad_id" : 123
 }`
 	vars := mux.Vars(r)
-	localV, err = processParameters(fleetId, vars["fleetId"])
+	localV, err = processParameters(fleetId, vars["fleet_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
 	}
 	fleetId = localV.(int64)
-	localV, err = processParameters(wingId, vars["wingId"])
+	localV, err = processParameters(wingId, vars["wing_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -598,7 +598,7 @@ func PutFleetsFleetId(w http.ResponseWriter, r *http.Request) {
 
 	j := ``
 	vars := mux.Vars(r)
-	localV, err = processParameters(fleetId, vars["fleetId"])
+	localV, err = processParameters(fleetId, vars["fleet_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -657,13 +657,13 @@ func PutFleetsFleetIdMembersMemberId(w http.ResponseWriter, r *http.Request) {
 
 	j := ``
 	vars := mux.Vars(r)
-	localV, err = processParameters(fleetId, vars["fleetId"])
+	localV, err = processParameters(fleetId, vars["fleet_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
 	}
 	fleetId = localV.(int64)
-	localV, err = processParameters(memberId, vars["memberId"])
+	localV, err = processParameters(memberId, vars["member_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -722,13 +722,13 @@ func PutFleetsFleetIdSquadsSquadId(w http.ResponseWriter, r *http.Request) {
 
 	j := ``
 	vars := mux.Vars(r)
-	localV, err = processParameters(fleetId, vars["fleetId"])
+	localV, err = processParameters(fleetId, vars["fleet_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
 	}
 	fleetId = localV.(int64)
-	localV, err = processParameters(squadId, vars["squadId"])
+	localV, err = processParameters(squadId, vars["squad_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -787,13 +787,13 @@ func PutFleetsFleetIdWingsWingId(w http.ResponseWriter, r *http.Request) {
 
 	j := ``
 	vars := mux.Vars(r)
-	localV, err = processParameters(fleetId, vars["fleetId"])
+	localV, err = processParameters(fleetId, vars["fleet_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
 	}
 	fleetId = localV.(int64)
-	localV, err = processParameters(wingId, vars["wingId"])
+	localV, err = processParameters(wingId, vars["wing_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return

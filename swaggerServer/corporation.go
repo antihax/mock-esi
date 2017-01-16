@@ -27,7 +27,7 @@ func GetCorporationsCorporationId(w http.ResponseWriter, r *http.Request) {
   "ticker" : "-CCP-"
 }`
 	vars := mux.Vars(r)
-	localV, err = processParameters(corporationId, vars["corporationId"])
+	localV, err = processParameters(corporationId, vars["corporation_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -95,7 +95,7 @@ func GetCorporationsCorporationIdAlliancehistory(w http.ResponseWriter, r *http.
   "start_date" : "2015-07-06T20:56:00Z"
 } ]`
 	vars := mux.Vars(r)
-	localV, err = processParameters(corporationId, vars["corporationId"])
+	localV, err = processParameters(corporationId, vars["corporation_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -157,7 +157,7 @@ func GetCorporationsCorporationIdIcons(w http.ResponseWriter, r *http.Request) {
   "px64x64" : "https://imageserver.eveonline.com/Corporation/1000010_64.png"
 }`
 	vars := mux.Vars(r)
-	localV, err = processParameters(corporationId, vars["corporationId"])
+	localV, err = processParameters(corporationId, vars["corporation_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -219,7 +219,7 @@ func GetCorporationsCorporationIdMembers(w http.ResponseWriter, r *http.Request)
   "character_id" : 90000002
 } ]`
 	vars := mux.Vars(r)
-	localV, err = processParameters(corporationId, vars["corporationId"])
+	localV, err = processParameters(corporationId, vars["corporation_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -280,7 +280,7 @@ func GetCorporationsCorporationIdRoles(w http.ResponseWriter, r *http.Request) {
   "roles" : [ "Director", "Station_Manager" ]
 } ]`
 	vars := mux.Vars(r)
-	localV, err = processParameters(corporationId, vars["corporationId"])
+	localV, err = processParameters(corporationId, vars["corporation_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -344,7 +344,7 @@ func GetCorporationsNames(w http.ResponseWriter, r *http.Request) {
 		errorOut(w, r, err)
 		return
 	}
-	localV, err = processParameters(corporationIds, r.Form.Get("corporationIds"))
+	localV, err = processParameters(corporationIds, r.Form.Get("corporation_ids"))
 	if err != nil {
 		errorOut(w, r, err)
 		return

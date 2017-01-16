@@ -37,7 +37,7 @@ func GetCharactersCharacterIdPlanets(w http.ResponseWriter, r *http.Request) {
   "upgrade_level" : 0
 } ]`
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["characterId"])
+	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -122,13 +122,13 @@ func GetCharactersCharacterIdPlanetsPlanetId(w http.ResponseWriter, r *http.Requ
   } ]
 }`
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["characterId"])
+	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
 	}
 	characterId = localV.(int32)
-	localV, err = processParameters(planetId, vars["planetId"])
+	localV, err = processParameters(planetId, vars["planet_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -189,7 +189,7 @@ func GetUniverseSchematicsSchematicId(w http.ResponseWriter, r *http.Request) {
   "schematic_name" : "Bacteria"
 }`
 	vars := mux.Vars(r)
-	localV, err = processParameters(schematicId, vars["schematicId"])
+	localV, err = processParameters(schematicId, vars["schematic_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return

@@ -76,7 +76,7 @@ func GetAlliancesAllianceId(w http.ResponseWriter, r *http.Request) {
   "ticker" : "<C C P>"
 }`
 	vars := mux.Vars(r)
-	localV, err = processParameters(allianceId, vars["allianceId"])
+	localV, err = processParameters(allianceId, vars["alliance_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -134,7 +134,7 @@ func GetAlliancesAllianceIdCorporations(w http.ResponseWriter, r *http.Request) 
 
 	j := `[ 98000001 ]`
 	vars := mux.Vars(r)
-	localV, err = processParameters(allianceId, vars["allianceId"])
+	localV, err = processParameters(allianceId, vars["alliance_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -195,7 +195,7 @@ func GetAlliancesAllianceIdIcons(w http.ResponseWriter, r *http.Request) {
   "px64x64" : "https://imageserver.eveonline.com/Alliance/503818424_64.png"
 }`
 	vars := mux.Vars(r)
-	localV, err = processParameters(allianceId, vars["allianceId"])
+	localV, err = processParameters(allianceId, vars["alliance_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -259,7 +259,7 @@ func GetAlliancesNames(w http.ResponseWriter, r *http.Request) {
 		errorOut(w, r, err)
 		return
 	}
-	localV, err = processParameters(allianceIds, r.Form.Get("allianceIds"))
+	localV, err = processParameters(allianceIds, r.Form.Get("alliance_ids"))
 	if err != nil {
 		errorOut(w, r, err)
 		return

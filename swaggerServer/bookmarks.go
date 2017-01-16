@@ -36,7 +36,7 @@ func GetCharactersCharacterIdBookmarks(w http.ResponseWriter, r *http.Request) {
   }
 } ]`
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["characterId"])
+	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -98,7 +98,7 @@ func GetCharactersCharacterIdBookmarksFolders(w http.ResponseWriter, r *http.Req
   "owner_id" : 90000001
 } ]`
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["characterId"])
+	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return

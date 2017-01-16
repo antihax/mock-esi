@@ -24,7 +24,7 @@ func GetCharactersCharacterIdLocation(w http.ResponseWriter, r *http.Request) {
   "structure_id" : 1000000016989
 }`
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["characterId"])
+	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -86,7 +86,7 @@ func GetCharactersCharacterIdShip(w http.ResponseWriter, r *http.Request) {
   "ship_type_id" : 1233
 }`
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["characterId"])
+	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return

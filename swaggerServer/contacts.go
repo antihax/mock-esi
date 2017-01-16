@@ -21,7 +21,7 @@ func DeleteCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request)
 
 	j := ``
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["characterId"])
+	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -86,7 +86,7 @@ func GetCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request) {
   "standing" : 10.0
 } ]`
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["characterId"])
+	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -155,7 +155,7 @@ func GetCharactersCharacterIdContactsLabels(w http.ResponseWriter, r *http.Reque
   "label_name" : "Friends"
 } ]`
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["characterId"])
+	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -216,7 +216,7 @@ func PostCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request) {
 
 	j := `[ 123, 456 ]`
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["characterId"])
+	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -240,7 +240,7 @@ func PostCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request) {
 		watched = localV.(bool)
 	}
 	if r.Form.Get("labelId") != "" {
-		localV, err = processParameters(labelId, r.Form.Get("labelId"))
+		localV, err = processParameters(labelId, r.Form.Get("label_id"))
 		if err != nil {
 			errorOut(w, r, err)
 			return
@@ -298,7 +298,7 @@ func PutCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request) {
 
 	j := ``
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["characterId"])
+	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -322,7 +322,7 @@ func PutCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request) {
 		watched = localV.(bool)
 	}
 	if r.Form.Get("labelId") != "" {
-		localV, err = processParameters(labelId, r.Form.Get("labelId"))
+		localV, err = processParameters(labelId, r.Form.Get("label_id"))
 		if err != nil {
 			errorOut(w, r, err)
 			return

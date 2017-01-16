@@ -26,17 +26,17 @@ func PostUiAutopilotWaypoint(w http.ResponseWriter, r *http.Request) {
 		errorOut(w, r, err)
 		return
 	}
-	localV, err = processParameters(destinationId, r.Form.Get("destinationId"))
+	localV, err = processParameters(destinationId, r.Form.Get("destination_id"))
 	if err != nil {
 		errorOut(w, r, err)
 		return
 	}
-	localV, err = processParameters(clearOtherWaypoints, r.Form.Get("clearOtherWaypoints"))
+	localV, err = processParameters(clearOtherWaypoints, r.Form.Get("clear_other_waypoints"))
 	if err != nil {
 		errorOut(w, r, err)
 		return
 	}
-	localV, err = processParameters(addToBeginning, r.Form.Get("addToBeginning"))
+	localV, err = processParameters(addToBeginning, r.Form.Get("add_to_beginning"))
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -92,7 +92,7 @@ func PostUiOpenwindowContract(w http.ResponseWriter, r *http.Request) {
 		errorOut(w, r, err)
 		return
 	}
-	localV, err = processParameters(contractId, r.Form.Get("contractId"))
+	localV, err = processParameters(contractId, r.Form.Get("contract_id"))
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -148,7 +148,7 @@ func PostUiOpenwindowInformation(w http.ResponseWriter, r *http.Request) {
 		errorOut(w, r, err)
 		return
 	}
-	localV, err = processParameters(targetId, r.Form.Get("targetId"))
+	localV, err = processParameters(targetId, r.Form.Get("target_id"))
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -204,7 +204,7 @@ func PostUiOpenwindowMarketdetails(w http.ResponseWriter, r *http.Request) {
 		errorOut(w, r, err)
 		return
 	}
-	localV, err = processParameters(typeId, r.Form.Get("typeId"))
+	localV, err = processParameters(typeId, r.Form.Get("type_id"))
 	if err != nil {
 		errorOut(w, r, err)
 		return

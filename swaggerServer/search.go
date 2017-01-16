@@ -28,7 +28,7 @@ func GetCharactersCharacterIdSearch(w http.ResponseWriter, r *http.Request) {
   "station" : [ 60004588, 60004594, 60005725, 60009106, 60012721, 60012724, 60012727 ]
 }`
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["characterId"])
+	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return

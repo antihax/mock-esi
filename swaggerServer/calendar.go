@@ -28,7 +28,7 @@ func GetCharactersCharacterIdCalendar(w http.ResponseWriter, r *http.Request) {
   "title" : "o7 The EVE Online Show"
 } ]`
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["characterId"])
+	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -39,7 +39,7 @@ func GetCharactersCharacterIdCalendar(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if r.Form.Get("fromEvent") != "" {
-		localV, err = processParameters(fromEvent, r.Form.Get("fromEvent"))
+		localV, err = processParameters(fromEvent, r.Form.Get("from_event"))
 		if err != nil {
 			errorOut(w, r, err)
 			return
@@ -106,13 +106,13 @@ func GetCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Requ
   "title" : "o7 The EVE Online Show"
 }`
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["characterId"])
+	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
 	}
 	characterId = localV.(int64)
-	localV, err = processParameters(eventId, vars["eventId"])
+	localV, err = processParameters(eventId, vars["event_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -171,13 +171,13 @@ func PutCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Requ
 
 	j := ``
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["characterId"])
+	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
 	}
 	characterId = localV.(int32)
-	localV, err = processParameters(eventId, vars["eventId"])
+	localV, err = processParameters(eventId, vars["event_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return

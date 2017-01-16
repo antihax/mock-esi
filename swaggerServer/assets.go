@@ -28,7 +28,7 @@ func GetCharactersCharacterIdAssets(w http.ResponseWriter, r *http.Request) {
   "type_id" : 3516
 } ]`
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["characterId"])
+	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
