@@ -1,0 +1,22 @@
+package swServer
+
+import "time"
+var _ time.Time
+
+/* 
+invitation object */
+type PostFleetsFleetIdMembersInvitation struct {
+/*
+	 The character you want to invite */
+	character_id int32 `json:"character_id,omitempty"`
+/*
+	 - If a character is invited with the `fleet_commander` role, neither `wing_id` or `squad_id` should be specified - If a character is invited with the `wing_commander` role, only `wing_id` should be specified - If a character is invited with the `squad_commander` role, both `wing_id` and `squad_id` should be specified - If a character is invited with the `squad_member` role, `wing_id` and `squad_id` should either both be specified or not specified at all. If they aren’t specified, the invited character will join any squad with available positions
+ */
+	role string `json:"role,omitempty"`
+/*
+	 squad_id integer */
+	squad_id int64 `json:"squad_id,omitempty"`
+/*
+	 wing_id integer */
+	wing_id int64 `json:"wing_id,omitempty"`
+}
