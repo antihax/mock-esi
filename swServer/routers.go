@@ -684,13 +684,6 @@ var routes = Routes{
 	},
 
 	Route{
-		"GetWars",
-		"GET",
-		"/latest/wars/",
-		GetWars,
-	},
-
-	Route{
 		"GetWarsWarId",
 		"GET",
 		"/latest/wars/{war_id}/",
