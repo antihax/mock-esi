@@ -1,4 +1,4 @@
-package swServer
+package swS
 
 {{#operations}}
 import (
@@ -104,13 +104,3 @@ func {{nickname}}(w http.ResponseWriter, r *http.Request) {
 {{/operation}}
 {{/operations}}
 
-{{#models}}
-{{#model}}{{#description}}
-// {{{description}}}{{/description}}
-type {{classname}} struct {
-{{#vars}}{{#description}}
-	// {{{description}}}{{/description}}
-	{{name}} {{{datatype}}} `json:"{{baseName}},omitempty"`
-{{/vars}}
-}
-{{/model}}{{/models}}
