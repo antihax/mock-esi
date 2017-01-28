@@ -3,6 +3,7 @@ package swS
 import (
 	"net/http"
 	"github.com/gorilla/mux"
+	"fmt"
 )
 
 var _ = mux.NewRouter
@@ -36,6 +37,7 @@ func GetMarketsPrices(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -107,6 +109,7 @@ func GetMarketsRegionIdHistory(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -201,6 +204,7 @@ func GetMarketsRegionIdOrders(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -280,6 +284,7 @@ func GetMarketsStructuresStructureId(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 

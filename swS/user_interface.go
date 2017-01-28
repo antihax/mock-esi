@@ -3,6 +3,7 @@ package swS
 import (
 	"net/http"
 	"github.com/gorilla/mux"
+	"fmt"
 )
 
 var _ = mux.NewRouter
@@ -50,6 +51,7 @@ func PostUiAutopilotWaypoint(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -106,6 +108,7 @@ func PostUiOpenwindowContract(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -162,6 +165,7 @@ func PostUiOpenwindowInformation(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -218,6 +222,7 @@ func PostUiOpenwindowMarketdetails(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -268,6 +273,7 @@ func PostUiOpenwindowNewmail(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 

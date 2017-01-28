@@ -3,6 +3,7 @@ package swS
 import (
 	"net/http"
 	"github.com/gorilla/mux"
+	"fmt"
 )
 
 var _ = mux.NewRouter
@@ -32,6 +33,7 @@ func GetUniverseCategories(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -104,6 +106,7 @@ func GetUniverseCategoriesCategoryId(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -173,6 +176,7 @@ func GetUniverseFactions(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -232,6 +236,7 @@ func GetUniverseGroups(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -305,6 +310,7 @@ func GetUniverseGroupsGroupId(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -369,6 +375,7 @@ func GetUniverseRaces(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -430,6 +437,7 @@ func GetUniverseStationsStationId(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -480,6 +488,7 @@ func GetUniverseStructures(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -541,6 +550,7 @@ func GetUniverseStructuresStructureId(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -601,6 +611,7 @@ func GetUniverseSystemsSystemId(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -660,6 +671,7 @@ func GetUniverseTypes(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -733,6 +745,7 @@ func GetUniverseTypesTypeId(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -791,6 +804,7 @@ func PostUniverseNames(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 

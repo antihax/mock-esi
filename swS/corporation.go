@@ -3,6 +3,7 @@ package swS
 import (
 	"net/http"
 	"github.com/gorilla/mux"
+	"fmt"
 )
 
 var _ = mux.NewRouter
@@ -46,6 +47,7 @@ func GetCorporationsCorporationId(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -114,6 +116,7 @@ func GetCorporationsCorporationIdAlliancehistory(w http.ResponseWriter, r *http.
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -176,6 +179,7 @@ func GetCorporationsCorporationIdIcons(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -238,6 +242,7 @@ func GetCorporationsCorporationIdMembers(w http.ResponseWriter, r *http.Request)
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -299,6 +304,7 @@ func GetCorporationsCorporationIdRoles(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -358,6 +364,7 @@ func GetCorporationsNames(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 

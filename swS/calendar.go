@@ -3,6 +3,7 @@ package swS
 import (
 	"net/http"
 	"github.com/gorilla/mux"
+	"fmt"
 )
 
 var _ = mux.NewRouter
@@ -55,6 +56,7 @@ func GetCharactersCharacterIdCalendar(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -131,6 +133,7 @@ func GetCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Requ
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -196,6 +199,7 @@ func PutCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Requ
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 

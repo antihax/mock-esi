@@ -3,6 +3,7 @@ package swS
 import (
 	"net/http"
 	"github.com/gorilla/mux"
+	"fmt"
 )
 
 var _ = mux.NewRouter
@@ -47,6 +48,7 @@ func DeleteCharactersCharacterIdMailLabelsLabelId(w http.ResponseWriter, r *http
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -112,6 +114,7 @@ func DeleteCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Reques
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -199,6 +202,7 @@ func GetCharactersCharacterIdMail(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -270,6 +274,7 @@ func GetCharactersCharacterIdMailLabels(w http.ResponseWriter, r *http.Request) 
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -331,6 +336,7 @@ func GetCharactersCharacterIdMailLists(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -403,6 +409,7 @@ func GetCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Request) 
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -461,6 +468,7 @@ func PostCharactersCharacterIdMail(w http.ResponseWriter, r *http.Request) {
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -519,6 +527,7 @@ func PostCharactersCharacterIdMailLabels(w http.ResponseWriter, r *http.Request)
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -584,6 +593,7 @@ func PutCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Request) 
 		datasource = localV.(string)
 	}
 
+fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
