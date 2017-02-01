@@ -7,6 +7,9 @@ var _ time.Time
 200 ok object */
 type GetCharactersCharacterIdOk struct {
 /*
+	 The character's alliance ID */
+	alliance_id int32 `json:"alliance_id,omitempty"`
+/*
 	 ancestry_id integer */
 	ancestry_id int32 `json:"ancestry_id,omitempty"`
 /*
@@ -25,7 +28,7 @@ type GetCharactersCharacterIdOk struct {
 	 gender string */
 	gender string `json:"gender,omitempty"`
 /*
-	 The name of the character */
+	 name string */
 	name string `json:"name,omitempty"`
 /*
 	 race_id integer */

@@ -4,9 +4,9 @@ import "time"
 var _ time.Time
 
 /* 
-Category not found */
+Not found */
 type GetUniverseCategoriesCategoryIdNotFound struct {
 /*
-	 error message */
+	 Not found message */
 	_error string `json:"error,omitempty"`
 }

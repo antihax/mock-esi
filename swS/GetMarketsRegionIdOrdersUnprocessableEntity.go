@@ -4,9 +4,9 @@ import "time"
 var _ time.Time
 
 /* 
-bad region_id */
+Unprocessable entity */
 type GetMarketsRegionIdOrdersUnprocessableEntity struct {
 /*
-	 error message */
+	 Unprocessable entity message */
 	_error string `json:"error,omitempty"`
 }

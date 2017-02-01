@@ -4,9 +4,9 @@ import "time"
 var _ time.Time
 
 /* 
-Group not found */
+Not found */
 type GetUniverseGroupsGroupIdNotFound struct {
 /*
-	 error message */
+	 Not found message */
 	_error string `json:"error,omitempty"`
 }

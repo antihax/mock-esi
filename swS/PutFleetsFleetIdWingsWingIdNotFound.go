@@ -4,9 +4,9 @@ import "time"
 var _ time.Time
 
 /* 
-404 not found object */
+Not found */
 type PutFleetsFleetIdWingsWingIdNotFound struct {
 /*
-	 Error message */
+	 Not found message */
 	_error string `json:"error,omitempty"`
 }

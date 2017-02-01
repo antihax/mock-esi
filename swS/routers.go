@@ -565,6 +565,13 @@ var routes = Routes{
 	},
 
 	Route{
+		"GetUniverseBloodlines",
+		"GET",
+		"/latest/universe/bloodlines/",
+		GetUniverseBloodlines,
+	},
+
+	Route{
 		"GetUniverseCategories",
 		"GET",
 		"/latest/universe/categories/",

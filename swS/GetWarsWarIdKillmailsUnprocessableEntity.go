@@ -4,9 +4,9 @@ import "time"
 var _ time.Time
 
 /* 
-war_id is not valid */
+Unprocessable entity */
 type GetWarsWarIdKillmailsUnprocessableEntity struct {
 /*
-	 error message */
+	 Unprocessable entity message */
 	_error string `json:"error,omitempty"`
 }

@@ -4,9 +4,9 @@ import "time"
 var _ time.Time
 
 /* 
-killmail_id and/or killmail_hash is not valid */
+Unprocessable entity */
 type GetKillmailsKillmailIdKillmailHashUnprocessableEntity struct {
 /*
-	 error message */
+	 Unprocessable entity message */
 	_error string `json:"error,omitempty"`
 }

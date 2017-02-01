@@ -8,6 +8,78 @@ import (
 
 var _ = mux.NewRouter
 
+func GetUniverseBloodlines(w http.ResponseWriter, r *http.Request) {
+
+	var (
+		localV interface{}
+		err error
+		language string
+		datasource string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
+
+	j := `[ {
+  "bloodline_id" : 1,
+  "charisma" : 6,
+  "corporation_id" : 1000006,
+  "description" : "The Deteis are regarded as ...",
+  "intelligence" : 7,
+  "memory" : 7,
+  "name" : "Deteis",
+  "perception" : 5,
+  "race_id" : 1,
+  "ship_type_id" : 601,
+  "willpower" : 5
+} ]`
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("language") != "" {
+		localV, err = processParameters(language, r.Form.Get("language"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		language = localV.(string)
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
+
+fmt.Printf("%s\n", r.Form.Get("page"))
+	if r.Form.Get("page") != "" {
+		var (
+			localPage int32 
+			localIntPage interface{}
+		)
+		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		localPage = localIntPage.(int32)
+		if localPage > 1 {
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("[]"))
+			return
+		}
+	} 
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
+}
+
 func GetUniverseCategories(w http.ResponseWriter, r *http.Request) {
 
 	var (
