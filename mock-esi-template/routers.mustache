@@ -1,59 +1,23 @@
-package swS
+package {{packageName}}
 
 import (
 	"net/http"
-	"fmt"
-	"reflect"
+	"github.com/antihax/mock-esi/mockesi"
 	"strconv"
-	"github.com/gorilla/mux"
+	"reflect"
 )
 
-type Route struct {
-	Name        string
-	Method      string
-	Pattern     string
-	HandlerFunc http.HandlerFunc
-}
-
-type Routes []Route
-
-func NewRouter() *mux.Router {
-	router := mux.NewRouter().StrictSlash(true)
-	for _, route := range routes {
-		var handler http.Handler
-		handler = route.HandlerFunc
-		handler = Logger(handler, route.Name)
-
-		router.
-			Methods(route.Method).
-			Path(route.Pattern).
-			Name(route.Name).
-			Handler(handler)
-	}
-
-	return router
-}
-
-func Index(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello World!")
-}
-
-var routes = Routes{
-	Route{
-		"Index",
-		"GET",
-		"{{basePathWithoutHost}}/",
-		Index,
-	},
+func init() {
 {{#apiInfo}}{{#apis}}{{#operations}}{{#operation}}
-	Route{
+	mockesi.NewRoute(
 		"{{operationId}}",
 		"{{httpMethod}}",
 		"{{basePathWithoutHost}}{{path}}",
 		{{operationId}},
-	},
+	)
 {{/operation}}{{/operations}}{{/apis}}{{/apiInfo}}
 }
+
 
 
 func errorOut(w http.ResponseWriter, r *http.Request, e error) {

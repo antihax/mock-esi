@@ -1,12 +1,13 @@
-package swS
+package {{packageName}}
 
 {{#operations}}
 import (
 	"net/http"
 	"github.com/gorilla/mux"
-	"fmt"
+	"time"
 )
 
+var _ time.Time
 var _ = mux.NewRouter
 
 {{#operation}}
@@ -76,7 +77,6 @@ func {{nickname}}(w http.ResponseWriter, r *http.Request) {
 	{{/required}}
 	{{/queryParams}}
 
-fmt.Printf("%s\n", r.Form.Get("page"))
 	if r.Form.Get("page") != "" {
 		var (
 			localPage int32 
@@ -106,3 +106,13 @@ fmt.Printf("%s\n", r.Form.Get("page"))
 {{/operation}}
 {{/operations}}
 
+{{#models}}
+{{#model}}/* {{#description}}
+{{{description}}}{{/description}} */
+type {{classname}} struct {
+{{#vars}}/*{{#description}}
+	 {{{description}}}{{/description}} */
+	{{name}} {{{datatype}}} `json:"{{baseName}},omitempty"`
+{{/vars}}
+}
+{{/model}}{{/models}}
