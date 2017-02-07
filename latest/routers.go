@@ -549,6 +549,20 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetUniverseConstellations",
+		"GET",
+		"/latest/universe/constellations/",
+		GetUniverseConstellations,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseConstellationsConstellationId",
+		"GET",
+		"/latest/universe/constellations/{constellation_id}/",
+		GetUniverseConstellationsConstellationId,
+	)
+
+	mockesi.NewRoute(
 		"GetUniverseFactions",
 		"GET",
 		"/latest/universe/factions/",
@@ -570,10 +584,45 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetUniverseMoonsMoonId",
+		"GET",
+		"/latest/universe/moons/{moon_id}/",
+		GetUniverseMoonsMoonId,
+	)
+
+	mockesi.NewRoute(
+		"GetUniversePlanetsPlanetId",
+		"GET",
+		"/latest/universe/planets/{planet_id}/",
+		GetUniversePlanetsPlanetId,
+	)
+
+	mockesi.NewRoute(
 		"GetUniverseRaces",
 		"GET",
 		"/latest/universe/races/",
 		GetUniverseRaces,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseRegions",
+		"GET",
+		"/latest/universe/regions/",
+		GetUniverseRegions,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseRegionsRegionId",
+		"GET",
+		"/latest/universe/regions/{region_id}/",
+		GetUniverseRegionsRegionId,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseStargatesStargateId",
+		"GET",
+		"/latest/universe/stargates/{stargate_id}/",
+		GetUniverseStargatesStargateId,
 	)
 
 	mockesi.NewRoute(
@@ -595,6 +644,13 @@ func init() {
 		"GET",
 		"/latest/universe/structures/{structure_id}/",
 		GetUniverseStructuresStructureId,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseSystems",
+		"GET",
+		"/latest/universe/systems/",
+		GetUniverseSystems,
 	)
 
 	mockesi.NewRoute(
