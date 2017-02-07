@@ -202,6 +202,133 @@ func GetUniverseCategoriesCategoryId(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte(j))
 }
 
+func GetUniverseConstellations(w http.ResponseWriter, r *http.Request) {
+
+	var (
+		localV interface{}
+		err error
+		datasource string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
+
+	j := `[ 20000001, 20000002 ]`
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
+
+	if r.Form.Get("page") != "" {
+		var (
+			localPage int32 
+			localIntPage interface{}
+		)
+		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		localPage = localIntPage.(int32)
+		if localPage > 1 {
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("[]"))
+			return
+		}
+	} 
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
+}
+
+func GetUniverseConstellationsConstellationId(w http.ResponseWriter, r *http.Request) {
+
+	var (
+		localV interface{}
+		err error
+		constellationId int32
+		language string
+		datasource string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
+
+	j := `{
+  "constellation_id" : 20000009,
+  "name" : "Mekashtad",
+  "position" : {
+    "x" : 67796138757472320,
+    "y" : -70591121348560960,
+    "z" : -59587016159270070
+  },
+  "region_id" : 10000001,
+  "systems" : [ 20000302, 20000303 ]
+}`
+	vars := mux.Vars(r)
+	localV, err = processParameters(constellationId, vars["constellation_id"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	constellationId = localV.(int32)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("language") != "" {
+		localV, err = processParameters(language, r.Form.Get("language"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		language = localV.(string)
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
+
+	if r.Form.Get("page") != "" {
+		var (
+			localPage int32 
+			localIntPage interface{}
+		)
+		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		localPage = localIntPage.(int32)
+		if localPage > 1 {
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("[]"))
+			return
+		}
+	} 
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
+}
+
 func GetUniverseFactions(w http.ResponseWriter, r *http.Request) {
 
 	var (
@@ -403,6 +530,141 @@ func GetUniverseGroupsGroupId(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte(j))
 }
 
+func GetUniverseMoonsMoonId(w http.ResponseWriter, r *http.Request) {
+
+	var (
+		localV interface{}
+		err error
+		moonId int32
+		datasource string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
+
+	j := `{
+  "moon_id" : 40000042,
+  "name" : "Akpivem I - Moon 1",
+  "position" : {
+    "x" : 58605102008,
+    "y" : -3066616285,
+    "z" : -55193617920
+  },
+  "system_id" : 30000003
+}`
+	vars := mux.Vars(r)
+	localV, err = processParameters(moonId, vars["moon_id"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	moonId = localV.(int32)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
+
+	if r.Form.Get("page") != "" {
+		var (
+			localPage int32 
+			localIntPage interface{}
+		)
+		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		localPage = localIntPage.(int32)
+		if localPage > 1 {
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("[]"))
+			return
+		}
+	} 
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
+}
+
+func GetUniversePlanetsPlanetId(w http.ResponseWriter, r *http.Request) {
+
+	var (
+		localV interface{}
+		err error
+		planetId int32
+		datasource string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
+
+	j := `{
+  "name" : "Akpivem III",
+  "planet_id" : 40000046,
+  "position" : {
+    "x" : -189226344497,
+    "y" : 9901605317,
+    "z" : -254852632979
+  },
+  "system_id" : 30000003,
+  "type_id" : 13
+}`
+	vars := mux.Vars(r)
+	localV, err = processParameters(planetId, vars["planet_id"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	planetId = localV.(int32)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
+
+	if r.Form.Get("page") != "" {
+		var (
+			localPage int32 
+			localIntPage interface{}
+		)
+		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		localPage = localIntPage.(int32)
+		if localPage > 1 {
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("[]"))
+			return
+		}
+	} 
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
+}
+
 func GetUniverseRaces(w http.ResponseWriter, r *http.Request) {
 
 	var (
@@ -467,6 +729,200 @@ func GetUniverseRaces(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte(j))
 }
 
+func GetUniverseRegions(w http.ResponseWriter, r *http.Request) {
+
+	var (
+		localV interface{}
+		err error
+		datasource string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
+
+	j := `[ 11000001, 11000002 ]`
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
+
+	if r.Form.Get("page") != "" {
+		var (
+			localPage int32 
+			localIntPage interface{}
+		)
+		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		localPage = localIntPage.(int32)
+		if localPage > 1 {
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("[]"))
+			return
+		}
+	} 
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
+}
+
+func GetUniverseRegionsRegionId(w http.ResponseWriter, r *http.Request) {
+
+	var (
+		localV interface{}
+		err error
+		regionId int32
+		language string
+		datasource string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
+
+	j := `{
+  "constellations" : [ 20000302, 20000303 ],
+  "description" : "It has long been an established fact of civilization...",
+  "name" : "Metropolis",
+  "region_id" : 10000042
+}`
+	vars := mux.Vars(r)
+	localV, err = processParameters(regionId, vars["region_id"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	regionId = localV.(int32)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("language") != "" {
+		localV, err = processParameters(language, r.Form.Get("language"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		language = localV.(string)
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
+
+	if r.Form.Get("page") != "" {
+		var (
+			localPage int32 
+			localIntPage interface{}
+		)
+		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		localPage = localIntPage.(int32)
+		if localPage > 1 {
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("[]"))
+			return
+		}
+	} 
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
+}
+
+func GetUniverseStargatesStargateId(w http.ResponseWriter, r *http.Request) {
+
+	var (
+		localV interface{}
+		err error
+		stargateId int32
+		datasource string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
+
+	j := `{
+  "destination" : {
+    "stargate_id" : 50000056,
+    "system_id" : 30000001
+  },
+  "name" : "Stargate (Tanoo)",
+  "position" : {
+    "x" : -101092761600,
+    "y" : 5279539200,
+    "z" : 1550503403520
+  },
+  "stargate_id" : 50000342,
+  "system_id" : 30000003,
+  "type_id" : 29624
+}`
+	vars := mux.Vars(r)
+	localV, err = processParameters(stargateId, vars["stargate_id"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	stargateId = localV.(int32)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
+
+	if r.Form.Get("page") != "" {
+		var (
+			localPage int32 
+			localIntPage interface{}
+		)
+		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		localPage = localIntPage.(int32)
+		if localPage > 1 {
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("[]"))
+			return
+		}
+	} 
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
+}
+
 func GetUniverseStationsStationId(w http.ResponseWriter, r *http.Request) {
 
 	var (
@@ -480,8 +936,22 @@ func GetUniverseStationsStationId(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "solar_system_id" : 30000142,
-  "station_name" : "Jita IV Moon IV - Caldari Navy Assembly Plant"
+  "max_dockable_ship_volume" : 50000000,
+  "name" : "Jakanerva III - Moon 15 - Prompt Delivery Storage",
+  "office_rental_cost" : 10000,
+  "owner" : 1000003,
+  "position" : {
+    "x" : 165632286720,
+    "y" : 2771804160,
+    "z" : -2455331266560
+  },
+  "race_id" : 1,
+  "reprocessing_efficiency" : 0.5,
+  "reprocessing_stations_take" : 0.05,
+  "services" : [ "courier-missions", "reprocessing-plant", "market", "repair-facilities", "fitting", "news", "storage", "insurance", "docking", "office-rental", "loyalty-point-store", "navy-offices" ],
+  "station_id" : 60000277,
+  "system_id" : 30000148,
+  "type_id" : 1531
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(stationId, vars["station_id"])
@@ -639,12 +1109,63 @@ func GetUniverseStructuresStructureId(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte(j))
 }
 
+func GetUniverseSystems(w http.ResponseWriter, r *http.Request) {
+
+	var (
+		localV interface{}
+		err error
+		datasource string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
+
+	j := `[ 30000001, 30000002 ]`
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
+
+	if r.Form.Get("page") != "" {
+		var (
+			localPage int32 
+			localIntPage interface{}
+		)
+		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		localPage = localIntPage.(int32)
+		if localPage > 1 {
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("[]"))
+			return
+		}
+	} 
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
+}
+
 func GetUniverseSystemsSystemId(w http.ResponseWriter, r *http.Request) {
 
 	var (
 		localV interface{}
 		err error
 		systemId int32
+		language string
 		datasource string
 	)
 	// shut up warnings
@@ -652,7 +1173,23 @@ func GetUniverseSystemsSystemId(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "solar_system_name" : "Jita"
+  "constellation_id" : 20000001,
+  "name" : "Akpivem",
+  "planets" : [ {
+    "moons" : [ 40000042 ],
+    "planet_id" : 40000041
+  }, {
+    "planet_id" : 40000043
+  } ],
+  "position" : {
+    "x" : -91174141133075340,
+    "y" : 43938227486247170,
+    "z" : -56482824383339900
+  },
+  "security_class" : "B",
+  "security_status" : 0.8462923765182495,
+  "stargates" : [ 50000342 ],
+  "system_id" : 30000003
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(systemId, vars["system_id"])
@@ -664,6 +1201,14 @@ func GetUniverseSystemsSystemId(w http.ResponseWriter, r *http.Request) {
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)
 		return
+	}
+	if r.Form.Get("language") != "" {
+		localV, err = processParameters(language, r.Form.Get("language"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		language = localV.(string)
 	}
 	if r.Form.Get("datasource") != "" {
 		localV, err = processParameters(datasource, r.Form.Get("datasource"))
