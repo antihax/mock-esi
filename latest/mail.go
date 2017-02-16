@@ -17,6 +17,8 @@ func DeleteCharactersCharacterIdMailLabelsLabelId(w http.ResponseWriter, r *http
 		characterId int32
 		labelId int32
 		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -47,6 +49,22 @@ func DeleteCharactersCharacterIdMailLabelsLabelId(w http.ResponseWriter, r *http
 			return
 		}
 		datasource = localV.(string)
+	}
+	if r.Form.Get("token") != "" {
+		localV, err = processParameters(token, r.Form.Get("token"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		token = localV.(string)
+	}
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -82,6 +100,8 @@ func DeleteCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Reques
 		characterId int32
 		mailId int32
 		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -112,6 +132,22 @@ func DeleteCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Reques
 			return
 		}
 		datasource = localV.(string)
+	}
+	if r.Form.Get("token") != "" {
+		localV, err = processParameters(token, r.Form.Get("token"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		token = localV.(string)
+	}
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -145,9 +181,11 @@ func GetCharactersCharacterIdMail(w http.ResponseWriter, r *http.Request) {
 		localV interface{}
 		err error
 		characterId int32
+		datasource string
 		labels []int64
 		lastMailId int32
-		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -176,6 +214,14 @@ func GetCharactersCharacterIdMail(w http.ResponseWriter, r *http.Request) {
 		errorOut(w, r, err)
 		return
 	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
 	if r.Form.Get("labels") != "" {
 		localV, err = processParameters(labels, r.Form.Get("labels"))
 		if err != nil {
@@ -192,13 +238,21 @@ func GetCharactersCharacterIdMail(w http.ResponseWriter, r *http.Request) {
 		}
 		lastMailId = localV.(int32)
 	}
-	if r.Form.Get("datasource") != "" {
-		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+	if r.Form.Get("token") != "" {
+		localV, err = processParameters(token, r.Form.Get("token"))
 		if err != nil {
 			errorOut(w, r, err)
 			return
 		}
-		datasource = localV.(string)
+		token = localV.(string)
+	}
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -233,6 +287,8 @@ func GetCharactersCharacterIdMailLabels(w http.ResponseWriter, r *http.Request) 
 		err error
 		characterId int32
 		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -271,6 +327,22 @@ func GetCharactersCharacterIdMailLabels(w http.ResponseWriter, r *http.Request) 
 		}
 		datasource = localV.(string)
 	}
+	if r.Form.Get("token") != "" {
+		localV, err = processParameters(token, r.Form.Get("token"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		token = localV.(string)
+	}
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		userAgent = localV.(string)
+	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -304,6 +376,8 @@ func GetCharactersCharacterIdMailLists(w http.ResponseWriter, r *http.Request) {
 		err error
 		characterId int32
 		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -331,6 +405,22 @@ func GetCharactersCharacterIdMailLists(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		datasource = localV.(string)
+	}
+	if r.Form.Get("token") != "" {
+		localV, err = processParameters(token, r.Form.Get("token"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		token = localV.(string)
+	}
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -366,6 +456,8 @@ func GetCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Request) 
 		characterId int32
 		mailId int32
 		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -404,6 +496,22 @@ func GetCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Request) 
 		}
 		datasource = localV.(string)
 	}
+	if r.Form.Get("token") != "" {
+		localV, err = processParameters(token, r.Form.Get("token"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		token = localV.(string)
+	}
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		userAgent = localV.(string)
+	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -437,6 +545,8 @@ func PostCharactersCharacterIdMail(w http.ResponseWriter, r *http.Request) {
 		err error
 		characterId int32
 		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -461,6 +571,22 @@ func PostCharactersCharacterIdMail(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		datasource = localV.(string)
+	}
+	if r.Form.Get("token") != "" {
+		localV, err = processParameters(token, r.Form.Get("token"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		token = localV.(string)
+	}
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -495,6 +621,8 @@ func PostCharactersCharacterIdMailLabels(w http.ResponseWriter, r *http.Request)
 		err error
 		characterId int32
 		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -519,6 +647,22 @@ func PostCharactersCharacterIdMailLabels(w http.ResponseWriter, r *http.Request)
 			return
 		}
 		datasource = localV.(string)
+	}
+	if r.Form.Get("token") != "" {
+		localV, err = processParameters(token, r.Form.Get("token"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		token = localV.(string)
+	}
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -554,6 +698,8 @@ func PutCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Request) 
 		characterId int32
 		mailId int32
 		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -584,6 +730,22 @@ func PutCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Request) 
 			return
 		}
 		datasource = localV.(string)
+	}
+	if r.Form.Get("token") != "" {
+		localV, err = processParameters(token, r.Form.Get("token"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		token = localV.(string)
+	}
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {

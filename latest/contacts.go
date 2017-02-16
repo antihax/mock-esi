@@ -16,6 +16,8 @@ func DeleteCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request)
 		err error
 		characterId int32
 		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -40,6 +42,22 @@ func DeleteCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request)
 			return
 		}
 		datasource = localV.(string)
+	}
+	if r.Form.Get("token") != "" {
+		localV, err = processParameters(token, r.Form.Get("token"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		token = localV.(string)
+	}
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -73,8 +91,10 @@ func GetCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request) {
 		localV interface{}
 		err error
 		characterId int32
-		page int32
 		datasource string
+		page int32
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -98,6 +118,14 @@ func GetCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request) {
 		errorOut(w, r, err)
 		return
 	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
 	if r.Form.Get("page") != "" {
 		localV, err = processParameters(page, r.Form.Get("page"))
 		if err != nil {
@@ -106,13 +134,21 @@ func GetCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request) {
 		}
 		page = localV.(int32)
 	}
-	if r.Form.Get("datasource") != "" {
-		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+	if r.Form.Get("token") != "" {
+		localV, err = processParameters(token, r.Form.Get("token"))
 		if err != nil {
 			errorOut(w, r, err)
 			return
 		}
-		datasource = localV.(string)
+		token = localV.(string)
+	}
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -147,6 +183,8 @@ func GetCharactersCharacterIdContactsLabels(w http.ResponseWriter, r *http.Reque
 		err error
 		characterId int32
 		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -174,6 +212,22 @@ func GetCharactersCharacterIdContactsLabels(w http.ResponseWriter, r *http.Reque
 			return
 		}
 		datasource = localV.(string)
+	}
+	if r.Form.Get("token") != "" {
+		localV, err = processParameters(token, r.Form.Get("token"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		token = localV.(string)
+	}
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -208,9 +262,11 @@ func PostCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request) {
 		err error
 		characterId int32
 		standing float32
-		watched bool
-		labelId int64
 		datasource string
+		labelId int64
+		token string
+		userAgent string
+		watched bool
 	)
 	// shut up warnings
 	localV = localV
@@ -228,18 +284,13 @@ func PostCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request) {
 		errorOut(w, r, err)
 		return
 	}
-	localV, err = processParameters(standing, r.Form.Get("standing"))
-	if err != nil {
-		errorOut(w, r, err)
-		return
-	}
-	if r.Form.Get("watched") != "" {
-		localV, err = processParameters(watched, r.Form.Get("watched"))
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
 		if err != nil {
 			errorOut(w, r, err)
 			return
 		}
-		watched = localV.(bool)
+		datasource = localV.(string)
 	}
 	if r.Form.Get("labelId") != "" {
 		localV, err = processParameters(labelId, r.Form.Get("label_id"))
@@ -249,13 +300,34 @@ func PostCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request) {
 		}
 		labelId = localV.(int64)
 	}
-	if r.Form.Get("datasource") != "" {
-		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+	localV, err = processParameters(standing, r.Form.Get("standing"))
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("token") != "" {
+		localV, err = processParameters(token, r.Form.Get("token"))
 		if err != nil {
 			errorOut(w, r, err)
 			return
 		}
-		datasource = localV.(string)
+		token = localV.(string)
+	}
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		userAgent = localV.(string)
+	}
+	if r.Form.Get("watched") != "" {
+		localV, err = processParameters(watched, r.Form.Get("watched"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		watched = localV.(bool)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -290,9 +362,11 @@ func PutCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request) {
 		err error
 		characterId int32
 		standing float32
-		watched bool
-		labelId int64
 		datasource string
+		labelId int64
+		token string
+		userAgent string
+		watched bool
 	)
 	// shut up warnings
 	localV = localV
@@ -310,18 +384,13 @@ func PutCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request) {
 		errorOut(w, r, err)
 		return
 	}
-	localV, err = processParameters(standing, r.Form.Get("standing"))
-	if err != nil {
-		errorOut(w, r, err)
-		return
-	}
-	if r.Form.Get("watched") != "" {
-		localV, err = processParameters(watched, r.Form.Get("watched"))
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
 		if err != nil {
 			errorOut(w, r, err)
 			return
 		}
-		watched = localV.(bool)
+		datasource = localV.(string)
 	}
 	if r.Form.Get("labelId") != "" {
 		localV, err = processParameters(labelId, r.Form.Get("label_id"))
@@ -331,13 +400,34 @@ func PutCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request) {
 		}
 		labelId = localV.(int64)
 	}
-	if r.Form.Get("datasource") != "" {
-		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+	localV, err = processParameters(standing, r.Form.Get("standing"))
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("token") != "" {
+		localV, err = processParameters(token, r.Form.Get("token"))
 		if err != nil {
 			errorOut(w, r, err)
 			return
 		}
-		datasource = localV.(string)
+		token = localV.(string)
+	}
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		userAgent = localV.(string)
+	}
+	if r.Form.Get("watched") != "" {
+		localV, err = processParameters(watched, r.Form.Get("watched"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		watched = localV.(bool)
 	}
 
 	if r.Form.Get("page") != "" {

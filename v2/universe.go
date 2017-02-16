@@ -16,6 +16,7 @@ func GetUniverseStationsStationId(w http.ResponseWriter, r *http.Request) {
 		err error
 		stationId int32
 		datasource string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -58,6 +59,14 @@ func GetUniverseStationsStationId(w http.ResponseWriter, r *http.Request) {
 		}
 		datasource = localV.(string)
 	}
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		userAgent = localV.(string)
+	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -90,8 +99,9 @@ func GetUniverseSystemsSystemId(w http.ResponseWriter, r *http.Request) {
 		localV interface{}
 		err error
 		systemId int32
-		language string
 		datasource string
+		language string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -127,6 +137,14 @@ func GetUniverseSystemsSystemId(w http.ResponseWriter, r *http.Request) {
 		errorOut(w, r, err)
 		return
 	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
 	if r.Form.Get("language") != "" {
 		localV, err = processParameters(language, r.Form.Get("language"))
 		if err != nil {
@@ -135,13 +153,13 @@ func GetUniverseSystemsSystemId(w http.ResponseWriter, r *http.Request) {
 		}
 		language = localV.(string)
 	}
-	if r.Form.Get("datasource") != "" {
-		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
 		if err != nil {
 			errorOut(w, r, err)
 			return
 		}
-		datasource = localV.(string)
+		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -175,8 +193,9 @@ func GetUniverseTypesTypeId(w http.ResponseWriter, r *http.Request) {
 		localV interface{}
 		err error
 		typeId int32
-		language string
 		datasource string
+		language string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -200,6 +219,14 @@ func GetUniverseTypesTypeId(w http.ResponseWriter, r *http.Request) {
 		errorOut(w, r, err)
 		return
 	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
 	if r.Form.Get("language") != "" {
 		localV, err = processParameters(language, r.Form.Get("language"))
 		if err != nil {
@@ -208,13 +235,13 @@ func GetUniverseTypesTypeId(w http.ResponseWriter, r *http.Request) {
 		}
 		language = localV.(string)
 	}
-	if r.Form.Get("datasource") != "" {
-		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
 		if err != nil {
 			errorOut(w, r, err)
 			return
 		}
-		datasource = localV.(string)
+		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -248,6 +275,7 @@ func PostUniverseNames(w http.ResponseWriter, r *http.Request) {
 		localV interface{}
 		err error
 		datasource string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -273,6 +301,14 @@ func PostUniverseNames(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		datasource = localV.(string)
+	}
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {

@@ -15,6 +15,7 @@ func GetSovereigntyCampaigns(w http.ResponseWriter, r *http.Request) {
 		localV interface{}
 		err error
 		datasource string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -42,6 +43,14 @@ func GetSovereigntyCampaigns(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		datasource = localV.(string)
+	}
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -75,6 +84,7 @@ func GetSovereigntyStructures(w http.ResponseWriter, r *http.Request) {
 		localV interface{}
 		err error
 		datasource string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -100,6 +110,14 @@ func GetSovereigntyStructures(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		datasource = localV.(string)
+	}
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {

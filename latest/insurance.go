@@ -14,8 +14,9 @@ func GetInsurancePrices(w http.ResponseWriter, r *http.Request) {
 	var (
 		localV interface{}
 		err error
-		language string
 		datasource string
+		language string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -33,6 +34,14 @@ func GetInsurancePrices(w http.ResponseWriter, r *http.Request) {
 		errorOut(w, r, err)
 		return
 	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
 	if r.Form.Get("language") != "" {
 		localV, err = processParameters(language, r.Form.Get("language"))
 		if err != nil {
@@ -41,13 +50,13 @@ func GetInsurancePrices(w http.ResponseWriter, r *http.Request) {
 		}
 		language = localV.(string)
 	}
-	if r.Form.Get("datasource") != "" {
-		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
 		if err != nil {
 			errorOut(w, r, err)
 			return
 		}
-		datasource = localV.(string)
+		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {

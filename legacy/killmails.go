@@ -15,9 +15,11 @@ func GetCharactersCharacterIdKillmailsRecent(w http.ResponseWriter, r *http.Requ
 		localV interface{}
 		err error
 		characterId int32
+		datasource string
 		maxCount int32
 		maxKillId int32
-		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -41,6 +43,14 @@ func GetCharactersCharacterIdKillmailsRecent(w http.ResponseWriter, r *http.Requ
 		errorOut(w, r, err)
 		return
 	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
 	if r.Form.Get("maxCount") != "" {
 		localV, err = processParameters(maxCount, r.Form.Get("max_count"))
 		if err != nil {
@@ -57,13 +67,21 @@ func GetCharactersCharacterIdKillmailsRecent(w http.ResponseWriter, r *http.Requ
 		}
 		maxKillId = localV.(int32)
 	}
-	if r.Form.Get("datasource") != "" {
-		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+	if r.Form.Get("token") != "" {
+		localV, err = processParameters(token, r.Form.Get("token"))
 		if err != nil {
 			errorOut(w, r, err)
 			return
 		}
-		datasource = localV.(string)
+		token = localV.(string)
+	}
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -96,9 +114,10 @@ func GetKillmailsKillmailIdKillmailHash(w http.ResponseWriter, r *http.Request) 
 	var (
 		localV interface{}
 		err error
-		killmailId int32
 		killmailHash string
+		killmailId int32
 		datasource string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -138,18 +157,18 @@ func GetKillmailsKillmailIdKillmailHash(w http.ResponseWriter, r *http.Request) 
   }
 }`
 	vars := mux.Vars(r)
-	localV, err = processParameters(killmailId, vars["killmail_id"])
-	if err != nil {
-		errorOut(w, r, err)
-		return
-	}
-	killmailId = localV.(int32)
 	localV, err = processParameters(killmailHash, vars["killmail_hash"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
 	}
 	killmailHash = localV.(string)
+	localV, err = processParameters(killmailId, vars["killmail_id"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	killmailId = localV.(int32)
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)
 		return
@@ -161,6 +180,14 @@ func GetKillmailsKillmailIdKillmailHash(w http.ResponseWriter, r *http.Request) 
 			return
 		}
 		datasource = localV.(string)
+	}
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {

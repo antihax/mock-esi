@@ -199,10 +199,24 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCorporationsCorporationIdStructures",
+		"GET",
+		"/latest/corporations/{corporation_id}/structures/",
+		GetCorporationsCorporationIdStructures,
+	)
+
+	mockesi.NewRoute(
 		"GetCorporationsNames",
 		"GET",
 		"/latest/corporations/names/",
 		GetCorporationsNames,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsNpccorps",
+		"GET",
+		"/latest/corporations/npccorps/",
+		GetCorporationsNpccorps,
 	)
 
 	mockesi.NewRoute(

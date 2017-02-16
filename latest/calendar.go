@@ -15,8 +15,10 @@ func GetCharactersCharacterIdCalendar(w http.ResponseWriter, r *http.Request) {
 		localV interface{}
 		err error
 		characterId int32
-		fromEvent int32
 		datasource string
+		fromEvent int32
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -40,6 +42,14 @@ func GetCharactersCharacterIdCalendar(w http.ResponseWriter, r *http.Request) {
 		errorOut(w, r, err)
 		return
 	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
 	if r.Form.Get("fromEvent") != "" {
 		localV, err = processParameters(fromEvent, r.Form.Get("from_event"))
 		if err != nil {
@@ -48,13 +58,21 @@ func GetCharactersCharacterIdCalendar(w http.ResponseWriter, r *http.Request) {
 		}
 		fromEvent = localV.(int32)
 	}
-	if r.Form.Get("datasource") != "" {
-		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+	if r.Form.Get("token") != "" {
+		localV, err = processParameters(token, r.Form.Get("token"))
 		if err != nil {
 			errorOut(w, r, err)
 			return
 		}
-		datasource = localV.(string)
+		token = localV.(string)
+	}
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -90,6 +108,8 @@ func GetCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Requ
 		characterId int32
 		eventId int32
 		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -132,6 +152,22 @@ func GetCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Requ
 		}
 		datasource = localV.(string)
 	}
+	if r.Form.Get("token") != "" {
+		localV, err = processParameters(token, r.Form.Get("token"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		token = localV.(string)
+	}
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		userAgent = localV.(string)
+	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -166,6 +202,8 @@ func PutCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Requ
 		characterId int32
 		eventId int32
 		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -196,6 +234,22 @@ func PutCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Requ
 			return
 		}
 		datasource = localV.(string)
+	}
+	if r.Form.Get("token") != "" {
+		localV, err = processParameters(token, r.Form.Get("token"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		token = localV.(string)
+	}
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {

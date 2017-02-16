@@ -17,6 +17,8 @@ func GetCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Requ
 		characterId int32
 		eventId int32
 		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -59,6 +61,22 @@ func GetCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Requ
 		}
 		datasource = localV.(string)
 	}
+	if r.Form.Get("token") != "" {
+		localV, err = processParameters(token, r.Form.Get("token"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		token = localV.(string)
+	}
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		userAgent = localV.(string)
+	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -94,6 +112,8 @@ func PutCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Requ
 		eventId int32
 		response string
 		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -117,11 +137,6 @@ func PutCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Requ
 		errorOut(w, r, err)
 		return
 	}
-	localV, err = processParameters(response, r.Form.Get("response"))
-	if err != nil {
-		errorOut(w, r, err)
-		return
-	}
 	if r.Form.Get("datasource") != "" {
 		localV, err = processParameters(datasource, r.Form.Get("datasource"))
 		if err != nil {
@@ -129,6 +144,27 @@ func PutCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Requ
 			return
 		}
 		datasource = localV.(string)
+	}
+	localV, err = processParameters(response, r.Form.Get("response"))
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("token") != "" {
+		localV, err = processParameters(token, r.Form.Get("token"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		token = localV.(string)
+	}
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
