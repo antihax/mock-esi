@@ -10,6 +10,13 @@ import (
 func init() {
 
 	mockesi.NewRoute(
+		"GetAlliancesAllianceId",
+		"GET",
+		"/v2/alliances/{alliance_id}/",
+		GetAlliancesAllianceId,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdCalendarEventId",
 		"GET",
 		"/v2/characters/{character_id}/calendar/{event_id}/",
@@ -119,6 +126,13 @@ func init() {
 		"POST",
 		"/v2/universe/names/",
 		PostUniverseNames,
+	)
+
+	mockesi.NewRoute(
+		"PostUiAutopilotWaypoint",
+		"POST",
+		"/v2/ui/autopilot/waypoint/",
+		PostUiAutopilotWaypoint,
 	)
 
 }
