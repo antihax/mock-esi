@@ -297,13 +297,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetIncursions",
-		"GET",
-		"/v1/incursions/",
-		GetIncursions,
-	)
-
-	mockesi.NewRoute(
 		"GetIndustryFacilities",
 		"GET",
 		"/v1/industry/facilities/",
