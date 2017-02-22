@@ -206,13 +206,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCorporationsNpccorps",
-		"GET",
-		"/latest/corporations/npccorps/",
-		GetCorporationsNpccorps,
-	)
-
-	mockesi.NewRoute(
 		"DeleteCharactersCharacterIdFittingsFittingId",
 		"DELETE",
 		"/latest/characters/{character_id}/fittings/{fitting_id}/",
