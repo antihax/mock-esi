@@ -633,6 +633,20 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetUniverseGraphics",
+		"GET",
+		"/latest/universe/graphics/",
+		GetUniverseGraphics,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseGraphicsGraphicId",
+		"GET",
+		"/latest/universe/graphics/{graphic_id}/",
+		GetUniverseGraphicsGraphicId,
+	)
+
+	mockesi.NewRoute(
 		"GetUniverseGroups",
 		"GET",
 		"/latest/universe/groups/",
