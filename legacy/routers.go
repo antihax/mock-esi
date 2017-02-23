@@ -199,10 +199,59 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCorporationsCorporationIdStructures",
+		"GET",
+		"/legacy/corporations/{corporation_id}/structures/",
+		GetCorporationsCorporationIdStructures,
+	)
+
+	mockesi.NewRoute(
 		"GetCorporationsNames",
 		"GET",
 		"/legacy/corporations/names/",
 		GetCorporationsNames,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsNpccorps",
+		"GET",
+		"/legacy/corporations/npccorps/",
+		GetCorporationsNpccorps,
+	)
+
+	mockesi.NewRoute(
+		"PutCorporationsCorporationIdStructuresStructureId",
+		"PUT",
+		"/legacy/corporations/{corporation_id}/structures/{structure_id}/",
+		PutCorporationsCorporationIdStructuresStructureId,
+	)
+
+	mockesi.NewRoute(
+		"GetDogmaAttributes",
+		"GET",
+		"/legacy/dogma/attributes/",
+		GetDogmaAttributes,
+	)
+
+	mockesi.NewRoute(
+		"GetDogmaAttributesAttributeId",
+		"GET",
+		"/legacy/dogma/attributes/{attribute_id}/",
+		GetDogmaAttributesAttributeId,
+	)
+
+	mockesi.NewRoute(
+		"GetDogmaEffects",
+		"GET",
+		"/legacy/dogma/effects/",
+		GetDogmaEffects,
+	)
+
+	mockesi.NewRoute(
+		"GetDogmaEffectsEffectId",
+		"GET",
+		"/legacy/dogma/effects/{effect_id}/",
+		GetDogmaEffectsEffectId,
 	)
 
 	mockesi.NewRoute(
@@ -588,6 +637,20 @@ func init() {
 		"GET",
 		"/legacy/universe/factions/",
 		GetUniverseFactions,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseGraphics",
+		"GET",
+		"/legacy/universe/graphics/",
+		GetUniverseGraphics,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseGraphicsGraphicId",
+		"GET",
+		"/legacy/universe/graphics/{graphic_id}/",
+		GetUniverseGraphicsGraphicId,
 	)
 
 	mockesi.NewRoute(
