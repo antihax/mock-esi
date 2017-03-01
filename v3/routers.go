@@ -65,6 +65,13 @@ func init() {
 		GetCharactersCharacterIdSkills,
 	)
 
+	mockesi.NewRoute(
+		"GetUniverseTypesTypeId",
+		"GET",
+		"/v3/universe/types/{type_id}/",
+		GetUniverseTypesTypeId,
+	)
+
 }
 
 
