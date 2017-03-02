@@ -451,20 +451,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetMarketsGroups",
-		"GET",
-		"/v1/markets/groups/",
-		GetMarketsGroups,
-	)
-
-	mockesi.NewRoute(
-		"GetMarketsGroupsMarketGroupId",
-		"GET",
-		"/v1/markets/groups/{market_group_id}/",
-		GetMarketsGroupsMarketGroupId,
-	)
-
-	mockesi.NewRoute(
 		"GetMarketsPrices",
 		"GET",
 		"/v1/markets/prices/",
