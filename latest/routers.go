@@ -80,6 +80,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"PutCharactersCharacterIdCalendarEventId",
+		"PUT",
+		"/latest/characters/{character_id}/calendar/{event_id}/",
+		PutCharactersCharacterIdCalendarEventId,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterId",
 		"GET",
 		"/latest/characters/{character_id}/",
@@ -532,6 +539,41 @@ func init() {
 		"GET",
 		"/latest/markets/structures/{structure_id}/",
 		GetMarketsStructuresStructureId,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdOpportunities",
+		"GET",
+		"/latest/characters/{character_id}/opportunities/",
+		GetCharactersCharacterIdOpportunities,
+	)
+
+	mockesi.NewRoute(
+		"GetOpportunitiesGroups",
+		"GET",
+		"/latest/opportunities/groups/",
+		GetOpportunitiesGroups,
+	)
+
+	mockesi.NewRoute(
+		"GetOpportunitiesGroupsGroupId",
+		"GET",
+		"/latest/opportunities/groups/{group_id}/",
+		GetOpportunitiesGroupsGroupId,
+	)
+
+	mockesi.NewRoute(
+		"GetOpportunitiesTasks",
+		"GET",
+		"/latest/opportunities/tasks/",
+		GetOpportunitiesTasks,
+	)
+
+	mockesi.NewRoute(
+		"GetOpportunitiesTasksTaskId",
+		"GET",
+		"/latest/opportunities/tasks/{task_id}/",
+		GetOpportunitiesTasksTaskId,
 	)
 
 	mockesi.NewRoute(
