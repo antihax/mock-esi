@@ -605,6 +605,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetRouteOriginDestination",
+		"GET",
+		"/legacy/route/{origin}/{destination}/",
+		GetRouteOriginDestination,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdSearch",
 		"GET",
 		"/legacy/characters/{character_id}/search/",
