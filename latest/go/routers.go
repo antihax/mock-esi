@@ -276,97 +276,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"DeleteFleetsFleetIdMembersMemberId",
-		"DELETE",
-		"/latest/fleets/{fleet_id}/members/{member_id}/",
-		DeleteFleetsFleetIdMembersMemberId,
-	)
-
-	mockesi.NewRoute(
-		"DeleteFleetsFleetIdSquadsSquadId",
-		"DELETE",
-		"/latest/fleets/{fleet_id}/squads/{squad_id}/",
-		DeleteFleetsFleetIdSquadsSquadId,
-	)
-
-	mockesi.NewRoute(
-		"DeleteFleetsFleetIdWingsWingId",
-		"DELETE",
-		"/latest/fleets/{fleet_id}/wings/{wing_id}/",
-		DeleteFleetsFleetIdWingsWingId,
-	)
-
-	mockesi.NewRoute(
-		"GetFleetsFleetId",
-		"GET",
-		"/latest/fleets/{fleet_id}/",
-		GetFleetsFleetId,
-	)
-
-	mockesi.NewRoute(
-		"GetFleetsFleetIdMembers",
-		"GET",
-		"/latest/fleets/{fleet_id}/members/",
-		GetFleetsFleetIdMembers,
-	)
-
-	mockesi.NewRoute(
-		"GetFleetsFleetIdWings",
-		"GET",
-		"/latest/fleets/{fleet_id}/wings/",
-		GetFleetsFleetIdWings,
-	)
-
-	mockesi.NewRoute(
-		"PostFleetsFleetIdMembers",
-		"POST",
-		"/latest/fleets/{fleet_id}/members/",
-		PostFleetsFleetIdMembers,
-	)
-
-	mockesi.NewRoute(
-		"PostFleetsFleetIdWings",
-		"POST",
-		"/latest/fleets/{fleet_id}/wings/",
-		PostFleetsFleetIdWings,
-	)
-
-	mockesi.NewRoute(
-		"PostFleetsFleetIdWingsWingIdSquads",
-		"POST",
-		"/latest/fleets/{fleet_id}/wings/{wing_id}/squads/",
-		PostFleetsFleetIdWingsWingIdSquads,
-	)
-
-	mockesi.NewRoute(
-		"PutFleetsFleetId",
-		"PUT",
-		"/latest/fleets/{fleet_id}/",
-		PutFleetsFleetId,
-	)
-
-	mockesi.NewRoute(
-		"PutFleetsFleetIdMembersMemberId",
-		"PUT",
-		"/latest/fleets/{fleet_id}/members/{member_id}/",
-		PutFleetsFleetIdMembersMemberId,
-	)
-
-	mockesi.NewRoute(
-		"PutFleetsFleetIdSquadsSquadId",
-		"PUT",
-		"/latest/fleets/{fleet_id}/squads/{squad_id}/",
-		PutFleetsFleetIdSquadsSquadId,
-	)
-
-	mockesi.NewRoute(
-		"PutFleetsFleetIdWingsWingId",
-		"PUT",
-		"/latest/fleets/{fleet_id}/wings/{wing_id}/",
-		PutFleetsFleetIdWingsWingId,
-	)
-
-	mockesi.NewRoute(
 		"GetIncursions",
 		"GET",
 		"/latest/incursions/",
@@ -392,20 +301,6 @@ func init() {
 		"GET",
 		"/latest/insurance/prices/",
 		GetInsurancePrices,
-	)
-
-	mockesi.NewRoute(
-		"GetCharactersCharacterIdKillmailsRecent",
-		"GET",
-		"/latest/characters/{character_id}/killmails/recent/",
-		GetCharactersCharacterIdKillmailsRecent,
-	)
-
-	mockesi.NewRoute(
-		"GetKillmailsKillmailIdKillmailHash",
-		"GET",
-		"/latest/killmails/{killmail_id}/{killmail_hash}/",
-		GetKillmailsKillmailIdKillmailHash,
 	)
 
 	mockesi.NewRoute(
@@ -542,41 +437,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCharactersCharacterIdOpportunities",
-		"GET",
-		"/latest/characters/{character_id}/opportunities/",
-		GetCharactersCharacterIdOpportunities,
-	)
-
-	mockesi.NewRoute(
-		"GetOpportunitiesGroups",
-		"GET",
-		"/latest/opportunities/groups/",
-		GetOpportunitiesGroups,
-	)
-
-	mockesi.NewRoute(
-		"GetOpportunitiesGroupsGroupId",
-		"GET",
-		"/latest/opportunities/groups/{group_id}/",
-		GetOpportunitiesGroupsGroupId,
-	)
-
-	mockesi.NewRoute(
-		"GetOpportunitiesTasks",
-		"GET",
-		"/latest/opportunities/tasks/",
-		GetOpportunitiesTasks,
-	)
-
-	mockesi.NewRoute(
-		"GetOpportunitiesTasksTaskId",
-		"GET",
-		"/latest/opportunities/tasks/{task_id}/",
-		GetOpportunitiesTasksTaskId,
-	)
-
-	mockesi.NewRoute(
 		"GetCharactersCharacterIdPlanets",
 		"GET",
 		"/latest/characters/{character_id}/planets/",
@@ -630,20 +490,6 @@ func init() {
 		"GET",
 		"/latest/characters/{character_id}/skills/",
 		GetCharactersCharacterIdSkills,
-	)
-
-	mockesi.NewRoute(
-		"GetSovereigntyCampaigns",
-		"GET",
-		"/latest/sovereignty/campaigns/",
-		GetSovereigntyCampaigns,
-	)
-
-	mockesi.NewRoute(
-		"GetSovereigntyStructures",
-		"GET",
-		"/latest/sovereignty/structures/",
-		GetSovereigntyStructures,
 	)
 
 	mockesi.NewRoute(
