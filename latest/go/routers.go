@@ -94,10 +94,31 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdAgentsResearch",
+		"GET",
+		"/latest/characters/{character_id}/agents_research/",
+		GetCharactersCharacterIdAgentsResearch,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdChatChannels",
+		"GET",
+		"/latest/characters/{character_id}/chat_channels/",
+		GetCharactersCharacterIdChatChannels,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdCorporationhistory",
 		"GET",
 		"/latest/characters/{character_id}/corporationhistory/",
 		GetCharactersCharacterIdCorporationhistory,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdMedals",
+		"GET",
+		"/latest/characters/{character_id}/medals/",
+		GetCharactersCharacterIdMedals,
 	)
 
 	mockesi.NewRoute(
@@ -108,10 +129,24 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdStandings",
+		"GET",
+		"/latest/characters/{character_id}/standings/",
+		GetCharactersCharacterIdStandings,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersNames",
 		"GET",
 		"/latest/characters/names/",
 		GetCharactersNames,
+	)
+
+	mockesi.NewRoute(
+		"PostCharactersAffiliation",
+		"POST",
+		"/latest/characters/affiliation/",
+		PostCharactersAffiliation,
 	)
 
 	mockesi.NewRoute(
@@ -640,6 +675,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetSovereigntyMap",
+		"GET",
+		"/latest/sovereignty/map/",
+		GetSovereigntyMap,
+	)
+
+	mockesi.NewRoute(
 		"GetSovereigntyStructures",
 		"GET",
 		"/latest/sovereignty/structures/",
@@ -777,6 +819,20 @@ func init() {
 		"GET",
 		"/latest/universe/structures/{structure_id}/",
 		GetUniverseStructuresStructureId,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseSystemJumps",
+		"GET",
+		"/latest/universe/system_jumps/",
+		GetUniverseSystemJumps,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseSystemKills",
+		"GET",
+		"/latest/universe/system_kills/",
+		GetUniverseSystemKills,
 	)
 
 	mockesi.NewRoute(
