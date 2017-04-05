@@ -696,13 +696,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetStatus",
-		"GET",
-		"/legacy/status/",
-		GetStatus,
-	)
-
-	mockesi.NewRoute(
 		"GetUniverseBloodlines",
 		"GET",
 		"/legacy/universe/bloodlines/",
