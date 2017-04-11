@@ -577,13 +577,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"PostFanfestToast",
-		"POST",
-		"/latest/fanfest/toast/",
-		PostFanfestToast,
-	)
-
-	mockesi.NewRoute(
 		"GetCharactersCharacterIdOpportunities",
 		"GET",
 		"/latest/characters/{character_id}/opportunities/",
