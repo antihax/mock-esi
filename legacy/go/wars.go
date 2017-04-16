@@ -1,8 +1,8 @@
 package esiLegacy
 
 import (
-	"net/http"
 	"github.com/gorilla/mux"
+	"net/http"
 	"time"
 )
 
@@ -12,11 +12,11 @@ var _ = mux.NewRouter
 func GetWars(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV     interface{}
+		err        error
 		datasource string
-		maxWarId int32
-		userAgent string
+		maxWarId   int32
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -54,7 +54,7 @@ func GetWars(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -69,7 +69,7 @@ func GetWars(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -80,11 +80,11 @@ func GetWars(w http.ResponseWriter, r *http.Request) {
 func GetWarsWarId(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
-		warId int32
+		localV     interface{}
+		err        error
+		warId      int32
 		datasource string
-		userAgent string
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -136,7 +136,7 @@ func GetWarsWarId(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -151,7 +151,7 @@ func GetWarsWarId(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -162,12 +162,12 @@ func GetWarsWarId(w http.ResponseWriter, r *http.Request) {
 func GetWarsWarIdKillmails(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
-		warId int32
+		localV     interface{}
+		err        error
+		warId      int32
 		datasource string
-		page int32
-		userAgent string
+		page       int32
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -218,7 +218,7 @@ func GetWarsWarIdKillmails(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -233,12 +233,10 @@ func GetWarsWarIdKillmails(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 
 	w.Write([]byte(j))
 }
-
-

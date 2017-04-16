@@ -1,8 +1,8 @@
 package esiV1
 
 import (
-	"net/http"
 	"github.com/gorilla/mux"
+	"net/http"
 	"time"
 )
 
@@ -12,15 +12,15 @@ var _ = mux.NewRouter
 func GetCharactersCharacterIdSearch(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
-		categories []string
+		localV      interface{}
+		err         error
+		categories  []string
 		characterId int32
-		search string
-		datasource string
-		language string
-		token string
-		userAgent string
+		search      string
+		datasource  string
+		language    string
+		token       string
+		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -83,7 +83,7 @@ func GetCharactersCharacterIdSearch(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -98,7 +98,7 @@ func GetCharactersCharacterIdSearch(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -109,14 +109,14 @@ func GetCharactersCharacterIdSearch(w http.ResponseWriter, r *http.Request) {
 func GetSearch(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV     interface{}
+		err        error
 		categories []string
-		search string
+		search     string
 		datasource string
-		language string
-		strict bool
-		userAgent string
+		language   string
+		strict     bool
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -175,7 +175,7 @@ func GetSearch(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -190,12 +190,10 @@ func GetSearch(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 
 	w.Write([]byte(j))
 }
-
-

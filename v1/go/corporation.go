@@ -1,8 +1,8 @@
 package esiV1
 
 import (
-	"net/http"
 	"github.com/gorilla/mux"
+	"net/http"
 	"time"
 )
 
@@ -12,11 +12,11 @@ var _ = mux.NewRouter
 func GetCorporationsCorporationIdAlliancehistory(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV        interface{}
+		err           error
 		corporationId int32
-		datasource string
-		userAgent string
+		datasource    string
+		userAgent     string
 	)
 	// shut up warnings
 	localV = localV
@@ -63,7 +63,7 @@ func GetCorporationsCorporationIdAlliancehistory(w http.ResponseWriter, r *http.
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -78,7 +78,7 @@ func GetCorporationsCorporationIdAlliancehistory(w http.ResponseWriter, r *http.
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -89,11 +89,11 @@ func GetCorporationsCorporationIdAlliancehistory(w http.ResponseWriter, r *http.
 func GetCorporationsCorporationIdIcons(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV        interface{}
+		err           error
 		corporationId int32
-		datasource string
-		userAgent string
+		datasource    string
+		userAgent     string
 	)
 	// shut up warnings
 	localV = localV
@@ -134,7 +134,7 @@ func GetCorporationsCorporationIdIcons(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -149,7 +149,7 @@ func GetCorporationsCorporationIdIcons(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -160,12 +160,12 @@ func GetCorporationsCorporationIdIcons(w http.ResponseWriter, r *http.Request) {
 func GetCorporationsCorporationIdRoles(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV        interface{}
+		err           error
 		corporationId int32
-		datasource string
-		token string
-		userAgent string
+		datasource    string
+		token         string
+		userAgent     string
 	)
 	// shut up warnings
 	localV = localV
@@ -213,7 +213,7 @@ func GetCorporationsCorporationIdRoles(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -228,7 +228,7 @@ func GetCorporationsCorporationIdRoles(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -239,14 +239,14 @@ func GetCorporationsCorporationIdRoles(w http.ResponseWriter, r *http.Request) {
 func GetCorporationsCorporationIdStructures(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV        interface{}
+		err           error
 		corporationId int32
-		datasource string
-		language string
-		page int32
-		token string
-		userAgent string
+		datasource    string
+		language      string
+		page          int32
+		token         string
+		userAgent     string
 	)
 	// shut up warnings
 	localV = localV
@@ -321,7 +321,7 @@ func GetCorporationsCorporationIdStructures(w http.ResponseWriter, r *http.Reque
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -336,7 +336,7 @@ func GetCorporationsCorporationIdStructures(w http.ResponseWriter, r *http.Reque
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -347,11 +347,11 @@ func GetCorporationsCorporationIdStructures(w http.ResponseWriter, r *http.Reque
 func GetCorporationsNames(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV         interface{}
+		err            error
 		corporationIds []int64
-		datasource string
-		userAgent string
+		datasource     string
+		userAgent      string
 	)
 	// shut up warnings
 	localV = localV
@@ -389,7 +389,7 @@ func GetCorporationsNames(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -404,7 +404,7 @@ func GetCorporationsNames(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -415,10 +415,10 @@ func GetCorporationsNames(w http.ResponseWriter, r *http.Request) {
 func GetCorporationsNpccorps(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV     interface{}
+		err        error
 		datasource string
-		userAgent string
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -448,7 +448,7 @@ func GetCorporationsNpccorps(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -463,7 +463,7 @@ func GetCorporationsNpccorps(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -474,13 +474,13 @@ func GetCorporationsNpccorps(w http.ResponseWriter, r *http.Request) {
 func PutCorporationsCorporationIdStructuresStructureId(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV        interface{}
+		err           error
 		corporationId int32
-		structureId int64
-		datasource string
-		token string
-		userAgent string
+		structureId   int64
+		datasource    string
+		token         string
+		userAgent     string
 	)
 	// shut up warnings
 	localV = localV
@@ -531,7 +531,7 @@ func PutCorporationsCorporationIdStructuresStructureId(w http.ResponseWriter, r 
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -546,12 +546,10 @@ func PutCorporationsCorporationIdStructuresStructureId(w http.ResponseWriter, r 
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "")
 	w.WriteHeader(http.StatusOK)
 
 	w.Write([]byte(j))
 }
-
-

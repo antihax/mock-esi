@@ -1,16 +1,16 @@
 package esiLegacy
 
 import (
-    "log"
-    "net/http"
-    "time"
+	"log"
+	"net/http"
+	"time"
 )
 
 func Logger(inner http.Handler, name string) http.Handler {
-    return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-        start := time.Now()
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		start := time.Now()
 
-        inner.ServeHTTP(w, r)
+		inner.ServeHTTP(w, r)
 
 		log.Printf(
 			"%s %s %s %s %s ",
@@ -20,5 +20,5 @@ func Logger(inner http.Handler, name string) http.Handler {
 			r.URL,
 			time.Since(start),
 		)
-    })
+	})
 }

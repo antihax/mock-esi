@@ -1,8 +1,8 @@
 package esiDev
 
 import (
-	"net/http"
 	"github.com/gorilla/mux"
+	"net/http"
 	"time"
 )
 
@@ -12,14 +12,14 @@ var _ = mux.NewRouter
 func PostUiAutopilotWaypoint(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
-		addToBeginning bool
+		localV              interface{}
+		err                 error
+		addToBeginning      bool
 		clearOtherWaypoints bool
-		destinationId int64
-		datasource string
-		token string
-		userAgent string
+		destinationId       int64
+		datasource          string
+		token               string
+		userAgent           string
 	)
 	// shut up warnings
 	localV = localV
@@ -72,7 +72,7 @@ func PostUiAutopilotWaypoint(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -87,7 +87,7 @@ func PostUiAutopilotWaypoint(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "")
 	w.WriteHeader(http.StatusOK)
@@ -98,12 +98,12 @@ func PostUiAutopilotWaypoint(w http.ResponseWriter, r *http.Request) {
 func PostUiOpenwindowContract(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV     interface{}
+		err        error
 		contractId int32
 		datasource string
-		token string
-		userAgent string
+		token      string
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -146,7 +146,7 @@ func PostUiOpenwindowContract(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -161,7 +161,7 @@ func PostUiOpenwindowContract(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "")
 	w.WriteHeader(http.StatusOK)
@@ -172,12 +172,12 @@ func PostUiOpenwindowContract(w http.ResponseWriter, r *http.Request) {
 func PostUiOpenwindowInformation(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
-		targetId int32
+		localV     interface{}
+		err        error
+		targetId   int32
 		datasource string
-		token string
-		userAgent string
+		token      string
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -220,7 +220,7 @@ func PostUiOpenwindowInformation(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -235,7 +235,7 @@ func PostUiOpenwindowInformation(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "")
 	w.WriteHeader(http.StatusOK)
@@ -246,12 +246,12 @@ func PostUiOpenwindowInformation(w http.ResponseWriter, r *http.Request) {
 func PostUiOpenwindowMarketdetails(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
-		typeId int32
+		localV     interface{}
+		err        error
+		typeId     int32
 		datasource string
-		token string
-		userAgent string
+		token      string
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -294,7 +294,7 @@ func PostUiOpenwindowMarketdetails(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -309,7 +309,7 @@ func PostUiOpenwindowMarketdetails(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "")
 	w.WriteHeader(http.StatusOK)
@@ -320,11 +320,11 @@ func PostUiOpenwindowMarketdetails(w http.ResponseWriter, r *http.Request) {
 func PostUiOpenwindowNewmail(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV     interface{}
+		err        error
 		datasource string
-		token string
-		userAgent string
+		token      string
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -362,7 +362,7 @@ func PostUiOpenwindowNewmail(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -377,12 +377,10 @@ func PostUiOpenwindowNewmail(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "")
 	w.WriteHeader(http.StatusOK)
 
 	w.Write([]byte(j))
 }
-
-

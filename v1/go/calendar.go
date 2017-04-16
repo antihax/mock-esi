@@ -1,8 +1,8 @@
 package esiV1
 
 import (
-	"net/http"
 	"github.com/gorilla/mux"
+	"net/http"
 	"time"
 )
 
@@ -12,13 +12,13 @@ var _ = mux.NewRouter
 func GetCharactersCharacterIdCalendar(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV      interface{}
+		err         error
 		characterId int32
-		datasource string
-		fromEvent int32
-		token string
-		userAgent string
+		datasource  string
+		fromEvent   int32
+		token       string
+		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -77,7 +77,7 @@ func GetCharactersCharacterIdCalendar(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -92,12 +92,10 @@ func GetCharactersCharacterIdCalendar(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 
 	w.Write([]byte(j))
 }
-
-

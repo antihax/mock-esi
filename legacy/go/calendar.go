@@ -1,8 +1,8 @@
 package esiLegacy
 
 import (
-	"net/http"
 	"github.com/gorilla/mux"
+	"net/http"
 	"time"
 )
 
@@ -12,13 +12,13 @@ var _ = mux.NewRouter
 func GetCharactersCharacterIdCalendar(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV      interface{}
+		err         error
 		characterId int32
-		datasource string
-		fromEvent int32
-		token string
-		userAgent string
+		datasource  string
+		fromEvent   int32
+		token       string
+		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -77,7 +77,7 @@ func GetCharactersCharacterIdCalendar(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -92,7 +92,7 @@ func GetCharactersCharacterIdCalendar(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -103,13 +103,13 @@ func GetCharactersCharacterIdCalendar(w http.ResponseWriter, r *http.Request) {
 func GetCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV      interface{}
+		err         error
 		characterId int32
-		eventId int32
-		datasource string
-		token string
-		userAgent string
+		eventId     int32
+		datasource  string
+		token       string
+		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -171,7 +171,7 @@ func GetCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Requ
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -186,7 +186,7 @@ func GetCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Requ
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -197,14 +197,14 @@ func GetCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Requ
 func PutCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV      interface{}
+		err         error
 		characterId int32
-		eventId int32
-		response string
-		datasource string
-		token string
-		userAgent string
+		eventId     int32
+		response    string
+		datasource  string
+		token       string
+		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -260,7 +260,7 @@ func PutCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Requ
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -275,12 +275,10 @@ func PutCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Requ
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "")
 	w.WriteHeader(http.StatusOK)
 
 	w.Write([]byte(j))
 }
-
-

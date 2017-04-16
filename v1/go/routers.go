@@ -1,10 +1,10 @@
 package esiV1
 
 import (
-	"net/http"
 	"github.com/antihax/mock-esi/mockesi"
-	"strconv"
+	"net/http"
 	"reflect"
+	"strconv"
 )
 
 func init() {
@@ -879,14 +879,11 @@ func init() {
 
 }
 
-
-
 func errorOut(w http.ResponseWriter, r *http.Request, e error) {
 	w.WriteHeader(http.StatusInternalServerError)
 
 	w.Write([]byte(e.Error()))
 }
-
 
 func processParameters(data interface{}, input string) (v interface{}, err error) {
 	switch reflect.TypeOf(data).String() {

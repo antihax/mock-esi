@@ -1,8 +1,8 @@
 package esiV2
 
 import (
-	"net/http"
 	"github.com/gorilla/mux"
+	"net/http"
 	"time"
 )
 
@@ -12,14 +12,14 @@ var _ = mux.NewRouter
 func PostUiAutopilotWaypoint(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
-		addToBeginning bool
+		localV              interface{}
+		err                 error
+		addToBeginning      bool
 		clearOtherWaypoints bool
-		destinationId int64
-		datasource string
-		token string
-		userAgent string
+		destinationId       int64
+		datasource          string
+		token               string
+		userAgent           string
 	)
 	// shut up warnings
 	localV = localV
@@ -72,7 +72,7 @@ func PostUiAutopilotWaypoint(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -87,12 +87,10 @@ func PostUiAutopilotWaypoint(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "")
 	w.WriteHeader(http.StatusOK)
 
 	w.Write([]byte(j))
 }
-
-
