@@ -1,17 +1,13 @@
-sudo: required
 language: go
-go: master
+go: 1.8.1
 
 services:
   - docker
 
 install:
+  - go get -u github.com/antihax/mock-esi
+  - CGO_ENABLED=0 GOOS=linux go build -a --installsuffix cgo -o mock-esi .
   - docker build -t antihax/mock-esi .
-  - docker run -d -p 80:8080 --name mock-esi antihax/mock-esi
-
-script:
-  - go get github.com/gorilla/mux
-  - go test 
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
