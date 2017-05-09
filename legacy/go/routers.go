@@ -101,6 +101,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdBlueprints",
+		"GET",
+		"/legacy/characters/{character_id}/blueprints/",
+		GetCharactersCharacterIdBlueprints,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdChatChannels",
 		"GET",
 		"/legacy/characters/{character_id}/chat_channels/",
@@ -409,6 +416,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdIndustryJobs",
+		"GET",
+		"/legacy/characters/{character_id}/industry/jobs/",
+		GetCharactersCharacterIdIndustryJobs,
+	)
+
+	mockesi.NewRoute(
 		"GetIndustryFacilities",
 		"GET",
 		"/legacy/industry/facilities/",
@@ -539,6 +553,13 @@ func init() {
 		"PUT",
 		"/legacy/characters/{character_id}/mail/{mail_id}/",
 		PutCharactersCharacterIdMailMailId,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdOrders",
+		"GET",
+		"/legacy/characters/{character_id}/orders/",
+		GetCharactersCharacterIdOrders,
 	)
 
 	mockesi.NewRoute(
