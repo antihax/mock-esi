@@ -80,6 +80,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"PutCharactersCharacterIdCalendarEventId",
+		"PUT",
+		"/legacy/characters/{character_id}/calendar/{event_id}/",
+		PutCharactersCharacterIdCalendarEventId,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterId",
 		"GET",
 		"/legacy/characters/{character_id}/",
@@ -455,6 +462,20 @@ func init() {
 		"GET",
 		"/legacy/killmails/{killmail_id}/{killmail_hash}/",
 		GetKillmailsKillmailIdKillmailHash,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdLocation",
+		"GET",
+		"/legacy/characters/{character_id}/location/",
+		GetCharactersCharacterIdLocation,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdShip",
+		"GET",
+		"/legacy/characters/{character_id}/ship/",
+		GetCharactersCharacterIdShip,
 	)
 
 	mockesi.NewRoute(
