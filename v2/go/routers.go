@@ -59,6 +59,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetDogmaEffectsEffectId",
+		"GET",
+		"/v2/dogma/effects/{effect_id}/",
+		GetDogmaEffectsEffectId,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdMailLabels",
 		"GET",
 		"/v2/characters/{character_id}/mail/labels/",
