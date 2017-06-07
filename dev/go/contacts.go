@@ -15,6 +15,7 @@ func DeleteCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request)
 		localV      interface{}
 		err         error
 		characterId int32
+		contactIds  []int32
 		datasource  string
 		token       string
 		userAgent   string
@@ -32,6 +33,11 @@ func DeleteCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request)
 	}
 	characterId = localV.(int32)
 	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	localV, err = processParameters(contactIds, r.Form.Get("contact_ids"))
+	if err != nil {
 		errorOut(w, r, err)
 		return
 	}

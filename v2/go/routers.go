@@ -45,6 +45,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"DeleteCharactersCharacterIdContacts",
+		"DELETE",
+		"/v2/characters/{character_id}/contacts/",
+		DeleteCharactersCharacterIdContacts,
+	)
+
+	mockesi.NewRoute(
 		"GetCorporationsCorporationId",
 		"GET",
 		"/v2/corporations/{corporation_id}/",
