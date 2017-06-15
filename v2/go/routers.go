@@ -73,6 +73,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdOnline",
+		"GET",
+		"/v2/characters/{character_id}/online/",
+		GetCharactersCharacterIdOnline,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdMailLabels",
 		"GET",
 		"/v2/characters/{character_id}/mail/labels/",
@@ -126,6 +133,13 @@ func init() {
 		"GET",
 		"/v2/universe/stations/{station_id}/",
 		GetUniverseStationsStationId,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseSystemKills",
+		"GET",
+		"/v2/universe/system_kills/",
+		GetUniverseSystemKills,
 	)
 
 	mockesi.NewRoute(
