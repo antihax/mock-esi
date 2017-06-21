@@ -507,7 +507,7 @@ func GetCorporationsNames(w http.ResponseWriter, r *http.Request) {
 	var (
 		localV         interface{}
 		err            error
-		corporationIds []int64
+		corporationIds []int32
 		datasource     string
 		userAgent      string
 	)

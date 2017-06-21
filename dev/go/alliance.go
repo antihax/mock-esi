@@ -282,7 +282,7 @@ func GetAlliancesNames(w http.ResponseWriter, r *http.Request) {
 	var (
 		localV      interface{}
 		err         error
-		allianceIds []int64
+		allianceIds []int32
 		datasource  string
 		userAgent   string
 	)
