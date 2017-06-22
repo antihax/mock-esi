@@ -101,10 +101,8 @@ func GetCorporationsCorporationIdAlliancehistory(w http.ResponseWriter, r *http.
 	err = err
 
 	j := `[ {
-  "alliance" : {
-    "alliance_id" : 99000006,
-    "is_deleted" : false
-  },
+  "alliance_id" : 99000006,
+  "is_deleted" : false,
   "record_id" : 23,
   "start_date" : "2016-10-25T14:46:00Z"
 }, {
@@ -249,11 +247,7 @@ func GetCorporationsCorporationIdMembers(w http.ResponseWriter, r *http.Request)
 	localV = localV
 	err = err
 
-	j := `[ {
-  "character_id" : 90000001
-}, {
-  "character_id" : 90000002
-} ]`
+	j := `[ 90000001, 90000002 ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(corporationId, vars["corporation_id"])
 	if err != nil {
