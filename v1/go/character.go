@@ -278,12 +278,11 @@ func GetCharactersCharacterIdCorporationhistory(w http.ResponseWriter, r *http.R
 
 	j := `[ {
   "corporation_id" : 90000001,
-  "is_deleted" : false,
+  "is_deleted" : true,
   "record_id" : 500,
   "start_date" : "2016-06-26T20:00:00Z"
 }, {
   "corporation_id" : 90000002,
-  "is_deleted" : false,
   "record_id" : 501,
   "start_date" : "2016-07-26T20:00:00Z"
 } ]`
