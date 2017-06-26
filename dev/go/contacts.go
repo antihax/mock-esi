@@ -109,7 +109,7 @@ func GetCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request) {
 	j := `[ {
   "contact_id" : 123,
   "contact_type" : "character",
-  "is_blocked" : false,
+  "is_blocked" : true,
   "is_watched" : true,
   "standing" : 10.0
 } ]`

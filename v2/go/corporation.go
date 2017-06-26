@@ -97,7 +97,7 @@ func GetCorporationsCorporationIdAlliancehistory(w http.ResponseWriter, r *http.
 
 	j := `[ {
   "alliance_id" : 99000006,
-  "is_deleted" : false,
+  "is_deleted" : true,
   "record_id" : 23,
   "start_date" : "2016-10-25T14:46:00Z"
 }, {

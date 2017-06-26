@@ -378,7 +378,7 @@ func GetCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Request) 
   "body" : "blah blah blah",
   "from" : 90000001,
   "labels" : [ 2, 32 ],
-  "read" : false,
+  "read" : true,
   "subject" : "test",
   "timestamp" : "2015-09-30T16:07:00Z"
 }`

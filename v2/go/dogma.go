@@ -24,20 +24,14 @@ func GetDogmaEffectsEffectId(w http.ResponseWriter, r *http.Request) {
 
 	j := `{
   "description" : "Requires a high power slot.",
-  "disallow_auto_repeat" : false,
   "display_name" : "High power",
   "effect_category" : 0,
   "effect_id" : 12,
-  "electronic_chance" : false,
   "icon_id" : 293,
-  "is_assistance" : false,
-  "is_offensive" : false,
-  "is_warp_safe" : false,
   "name" : "hiPower",
   "post_expression" : 131,
   "pre_expression" : 131,
-  "published" : true,
-  "range_chance" : false
+  "published" : true
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(effectId, vars["effect_id"])
