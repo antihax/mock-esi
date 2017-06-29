@@ -18,8 +18,8 @@ func GetRouteOriginDestination(w http.ResponseWriter, r *http.Request) {
 		origin      int32
 		avoid       []int32
 		connections [][]int32
-		datasource  string
 		flag        string
+		datasource  string
 		userAgent   string
 	)
 	// shut up warnings
@@ -60,14 +60,6 @@ func GetRouteOriginDestination(w http.ResponseWriter, r *http.Request) {
 		}
 		connections = localV.([][]int32)
 	}
-	if r.Form.Get("datasource") != "" {
-		localV, err = processParameters(datasource, r.Form.Get("datasource"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		datasource = localV.(string)
-	}
 	if r.Form.Get("flag") != "" {
 		localV, err = processParameters(flag, r.Form.Get("flag"))
 		if err != nil {
@@ -75,6 +67,14 @@ func GetRouteOriginDestination(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		flag = localV.(string)
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
 	}
 	if r.Form.Get("userAgent") != "" {
 		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))

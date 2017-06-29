@@ -106,8 +106,8 @@ func GetCharactersCharacterIdPlanetsPlanetId(w http.ResponseWriter, r *http.Requ
 	var (
 		localV      interface{}
 		err         error
-		characterId int32
 		planetId    int32
+		characterId int32
 		datasource  string
 		token       string
 		userAgent   string
@@ -144,18 +144,18 @@ func GetCharactersCharacterIdPlanetsPlanetId(w http.ResponseWriter, r *http.Requ
   } ]
 }`
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["character_id"])
-	if err != nil {
-		errorOut(w, r, err)
-		return
-	}
-	characterId = localV.(int32)
 	localV, err = processParameters(planetId, vars["planet_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
 	}
 	planetId = localV.(int32)
+	localV, err = processParameters(characterId, vars["character_id"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	characterId = localV.(int32)
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)
 		return

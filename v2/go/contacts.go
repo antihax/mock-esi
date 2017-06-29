@@ -14,8 +14,8 @@ func DeleteCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request)
 	var (
 		localV      interface{}
 		err         error
-		characterId int32
 		contactIds  []int32
+		characterId int32
 		datasource  string
 		token       string
 		userAgent   string

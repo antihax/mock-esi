@@ -94,8 +94,8 @@ func GetCharactersCharacterIdWalletsJournal(w http.ResponseWriter, r *http.Reque
 		localV      interface{}
 		err         error
 		characterId int32
-		datasource  string
 		fromId      int64
+		datasource  string
 		token       string
 		userAgent   string
 	)
@@ -119,14 +119,6 @@ func GetCharactersCharacterIdWalletsJournal(w http.ResponseWriter, r *http.Reque
 		errorOut(w, r, err)
 		return
 	}
-	if r.Form.Get("datasource") != "" {
-		localV, err = processParameters(datasource, r.Form.Get("datasource"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		datasource = localV.(string)
-	}
 	if r.Form.Get("fromId") != "" {
 		localV, err = processParameters(fromId, r.Form.Get("from_id"))
 		if err != nil {
@@ -134,6 +126,14 @@ func GetCharactersCharacterIdWalletsJournal(w http.ResponseWriter, r *http.Reque
 			return
 		}
 		fromId = localV.(int64)
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
 	}
 	if r.Form.Get("token") != "" {
 		localV, err = processParameters(token, r.Form.Get("token"))

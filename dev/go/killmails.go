@@ -15,9 +15,9 @@ func GetCharactersCharacterIdKillmailsRecent(w http.ResponseWriter, r *http.Requ
 		localV      interface{}
 		err         error
 		characterId int32
-		datasource  string
 		maxCount    int32
 		maxKillId   int32
+		datasource  string
 		token       string
 		userAgent   string
 	)
@@ -43,14 +43,6 @@ func GetCharactersCharacterIdKillmailsRecent(w http.ResponseWriter, r *http.Requ
 		errorOut(w, r, err)
 		return
 	}
-	if r.Form.Get("datasource") != "" {
-		localV, err = processParameters(datasource, r.Form.Get("datasource"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		datasource = localV.(string)
-	}
 	if r.Form.Get("maxCount") != "" {
 		localV, err = processParameters(maxCount, r.Form.Get("max_count"))
 		if err != nil {
@@ -66,6 +58,14 @@ func GetCharactersCharacterIdKillmailsRecent(w http.ResponseWriter, r *http.Requ
 			return
 		}
 		maxKillId = localV.(int32)
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
 	}
 	if r.Form.Get("token") != "" {
 		localV, err = processParameters(token, r.Form.Get("token"))

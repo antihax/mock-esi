@@ -111,8 +111,8 @@ func GetCharactersCharacterIdContractsContractIdBids(w http.ResponseWriter, r *h
 	var (
 		localV      interface{}
 		err         error
-		characterId int32
 		contractId  int32
+		characterId int32
 		datasource  string
 		token       string
 		userAgent   string
@@ -128,18 +128,18 @@ func GetCharactersCharacterIdContractsContractIdBids(w http.ResponseWriter, r *h
   "date_bid" : "2017-01-01T10:10:10Z"
 } ]`
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["character_id"])
-	if err != nil {
-		errorOut(w, r, err)
-		return
-	}
-	characterId = localV.(int32)
 	localV, err = processParameters(contractId, vars["contract_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
 	}
 	contractId = localV.(int32)
+	localV, err = processParameters(characterId, vars["character_id"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	characterId = localV.(int32)
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)
 		return
@@ -199,8 +199,8 @@ func GetCharactersCharacterIdContractsContractIdItems(w http.ResponseWriter, r *
 	var (
 		localV      interface{}
 		err         error
-		characterId int32
 		contractId  int32
+		characterId int32
 		datasource  string
 		token       string
 		userAgent   string
@@ -217,18 +217,18 @@ func GetCharactersCharacterIdContractsContractIdItems(w http.ResponseWriter, r *
   "type_id" : 587
 } ]`
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["character_id"])
-	if err != nil {
-		errorOut(w, r, err)
-		return
-	}
-	characterId = localV.(int32)
 	localV, err = processParameters(contractId, vars["contract_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
 	}
 	contractId = localV.(int32)
+	localV, err = processParameters(characterId, vars["character_id"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	characterId = localV.(int32)
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)
 		return

@@ -587,7 +587,7 @@ func GetUniverseGroups(w http.ResponseWriter, r *http.Request) {
 		localV     interface{}
 		err        error
 		datasource string
-		page       int32
+		page       float32
 		userAgent  string
 	)
 	// shut up warnings
@@ -613,7 +613,7 @@ func GetUniverseGroups(w http.ResponseWriter, r *http.Request) {
 			errorOut(w, r, err)
 			return
 		}
-		page = localV.(int32)
+		page = localV.(float32)
 	}
 	if r.Form.Get("userAgent") != "" {
 		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
@@ -1685,7 +1685,7 @@ func GetUniverseTypes(w http.ResponseWriter, r *http.Request) {
 		localV     interface{}
 		err        error
 		datasource string
-		page       int32
+		page       float32
 		userAgent  string
 	)
 	// shut up warnings
@@ -1711,7 +1711,7 @@ func GetUniverseTypes(w http.ResponseWriter, r *http.Request) {
 			errorOut(w, r, err)
 			return
 		}
-		page = localV.(int32)
+		page = localV.(float32)
 	}
 	if r.Form.Get("userAgent") != "" {
 		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))

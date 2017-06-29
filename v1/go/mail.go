@@ -14,8 +14,8 @@ func DeleteCharactersCharacterIdMailLabelsLabelId(w http.ResponseWriter, r *http
 	var (
 		localV      interface{}
 		err         error
-		characterId int32
 		labelId     int32
+		characterId int32
 		datasource  string
 		token       string
 		userAgent   string
@@ -26,18 +26,18 @@ func DeleteCharactersCharacterIdMailLabelsLabelId(w http.ResponseWriter, r *http
 
 	j := ``
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["character_id"])
-	if err != nil {
-		errorOut(w, r, err)
-		return
-	}
-	characterId = localV.(int32)
 	localV, err = processParameters(labelId, vars["label_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
 	}
 	labelId = localV.(int32)
+	localV, err = processParameters(characterId, vars["character_id"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	characterId = localV.(int32)
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)
 		return
@@ -97,8 +97,8 @@ func DeleteCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Reques
 	var (
 		localV      interface{}
 		err         error
-		characterId int32
 		mailId      int32
+		characterId int32
 		datasource  string
 		token       string
 		userAgent   string
@@ -109,18 +109,18 @@ func DeleteCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Reques
 
 	j := ``
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["character_id"])
-	if err != nil {
-		errorOut(w, r, err)
-		return
-	}
-	characterId = localV.(int32)
 	localV, err = processParameters(mailId, vars["mail_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
 	}
 	mailId = localV.(int32)
+	localV, err = processParameters(characterId, vars["character_id"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	characterId = localV.(int32)
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)
 		return
@@ -181,9 +181,9 @@ func GetCharactersCharacterIdMail(w http.ResponseWriter, r *http.Request) {
 		localV      interface{}
 		err         error
 		characterId int32
-		datasource  string
 		labels      []int64
 		lastMailId  int32
+		datasource  string
 		token       string
 		userAgent   string
 	)
@@ -214,14 +214,6 @@ func GetCharactersCharacterIdMail(w http.ResponseWriter, r *http.Request) {
 		errorOut(w, r, err)
 		return
 	}
-	if r.Form.Get("datasource") != "" {
-		localV, err = processParameters(datasource, r.Form.Get("datasource"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		datasource = localV.(string)
-	}
 	if r.Form.Get("labels") != "" {
 		localV, err = processParameters(labels, r.Form.Get("labels"))
 		if err != nil {
@@ -237,6 +229,14 @@ func GetCharactersCharacterIdMail(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		lastMailId = localV.(int32)
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
 	}
 	if r.Form.Get("token") != "" {
 		localV, err = processParameters(token, r.Form.Get("token"))
@@ -364,8 +364,8 @@ func GetCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Request) 
 	var (
 		localV      interface{}
 		err         error
-		characterId int32
 		mailId      int32
+		characterId int32
 		datasource  string
 		token       string
 		userAgent   string
@@ -383,18 +383,18 @@ func GetCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Request) 
   "timestamp" : "2015-09-30T16:07:00Z"
 }`
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["character_id"])
-	if err != nil {
-		errorOut(w, r, err)
-		return
-	}
-	characterId = localV.(int32)
 	localV, err = processParameters(mailId, vars["mail_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
 	}
 	mailId = localV.(int32)
+	localV, err = processParameters(characterId, vars["character_id"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	characterId = localV.(int32)
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)
 		return
@@ -606,8 +606,8 @@ func PutCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Request) 
 	var (
 		localV      interface{}
 		err         error
-		characterId int32
 		mailId      int32
+		characterId int32
 		datasource  string
 		token       string
 		userAgent   string
@@ -618,18 +618,18 @@ func PutCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Request) 
 
 	j := ``
 	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["character_id"])
-	if err != nil {
-		errorOut(w, r, err)
-		return
-	}
-	characterId = localV.(int32)
 	localV, err = processParameters(mailId, vars["mail_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
 	}
 	mailId = localV.(int32)
+	localV, err = processParameters(characterId, vars["character_id"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	characterId = localV.(int32)
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)
 		return

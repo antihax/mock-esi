@@ -40,6 +40,11 @@ func PostUiAutopilotWaypoint(w http.ResponseWriter, r *http.Request) {
 		errorOut(w, r, err)
 		return
 	}
+	localV, err = processParameters(destinationId, r.Form.Get("destination_id"))
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
 	if r.Form.Get("datasource") != "" {
 		localV, err = processParameters(datasource, r.Form.Get("datasource"))
 		if err != nil {
@@ -47,11 +52,6 @@ func PostUiAutopilotWaypoint(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		datasource = localV.(string)
-	}
-	localV, err = processParameters(destinationId, r.Form.Get("destination_id"))
-	if err != nil {
-		errorOut(w, r, err)
-		return
 	}
 	if r.Form.Get("token") != "" {
 		localV, err = processParameters(token, r.Form.Get("token"))
@@ -188,6 +188,11 @@ func PostUiOpenwindowInformation(w http.ResponseWriter, r *http.Request) {
 		errorOut(w, r, err)
 		return
 	}
+	localV, err = processParameters(targetId, r.Form.Get("target_id"))
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
 	if r.Form.Get("datasource") != "" {
 		localV, err = processParameters(datasource, r.Form.Get("datasource"))
 		if err != nil {
@@ -195,11 +200,6 @@ func PostUiOpenwindowInformation(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		datasource = localV.(string)
-	}
-	localV, err = processParameters(targetId, r.Form.Get("target_id"))
-	if err != nil {
-		errorOut(w, r, err)
-		return
 	}
 	if r.Form.Get("token") != "" {
 		localV, err = processParameters(token, r.Form.Get("token"))
@@ -262,6 +262,11 @@ func PostUiOpenwindowMarketdetails(w http.ResponseWriter, r *http.Request) {
 		errorOut(w, r, err)
 		return
 	}
+	localV, err = processParameters(typeId, r.Form.Get("type_id"))
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
 	if r.Form.Get("datasource") != "" {
 		localV, err = processParameters(datasource, r.Form.Get("datasource"))
 		if err != nil {
@@ -277,11 +282,6 @@ func PostUiOpenwindowMarketdetails(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		token = localV.(string)
-	}
-	localV, err = processParameters(typeId, r.Form.Get("type_id"))
-	if err != nil {
-		errorOut(w, r, err)
-		return
 	}
 	if r.Form.Get("userAgent") != "" {
 		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
