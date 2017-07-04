@@ -14,8 +14,8 @@ func GetCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Requ
 	var (
 		localV      interface{}
 		err         error
-		eventId     int32
 		characterId int32
+		eventId     int32
 		datasource  string
 		token       string
 		userAgent   string
@@ -37,18 +37,18 @@ func GetCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Requ
   "title" : "o7 The EVE Online Show"
 }`
 	vars := mux.Vars(r)
-	localV, err = processParameters(eventId, vars["event_id"])
-	if err != nil {
-		errorOut(w, r, err)
-		return
-	}
-	eventId = localV.(int32)
 	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
 	}
 	characterId = localV.(int32)
+	localV, err = processParameters(eventId, vars["event_id"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	eventId = localV.(int32)
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)
 		return
@@ -108,9 +108,9 @@ func PutCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Requ
 	var (
 		localV      interface{}
 		err         error
+		characterId int32
 		eventId     int32
 		response    string
-		characterId int32
 		datasource  string
 		token       string
 		userAgent   string
@@ -121,24 +121,19 @@ func PutCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Requ
 
 	j := ``
 	vars := mux.Vars(r)
-	localV, err = processParameters(eventId, vars["event_id"])
-	if err != nil {
-		errorOut(w, r, err)
-		return
-	}
-	eventId = localV.(int32)
 	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
 	}
 	characterId = localV.(int32)
-	if err := r.ParseForm(); err != nil {
+	localV, err = processParameters(eventId, vars["event_id"])
+	if err != nil {
 		errorOut(w, r, err)
 		return
 	}
-	localV, err = processParameters(response, r.Form.Get("response"))
-	if err != nil {
+	eventId = localV.(int32)
+	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)
 		return
 	}
@@ -149,6 +144,11 @@ func PutCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Requ
 			return
 		}
 		datasource = localV.(string)
+	}
+	localV, err = processParameters(response, r.Form.Get("response"))
+	if err != nil {
+		errorOut(w, r, err)
+		return
 	}
 	if r.Form.Get("token") != "" {
 		localV, err = processParameters(token, r.Form.Get("token"))

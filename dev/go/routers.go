@@ -710,6 +710,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdAttributes",
+		"GET",
+		"/dev/characters/{character_id}/attributes/",
+		GetCharactersCharacterIdAttributes,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdSkillqueue",
 		"GET",
 		"/dev/characters/{character_id}/skillqueue/",
@@ -969,17 +976,24 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCharactersCharacterIdWallets",
+		"GetCharactersCharacterIdWallet",
 		"GET",
-		"/dev/characters/{character_id}/wallets/",
-		GetCharactersCharacterIdWallets,
+		"/dev/characters/{character_id}/wallet/",
+		GetCharactersCharacterIdWallet,
 	)
 
 	mockesi.NewRoute(
-		"GetCharactersCharacterIdWalletsJournal",
+		"GetCharactersCharacterIdWalletJournal",
 		"GET",
-		"/dev/characters/{character_id}/wallets/journal/",
-		GetCharactersCharacterIdWalletsJournal,
+		"/dev/characters/{character_id}/wallet/journal/",
+		GetCharactersCharacterIdWalletJournal,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdWalletTransactions",
+		"GET",
+		"/dev/characters/{character_id}/wallet/transactions/",
+		GetCharactersCharacterIdWalletTransactions,
 	)
 
 	mockesi.NewRoute(

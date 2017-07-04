@@ -15,11 +15,11 @@ func GetCharactersCharacterIdSearch(w http.ResponseWriter, r *http.Request) {
 		localV      interface{}
 		err         error
 		categories  []string
-		search      string
 		characterId int32
-		strict      bool
+		search      string
 		datasource  string
 		language    string
+		strict      bool
 		token       string
 		userAgent   string
 	)
@@ -47,19 +47,6 @@ func GetCharactersCharacterIdSearch(w http.ResponseWriter, r *http.Request) {
 		errorOut(w, r, err)
 		return
 	}
-	localV, err = processParameters(search, r.Form.Get("search"))
-	if err != nil {
-		errorOut(w, r, err)
-		return
-	}
-	if r.Form.Get("strict") != "" {
-		localV, err = processParameters(strict, r.Form.Get("strict"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		strict = localV.(bool)
-	}
 	if r.Form.Get("datasource") != "" {
 		localV, err = processParameters(datasource, r.Form.Get("datasource"))
 		if err != nil {
@@ -75,6 +62,19 @@ func GetCharactersCharacterIdSearch(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		language = localV.(string)
+	}
+	localV, err = processParameters(search, r.Form.Get("search"))
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("strict") != "" {
+		localV, err = processParameters(strict, r.Form.Get("strict"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		strict = localV.(bool)
 	}
 	if r.Form.Get("token") != "" {
 		localV, err = processParameters(token, r.Form.Get("token"))
@@ -125,9 +125,9 @@ func GetSearch(w http.ResponseWriter, r *http.Request) {
 		err        error
 		categories []string
 		search     string
-		strict     bool
 		datasource string
 		language   string
+		strict     bool
 		userAgent  string
 	)
 	// shut up warnings
@@ -147,19 +147,6 @@ func GetSearch(w http.ResponseWriter, r *http.Request) {
 		errorOut(w, r, err)
 		return
 	}
-	localV, err = processParameters(search, r.Form.Get("search"))
-	if err != nil {
-		errorOut(w, r, err)
-		return
-	}
-	if r.Form.Get("strict") != "" {
-		localV, err = processParameters(strict, r.Form.Get("strict"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		strict = localV.(bool)
-	}
 	if r.Form.Get("datasource") != "" {
 		localV, err = processParameters(datasource, r.Form.Get("datasource"))
 		if err != nil {
@@ -175,6 +162,19 @@ func GetSearch(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		language = localV.(string)
+	}
+	localV, err = processParameters(search, r.Form.Get("search"))
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("strict") != "" {
+		localV, err = processParameters(strict, r.Form.Get("strict"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		strict = localV.(bool)
 	}
 	if r.Form.Get("userAgent") != "" {
 		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))

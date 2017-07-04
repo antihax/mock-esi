@@ -15,8 +15,8 @@ func GetCharactersCharacterIdCalendar(w http.ResponseWriter, r *http.Request) {
 		localV      interface{}
 		err         error
 		characterId int32
-		fromEvent   int32
 		datasource  string
+		fromEvent   int32
 		token       string
 		userAgent   string
 	)
@@ -42,14 +42,6 @@ func GetCharactersCharacterIdCalendar(w http.ResponseWriter, r *http.Request) {
 		errorOut(w, r, err)
 		return
 	}
-	if r.Form.Get("fromEvent") != "" {
-		localV, err = processParameters(fromEvent, r.Form.Get("from_event"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		fromEvent = localV.(int32)
-	}
 	if r.Form.Get("datasource") != "" {
 		localV, err = processParameters(datasource, r.Form.Get("datasource"))
 		if err != nil {
@@ -57,6 +49,14 @@ func GetCharactersCharacterIdCalendar(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		datasource = localV.(string)
+	}
+	if r.Form.Get("fromEvent") != "" {
+		localV, err = processParameters(fromEvent, r.Form.Get("from_event"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		fromEvent = localV.(int32)
 	}
 	if r.Form.Get("token") != "" {
 		localV, err = processParameters(token, r.Form.Get("token"))
@@ -105,8 +105,8 @@ func GetCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Requ
 	var (
 		localV      interface{}
 		err         error
-		eventId     int32
 		characterId int32
+		eventId     int32
 		datasource  string
 		token       string
 		userAgent   string
@@ -128,18 +128,18 @@ func GetCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Requ
   "title" : "o7 The EVE Online Show"
 }`
 	vars := mux.Vars(r)
-	localV, err = processParameters(eventId, vars["event_id"])
-	if err != nil {
-		errorOut(w, r, err)
-		return
-	}
-	eventId = localV.(int32)
 	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
 	}
 	characterId = localV.(int32)
+	localV, err = processParameters(eventId, vars["event_id"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	eventId = localV.(int32)
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)
 		return
@@ -199,8 +199,8 @@ func PutCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Requ
 	var (
 		localV      interface{}
 		err         error
-		eventId     int32
 		characterId int32
+		eventId     int32
 		datasource  string
 		token       string
 		userAgent   string
@@ -211,18 +211,18 @@ func PutCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Requ
 
 	j := ``
 	vars := mux.Vars(r)
-	localV, err = processParameters(eventId, vars["event_id"])
-	if err != nil {
-		errorOut(w, r, err)
-		return
-	}
-	eventId = localV.(int32)
 	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
 	}
 	characterId = localV.(int32)
+	localV, err = processParameters(eventId, vars["event_id"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	eventId = localV.(int32)
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)
 		return

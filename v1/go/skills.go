@@ -1,4 +1,4 @@
-package esiV2
+package esiV1
 
 import (
 	"github.com/gorilla/mux"
@@ -9,34 +9,35 @@ import (
 var _ time.Time
 var _ = mux.NewRouter
 
-func PostUiAutopilotWaypoint(w http.ResponseWriter, r *http.Request) {
+func GetCharactersCharacterIdAttributes(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV              interface{}
-		err                 error
-		addToBeginning      bool
-		clearOtherWaypoints bool
-		destinationId       int64
-		datasource          string
-		token               string
-		userAgent           string
+		localV      interface{}
+		err         error
+		characterId int32
+		datasource  string
+		token       string
+		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
 	err = err
 
-	j := ``
+	j := `{
+  "charisma" : 20,
+  "intelligence" : 20,
+  "memory" : 20,
+  "perception" : 20,
+  "willpower" : 20
+}`
+	vars := mux.Vars(r)
+	localV, err = processParameters(characterId, vars["character_id"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	characterId = localV.(int32)
 	if err := r.ParseForm(); err != nil {
-		errorOut(w, r, err)
-		return
-	}
-	localV, err = processParameters(addToBeginning, r.Form.Get("add_to_beginning"))
-	if err != nil {
-		errorOut(w, r, err)
-		return
-	}
-	localV, err = processParameters(clearOtherWaypoints, r.Form.Get("clear_other_waypoints"))
-	if err != nil {
 		errorOut(w, r, err)
 		return
 	}
@@ -47,11 +48,6 @@ func PostUiAutopilotWaypoint(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		datasource = localV.(string)
-	}
-	localV, err = processParameters(destinationId, r.Form.Get("destination_id"))
-	if err != nil {
-		errorOut(w, r, err)
-		return
 	}
 	if r.Form.Get("token") != "" {
 		localV, err = processParameters(token, r.Form.Get("token"))
@@ -82,14 +78,14 @@ func PostUiAutopilotWaypoint(w http.ResponseWriter, r *http.Request) {
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
-			w.Header().Set("Content-Type", "")
+			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
 
-	w.Header().Set("Content-Type", "")
+	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 
 	w.Write([]byte(j))

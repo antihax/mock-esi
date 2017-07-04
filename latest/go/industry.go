@@ -15,8 +15,8 @@ func GetCharactersCharacterIdIndustryJobs(w http.ResponseWriter, r *http.Request
 		localV           interface{}
 		err              error
 		characterId      int32
-		includeCompleted bool
 		datasource       string
+		includeCompleted bool
 		token            string
 		userAgent        string
 	)
@@ -53,14 +53,6 @@ func GetCharactersCharacterIdIndustryJobs(w http.ResponseWriter, r *http.Request
 		errorOut(w, r, err)
 		return
 	}
-	if r.Form.Get("includeCompleted") != "" {
-		localV, err = processParameters(includeCompleted, r.Form.Get("include_completed"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		includeCompleted = localV.(bool)
-	}
 	if r.Form.Get("datasource") != "" {
 		localV, err = processParameters(datasource, r.Form.Get("datasource"))
 		if err != nil {
@@ -68,6 +60,14 @@ func GetCharactersCharacterIdIndustryJobs(w http.ResponseWriter, r *http.Request
 			return
 		}
 		datasource = localV.(string)
+	}
+	if r.Form.Get("includeCompleted") != "" {
+		localV, err = processParameters(includeCompleted, r.Form.Get("include_completed"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		includeCompleted = localV.(bool)
 	}
 	if r.Form.Get("token") != "" {
 		localV, err = processParameters(token, r.Form.Get("token"))

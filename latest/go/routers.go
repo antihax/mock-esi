@@ -710,6 +710,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdAttributes",
+		"GET",
+		"/latest/characters/{character_id}/attributes/",
+		GetCharactersCharacterIdAttributes,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdSkillqueue",
 		"GET",
 		"/latest/characters/{character_id}/skillqueue/",
@@ -966,6 +973,27 @@ func init() {
 		"POST",
 		"/latest/ui/openwindow/newmail/",
 		PostUiOpenwindowNewmail,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdWallet",
+		"GET",
+		"/latest/characters/{character_id}/wallet/",
+		GetCharactersCharacterIdWallet,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdWalletJournal",
+		"GET",
+		"/latest/characters/{character_id}/wallet/journal/",
+		GetCharactersCharacterIdWalletJournal,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdWalletTransactions",
+		"GET",
+		"/latest/characters/{character_id}/wallet/transactions/",
+		GetCharactersCharacterIdWalletTransactions,
 	)
 
 	mockesi.NewRoute(

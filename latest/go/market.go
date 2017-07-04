@@ -339,11 +339,6 @@ func GetMarketsRegionIdHistory(w http.ResponseWriter, r *http.Request) {
 		errorOut(w, r, err)
 		return
 	}
-	localV, err = processParameters(typeId, r.Form.Get("type_id"))
-	if err != nil {
-		errorOut(w, r, err)
-		return
-	}
 	if r.Form.Get("datasource") != "" {
 		localV, err = processParameters(datasource, r.Form.Get("datasource"))
 		if err != nil {
@@ -351,6 +346,11 @@ func GetMarketsRegionIdHistory(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		datasource = localV.(string)
+	}
+	localV, err = processParameters(typeId, r.Form.Get("type_id"))
+	if err != nil {
+		errorOut(w, r, err)
+		return
 	}
 	if r.Form.Get("userAgent") != "" {
 		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
@@ -393,9 +393,9 @@ func GetMarketsRegionIdOrders(w http.ResponseWriter, r *http.Request) {
 		err        error
 		orderType  string
 		regionId   int32
-		typeId     int32
 		datasource string
-		page       float32
+		page       int32
+		typeId     int32
 		userAgent  string
 	)
 	// shut up warnings
@@ -426,19 +426,6 @@ func GetMarketsRegionIdOrders(w http.ResponseWriter, r *http.Request) {
 		errorOut(w, r, err)
 		return
 	}
-	localV, err = processParameters(orderType, r.Form.Get("order_type"))
-	if err != nil {
-		errorOut(w, r, err)
-		return
-	}
-	if r.Form.Get("typeId") != "" {
-		localV, err = processParameters(typeId, r.Form.Get("type_id"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		typeId = localV.(int32)
-	}
 	if r.Form.Get("datasource") != "" {
 		localV, err = processParameters(datasource, r.Form.Get("datasource"))
 		if err != nil {
@@ -447,13 +434,26 @@ func GetMarketsRegionIdOrders(w http.ResponseWriter, r *http.Request) {
 		}
 		datasource = localV.(string)
 	}
+	localV, err = processParameters(orderType, r.Form.Get("order_type"))
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
 	if r.Form.Get("page") != "" {
 		localV, err = processParameters(page, r.Form.Get("page"))
 		if err != nil {
 			errorOut(w, r, err)
 			return
 		}
-		page = localV.(float32)
+		page = localV.(int32)
+	}
+	if r.Form.Get("typeId") != "" {
+		localV, err = processParameters(typeId, r.Form.Get("type_id"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		typeId = localV.(int32)
 	}
 	if r.Form.Get("userAgent") != "" {
 		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
@@ -496,7 +496,7 @@ func GetMarketsStructuresStructureId(w http.ResponseWriter, r *http.Request) {
 		err         error
 		structureId int64
 		datasource  string
-		page        float32
+		page        int32
 		token       string
 		userAgent   string
 	)
@@ -542,7 +542,7 @@ func GetMarketsStructuresStructureId(w http.ResponseWriter, r *http.Request) {
 			errorOut(w, r, err)
 			return
 		}
-		page = localV.(float32)
+		page = localV.(int32)
 	}
 	if r.Form.Get("token") != "" {
 		localV, err = processParameters(token, r.Form.Get("token"))

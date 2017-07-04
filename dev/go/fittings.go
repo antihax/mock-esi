@@ -14,8 +14,8 @@ func DeleteCharactersCharacterIdFittingsFittingId(w http.ResponseWriter, r *http
 	var (
 		localV      interface{}
 		err         error
-		fittingId   int32
 		characterId int32
+		fittingId   int32
 		datasource  string
 		token       string
 		userAgent   string
@@ -26,18 +26,18 @@ func DeleteCharactersCharacterIdFittingsFittingId(w http.ResponseWriter, r *http
 
 	j := ``
 	vars := mux.Vars(r)
-	localV, err = processParameters(fittingId, vars["fitting_id"])
-	if err != nil {
-		errorOut(w, r, err)
-		return
-	}
-	fittingId = localV.(int32)
 	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
 	}
 	characterId = localV.(int32)
+	localV, err = processParameters(fittingId, vars["fitting_id"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	fittingId = localV.(int32)
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)
 		return

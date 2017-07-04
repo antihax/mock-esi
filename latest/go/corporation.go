@@ -402,7 +402,7 @@ func GetCorporationsCorporationIdStructures(w http.ResponseWriter, r *http.Reque
 		corporationId int32
 		datasource    string
 		language      string
-		page          float32
+		page          int32
 		token         string
 		userAgent     string
 	)
@@ -458,7 +458,7 @@ func GetCorporationsCorporationIdStructures(w http.ResponseWriter, r *http.Reque
 			errorOut(w, r, err)
 			return
 		}
-		page = localV.(float32)
+		page = localV.(int32)
 	}
 	if r.Form.Get("token") != "" {
 		localV, err = processParameters(token, r.Form.Get("token"))
@@ -634,8 +634,8 @@ func PutCorporationsCorporationIdStructuresStructureId(w http.ResponseWriter, r 
 	var (
 		localV        interface{}
 		err           error
-		structureId   int64
 		corporationId int32
+		structureId   int64
 		datasource    string
 		token         string
 		userAgent     string
@@ -646,18 +646,18 @@ func PutCorporationsCorporationIdStructuresStructureId(w http.ResponseWriter, r 
 
 	j := ``
 	vars := mux.Vars(r)
-	localV, err = processParameters(structureId, vars["structure_id"])
-	if err != nil {
-		errorOut(w, r, err)
-		return
-	}
-	structureId = localV.(int64)
 	localV, err = processParameters(corporationId, vars["corporation_id"])
 	if err != nil {
 		errorOut(w, r, err)
 		return
 	}
 	corporationId = localV.(int32)
+	localV, err = processParameters(structureId, vars["structure_id"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	structureId = localV.(int64)
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)
 		return
