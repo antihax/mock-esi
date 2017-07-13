@@ -12,7 +12,7 @@ func init() {
 	mockesi.NewRoute(
 		"{{operationId}}",
 		"{{httpMethod}}",
-		"{{basePathWithoutHost}}{{path}}",
+		"{{path}}",
 		{{operationId}},
 	)
 {{/operation}}{{/operations}}{{/apis}}{{/apiInfo}}
