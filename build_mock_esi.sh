@@ -1,11 +1,26 @@
 #!/bin/bash
-rm -rf ./latest/*
-rm -rf ./dev/*
-rm -rf ./legacy/*
-
 set -e
-java -jar swagger-codegen-cli.jar generate -DpackageName=esiLatest -o ./latest -t ./mock-esi-template -l go-server -i https://esi.tech.ccp.is/_latest/swagger.json?datasource=tranquility
-java -jar swagger-codegen-cli.jar generate -DpackageName=esiDev -o ./dev -t ./mock-esi-template -l go-server -i https://esi.tech.ccp.is/_dev/swagger.json?datasource=tranquility
-java -jar swagger-codegen-cli.jar generate -DpackageName=esiLegacy -o ./legacy -t ./mock-esi-template -l go-server -i https://esi.tech.ccp.is/_legacy/swagger.json?datasource=tranquility
+curl -s https://esi.tech.ccp.is/versions/ | grep -Po '[a-z0-9]+' | {
+    imports=()
+
+    while read -r version ; do
+        echo "Processing $version"
+        rm -rf ./$version/*
+
+        imports+=("_ \"github.com/antihax/mock-esi/$version/go\"\n")
+   
+        java -jar swagger-codegen-cli.jar generate -DpackageName=esi$version \
+            -o ./$version -t ./mock-esi-template -l go-server \
+            -i https://esi.tech.ccp.is/$version/swagger.json?datasource=tranquility
+    done
+
+    imp=${imports[@]}
+
+    sed "s#IMPORTS#$imp#" < ./mock-esi-template/main.go.template > ./main.go
+}
+
+goreturns -w .
+gofmt -s -w .
 
 go test ./...
+

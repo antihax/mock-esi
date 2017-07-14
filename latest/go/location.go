@@ -1,8 +1,8 @@
-package esiLatest
+package esilatest
 
 import (
-	"github.com/gorilla/mux"
 	"net/http"
+	"github.com/gorilla/mux"
 	"time"
 )
 
@@ -12,12 +12,12 @@ var _ = mux.NewRouter
 func GetCharactersCharacterIdLocation(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV      interface{}
-		err         error
+		localV interface{}
+		err error
 		characterId int32
-		datasource  string
-		token       string
-		userAgent   string
+		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -65,7 +65,7 @@ func GetCharactersCharacterIdLocation(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -80,7 +80,7 @@ func GetCharactersCharacterIdLocation(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -91,12 +91,12 @@ func GetCharactersCharacterIdLocation(w http.ResponseWriter, r *http.Request) {
 func GetCharactersCharacterIdOnline(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV      interface{}
-		err         error
+		localV interface{}
+		err error
 		characterId int32
-		datasource  string
-		token       string
-		userAgent   string
+		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -141,7 +141,7 @@ func GetCharactersCharacterIdOnline(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -156,7 +156,7 @@ func GetCharactersCharacterIdOnline(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -167,12 +167,12 @@ func GetCharactersCharacterIdOnline(w http.ResponseWriter, r *http.Request) {
 func GetCharactersCharacterIdShip(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV      interface{}
-		err         error
+		localV interface{}
+		err error
 		characterId int32
-		datasource  string
-		token       string
-		userAgent   string
+		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -221,7 +221,7 @@ func GetCharactersCharacterIdShip(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -236,10 +236,12 @@ func GetCharactersCharacterIdShip(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 
 	w.Write([]byte(j))
 }
+
+

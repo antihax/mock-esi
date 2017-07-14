@@ -1,8 +1,8 @@
-package esiLatest
+package esilatest
 
 import (
-	"github.com/gorilla/mux"
 	"net/http"
+	"github.com/gorilla/mux"
 	"time"
 )
 
@@ -12,13 +12,13 @@ var _ = mux.NewRouter
 func GetCharactersCharacterIdIndustryJobs(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV           interface{}
-		err              error
-		characterId      int32
-		datasource       string
+		localV interface{}
+		err error
+		characterId int32
+		datasource string
 		includeCompleted bool
-		token            string
-		userAgent        string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -88,7 +88,7 @@ func GetCharactersCharacterIdIndustryJobs(w http.ResponseWriter, r *http.Request
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -103,7 +103,7 @@ func GetCharactersCharacterIdIndustryJobs(w http.ResponseWriter, r *http.Request
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -114,10 +114,10 @@ func GetCharactersCharacterIdIndustryJobs(w http.ResponseWriter, r *http.Request
 func GetIndustryFacilities(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV     interface{}
-		err        error
+		localV interface{}
+		err error
 		datasource string
-		userAgent  string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -154,7 +154,7 @@ func GetIndustryFacilities(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -169,7 +169,7 @@ func GetIndustryFacilities(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -180,10 +180,10 @@ func GetIndustryFacilities(w http.ResponseWriter, r *http.Request) {
 func GetIndustrySystems(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV     interface{}
-		err        error
+		localV interface{}
+		err error
 		datasource string
-		userAgent  string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -219,7 +219,7 @@ func GetIndustrySystems(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -234,10 +234,12 @@ func GetIndustrySystems(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 
 	w.Write([]byte(j))
 }
+
+

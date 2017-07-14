@@ -1,8 +1,8 @@
-package esiLegacy
+package esilegacy
 
 import (
-	"github.com/gorilla/mux"
 	"net/http"
+	"github.com/gorilla/mux"
 	"time"
 )
 
@@ -12,12 +12,12 @@ var _ = mux.NewRouter
 func GetCharactersCharacterIdOpportunities(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV      interface{}
-		err         error
+		localV interface{}
+		err error
 		characterId int32
-		datasource  string
-		token       string
-		userAgent   string
+		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -65,7 +65,7 @@ func GetCharactersCharacterIdOpportunities(w http.ResponseWriter, r *http.Reques
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -80,7 +80,7 @@ func GetCharactersCharacterIdOpportunities(w http.ResponseWriter, r *http.Reques
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -91,10 +91,10 @@ func GetCharactersCharacterIdOpportunities(w http.ResponseWriter, r *http.Reques
 func GetOpportunitiesGroups(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV     interface{}
-		err        error
+		localV interface{}
+		err error
 		datasource string
-		userAgent  string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -124,7 +124,7 @@ func GetOpportunitiesGroups(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -139,7 +139,7 @@ func GetOpportunitiesGroups(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -150,12 +150,12 @@ func GetOpportunitiesGroups(w http.ResponseWriter, r *http.Request) {
 func GetOpportunitiesGroupsGroupId(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV     interface{}
-		err        error
-		groupId    int32
+		localV interface{}
+		err error
+		groupId int32
 		datasource string
-		language   string
-		userAgent  string
+		language string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -207,7 +207,7 @@ func GetOpportunitiesGroupsGroupId(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -222,7 +222,7 @@ func GetOpportunitiesGroupsGroupId(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -233,10 +233,10 @@ func GetOpportunitiesGroupsGroupId(w http.ResponseWriter, r *http.Request) {
 func GetOpportunitiesTasks(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV     interface{}
-		err        error
+		localV interface{}
+		err error
 		datasource string
-		userAgent  string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -266,7 +266,7 @@ func GetOpportunitiesTasks(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -281,7 +281,7 @@ func GetOpportunitiesTasks(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -292,11 +292,11 @@ func GetOpportunitiesTasks(w http.ResponseWriter, r *http.Request) {
 func GetOpportunitiesTasksTaskId(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV     interface{}
-		err        error
-		taskId     int32
+		localV interface{}
+		err error
+		taskId int32
 		datasource string
-		userAgent  string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -338,7 +338,7 @@ func GetOpportunitiesTasksTaskId(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -353,10 +353,12 @@ func GetOpportunitiesTasksTaskId(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 
 	w.Write([]byte(j))
 }
+
+

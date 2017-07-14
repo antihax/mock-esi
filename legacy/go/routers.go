@@ -1,10 +1,10 @@
-package esiLegacy
+package esilegacy
 
 import (
-	"github.com/antihax/mock-esi/mockesi"
 	"net/http"
-	"reflect"
+	"github.com/antihax/mock-esi/mockesi"
 	"strconv"
+	"reflect"
 )
 
 func init() {
@@ -12,1039 +12,1042 @@ func init() {
 	mockesi.NewRoute(
 		"GetAlliances",
 		"GET",
-		"//v1/alliances/",
+		"/legacy/alliances/",
 		GetAlliances,
 	)
 
 	mockesi.NewRoute(
 		"GetAlliancesAllianceId",
 		"GET",
-		"//v1/alliances/{alliance_id}/",
+		"/legacy/alliances/{alliance_id}/",
 		GetAlliancesAllianceId,
 	)
 
 	mockesi.NewRoute(
 		"GetAlliancesAllianceIdCorporations",
 		"GET",
-		"//v1/alliances/{alliance_id}/corporations/",
+		"/legacy/alliances/{alliance_id}/corporations/",
 		GetAlliancesAllianceIdCorporations,
 	)
 
 	mockesi.NewRoute(
 		"GetAlliancesAllianceIdIcons",
 		"GET",
-		"//v1/alliances/{alliance_id}/icons/",
+		"/legacy/alliances/{alliance_id}/icons/",
 		GetAlliancesAllianceIdIcons,
 	)
 
 	mockesi.NewRoute(
 		"GetAlliancesNames",
 		"GET",
-		"//v1/alliances/names/",
+		"/legacy/alliances/names/",
 		GetAlliancesNames,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdAssets",
 		"GET",
-		"//v1/characters/{character_id}/assets/",
+		"/legacy/characters/{character_id}/assets/",
 		GetCharactersCharacterIdAssets,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdBookmarks",
 		"GET",
-		"//v1/characters/{character_id}/bookmarks/",
+		"/legacy/characters/{character_id}/bookmarks/",
 		GetCharactersCharacterIdBookmarks,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdBookmarksFolders",
 		"GET",
-		"//v1/characters/{character_id}/bookmarks/folders/",
+		"/legacy/characters/{character_id}/bookmarks/folders/",
 		GetCharactersCharacterIdBookmarksFolders,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdCalendar",
 		"GET",
-		"//v1/characters/{character_id}/calendar/",
+		"/legacy/characters/{character_id}/calendar/",
 		GetCharactersCharacterIdCalendar,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdCalendarEventId",
 		"GET",
-		"//v2/characters/{character_id}/calendar/{event_id}/",
+		"/legacy/characters/{character_id}/calendar/{event_id}/",
 		GetCharactersCharacterIdCalendarEventId,
 	)
 
 	mockesi.NewRoute(
 		"PutCharactersCharacterIdCalendarEventId",
 		"PUT",
-		"//v2/characters/{character_id}/calendar/{event_id}/",
+		"/legacy/characters/{character_id}/calendar/{event_id}/",
 		PutCharactersCharacterIdCalendarEventId,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterId",
 		"GET",
-		"//v3/characters/{character_id}/",
+		"/legacy/characters/{character_id}/",
 		GetCharactersCharacterId,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdAgentsResearch",
 		"GET",
-		"//v1/characters/{character_id}/agents_research/",
+		"/legacy/characters/{character_id}/agents_research/",
 		GetCharactersCharacterIdAgentsResearch,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdBlueprints",
 		"GET",
-		"//v1/characters/{character_id}/blueprints/",
+		"/legacy/characters/{character_id}/blueprints/",
 		GetCharactersCharacterIdBlueprints,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdChatChannels",
 		"GET",
-		"//v1/characters/{character_id}/chat_channels/",
+		"/legacy/characters/{character_id}/chat_channels/",
 		GetCharactersCharacterIdChatChannels,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdCorporationhistory",
 		"GET",
-		"//v1/characters/{character_id}/corporationhistory/",
+		"/legacy/characters/{character_id}/corporationhistory/",
 		GetCharactersCharacterIdCorporationhistory,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdMedals",
 		"GET",
-		"//v1/characters/{character_id}/medals/",
+		"/legacy/characters/{character_id}/medals/",
 		GetCharactersCharacterIdMedals,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdPortrait",
 		"GET",
-		"//v1/characters/{character_id}/portrait/",
+		"/legacy/characters/{character_id}/portrait/",
 		GetCharactersCharacterIdPortrait,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdRoles",
 		"GET",
-		"//v1/characters/{character_id}/roles/",
+		"/legacy/characters/{character_id}/roles/",
 		GetCharactersCharacterIdRoles,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdStandings",
 		"GET",
-		"//v1/characters/{character_id}/standings/",
+		"/legacy/characters/{character_id}/standings/",
 		GetCharactersCharacterIdStandings,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersNames",
 		"GET",
-		"//v1/characters/names/",
+		"/legacy/characters/names/",
 		GetCharactersNames,
 	)
 
 	mockesi.NewRoute(
 		"PostCharactersAffiliation",
 		"POST",
-		"//v1/characters/affiliation/",
+		"/legacy/characters/affiliation/",
 		PostCharactersAffiliation,
 	)
 
 	mockesi.NewRoute(
 		"PostCharactersCharacterIdCspa",
 		"POST",
-		"//v3/characters/{character_id}/cspa/",
+		"/legacy/characters/{character_id}/cspa/",
 		PostCharactersCharacterIdCspa,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdClones",
 		"GET",
-		"//v1/characters/{character_id}/clones/",
+		"/legacy/characters/{character_id}/clones/",
 		GetCharactersCharacterIdClones,
 	)
 
 	mockesi.NewRoute(
 		"DeleteCharactersCharacterIdContacts",
 		"DELETE",
-		"//v1/characters/{character_id}/contacts/",
+		"/legacy/characters/{character_id}/contacts/",
 		DeleteCharactersCharacterIdContacts,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdContacts",
 		"GET",
-		"//v1/characters/{character_id}/contacts/",
+		"/legacy/characters/{character_id}/contacts/",
 		GetCharactersCharacterIdContacts,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdContactsLabels",
 		"GET",
-		"//v1/characters/{character_id}/contacts/labels/",
+		"/legacy/characters/{character_id}/contacts/labels/",
 		GetCharactersCharacterIdContactsLabels,
 	)
 
 	mockesi.NewRoute(
 		"PostCharactersCharacterIdContacts",
 		"POST",
-		"//v1/characters/{character_id}/contacts/",
+		"/legacy/characters/{character_id}/contacts/",
 		PostCharactersCharacterIdContacts,
 	)
 
 	mockesi.NewRoute(
 		"PutCharactersCharacterIdContacts",
 		"PUT",
-		"//v1/characters/{character_id}/contacts/",
+		"/legacy/characters/{character_id}/contacts/",
 		PutCharactersCharacterIdContacts,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdContracts",
 		"GET",
-		"//v1/characters/{character_id}/contracts/",
+		"/legacy/characters/{character_id}/contracts/",
 		GetCharactersCharacterIdContracts,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdContractsContractIdBids",
 		"GET",
-		"//v1/characters/{character_id}/contracts/{contract_id}/bids/",
+		"/legacy/characters/{character_id}/contracts/{contract_id}/bids/",
 		GetCharactersCharacterIdContractsContractIdBids,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdContractsContractIdItems",
 		"GET",
-		"//v1/characters/{character_id}/contracts/{contract_id}/items/",
+		"/legacy/characters/{character_id}/contracts/{contract_id}/items/",
 		GetCharactersCharacterIdContractsContractIdItems,
 	)
 
 	mockesi.NewRoute(
 		"GetCorporationsCorporationId",
 		"GET",
-		"//v2/corporations/{corporation_id}/",
+		"/legacy/corporations/{corporation_id}/",
 		GetCorporationsCorporationId,
 	)
 
 	mockesi.NewRoute(
 		"GetCorporationsCorporationIdAlliancehistory",
 		"GET",
-		"//v1/corporations/{corporation_id}/alliancehistory/",
+		"/legacy/corporations/{corporation_id}/alliancehistory/",
 		GetCorporationsCorporationIdAlliancehistory,
 	)
 
 	mockesi.NewRoute(
 		"GetCorporationsCorporationIdIcons",
 		"GET",
-		"//v1/corporations/{corporation_id}/icons/",
+		"/legacy/corporations/{corporation_id}/icons/",
 		GetCorporationsCorporationIdIcons,
 	)
 
 	mockesi.NewRoute(
 		"GetCorporationsCorporationIdMembers",
 		"GET",
-		"//v2/corporations/{corporation_id}/members/",
+		"/legacy/corporations/{corporation_id}/members/",
 		GetCorporationsCorporationIdMembers,
 	)
 
 	mockesi.NewRoute(
 		"GetCorporationsCorporationIdRoles",
 		"GET",
-		"//v1/corporations/{corporation_id}/roles/",
+		"/legacy/corporations/{corporation_id}/roles/",
 		GetCorporationsCorporationIdRoles,
 	)
 
 	mockesi.NewRoute(
 		"GetCorporationsCorporationIdStructures",
 		"GET",
-		"//v1/corporations/{corporation_id}/structures/",
+		"/legacy/corporations/{corporation_id}/structures/",
 		GetCorporationsCorporationIdStructures,
 	)
 
 	mockesi.NewRoute(
 		"GetCorporationsNames",
 		"GET",
-		"//v1/corporations/names/",
+		"/legacy/corporations/names/",
 		GetCorporationsNames,
 	)
 
 	mockesi.NewRoute(
 		"GetCorporationsNpccorps",
 		"GET",
-		"//v1/corporations/npccorps/",
+		"/legacy/corporations/npccorps/",
 		GetCorporationsNpccorps,
 	)
 
 	mockesi.NewRoute(
 		"PutCorporationsCorporationIdStructuresStructureId",
 		"PUT",
-		"//v1/corporations/{corporation_id}/structures/{structure_id}/",
+		"/legacy/corporations/{corporation_id}/structures/{structure_id}/",
 		PutCorporationsCorporationIdStructuresStructureId,
 	)
 
 	mockesi.NewRoute(
 		"GetDogmaAttributes",
 		"GET",
-		"//v1/dogma/attributes/",
+		"/legacy/dogma/attributes/",
 		GetDogmaAttributes,
 	)
 
 	mockesi.NewRoute(
 		"GetDogmaAttributesAttributeId",
 		"GET",
-		"//v1/dogma/attributes/{attribute_id}/",
+		"/legacy/dogma/attributes/{attribute_id}/",
 		GetDogmaAttributesAttributeId,
 	)
 
 	mockesi.NewRoute(
 		"GetDogmaEffects",
 		"GET",
-		"//v1/dogma/effects/",
+		"/legacy/dogma/effects/",
 		GetDogmaEffects,
 	)
 
 	mockesi.NewRoute(
 		"GetDogmaEffectsEffectId",
 		"GET",
-		"//v1/dogma/effects/{effect_id}/",
+		"/legacy/dogma/effects/{effect_id}/",
 		GetDogmaEffectsEffectId,
 	)
 
 	mockesi.NewRoute(
 		"DeleteCharactersCharacterIdFittingsFittingId",
 		"DELETE",
-		"//v1/characters/{character_id}/fittings/{fitting_id}/",
+		"/legacy/characters/{character_id}/fittings/{fitting_id}/",
 		DeleteCharactersCharacterIdFittingsFittingId,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdFittings",
 		"GET",
-		"//v1/characters/{character_id}/fittings/",
+		"/legacy/characters/{character_id}/fittings/",
 		GetCharactersCharacterIdFittings,
 	)
 
 	mockesi.NewRoute(
 		"PostCharactersCharacterIdFittings",
 		"POST",
-		"//v1/characters/{character_id}/fittings/",
+		"/legacy/characters/{character_id}/fittings/",
 		PostCharactersCharacterIdFittings,
 	)
 
 	mockesi.NewRoute(
 		"DeleteFleetsFleetIdMembersMemberId",
 		"DELETE",
-		"//v1/fleets/{fleet_id}/members/{member_id}/",
+		"/legacy/fleets/{fleet_id}/members/{member_id}/",
 		DeleteFleetsFleetIdMembersMemberId,
 	)
 
 	mockesi.NewRoute(
 		"DeleteFleetsFleetIdSquadsSquadId",
 		"DELETE",
-		"//v1/fleets/{fleet_id}/squads/{squad_id}/",
+		"/legacy/fleets/{fleet_id}/squads/{squad_id}/",
 		DeleteFleetsFleetIdSquadsSquadId,
 	)
 
 	mockesi.NewRoute(
 		"DeleteFleetsFleetIdWingsWingId",
 		"DELETE",
-		"//v1/fleets/{fleet_id}/wings/{wing_id}/",
+		"/legacy/fleets/{fleet_id}/wings/{wing_id}/",
 		DeleteFleetsFleetIdWingsWingId,
 	)
 
 	mockesi.NewRoute(
 		"GetFleetsFleetId",
 		"GET",
-		"//v1/fleets/{fleet_id}/",
+		"/legacy/fleets/{fleet_id}/",
 		GetFleetsFleetId,
 	)
 
 	mockesi.NewRoute(
 		"GetFleetsFleetIdMembers",
 		"GET",
-		"//v1/fleets/{fleet_id}/members/",
+		"/legacy/fleets/{fleet_id}/members/",
 		GetFleetsFleetIdMembers,
 	)
 
 	mockesi.NewRoute(
 		"GetFleetsFleetIdWings",
 		"GET",
-		"//v1/fleets/{fleet_id}/wings/",
+		"/legacy/fleets/{fleet_id}/wings/",
 		GetFleetsFleetIdWings,
 	)
 
 	mockesi.NewRoute(
 		"PostFleetsFleetIdMembers",
 		"POST",
-		"//v1/fleets/{fleet_id}/members/",
+		"/legacy/fleets/{fleet_id}/members/",
 		PostFleetsFleetIdMembers,
 	)
 
 	mockesi.NewRoute(
 		"PostFleetsFleetIdWings",
 		"POST",
-		"//v1/fleets/{fleet_id}/wings/",
+		"/legacy/fleets/{fleet_id}/wings/",
 		PostFleetsFleetIdWings,
 	)
 
 	mockesi.NewRoute(
 		"PostFleetsFleetIdWingsWingIdSquads",
 		"POST",
-		"//v1/fleets/{fleet_id}/wings/{wing_id}/squads/",
+		"/legacy/fleets/{fleet_id}/wings/{wing_id}/squads/",
 		PostFleetsFleetIdWingsWingIdSquads,
 	)
 
 	mockesi.NewRoute(
 		"PutFleetsFleetId",
 		"PUT",
-		"//v1/fleets/{fleet_id}/",
+		"/legacy/fleets/{fleet_id}/",
 		PutFleetsFleetId,
 	)
 
 	mockesi.NewRoute(
 		"PutFleetsFleetIdMembersMemberId",
 		"PUT",
-		"//v1/fleets/{fleet_id}/members/{member_id}/",
+		"/legacy/fleets/{fleet_id}/members/{member_id}/",
 		PutFleetsFleetIdMembersMemberId,
 	)
 
 	mockesi.NewRoute(
 		"PutFleetsFleetIdSquadsSquadId",
 		"PUT",
-		"//v1/fleets/{fleet_id}/squads/{squad_id}/",
+		"/legacy/fleets/{fleet_id}/squads/{squad_id}/",
 		PutFleetsFleetIdSquadsSquadId,
 	)
 
 	mockesi.NewRoute(
 		"PutFleetsFleetIdWingsWingId",
 		"PUT",
-		"//v1/fleets/{fleet_id}/wings/{wing_id}/",
+		"/legacy/fleets/{fleet_id}/wings/{wing_id}/",
 		PutFleetsFleetIdWingsWingId,
 	)
 
 	mockesi.NewRoute(
 		"GetIncursions",
 		"GET",
-		"//v1/incursions/",
+		"/legacy/incursions/",
 		GetIncursions,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdIndustryJobs",
 		"GET",
-		"//v1/characters/{character_id}/industry/jobs/",
+		"/legacy/characters/{character_id}/industry/jobs/",
 		GetCharactersCharacterIdIndustryJobs,
 	)
 
 	mockesi.NewRoute(
 		"GetIndustryFacilities",
 		"GET",
-		"//v1/industry/facilities/",
+		"/legacy/industry/facilities/",
 		GetIndustryFacilities,
 	)
 
 	mockesi.NewRoute(
 		"GetIndustrySystems",
 		"GET",
-		"//v1/industry/systems/",
+		"/legacy/industry/systems/",
 		GetIndustrySystems,
 	)
 
 	mockesi.NewRoute(
 		"GetInsurancePrices",
 		"GET",
-		"//v1/insurance/prices/",
+		"/legacy/insurance/prices/",
 		GetInsurancePrices,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdKillmailsRecent",
 		"GET",
-		"//v1/characters/{character_id}/killmails/recent/",
+		"/legacy/characters/{character_id}/killmails/recent/",
 		GetCharactersCharacterIdKillmailsRecent,
 	)
 
 	mockesi.NewRoute(
 		"GetKillmailsKillmailIdKillmailHash",
 		"GET",
-		"//v1/killmails/{killmail_id}/{killmail_hash}/",
+		"/legacy/killmails/{killmail_id}/{killmail_hash}/",
 		GetKillmailsKillmailIdKillmailHash,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdLocation",
 		"GET",
-		"//v1/characters/{character_id}/location/",
+		"/legacy/characters/{character_id}/location/",
 		GetCharactersCharacterIdLocation,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdOnline",
 		"GET",
-		"//v1/characters/{character_id}/online/",
+		"/legacy/characters/{character_id}/online/",
 		GetCharactersCharacterIdOnline,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdShip",
 		"GET",
-		"//v1/characters/{character_id}/ship/",
+		"/legacy/characters/{character_id}/ship/",
 		GetCharactersCharacterIdShip,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdLoyaltyPoints",
 		"GET",
-		"//v1/characters/{character_id}/loyalty/points/",
+		"/legacy/characters/{character_id}/loyalty/points/",
 		GetCharactersCharacterIdLoyaltyPoints,
 	)
 
 	mockesi.NewRoute(
 		"GetLoyaltyStoresCorporationIdOffers",
 		"GET",
-		"//v1/loyalty/stores/{corporation_id}/offers/",
+		"/legacy/loyalty/stores/{corporation_id}/offers/",
 		GetLoyaltyStoresCorporationIdOffers,
 	)
 
 	mockesi.NewRoute(
 		"DeleteCharactersCharacterIdMailLabelsLabelId",
 		"DELETE",
-		"//v1/characters/{character_id}/mail/labels/{label_id}/",
+		"/legacy/characters/{character_id}/mail/labels/{label_id}/",
 		DeleteCharactersCharacterIdMailLabelsLabelId,
 	)
 
 	mockesi.NewRoute(
 		"DeleteCharactersCharacterIdMailMailId",
 		"DELETE",
-		"//v1/characters/{character_id}/mail/{mail_id}/",
+		"/legacy/characters/{character_id}/mail/{mail_id}/",
 		DeleteCharactersCharacterIdMailMailId,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdMail",
 		"GET",
-		"//v1/characters/{character_id}/mail/",
+		"/legacy/characters/{character_id}/mail/",
 		GetCharactersCharacterIdMail,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdMailLabels",
 		"GET",
-		"//v2/characters/{character_id}/mail/labels/",
+		"/legacy/characters/{character_id}/mail/labels/",
 		GetCharactersCharacterIdMailLabels,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdMailLists",
 		"GET",
-		"//v1/characters/{character_id}/mail/lists/",
+		"/legacy/characters/{character_id}/mail/lists/",
 		GetCharactersCharacterIdMailLists,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdMailMailId",
 		"GET",
-		"//v1/characters/{character_id}/mail/{mail_id}/",
+		"/legacy/characters/{character_id}/mail/{mail_id}/",
 		GetCharactersCharacterIdMailMailId,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdMailUnread",
 		"GET",
-		"//v1/characters/{character_id}/mail/unread/",
+		"/legacy/characters/{character_id}/mail/unread/",
 		GetCharactersCharacterIdMailUnread,
 	)
 
 	mockesi.NewRoute(
 		"PostCharactersCharacterIdMail",
 		"POST",
-		"//v1/characters/{character_id}/mail/",
+		"/legacy/characters/{character_id}/mail/",
 		PostCharactersCharacterIdMail,
 	)
 
 	mockesi.NewRoute(
 		"PostCharactersCharacterIdMailLabels",
 		"POST",
-		"//v2/characters/{character_id}/mail/labels/",
+		"/legacy/characters/{character_id}/mail/labels/",
 		PostCharactersCharacterIdMailLabels,
 	)
 
 	mockesi.NewRoute(
 		"PutCharactersCharacterIdMailMailId",
 		"PUT",
-		"//v1/characters/{character_id}/mail/{mail_id}/",
+		"/legacy/characters/{character_id}/mail/{mail_id}/",
 		PutCharactersCharacterIdMailMailId,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdOrders",
 		"GET",
-		"//v1/characters/{character_id}/orders/",
+		"/legacy/characters/{character_id}/orders/",
 		GetCharactersCharacterIdOrders,
 	)
 
 	mockesi.NewRoute(
 		"GetMarketsGroups",
 		"GET",
-		"//v1/markets/groups/",
+		"/legacy/markets/groups/",
 		GetMarketsGroups,
 	)
 
 	mockesi.NewRoute(
 		"GetMarketsGroupsMarketGroupId",
 		"GET",
-		"//v1/markets/groups/{market_group_id}/",
+		"/legacy/markets/groups/{market_group_id}/",
 		GetMarketsGroupsMarketGroupId,
 	)
 
 	mockesi.NewRoute(
 		"GetMarketsPrices",
 		"GET",
-		"//v1/markets/prices/",
+		"/legacy/markets/prices/",
 		GetMarketsPrices,
 	)
 
 	mockesi.NewRoute(
 		"GetMarketsRegionIdHistory",
 		"GET",
-		"//v1/markets/{region_id}/history/",
+		"/legacy/markets/{region_id}/history/",
 		GetMarketsRegionIdHistory,
 	)
 
 	mockesi.NewRoute(
 		"GetMarketsRegionIdOrders",
 		"GET",
-		"//v1/markets/{region_id}/orders/",
+		"/legacy/markets/{region_id}/orders/",
 		GetMarketsRegionIdOrders,
 	)
 
 	mockesi.NewRoute(
 		"GetMarketsStructuresStructureId",
 		"GET",
-		"//v1/markets/structures/{structure_id}/",
+		"/legacy/markets/structures/{structure_id}/",
 		GetMarketsStructuresStructureId,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdOpportunities",
 		"GET",
-		"//v1/characters/{character_id}/opportunities/",
+		"/legacy/characters/{character_id}/opportunities/",
 		GetCharactersCharacterIdOpportunities,
 	)
 
 	mockesi.NewRoute(
 		"GetOpportunitiesGroups",
 		"GET",
-		"//v1/opportunities/groups/",
+		"/legacy/opportunities/groups/",
 		GetOpportunitiesGroups,
 	)
 
 	mockesi.NewRoute(
 		"GetOpportunitiesGroupsGroupId",
 		"GET",
-		"//v1/opportunities/groups/{group_id}/",
+		"/legacy/opportunities/groups/{group_id}/",
 		GetOpportunitiesGroupsGroupId,
 	)
 
 	mockesi.NewRoute(
 		"GetOpportunitiesTasks",
 		"GET",
-		"//v1/opportunities/tasks/",
+		"/legacy/opportunities/tasks/",
 		GetOpportunitiesTasks,
 	)
 
 	mockesi.NewRoute(
 		"GetOpportunitiesTasksTaskId",
 		"GET",
-		"//v1/opportunities/tasks/{task_id}/",
+		"/legacy/opportunities/tasks/{task_id}/",
 		GetOpportunitiesTasksTaskId,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdPlanets",
 		"GET",
-		"//v1/characters/{character_id}/planets/",
+		"/legacy/characters/{character_id}/planets/",
 		GetCharactersCharacterIdPlanets,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdPlanetsPlanetId",
 		"GET",
-		"//v1/characters/{character_id}/planets/{planet_id}/",
+		"/legacy/characters/{character_id}/planets/{planet_id}/",
 		GetCharactersCharacterIdPlanetsPlanetId,
 	)
 
 	mockesi.NewRoute(
 		"GetUniverseSchematicsSchematicId",
 		"GET",
-		"//v1/universe/schematics/{schematic_id}/",
+		"/legacy/universe/schematics/{schematic_id}/",
 		GetUniverseSchematicsSchematicId,
 	)
 
 	mockesi.NewRoute(
 		"GetRouteOriginDestination",
 		"GET",
-		"//v1/route/{origin}/{destination}/",
+		"/legacy/route/{origin}/{destination}/",
 		GetRouteOriginDestination,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdSearch",
 		"GET",
-		"//v1/characters/{character_id}/search/",
+		"/legacy/characters/{character_id}/search/",
 		GetCharactersCharacterIdSearch,
 	)
 
 	mockesi.NewRoute(
 		"GetSearch",
 		"GET",
-		"//v1/search/",
+		"/legacy/search/",
 		GetSearch,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdAttributes",
 		"GET",
-		"//v1/characters/{character_id}/attributes/",
+		"/legacy/characters/{character_id}/attributes/",
 		GetCharactersCharacterIdAttributes,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdSkillqueue",
 		"GET",
-		"//v2/characters/{character_id}/skillqueue/",
+		"/legacy/characters/{character_id}/skillqueue/",
 		GetCharactersCharacterIdSkillqueue,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdSkills",
 		"GET",
-		"//v2/characters/{character_id}/skills/",
+		"/legacy/characters/{character_id}/skills/",
 		GetCharactersCharacterIdSkills,
 	)
 
 	mockesi.NewRoute(
 		"GetSovereigntyCampaigns",
 		"GET",
-		"//v1/sovereignty/campaigns/",
+		"/legacy/sovereignty/campaigns/",
 		GetSovereigntyCampaigns,
 	)
 
 	mockesi.NewRoute(
 		"GetSovereigntyMap",
 		"GET",
-		"//v1/sovereignty/map/",
+		"/legacy/sovereignty/map/",
 		GetSovereigntyMap,
 	)
 
 	mockesi.NewRoute(
 		"GetSovereigntyStructures",
 		"GET",
-		"//v1/sovereignty/structures/",
+		"/legacy/sovereignty/structures/",
 		GetSovereigntyStructures,
 	)
 
 	mockesi.NewRoute(
 		"GetStatus",
 		"GET",
-		"//v1/status/",
+		"/legacy/status/",
 		GetStatus,
 	)
 
 	mockesi.NewRoute(
 		"GetUniverseBloodlines",
 		"GET",
-		"//v1/universe/bloodlines/",
+		"/legacy/universe/bloodlines/",
 		GetUniverseBloodlines,
 	)
 
 	mockesi.NewRoute(
 		"GetUniverseCategories",
 		"GET",
-		"//v1/universe/categories/",
+		"/legacy/universe/categories/",
 		GetUniverseCategories,
 	)
 
 	mockesi.NewRoute(
 		"GetUniverseCategoriesCategoryId",
 		"GET",
-		"//v1/universe/categories/{category_id}/",
+		"/legacy/universe/categories/{category_id}/",
 		GetUniverseCategoriesCategoryId,
 	)
 
 	mockesi.NewRoute(
 		"GetUniverseConstellations",
 		"GET",
-		"//v1/universe/constellations/",
+		"/legacy/universe/constellations/",
 		GetUniverseConstellations,
 	)
 
 	mockesi.NewRoute(
 		"GetUniverseConstellationsConstellationId",
 		"GET",
-		"//v1/universe/constellations/{constellation_id}/",
+		"/legacy/universe/constellations/{constellation_id}/",
 		GetUniverseConstellationsConstellationId,
 	)
 
 	mockesi.NewRoute(
 		"GetUniverseFactions",
 		"GET",
-		"//v1/universe/factions/",
+		"/legacy/universe/factions/",
 		GetUniverseFactions,
 	)
 
 	mockesi.NewRoute(
 		"GetUniverseGraphics",
 		"GET",
-		"//v1/universe/graphics/",
+		"/legacy/universe/graphics/",
 		GetUniverseGraphics,
 	)
 
 	mockesi.NewRoute(
 		"GetUniverseGraphicsGraphicId",
 		"GET",
-		"//v1/universe/graphics/{graphic_id}/",
+		"/legacy/universe/graphics/{graphic_id}/",
 		GetUniverseGraphicsGraphicId,
 	)
 
 	mockesi.NewRoute(
 		"GetUniverseGroups",
 		"GET",
-		"//v1/universe/groups/",
+		"/legacy/universe/groups/",
 		GetUniverseGroups,
 	)
 
 	mockesi.NewRoute(
 		"GetUniverseGroupsGroupId",
 		"GET",
-		"//v1/universe/groups/{group_id}/",
+		"/legacy/universe/groups/{group_id}/",
 		GetUniverseGroupsGroupId,
 	)
 
 	mockesi.NewRoute(
 		"GetUniverseMoonsMoonId",
 		"GET",
-		"//v1/universe/moons/{moon_id}/",
+		"/legacy/universe/moons/{moon_id}/",
 		GetUniverseMoonsMoonId,
 	)
 
 	mockesi.NewRoute(
 		"GetUniversePlanetsPlanetId",
 		"GET",
-		"//v1/universe/planets/{planet_id}/",
+		"/legacy/universe/planets/{planet_id}/",
 		GetUniversePlanetsPlanetId,
 	)
 
 	mockesi.NewRoute(
 		"GetUniverseRaces",
 		"GET",
-		"//v1/universe/races/",
+		"/legacy/universe/races/",
 		GetUniverseRaces,
 	)
 
 	mockesi.NewRoute(
 		"GetUniverseRegions",
 		"GET",
-		"//v1/universe/regions/",
+		"/legacy/universe/regions/",
 		GetUniverseRegions,
 	)
 
 	mockesi.NewRoute(
 		"GetUniverseRegionsRegionId",
 		"GET",
-		"//v1/universe/regions/{region_id}/",
+		"/legacy/universe/regions/{region_id}/",
 		GetUniverseRegionsRegionId,
 	)
 
 	mockesi.NewRoute(
 		"GetUniverseStargatesStargateId",
 		"GET",
-		"//v1/universe/stargates/{stargate_id}/",
+		"/legacy/universe/stargates/{stargate_id}/",
 		GetUniverseStargatesStargateId,
 	)
 
 	mockesi.NewRoute(
 		"GetUniverseStationsStationId",
 		"GET",
-		"//v1/universe/stations/{station_id}/",
+		"/legacy/universe/stations/{station_id}/",
 		GetUniverseStationsStationId,
 	)
 
 	mockesi.NewRoute(
 		"GetUniverseStructures",
 		"GET",
-		"//v1/universe/structures/",
+		"/legacy/universe/structures/",
 		GetUniverseStructures,
 	)
 
 	mockesi.NewRoute(
 		"GetUniverseStructuresStructureId",
 		"GET",
-		"//v1/universe/structures/{structure_id}/",
+		"/legacy/universe/structures/{structure_id}/",
 		GetUniverseStructuresStructureId,
 	)
 
 	mockesi.NewRoute(
 		"GetUniverseSystemJumps",
 		"GET",
-		"//v1/universe/system_jumps/",
+		"/legacy/universe/system_jumps/",
 		GetUniverseSystemJumps,
 	)
 
 	mockesi.NewRoute(
 		"GetUniverseSystemKills",
 		"GET",
-		"//v1/universe/system_kills/",
+		"/legacy/universe/system_kills/",
 		GetUniverseSystemKills,
 	)
 
 	mockesi.NewRoute(
 		"GetUniverseSystems",
 		"GET",
-		"//v1/universe/systems/",
+		"/legacy/universe/systems/",
 		GetUniverseSystems,
 	)
 
 	mockesi.NewRoute(
 		"GetUniverseSystemsSystemId",
 		"GET",
-		"//v1/universe/systems/{system_id}/",
+		"/legacy/universe/systems/{system_id}/",
 		GetUniverseSystemsSystemId,
 	)
 
 	mockesi.NewRoute(
 		"GetUniverseTypes",
 		"GET",
-		"//v1/universe/types/",
+		"/legacy/universe/types/",
 		GetUniverseTypes,
 	)
 
 	mockesi.NewRoute(
 		"GetUniverseTypesTypeId",
 		"GET",
-		"//v1/universe/types/{type_id}/",
+		"/legacy/universe/types/{type_id}/",
 		GetUniverseTypesTypeId,
 	)
 
 	mockesi.NewRoute(
 		"PostUniverseNames",
 		"POST",
-		"//v1/universe/names/",
+		"/legacy/universe/names/",
 		PostUniverseNames,
 	)
 
 	mockesi.NewRoute(
 		"PostUiAutopilotWaypoint",
 		"POST",
-		"//v1/ui/autopilot/waypoint/",
+		"/legacy/ui/autopilot/waypoint/",
 		PostUiAutopilotWaypoint,
 	)
 
 	mockesi.NewRoute(
 		"PostUiOpenwindowContract",
 		"POST",
-		"//v1/ui/openwindow/contract/",
+		"/legacy/ui/openwindow/contract/",
 		PostUiOpenwindowContract,
 	)
 
 	mockesi.NewRoute(
 		"PostUiOpenwindowInformation",
 		"POST",
-		"//v1/ui/openwindow/information/",
+		"/legacy/ui/openwindow/information/",
 		PostUiOpenwindowInformation,
 	)
 
 	mockesi.NewRoute(
 		"PostUiOpenwindowMarketdetails",
 		"POST",
-		"//v1/ui/openwindow/marketdetails/",
+		"/legacy/ui/openwindow/marketdetails/",
 		PostUiOpenwindowMarketdetails,
 	)
 
 	mockesi.NewRoute(
 		"PostUiOpenwindowNewmail",
 		"POST",
-		"//v1/ui/openwindow/newmail/",
+		"/legacy/ui/openwindow/newmail/",
 		PostUiOpenwindowNewmail,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdWallet",
 		"GET",
-		"//v1/characters/{character_id}/wallet/",
+		"/legacy/characters/{character_id}/wallet/",
 		GetCharactersCharacterIdWallet,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdWalletJournal",
 		"GET",
-		"//v1/characters/{character_id}/wallet/journal/",
+		"/legacy/characters/{character_id}/wallet/journal/",
 		GetCharactersCharacterIdWalletJournal,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdWalletTransactions",
 		"GET",
-		"//v1/characters/{character_id}/wallet/transactions/",
+		"/legacy/characters/{character_id}/wallet/transactions/",
 		GetCharactersCharacterIdWalletTransactions,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdWallets",
 		"GET",
-		"//v1/characters/{character_id}/wallets/",
+		"/legacy/characters/{character_id}/wallets/",
 		GetCharactersCharacterIdWallets,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdWalletsJournal",
 		"GET",
-		"//v1/characters/{character_id}/wallets/journal/",
+		"/legacy/characters/{character_id}/wallets/journal/",
 		GetCharactersCharacterIdWalletsJournal,
 	)
 
 	mockesi.NewRoute(
 		"GetWars",
 		"GET",
-		"//v1/wars/",
+		"/legacy/wars/",
 		GetWars,
 	)
 
 	mockesi.NewRoute(
 		"GetWarsWarId",
 		"GET",
-		"//v1/wars/{war_id}/",
+		"/legacy/wars/{war_id}/",
 		GetWarsWarId,
 	)
 
 	mockesi.NewRoute(
 		"GetWarsWarIdKillmails",
 		"GET",
-		"//v1/wars/{war_id}/killmails/",
+		"/legacy/wars/{war_id}/killmails/",
 		GetWarsWarIdKillmails,
 	)
 
 }
+
+
 
 func errorOut(w http.ResponseWriter, r *http.Request, e error) {
 	w.WriteHeader(http.StatusInternalServerError)
 
 	w.Write([]byte(e.Error()))
 }
+
 
 func processParameters(data interface{}, input string) (v interface{}, err error) {
 	switch reflect.TypeOf(data).String() {
