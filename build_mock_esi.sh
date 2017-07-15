@@ -1,4 +1,5 @@
 #!/bin/bash
+go get github.com/sqs/goreturns
 set -e
 curl -s https://esi.tech.ccp.is/versions/ | grep -Po '[a-z0-9]+' | {
     imports=()
