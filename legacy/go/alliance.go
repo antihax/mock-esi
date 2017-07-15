@@ -2,8 +2,9 @@ package esilegacy
 
 import (
 	"net/http"
-	"github.com/gorilla/mux"
 	"time"
+
+	"github.com/gorilla/mux"
 )
 
 var _ time.Time
@@ -12,10 +13,10 @@ var _ = mux.NewRouter
 func GetAlliances(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV     interface{}
+		err        error
 		datasource string
-		userAgent string
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -45,7 +46,7 @@ func GetAlliances(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -60,7 +61,7 @@ func GetAlliances(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -71,11 +72,11 @@ func GetAlliances(w http.ResponseWriter, r *http.Request) {
 func GetAlliancesAllianceId(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV     interface{}
+		err        error
 		allianceId int32
 		datasource string
-		userAgent string
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -117,7 +118,7 @@ func GetAlliancesAllianceId(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -132,7 +133,7 @@ func GetAlliancesAllianceId(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -143,11 +144,11 @@ func GetAlliancesAllianceId(w http.ResponseWriter, r *http.Request) {
 func GetAlliancesAllianceIdCorporations(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV     interface{}
+		err        error
 		allianceId int32
 		datasource string
-		userAgent string
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -184,7 +185,7 @@ func GetAlliancesAllianceIdCorporations(w http.ResponseWriter, r *http.Request) 
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -199,7 +200,7 @@ func GetAlliancesAllianceIdCorporations(w http.ResponseWriter, r *http.Request) 
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -210,11 +211,11 @@ func GetAlliancesAllianceIdCorporations(w http.ResponseWriter, r *http.Request) 
 func GetAlliancesAllianceIdIcons(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV     interface{}
+		err        error
 		allianceId int32
 		datasource string
-		userAgent string
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -254,7 +255,7 @@ func GetAlliancesAllianceIdIcons(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -269,7 +270,7 @@ func GetAlliancesAllianceIdIcons(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -280,11 +281,11 @@ func GetAlliancesAllianceIdIcons(w http.ResponseWriter, r *http.Request) {
 func GetAlliancesNames(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV      interface{}
+		err         error
 		allianceIds []int64
-		datasource string
-		userAgent string
+		datasource  string
+		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -322,7 +323,7 @@ func GetAlliancesNames(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -337,12 +338,10 @@ func GetAlliancesNames(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 
 	w.Write([]byte(j))
 }
-
-

@@ -2,9 +2,10 @@ package esiv2
 
 import (
 	"net/http"
-	"github.com/antihax/mock-esi/mockesi"
-	"strconv"
 	"reflect"
+	"strconv"
+
+	"github.com/antihax/mock-esi/mockesi"
 )
 
 func init() {
@@ -191,16 +192,20 @@ func init() {
 		PostUiAutopilotWaypoint,
 	)
 
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdWalletJournal",
+		"GET",
+		"/v2/characters/{character_id}/wallet/journal/",
+		GetCharactersCharacterIdWalletJournal,
+	)
+
 }
-
-
 
 func errorOut(w http.ResponseWriter, r *http.Request, e error) {
 	w.WriteHeader(http.StatusInternalServerError)
 
 	w.Write([]byte(e.Error()))
 }
-
 
 func processParameters(data interface{}, input string) (v interface{}, err error) {
 	switch reflect.TypeOf(data).String() {

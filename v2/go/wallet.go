@@ -1,4 +1,4 @@
-package esilatest
+package esiv2
 
 import (
 	"net/http"
@@ -10,28 +10,33 @@ import (
 var _ time.Time
 var _ = mux.NewRouter
 
-func GetIncursions(w http.ResponseWriter, r *http.Request) {
+func GetCharactersCharacterIdWalletJournal(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV     interface{}
-		err        error
-		datasource string
-		userAgent  string
+		localV      interface{}
+		err         error
+		characterId int32
+		datasource  string
+		fromId      int64
+		token       string
+		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
 	err = err
 
 	j := `[ {
-  "constellation_id" : 20000607,
-  "faction_id" : 500019,
-  "has_boss" : true,
-  "infested_solar_systems" : [ 30004148, 30004149, 30004150, 30004151, 30004152, 30004153, 30004154 ],
-  "influence" : 1.0,
-  "staging_solar_system_id" : 30004154,
-  "state" : "mobilizing",
-  "type" : "Incursion"
+  "date" : "2016-10-24T09:00:00Z",
+  "ref_id" : 1234567890,
+  "ref_type" : "player_trading"
 } ]`
+	vars := mux.Vars(r)
+	localV, err = processParameters(characterId, vars["character_id"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	characterId = localV.(int32)
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)
 		return
@@ -43,6 +48,22 @@ func GetIncursions(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		datasource = localV.(string)
+	}
+	if r.Form.Get("fromId") != "" {
+		localV, err = processParameters(fromId, r.Form.Get("from_id"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		fromId = localV.(int64)
+	}
+	if r.Form.Get("token") != "" {
+		localV, err = processParameters(token, r.Form.Get("token"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		token = localV.(string)
 	}
 	if r.Form.Get("userAgent") != "" {
 		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))

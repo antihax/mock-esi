@@ -2,8 +2,9 @@ package esilegacy
 
 import (
 	"net/http"
-	"github.com/gorilla/mux"
 	"time"
+
+	"github.com/gorilla/mux"
 )
 
 var _ time.Time
@@ -12,13 +13,13 @@ var _ = mux.NewRouter
 func DeleteFleetsFleetIdMembersMemberId(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
-		fleetId int64
-		memberId int32
+		localV     interface{}
+		err        error
+		fleetId    int64
+		memberId   int32
 		datasource string
-		token string
-		userAgent string
+		token      string
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -69,7 +70,7 @@ func DeleteFleetsFleetIdMembersMemberId(w http.ResponseWriter, r *http.Request) 
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -84,7 +85,7 @@ func DeleteFleetsFleetIdMembersMemberId(w http.ResponseWriter, r *http.Request) 
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "")
 	w.WriteHeader(http.StatusOK)
@@ -95,13 +96,13 @@ func DeleteFleetsFleetIdMembersMemberId(w http.ResponseWriter, r *http.Request) 
 func DeleteFleetsFleetIdSquadsSquadId(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
-		fleetId int64
-		squadId int64
+		localV     interface{}
+		err        error
+		fleetId    int64
+		squadId    int64
 		datasource string
-		token string
-		userAgent string
+		token      string
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -152,7 +153,7 @@ func DeleteFleetsFleetIdSquadsSquadId(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -167,7 +168,7 @@ func DeleteFleetsFleetIdSquadsSquadId(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "")
 	w.WriteHeader(http.StatusOK)
@@ -178,13 +179,13 @@ func DeleteFleetsFleetIdSquadsSquadId(w http.ResponseWriter, r *http.Request) {
 func DeleteFleetsFleetIdWingsWingId(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
-		fleetId int64
-		wingId int64
+		localV     interface{}
+		err        error
+		fleetId    int64
+		wingId     int64
 		datasource string
-		token string
-		userAgent string
+		token      string
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -235,7 +236,7 @@ func DeleteFleetsFleetIdWingsWingId(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -250,7 +251,7 @@ func DeleteFleetsFleetIdWingsWingId(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "")
 	w.WriteHeader(http.StatusOK)
@@ -261,12 +262,12 @@ func DeleteFleetsFleetIdWingsWingId(w http.ResponseWriter, r *http.Request) {
 func GetFleetsFleetId(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
-		fleetId int64
+		localV     interface{}
+		err        error
+		fleetId    int64
 		datasource string
-		token string
-		userAgent string
+		token      string
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -316,7 +317,7 @@ func GetFleetsFleetId(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -331,7 +332,7 @@ func GetFleetsFleetId(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -342,13 +343,13 @@ func GetFleetsFleetId(w http.ResponseWriter, r *http.Request) {
 func GetFleetsFleetIdMembers(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
-		fleetId int64
+		localV     interface{}
+		err        error
+		fleetId    int64
 		datasource string
-		language string
-		token string
-		userAgent string
+		language   string
+		token      string
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -412,7 +413,7 @@ func GetFleetsFleetIdMembers(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -427,7 +428,7 @@ func GetFleetsFleetIdMembers(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -438,13 +439,13 @@ func GetFleetsFleetIdMembers(w http.ResponseWriter, r *http.Request) {
 func GetFleetsFleetIdWings(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
-		fleetId int64
+		localV     interface{}
+		err        error
+		fleetId    int64
 		datasource string
-		language string
-		token string
-		userAgent string
+		language   string
+		token      string
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -504,7 +505,7 @@ func GetFleetsFleetIdWings(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -519,7 +520,7 @@ func GetFleetsFleetIdWings(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -530,12 +531,12 @@ func GetFleetsFleetIdWings(w http.ResponseWriter, r *http.Request) {
 func PostFleetsFleetIdMembers(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
-		fleetId int64
+		localV     interface{}
+		err        error
+		fleetId    int64
 		datasource string
-		token string
-		userAgent string
+		token      string
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -580,7 +581,7 @@ func PostFleetsFleetIdMembers(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -595,7 +596,7 @@ func PostFleetsFleetIdMembers(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "")
 	w.WriteHeader(http.StatusOK)
@@ -606,12 +607,12 @@ func PostFleetsFleetIdMembers(w http.ResponseWriter, r *http.Request) {
 func PostFleetsFleetIdWings(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
-		fleetId int64
+		localV     interface{}
+		err        error
+		fleetId    int64
 		datasource string
-		token string
-		userAgent string
+		token      string
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -658,7 +659,7 @@ func PostFleetsFleetIdWings(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -673,7 +674,7 @@ func PostFleetsFleetIdWings(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -684,13 +685,13 @@ func PostFleetsFleetIdWings(w http.ResponseWriter, r *http.Request) {
 func PostFleetsFleetIdWingsWingIdSquads(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
-		fleetId int64
-		wingId int64
+		localV     interface{}
+		err        error
+		fleetId    int64
+		wingId     int64
 		datasource string
-		token string
-		userAgent string
+		token      string
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -743,7 +744,7 @@ func PostFleetsFleetIdWingsWingIdSquads(w http.ResponseWriter, r *http.Request) 
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -758,7 +759,7 @@ func PostFleetsFleetIdWingsWingIdSquads(w http.ResponseWriter, r *http.Request) 
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -769,12 +770,12 @@ func PostFleetsFleetIdWingsWingIdSquads(w http.ResponseWriter, r *http.Request) 
 func PutFleetsFleetId(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
-		fleetId int64
+		localV     interface{}
+		err        error
+		fleetId    int64
 		datasource string
-		token string
-		userAgent string
+		token      string
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -819,7 +820,7 @@ func PutFleetsFleetId(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -834,7 +835,7 @@ func PutFleetsFleetId(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "")
 	w.WriteHeader(http.StatusOK)
@@ -845,13 +846,13 @@ func PutFleetsFleetId(w http.ResponseWriter, r *http.Request) {
 func PutFleetsFleetIdMembersMemberId(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
-		fleetId int64
-		memberId int32
+		localV     interface{}
+		err        error
+		fleetId    int64
+		memberId   int32
 		datasource string
-		token string
-		userAgent string
+		token      string
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -902,7 +903,7 @@ func PutFleetsFleetIdMembersMemberId(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -917,7 +918,7 @@ func PutFleetsFleetIdMembersMemberId(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "")
 	w.WriteHeader(http.StatusOK)
@@ -928,13 +929,13 @@ func PutFleetsFleetIdMembersMemberId(w http.ResponseWriter, r *http.Request) {
 func PutFleetsFleetIdSquadsSquadId(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
-		fleetId int64
-		squadId int64
+		localV     interface{}
+		err        error
+		fleetId    int64
+		squadId    int64
 		datasource string
-		token string
-		userAgent string
+		token      string
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -985,7 +986,7 @@ func PutFleetsFleetIdSquadsSquadId(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -1000,7 +1001,7 @@ func PutFleetsFleetIdSquadsSquadId(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "")
 	w.WriteHeader(http.StatusOK)
@@ -1011,13 +1012,13 @@ func PutFleetsFleetIdSquadsSquadId(w http.ResponseWriter, r *http.Request) {
 func PutFleetsFleetIdWingsWingId(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
-		fleetId int64
-		wingId int64
+		localV     interface{}
+		err        error
+		fleetId    int64
+		wingId     int64
 		datasource string
-		token string
-		userAgent string
+		token      string
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -1068,7 +1069,7 @@ func PutFleetsFleetIdWingsWingId(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -1083,12 +1084,10 @@ func PutFleetsFleetIdWingsWingId(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "")
 	w.WriteHeader(http.StatusOK)
 
 	w.Write([]byte(j))
 }
-
-

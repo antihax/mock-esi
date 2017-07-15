@@ -2,8 +2,9 @@ package esiv2
 
 import (
 	"net/http"
-	"github.com/gorilla/mux"
 	"time"
+
+	"github.com/gorilla/mux"
 )
 
 var _ time.Time
@@ -12,11 +13,11 @@ var _ = mux.NewRouter
 func GetUniverseStationsStationId(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
-		stationId int32
+		localV     interface{}
+		err        error
+		stationId  int32
 		datasource string
-		userAgent string
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -70,7 +71,7 @@ func GetUniverseStationsStationId(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -85,7 +86,7 @@ func GetUniverseStationsStationId(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -96,10 +97,10 @@ func GetUniverseStationsStationId(w http.ResponseWriter, r *http.Request) {
 func GetUniverseSystemKills(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV     interface{}
+		err        error
 		datasource string
-		userAgent string
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -134,7 +135,7 @@ func GetUniverseSystemKills(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -149,7 +150,7 @@ func GetUniverseSystemKills(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -160,12 +161,12 @@ func GetUniverseSystemKills(w http.ResponseWriter, r *http.Request) {
 func GetUniverseSystemsSystemId(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
-		systemId int32
+		localV     interface{}
+		err        error
+		systemId   int32
 		datasource string
-		language string
-		userAgent string
+		language   string
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -228,7 +229,7 @@ func GetUniverseSystemsSystemId(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -243,7 +244,7 @@ func GetUniverseSystemsSystemId(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -254,12 +255,12 @@ func GetUniverseSystemsSystemId(w http.ResponseWriter, r *http.Request) {
 func GetUniverseTypesTypeId(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
-		typeId int32
+		localV     interface{}
+		err        error
+		typeId     int32
 		datasource string
-		language string
-		userAgent string
+		language   string
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -310,7 +311,7 @@ func GetUniverseTypesTypeId(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -325,7 +326,7 @@ func GetUniverseTypesTypeId(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -336,10 +337,10 @@ func GetUniverseTypesTypeId(w http.ResponseWriter, r *http.Request) {
 func PostUniverseNames(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV     interface{}
+		err        error
 		datasource string
-		userAgent string
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -377,7 +378,7 @@ func PostUniverseNames(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -392,12 +393,10 @@ func PostUniverseNames(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 
 	w.Write([]byte(j))
 }
-
-

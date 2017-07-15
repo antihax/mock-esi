@@ -2,8 +2,9 @@ package esidev
 
 import (
 	"net/http"
-	"github.com/gorilla/mux"
 	"time"
+
+	"github.com/gorilla/mux"
 )
 
 var _ time.Time
@@ -12,12 +13,12 @@ var _ = mux.NewRouter
 func GetCharactersCharacterIdWallet(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV      interface{}
+		err         error
 		characterId int32
-		datasource string
-		token string
-		userAgent string
+		datasource  string
+		token       string
+		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -62,7 +63,7 @@ func GetCharactersCharacterIdWallet(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -77,7 +78,7 @@ func GetCharactersCharacterIdWallet(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -88,13 +89,13 @@ func GetCharactersCharacterIdWallet(w http.ResponseWriter, r *http.Request) {
 func GetCharactersCharacterIdWalletJournal(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV      interface{}
+		err         error
 		characterId int32
-		datasource string
-		fromId int64
-		token string
-		userAgent string
+		datasource  string
+		fromId      int64
+		token       string
+		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -151,7 +152,7 @@ func GetCharactersCharacterIdWalletJournal(w http.ResponseWriter, r *http.Reques
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -166,7 +167,7 @@ func GetCharactersCharacterIdWalletJournal(w http.ResponseWriter, r *http.Reques
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -177,13 +178,13 @@ func GetCharactersCharacterIdWalletJournal(w http.ResponseWriter, r *http.Reques
 func GetCharactersCharacterIdWalletTransactions(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV      interface{}
+		err         error
 		characterId int32
-		datasource string
-		fromId int64
-		token string
-		userAgent string
+		datasource  string
+		fromId      int64
+		token       string
+		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -247,7 +248,7 @@ func GetCharactersCharacterIdWalletTransactions(w http.ResponseWriter, r *http.R
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -262,12 +263,10 @@ func GetCharactersCharacterIdWalletTransactions(w http.ResponseWriter, r *http.R
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 
 	w.Write([]byte(j))
 }
-
-

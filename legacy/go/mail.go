@@ -2,8 +2,9 @@ package esilegacy
 
 import (
 	"net/http"
-	"github.com/gorilla/mux"
 	"time"
+
+	"github.com/gorilla/mux"
 )
 
 var _ time.Time
@@ -12,13 +13,13 @@ var _ = mux.NewRouter
 func DeleteCharactersCharacterIdMailLabelsLabelId(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV      interface{}
+		err         error
 		characterId int32
-		labelId int32
-		datasource string
-		token string
-		userAgent string
+		labelId     int32
+		datasource  string
+		token       string
+		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -69,7 +70,7 @@ func DeleteCharactersCharacterIdMailLabelsLabelId(w http.ResponseWriter, r *http
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -84,7 +85,7 @@ func DeleteCharactersCharacterIdMailLabelsLabelId(w http.ResponseWriter, r *http
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "")
 	w.WriteHeader(http.StatusOK)
@@ -95,13 +96,13 @@ func DeleteCharactersCharacterIdMailLabelsLabelId(w http.ResponseWriter, r *http
 func DeleteCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV      interface{}
+		err         error
 		characterId int32
-		mailId int32
-		datasource string
-		token string
-		userAgent string
+		mailId      int32
+		datasource  string
+		token       string
+		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -152,7 +153,7 @@ func DeleteCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Reques
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -167,7 +168,7 @@ func DeleteCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Reques
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "")
 	w.WriteHeader(http.StatusOK)
@@ -178,14 +179,14 @@ func DeleteCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Reques
 func GetCharactersCharacterIdMail(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV      interface{}
+		err         error
 		characterId int32
-		datasource string
-		labels []int64
-		lastMailId int32
-		token string
-		userAgent string
+		datasource  string
+		labels      []int64
+		lastMailId  int32
+		token       string
+		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -257,7 +258,7 @@ func GetCharactersCharacterIdMail(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -272,7 +273,7 @@ func GetCharactersCharacterIdMail(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -283,12 +284,12 @@ func GetCharactersCharacterIdMail(w http.ResponseWriter, r *http.Request) {
 func GetCharactersCharacterIdMailLabels(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV      interface{}
+		err         error
 		characterId int32
-		datasource string
-		token string
-		userAgent string
+		datasource  string
+		token       string
+		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -337,7 +338,7 @@ func GetCharactersCharacterIdMailLabels(w http.ResponseWriter, r *http.Request) 
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -352,7 +353,7 @@ func GetCharactersCharacterIdMailLabels(w http.ResponseWriter, r *http.Request) 
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -363,12 +364,12 @@ func GetCharactersCharacterIdMailLabels(w http.ResponseWriter, r *http.Request) 
 func GetCharactersCharacterIdMailLists(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV      interface{}
+		err         error
 		characterId int32
-		datasource string
-		token string
-		userAgent string
+		datasource  string
+		token       string
+		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -416,7 +417,7 @@ func GetCharactersCharacterIdMailLists(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -431,7 +432,7 @@ func GetCharactersCharacterIdMailLists(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -442,13 +443,13 @@ func GetCharactersCharacterIdMailLists(w http.ResponseWriter, r *http.Request) {
 func GetCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV      interface{}
+		err         error
 		characterId int32
-		mailId int32
-		datasource string
-		token string
-		userAgent string
+		mailId      int32
+		datasource  string
+		token       string
+		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -506,7 +507,7 @@ func GetCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Request) 
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -521,7 +522,7 @@ func GetCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Request) 
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -532,12 +533,12 @@ func GetCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Request) 
 func GetCharactersCharacterIdMailUnread(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV      interface{}
+		err         error
 		characterId int32
-		datasource string
-		token string
-		userAgent string
+		datasource  string
+		token       string
+		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -582,7 +583,7 @@ func GetCharactersCharacterIdMailUnread(w http.ResponseWriter, r *http.Request) 
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -597,7 +598,7 @@ func GetCharactersCharacterIdMailUnread(w http.ResponseWriter, r *http.Request) 
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -608,12 +609,12 @@ func GetCharactersCharacterIdMailUnread(w http.ResponseWriter, r *http.Request) 
 func PostCharactersCharacterIdMail(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV      interface{}
+		err         error
 		characterId int32
-		datasource string
-		token string
-		userAgent string
+		datasource  string
+		token       string
+		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -658,7 +659,7 @@ func PostCharactersCharacterIdMail(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -673,7 +674,7 @@ func PostCharactersCharacterIdMail(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -684,12 +685,12 @@ func PostCharactersCharacterIdMail(w http.ResponseWriter, r *http.Request) {
 func PostCharactersCharacterIdMailLabels(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV      interface{}
+		err         error
 		characterId int32
-		datasource string
-		token string
-		userAgent string
+		datasource  string
+		token       string
+		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -734,7 +735,7 @@ func PostCharactersCharacterIdMailLabels(w http.ResponseWriter, r *http.Request)
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -749,7 +750,7 @@ func PostCharactersCharacterIdMailLabels(w http.ResponseWriter, r *http.Request)
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -760,13 +761,13 @@ func PostCharactersCharacterIdMailLabels(w http.ResponseWriter, r *http.Request)
 func PutCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV      interface{}
+		err         error
 		characterId int32
-		mailId int32
-		datasource string
-		token string
-		userAgent string
+		mailId      int32
+		datasource  string
+		token       string
+		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -817,7 +818,7 @@ func PutCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Request) 
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -832,12 +833,10 @@ func PutCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Request) 
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "")
 	w.WriteHeader(http.StatusOK)
 
 	w.Write([]byte(j))
 }
-
-
