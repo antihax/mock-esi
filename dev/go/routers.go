@@ -123,6 +123,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdFatigue",
+		"GET",
+		"/dev/characters/{character_id}/fatigue/",
+		GetCharactersCharacterIdFatigue,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdMedals",
 		"GET",
 		"/dev/characters/{character_id}/medals/",
@@ -176,6 +183,13 @@ func init() {
 		"GET",
 		"/dev/characters/{character_id}/clones/",
 		GetCharactersCharacterIdClones,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdImplants",
+		"GET",
+		"/dev/characters/{character_id}/implants/",
+		GetCharactersCharacterIdImplants,
 	)
 
 	mockesi.NewRoute(
@@ -323,6 +337,20 @@ func init() {
 		"GET",
 		"/dev/dogma/effects/{effect_id}/",
 		GetDogmaEffectsEffectId,
+	)
+
+	mockesi.NewRoute(
+		"GetFwStats",
+		"GET",
+		"/dev/fw/stats/",
+		GetFwStats,
+	)
+
+	mockesi.NewRoute(
+		"GetFwWars",
+		"GET",
+		"/dev/fw/wars/",
+		GetFwWars,
 	)
 
 	mockesi.NewRoute(

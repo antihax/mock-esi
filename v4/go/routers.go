@@ -18,6 +18,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"PostCharactersCharacterIdCspa",
+		"POST",
+		"/v4/characters/{character_id}/cspa/",
+		PostCharactersCharacterIdCspa,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdSkills",
 		"GET",
 		"/v4/characters/{character_id}/skills/",

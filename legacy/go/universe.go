@@ -1716,6 +1716,7 @@ func GetUniverseTypesTypeId(w http.ResponseWriter, r *http.Request) {
 		err        error
 		typeId     int32
 		datasource string
+		language   string
 		userAgent  string
 	)
 	// shut up warnings
@@ -1723,11 +1724,11 @@ func GetUniverseTypesTypeId(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "category_id" : 6,
-  "graphic_id" : 46,
+  "description" : "The Rifter is a...",
   "group_id" : 25,
-  "type_description" : "The Rifter is a very powerful combat frigate and can easily tackle the best frigates out there. It has gone through many radical design phases since its inauguration during the Minmatar Rebellion. The Rifter has a wide variety of offensive capabilities, making it an unpredictable and deadly adversary.",
-  "type_name" : "Rifter"
+  "name" : "Rifter",
+  "published" : true,
+  "type_id" : 587
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(typeId, vars["type_id"])
@@ -1747,6 +1748,14 @@ func GetUniverseTypesTypeId(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		datasource = localV.(string)
+	}
+	if r.Form.Get("language") != "" {
+		localV, err = processParameters(language, r.Form.Get("language"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		language = localV.(string)
 	}
 	if r.Form.Get("userAgent") != "" {
 		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))

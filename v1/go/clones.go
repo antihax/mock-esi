@@ -10,7 +10,7 @@ import (
 var _ time.Time
 var _ = mux.NewRouter
 
-func GetCharactersCharacterIdClones(w http.ResponseWriter, r *http.Request) {
+func GetCharactersCharacterIdImplants(w http.ResponseWriter, r *http.Request) {
 
 	var (
 		localV      interface{}
@@ -24,15 +24,7 @@ func GetCharactersCharacterIdClones(w http.ResponseWriter, r *http.Request) {
 	localV = localV
 	err = err
 
-	j := `[ {
-  "implants" : [ 22118 ],
-  "location_id" : 60003463,
-  "location_type" : "station"
-}, {
-  "implants" : [ ],
-  "location_id" : 1021348135816,
-  "location_type" : "structure"
-} ]`
+	j := `[ 1, 2, 3 ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {

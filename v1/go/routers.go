@@ -102,6 +102,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdFatigue",
+		"GET",
+		"/v1/characters/{character_id}/fatigue/",
+		GetCharactersCharacterIdFatigue,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdMedals",
 		"GET",
 		"/v1/characters/{character_id}/medals/",
@@ -144,10 +151,10 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCharactersCharacterIdClones",
+		"GetCharactersCharacterIdImplants",
 		"GET",
-		"/v1/characters/{character_id}/clones/",
-		GetCharactersCharacterIdClones,
+		"/v1/characters/{character_id}/implants/",
+		GetCharactersCharacterIdImplants,
 	)
 
 	mockesi.NewRoute(
@@ -281,6 +288,20 @@ func init() {
 		"GET",
 		"/v1/dogma/effects/{effect_id}/",
 		GetDogmaEffectsEffectId,
+	)
+
+	mockesi.NewRoute(
+		"GetFwStats",
+		"GET",
+		"/v1/fw/stats/",
+		GetFwStats,
+	)
+
+	mockesi.NewRoute(
+		"GetFwWars",
+		"GET",
+		"/v1/fw/wars/",
+		GetFwWars,
 	)
 
 	mockesi.NewRoute(
@@ -865,13 +886,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetUniverseTypesTypeId",
-		"GET",
-		"/v1/universe/types/{type_id}/",
-		GetUniverseTypesTypeId,
-	)
-
-	mockesi.NewRoute(
 		"PostUniverseNames",
 		"POST",
 		"/v1/universe/names/",
@@ -932,20 +946,6 @@ func init() {
 		"GET",
 		"/v1/characters/{character_id}/wallet/transactions/",
 		GetCharactersCharacterIdWalletTransactions,
-	)
-
-	mockesi.NewRoute(
-		"GetCharactersCharacterIdWallets",
-		"GET",
-		"/v1/characters/{character_id}/wallets/",
-		GetCharactersCharacterIdWallets,
-	)
-
-	mockesi.NewRoute(
-		"GetCharactersCharacterIdWalletsJournal",
-		"GET",
-		"/v1/characters/{character_id}/wallets/journal/",
-		GetCharactersCharacterIdWalletsJournal,
 	)
 
 	mockesi.NewRoute(

@@ -1,4 +1,4 @@
-package esilegacy
+package esiv1
 
 import (
 	"net/http"
@@ -10,42 +10,33 @@ import (
 var _ time.Time
 var _ = mux.NewRouter
 
-func GetCharactersCharacterIdClones(w http.ResponseWriter, r *http.Request) {
+func GetFwStats(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV      interface{}
-		err         error
-		characterId int32
-		datasource  string
-		token       string
-		userAgent   string
+		localV     interface{}
+		err        error
+		datasource string
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
 	err = err
 
-	j := `{
-  "home_location" : {
-    "location_id" : 1021348135816,
-    "location_type" : "structure"
+	j := `[ {
+  "faction_id" : 500001,
+  "kills" : {
+    "last_week" : 893,
+    "total" : 684350,
+    "yesterday" : 136
   },
-  "jump_clones" : [ {
-    "implants" : [ 22118 ],
-    "location_id" : 60003463,
-    "location_type" : "station"
-  }, {
-    "implants" : [ ],
-    "location_id" : 1021348135816,
-    "location_type" : "structure"
-  } ]
-}`
-	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["character_id"])
-	if err != nil {
-		errorOut(w, r, err)
-		return
-	}
-	characterId = localV.(int32)
+  "pilots" : 28863,
+  "systems_controlled" : 20,
+  "victory_points" : {
+    "last_week" : 102640,
+    "total" : 52658260,
+    "yesterday" : 15980
+  }
+} ]`
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)
 		return
@@ -57,14 +48,6 @@ func GetCharactersCharacterIdClones(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		datasource = localV.(string)
-	}
-	if r.Form.Get("token") != "" {
-		localV, err = processParameters(token, r.Form.Get("token"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		token = localV.(string)
 	}
 	if r.Form.Get("userAgent") != "" {
 		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
@@ -100,28 +83,22 @@ func GetCharactersCharacterIdClones(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte(j))
 }
 
-func GetCharactersCharacterIdImplants(w http.ResponseWriter, r *http.Request) {
+func GetFwWars(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV      interface{}
-		err         error
-		characterId int32
-		datasource  string
-		token       string
-		userAgent   string
+		localV     interface{}
+		err        error
+		datasource string
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
 	err = err
 
-	j := `[ 1, 2, 3 ]`
-	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["character_id"])
-	if err != nil {
-		errorOut(w, r, err)
-		return
-	}
-	characterId = localV.(int32)
+	j := `[ {
+  "against_id" : 500002,
+  "faction_id" : 500001
+} ]`
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)
 		return
@@ -133,14 +110,6 @@ func GetCharactersCharacterIdImplants(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		datasource = localV.(string)
-	}
-	if r.Form.Get("token") != "" {
-		localV, err = processParameters(token, r.Form.Get("token"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		token = localV.(string)
 	}
 	if r.Form.Get("userAgent") != "" {
 		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
