@@ -970,6 +970,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"PostUniverseNames",
+		"POST",
+		"/legacy/universe/names/",
+		PostUniverseNames,
+	)
+
+	mockesi.NewRoute(
 		"PostUiAutopilotWaypoint",
 		"POST",
 		"/legacy/ui/autopilot/waypoint/",

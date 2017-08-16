@@ -459,6 +459,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCorporationsCorporationIdKillmailsRecent",
+		"GET",
+		"/v1/corporations/{corporation_id}/killmails/recent/",
+		GetCorporationsCorporationIdKillmailsRecent,
+	)
+
+	mockesi.NewRoute(
 		"GetKillmailsKillmailIdKillmailHash",
 		"GET",
 		"/v1/killmails/{killmail_id}/{killmail_hash}/",
@@ -883,6 +890,13 @@ func init() {
 		"GET",
 		"/v1/universe/types/",
 		GetUniverseTypes,
+	)
+
+	mockesi.NewRoute(
+		"PostUniverseNames",
+		"POST",
+		"/v1/universe/names/",
+		PostUniverseNames,
 	)
 
 	mockesi.NewRoute(
