@@ -95,10 +95,80 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdMailLabels",
+		"GET",
+		"/v2/characters/{character_id}/mail/labels/",
+		GetCharactersCharacterIdMailLabels,
+	)
+
+	mockesi.NewRoute(
+		"PostCharactersCharacterIdMailLabels",
+		"POST",
+		"/v2/characters/{character_id}/mail/labels/",
+		PostCharactersCharacterIdMailLabels,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdPlanetsPlanetId",
 		"GET",
 		"/v2/characters/{character_id}/planets/{planet_id}/",
 		GetCharactersCharacterIdPlanetsPlanetId,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdSearch",
+		"GET",
+		"/v2/characters/{character_id}/search/",
+		GetCharactersCharacterIdSearch,
+	)
+
+	mockesi.NewRoute(
+		"GetSearch",
+		"GET",
+		"/v2/search/",
+		GetSearch,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdSkillqueue",
+		"GET",
+		"/v2/characters/{character_id}/skillqueue/",
+		GetCharactersCharacterIdSkillqueue,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdSkills",
+		"GET",
+		"/v2/characters/{character_id}/skills/",
+		GetCharactersCharacterIdSkills,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseStationsStationId",
+		"GET",
+		"/v2/universe/stations/{station_id}/",
+		GetUniverseStationsStationId,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseSystemKills",
+		"GET",
+		"/v2/universe/system_kills/",
+		GetUniverseSystemKills,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseSystemsSystemId",
+		"GET",
+		"/v2/universe/systems/{system_id}/",
+		GetUniverseSystemsSystemId,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseTypesTypeId",
+		"GET",
+		"/v2/universe/types/{type_id}/",
+		GetUniverseTypesTypeId,
 	)
 
 	mockesi.NewRoute(

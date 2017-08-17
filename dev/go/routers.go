@@ -228,6 +228,27 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdContracts",
+		"GET",
+		"/dev/characters/{character_id}/contracts/",
+		GetCharactersCharacterIdContracts,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdContractsContractIdBids",
+		"GET",
+		"/dev/characters/{character_id}/contracts/{contract_id}/bids/",
+		GetCharactersCharacterIdContractsContractIdBids,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdContractsContractIdItems",
+		"GET",
+		"/dev/characters/{character_id}/contracts/{contract_id}/items/",
+		GetCharactersCharacterIdContractsContractIdItems,
+	)
+
+	mockesi.NewRoute(
 		"GetCorporationsCorporationId",
 		"GET",
 		"/dev/corporations/{corporation_id}/",
@@ -480,6 +501,27 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdKillmailsRecent",
+		"GET",
+		"/dev/characters/{character_id}/killmails/recent/",
+		GetCharactersCharacterIdKillmailsRecent,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdKillmailsRecent",
+		"GET",
+		"/dev/corporations/{corporation_id}/killmails/recent/",
+		GetCorporationsCorporationIdKillmailsRecent,
+	)
+
+	mockesi.NewRoute(
+		"GetKillmailsKillmailIdKillmailHash",
+		"GET",
+		"/dev/killmails/{killmail_id}/{killmail_hash}/",
+		GetKillmailsKillmailIdKillmailHash,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdLoyaltyPoints",
 		"GET",
 		"/dev/characters/{character_id}/loyalty/points/",
@@ -491,6 +533,69 @@ func init() {
 		"GET",
 		"/dev/loyalty/stores/{corporation_id}/offers/",
 		GetLoyaltyStoresCorporationIdOffers,
+	)
+
+	mockesi.NewRoute(
+		"DeleteCharactersCharacterIdMailLabelsLabelId",
+		"DELETE",
+		"/dev/characters/{character_id}/mail/labels/{label_id}/",
+		DeleteCharactersCharacterIdMailLabelsLabelId,
+	)
+
+	mockesi.NewRoute(
+		"DeleteCharactersCharacterIdMailMailId",
+		"DELETE",
+		"/dev/characters/{character_id}/mail/{mail_id}/",
+		DeleteCharactersCharacterIdMailMailId,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdMail",
+		"GET",
+		"/dev/characters/{character_id}/mail/",
+		GetCharactersCharacterIdMail,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdMailLabels",
+		"GET",
+		"/dev/characters/{character_id}/mail/labels/",
+		GetCharactersCharacterIdMailLabels,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdMailLists",
+		"GET",
+		"/dev/characters/{character_id}/mail/lists/",
+		GetCharactersCharacterIdMailLists,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdMailMailId",
+		"GET",
+		"/dev/characters/{character_id}/mail/{mail_id}/",
+		GetCharactersCharacterIdMailMailId,
+	)
+
+	mockesi.NewRoute(
+		"PostCharactersCharacterIdMail",
+		"POST",
+		"/dev/characters/{character_id}/mail/",
+		PostCharactersCharacterIdMail,
+	)
+
+	mockesi.NewRoute(
+		"PostCharactersCharacterIdMailLabels",
+		"POST",
+		"/dev/characters/{character_id}/mail/labels/",
+		PostCharactersCharacterIdMailLabels,
+	)
+
+	mockesi.NewRoute(
+		"PutCharactersCharacterIdMailMailId",
+		"PUT",
+		"/dev/characters/{character_id}/mail/{mail_id}/",
+		PutCharactersCharacterIdMailMailId,
 	)
 
 	mockesi.NewRoute(
@@ -606,6 +711,41 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdSearch",
+		"GET",
+		"/dev/characters/{character_id}/search/",
+		GetCharactersCharacterIdSearch,
+	)
+
+	mockesi.NewRoute(
+		"GetSearch",
+		"GET",
+		"/dev/search/",
+		GetSearch,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdAttributes",
+		"GET",
+		"/dev/characters/{character_id}/attributes/",
+		GetCharactersCharacterIdAttributes,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdSkillqueue",
+		"GET",
+		"/dev/characters/{character_id}/skillqueue/",
+		GetCharactersCharacterIdSkillqueue,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdSkills",
+		"GET",
+		"/dev/characters/{character_id}/skills/",
+		GetCharactersCharacterIdSkills,
+	)
+
+	mockesi.NewRoute(
 		"GetSovereigntyCampaigns",
 		"GET",
 		"/dev/sovereignty/campaigns/",
@@ -631,6 +771,181 @@ func init() {
 		"GET",
 		"/dev/status/",
 		GetStatus,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseBloodlines",
+		"GET",
+		"/dev/universe/bloodlines/",
+		GetUniverseBloodlines,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseCategories",
+		"GET",
+		"/dev/universe/categories/",
+		GetUniverseCategories,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseCategoriesCategoryId",
+		"GET",
+		"/dev/universe/categories/{category_id}/",
+		GetUniverseCategoriesCategoryId,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseConstellations",
+		"GET",
+		"/dev/universe/constellations/",
+		GetUniverseConstellations,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseConstellationsConstellationId",
+		"GET",
+		"/dev/universe/constellations/{constellation_id}/",
+		GetUniverseConstellationsConstellationId,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseFactions",
+		"GET",
+		"/dev/universe/factions/",
+		GetUniverseFactions,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseGraphics",
+		"GET",
+		"/dev/universe/graphics/",
+		GetUniverseGraphics,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseGraphicsGraphicId",
+		"GET",
+		"/dev/universe/graphics/{graphic_id}/",
+		GetUniverseGraphicsGraphicId,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseGroups",
+		"GET",
+		"/dev/universe/groups/",
+		GetUniverseGroups,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseGroupsGroupId",
+		"GET",
+		"/dev/universe/groups/{group_id}/",
+		GetUniverseGroupsGroupId,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseMoonsMoonId",
+		"GET",
+		"/dev/universe/moons/{moon_id}/",
+		GetUniverseMoonsMoonId,
+	)
+
+	mockesi.NewRoute(
+		"GetUniversePlanetsPlanetId",
+		"GET",
+		"/dev/universe/planets/{planet_id}/",
+		GetUniversePlanetsPlanetId,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseRaces",
+		"GET",
+		"/dev/universe/races/",
+		GetUniverseRaces,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseRegions",
+		"GET",
+		"/dev/universe/regions/",
+		GetUniverseRegions,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseRegionsRegionId",
+		"GET",
+		"/dev/universe/regions/{region_id}/",
+		GetUniverseRegionsRegionId,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseStargatesStargateId",
+		"GET",
+		"/dev/universe/stargates/{stargate_id}/",
+		GetUniverseStargatesStargateId,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseStationsStationId",
+		"GET",
+		"/dev/universe/stations/{station_id}/",
+		GetUniverseStationsStationId,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseStructures",
+		"GET",
+		"/dev/universe/structures/",
+		GetUniverseStructures,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseStructuresStructureId",
+		"GET",
+		"/dev/universe/structures/{structure_id}/",
+		GetUniverseStructuresStructureId,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseSystemJumps",
+		"GET",
+		"/dev/universe/system_jumps/",
+		GetUniverseSystemJumps,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseSystemKills",
+		"GET",
+		"/dev/universe/system_kills/",
+		GetUniverseSystemKills,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseSystems",
+		"GET",
+		"/dev/universe/systems/",
+		GetUniverseSystems,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseSystemsSystemId",
+		"GET",
+		"/dev/universe/systems/{system_id}/",
+		GetUniverseSystemsSystemId,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseTypes",
+		"GET",
+		"/dev/universe/types/",
+		GetUniverseTypes,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseTypesTypeId",
+		"GET",
+		"/dev/universe/types/{type_id}/",
+		GetUniverseTypesTypeId,
 	)
 
 	mockesi.NewRoute(
@@ -666,6 +981,27 @@ func init() {
 		"POST",
 		"/dev/ui/openwindow/newmail/",
 		PostUiOpenwindowNewmail,
+	)
+
+	mockesi.NewRoute(
+		"GetWars",
+		"GET",
+		"/dev/wars/",
+		GetWars,
+	)
+
+	mockesi.NewRoute(
+		"GetWarsWarId",
+		"GET",
+		"/dev/wars/{war_id}/",
+		GetWarsWarId,
+	)
+
+	mockesi.NewRoute(
+		"GetWarsWarIdKillmails",
+		"GET",
+		"/dev/wars/{war_id}/killmails/",
+		GetWarsWarIdKillmails,
 	)
 
 }

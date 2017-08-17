@@ -60,10 +60,45 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdMailLabels",
+		"GET",
+		"/v3/characters/{character_id}/mail/labels/",
+		GetCharactersCharacterIdMailLabels,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdPlanetsPlanetId",
 		"GET",
 		"/v3/characters/{character_id}/planets/{planet_id}/",
 		GetCharactersCharacterIdPlanetsPlanetId,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdSearch",
+		"GET",
+		"/v3/characters/{character_id}/search/",
+		GetCharactersCharacterIdSearch,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdSkills",
+		"GET",
+		"/v3/characters/{character_id}/skills/",
+		GetCharactersCharacterIdSkills,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseSystemsSystemId",
+		"GET",
+		"/v3/universe/systems/{system_id}/",
+		GetUniverseSystemsSystemId,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseTypesTypeId",
+		"GET",
+		"/v3/universe/types/{type_id}/",
+		GetUniverseTypesTypeId,
 	)
 
 }
