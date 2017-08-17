@@ -24,13 +24,6 @@ func init() {
 		PostCharactersCharacterIdCspa,
 	)
 
-	mockesi.NewRoute(
-		"GetCharactersCharacterIdSkills",
-		"GET",
-		"/v4/characters/{character_id}/skills/",
-		GetCharactersCharacterIdSkills,
-	)
-
 }
 
 func errorOut(w http.ResponseWriter, r *http.Request, e error) {
