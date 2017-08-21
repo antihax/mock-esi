@@ -95,6 +95,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdOnline",
+		"GET",
+		"/v2/characters/{character_id}/online/",
+		GetCharactersCharacterIdOnline,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdMailLabels",
 		"GET",
 		"/v2/characters/{character_id}/mail/labels/",
@@ -176,6 +183,13 @@ func init() {
 		"POST",
 		"/v2/ui/autopilot/waypoint/",
 		PostUiAutopilotWaypoint,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdWalletJournal",
+		"GET",
+		"/v2/characters/{character_id}/wallet/journal/",
+		GetCharactersCharacterIdWalletJournal,
 	)
 
 }
