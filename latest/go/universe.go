@@ -1179,6 +1179,82 @@ func GetUniverseStargatesStargateId(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte(j))
 }
 
+func GetUniverseStarsStarId(w http.ResponseWriter, r *http.Request) {
+
+	var (
+		localV     interface{}
+		err        error
+		starId     int32
+		datasource string
+		userAgent  string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
+
+	j := `{
+  "age" : 9398686722,
+  "luminosity" : 0.06615000218153,
+  "name" : "BKG-Q2 - Star",
+  "radius" : 346600000,
+  "solar_system_id" : 30004333,
+  "spectral_class" : "K2 V",
+  "temperature" : 3953,
+  "type_id" : 45033
+}`
+	vars := mux.Vars(r)
+	localV, err = processParameters(starId, vars["star_id"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	starId = localV.(int32)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		userAgent = localV.(string)
+	}
+
+	if r.Form.Get("page") != "" {
+		var (
+			localPage    int32
+			localIntPage interface{}
+		)
+		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		localPage = localIntPage.(int32)
+		if localPage > 1 {
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("[]"))
+			return
+		}
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
+}
+
 func GetUniverseStationsStationId(w http.ResponseWriter, r *http.Request) {
 
 	var (
@@ -1616,6 +1692,7 @@ func GetUniverseSystemsSystemId(w http.ResponseWriter, r *http.Request) {
   },
   "security_class" : "B",
   "security_status" : 0.8462923765182495,
+  "star_id" : 40000040,
   "stargates" : [ 50000342 ],
   "system_id" : 30000003
 }`
