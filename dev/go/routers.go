@@ -522,6 +522,27 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdLocation",
+		"GET",
+		"/dev/characters/{character_id}/location/",
+		GetCharactersCharacterIdLocation,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdOnline",
+		"GET",
+		"/dev/characters/{character_id}/online/",
+		GetCharactersCharacterIdOnline,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdShip",
+		"GET",
+		"/dev/characters/{character_id}/ship/",
+		GetCharactersCharacterIdShip,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdLoyaltyPoints",
 		"GET",
 		"/dev/characters/{character_id}/loyalty/points/",
