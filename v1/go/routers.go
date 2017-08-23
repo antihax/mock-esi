@@ -291,10 +291,38 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetFwLeaderboards",
+		"GET",
+		"/v1/fw/leaderboards/",
+		GetFwLeaderboards,
+	)
+
+	mockesi.NewRoute(
+		"GetFwLeaderboardsCharacters",
+		"GET",
+		"/v1/fw/leaderboards/characters/",
+		GetFwLeaderboardsCharacters,
+	)
+
+	mockesi.NewRoute(
+		"GetFwLeaderboardsCorporations",
+		"GET",
+		"/v1/fw/leaderboards/corporations/",
+		GetFwLeaderboardsCorporations,
+	)
+
+	mockesi.NewRoute(
 		"GetFwStats",
 		"GET",
 		"/v1/fw/stats/",
 		GetFwStats,
+	)
+
+	mockesi.NewRoute(
+		"GetFwSystems",
+		"GET",
+		"/v1/fw/systems/",
+		GetFwSystems,
 	)
 
 	mockesi.NewRoute(

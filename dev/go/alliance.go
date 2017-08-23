@@ -84,6 +84,8 @@ func GetAlliancesAllianceId(w http.ResponseWriter, r *http.Request) {
 
 	j := `{
   "alliance_name" : "C C P Alliance",
+  "creator_corporation_id" : 45678,
+  "creator_id" : 12345,
   "date_founded" : "2016-06-26T21:00:00Z",
   "executor_corporation_id" : 98356193,
   "ticker" : "<C C P>"

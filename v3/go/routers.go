@@ -11,6 +11,13 @@ import (
 func init() {
 
 	mockesi.NewRoute(
+		"GetAlliancesAllianceId",
+		"GET",
+		"/v3/alliances/{alliance_id}/",
+		GetAlliancesAllianceId,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdCalendarEventId",
 		"GET",
 		"/v3/characters/{character_id}/calendar/{event_id}/",
