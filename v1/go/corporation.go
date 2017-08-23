@@ -158,6 +158,96 @@ func GetCorporationsCorporationIdIcons(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte(j))
 }
 
+func GetCorporationsCorporationIdMembertracking(w http.ResponseWriter, r *http.Request) {
+
+	var (
+		localV        interface{}
+		err           error
+		corporationId int32
+		datasource    string
+		token         string
+		userAgent     string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
+
+	j := `[ {
+  "character_id" : 2112000001,
+  "location_id" : 30003657,
+  "logoff_date" : "2017-08-03T14:31:16Z",
+  "logon_date" : "2017-08-03T14:22:03Z",
+  "ship_type_id" : 22464,
+  "start_date" : "2017-07-10T14:46:00Z"
+}, {
+  "character_id" : 2112000002,
+  "location_id" : 30003657,
+  "logoff_date" : "2017-07-25T11:07:40Z",
+  "logon_date" : "2017-07-25T10:54:00Z",
+  "ship_type_id" : 670,
+  "start_date" : "2017-07-10T14:50:00Z"
+} ]`
+	vars := mux.Vars(r)
+	localV, err = processParameters(corporationId, vars["corporation_id"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	corporationId = localV.(int32)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
+	if r.Form.Get("token") != "" {
+		localV, err = processParameters(token, r.Form.Get("token"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		token = localV.(string)
+	}
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		userAgent = localV.(string)
+	}
+
+	if r.Form.Get("page") != "" {
+		var (
+			localPage    int32
+			localIntPage interface{}
+		)
+		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		localPage = localIntPage.(int32)
+		if localPage > 1 {
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("[]"))
+			return
+		}
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
+}
+
 func GetCorporationsCorporationIdRoles(w http.ResponseWriter, r *http.Request) {
 
 	var (
