@@ -137,6 +137,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdNotificationsContacts",
+		"GET",
+		"/dev/characters/{character_id}/notifications/contacts/",
+		GetCharactersCharacterIdNotificationsContacts,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdPortrait",
 		"GET",
 		"/dev/characters/{character_id}/portrait/",
