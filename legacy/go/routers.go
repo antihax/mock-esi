@@ -550,6 +550,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCorporationsCorporationIdKillmailsRecent",
+		"GET",
+		"/legacy/corporations/{corporation_id}/killmails/recent/",
+		GetCorporationsCorporationIdKillmailsRecent,
+	)
+
+	mockesi.NewRoute(
 		"GetKillmailsKillmailIdKillmailHash",
 		"GET",
 		"/legacy/killmails/{killmail_id}/{killmail_hash}/",
