@@ -921,13 +921,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetUniverseSystemsSystemId",
-		"GET",
-		"/v1/universe/systems/{system_id}/",
-		GetUniverseSystemsSystemId,
-	)
-
-	mockesi.NewRoute(
 		"GetUniverseTypes",
 		"GET",
 		"/v1/universe/types/",
