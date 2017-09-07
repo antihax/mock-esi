@@ -186,6 +186,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCorporationsCorporationIdContacts",
+		"GET",
+		"/v1/corporations/{corporation_id}/contacts/",
+		GetCorporationsCorporationIdContacts,
+	)
+
+	mockesi.NewRoute(
 		"PostCharactersCharacterIdContacts",
 		"POST",
 		"/v1/characters/{character_id}/contacts/",
@@ -228,10 +235,24 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCorporationsCorporationIdDivisions",
+		"GET",
+		"/v1/corporations/{corporation_id}/divisions/",
+		GetCorporationsCorporationIdDivisions,
+	)
+
+	mockesi.NewRoute(
 		"GetCorporationsCorporationIdIcons",
 		"GET",
 		"/v1/corporations/{corporation_id}/icons/",
 		GetCorporationsCorporationIdIcons,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdMembersLimit",
+		"GET",
+		"/v1/corporations/{corporation_id}/members/limit/",
+		GetCorporationsCorporationIdMembersLimit,
 	)
 
 	mockesi.NewRoute(
@@ -645,6 +666,13 @@ func init() {
 		"GET",
 		"/v1/markets/{region_id}/orders/",
 		GetMarketsRegionIdOrders,
+	)
+
+	mockesi.NewRoute(
+		"GetMarketsRegionIdTypes",
+		"GET",
+		"/v1/markets/{region_id}/types/",
+		GetMarketsRegionIdTypes,
 	)
 
 	mockesi.NewRoute(
