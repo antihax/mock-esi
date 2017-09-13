@@ -53,6 +53,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCorporationsCorporationIdAssets",
+		"GET",
+		"/latest/corporations/{corporation_id}/assets/",
+		GetCorporationsCorporationIdAssets,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdBookmarks",
 		"GET",
 		"/latest/characters/{character_id}/bookmarks/",
@@ -1121,6 +1128,13 @@ func init() {
 		"GET",
 		"/latest/corporations/{corporation_id}/wallets/{division}/journal/",
 		GetCorporationsCorporationIdWalletsDivisionJournal,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdWalletsDivisionTransactions",
+		"GET",
+		"/latest/corporations/{corporation_id}/wallets/{division}/transactions/",
+		GetCorporationsCorporationIdWalletsDivisionTransactions,
 	)
 
 	mockesi.NewRoute(
