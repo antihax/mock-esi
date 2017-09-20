@@ -88,6 +88,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdCalendarEventIdAttendees",
+		"GET",
+		"/legacy/characters/{character_id}/calendar/{event_id}/attendees/",
+		GetCharactersCharacterIdCalendarEventIdAttendees,
+	)
+
+	mockesi.NewRoute(
 		"PutCharactersCharacterIdCalendarEventId",
 		"PUT",
 		"/legacy/characters/{character_id}/calendar/{event_id}/",
