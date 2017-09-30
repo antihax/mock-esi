@@ -530,7 +530,7 @@ func GetCharactersCharacterIdNotifications(w http.ResponseWriter, r *http.Reques
   "notification_id" : 1,
   "sender_id" : 1000132,
   "sender_type" : "corporation",
-  "text" : "amount: 3731016.4000000004\nitemID: 1024881021663\npayout: 1\n",
+  "text" : "amount: 3731016.4000000004\\nitemID: 1024881021663\\npayout: 1\\n",
   "timestamp" : "2017-08-16T10:08:00Z",
   "type" : "InsurancePayoutMsg"
 } ]`

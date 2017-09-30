@@ -87,6 +87,100 @@ func GetCorporationsCorporationIdAlliancehistory(w http.ResponseWriter, r *http.
 	w.Write([]byte(j))
 }
 
+func GetCorporationsCorporationIdBlueprints(w http.ResponseWriter, r *http.Request) {
+
+	var (
+		localV        interface{}
+		err           error
+		corporationId int32
+		datasource    string
+		page          int32
+		token         string
+		userAgent     string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
+
+	j := `[ {
+  "item_id" : 1000000010495,
+  "location_flag" : "CorpSAG1",
+  "location_id" : 60014719,
+  "material_efficiency" : 0,
+  "quantity" : 1,
+  "runs" : -1,
+  "time_efficiency" : 0,
+  "type_id" : 691
+} ]`
+	vars := mux.Vars(r)
+	localV, err = processParameters(corporationId, vars["corporation_id"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	corporationId = localV.(int32)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
+	if r.Form.Get("page") != "" {
+		localV, err = processParameters(page, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		page = localV.(int32)
+	}
+	if r.Form.Get("token") != "" {
+		localV, err = processParameters(token, r.Form.Get("token"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		token = localV.(string)
+	}
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		userAgent = localV.(string)
+	}
+
+	if r.Form.Get("page") != "" {
+		var (
+			localPage    int32
+			localIntPage interface{}
+		)
+		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		localPage = localIntPage.(int32)
+		if localPage > 1 {
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("[]"))
+			return
+		}
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
+}
+
 func GetCorporationsCorporationIdDivisions(w http.ResponseWriter, r *http.Request) {
 
 	var (
@@ -553,6 +647,86 @@ func GetCorporationsCorporationIdStructures(w http.ResponseWriter, r *http.Reque
 			return
 		}
 		page = localV.(int32)
+	}
+	if r.Form.Get("token") != "" {
+		localV, err = processParameters(token, r.Form.Get("token"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		token = localV.(string)
+	}
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		userAgent = localV.(string)
+	}
+
+	if r.Form.Get("page") != "" {
+		var (
+			localPage    int32
+			localIntPage interface{}
+		)
+		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		localPage = localIntPage.(int32)
+		if localPage > 1 {
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("[]"))
+			return
+		}
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
+}
+
+func GetCorporationsCorporationIdTitles(w http.ResponseWriter, r *http.Request) {
+
+	var (
+		localV        interface{}
+		err           error
+		corporationId int32
+		datasource    string
+		token         string
+		userAgent     string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
+
+	j := `[ {
+  "name" : "Awesome Title",
+  "roles" : [ "Hangar_Take_6", "Hangar_Query_2" ],
+  "title_id" : 1
+} ]`
+	vars := mux.Vars(r)
+	localV, err = processParameters(corporationId, vars["corporation_id"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	corporationId = localV.(int32)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
 	}
 	if r.Form.Get("token") != "" {
 		localV, err = processParameters(token, r.Form.Get("token"))
