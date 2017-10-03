@@ -81,13 +81,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCharactersCharacterIdBookmarksFolders",
-		"GET",
-		"/dev/characters/{character_id}/bookmarks/folders/",
-		GetCharactersCharacterIdBookmarksFolders,
-	)
-
-	mockesi.NewRoute(
 		"GetCharactersCharacterIdCalendar",
 		"GET",
 		"/dev/characters/{character_id}/calendar/",
