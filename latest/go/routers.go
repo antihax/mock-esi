@@ -88,6 +88,20 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCorporationsCorporationIdBookmarks",
+		"GET",
+		"/latest/corporations/{corporation_id}/bookmarks/",
+		GetCorporationsCorporationIdBookmarks,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdBookmarksFolders",
+		"GET",
+		"/latest/corporations/{corporation_id}/bookmarks/folders/",
+		GetCorporationsCorporationIdBookmarksFolders,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdCalendar",
 		"GET",
 		"/latest/characters/{character_id}/calendar/",
