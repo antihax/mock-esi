@@ -74,6 +74,20 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"PostCorporationsCorporationIdAssetsLocations",
+		"POST",
+		"/legacy/corporations/{corporation_id}/assets/locations/",
+		PostCorporationsCorporationIdAssetsLocations,
+	)
+
+	mockesi.NewRoute(
+		"PostCorporationsCorporationIdAssetsNames",
+		"POST",
+		"/legacy/corporations/{corporation_id}/assets/names/",
+		PostCorporationsCorporationIdAssetsNames,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdBookmarks",
 		"GET",
 		"/legacy/characters/{character_id}/bookmarks/",
@@ -256,6 +270,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetAlliancesAllianceIdContacts",
+		"GET",
+		"/legacy/alliances/{alliance_id}/contacts/",
+		GetAlliancesAllianceIdContacts,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdContacts",
 		"GET",
 		"/legacy/characters/{character_id}/contacts/",
@@ -312,6 +333,27 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCorporationsCorporationIdContracts",
+		"GET",
+		"/legacy/corporations/{corporation_id}/contracts/",
+		GetCorporationsCorporationIdContracts,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdContractsContractIdBids",
+		"GET",
+		"/legacy/corporations/{corporation_id}/contracts/{contract_id}/bids/",
+		GetCorporationsCorporationIdContractsContractIdBids,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdContractsContractIdItems",
+		"GET",
+		"/legacy/corporations/{corporation_id}/contracts/{contract_id}/items/",
+		GetCorporationsCorporationIdContractsContractIdItems,
+	)
+
+	mockesi.NewRoute(
 		"GetCorporationsCorporationId",
 		"GET",
 		"/legacy/corporations/{corporation_id}/",
@@ -330,6 +372,13 @@ func init() {
 		"GET",
 		"/legacy/corporations/{corporation_id}/blueprints/",
 		GetCorporationsCorporationIdBlueprints,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdContainersLogs",
+		"GET",
+		"/legacy/corporations/{corporation_id}/containers/logs/",
+		GetCorporationsCorporationIdContainersLogs,
 	)
 
 	mockesi.NewRoute(
@@ -372,6 +421,20 @@ func init() {
 		"GET",
 		"/legacy/corporations/{corporation_id}/roles/",
 		GetCorporationsCorporationIdRoles,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdShareholders",
+		"GET",
+		"/legacy/corporations/{corporation_id}/shareholders/",
+		GetCorporationsCorporationIdShareholders,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdStandings",
+		"GET",
+		"/legacy/corporations/{corporation_id}/standings/",
+		GetCorporationsCorporationIdStandings,
 	)
 
 	mockesi.NewRoute(
@@ -522,6 +585,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdFleet",
+		"GET",
+		"/legacy/characters/{character_id}/fleet/",
+		GetCharactersCharacterIdFleet,
+	)
+
+	mockesi.NewRoute(
 		"GetFleetsFleetId",
 		"GET",
 		"/legacy/fleets/{fleet_id}/",
@@ -603,6 +673,41 @@ func init() {
 		"GET",
 		"/legacy/characters/{character_id}/industry/jobs/",
 		GetCharactersCharacterIdIndustryJobs,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdMining",
+		"GET",
+		"/legacy/characters/{character_id}/mining/",
+		GetCharactersCharacterIdMining,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationCorporationIdMiningExtractions",
+		"GET",
+		"/legacy/corporation/{corporation_id}/mining/extractions/",
+		GetCorporationCorporationIdMiningExtractions,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationCorporationIdMiningObservers",
+		"GET",
+		"/legacy/corporation/{corporation_id}/mining/observers/",
+		GetCorporationCorporationIdMiningObservers,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationCorporationIdMiningObserversObserverId",
+		"GET",
+		"/legacy/corporation/{corporation_id}/mining/observers/{observer_id}/",
+		GetCorporationCorporationIdMiningObserversObserverId,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdIndustryJobs",
+		"GET",
+		"/legacy/corporations/{corporation_id}/industry/jobs/",
+		GetCorporationsCorporationIdIndustryJobs,
 	)
 
 	mockesi.NewRoute(
@@ -757,6 +862,13 @@ func init() {
 		"GET",
 		"/legacy/characters/{character_id}/orders/",
 		GetCharactersCharacterIdOrders,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdOrders",
+		"GET",
+		"/legacy/corporations/{corporation_id}/orders/",
+		GetCorporationsCorporationIdOrders,
 	)
 
 	mockesi.NewRoute(

@@ -257,6 +257,120 @@ func GetCorporationsCorporationIdBlueprints(w http.ResponseWriter, r *http.Reque
 	w.Write([]byte(j))
 }
 
+func GetCorporationsCorporationIdContainersLogs(w http.ResponseWriter, r *http.Request) {
+
+	var (
+		localV        interface{}
+		err           error
+		corporationId int32
+		datasource    string
+		page          int32
+		token         string
+		userAgent     string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
+
+	j := `[ {
+  "action" : "set_password",
+  "character_id" : 2112625428,
+  "container_id" : 1000000012279,
+  "container_type_id" : 17365,
+  "location_flag" : "CorpSAG1",
+  "location_id" : 1000000012278,
+  "logged_at" : "2017-10-10T14:00:00Z",
+  "password_type" : "general"
+}, {
+  "action" : "lock",
+  "character_id" : 2112625428,
+  "container_id" : 1000000012279,
+  "container_type_id" : 17365,
+  "location_flag" : "CorpSAG1",
+  "location_id" : 1000000012278,
+  "logged_at" : "2017-10-11T12:04:33",
+  "quantity" : 30,
+  "type_id" : 1230
+}, {
+  "action" : "configure",
+  "character_id" : 2112625428,
+  "container_id" : 1000000012279,
+  "container_type_id" : 17365,
+  "location_flag" : "CorpSAG2",
+  "location_id" : 1000000012278,
+  "logged_at" : "2017-10-11T12:06:29Z",
+  "new_config_bitmask" : 31,
+  "old_config_bitmask" : 23
+} ]`
+	vars := mux.Vars(r)
+	localV, err = processParameters(corporationId, vars["corporation_id"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	corporationId = localV.(int32)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
+	if r.Form.Get("page") != "" {
+		localV, err = processParameters(page, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		page = localV.(int32)
+	}
+	if r.Form.Get("token") != "" {
+		localV, err = processParameters(token, r.Form.Get("token"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		token = localV.(string)
+	}
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		userAgent = localV.(string)
+	}
+
+	if r.Form.Get("page") != "" {
+		var (
+			localPage    int32
+			localIntPage interface{}
+		)
+		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		localPage = localIntPage.(int32)
+		if localPage > 1 {
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("[]"))
+			return
+		}
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
+}
+
 func GetCorporationsCorporationIdDivisions(w http.ResponseWriter, r *http.Request) {
 
 	var (
@@ -695,6 +809,204 @@ func GetCorporationsCorporationIdRoles(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		datasource = localV.(string)
+	}
+	if r.Form.Get("token") != "" {
+		localV, err = processParameters(token, r.Form.Get("token"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		token = localV.(string)
+	}
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		userAgent = localV.(string)
+	}
+
+	if r.Form.Get("page") != "" {
+		var (
+			localPage    int32
+			localIntPage interface{}
+		)
+		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		localPage = localIntPage.(int32)
+		if localPage > 1 {
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("[]"))
+			return
+		}
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
+}
+
+func GetCorporationsCorporationIdShareholders(w http.ResponseWriter, r *http.Request) {
+
+	var (
+		localV        interface{}
+		err           error
+		corporationId int32
+		datasource    string
+		page          int32
+		token         string
+		userAgent     string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
+
+	j := `[ {
+  "share_count" : 580,
+  "shareholder_id" : 98000001,
+  "shareholder_type" : "corporation"
+}, {
+  "share_count" : 20,
+  "shareholder_id" : 2112000003,
+  "shareholder_type" : "character"
+}, {
+  "share_count" : 300,
+  "shareholder_id" : 2112000004,
+  "shareholder_type" : "character"
+}, {
+  "share_count" : 100,
+  "shareholder_id" : 2112000001,
+  "shareholder_type" : "character"
+} ]`
+	vars := mux.Vars(r)
+	localV, err = processParameters(corporationId, vars["corporation_id"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	corporationId = localV.(int32)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
+	if r.Form.Get("page") != "" {
+		localV, err = processParameters(page, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		page = localV.(int32)
+	}
+	if r.Form.Get("token") != "" {
+		localV, err = processParameters(token, r.Form.Get("token"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		token = localV.(string)
+	}
+	if r.Form.Get("userAgent") != "" {
+		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		userAgent = localV.(string)
+	}
+
+	if r.Form.Get("page") != "" {
+		var (
+			localPage    int32
+			localIntPage interface{}
+		)
+		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		localPage = localIntPage.(int32)
+		if localPage > 1 {
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("[]"))
+			return
+		}
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
+}
+
+func GetCorporationsCorporationIdStandings(w http.ResponseWriter, r *http.Request) {
+
+	var (
+		localV        interface{}
+		err           error
+		corporationId int32
+		datasource    string
+		page          int32
+		token         string
+		userAgent     string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
+
+	j := `[ {
+  "from_id" : 3009841,
+  "from_type" : "agent",
+  "standing" : 0.1
+}, {
+  "from_id" : 1000061,
+  "from_type" : "npc_corp",
+  "standing" : 0
+}, {
+  "from_id" : 500003,
+  "from_type" : "faction",
+  "standing" : -1
+} ]`
+	vars := mux.Vars(r)
+	localV, err = processParameters(corporationId, vars["corporation_id"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	corporationId = localV.(int32)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
+	if r.Form.Get("page") != "" {
+		localV, err = processParameters(page, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		page = localV.(int32)
 	}
 	if r.Form.Get("token") != "" {
 		localV, err = processParameters(token, r.Form.Get("token"))
