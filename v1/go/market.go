@@ -686,7 +686,7 @@ func GetMarketsStructuresStructureId(w http.ResponseWriter, r *http.Request) {
   "duration" : 90,
   "is_buy_order" : false,
   "issued" : "2016-09-03T05:12:25Z",
-  "location_id" : 60005599,
+  "location_id" : 1020988381992,
   "min_volume" : 1,
   "order_id" : 4623824223,
   "price" : 9.9,

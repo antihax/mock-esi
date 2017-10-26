@@ -1337,7 +1337,7 @@ func GetUniverseStructures(w http.ResponseWriter, r *http.Request) {
 	localV = localV
 	err = err
 
-	j := `[ 1000000017013, 1000000025062 ]`
+	j := `[ 1020988381992, 1020988381991 ]`
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)
 		return
