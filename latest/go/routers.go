@@ -270,13 +270,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetAlliancesAllianceIdContacts",
-		"GET",
-		"/latest/alliances/{alliance_id}/contacts/",
-		GetAlliancesAllianceIdContacts,
-	)
-
-	mockesi.NewRoute(
 		"GetCharactersCharacterIdContacts",
 		"GET",
 		"/latest/characters/{character_id}/contacts/",
