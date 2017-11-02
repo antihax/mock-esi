@@ -207,6 +207,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdTitles",
+		"GET",
+		"/v1/characters/{character_id}/titles/",
+		GetCharactersCharacterIdTitles,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersNames",
 		"GET",
 		"/v1/characters/names/",
@@ -232,6 +239,13 @@ func init() {
 		"DELETE",
 		"/v1/characters/{character_id}/contacts/",
 		DeleteCharactersCharacterIdContacts,
+	)
+
+	mockesi.NewRoute(
+		"GetAlliancesAllianceIdContacts",
+		"GET",
+		"/v1/alliances/{alliance_id}/contacts/",
+		GetAlliancesAllianceIdContacts,
 	)
 
 	mockesi.NewRoute(
@@ -340,6 +354,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCorporationsCorporationIdFacilities",
+		"GET",
+		"/v1/corporations/{corporation_id}/facilities/",
+		GetCorporationsCorporationIdFacilities,
+	)
+
+	mockesi.NewRoute(
 		"GetCorporationsCorporationIdIcons",
 		"GET",
 		"/v1/corporations/{corporation_id}/icons/",
@@ -347,10 +368,31 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCorporationsCorporationIdMedals",
+		"GET",
+		"/v1/corporations/{corporation_id}/medals/",
+		GetCorporationsCorporationIdMedals,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdMedalsIssued",
+		"GET",
+		"/v1/corporations/{corporation_id}/medals/issued/",
+		GetCorporationsCorporationIdMedalsIssued,
+	)
+
+	mockesi.NewRoute(
 		"GetCorporationsCorporationIdMembersLimit",
 		"GET",
 		"/v1/corporations/{corporation_id}/members/limit/",
 		GetCorporationsCorporationIdMembersLimit,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdMembersTitles",
+		"GET",
+		"/v1/corporations/{corporation_id}/members/titles/",
+		GetCorporationsCorporationIdMembersTitles,
 	)
 
 	mockesi.NewRoute(
@@ -368,6 +410,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCorporationsCorporationIdRolesHistory",
+		"GET",
+		"/v1/corporations/{corporation_id}/roles/history/",
+		GetCorporationsCorporationIdRolesHistory,
+	)
+
+	mockesi.NewRoute(
 		"GetCorporationsCorporationIdShareholders",
 		"GET",
 		"/v1/corporations/{corporation_id}/shareholders/",
@@ -379,6 +428,20 @@ func init() {
 		"GET",
 		"/v1/corporations/{corporation_id}/standings/",
 		GetCorporationsCorporationIdStandings,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdStarbases",
+		"GET",
+		"/v1/corporations/{corporation_id}/starbases/",
+		GetCorporationsCorporationIdStarbases,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdStarbasesStarbaseId",
+		"GET",
+		"/v1/corporations/{corporation_id}/starbases/{starbase_id}/",
+		GetCorporationsCorporationIdStarbasesStarbaseId,
 	)
 
 	mockesi.NewRoute(
@@ -890,6 +953,13 @@ func init() {
 		"GET",
 		"/v1/characters/{character_id}/planets/",
 		GetCharactersCharacterIdPlanets,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdCustomsOffices",
+		"GET",
+		"/v1/corporations/{corporation_id}/customs_offices/",
+		GetCorporationsCorporationIdCustomsOffices,
 	)
 
 	mockesi.NewRoute(
