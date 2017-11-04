@@ -557,6 +557,20 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdFwStats",
+		"GET",
+		"/dev/characters/{character_id}/fw/stats/",
+		GetCharactersCharacterIdFwStats,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdFwStats",
+		"GET",
+		"/dev/corporations/{corporation_id}/fw/stats/",
+		GetCorporationsCorporationIdFwStats,
+	)
+
+	mockesi.NewRoute(
 		"GetFwLeaderboards",
 		"GET",
 		"/dev/fw/leaderboards/",

@@ -179,6 +179,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetUniverseFactions",
+		"GET",
+		"/v2/universe/factions/",
+		GetUniverseFactions,
+	)
+
+	mockesi.NewRoute(
 		"GetUniverseStationsStationId",
 		"GET",
 		"/v2/universe/stations/{station_id}/",
@@ -225,6 +232,13 @@ func init() {
 		"GET",
 		"/v2/characters/{character_id}/wallet/journal/",
 		GetCharactersCharacterIdWalletJournal,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdWalletsDivisionJournal",
+		"GET",
+		"/v2/corporations/{corporation_id}/wallets/{division}/journal/",
+		GetCorporationsCorporationIdWalletsDivisionJournal,
 	)
 
 }

@@ -108,6 +108,13 @@ func init() {
 		GetUniverseTypesTypeId,
 	)
 
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdWalletJournal",
+		"GET",
+		"/v3/characters/{character_id}/wallet/journal/",
+		GetCharactersCharacterIdWalletJournal,
+	)
+
 }
 
 func errorOut(w http.ResponseWriter, r *http.Request, e error) {
