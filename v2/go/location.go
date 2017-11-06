@@ -25,10 +25,10 @@ func GetCharactersCharacterIdOnline(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
+  "online" : true,
   "last_login" : "2017-01-02T03:04:05Z",
   "last_logout" : "2017-01-02T04:05:06Z",
-  "logins" : 9001,
-  "online" : true
+  "logins" : 9001
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])

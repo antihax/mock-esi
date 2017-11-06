@@ -25,8 +25,8 @@ func GetCharactersCharacterIdOpportunities(w http.ResponseWriter, r *http.Reques
 	err = err
 
 	j := `[ {
-  "completed_at" : "2016-04-29T12:34:56Z",
-  "task_id" : 1
+  "task_id" : 1,
+  "completed_at" : "2016-04-29T12:34:56Z"
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -163,12 +163,12 @@ func GetOpportunitiesGroupsGroupId(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "connected_groups" : [ 100 ],
-  "description" : "As a capsuleer...",
   "group_id" : 103,
   "name" : "Welcome to New Eden",
+  "description" : "As a capsuleer...",
   "notification" : "Completed:<br>Welcome to New Eden",
-  "required_tasks" : [ 19 ]
+  "required_tasks" : [ 19 ],
+  "connected_groups" : [ 100 ]
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(groupId, vars["group_id"])
@@ -304,10 +304,10 @@ func GetOpportunitiesTasksTaskId(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "description" : "To use station services...",
+  "task_id" : 10,
   "name" : "Dock in the station",
-  "notification" : "Completed:<br>Docked in a station!",
-  "task_id" : 10
+  "description" : "To use station services...",
+  "notification" : "Completed:<br>Docked in a station!"
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(taskId, vars["task_id"])

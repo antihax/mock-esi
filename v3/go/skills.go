@@ -26,13 +26,13 @@ func GetCharactersCharacterIdSkills(w http.ResponseWriter, r *http.Request) {
 
 	j := `{
   "skills" : [ {
-    "current_skill_level" : 1,
     "skill_id" : 1,
-    "skillpoints_in_skill" : 10000
+    "skillpoints_in_skill" : 10000,
+    "current_skill_level" : 1
   }, {
-    "current_skill_level" : 1,
     "skill_id" : 2,
-    "skillpoints_in_skill" : 10000
+    "skillpoints_in_skill" : 10000,
+    "current_skill_level" : 1
   } ],
   "total_sp" : 20000
 }`

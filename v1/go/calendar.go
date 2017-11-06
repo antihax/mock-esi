@@ -26,11 +26,11 @@ func GetCharactersCharacterIdCalendar(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
-  "event_date" : "2016-06-26T20:00:00Z",
   "event_id" : 1386435,
-  "event_response" : "accepted",
+  "event_date" : "2016-06-26T20:00:00Z",
+  "title" : "o7 The EVE Online Show",
   "importance" : 0,
-  "title" : "o7 The EVE Online Show"
+  "event_response" : "accepted"
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])

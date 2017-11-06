@@ -24,12 +24,12 @@ func GetInsurancePrices(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
+  "type_id" : 1,
   "levels" : [ {
     "cost" : 10.0,
-    "name" : "Basic",
-    "payout" : 20.0
-  } ],
-  "type_id" : 1
+    "payout" : 20.0,
+    "name" : "Basic"
+  } ]
 } ]`
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)

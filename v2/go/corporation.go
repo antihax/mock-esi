@@ -24,11 +24,11 @@ func GetCorporationsCorporationId(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "alliance_id" : 434243723,
-  "ceo_id" : 180548812,
   "corporation_name" : "C C P",
+  "ticker" : "-CCP-",
   "member_count" : 656,
-  "ticker" : "-CCP-"
+  "ceo_id" : 180548812,
+  "alliance_id" : 434243723
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(corporationId, vars["corporation_id"])
@@ -97,10 +97,10 @@ func GetCorporationsCorporationIdAlliancehistory(w http.ResponseWriter, r *http.
 	err = err
 
 	j := `[ {
-  "alliance_id" : 99000006,
-  "is_deleted" : true,
   "record_id" : 23,
-  "start_date" : "2016-10-25T14:46:00Z"
+  "start_date" : "2016-10-25T14:46:00Z",
+  "alliance_id" : 99000006,
+  "is_deleted" : true
 }, {
   "record_id" : 1,
   "start_date" : "2015-07-06T20:56:00Z"

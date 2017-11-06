@@ -108,15 +108,15 @@ func GetCharactersCharacterIdFittings(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
-  "description" : "Awesome Vindi fitting",
   "fitting_id" : 1,
-  "items" : [ {
-    "flag" : 12,
-    "quantity" : 1,
-    "type_id" : 1234
-  } ],
   "name" : "Best Vindicator",
-  "ship_type_id" : 123
+  "description" : "Awesome Vindi fitting",
+  "ship_type_id" : 123,
+  "items" : [ {
+    "type_id" : 1234,
+    "flag" : 12,
+    "quantity" : 1
+  } ]
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])

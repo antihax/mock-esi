@@ -25,22 +25,22 @@ func GetCharactersCharacterIdOrders(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
+  "order_id" : 123,
+  "type_id" : 456,
+  "region_id" : 123,
+  "location_id" : 456,
+  "range" : "station",
+  "is_buy_order" : true,
+  "price" : 33.3,
+  "volume_total" : 123456,
+  "volume_remain" : 4422,
+  "issued" : "2016-09-03T05:12:25Z",
+  "state" : "open",
+  "min_volume" : 1,
   "account_id" : 1000,
   "duration" : 30,
-  "escrow" : 45.6,
-  "is_buy_order" : true,
   "is_corp" : false,
-  "issued" : "2016-09-03T05:12:25Z",
-  "location_id" : 456,
-  "min_volume" : 1,
-  "order_id" : 123,
-  "price" : 33.3,
-  "range" : "station",
-  "region_id" : 123,
-  "state" : "open",
-  "type_id" : 456,
-  "volume_remain" : 4422,
-  "volume_total" : 123456
+  "escrow" : 45.6
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -119,21 +119,21 @@ func GetCorporationsCorporationIdOrders(w http.ResponseWriter, r *http.Request) 
 	err = err
 
 	j := `[ {
-  "duration" : 30,
-  "escrow" : 45.6,
-  "is_buy_order" : true,
-  "issued" : "2016-09-03T05:12:25Z",
-  "location_id" : 456,
-  "min_volume" : 1,
   "order_id" : 123,
-  "price" : 33.3,
-  "range" : "station",
-  "region_id" : 123,
-  "state" : "open",
   "type_id" : 456,
-  "volume_remain" : 4422,
+  "region_id" : 123,
+  "location_id" : 456,
+  "range" : "station",
+  "is_buy_order" : true,
+  "price" : 33.3,
   "volume_total" : 123456,
-  "wallet_division" : 1
+  "volume_remain" : 4422,
+  "issued" : "2016-09-03T05:12:25Z",
+  "state" : "open",
+  "min_volume" : 1,
+  "wallet_division" : 1,
+  "duration" : 30,
+  "escrow" : 45.6
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(corporationId, vars["corporation_id"])
@@ -278,11 +278,11 @@ func GetMarketsGroupsMarketGroupId(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "description" : "Small, fast vessels suited to a variety of purposes.",
   "market_group_id" : 5,
   "name" : "Standard Frigates",
-  "parent_group_id" : 1361,
-  "types" : [ 582, 583 ]
+  "description" : "Small, fast vessels suited to a variety of purposes.",
+  "types" : [ 582, 583 ],
+  "parent_group_id" : 1361
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(marketGroupId, vars["market_group_id"])
@@ -358,9 +358,9 @@ func GetMarketsPrices(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
-  "adjusted_price" : 306988.09,
+  "type_id" : 32772,
   "average_price" : 306292.67,
-  "type_id" : 32772
+  "adjusted_price" : 306988.09
 } ]`
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)
@@ -423,12 +423,12 @@ func GetMarketsRegionIdHistory(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
-  "average" : 5.25,
   "date" : "2015-05-01",
-  "highest" : 5.27,
-  "lowest" : 5.11,
   "order_count" : 2267,
-  "volume" : 16276782035
+  "volume" : 16276782035,
+  "highest" : 5.27,
+  "average" : 5.25,
+  "lowest" : 5.11
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(regionId, vars["region_id"])
@@ -505,17 +505,17 @@ func GetMarketsRegionIdOrders(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
-  "duration" : 90,
-  "is_buy_order" : false,
-  "issued" : "2016-09-03T05:12:25Z",
-  "location_id" : 60005599,
-  "min_volume" : 1,
   "order_id" : 4623824223,
-  "price" : 9.9,
-  "range" : "region",
   "type_id" : 34,
+  "location_id" : 60005599,
+  "volume_total" : 2000000,
   "volume_remain" : 1296000,
-  "volume_total" : 2000000
+  "min_volume" : 1,
+  "price" : 9.9,
+  "is_buy_order" : false,
+  "duration" : 90,
+  "issued" : "2016-09-03T05:12:25Z",
+  "range" : "region"
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(regionId, vars["region_id"])
@@ -683,17 +683,17 @@ func GetMarketsStructuresStructureId(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
-  "duration" : 90,
-  "is_buy_order" : false,
-  "issued" : "2016-09-03T05:12:25Z",
-  "location_id" : 1020988381992,
-  "min_volume" : 1,
   "order_id" : 4623824223,
-  "price" : 9.9,
-  "range" : "region",
   "type_id" : 34,
+  "location_id" : 1020988381992,
+  "volume_total" : 2000000,
   "volume_remain" : 1296000,
-  "volume_total" : 2000000
+  "min_volume" : 1,
+  "price" : 9.9,
+  "is_buy_order" : false,
+  "duration" : 90,
+  "issued" : "2016-09-03T05:12:25Z",
+  "range" : "region"
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(structureId, vars["structure_id"])

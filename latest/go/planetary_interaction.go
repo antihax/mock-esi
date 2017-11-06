@@ -25,21 +25,21 @@ func GetCharactersCharacterIdPlanets(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
-  "last_update" : "2016-11-28T16:42:51Z",
-  "num_pins" : 1,
-  "owner_id" : 90000001,
+  "solar_system_id" : 30000379,
+  "upgrade_level" : 0,
   "planet_id" : 40023691,
-  "planet_type" : "plasma",
-  "solar_system_id" : 30000379,
-  "upgrade_level" : 0
-}, {
-  "last_update" : "2016-11-28T16:41:54Z",
-  "num_pins" : 1,
+  "last_update" : "2016-11-28T16:42:51Z",
   "owner_id" : 90000001,
-  "planet_id" : 40023697,
-  "planet_type" : "barren",
+  "planet_type" : "plasma",
+  "num_pins" : 1
+}, {
   "solar_system_id" : 30000379,
-  "upgrade_level" : 0
+  "upgrade_level" : 0,
+  "planet_id" : 40023697,
+  "last_update" : "2016-11-28T16:41:54Z",
+  "owner_id" : 90000001,
+  "planet_type" : "barren",
+  "num_pins" : 1
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -119,29 +119,29 @@ func GetCharactersCharacterIdPlanetsPlanetId(w http.ResponseWriter, r *http.Requ
 
 	j := `{
   "links" : [ {
+    "source_pin_id" : 1000000017021,
     "destination_pin_id" : 1000000017022,
-    "link_level" : 0,
-    "source_pin_id" : 1000000017021
+    "link_level" : 0
   } ],
   "pins" : [ {
-    "is_running" : true,
-    "latitude" : 1.55087844973,
     "longitude" : 0.717145933308,
-    "pin_id" : 1000000017021,
-    "type_id" : 2254
-  }, {
     "is_running" : true,
-    "latitude" : 1.53360639935,
+    "type_id" : 2254,
+    "pin_id" : 1000000017021,
+    "latitude" : 1.55087844973
+  }, {
     "longitude" : 0.709775584394,
+    "is_running" : true,
+    "type_id" : 2256,
     "pin_id" : 1000000017022,
-    "type_id" : 2256
+    "latitude" : 1.53360639935
   } ],
   "routes" : [ {
-    "content_type_id" : 2393,
-    "destination_pin_id" : 1000000017030,
+    "source_pin_id" : 1000000017029,
     "quantity" : 20,
+    "content_type_id" : 2393,
     "route_id" : 4,
-    "source_pin_id" : 1000000017029
+    "destination_pin_id" : 1000000017030
   } ]
 }`
 	vars := mux.Vars(r)
@@ -227,18 +227,18 @@ func GetCorporationsCorporationIdCustomsOffices(w http.ResponseWriter, r *http.R
 	err = err
 
 	j := `[ {
-  "alliance_tax_rate" : 0.1,
-  "allow_access_with_standings" : true,
+  "office_id" : 1000000014530,
+  "system_id" : 30003657,
+  "reinforce_exit_start" : 23,
+  "reinforce_exit_end" : 1,
   "allow_alliance_access" : false,
+  "allow_access_with_standings" : true,
+  "standing_level" : "neutral",
   "corporation_tax_rate" : 0.02,
+  "alliance_tax_rate" : 0.1,
   "excellent_standing_tax_rate" : 0.05,
   "good_standing_tax_rate" : 0.2,
-  "neutral_standing_tax_rate" : 0.5,
-  "office_id" : 1000000014530,
-  "reinforce_exit_end" : 1,
-  "reinforce_exit_start" : 23,
-  "standing_level" : "neutral",
-  "system_id" : 30003657
+  "neutral_standing_tax_rate" : 0.5
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(corporationId, vars["corporation_id"])
@@ -323,8 +323,8 @@ func GetUniverseSchematicsSchematicId(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "cycle_time" : 1800,
-  "schematic_name" : "Bacteria"
+  "schematic_name" : "Bacteria",
+  "cycle_time" : 1800
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(schematicId, vars["schematic_id"])

@@ -27,29 +27,29 @@ func GetCharactersCharacterIdPlanetsPlanetId(w http.ResponseWriter, r *http.Requ
 
 	j := `{
   "links" : [ {
+    "source_pin_id" : 1000000017021,
     "destination_pin_id" : 1000000017022,
-    "link_level" : 0,
-    "source_pin_id" : 1000000017021
+    "link_level" : 0
   } ],
   "pins" : [ {
-    "is_running" : true,
-    "latitude" : 1.55087844973,
     "longitude" : 0.717145933308,
-    "pin_id" : 1000000017021,
-    "type_id" : 2254
-  }, {
     "is_running" : true,
-    "latitude" : 1.53360639935,
+    "type_id" : 2254,
+    "pin_id" : 1000000017021,
+    "latitude" : 1.55087844973
+  }, {
     "longitude" : 0.709775584394,
+    "is_running" : true,
+    "type_id" : 2256,
     "pin_id" : 1000000017022,
-    "type_id" : 2256
+    "latitude" : 1.53360639935
   } ],
   "routes" : [ {
-    "content_type_id" : 2393,
-    "destination_pin_id" : 1000000017030,
+    "source_pin_id" : 1000000017029,
     "quantity" : 20,
+    "content_type_id" : 2393,
     "route_id" : 4,
-    "source_pin_id" : 1000000017029
+    "destination_pin_id" : 1000000017030
   } ]
 }`
 	vars := mux.Vars(r)

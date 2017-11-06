@@ -193,16 +193,16 @@ func GetCharactersCharacterIdMail(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
-  "from" : 90000001,
-  "is_read" : true,
-  "labels" : [ 3 ],
   "mail_id" : 7,
-  "recipients" : [ {
-    "recipient_id" : 90000002,
-    "recipient_type" : "character"
-  } ],
   "subject" : "Title for EVE Mail",
-  "timestamp" : "2015-09-30T16:07:00Z"
+  "from" : 90000001,
+  "timestamp" : "2015-09-30T16:07:00Z",
+  "labels" : [ 3 ],
+  "recipients" : [ {
+    "recipient_type" : "character",
+    "recipient_id" : 90000002
+  } ],
+  "is_read" : true
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -296,18 +296,18 @@ func GetCharactersCharacterIdMailLabels(w http.ResponseWriter, r *http.Request) 
 	err = err
 
 	j := `{
+  "total_unread_count" : 5,
   "labels" : [ {
-    "color_hex" : "#660066",
     "label_id" : 16,
     "name" : "PINK",
+    "color_hex" : "#660066",
     "unread_count" : 4
   }, {
-    "color_hex" : "#ffffff",
     "label_id" : 17,
     "name" : "WHITE",
+    "color_hex" : "#ffffff",
     "unread_count" : 1
-  } ],
-  "total_unread_count" : 5
+  } ]
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -465,12 +465,12 @@ func GetCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Request) 
 	err = err
 
 	j := `{
-  "body" : "blah blah blah",
-  "from" : 90000001,
-  "labels" : [ 2, 32 ],
-  "read" : true,
   "subject" : "test",
-  "timestamp" : "2015-09-30T16:07:00Z"
+  "from" : 90000001,
+  "timestamp" : "2015-09-30T16:07:00Z",
+  "body" : "blah blah blah",
+  "labels" : [ 2, 32 ],
+  "read" : true
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])

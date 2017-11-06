@@ -27,13 +27,13 @@ func GetCharactersCharacterIdBlueprints(w http.ResponseWriter, r *http.Request) 
 
 	j := `[ {
   "item_id" : 1000000010495,
-  "location_flag" : "Hangar",
+  "type_id" : 691,
   "location_id" : 60014719,
-  "material_efficiency" : 0,
+  "location_flag" : "Hangar",
   "quantity" : 1,
-  "runs" : -1,
   "time_efficiency" : 0,
-  "type_id" : 691
+  "material_efficiency" : 0,
+  "runs" : -1
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -118,10 +118,10 @@ func GetCharactersCharacterIdPortrait(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
+  "px64x64" : "https://imageserver.eveonline.com/Character/95465499_64.jpg",
   "px128x128" : "https://imageserver.eveonline.com/Character/95465499_128.jpg",
   "px256x256" : "https://imageserver.eveonline.com/Character/95465499_256.jpg",
-  "px512x512" : "https://imageserver.eveonline.com/Character/95465499_512.jpg",
-  "px64x64" : "https://imageserver.eveonline.com/Character/95465499_64.jpg"
+  "px512x512" : "https://imageserver.eveonline.com/Character/95465499_512.jpg"
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])

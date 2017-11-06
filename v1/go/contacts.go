@@ -102,9 +102,9 @@ func GetAlliancesAllianceIdContacts(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
-  "contact_id" : 2112625428,
+  "standing" : 10.0,
   "contact_type" : "character",
-  "standing" : 10.0
+  "contact_id" : 2112625428
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(allianceId, vars["alliance_id"])
@@ -191,11 +191,11 @@ func GetCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
-  "contact_id" : 123,
+  "standing" : 10.0,
   "contact_type" : "character",
-  "is_blocked" : true,
+  "contact_id" : 123,
   "is_watched" : true,
-  "standing" : 10.0
+  "is_blocked" : true
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -361,10 +361,10 @@ func GetCorporationsCorporationIdContacts(w http.ResponseWriter, r *http.Request
 	err = err
 
 	j := `[ {
-  "contact_id" : 123,
+  "standing" : 10.0,
   "contact_type" : "character",
-  "is_watched" : true,
-  "standing" : 10.0
+  "contact_id" : 123,
+  "is_watched" : true
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(corporationId, vars["corporation_id"])

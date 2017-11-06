@@ -191,16 +191,16 @@ func GetCharactersCharacterIdWalletTransactions(w http.ResponseWriter, r *http.R
 	err = err
 
 	j := `[ {
-  "client_id" : 54321,
+  "transaction_id" : 1234567890,
   "date" : "2016-10-24T09:00:00Z",
+  "location_id" : 60014719,
+  "type_id" : 587,
+  "unit_price" : 1,
+  "quantity" : 1,
+  "client_id" : 54321,
   "is_buy" : true,
   "is_personal" : true,
-  "journal_ref_id" : 67890,
-  "location_id" : 60014719,
-  "quantity" : 1,
-  "transaction_id" : 1234567890,
-  "type_id" : 587,
-  "unit_price" : 1
+  "journal_ref_id" : 67890
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -286,26 +286,26 @@ func GetCorporationsCorporationIdWallets(w http.ResponseWriter, r *http.Request)
 	err = err
 
 	j := `[ {
-  "balance" : 123.45,
-  "division" : 1
+  "division" : 1,
+  "balance" : 123.45
 }, {
-  "balance" : 123.45,
-  "division" : 2
+  "division" : 2,
+  "balance" : 123.45
 }, {
-  "balance" : 123.45,
-  "division" : 3
+  "division" : 3,
+  "balance" : 123.45
 }, {
-  "balance" : 123.45,
-  "division" : 4
+  "division" : 4,
+  "balance" : 123.45
 }, {
-  "balance" : 123.45,
-  "division" : 5
+  "division" : 5,
+  "balance" : 123.45
 }, {
-  "balance" : 123.45,
-  "division" : 6
+  "division" : 6,
+  "balance" : 123.45
 }, {
-  "balance" : 123.45,
-  "division" : 7
+  "division" : 7,
+  "balance" : 123.45
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(corporationId, vars["corporation_id"])
@@ -481,15 +481,15 @@ func GetCorporationsCorporationIdWalletsDivisionTransactions(w http.ResponseWrit
 	err = err
 
 	j := `[ {
-  "client_id" : 54321,
-  "date" : "2016-10-24T09:00:00Z",
-  "is_buy" : true,
-  "journal_ref_id" : 67890,
-  "location_id" : 60014719,
-  "quantity" : 1,
   "transaction_id" : 1234567890,
+  "date" : "2016-10-24T09:00:00Z",
+  "location_id" : 60014719,
   "type_id" : 587,
-  "unit_price" : 1
+  "unit_price" : 1,
+  "quantity" : 1,
+  "client_id" : 54321,
+  "is_buy" : true,
+  "journal_ref_id" : 67890
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(corporationId, vars["corporation_id"])

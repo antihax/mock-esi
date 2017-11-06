@@ -103,22 +103,22 @@ func GetLoyaltyStoresCorporationIdOffers(w http.ResponseWriter, r *http.Request)
 	err = err
 
 	j := `[ {
-  "isk_cost" : 0,
-  "lp_cost" : 100,
   "offer_id" : 1,
+  "type_id" : 123,
   "quantity" : 1,
-  "required_items" : [ ],
-  "type_id" : 123
-}, {
-  "isk_cost" : 1000,
   "lp_cost" : 100,
+  "isk_cost" : 0,
+  "required_items" : [ ]
+}, {
   "offer_id" : 2,
+  "type_id" : 1235,
   "quantity" : 10,
+  "lp_cost" : 100,
+  "isk_cost" : 1000,
   "required_items" : [ {
-    "quantity" : 10,
-    "type_id" : 1234
-  } ],
-  "type_id" : 1235
+    "type_id" : 1234,
+    "quantity" : 10
+  } ]
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(corporationId, vars["corporation_id"])

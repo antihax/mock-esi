@@ -25,24 +25,24 @@ func GetUniverseSystemsSystemId(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "constellation_id" : 20000001,
+  "system_id" : 30000003,
   "name" : "Akpivem",
-  "planets" : [ {
-    "moons" : [ 40000042 ],
-    "planet_id" : 40000041
-  }, {
-    "planet_id" : 40000043
-  } ],
   "position" : {
     "x" : -91174141133075340,
     "y" : 43938227486247170,
     "z" : -56482824383339900
   },
-  "security_class" : "B",
   "security_status" : 0.8462923765182495,
-  "star_id" : 40000040,
+  "constellation_id" : 20000001,
+  "planets" : [ {
+    "planet_id" : 40000041,
+    "moons" : [ 40000042 ]
+  }, {
+    "planet_id" : 40000043
+  } ],
   "stargates" : [ 50000342 ],
-  "system_id" : 30000003
+  "star_id" : 40000040,
+  "security_class" : "B"
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(systemId, vars["system_id"])
@@ -120,11 +120,11 @@ func GetUniverseTypesTypeId(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "description" : "The Rifter is a...",
-  "group_id" : 25,
+  "type_id" : 587,
   "name" : "Rifter",
+  "description" : "The Rifter is a...",
   "published" : true,
-  "type_id" : 587
+  "group_id" : 25
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(typeId, vars["type_id"])

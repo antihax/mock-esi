@@ -25,25 +25,25 @@ func GetCharactersCharacterIdContracts(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
-  "acceptor_id" : 0,
-  "assignee_id" : 0,
-  "availability" : "public",
-  "buyout" : 1.0E10,
   "contract_id" : 1,
-  "date_accepted" : "2017-06-06T13:12:32Z",
-  "date_completed" : "2017-06-06T13:12:32Z",
-  "date_expired" : "2017-06-13T13:12:32Z",
-  "date_issued" : "2017-06-06T13:12:32Z",
-  "days_to_complete" : 0,
-  "end_location_id" : 60014719,
-  "for_corporation" : true,
-  "issuer_corporation_id" : 456,
   "issuer_id" : 123,
+  "issuer_corporation_id" : 456,
+  "assignee_id" : 0,
+  "acceptor_id" : 0,
+  "type" : "auction",
+  "status" : "outstanding",
+  "for_corporation" : true,
+  "availability" : "public",
+  "date_issued" : "2017-06-06T13:12:32Z",
+  "date_expired" : "2017-06-13T13:12:32Z",
+  "start_location_id" : 60014719,
+  "end_location_id" : 60014719,
+  "date_accepted" : "2017-06-06T13:12:32Z",
+  "days_to_complete" : 0,
+  "date_completed" : "2017-06-06T13:12:32Z",
   "price" : 1000000.0,
   "reward" : 0.0,
-  "start_location_id" : 60014719,
-  "status" : "outstanding",
-  "type" : "auction",
+  "buyout" : 1.0E10,
   "volume" : 0.01
 } ]`
 	vars := mux.Vars(r)
@@ -123,10 +123,10 @@ func GetCharactersCharacterIdContractsContractIdBids(w http.ResponseWriter, r *h
 	err = err
 
 	j := `[ {
-  "amount" : 1.23,
   "bid_id" : 1,
   "bidder_id" : 123,
-  "date_bid" : "2017-01-01T10:10:10Z"
+  "date_bid" : "2017-01-01T10:10:10Z",
+  "amount" : 1.23
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -211,11 +211,11 @@ func GetCharactersCharacterIdContractsContractIdItems(w http.ResponseWriter, r *
 	err = err
 
 	j := `[ {
-  "is_included" : true,
-  "is_singleton" : false,
-  "quantity" : 1,
   "record_id" : 123456,
-  "type_id" : 587
+  "type_id" : 587,
+  "quantity" : 1,
+  "is_singleton" : false,
+  "is_included" : true
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -299,25 +299,25 @@ func GetCorporationsCorporationIdContracts(w http.ResponseWriter, r *http.Reques
 	err = err
 
 	j := `[ {
-  "acceptor_id" : 0,
-  "assignee_id" : 0,
-  "availability" : "public",
-  "buyout" : 1.0E10,
   "contract_id" : 1,
-  "date_accepted" : "2017-06-06T13:12:32Z",
-  "date_completed" : "2017-06-06T13:12:32Z",
-  "date_expired" : "2017-06-13T13:12:32Z",
-  "date_issued" : "2017-06-06T13:12:32Z",
-  "days_to_complete" : 0,
-  "end_location_id" : 60014719,
-  "for_corporation" : true,
-  "issuer_corporation_id" : 456,
   "issuer_id" : 123,
+  "issuer_corporation_id" : 456,
+  "assignee_id" : 0,
+  "acceptor_id" : 0,
+  "type" : "auction",
+  "status" : "outstanding",
+  "for_corporation" : true,
+  "availability" : "public",
+  "date_issued" : "2017-06-06T13:12:32Z",
+  "date_expired" : "2017-06-13T13:12:32Z",
+  "start_location_id" : 60014719,
+  "end_location_id" : 60014719,
+  "date_accepted" : "2017-06-06T13:12:32Z",
+  "days_to_complete" : 0,
+  "date_completed" : "2017-06-06T13:12:32Z",
   "price" : 1000000.0,
   "reward" : 0.0,
-  "start_location_id" : 60014719,
-  "status" : "outstanding",
-  "type" : "auction",
+  "buyout" : 1.0E10,
   "volume" : 0.01
 } ]`
 	vars := mux.Vars(r)
@@ -398,10 +398,10 @@ func GetCorporationsCorporationIdContractsContractIdBids(w http.ResponseWriter, 
 	err = err
 
 	j := `[ {
-  "amount" : 1.23,
   "bid_id" : 1,
   "bidder_id" : 123,
-  "date_bid" : "2017-01-01T10:10:10Z"
+  "date_bid" : "2017-01-01T10:10:10Z",
+  "amount" : 1.23
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(contractId, vars["contract_id"])
@@ -494,11 +494,11 @@ func GetCorporationsCorporationIdContractsContractIdItems(w http.ResponseWriter,
 	err = err
 
 	j := `[ {
-  "is_included" : true,
-  "is_singleton" : false,
-  "quantity" : 1,
   "record_id" : 123456,
-  "type_id" : 587
+  "type_id" : 587,
+  "quantity" : 1,
+  "is_singleton" : false,
+  "is_included" : true
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(contractId, vars["contract_id"])

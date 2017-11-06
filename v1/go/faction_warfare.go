@@ -25,17 +25,17 @@ func GetCharactersCharacterIdFwStats(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "enlisted_on" : "2017-10-17T00:00:00Z",
   "faction_id" : 500001,
+  "enlisted_on" : "2017-10-17T00:00:00Z",
   "kills" : {
+    "yesterday" : 136,
     "last_week" : 893,
-    "total" : 684350,
-    "yesterday" : 136
+    "total" : 684350
   },
   "victory_points" : {
+    "yesterday" : 15980,
     "last_week" : 102640,
-    "total" : 52658260,
-    "yesterday" : 15980
+    "total" : 52658260
   }
 }`
 	vars := mux.Vars(r)
@@ -114,18 +114,18 @@ func GetCorporationsCorporationIdFwStats(w http.ResponseWriter, r *http.Request)
 	err = err
 
 	j := `{
-  "enlisted_on" : "2017-10-17T00:00:00Z",
   "faction_id" : 500001,
-  "kills" : {
-    "last_week" : 893,
-    "total" : 684350,
-    "yesterday" : 136
-  },
+  "enlisted_on" : "2017-10-17T00:00:00Z",
   "pilots" : 28863,
+  "kills" : {
+    "yesterday" : 136,
+    "last_week" : 893,
+    "total" : 684350
+  },
   "victory_points" : {
+    "yesterday" : 15980,
     "last_week" : 102640,
-    "total" : 52658260,
-    "yesterday" : 15980
+    "total" : 52658260
   }
 }`
 	vars := mux.Vars(r)
@@ -203,49 +203,49 @@ func GetFwLeaderboards(w http.ResponseWriter, r *http.Request) {
 
 	j := `{
   "kills" : {
-    "active_total" : [ {
-      "amount" : 832273,
-      "faction_id" : 500004
+    "yesterday" : [ {
+      "faction_id" : 500001,
+      "amount" : 100
     }, {
-      "amount" : 687915,
-      "faction_id" : 500001
+      "faction_id" : 500004,
+      "amount" : 50
     } ],
     "last_week" : [ {
-      "amount" : 730,
-      "faction_id" : 500001
+      "faction_id" : 500001,
+      "amount" : 730
     }, {
-      "amount" : 671,
-      "faction_id" : 500004
+      "faction_id" : 500004,
+      "amount" : 671
     } ],
-    "yesterday" : [ {
-      "amount" : 100,
-      "faction_id" : 500001
+    "active_total" : [ {
+      "faction_id" : 500004,
+      "amount" : 832273
     }, {
-      "amount" : 50,
-      "faction_id" : 500004
+      "faction_id" : 500001,
+      "amount" : 687915
     } ]
   },
   "victory_points" : {
-    "active_total" : [ {
-      "amount" : 53130500,
-      "faction_id" : 500001
+    "yesterday" : [ {
+      "faction_id" : 500002,
+      "amount" : 5000
     }, {
-      "amount" : 50964263,
-      "faction_id" : 500004
+      "faction_id" : 500003,
+      "amount" : 3500
     } ],
     "last_week" : [ {
-      "amount" : 97360,
-      "faction_id" : 500001
+      "faction_id" : 500001,
+      "amount" : 97360
     }, {
-      "amount" : 84980,
-      "faction_id" : 500004
+      "faction_id" : 500004,
+      "amount" : 84980
     } ],
-    "yesterday" : [ {
-      "amount" : 5000,
-      "faction_id" : 500002
+    "active_total" : [ {
+      "faction_id" : 500001,
+      "amount" : 53130500
     }, {
-      "amount" : 3500,
-      "faction_id" : 500003
+      "faction_id" : 500004,
+      "amount" : 50964263
     } ]
   }
 }`
@@ -309,49 +309,49 @@ func GetFwLeaderboardsCharacters(w http.ResponseWriter, r *http.Request) {
 
 	j := `{
   "kills" : {
-    "active_total" : [ {
-      "amount" : 10000,
-      "character_id" : 2112625428
+    "yesterday" : [ {
+      "character_id" : 2112625428,
+      "amount" : 34
     }, {
-      "amount" : 8500,
-      "character_id" : 95465499
+      "character_id" : 95465499,
+      "amount" : 20
     } ],
     "last_week" : [ {
-      "amount" : 100,
-      "character_id" : 2112625428
+      "character_id" : 2112625428,
+      "amount" : 100
     }, {
-      "amount" : 70,
-      "character_id" : 95465499
+      "character_id" : 95465499,
+      "amount" : 70
     } ],
-    "yesterday" : [ {
-      "amount" : 34,
-      "character_id" : 2112625428
+    "active_total" : [ {
+      "character_id" : 2112625428,
+      "amount" : 10000
     }, {
-      "amount" : 20,
-      "character_id" : 95465499
+      "character_id" : 95465499,
+      "amount" : 8500
     } ]
   },
   "victory_points" : {
-    "active_total" : [ {
-      "amount" : 1239158,
-      "character_id" : 2112625428
+    "yesterday" : [ {
+      "character_id" : 2112625428,
+      "amount" : 620
     }, {
-      "amount" : 1139029,
-      "character_id" : 95465499
+      "character_id" : 95465499,
+      "amount" : 550
     } ],
     "last_week" : [ {
-      "amount" : 2660,
-      "character_id" : 2112625428
+      "character_id" : 2112625428,
+      "amount" : 2660
     }, {
-      "amount" : 2000,
-      "character_id" : 95465499
+      "character_id" : 95465499,
+      "amount" : 2000
     } ],
-    "yesterday" : [ {
-      "amount" : 620,
-      "character_id" : 2112625428
+    "active_total" : [ {
+      "character_id" : 2112625428,
+      "amount" : 1239158
     }, {
-      "amount" : 550,
-      "character_id" : 95465499
+      "character_id" : 95465499,
+      "amount" : 1139029
     } ]
   }
 }`
@@ -415,49 +415,49 @@ func GetFwLeaderboardsCorporations(w http.ResponseWriter, r *http.Request) {
 
 	j := `{
   "kills" : {
-    "active_total" : [ {
-      "amount" : 81692,
-      "corporation_id" : 1000180
+    "yesterday" : [ {
+      "corporation_id" : 1000180,
+      "amount" : 51
     }, {
-      "amount" : 76793,
-      "corporation_id" : 1000182
+      "corporation_id" : 1000182,
+      "amount" : 39
     } ],
     "last_week" : [ {
-      "amount" : 290,
-      "corporation_id" : 1000180
+      "corporation_id" : 1000180,
+      "amount" : 290
     }, {
-      "amount" : 169,
-      "corporation_id" : 1000182
+      "corporation_id" : 1000182,
+      "amount" : 169
     } ],
-    "yesterday" : [ {
-      "amount" : 51,
-      "corporation_id" : 1000180
+    "active_total" : [ {
+      "corporation_id" : 1000180,
+      "amount" : 81692
     }, {
-      "amount" : 39,
-      "corporation_id" : 1000182
+      "corporation_id" : 1000182,
+      "amount" : 76793
     } ]
   },
   "victory_points" : {
-    "active_total" : [ {
-      "amount" : 18640927,
-      "corporation_id" : 1000180
+    "yesterday" : [ {
+      "corporation_id" : 1000180,
+      "amount" : 12600
     }, {
-      "amount" : 18078265,
-      "corporation_id" : 1000181
+      "corporation_id" : 1000181,
+      "amount" : 8240
     } ],
     "last_week" : [ {
-      "amount" : 91980,
-      "corporation_id" : 1000180
+      "corporation_id" : 1000180,
+      "amount" : 91980
     }, {
-      "amount" : 58920,
-      "corporation_id" : 1000181
+      "corporation_id" : 1000181,
+      "amount" : 58920
     } ],
-    "yesterday" : [ {
-      "amount" : 12600,
-      "corporation_id" : 1000180
+    "active_total" : [ {
+      "corporation_id" : 1000180,
+      "amount" : 18640927
     }, {
-      "amount" : 8240,
-      "corporation_id" : 1000181
+      "corporation_id" : 1000181,
+      "amount" : 18078265
     } ]
   }
 }`
@@ -521,17 +521,17 @@ func GetFwStats(w http.ResponseWriter, r *http.Request) {
 
 	j := `[ {
   "faction_id" : 500001,
-  "kills" : {
-    "last_week" : 893,
-    "total" : 684350,
-    "yesterday" : 136
-  },
   "pilots" : 28863,
   "systems_controlled" : 20,
+  "kills" : {
+    "yesterday" : 136,
+    "last_week" : 893,
+    "total" : 684350
+  },
   "victory_points" : {
+    "yesterday" : 15980,
     "last_week" : 102640,
-    "total" : 52658260,
-    "yesterday" : 15980
+    "total" : 52658260
   }
 } ]`
 	if err := r.ParseForm(); err != nil {
@@ -593,12 +593,12 @@ func GetFwSystems(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
-  "contested" : true,
-  "occupier_faction_id" : 500001,
-  "owner_faction_id" : 500001,
   "solar_system_id" : 30002096,
+  "owner_faction_id" : 500001,
+  "occupier_faction_id" : 500001,
   "victory_points" : 60,
-  "victory_points_threshold" : 3000
+  "victory_points_threshold" : 3000,
+  "contested" : true
 } ]`
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)
@@ -659,8 +659,8 @@ func GetFwWars(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
-  "against_id" : 500002,
-  "faction_id" : 500001
+  "faction_id" : 500001,
+  "against_id" : 500002
 } ]`
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)

@@ -84,14 +84,14 @@ func GetDogmaAttributesAttributeId(w http.ResponseWriter, r *http.Request) {
 
 	j := `{
   "attribute_id" : 20,
-  "default_value" : 1,
-  "description" : "Factor by which topspeed increases.",
-  "display_name" : "Maximum Velocity Bonus",
-  "high_is_good" : true,
-  "icon_id" : 1389,
   "name" : "speedFactor",
+  "description" : "Factor by which topspeed increases.",
+  "icon_id" : 1389,
+  "default_value" : 1,
   "published" : true,
-  "unit_id" : 124
+  "display_name" : "Maximum Velocity Bonus",
+  "unit_id" : 124,
+  "high_is_good" : true
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(attributeId, vars["attribute_id"])
@@ -219,14 +219,14 @@ func GetDogmaEffectsEffectId(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "description" : "Requires a high power slot.",
-  "display_name" : "High power",
-  "effect_category" : 0,
   "effect_id" : 12,
-  "icon_id" : 293,
   "name" : "hiPower",
-  "post_expression" : 131,
+  "display_name" : "High power",
+  "description" : "Requires a high power slot.",
+  "icon_id" : 293,
+  "effect_category" : 0,
   "pre_expression" : 131,
+  "post_expression" : 131,
   "published" : true
 }`
 	vars := mux.Vars(r)

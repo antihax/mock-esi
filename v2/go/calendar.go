@@ -26,16 +26,16 @@ func GetCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Requ
 	err = err
 
 	j := `{
-  "duration_in_minutes" : 60,
-  "event_date" : "2016-06-26T21:00:00Z",
   "event_id" : 1386435,
-  "event_response" : "Undecided",
-  "event_text" : "o7: The EVE Online Show features latest developer news, fast paced action, community overviews and a lot more with CCP Guard and CCP Mimic. Join the thrilling o7 live broadcast at 20:00 EVE time (=UTC) on <a href=\"http://www.twitch.tv/ccp\">EVE TV</a>. Don't miss it!",
-  "importance" : 1,
   "owner_id" : 1,
   "owner_name" : "EVE System",
-  "owner_type_id" : 0,
-  "title" : "o7 The EVE Online Show"
+  "event_date" : "2016-06-26T21:00:00Z",
+  "title" : "o7 The EVE Online Show",
+  "duration_in_minutes" : 60,
+  "importance" : 1,
+  "event_response" : "Undecided",
+  "event_text" : "o7: The EVE Online Show features latest developer news, fast paced action, community overviews and a lot more with CCP Guard and CCP Mimic. Join the thrilling o7 live broadcast at 20:00 EVE time (=UTC) on <a href=\"http://www.twitch.tv/ccp\">EVE TV</a>. Don't miss it!",
+  "owner_type_id" : 0
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])

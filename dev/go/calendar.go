@@ -26,11 +26,11 @@ func GetCharactersCharacterIdCalendar(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
-  "event_date" : "2016-06-26T20:00:00Z",
   "event_id" : 1386435,
-  "event_response" : "accepted",
+  "event_date" : "2016-06-26T20:00:00Z",
+  "title" : "o7 The EVE Online Show",
   "importance" : 0,
-  "title" : "o7 The EVE Online Show"
+  "event_response" : "accepted"
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -117,16 +117,16 @@ func GetCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Requ
 	err = err
 
 	j := `{
-  "date" : "2016-06-26T21:00:00Z",
-  "duration" : 60,
   "event_id" : 1386435,
-  "importance" : 1,
   "owner_id" : 1,
   "owner_name" : "EVE System",
-  "owner_type" : "eve_server",
+  "date" : "2016-06-26T21:00:00Z",
+  "title" : "o7 The EVE Online Show",
+  "duration" : 60,
+  "importance" : 1,
   "response" : "Undecided",
   "text" : "o7: The EVE Online Show features latest developer news, fast paced action, community overviews and a lot more with CCP Guard and CCP Mimic. Join the thrilling o7 live broadcast at 20:00 EVE time (=UTC) on <a href=\"http://www.twitch.tv/ccp\">EVE TV</a>. Don't miss it!",
-  "title" : "o7 The EVE Online Show"
+  "owner_type" : "eve_server"
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
