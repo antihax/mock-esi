@@ -17,6 +17,7 @@ func GetCharactersCharacterIdBookmarks(w http.ResponseWriter, r *http.Request) {
 		err         error
 		characterId int32
 		datasource  string
+		page        int32
 		token       string
 		userAgent   string
 	)
@@ -25,20 +26,30 @@ func GetCharactersCharacterIdBookmarks(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
-  "target" : {
-    "location_id" : 30000005,
-    "item" : {
-      "type_id" : 35832,
-      "item_id" : 1000000012668
-    }
+  "bookmark_id" : 4,
+  "location_id" : 30003430,
+  "item" : {
+    "type_id" : 29633,
+    "item_id" : 50006722
   },
-  "creator_id" : 90000001,
   "folder_id" : 5,
-  "owner_id" : 90000001,
-  "memo" : "aoeu ( Citadel )",
-  "note" : "",
-  "bookmark_id" : 32,
-  "create_date" : "2016-08-09T11:57:47Z"
+  "label" : "Stargate",
+  "notes" : "This is a stargate",
+  "created" : "2016-08-09T11:57:47Z",
+  "creator_id" : 2112625428
+}, {
+  "bookmark_id" : 5,
+  "location_id" : 30003430,
+  "coordinates" : {
+    "x" : -2958928814000,
+    "y" : -338367275823,
+    "z" : 2114538075090
+  },
+  "folder_id" : 5,
+  "label" : "Random location",
+  "notes" : "This is a random location in space",
+  "created" : "2016-08-09T11:57:47Z",
+  "creator_id" : 2112625428
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -58,6 +69,14 @@ func GetCharactersCharacterIdBookmarks(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		datasource = localV.(string)
+	}
+	if r.Form.Get("page") != "" {
+		localV, err = processParameters(page, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		page = localV.(int32)
 	}
 	if r.Form.Get("token") != "" {
 		localV, err = processParameters(token, r.Form.Get("token"))
@@ -108,6 +127,7 @@ func GetCharactersCharacterIdBookmarksFolders(w http.ResponseWriter, r *http.Req
 		err         error
 		characterId int32
 		datasource  string
+		page        int32
 		token       string
 		userAgent   string
 	)
@@ -117,7 +137,6 @@ func GetCharactersCharacterIdBookmarksFolders(w http.ResponseWriter, r *http.Req
 
 	j := `[ {
   "folder_id" : 5,
-  "owner_id" : 90000001,
   "name" : "Icecream"
 } ]`
 	vars := mux.Vars(r)
@@ -138,6 +157,14 @@ func GetCharactersCharacterIdBookmarksFolders(w http.ResponseWriter, r *http.Req
 			return
 		}
 		datasource = localV.(string)
+	}
+	if r.Form.Get("page") != "" {
+		localV, err = processParameters(page, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		page = localV.(int32)
 	}
 	if r.Form.Get("token") != "" {
 		localV, err = processParameters(token, r.Form.Get("token"))
