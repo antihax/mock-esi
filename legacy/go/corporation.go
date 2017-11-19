@@ -279,7 +279,7 @@ func GetCorporationsCorporationIdContainersLogs(w http.ResponseWriter, r *http.R
   "location_flag" : "CorpSAG1",
   "password_type" : "general"
 }, {
-  "logged_at" : "2017-10-11T12:04:33",
+  "logged_at" : "2017-10-11T12:04:33Z",
   "container_id" : 1000000012279,
   "container_type_id" : 17365,
   "character_id" : 2112625428,
