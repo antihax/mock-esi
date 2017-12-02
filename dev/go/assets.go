@@ -31,7 +31,8 @@ func GetCharactersCharacterIdAssets(w http.ResponseWriter, r *http.Request) {
   "is_singleton" : true,
   "type_id" : 3516,
   "item_id" : 1000000016835,
-  "location_type" : "station"
+  "location_type" : "station",
+  "quantity" : 1
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -123,7 +124,8 @@ func GetCorporationsCorporationIdAssets(w http.ResponseWriter, r *http.Request) 
   "is_singleton" : true,
   "type_id" : 3516,
   "item_id" : 1000000016835,
-  "location_type" : "station"
+  "location_type" : "station",
+  "quantity" : 1
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(corporationId, vars["corporation_id"])
@@ -210,9 +212,11 @@ func PostCharactersCharacterIdAssetsLocations(w http.ResponseWriter, r *http.Req
 
 	j := `[ {
   "item_id" : 12345,
-  "x" : 1.2,
-  "y" : 2.3,
-  "z" : -3.4
+  "position" : {
+    "x" : 1.2,
+    "y" : 2.3,
+    "z" : -3.4
+  }
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -370,9 +374,11 @@ func PostCorporationsCorporationIdAssetsLocations(w http.ResponseWriter, r *http
 
 	j := `[ {
   "item_id" : 12345,
-  "x" : 1.2,
-  "y" : 2.3,
-  "z" : -3.4
+  "position" : {
+    "x" : 1.2,
+    "y" : 2.3,
+    "z" : -3.4
+  }
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(corporationId, vars["corporation_id"])

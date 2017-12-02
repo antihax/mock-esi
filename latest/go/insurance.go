@@ -26,8 +26,8 @@ func GetInsurancePrices(w http.ResponseWriter, r *http.Request) {
 	j := `[ {
   "type_id" : 1,
   "levels" : [ {
-    "cost" : 10.0,
-    "payout" : 20.0,
+    "cost" : 10.01,
+    "payout" : 20.01,
     "name" : "Basic"
   } ]
 } ]`
