@@ -102,7 +102,7 @@ func GetAlliancesAllianceIdContacts(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
-  "standing" : 10.0,
+  "standing" : 9.9,
   "contact_type" : "character",
   "contact_id" : 2112625428
 } ]`
@@ -191,7 +191,7 @@ func GetCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
-  "standing" : 10.0,
+  "standing" : 9.9,
   "contact_type" : "character",
   "contact_id" : 123,
   "is_watched" : true,
@@ -361,7 +361,7 @@ func GetCorporationsCorporationIdContacts(w http.ResponseWriter, r *http.Request
 	err = err
 
 	j := `[ {
-  "standing" : 10.0,
+  "standing" : 9.9,
   "contact_type" : "character",
   "contact_id" : 123,
   "is_watched" : true

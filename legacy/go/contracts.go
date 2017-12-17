@@ -41,9 +41,9 @@ func GetCharactersCharacterIdContracts(w http.ResponseWriter, r *http.Request) {
   "date_accepted" : "2017-06-06T13:12:32Z",
   "days_to_complete" : 0,
   "date_completed" : "2017-06-06T13:12:32Z",
-  "price" : 1000000.0,
-  "reward" : 0.0,
-  "buyout" : 1.0E10,
+  "price" : 1000000.01,
+  "reward" : 0.01,
+  "buyout" : 1.000000000001E10,
   "volume" : 0.01
 } ]`
 	vars := mux.Vars(r)
@@ -315,9 +315,9 @@ func GetCorporationsCorporationIdContracts(w http.ResponseWriter, r *http.Reques
   "date_accepted" : "2017-06-06T13:12:32Z",
   "days_to_complete" : 0,
   "date_completed" : "2017-06-06T13:12:32Z",
-  "price" : 1000000.0,
-  "reward" : 0.0,
-  "buyout" : 1.0E10,
+  "price" : 1000000.01,
+  "reward" : 0.01,
+  "buyout" : 1.000000000001E10,
   "volume" : 0.01
 } ]`
 	vars := mux.Vars(r)

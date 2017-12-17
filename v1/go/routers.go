@@ -207,6 +207,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdStats",
+		"GET",
+		"/v1/characters/{character_id}/stats/",
+		GetCharactersCharacterIdStats,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdTitles",
 		"GET",
 		"/v1/characters/{character_id}/titles/",
@@ -400,6 +407,20 @@ func init() {
 		"GET",
 		"/v1/corporations/{corporation_id}/membertracking/",
 		GetCorporationsCorporationIdMembertracking,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdOutposts",
+		"GET",
+		"/v1/corporations/{corporation_id}/outposts/",
+		GetCorporationsCorporationIdOutposts,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdOutpostsOutpostId",
+		"GET",
+		"/v1/corporations/{corporation_id}/outposts/{outpost_id}/",
+		GetCorporationsCorporationIdOutpostsOutpostId,
 	)
 
 	mockesi.NewRoute(

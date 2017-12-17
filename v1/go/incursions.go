@@ -25,7 +25,7 @@ func GetIncursions(w http.ResponseWriter, r *http.Request) {
 	j := `[ {
   "type" : "Incursion",
   "state" : "mobilizing",
-  "influence" : 1.0,
+  "influence" : 0.9,
   "has_boss" : true,
   "faction_id" : 500019,
   "constellation_id" : 20000607,

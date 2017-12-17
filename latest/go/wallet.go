@@ -24,7 +24,7 @@ func GetCharactersCharacterIdWallet(w http.ResponseWriter, r *http.Request) {
 	localV = localV
 	err = err
 
-	j := `29500.0`
+	j := `29500.01`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
