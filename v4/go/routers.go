@@ -12,28 +12,28 @@ func init() {
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterId",
-		"GET",
+		"Get",
 		"/v4/characters/{character_id}/",
 		GetCharactersCharacterId,
 	)
 
 	mockesi.NewRoute(
 		"PostCharactersCharacterIdCspa",
-		"POST",
+		"Post",
 		"/v4/characters/{character_id}/cspa/",
 		PostCharactersCharacterIdCspa,
 	)
 
 	mockesi.NewRoute(
 		"GetCorporationsCorporationId",
-		"GET",
+		"Get",
 		"/v4/corporations/{corporation_id}/",
 		GetCorporationsCorporationId,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdSkills",
-		"GET",
+		"Get",
 		"/v4/characters/{character_id}/skills/",
 		GetCharactersCharacterIdSkills,
 	)

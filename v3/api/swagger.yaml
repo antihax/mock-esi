@@ -1,0 +1,3167 @@
+---
+swagger: "2.0"
+info:
+  description: "An OpenAPI for EVE Online"
+  version: "0.7.3"
+  title: "EVE Swagger Interface"
+host: "esi.tech.ccp.is"
+basePath: "/v3"
+schemes:
+- "https"
+produces:
+- "application/json"
+paths:
+  /alliances/{alliance_id}/:
+    get:
+      tags:
+      - "Alliance"
+      summary: "Get alliance information"
+      description: "Public information about an alliance\n\n---\nAlternate route:\
+        \ `/dev/alliances/{alliance_id}/`\n\n---\nThis route is cached for up to 3600\
+        \ seconds"
+      operationId: "get_alliances_alliance_id"
+      parameters:
+      - name: "alliance_id"
+        in: "path"
+        description: "An EVE alliance ID"
+        required: true
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "AllianceId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "user_agent"
+        in: "query"
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        type: "string"
+        x-exportParamName: "UserAgent"
+      - name: "X-User-Agent"
+        in: "header"
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        type: "string"
+        x-exportParamName: "XUserAgent"
+      responses:
+        200:
+          description: "Public data about an alliance"
+          schema:
+            $ref: "#/definitions/get_alliances_alliance_id_ok"
+          examples:
+            application/json:
+              name: "C C P Alliance"
+              ticker: "<C C P>"
+              creator_id: 12345
+              creator_corporation_id: 45678
+              executor_corporation_id: 98356193
+              date_founded: "2016-06-26T21:00:00Z"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        404:
+          description: "Alliance not found"
+          schema:
+            $ref: "#/definitions/get_alliances_alliance_id_not_found"
+          examples:
+            application/json:
+              error: "Not found message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+      x-cached-seconds: 3600
+      x-alternate-versions:
+      - "dev"
+  /characters/{character_id}/assets/:
+    get:
+      tags:
+      - "Assets"
+      summary: "Get character assets"
+      description: "Return a list of the characters assets\n\n---\nAlternate route:\
+        \ `/dev/characters/{character_id}/assets/`\n\n---\nThis route is cached for\
+        \ up to 3600 seconds"
+      operationId: "get_characters_character_id_assets"
+      parameters:
+      - name: "character_id"
+        in: "path"
+        description: "An EVE character ID"
+        required: true
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "CharacterId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "page"
+        in: "query"
+        description: "Which page of results to return"
+        required: false
+        type: "integer"
+        default: 1
+        format: "int32"
+        x-exportParamName: "Page"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      - name: "user_agent"
+        in: "query"
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        type: "string"
+        x-exportParamName: "UserAgent"
+      - name: "X-User-Agent"
+        in: "header"
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        type: "string"
+        x-exportParamName: "XUserAgent"
+      responses:
+        200:
+          description: "A flat list of the users assets"
+          schema:
+            type: "array"
+            description: "200 ok array"
+            title: "get_characters_character_id_assets_ok"
+            items:
+              $ref: "#/definitions/get_characters_character_id_assets_200_ok"
+            maxItems: 1000
+          examples:
+            application/json:
+            - location_flag: "Hangar"
+              location_id: 60002959
+              is_singleton: true
+              type_id: 3516
+              item_id: 1000000016835
+              location_type: "station"
+              quantity: 1
+          headers:
+            X-Pages:
+              type: "integer"
+              format: "int32"
+              description: "Maximum page number"
+              default: 1
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+      security:
+      - evesso:
+        - "esi-assets.read_assets.v1"
+      x-cached-seconds: 3600
+      x-alternate-versions:
+      - "dev"
+  /characters/{character_id}/calendar/{event_id}/:
+    get:
+      tags:
+      - "Calendar"
+      summary: "Get an event"
+      description: "Get all the information for a specific event\n\n---\nAlternate\
+        \ route: `/dev/characters/{character_id}/calendar/{event_id}/`\n\nAlternate\
+        \ route: `/latest/characters/{character_id}/calendar/{event_id}/`\n\n---\n\
+        This route is cached for up to 5 seconds"
+      operationId: "get_characters_character_id_calendar_event_id"
+      parameters:
+      - name: "character_id"
+        in: "path"
+        description: "An EVE character ID"
+        required: true
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "CharacterId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "event_id"
+        in: "path"
+        description: "The id of the event requested"
+        required: true
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "EventId"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      - name: "user_agent"
+        in: "query"
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        type: "string"
+        x-exportParamName: "UserAgent"
+      - name: "X-User-Agent"
+        in: "header"
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        type: "string"
+        x-exportParamName: "XUserAgent"
+      responses:
+        200:
+          description: "Full details of a specific event"
+          schema:
+            $ref: "#/definitions/get_characters_character_id_calendar_event_id_ok"
+          examples:
+            application/json:
+              event_id: 1386435
+              owner_id: 1
+              owner_name: "EVE System"
+              date: "2016-06-26T21:00:00Z"
+              title: "o7 The EVE Online Show"
+              duration: 60
+              importance: 1
+              response: "Undecided"
+              text: "o7: The EVE Online Show features latest developer news, fast\
+                \ paced action, community overviews and a lot more with CCP Guard\
+                \ and CCP Mimic. Join the thrilling o7 live broadcast at 20:00 EVE\
+                \ time (=UTC) on <a href=\"http://www.twitch.tv/ccp\">EVE TV</a>.\
+                \ Don't miss it!"
+              owner_type: "eve_server"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+      security:
+      - evesso:
+        - "esi-calendar.read_calendar_events.v1"
+      x-cached-seconds: 5
+      x-alternate-versions:
+      - "dev"
+      - "latest"
+    put:
+      tags:
+      - "Calendar"
+      summary: "Respond to an event"
+      description: "Set your response status to an event\n\n---\nAlternate route:\
+        \ `/dev/characters/{character_id}/calendar/{event_id}/`\n\nAlternate route:\
+        \ `/latest/characters/{character_id}/calendar/{event_id}/`\n"
+      operationId: "put_characters_character_id_calendar_event_id"
+      parameters:
+      - name: "character_id"
+        in: "path"
+        description: "An EVE character ID"
+        required: true
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "CharacterId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "event_id"
+        in: "path"
+        description: "The ID of the event requested"
+        required: true
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "EventId"
+      - in: "body"
+        name: "response"
+        description: "The response value to set, overriding current value."
+        required: true
+        schema:
+          $ref: "#/definitions/put_characters_character_id_calendar_event_id_response"
+        x-exportParamName: "Response"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      - name: "user_agent"
+        in: "query"
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        type: "string"
+        x-exportParamName: "UserAgent"
+      - name: "X-User-Agent"
+        in: "header"
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        type: "string"
+        x-exportParamName: "XUserAgent"
+      responses:
+        204:
+          description: "Event updated"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+      security:
+      - evesso:
+        - "esi-calendar.respond_calendar_events.v1"
+      x-alternate-versions:
+      - "dev"
+      - "latest"
+  /characters/{character_id}/:
+    get:
+      tags:
+      - "Character"
+      summary: "Get character's public information"
+      description: "Public information about a character\n\n---\nAlternate route:\
+        \ `/legacy/characters/{character_id}/`\n\n---\nThis route is cached for up\
+        \ to 3600 seconds\n\n---\nWarning: This route is deprecated.\n\n---\n[This\
+        \ route has an available update](https://esi.tech.ccp.is/diff/v3/dev/#GET-/characters/{character_id}/)"
+      operationId: "get_characters_character_id"
+      parameters:
+      - name: "character_id"
+        in: "path"
+        description: "An EVE character ID"
+        required: true
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "CharacterId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "user_agent"
+        in: "query"
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        type: "string"
+        x-exportParamName: "UserAgent"
+      - name: "X-User-Agent"
+        in: "header"
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        type: "string"
+        x-exportParamName: "XUserAgent"
+      responses:
+        200:
+          description: "Public data for the given character"
+          schema:
+            $ref: "#/definitions/get_characters_character_id_ok"
+          examples:
+            application/json:
+              corporation_id: 109299958
+              birthday: "2015-03-24T11:37:00Z"
+              name: "CCP Bartender"
+              gender: "male"
+              race_id: 2
+              description: ""
+              bloodline_id: 3
+              ancestry_id: 19
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        422:
+          description: "Is not a character ID"
+          schema:
+            $ref: "#/definitions/get_characters_character_id_unprocessable_entity"
+          examples:
+            application/json:
+              error: "98000001 is not a character ID"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+      deprecated: true
+      x-cached-seconds: 3600
+      x-alternate-versions:
+      - "legacy"
+  /characters/{character_id}/cspa/:
+    post:
+      tags:
+      - "Character"
+      summary: "Calculate a CSPA charge cost"
+      description: "Takes a source character ID in the url and a set of target character\
+        \ ID's in the body, returns a CSPA charge cost\n\n---\nAlternate route: `/latest/characters/{character_id}/cspa/`\n\
+        \nAlternate route: `/legacy/characters/{character_id}/cspa/`\n\n\n---\n[This\
+        \ route has an available update](https://esi.tech.ccp.is/diff/v3/dev/#POST-/characters/{character_id}/cspa/)"
+      operationId: "post_characters_character_id_cspa"
+      parameters:
+      - name: "character_id"
+        in: "path"
+        description: "An EVE character ID"
+        required: true
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "CharacterId"
+      - in: "body"
+        name: "characters"
+        description: "The target characters to calculate the charge for"
+        required: true
+        schema:
+          $ref: "#/definitions/post_characters_character_id_cspa_characters"
+        x-exportParamName: "Characters"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      - name: "user_agent"
+        in: "query"
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        type: "string"
+        x-exportParamName: "UserAgent"
+      - name: "X-User-Agent"
+        in: "header"
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        type: "string"
+        x-exportParamName: "XUserAgent"
+      responses:
+        201:
+          description: "Aggregate cost of sending a mail from the source character\
+            \ to the target characters, in ISK hundredths"
+          schema:
+            $ref: "#/definitions/post_characters_character_id_cspa_created"
+          examples:
+            application/json:
+              cost: 295000
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+      security:
+      - evesso:
+        - "esi-characters.read_contacts.v1"
+      x-alternate-versions:
+      - "latest"
+      - "legacy"
+  /characters/{character_id}/clones/:
+    get:
+      tags:
+      - "Clones"
+      summary: "Get clones"
+      description: "A list of the character's clones\n\n---\nAlternate route: `/dev/characters/{character_id}/clones/`\n\
+        \n---\nThis route is cached for up to 120 seconds"
+      operationId: "get_characters_character_id_clones"
+      parameters:
+      - name: "character_id"
+        in: "path"
+        description: "An EVE character ID"
+        required: true
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "CharacterId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      - name: "user_agent"
+        in: "query"
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        type: "string"
+        x-exportParamName: "UserAgent"
+      - name: "X-User-Agent"
+        in: "header"
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        type: "string"
+        x-exportParamName: "XUserAgent"
+      responses:
+        200:
+          description: "Clone information for the given character"
+          schema:
+            $ref: "#/definitions/get_characters_character_id_clones_ok"
+          examples:
+            application/json:
+              home_location:
+                location_id: 1021348135816
+                location_type: "structure"
+              jump_clones:
+              - jump_clone_id: 12345
+                location_id: 60003463
+                location_type: "station"
+                implants:
+                - 22118
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+      security:
+      - evesso:
+        - "esi-clones.read_clones.v1"
+      x-cached-seconds: 120
+      x-alternate-versions:
+      - "dev"
+  /corporations/{corporation_id}/:
+    get:
+      tags:
+      - "Corporation"
+      summary: "Get corporation information"
+      description: "Public information about a corporation\n\n---\nAlternate route:\
+        \ `/latest/corporations/{corporation_id}/`\n\n---\nThis route is cached for\
+        \ up to 3600 seconds\n\n---\n[This route has an available update](https://esi.tech.ccp.is/diff/v3/dev/#GET-/corporations/{corporation_id}/)"
+      operationId: "get_corporations_corporation_id"
+      parameters:
+      - name: "corporation_id"
+        in: "path"
+        description: "An EVE corporation ID"
+        required: true
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "CorporationId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "user_agent"
+        in: "query"
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        type: "string"
+        x-exportParamName: "UserAgent"
+      - name: "X-User-Agent"
+        in: "header"
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        type: "string"
+        x-exportParamName: "XUserAgent"
+      responses:
+        200:
+          description: "Public data about a corporation"
+          schema:
+            $ref: "#/definitions/get_corporations_corporation_id_ok"
+          examples:
+            application/json:
+              corporation_name: "C C P"
+              ticker: "-CCP-"
+              member_count: 656
+              ceo_id: 180548812
+              alliance_id: 434243723
+              corporation_description: "This is a corporation description, it's basically\
+                \ just a string"
+              tax_rate: 0.256
+              creation_date: "2004-11-28T16:42:51Z"
+              creator_id: 180548812
+              url: "http://www.eveonline.com"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        404:
+          description: "Corporation not found"
+          schema:
+            $ref: "#/definitions/get_corporations_corporation_id_not_found"
+          examples:
+            application/json:
+              error: "Not found message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+      x-cached-seconds: 3600
+      x-alternate-versions:
+      - "latest"
+  /corporations/{corporation_id}/members/:
+    get:
+      tags:
+      - "Corporation"
+      summary: "Get corporation members"
+      description: "Return the current member list of a corporation, the token's character\
+        \ need to be a member of the corporation.\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/members/`\n\
+        \n---\nThis route is cached for up to 3600 seconds"
+      operationId: "get_corporations_corporation_id_members"
+      parameters:
+      - name: "corporation_id"
+        in: "path"
+        description: "An EVE corporation ID"
+        required: true
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "CorporationId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      - name: "user_agent"
+        in: "query"
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        type: "string"
+        x-exportParamName: "UserAgent"
+      - name: "X-User-Agent"
+        in: "header"
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        type: "string"
+        x-exportParamName: "XUserAgent"
+      responses:
+        200:
+          description: "List of member character IDs"
+          schema:
+            type: "array"
+            description: "A list of character IDs"
+            title: "get_corporations_corporation_id_members_ok"
+            items:
+              type: "integer"
+              format: "int32"
+              description: "200 ok integer"
+              title: "get_corporations_corporation_id_members_200_ok"
+            maxItems: 12601
+          examples:
+            application/json:
+            - 90000001
+            - 90000002
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+      security:
+      - evesso:
+        - "esi-corporations.read_corporation_membership.v1"
+      x-cached-seconds: 3600
+      x-alternate-versions:
+      - "dev"
+  /characters/{character_id}/mail/labels/:
+    get:
+      tags:
+      - "Mail"
+      summary: "Get mail labels and unread counts"
+      description: "Return a list of the users mail labels, unread counts for each\
+        \ label and a total unread count.\n\n---\nAlternate route: `/dev/characters/{character_id}/mail/labels/`\n\
+        \nAlternate route: `/latest/characters/{character_id}/mail/labels/`\n\n---\n\
+        This route is cached for up to 30 seconds"
+      operationId: "get_characters_character_id_mail_labels"
+      parameters:
+      - name: "character_id"
+        in: "path"
+        description: "An EVE character ID"
+        required: true
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "CharacterId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      - name: "user_agent"
+        in: "query"
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        type: "string"
+        x-exportParamName: "UserAgent"
+      - name: "X-User-Agent"
+        in: "header"
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        type: "string"
+        x-exportParamName: "XUserAgent"
+      responses:
+        200:
+          description: "A list of mail labels and unread counts"
+          schema:
+            $ref: "#/definitions/get_characters_character_id_mail_labels_ok"
+          examples:
+            application/json:
+              total_unread_count: 5
+              labels:
+              - label_id: 16
+                name: "PINK"
+                color_hex: "#660066"
+                unread_count: 4
+              - label_id: 17
+                name: "WHITE"
+                color_hex: "#ffffff"
+                unread_count: 1
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+      security:
+      - evesso:
+        - "esi-mail.read_mail.v1"
+      x-cached-seconds: 30
+      x-alternate-versions:
+      - "dev"
+      - "latest"
+  /characters/{character_id}/planets/{planet_id}/:
+    get:
+      tags:
+      - "Planetary Interaction"
+      summary: "Get colony layout"
+      description: "Returns full details on the layout of a single planetary colony,\
+        \ including links, pins and routes. Note: Planetary information is only recalculated\
+        \ when the colony is viewed through the client. Information will not update\
+        \ until this criteria is met.\n\n---\nAlternate route: `/dev/characters/{character_id}/planets/{planet_id}/`\n\
+        \nAlternate route: `/latest/characters/{character_id}/planets/{planet_id}/`\n\
+        \n---\nThis route is cached for up to 600 seconds"
+      operationId: "get_characters_character_id_planets_planet_id"
+      parameters:
+      - name: "character_id"
+        in: "path"
+        description: "An EVE character ID"
+        required: true
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "CharacterId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "planet_id"
+        in: "path"
+        description: "Planet id of the target planet"
+        required: true
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "PlanetId"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      - name: "user_agent"
+        in: "query"
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        type: "string"
+        x-exportParamName: "UserAgent"
+      - name: "X-User-Agent"
+        in: "header"
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        type: "string"
+        x-exportParamName: "XUserAgent"
+      responses:
+        200:
+          description: "Colony layout"
+          schema:
+            $ref: "#/definitions/get_characters_character_id_planets_planet_id_ok"
+          examples:
+            application/json:
+              links:
+              - source_pin_id: 1000000017021
+                destination_pin_id: 1000000017022
+                link_level: 0
+              pins:
+              - longitude: 0.717145933308
+                is_running: true
+                type_id: 2254
+                pin_id: 1000000017021
+                latitude: 1.55087844973
+              - longitude: 0.709775584394
+                is_running: true
+                type_id: 2256
+                pin_id: 1000000017022
+                latitude: 1.53360639935
+              routes:
+              - source_pin_id: 1000000017029
+                quantity: 20
+                content_type_id: 2393
+                route_id: 4
+                destination_pin_id: 1000000017030
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        404:
+          description: "Colony not found"
+          schema:
+            $ref: "#/definitions/get_characters_character_id_planets_planet_id_not_found"
+          examples:
+            application/json:
+              error: "Colony not found"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+      security:
+      - evesso:
+        - "esi-planets.manage_planets.v1"
+      x-cached-seconds: 600
+      x-alternate-versions:
+      - "dev"
+      - "latest"
+  /characters/{character_id}/search/:
+    get:
+      tags:
+      - "Search"
+      summary: "Search on a string"
+      description: "Search for entities that match a given sub-string.\n\n---\nAlternate\
+        \ route: `/dev/characters/{character_id}/search/`\n\n---\nThis route is cached\
+        \ for up to 3600 seconds"
+      operationId: "get_characters_character_id_search"
+      parameters:
+      - name: "categories"
+        in: "query"
+        description: "Type of entities to search for"
+        required: true
+        type: "array"
+        items:
+          type: "string"
+          enum:
+          - "agent"
+          - "alliance"
+          - "character"
+          - "constellation"
+          - "corporation"
+          - "faction"
+          - "inventory_type"
+          - "region"
+          - "solar_system"
+          - "station"
+          - "structure"
+        maxItems: 11
+        minItems: 1
+        uniqueItems: true
+        x-exportParamName: "Categories"
+      - name: "character_id"
+        in: "path"
+        description: "An EVE character ID"
+        required: true
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "CharacterId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "language"
+        in: "query"
+        description: "Language to use in the response"
+        required: false
+        type: "string"
+        default: "en-us"
+        enum:
+        - "de"
+        - "en-us"
+        - "fr"
+        - "ja"
+        - "ru"
+        - "zh"
+        x-exportParamName: "Language"
+      - name: "search"
+        in: "query"
+        description: "The string to search on"
+        required: true
+        type: "string"
+        minLength: 3
+        x-exportParamName: "Search"
+      - name: "strict"
+        in: "query"
+        description: "Whether the search should be a strict match"
+        required: false
+        type: "boolean"
+        default: false
+        x-exportParamName: "Strict"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      - name: "user_agent"
+        in: "query"
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        type: "string"
+        x-exportParamName: "UserAgent"
+      - name: "X-User-Agent"
+        in: "header"
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        type: "string"
+        x-exportParamName: "XUserAgent"
+      responses:
+        200:
+          description: "A list of search results"
+          schema:
+            $ref: "#/definitions/get_characters_character_id_search_ok"
+          examples:
+            application/json:
+              station:
+              - 60004588
+              - 60004594
+              - 60005725
+              - 60009106
+              - 60012721
+              - 60012724
+              - 60012727
+              solar_system:
+              - 30002510
+          headers:
+            Content-Language:
+              type: "string"
+              description: "The language used in the response"
+              enum:
+              - "de"
+              - "en-us"
+              - "fr"
+              - "ja"
+              - "ru"
+              - "zh"
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+      security:
+      - evesso:
+        - "esi-search.search_structures.v1"
+      x-cached-seconds: 3600
+      x-alternate-versions:
+      - "dev"
+  /characters/{character_id}/skills/:
+    get:
+      tags:
+      - "Skills"
+      summary: "Get character skills"
+      description: "List all trained skills for the given character\n\n---\nAlternate\
+        \ route: `/latest/characters/{character_id}/skills/`\n\n---\nThis route is\
+        \ cached for up to 120 seconds\n\n---\n[This route has an available update](https://esi.tech.ccp.is/diff/v3/dev/#GET-/characters/{character_id}/skills/)"
+      operationId: "get_characters_character_id_skills"
+      parameters:
+      - name: "character_id"
+        in: "path"
+        description: "An EVE character ID"
+        required: true
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "CharacterId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      - name: "user_agent"
+        in: "query"
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        type: "string"
+        x-exportParamName: "UserAgent"
+      - name: "X-User-Agent"
+        in: "header"
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        type: "string"
+        x-exportParamName: "XUserAgent"
+      responses:
+        200:
+          description: "Known skills for the character"
+          schema:
+            $ref: "#/definitions/get_characters_character_id_skills_ok"
+          examples:
+            application/json:
+              skills:
+              - skill_id: 1
+                skillpoints_in_skill: 10000
+                current_skill_level: 1
+              - skill_id: 2
+                skillpoints_in_skill: 10000
+                current_skill_level: 1
+              total_sp: 20000
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+      security:
+      - evesso:
+        - "esi-skills.read_skills.v1"
+      x-cached-seconds: 120
+      x-alternate-versions:
+      - "latest"
+  /universe/systems/{system_id}/:
+    get:
+      tags:
+      - "Universe"
+      summary: "Get solar system information"
+      description: "Get information on a solar system\n\n---\nAlternate route: `/dev/universe/systems/{system_id}/`\n\
+        \nAlternate route: `/latest/universe/systems/{system_id}/`\n\n---\nThis route\
+        \ expires daily at 11:05"
+      operationId: "get_universe_systems_system_id"
+      parameters:
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "language"
+        in: "query"
+        description: "Language to use in the response"
+        required: false
+        type: "string"
+        default: "en-us"
+        enum:
+        - "de"
+        - "en-us"
+        - "fr"
+        - "ja"
+        - "ru"
+        - "zh"
+        x-exportParamName: "Language"
+      - name: "system_id"
+        in: "path"
+        description: "system_id integer"
+        required: true
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "SystemId"
+      - name: "user_agent"
+        in: "query"
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        type: "string"
+        x-exportParamName: "UserAgent"
+      - name: "X-User-Agent"
+        in: "header"
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        type: "string"
+        x-exportParamName: "XUserAgent"
+      responses:
+        200:
+          description: "Information about a solar system"
+          schema:
+            $ref: "#/definitions/get_universe_systems_system_id_ok"
+          examples:
+            application/json:
+              system_id: 30000003
+              name: "Akpivem"
+              position:
+                x: -91174141133075340
+                y: 43938227486247170
+                z: -56482824383339900
+              security_status: 0.8462923765182495
+              constellation_id: 20000001
+              planets:
+              - planet_id: 40000041
+                moons:
+                - 40000042
+              - planet_id: 40000043
+              stargates:
+              - 50000342
+              star_id: 40000040
+              security_class: "B"
+          headers:
+            Content-Language:
+              type: "string"
+              description: "The language used in the response"
+              enum:
+              - "de"
+              - "en-us"
+              - "fr"
+              - "ja"
+              - "ru"
+              - "zh"
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        404:
+          description: "Solar system not found"
+          schema:
+            $ref: "#/definitions/get_universe_systems_system_id_not_found"
+          examples:
+            application/json:
+              error: "Not found message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+      x-alternate-versions:
+      - "dev"
+      - "latest"
+  /universe/types/{type_id}/:
+    get:
+      tags:
+      - "Universe"
+      summary: "Get type information"
+      description: "Get information on a type\n\n---\nAlternate route: `/dev/universe/types/{type_id}/`\n\
+        \nAlternate route: `/latest/universe/types/{type_id}/`\n\n---\nThis route\
+        \ expires daily at 11:05"
+      operationId: "get_universe_types_type_id"
+      parameters:
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "language"
+        in: "query"
+        description: "Language to use in the response"
+        required: false
+        type: "string"
+        default: "en-us"
+        enum:
+        - "de"
+        - "en-us"
+        - "fr"
+        - "ja"
+        - "ru"
+        - "zh"
+        x-exportParamName: "Language"
+      - name: "type_id"
+        in: "path"
+        description: "An Eve item type ID"
+        required: true
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "TypeId"
+      - name: "user_agent"
+        in: "query"
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        type: "string"
+        x-exportParamName: "UserAgent"
+      - name: "X-User-Agent"
+        in: "header"
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        type: "string"
+        x-exportParamName: "XUserAgent"
+      responses:
+        200:
+          description: "Information about a type"
+          schema:
+            $ref: "#/definitions/get_universe_types_type_id_ok"
+          examples:
+            application/json:
+              type_id: 587
+              name: "Rifter"
+              description: "The Rifter is a..."
+              published: true
+              group_id: 25
+          headers:
+            Content-Language:
+              type: "string"
+              description: "The language used in the response"
+              enum:
+              - "de"
+              - "en-us"
+              - "fr"
+              - "ja"
+              - "ru"
+              - "zh"
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        404:
+          description: "Type not found"
+          schema:
+            $ref: "#/definitions/get_universe_types_type_id_not_found"
+          examples:
+            application/json:
+              error: "Not found message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+      x-alternate-versions:
+      - "dev"
+      - "latest"
+  /characters/{character_id}/wallet/journal/:
+    get:
+      tags:
+      - "Wallet"
+      summary: "Get character wallet journal"
+      description: "Retrieve character wallet journal\n\n---\nAlternate route: `/dev/characters/{character_id}/wallet/journal/`\n\
+        \n---\nThis route is cached for up to 3600 seconds"
+      operationId: "get_characters_character_id_wallet_journal"
+      parameters:
+      - name: "character_id"
+        in: "path"
+        description: "An EVE character ID"
+        required: true
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "CharacterId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "from_id"
+        in: "query"
+        description: "Only show journal entries happened before the transaction referenced\
+          \ by this id"
+        required: false
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "FromId"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      - name: "user_agent"
+        in: "query"
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        type: "string"
+        x-exportParamName: "UserAgent"
+      - name: "X-User-Agent"
+        in: "header"
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        type: "string"
+        x-exportParamName: "XUserAgent"
+      responses:
+        200:
+          description: "Journal entries"
+          schema:
+            type: "array"
+            description: "Journal entries"
+            title: "get_characters_character_id_wallet_journal_ok"
+            items:
+              $ref: "#/definitions/get_characters_character_id_wallet_journal_200_ok"
+            maxItems: 2500
+          examples:
+            application/json:
+            - date: "2016-10-24T09:00:00Z"
+              ref_id: 1234567890
+              ref_type: "player_trading"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+      security:
+      - evesso:
+        - "esi-wallet.read_character_wallet.v1"
+      x-cached-seconds: 3600
+      x-alternate-versions:
+      - "dev"
+securityDefinitions:
+  evesso:
+    type: "oauth2"
+    authorizationUrl: "https://login.eveonline.com/oauth/authorize"
+    flow: "implicit"
+    scopes:
+      esi-assets.read_assets.v1: "EVE SSO scope esi-assets.read_assets.v1"
+      esi-calendar.read_calendar_events.v1: "EVE SSO scope esi-calendar.read_calendar_events.v1"
+      esi-calendar.respond_calendar_events.v1: "EVE SSO scope esi-calendar.respond_calendar_events.v1"
+      esi-characters.read_contacts.v1: "EVE SSO scope esi-characters.read_contacts.v1"
+      esi-clones.read_clones.v1: "EVE SSO scope esi-clones.read_clones.v1"
+      esi-corporations.read_corporation_membership.v1: "EVE SSO scope esi-corporations.read_corporation_membership.v1"
+      esi-mail.read_mail.v1: "EVE SSO scope esi-mail.read_mail.v1"
+      esi-planets.manage_planets.v1: "EVE SSO scope esi-planets.manage_planets.v1"
+      esi-search.search_structures.v1: "EVE SSO scope esi-search.search_structures.v1"
+      esi-skills.read_skills.v1: "EVE SSO scope esi-skills.read_skills.v1"
+      esi-wallet.read_character_wallet.v1: "EVE SSO scope esi-wallet.read_character_wallet.v1"
+definitions:
+  internal_server_error:
+    type: "object"
+    required:
+    - "error"
+    properties:
+      error:
+        type: "string"
+        description: "Internal server error message"
+    title: "Internal server error"
+    description: "Internal server error model"
+  forbidden:
+    type: "object"
+    required:
+    - "error"
+    properties:
+      error:
+        type: "string"
+        description: "Forbidden message"
+      sso_status:
+        type: "integer"
+        description: "Status code received from SSO"
+    title: "Forbidden"
+    description: "Forbidden model"
+  get_alliances_alliance_id_ok:
+    required:
+    - "creator_corporation_id"
+    - "creator_id"
+    - "date_founded"
+    - "name"
+    - "ticker"
+    properties:
+      name:
+        type: "string"
+        description: "the full name of the alliance"
+        title: "get_alliances_alliance_id_name"
+      creator_id:
+        type: "integer"
+        format: "int32"
+        description: "ID of the character that created the alliance"
+        title: "get_alliances_alliance_id_creator_id"
+      creator_corporation_id:
+        type: "integer"
+        format: "int32"
+        description: "ID of the corporation that created the alliance"
+        title: "get_alliances_alliance_id_creator_corporation_id"
+      ticker:
+        type: "string"
+        description: "the short name of the alliance"
+        title: "get_alliances_alliance_id_ticker"
+      executor_corporation_id:
+        type: "integer"
+        format: "int32"
+        description: "the executor corporation ID, if this alliance is not closed"
+        title: "get_alliances_alliance_id_executor_corporation_id"
+      date_founded:
+        type: "string"
+        format: "date-time"
+        description: "date_founded string"
+        title: "get_alliances_alliance_id_date_founded"
+      faction_id:
+        type: "integer"
+        format: "int32"
+        description: "Faction ID this alliance is fighting for, if this alliance is\
+          \ enlisted in factional warfare"
+        title: "get_alliances_alliance_id_faction_id"
+    description: "200 ok object"
+  get_alliances_alliance_id_not_found:
+    properties:
+      error:
+        type: "string"
+        description: "Not found message"
+        title: "get_alliances_alliance_id_404_not_found"
+    description: "Not found"
+  get_characters_character_id_assets_200_ok:
+    required:
+    - "is_singleton"
+    - "item_id"
+    - "location_flag"
+    - "location_id"
+    - "location_type"
+    - "quantity"
+    - "type_id"
+    properties:
+      type_id:
+        type: "integer"
+        format: "int32"
+        description: "type_id integer"
+        title: "get_characters_character_id_assets_type_id"
+      quantity:
+        type: "integer"
+        format: "int32"
+        description: "quantity integer"
+        title: "get_characters_character_id_assets_quantity"
+      location_id:
+        type: "integer"
+        format: "int64"
+        description: "location_id integer"
+        title: "get_characters_character_id_assets_location_id"
+      location_type:
+        type: "string"
+        description: "location_type string"
+        title: "get_characters_character_id_assets_location_type"
+        enum:
+        - "station"
+        - "solar_system"
+        - "other"
+      item_id:
+        type: "integer"
+        format: "int64"
+        description: "item_id integer"
+        title: "get_characters_character_id_assets_item_id"
+      location_flag:
+        type: "string"
+        description: "location_flag string"
+        title: "get_characters_character_id_assets_location_flag"
+        enum:
+        - "AssetSafety"
+        - "AutoFit"
+        - "Cargo"
+        - "CorpseBay"
+        - "Deliveries"
+        - "DroneBay"
+        - "FighterBay"
+        - "FighterTube0"
+        - "FighterTube1"
+        - "FighterTube2"
+        - "FighterTube3"
+        - "FighterTube4"
+        - "FleetHangar"
+        - "Hangar"
+        - "HangarAll"
+        - "HiSlot0"
+        - "HiSlot1"
+        - "HiSlot2"
+        - "HiSlot3"
+        - "HiSlot4"
+        - "HiSlot5"
+        - "HiSlot6"
+        - "HiSlot7"
+        - "HiddenModifiers"
+        - "Implant"
+        - "LoSlot0"
+        - "LoSlot1"
+        - "LoSlot2"
+        - "LoSlot3"
+        - "LoSlot4"
+        - "LoSlot5"
+        - "LoSlot6"
+        - "LoSlot7"
+        - "Locked"
+        - "MedSlot0"
+        - "MedSlot1"
+        - "MedSlot2"
+        - "MedSlot3"
+        - "MedSlot4"
+        - "MedSlot5"
+        - "MedSlot6"
+        - "MedSlot7"
+        - "QuafeBay"
+        - "RigSlot0"
+        - "RigSlot1"
+        - "RigSlot2"
+        - "RigSlot3"
+        - "RigSlot4"
+        - "RigSlot5"
+        - "RigSlot6"
+        - "RigSlot7"
+        - "ShipHangar"
+        - "Skill"
+        - "SpecializedAmmoHold"
+        - "SpecializedCommandCenterHold"
+        - "SpecializedFuelBay"
+        - "SpecializedGasHold"
+        - "SpecializedIndustrialShipHold"
+        - "SpecializedLargeShipHold"
+        - "SpecializedMaterialBay"
+        - "SpecializedMediumShipHold"
+        - "SpecializedMineralHold"
+        - "SpecializedOreHold"
+        - "SpecializedPlanetaryCommoditiesHold"
+        - "SpecializedSalvageHold"
+        - "SpecializedShipHold"
+        - "SpecializedSmallShipHold"
+        - "SubSystemBay"
+        - "SubSystemSlot0"
+        - "SubSystemSlot1"
+        - "SubSystemSlot2"
+        - "SubSystemSlot3"
+        - "SubSystemSlot4"
+        - "SubSystemSlot5"
+        - "SubSystemSlot6"
+        - "SubSystemSlot7"
+        - "Unlocked"
+        - "Wardrobe"
+      is_singleton:
+        type: "boolean"
+        description: "is_singleton boolean"
+        title: "get_characters_character_id_assets_is_singleton"
+    description: "200 ok object"
+  get_characters_character_id_calendar_event_id_ok:
+    required:
+    - "date"
+    - "duration"
+    - "event_id"
+    - "importance"
+    - "owner_id"
+    - "owner_name"
+    - "owner_type"
+    - "response"
+    - "text"
+    - "title"
+    properties:
+      event_id:
+        type: "integer"
+        format: "int32"
+        description: "event_id integer"
+        title: "get_characters_character_id_calendar_event_id_event_id"
+      owner_id:
+        type: "integer"
+        format: "int32"
+        description: "owner_id integer"
+        title: "get_characters_character_id_calendar_event_id_owner_id"
+      owner_name:
+        type: "string"
+        description: "owner_name string"
+        title: "get_characters_character_id_calendar_event_id_owner_name"
+      date:
+        type: "string"
+        format: "date-time"
+        description: "date string"
+        title: "get_characters_character_id_calendar_event_id_date"
+      title:
+        type: "string"
+        description: "title string"
+        title: "get_characters_character_id_calendar_event_id_title"
+      duration:
+        type: "integer"
+        format: "int32"
+        description: "Length in minutes"
+        title: "get_characters_character_id_calendar_event_id_duration"
+      importance:
+        type: "integer"
+        format: "int32"
+        description: "importance integer"
+        title: "get_characters_character_id_calendar_event_id_importance"
+      response:
+        type: "string"
+        description: "response string"
+        title: "get_characters_character_id_calendar_event_id_response"
+      text:
+        type: "string"
+        description: "text string"
+        title: "get_characters_character_id_calendar_event_id_text"
+      owner_type:
+        type: "string"
+        description: "owner_type string"
+        title: "get_characters_character_id_calendar_event_id_owner_type"
+        enum:
+        - "eve_server"
+        - "corporation"
+        - "faction"
+        - "character"
+        - "alliance"
+    description: "Full details of a specific event"
+  put_characters_character_id_calendar_event_id_response:
+    required:
+    - "response"
+    properties:
+      response:
+        type: "string"
+        description: "response string"
+        title: "put_characters_character_id_calendar_event_id_response"
+        enum:
+        - "accepted"
+        - "declined"
+        - "tentative"
+    title: "put_characters_character_id_calendar_event_id_response"
+    description: "response schema"
+  get_characters_character_id_ok:
+    required:
+    - "birthday"
+    - "bloodline_id"
+    - "corporation_id"
+    - "description"
+    - "gender"
+    - "name"
+    - "race_id"
+    properties:
+      corporation_id:
+        type: "integer"
+        format: "int32"
+        description: "The character's corporation ID"
+        title: "get_characters_character_id_corporation_id"
+      birthday:
+        type: "string"
+        format: "date-time"
+        description: "Creation date of the character"
+        title: "get_characters_character_id_birthday"
+      name:
+        type: "string"
+        description: "The name of the character"
+        title: "get_characters_character_id_name"
+      gender:
+        type: "string"
+        description: "gender string"
+        title: "get_characters_character_id_gender"
+        enum:
+        - "female"
+        - "male"
+      race_id:
+        type: "integer"
+        format: "int32"
+        description: "race_id integer"
+        title: "get_characters_character_id_race_id"
+      description:
+        type: "string"
+        description: "description string"
+        title: "get_characters_character_id_description"
+      bloodline_id:
+        type: "integer"
+        format: "int32"
+        description: "bloodline_id integer"
+        title: "get_characters_character_id_bloodline_id"
+      ancestry_id:
+        type: "integer"
+        format: "int32"
+        description: "ancestry_id integer"
+        title: "get_characters_character_id_ancestry_id"
+      security_status:
+        type: "number"
+        format: "float"
+        description: "security_status number"
+        title: "get_characters_character_id_security_status"
+        minimum: -10
+        maximum: 10
+    description: "200 ok object"
+  get_characters_character_id_unprocessable_entity:
+    properties:
+      error:
+        type: "string"
+        description: "error message"
+        title: "get_characters_character_id_error"
+    description: "Is not a character ID"
+  post_characters_character_id_cspa_characters:
+    type: "object"
+    required:
+    - "characters"
+    properties:
+      characters:
+        type: "array"
+        description: "characters array"
+        title: "post_characters_character_id_cspa_characters"
+        uniqueItems: true
+        items:
+          type: "integer"
+          format: "int32"
+          description: "character integer"
+          title: "post_characters_character_id_cspa_character"
+        maxItems: 100
+        minItems: 1
+    title: "post_characters_character_id_cspa_characters"
+    description: "characters object"
+  post_characters_character_id_cspa_created:
+    properties:
+      cost:
+        type: "integer"
+        format: "int64"
+        description: "cost integer"
+        title: "post_characters_character_id_cspa_cost"
+    description: "201 created object"
+  get_characters_character_id_clones_home_location:
+    properties:
+      location_id:
+        type: "integer"
+        format: "int64"
+        description: "location_id integer"
+        title: "get_characters_character_id_clones_location_id"
+      location_type:
+        type: "string"
+        description: "location_type string"
+        title: "get_characters_character_id_clones_location_type"
+        enum:
+        - "station"
+        - "structure"
+    description: "home_location object"
+  get_characters_character_id_clones_jump_clone:
+    required:
+    - "implants"
+    - "jump_clone_id"
+    - "location_id"
+    - "location_type"
+    properties:
+      jump_clone_id:
+        type: "integer"
+        format: "int32"
+        description: "jump_clone_id integer"
+        title: "get_characters_character_id_clones_jump_clone_id"
+      name:
+        type: "string"
+        description: "name string"
+        title: "get_characters_character_id_clones_name"
+      location_id:
+        type: "integer"
+        format: "int64"
+        description: "location_id integer"
+        title: "get_characters_character_id_clones_location_id"
+      location_type:
+        type: "string"
+        description: "location_type string"
+        title: "get_characters_character_id_clones_location_type"
+        enum:
+        - "station"
+        - "structure"
+      implants:
+        type: "array"
+        description: "implants array"
+        title: "get_characters_character_id_clones_implants"
+        items:
+          type: "integer"
+          format: "int32"
+          description: "implant integer"
+          title: "get_characters_character_id_clones_implant"
+        maxItems: 11
+    description: "jump_clone object"
+  get_characters_character_id_clones_ok:
+    required:
+    - "jump_clones"
+    properties:
+      last_clone_jump_date:
+        type: "string"
+        format: "date-time"
+        description: "last_clone_jump_date string"
+        title: "get_characters_character_id_clones_last_clone_jump_date"
+      home_location:
+        $ref: "#/definitions/get_characters_character_id_clones_home_location"
+      last_station_change_date:
+        type: "string"
+        format: "date-time"
+        description: "last_station_change_date string"
+        title: "get_characters_character_id_clones_last_station_change_date"
+      jump_clones:
+        type: "array"
+        description: "jump_clones array"
+        title: "get_characters_character_id_clones_jump_clones"
+        items:
+          $ref: "#/definitions/get_characters_character_id_clones_jump_clone"
+        maxItems: 10
+    description: "200 ok object"
+  get_corporations_corporation_id_ok:
+    required:
+    - "ceo_id"
+    - "corporation_description"
+    - "corporation_name"
+    - "creator_id"
+    - "member_count"
+    - "tax_rate"
+    - "ticker"
+    - "url"
+    properties:
+      corporation_name:
+        type: "string"
+        description: "the full name of the corporation"
+        title: "get_corporations_corporation_id_corporation_name"
+      ticker:
+        type: "string"
+        description: "the short name of the corporation"
+        title: "get_corporations_corporation_id_ticker"
+      member_count:
+        type: "integer"
+        format: "int32"
+        description: "member_count integer"
+        title: "get_corporations_corporation_id_member_count"
+      ceo_id:
+        type: "integer"
+        format: "int32"
+        description: "ceo_id integer"
+        title: "get_corporations_corporation_id_ceo_id"
+      alliance_id:
+        type: "integer"
+        format: "int32"
+        description: "id of alliance that corporation is a member of, if any"
+        title: "get_corporations_corporation_id_alliance_id"
+      corporation_description:
+        type: "string"
+        description: "corporation_description string"
+        title: "get_corporations_corporation_id_corporation_description"
+      tax_rate:
+        type: "number"
+        format: "float"
+        description: "tax_rate number"
+        title: "get_corporations_corporation_id_tax_rate"
+        minimum: 0
+        maximum: 1
+      creation_date:
+        type: "string"
+        format: "date-time"
+        description: "creation_date string"
+        title: "get_corporations_corporation_id_creation_date"
+      creator_id:
+        type: "integer"
+        format: "int32"
+        description: "creator_id integer"
+        title: "get_corporations_corporation_id_creator_id"
+      url:
+        type: "string"
+        description: "url string"
+        title: "get_corporations_corporation_id_url"
+      faction:
+        type: "string"
+        description: "faction string"
+        title: "get_corporations_corporation_id_faction"
+        enum:
+        - "Minmatar"
+        - "Gallente"
+        - "Caldari"
+        - "Amarr"
+    description: "200 ok object"
+  get_corporations_corporation_id_not_found:
+    properties:
+      error:
+        type: "string"
+        description: "Not found message"
+        title: "get_corporations_corporation_id_404_not_found"
+    description: "Not found"
+  get_characters_character_id_mail_labels_label:
+    properties:
+      unread_count:
+        type: "integer"
+        format: "int32"
+        description: "unread_count integer"
+        title: "get_characters_character_id_mail_labels_unread_count"
+        minimum: 0
+      label_id:
+        type: "integer"
+        format: "int32"
+        description: "label_id integer"
+        title: "get_characters_character_id_mail_labels_label_id"
+        minimum: 0
+      name:
+        type: "string"
+        description: "name string"
+        title: "get_characters_character_id_mail_labels_name"
+        maxLength: 40
+      color:
+        type: "string"
+        description: "color string"
+        title: "get_characters_character_id_mail_labels_color"
+        enum:
+        - "#0000fe"
+        - "#006634"
+        - "#0099ff"
+        - "#00ff33"
+        - "#01ffff"
+        - "#349800"
+        - "#660066"
+        - "#666666"
+        - "#999999"
+        - "#99ffff"
+        - "#9a0000"
+        - "#ccff9a"
+        - "#e6e6e6"
+        - "#fe0000"
+        - "#ff6600"
+        - "#ffff01"
+        - "#ffffcd"
+        - "#ffffff"
+        default: "#ffffff"
+    description: "label object"
+  get_characters_character_id_mail_labels_ok:
+    properties:
+      total_unread_count:
+        type: "integer"
+        format: "int32"
+        description: "total_unread_count integer"
+        title: "get_characters_character_id_mail_labels_total_unread_count"
+        minimum: 0
+      labels:
+        type: "array"
+        description: "labels array"
+        title: "get_characters_character_id_mail_labels_labels"
+        items:
+          $ref: "#/definitions/get_characters_character_id_mail_labels_label"
+        maxItems: 30
+    description: "200 ok object"
+  get_characters_character_id_planets_planet_id_link:
+    required:
+    - "destination_pin_id"
+    - "link_level"
+    - "source_pin_id"
+    properties:
+      source_pin_id:
+        type: "integer"
+        format: "int64"
+        description: "source_pin_id integer"
+        title: "get_characters_character_id_planets_planet_id_source_pin_id"
+      destination_pin_id:
+        type: "integer"
+        format: "int64"
+        description: "destination_pin_id integer"
+        title: "get_characters_character_id_planets_planet_id_destination_pin_id"
+      link_level:
+        type: "integer"
+        format: "int32"
+        description: "link_level integer"
+        title: "get_characters_character_id_planets_planet_id_link_level"
+        minimum: 0
+        maximum: 10
+    description: "link object"
+  get_characters_character_id_planets_planet_id_head:
+    required:
+    - "head_id"
+    - "latitude"
+    - "longitude"
+    properties:
+      head_id:
+        type: "integer"
+        format: "int32"
+        description: "head_id integer"
+        title: "get_characters_character_id_planets_planet_id_head_id"
+        minimum: 0
+        maximum: 9
+      latitude:
+        type: "number"
+        format: "float"
+        description: "latitude number"
+        title: "get_characters_character_id_planets_planet_id_latitude"
+      longitude:
+        type: "number"
+        format: "float"
+        description: "longitude number"
+        title: "get_characters_character_id_planets_planet_id_longitude"
+    description: "head object"
+  get_characters_character_id_planets_planet_id_extractor_details:
+    required:
+    - "heads"
+    properties:
+      heads:
+        type: "array"
+        description: "heads array"
+        title: "get_characters_character_id_planets_planet_id_heads"
+        items:
+          $ref: "#/definitions/get_characters_character_id_planets_planet_id_head"
+        maxItems: 10
+      product_type_id:
+        type: "integer"
+        format: "int32"
+        description: "product_type_id integer"
+        title: "get_characters_character_id_planets_planet_id_product_type_id"
+      cycle_time:
+        type: "integer"
+        format: "int32"
+        description: "in seconds"
+        title: "get_characters_character_id_planets_planet_id_cycle_time"
+      head_radius:
+        type: "number"
+        format: "float"
+        description: "head_radius number"
+        title: "get_characters_character_id_planets_planet_id_head_radius"
+      qty_per_cycle:
+        type: "integer"
+        format: "int32"
+        description: "qty_per_cycle integer"
+        title: "get_characters_character_id_planets_planet_id_qty_per_cycle"
+    description: "extractor_details object"
+  get_characters_character_id_planets_planet_id_factory_details:
+    required:
+    - "schematic_id"
+    properties:
+      schematic_id:
+        type: "integer"
+        format: "int32"
+        description: "schematic_id integer"
+        title: "get_characters_character_id_planets_planet_id_schematic_id"
+    description: "factory_details object"
+  get_characters_character_id_planets_planet_id_content:
+    required:
+    - "amount"
+    - "type_id"
+    properties:
+      type_id:
+        type: "integer"
+        format: "int32"
+        description: "type_id integer"
+        title: "get_characters_character_id_planets_planet_id_type_id"
+      amount:
+        type: "integer"
+        format: "int64"
+        description: "amount integer"
+        title: "get_characters_character_id_planets_planet_id_amount"
+    description: "content object"
+  get_characters_character_id_planets_planet_id_pin:
+    required:
+    - "latitude"
+    - "longitude"
+    - "pin_id"
+    - "type_id"
+    properties:
+      latitude:
+        type: "number"
+        format: "float"
+        description: "latitude number"
+        title: "get_characters_character_id_planets_planet_id_latitude"
+      longitude:
+        type: "number"
+        format: "float"
+        description: "longitude number"
+        title: "get_characters_character_id_planets_planet_id_longitude"
+      pin_id:
+        type: "integer"
+        format: "int64"
+        description: "pin_id integer"
+        title: "get_characters_character_id_planets_planet_id_pin_id"
+      type_id:
+        type: "integer"
+        format: "int32"
+        description: "type_id integer"
+        title: "get_characters_character_id_planets_planet_id_type_id"
+      schematic_id:
+        type: "integer"
+        format: "int32"
+        description: "schematic_id integer"
+        title: "get_characters_character_id_planets_planet_id_schematic_id"
+      extractor_details:
+        $ref: "#/definitions/get_characters_character_id_planets_planet_id_extractor_details"
+      factory_details:
+        $ref: "#/definitions/get_characters_character_id_planets_planet_id_factory_details"
+      contents:
+        type: "array"
+        description: "contents array"
+        title: "get_characters_character_id_planets_planet_id_contents"
+        items:
+          $ref: "#/definitions/get_characters_character_id_planets_planet_id_content"
+        maxItems: 90
+      install_time:
+        type: "string"
+        format: "date-time"
+        description: "install_time string"
+        title: "get_characters_character_id_planets_planet_id_install_time"
+      expiry_time:
+        type: "string"
+        format: "date-time"
+        description: "expiry_time string"
+        title: "get_characters_character_id_planets_planet_id_expiry_time"
+      last_cycle_start:
+        type: "string"
+        format: "date-time"
+        description: "last_cycle_start string"
+        title: "get_characters_character_id_planets_planet_id_last_cycle_start"
+    description: "pin object"
+  get_characters_character_id_planets_planet_id_route:
+    required:
+    - "content_type_id"
+    - "destination_pin_id"
+    - "quantity"
+    - "route_id"
+    - "source_pin_id"
+    properties:
+      route_id:
+        type: "integer"
+        format: "int64"
+        description: "route_id integer"
+        title: "get_characters_character_id_planets_planet_id_route_id"
+      source_pin_id:
+        type: "integer"
+        format: "int64"
+        description: "source_pin_id integer"
+        title: "get_characters_character_id_planets_planet_id_source_pin_id"
+      destination_pin_id:
+        type: "integer"
+        format: "int64"
+        description: "destination_pin_id integer"
+        title: "get_characters_character_id_planets_planet_id_destination_pin_id"
+      content_type_id:
+        type: "integer"
+        format: "int32"
+        description: "content_type_id integer"
+        title: "get_characters_character_id_planets_planet_id_content_type_id"
+      quantity:
+        type: "number"
+        format: "float"
+        description: "quantity number"
+        title: "get_characters_character_id_planets_planet_id_quantity"
+      waypoints:
+        type: "array"
+        description: "list of pin ID waypoints"
+        title: "get_characters_character_id_planets_planet_id_waypoints"
+        items:
+          type: "integer"
+          format: "int64"
+          description: "waypoint integer"
+          title: "get_characters_character_id_planets_planet_id_waypoint"
+        maxItems: 5
+    description: "route object"
+  get_characters_character_id_planets_planet_id_ok:
+    required:
+    - "links"
+    - "pins"
+    - "routes"
+    properties:
+      links:
+        type: "array"
+        description: "links array"
+        title: "get_characters_character_id_planets_planet_id_links"
+        items:
+          $ref: "#/definitions/get_characters_character_id_planets_planet_id_link"
+        maxItems: 500
+      pins:
+        type: "array"
+        description: "pins array"
+        title: "get_characters_character_id_planets_planet_id_pins"
+        items:
+          $ref: "#/definitions/get_characters_character_id_planets_planet_id_pin"
+        maxItems: 100
+      routes:
+        type: "array"
+        description: "routes array"
+        title: "get_characters_character_id_planets_planet_id_routes"
+        items:
+          $ref: "#/definitions/get_characters_character_id_planets_planet_id_route"
+        maxItems: 1000
+    description: "200 ok object"
+  get_characters_character_id_planets_planet_id_not_found:
+    properties:
+      error:
+        type: "string"
+        description: "error message"
+        title: "get_characters_character_id_planets_planet_id_error"
+    description: "Colony not found"
+  get_characters_character_id_search_ok:
+    properties:
+      agent:
+        type: "array"
+        description: "agent array"
+        title: "get_characters_character_id_search_agent"
+        items:
+          type: "integer"
+          format: "int32"
+          description: "agent integer"
+          title: "get_characters_character_id_search_agent"
+        maxItems: 500
+      alliance:
+        type: "array"
+        description: "alliance array"
+        title: "get_characters_character_id_search_alliance"
+        items:
+          type: "integer"
+          format: "int32"
+          description: "alliance integer"
+          title: "get_characters_character_id_search_alliance"
+        maxItems: 500
+      character:
+        type: "array"
+        description: "character array"
+        title: "get_characters_character_id_search_character"
+        items:
+          type: "integer"
+          format: "int32"
+          description: "character integer"
+          title: "get_characters_character_id_search_character"
+        maxItems: 500
+      constellation:
+        type: "array"
+        description: "constellation array"
+        title: "get_characters_character_id_search_constellation"
+        items:
+          type: "integer"
+          format: "int32"
+          description: "constellation integer"
+          title: "get_characters_character_id_search_constellation"
+        maxItems: 500
+      corporation:
+        type: "array"
+        description: "corporation array"
+        title: "get_characters_character_id_search_corporation"
+        items:
+          type: "integer"
+          format: "int32"
+          description: "corporation integer"
+          title: "get_characters_character_id_search_corporation"
+        maxItems: 500
+      faction:
+        type: "array"
+        description: "faction array"
+        title: "get_characters_character_id_search_faction"
+        items:
+          type: "integer"
+          format: "int32"
+          description: "faction integer"
+          title: "get_characters_character_id_search_faction"
+        maxItems: 500
+      inventory_type:
+        type: "array"
+        description: "inventory_type array"
+        title: "get_characters_character_id_search_inventory_type"
+        items:
+          type: "integer"
+          format: "int32"
+          description: "inventory_type integer"
+          title: "get_characters_character_id_search_inventory_type"
+        maxItems: 500
+      region:
+        type: "array"
+        description: "region array"
+        title: "get_characters_character_id_search_region"
+        items:
+          type: "integer"
+          format: "int32"
+          description: "region integer"
+          title: "get_characters_character_id_search_region"
+        maxItems: 500
+      solar_system:
+        type: "array"
+        description: "solar_system array"
+        title: "get_characters_character_id_search_solar_system"
+        items:
+          type: "integer"
+          format: "int32"
+          description: "solar_system integer"
+          title: "get_characters_character_id_search_solar_system"
+        maxItems: 500
+      station:
+        type: "array"
+        description: "station array"
+        title: "get_characters_character_id_search_station"
+        items:
+          type: "integer"
+          format: "int32"
+          description: "station integer"
+          title: "get_characters_character_id_search_station"
+        maxItems: 500
+      structure:
+        type: "array"
+        description: "structure array"
+        title: "get_characters_character_id_search_structure"
+        items:
+          type: "integer"
+          format: "int64"
+          description: "structure integer"
+          title: "get_characters_character_id_search_structure"
+        maxItems: 500
+    description: "200 ok object"
+  get_characters_character_id_skills_skill:
+    properties:
+      skill_id:
+        type: "integer"
+        format: "int32"
+        description: "skill_id integer"
+        title: "get_characters_character_id_skills_skill_id"
+      skillpoints_in_skill:
+        type: "integer"
+        format: "int64"
+        description: "skillpoints_in_skill integer"
+        title: "get_characters_character_id_skills_skillpoints_in_skill"
+      current_skill_level:
+        type: "integer"
+        format: "int32"
+        description: "current_skill_level integer"
+        title: "get_characters_character_id_skills_current_skill_level"
+    description: "skill object"
+  get_characters_character_id_skills_ok:
+    properties:
+      skills:
+        type: "array"
+        description: "skills array"
+        title: "get_characters_character_id_skills_skills"
+        items:
+          $ref: "#/definitions/get_characters_character_id_skills_skill"
+        maxItems: 1000
+      total_sp:
+        type: "integer"
+        format: "int64"
+        description: "total_sp integer"
+        title: "get_characters_character_id_skills_total_sp"
+    description: "200 ok object"
+  get_universe_systems_system_id_position:
+    required:
+    - "x"
+    - "y"
+    - "z"
+    properties:
+      x:
+        type: "number"
+        format: "double"
+        description: "x number"
+        title: "get_universe_systems_system_id_x"
+      y:
+        type: "number"
+        format: "double"
+        description: "y number"
+        title: "get_universe_systems_system_id_y"
+      z:
+        type: "number"
+        format: "double"
+        description: "z number"
+        title: "get_universe_systems_system_id_z"
+    description: "position object"
+  get_universe_systems_system_id_planet:
+    required:
+    - "planet_id"
+    properties:
+      planet_id:
+        type: "integer"
+        format: "int32"
+        description: "planet_id integer"
+        title: "get_universe_systems_system_id_planet_id"
+      moons:
+        type: "array"
+        description: "moons array"
+        title: "get_universe_systems_system_id_moons"
+        items:
+          type: "integer"
+          format: "int32"
+          description: "moon integer"
+          title: "get_universe_systems_system_id_moon"
+        maxItems: 1000
+    description: "planet object"
+  get_universe_systems_system_id_ok:
+    required:
+    - "constellation_id"
+    - "name"
+    - "planets"
+    - "position"
+    - "security_status"
+    - "star_id"
+    - "system_id"
+    properties:
+      star_id:
+        type: "integer"
+        format: "int32"
+        description: "star_id integer"
+        title: "get_universe_systems_system_id_star_id"
+      system_id:
+        type: "integer"
+        format: "int32"
+        description: "system_id integer"
+        title: "get_universe_systems_system_id_system_id"
+      name:
+        type: "string"
+        description: "name string"
+        title: "get_universe_systems_system_id_name"
+      position:
+        $ref: "#/definitions/get_universe_systems_system_id_position"
+      security_status:
+        type: "number"
+        format: "float"
+        description: "security_status number"
+        title: "get_universe_systems_system_id_security_status"
+      security_class:
+        type: "string"
+        description: "security_class string"
+        title: "get_universe_systems_system_id_security_class"
+      constellation_id:
+        type: "integer"
+        format: "int32"
+        description: "The constellation this solar system is in"
+        title: "get_universe_systems_system_id_constellation_id"
+      planets:
+        type: "array"
+        description: "planets array"
+        title: "get_universe_systems_system_id_planets"
+        items:
+          $ref: "#/definitions/get_universe_systems_system_id_planet"
+        maxItems: 1000
+      stargates:
+        type: "array"
+        description: "stargates array"
+        title: "get_universe_systems_system_id_stargates"
+        items:
+          type: "integer"
+          format: "int32"
+          description: "stargate integer"
+          title: "get_universe_systems_system_id_stargate"
+        maxItems: 25
+      stations:
+        type: "array"
+        description: "stations array"
+        title: "get_universe_systems_system_id_stations"
+        items:
+          type: "integer"
+          format: "int32"
+          description: "station integer"
+          title: "get_universe_systems_system_id_station"
+        maxItems: 25
+    description: "200 ok object"
+  get_universe_systems_system_id_not_found:
+    properties:
+      error:
+        type: "string"
+        description: "Not found message"
+        title: "get_universe_systems_system_id_404_not_found"
+    description: "Not found"
+  get_universe_types_type_id_dogma_attribute:
+    required:
+    - "attribute_id"
+    - "value"
+    properties:
+      attribute_id:
+        type: "integer"
+        format: "int32"
+        description: "attribute_id integer"
+        title: "get_universe_types_type_id_attribute_id"
+      value:
+        type: "number"
+        format: "float"
+        description: "value number"
+        title: "get_universe_types_type_id_value"
+    description: "dogma_attribute object"
+  get_universe_types_type_id_dogma_effect:
+    required:
+    - "effect_id"
+    - "is_default"
+    properties:
+      effect_id:
+        type: "integer"
+        format: "int32"
+        description: "effect_id integer"
+        title: "get_universe_types_type_id_effect_id"
+      is_default:
+        type: "boolean"
+        description: "is_default boolean"
+        title: "get_universe_types_type_id_is_default"
+    description: "dogma_effect object"
+  get_universe_types_type_id_ok:
+    required:
+    - "description"
+    - "group_id"
+    - "name"
+    - "published"
+    - "type_id"
+    properties:
+      type_id:
+        type: "integer"
+        format: "int32"
+        description: "type_id integer"
+        title: "get_universe_types_type_id_type_id"
+      name:
+        type: "string"
+        description: "name string"
+        title: "get_universe_types_type_id_name"
+      description:
+        type: "string"
+        description: "description string"
+        title: "get_universe_types_type_id_description"
+      published:
+        type: "boolean"
+        description: "published boolean"
+        title: "get_universe_types_type_id_published"
+      group_id:
+        type: "integer"
+        format: "int32"
+        description: "group_id integer"
+        title: "get_universe_types_type_id_group_id"
+      market_group_id:
+        type: "integer"
+        format: "int32"
+        description: "This only exists for types that can be put on the market"
+        title: "get_universe_types_type_id_market_group_id"
+      radius:
+        type: "number"
+        format: "float"
+        description: "radius number"
+        title: "get_universe_types_type_id_radius"
+      volume:
+        type: "number"
+        format: "float"
+        description: "volume number"
+        title: "get_universe_types_type_id_volume"
+      packaged_volume:
+        type: "number"
+        format: "float"
+        description: "packaged_volume number"
+        title: "get_universe_types_type_id_packaged_volume"
+      icon_id:
+        type: "integer"
+        format: "int32"
+        description: "icon_id integer"
+        title: "get_universe_types_type_id_icon_id"
+      capacity:
+        type: "number"
+        format: "float"
+        description: "capacity number"
+        title: "get_universe_types_type_id_capacity"
+      portion_size:
+        type: "integer"
+        format: "int32"
+        description: "portion_size integer"
+        title: "get_universe_types_type_id_portion_size"
+      mass:
+        type: "number"
+        format: "float"
+        description: "mass number"
+        title: "get_universe_types_type_id_mass"
+      graphic_id:
+        type: "integer"
+        format: "int32"
+        description: "graphic_id integer"
+        title: "get_universe_types_type_id_graphic_id"
+      dogma_attributes:
+        type: "array"
+        description: "dogma_attributes array"
+        title: "get_universe_types_type_id_dogma_attributes"
+        items:
+          $ref: "#/definitions/get_universe_types_type_id_dogma_attribute"
+        maxItems: 1000
+      dogma_effects:
+        type: "array"
+        description: "dogma_effects array"
+        title: "get_universe_types_type_id_dogma_effects"
+        items:
+          $ref: "#/definitions/get_universe_types_type_id_dogma_effect"
+        maxItems: 1000
+    description: "200 ok object"
+  get_universe_types_type_id_not_found:
+    properties:
+      error:
+        type: "string"
+        description: "Not found message"
+        title: "get_universe_types_type_id_404_not_found"
+    description: "Not found"
+  get_characters_character_id_wallet_journal_extra_info:
+    properties:
+      location_id:
+        type: "integer"
+        format: "int64"
+        description: "location_id integer"
+        title: "get_characters_character_id_wallet_journal_location_id"
+      transaction_id:
+        type: "integer"
+        format: "int64"
+        description: "transaction_id integer"
+        title: "get_characters_character_id_wallet_journal_transaction_id"
+      npc_name:
+        type: "string"
+        description: "npc_name string"
+        title: "get_characters_character_id_wallet_journal_npc_name"
+      npc_id:
+        type: "integer"
+        format: "int32"
+        description: "npc_id integer"
+        title: "get_characters_character_id_wallet_journal_npc_id"
+      destroyed_ship_type_id:
+        type: "integer"
+        format: "int32"
+        description: "destroyed_ship_type_id integer"
+        title: "get_characters_character_id_wallet_journal_destroyed_ship_type_id"
+      character_id:
+        type: "integer"
+        format: "int32"
+        description: "character_id integer"
+        title: "get_characters_character_id_wallet_journal_character_id"
+      corporation_id:
+        type: "integer"
+        format: "int32"
+        description: "corporation_id integer"
+        title: "get_characters_character_id_wallet_journal_corporation_id"
+      alliance_id:
+        type: "integer"
+        format: "int32"
+        description: "alliance_id integer"
+        title: "get_characters_character_id_wallet_journal_alliance_id"
+      job_id:
+        type: "integer"
+        format: "int32"
+        description: "job_id integer"
+        title: "get_characters_character_id_wallet_journal_job_id"
+      contract_id:
+        type: "integer"
+        format: "int32"
+        description: "contract_id integer"
+        title: "get_characters_character_id_wallet_journal_contract_id"
+      system_id:
+        type: "integer"
+        format: "int32"
+        description: "system_id integer"
+        title: "get_characters_character_id_wallet_journal_system_id"
+      planet_id:
+        type: "integer"
+        format: "int32"
+        description: "planet_id integer"
+        title: "get_characters_character_id_wallet_journal_planet_id"
+    description: "Extra information for different type of transaction"
+  get_characters_character_id_wallet_journal_200_ok:
+    required:
+    - "date"
+    - "ref_id"
+    - "ref_type"
+    properties:
+      date:
+        type: "string"
+        format: "date-time"
+        description: "Date and time of transaction"
+        title: "get_characters_character_id_wallet_journal_date"
+      ref_id:
+        type: "integer"
+        format: "int64"
+        description: "Unique journal reference ID"
+        title: "get_characters_character_id_wallet_journal_ref_id"
+      ref_type:
+        type: "string"
+        description: "Transaction type, different type of transaction will populate\
+          \ different fields in `extra_info` Note: If you have an existing XML API\
+          \ application that is using ref_types, you will need to know which string\
+          \ ESI ref_type maps to which integer. You can use the following gist to\
+          \ see string->int mappings: https://gist.github.com/ccp-zoetrope/c03db66d90c2148724c06171bc52e0ec"
+        title: "get_characters_character_id_wallet_journal_ref_type"
+        enum:
+        - "acceleration_gate_fee"
+        - "advertisement_listing_fee"
+        - "agent_donation"
+        - "agent_location_services"
+        - "agent_miscellaneous"
+        - "agent_mission_collateral_paid"
+        - "agent_mission_collateral_refunded"
+        - "agent_mission_reward"
+        - "agent_mission_reward_corporation_tax"
+        - "agent_mission_time_bonus_reward"
+        - "agent_mission_time_bonus_reward_corporation_tax"
+        - "agent_security_services"
+        - "agent_services_rendered"
+        - "agents_preward"
+        - "alliance_maintainance_fee"
+        - "alliance_registration_fee"
+        - "asset_safety_recovery_tax"
+        - "bounty"
+        - "bounty_prize"
+        - "bounty_prize_corporation_tax"
+        - "bounty_prizes"
+        - "bounty_reimbursement"
+        - "bounty_surcharge"
+        - "brokers_fee"
+        - "clone_activation"
+        - "clone_transfer"
+        - "contraband_fine"
+        - "contract_auction_bid"
+        - "contract_auction_bid_corp"
+        - "contract_auction_bid_refund"
+        - "contract_auction_sold"
+        - "contract_brokers_fee"
+        - "contract_brokers_fee_corp"
+        - "contract_collateral"
+        - "contract_collateral_deposited_corp"
+        - "contract_collateral_payout"
+        - "contract_collateral_refund"
+        - "contract_deposit"
+        - "contract_deposit_corp"
+        - "contract_deposit_refund"
+        - "contract_deposit_sales_tax"
+        - "contract_price"
+        - "contract_price_payment_corp"
+        - "contract_reversal"
+        - "contract_reward"
+        - "contract_reward_deposited"
+        - "contract_reward_deposited_corp"
+        - "contract_reward_refund"
+        - "contract_sales_tax"
+        - "copying"
+        - "corporate_reward_payout"
+        - "corporate_reward_tax"
+        - "corporation_account_withdrawal"
+        - "corporation_bulk_payment"
+        - "corporation_dividend_payment"
+        - "corporation_liquidation"
+        - "corporation_logo_change_cost"
+        - "corporation_payment"
+        - "corporation_registration_fee"
+        - "courier_mission_escrow"
+        - "cspa"
+        - "cspaofflinerefund"
+        - "datacore_fee"
+        - "dna_modification_fee"
+        - "docking_fee"
+        - "duel_wager_escrow"
+        - "duel_wager_payment"
+        - "duel_wager_refund"
+        - "factory_slot_rental_fee"
+        - "gm_cash_transfer"
+        - "industry_job_tax"
+        - "infrastructure_hub_maintenance"
+        - "inheritance"
+        - "insurance"
+        - "jump_clone_activation_fee"
+        - "jump_clone_installation_fee"
+        - "kill_right_fee"
+        - "lp_store"
+        - "manufacturing"
+        - "market_escrow"
+        - "market_fine_paid"
+        - "market_transaction"
+        - "medal_creation"
+        - "medal_issued"
+        - "mission_completion"
+        - "mission_cost"
+        - "mission_expiration"
+        - "mission_reward"
+        - "office_rental_fee"
+        - "operation_bonus"
+        - "opportunity_reward"
+        - "planetary_construction"
+        - "planetary_export_tax"
+        - "planetary_import_tax"
+        - "player_donation"
+        - "player_trading"
+        - "project_discovery_reward"
+        - "project_discovery_tax"
+        - "reaction"
+        - "release_of_impounded_property"
+        - "repair_bill"
+        - "reprocessing_tax"
+        - "researching_material_productivity"
+        - "researching_technology"
+        - "researching_time_productivity"
+        - "resource_wars_reward"
+        - "reverse_engineering"
+        - "security_processing_fee"
+        - "shares"
+        - "sovereignity_bill"
+        - "store_purchase"
+        - "store_purchase_refund"
+        - "transaction_tax"
+        - "upkeep_adjustment_fee"
+        - "war_ally_contract"
+        - "war_fee"
+        - "war_fee_surrender"
+      first_party_id:
+        type: "integer"
+        format: "int32"
+        description: "first_party_id integer"
+        title: "get_characters_character_id_wallet_journal_first_party_id"
+      first_party_type:
+        type: "string"
+        description: "first_party_type string"
+        title: "get_characters_character_id_wallet_journal_first_party_type"
+        enum:
+        - "character"
+        - "corporation"
+        - "alliance"
+        - "faction"
+        - "system"
+      second_party_id:
+        type: "integer"
+        format: "int32"
+        description: "second_party_id integer"
+        title: "get_characters_character_id_wallet_journal_second_party_id"
+      second_party_type:
+        type: "string"
+        description: "second_party_type string"
+        title: "get_characters_character_id_wallet_journal_second_party_type"
+        enum:
+        - "character"
+        - "corporation"
+        - "alliance"
+        - "faction"
+        - "system"
+      amount:
+        type: "number"
+        format: "double"
+        description: "Transaction amount. Positive when value transferred to the first\
+          \ party. Negative otherwise"
+        title: "get_characters_character_id_wallet_journal_amount"
+      balance:
+        type: "number"
+        format: "double"
+        description: "Wallet balance after transaction occurred"
+        title: "get_characters_character_id_wallet_journal_balance"
+      reason:
+        type: "string"
+        description: "reason string"
+        title: "get_characters_character_id_wallet_journal_reason"
+      tax_receiver_id:
+        type: "integer"
+        format: "int32"
+        description: "the corporation ID receiving any tax paid"
+        title: "get_characters_character_id_wallet_journal_tax_receiver_id"
+      tax:
+        type: "number"
+        format: "double"
+        description: "Tax amount received for tax related transactions"
+        title: "get_characters_character_id_wallet_journal_tax"
+      extra_info:
+        $ref: "#/definitions/get_characters_character_id_wallet_journal_extra_info"
+    description: "200 ok object"
+parameters:
+  datasource:
+    name: "datasource"
+    in: "query"
+    description: "The server name you would like data from"
+    required: false
+    type: "string"
+    default: "tranquility"
+    enum:
+    - "tranquility"
+    - "singularity"
+    x-exportParamName: "Datasource"
+  user_agent:
+    name: "user_agent"
+    in: "query"
+    description: "Client identifier, takes precedence over headers"
+    required: false
+    type: "string"
+    x-exportParamName: "UserAgent"
+  X-User-Agent:
+    name: "X-User-Agent"
+    in: "header"
+    description: "Client identifier, takes precedence over User-Agent"
+    required: false
+    type: "string"
+    x-exportParamName: "XUserAgent"
+  alliance_id:
+    name: "alliance_id"
+    in: "path"
+    description: "An EVE alliance ID"
+    required: true
+    type: "integer"
+    format: "int32"
+    x-exportParamName: "AllianceId"
+  token:
+    name: "token"
+    in: "query"
+    description: "Access token to use if unable to set a header"
+    required: false
+    type: "string"
+    x-exportParamName: "Token"
+  character_id:
+    name: "character_id"
+    in: "path"
+    description: "An EVE character ID"
+    required: true
+    type: "integer"
+    format: "int32"
+    x-exportParamName: "CharacterId"
+  language:
+    name: "language"
+    in: "query"
+    description: "Language to use in the response"
+    required: false
+    type: "string"
+    default: "en-us"
+    enum:
+    - "de"
+    - "en-us"
+    - "fr"
+    - "ja"
+    - "ru"
+    - "zh"
+    x-exportParamName: "Language"
+  page:
+    name: "page"
+    in: "query"
+    description: "Which page of results to return"
+    required: false
+    type: "integer"
+    default: 1
+    format: "int32"
+    x-exportParamName: "Page"
+  corporation_id:
+    name: "corporation_id"
+    in: "path"
+    description: "An EVE corporation ID"
+    required: true
+    type: "integer"
+    format: "int32"
+    x-exportParamName: "CorporationId"

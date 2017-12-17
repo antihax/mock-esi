@@ -12,266 +12,266 @@ func init() {
 
 	mockesi.NewRoute(
 		"GetAlliancesAllianceId",
-		"GET",
+		"Get",
 		"/v2/alliances/{alliance_id}/",
 		GetAlliancesAllianceId,
 	)
 
 	mockesi.NewRoute(
 		"GetAlliancesNames",
-		"GET",
+		"Get",
 		"/v2/alliances/names/",
 		GetAlliancesNames,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdAssets",
-		"GET",
+		"Get",
 		"/v2/characters/{character_id}/assets/",
 		GetCharactersCharacterIdAssets,
 	)
 
 	mockesi.NewRoute(
 		"GetCorporationsCorporationIdAssets",
-		"GET",
+		"Get",
 		"/v2/corporations/{corporation_id}/assets/",
 		GetCorporationsCorporationIdAssets,
 	)
 
 	mockesi.NewRoute(
 		"PostCharactersCharacterIdAssetsLocations",
-		"POST",
+		"Post",
 		"/v2/characters/{character_id}/assets/locations/",
 		PostCharactersCharacterIdAssetsLocations,
 	)
 
 	mockesi.NewRoute(
 		"PostCorporationsCorporationIdAssetsLocations",
-		"POST",
+		"Post",
 		"/v2/corporations/{corporation_id}/assets/locations/",
 		PostCorporationsCorporationIdAssetsLocations,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdBookmarks",
-		"GET",
+		"Get",
 		"/v2/characters/{character_id}/bookmarks/",
 		GetCharactersCharacterIdBookmarks,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdBookmarksFolders",
-		"GET",
+		"Get",
 		"/v2/characters/{character_id}/bookmarks/folders/",
 		GetCharactersCharacterIdBookmarksFolders,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdCalendarEventId",
-		"GET",
+		"Get",
 		"/v2/characters/{character_id}/calendar/{event_id}/",
 		GetCharactersCharacterIdCalendarEventId,
 	)
 
 	mockesi.NewRoute(
 		"PutCharactersCharacterIdCalendarEventId",
-		"PUT",
+		"Put",
 		"/v2/characters/{character_id}/calendar/{event_id}/",
 		PutCharactersCharacterIdCalendarEventId,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdBlueprints",
-		"GET",
+		"Get",
 		"/v2/characters/{character_id}/blueprints/",
 		GetCharactersCharacterIdBlueprints,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdPortrait",
-		"GET",
+		"Get",
 		"/v2/characters/{character_id}/portrait/",
 		GetCharactersCharacterIdPortrait,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdRoles",
-		"GET",
+		"Get",
 		"/v2/characters/{character_id}/roles/",
 		GetCharactersCharacterIdRoles,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdStats",
-		"GET",
+		"Get",
 		"/v2/characters/{character_id}/stats/",
 		GetCharactersCharacterIdStats,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdClones",
-		"GET",
+		"Get",
 		"/v2/characters/{character_id}/clones/",
 		GetCharactersCharacterIdClones,
 	)
 
 	mockesi.NewRoute(
 		"DeleteCharactersCharacterIdContacts",
-		"DELETE",
+		"Delete",
 		"/v2/characters/{character_id}/contacts/",
 		DeleteCharactersCharacterIdContacts,
 	)
 
 	mockesi.NewRoute(
 		"GetCorporationsCorporationId",
-		"GET",
+		"Get",
 		"/v2/corporations/{corporation_id}/",
 		GetCorporationsCorporationId,
 	)
 
 	mockesi.NewRoute(
 		"GetCorporationsCorporationIdAlliancehistory",
-		"GET",
+		"Get",
 		"/v2/corporations/{corporation_id}/alliancehistory/",
 		GetCorporationsCorporationIdAlliancehistory,
 	)
 
 	mockesi.NewRoute(
 		"GetCorporationsCorporationIdMembers",
-		"GET",
+		"Get",
 		"/v2/corporations/{corporation_id}/members/",
 		GetCorporationsCorporationIdMembers,
 	)
 
 	mockesi.NewRoute(
 		"GetCorporationsNames",
-		"GET",
+		"Get",
 		"/v2/corporations/names/",
 		GetCorporationsNames,
 	)
 
 	mockesi.NewRoute(
 		"GetDogmaEffectsEffectId",
-		"GET",
+		"Get",
 		"/v2/dogma/effects/{effect_id}/",
 		GetDogmaEffectsEffectId,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdOnline",
-		"GET",
+		"Get",
 		"/v2/characters/{character_id}/online/",
 		GetCharactersCharacterIdOnline,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdMailLabels",
-		"GET",
+		"Get",
 		"/v2/characters/{character_id}/mail/labels/",
 		GetCharactersCharacterIdMailLabels,
 	)
 
 	mockesi.NewRoute(
 		"PostCharactersCharacterIdMailLabels",
-		"POST",
+		"Post",
 		"/v2/characters/{character_id}/mail/labels/",
 		PostCharactersCharacterIdMailLabels,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdPlanetsPlanetId",
-		"GET",
+		"Get",
 		"/v2/characters/{character_id}/planets/{planet_id}/",
 		GetCharactersCharacterIdPlanetsPlanetId,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdSearch",
-		"GET",
+		"Get",
 		"/v2/characters/{character_id}/search/",
 		GetCharactersCharacterIdSearch,
 	)
 
 	mockesi.NewRoute(
 		"GetSearch",
-		"GET",
+		"Get",
 		"/v2/search/",
 		GetSearch,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdSkillqueue",
-		"GET",
+		"Get",
 		"/v2/characters/{character_id}/skillqueue/",
 		GetCharactersCharacterIdSkillqueue,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdSkills",
-		"GET",
+		"Get",
 		"/v2/characters/{character_id}/skills/",
 		GetCharactersCharacterIdSkills,
 	)
 
 	mockesi.NewRoute(
 		"GetUniverseFactions",
-		"GET",
+		"Get",
 		"/v2/universe/factions/",
 		GetUniverseFactions,
 	)
 
 	mockesi.NewRoute(
 		"GetUniverseStationsStationId",
-		"GET",
+		"Get",
 		"/v2/universe/stations/{station_id}/",
 		GetUniverseStationsStationId,
 	)
 
 	mockesi.NewRoute(
 		"GetUniverseSystemKills",
-		"GET",
+		"Get",
 		"/v2/universe/system_kills/",
 		GetUniverseSystemKills,
 	)
 
 	mockesi.NewRoute(
 		"GetUniverseSystemsSystemId",
-		"GET",
+		"Get",
 		"/v2/universe/systems/{system_id}/",
 		GetUniverseSystemsSystemId,
 	)
 
 	mockesi.NewRoute(
 		"GetUniverseTypesTypeId",
-		"GET",
+		"Get",
 		"/v2/universe/types/{type_id}/",
 		GetUniverseTypesTypeId,
 	)
 
 	mockesi.NewRoute(
 		"PostUniverseNames",
-		"POST",
+		"Post",
 		"/v2/universe/names/",
 		PostUniverseNames,
 	)
 
 	mockesi.NewRoute(
 		"PostUiAutopilotWaypoint",
-		"POST",
+		"Post",
 		"/v2/ui/autopilot/waypoint/",
 		PostUiAutopilotWaypoint,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdWalletJournal",
-		"GET",
+		"Get",
 		"/v2/characters/{character_id}/wallet/journal/",
 		GetCharactersCharacterIdWalletJournal,
 	)
 
 	mockesi.NewRoute(
 		"GetCorporationsCorporationIdWalletsDivisionJournal",
-		"GET",
+		"Get",
 		"/v2/corporations/{corporation_id}/wallets/{division}/journal/",
 		GetCorporationsCorporationIdWalletsDivisionJournal,
 	)

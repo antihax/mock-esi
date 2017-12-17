@@ -12,112 +12,112 @@ func init() {
 
 	mockesi.NewRoute(
 		"GetAlliancesAllianceId",
-		"GET",
+		"Get",
 		"/v3/alliances/{alliance_id}/",
 		GetAlliancesAllianceId,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdAssets",
-		"GET",
+		"Get",
 		"/v3/characters/{character_id}/assets/",
 		GetCharactersCharacterIdAssets,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdCalendarEventId",
-		"GET",
+		"Get",
 		"/v3/characters/{character_id}/calendar/{event_id}/",
 		GetCharactersCharacterIdCalendarEventId,
 	)
 
 	mockesi.NewRoute(
 		"PutCharactersCharacterIdCalendarEventId",
-		"PUT",
+		"Put",
 		"/v3/characters/{character_id}/calendar/{event_id}/",
 		PutCharactersCharacterIdCalendarEventId,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterId",
-		"GET",
+		"Get",
 		"/v3/characters/{character_id}/",
 		GetCharactersCharacterId,
 	)
 
 	mockesi.NewRoute(
 		"PostCharactersCharacterIdCspa",
-		"POST",
+		"Post",
 		"/v3/characters/{character_id}/cspa/",
 		PostCharactersCharacterIdCspa,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdClones",
-		"GET",
+		"Get",
 		"/v3/characters/{character_id}/clones/",
 		GetCharactersCharacterIdClones,
 	)
 
 	mockesi.NewRoute(
 		"GetCorporationsCorporationId",
-		"GET",
+		"Get",
 		"/v3/corporations/{corporation_id}/",
 		GetCorporationsCorporationId,
 	)
 
 	mockesi.NewRoute(
 		"GetCorporationsCorporationIdMembers",
-		"GET",
+		"Get",
 		"/v3/corporations/{corporation_id}/members/",
 		GetCorporationsCorporationIdMembers,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdMailLabels",
-		"GET",
+		"Get",
 		"/v3/characters/{character_id}/mail/labels/",
 		GetCharactersCharacterIdMailLabels,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdPlanetsPlanetId",
-		"GET",
+		"Get",
 		"/v3/characters/{character_id}/planets/{planet_id}/",
 		GetCharactersCharacterIdPlanetsPlanetId,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdSearch",
-		"GET",
+		"Get",
 		"/v3/characters/{character_id}/search/",
 		GetCharactersCharacterIdSearch,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdSkills",
-		"GET",
+		"Get",
 		"/v3/characters/{character_id}/skills/",
 		GetCharactersCharacterIdSkills,
 	)
 
 	mockesi.NewRoute(
 		"GetUniverseSystemsSystemId",
-		"GET",
+		"Get",
 		"/v3/universe/systems/{system_id}/",
 		GetUniverseSystemsSystemId,
 	)
 
 	mockesi.NewRoute(
 		"GetUniverseTypesTypeId",
-		"GET",
+		"Get",
 		"/v3/universe/types/{type_id}/",
 		GetUniverseTypesTypeId,
 	)
 
 	mockesi.NewRoute(
 		"GetCharactersCharacterIdWalletJournal",
-		"GET",
+		"Get",
 		"/v3/characters/{character_id}/wallet/journal/",
 		GetCharactersCharacterIdWalletJournal,
 	)

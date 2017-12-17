@@ -1,0 +1,668 @@
+---
+swagger: "2.0"
+info:
+  description: "An OpenAPI for EVE Online"
+  version: "0.7.3"
+  title: "EVE Swagger Interface"
+host: "esi.tech.ccp.is"
+basePath: "/v4"
+schemes:
+- "https"
+produces:
+- "application/json"
+paths:
+  /characters/{character_id}/:
+    get:
+      tags:
+      - "Character"
+      summary: "Get character's public information"
+      description: "Public information about a character\n\n---\nAlternate route:\
+        \ `/dev/characters/{character_id}/`\n\nAlternate route: `/latest/characters/{character_id}/`\n\
+        \n---\nThis route is cached for up to 3600 seconds"
+      operationId: "get_characters_character_id"
+      parameters:
+      - name: "character_id"
+        in: "path"
+        description: "An EVE character ID"
+        required: true
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "CharacterId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "user_agent"
+        in: "query"
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        type: "string"
+        x-exportParamName: "UserAgent"
+      - name: "X-User-Agent"
+        in: "header"
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        type: "string"
+        x-exportParamName: "XUserAgent"
+      responses:
+        200:
+          description: "Public data for the given character"
+          schema:
+            $ref: "#/definitions/get_characters_character_id_ok"
+          examples:
+            application/json:
+              corporation_id: 109299958
+              birthday: "2015-03-24T11:37:00Z"
+              name: "CCP Bartender"
+              gender: "male"
+              race_id: 2
+              description: ""
+              bloodline_id: 3
+              ancestry_id: 19
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        404:
+          description: "Character not found"
+          schema:
+            $ref: "#/definitions/get_characters_character_id_not_found"
+          examples:
+            application/json:
+              error: "Not found message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+      x-cached-seconds: 3600
+      x-alternate-versions:
+      - "dev"
+      - "latest"
+  /characters/{character_id}/cspa/:
+    post:
+      tags:
+      - "Character"
+      summary: "Calculate a CSPA charge cost"
+      description: "Takes a source character ID in the url and a set of target character\
+        \ ID's in the body, returns a CSPA charge cost\n\n---\nAlternate route: `/dev/characters/{character_id}/cspa/`\n"
+      operationId: "post_characters_character_id_cspa"
+      parameters:
+      - name: "character_id"
+        in: "path"
+        description: "An EVE character ID"
+        required: true
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "CharacterId"
+      - in: "body"
+        name: "characters"
+        description: "The target characters to calculate the charge for"
+        required: true
+        schema:
+          title: "post_characters_character_id_cspa_characters"
+          type: "array"
+          description: "characters array"
+          items:
+            type: "integer"
+            format: "int32"
+            description: "character integer"
+            title: "post_characters_character_id_cspa_character"
+        x-exportParamName: "Characters"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      - name: "user_agent"
+        in: "query"
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        type: "string"
+        x-exportParamName: "UserAgent"
+      - name: "X-User-Agent"
+        in: "header"
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        type: "string"
+        x-exportParamName: "XUserAgent"
+      responses:
+        201:
+          description: "Aggregate cost of sending a mail from the source character\
+            \ to the target characters, in ISK"
+          schema:
+            type: "number"
+            format: "float"
+            description: "201 created number"
+            title: "post_characters_character_id_cspa_created"
+          examples:
+            application/json: 2950.0
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+      security:
+      - evesso:
+        - "esi-characters.read_contacts.v1"
+      x-alternate-versions:
+      - "dev"
+  /corporations/{corporation_id}/:
+    get:
+      tags:
+      - "Corporation"
+      summary: "Get corporation information"
+      description: "Public information about a corporation\n\n---\nAlternate route:\
+        \ `/dev/corporations/{corporation_id}/`\n\n---\nThis route is cached for up\
+        \ to 3600 seconds"
+      operationId: "get_corporations_corporation_id"
+      parameters:
+      - name: "corporation_id"
+        in: "path"
+        description: "An EVE corporation ID"
+        required: true
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "CorporationId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "user_agent"
+        in: "query"
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        type: "string"
+        x-exportParamName: "UserAgent"
+      - name: "X-User-Agent"
+        in: "header"
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        type: "string"
+        x-exportParamName: "XUserAgent"
+      responses:
+        200:
+          description: "Public information about a corporation"
+          schema:
+            $ref: "#/definitions/get_corporations_corporation_id_ok"
+          examples:
+            application/json:
+              name: "C C P"
+              ticker: "-CCP-"
+              member_count: 656
+              ceo_id: 180548812
+              alliance_id: 434243723
+              description: "This is a corporation description, it's basically just\
+                \ a string"
+              tax_rate: 0.256
+              date_founded: "2004-11-28T16:42:51Z"
+              creator_id: 180548812
+              url: "http://www.eveonline.com"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        404:
+          description: "Corporation not found"
+          schema:
+            $ref: "#/definitions/get_corporations_corporation_id_not_found"
+          examples:
+            application/json:
+              error: "Not found message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+      x-cached-seconds: 3600
+      x-alternate-versions:
+      - "dev"
+  /characters/{character_id}/skills/:
+    get:
+      tags:
+      - "Skills"
+      summary: "Get character skills"
+      description: "List all trained skills for the given character\n\n---\nAlternate\
+        \ route: `/dev/characters/{character_id}/skills/`\n\n---\nThis route is cached\
+        \ for up to 120 seconds"
+      operationId: "get_characters_character_id_skills"
+      parameters:
+      - name: "character_id"
+        in: "path"
+        description: "An EVE character ID"
+        required: true
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "CharacterId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      - name: "user_agent"
+        in: "query"
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        type: "string"
+        x-exportParamName: "UserAgent"
+      - name: "X-User-Agent"
+        in: "header"
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        type: "string"
+        x-exportParamName: "XUserAgent"
+      responses:
+        200:
+          description: "Known skills for the character"
+          schema:
+            $ref: "#/definitions/get_characters_character_id_skills_ok"
+          examples:
+            application/json:
+              skills:
+              - skill_id: 1
+                skillpoints_in_skill: 10000
+                trained_skill_level: 4
+                active_skill_level: 3
+              - skill_id: 2
+                skillpoints_in_skill: 10000
+                trained_skill_level: 1
+                active_skill_level: 1
+              total_sp: 20000
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+      security:
+      - evesso:
+        - "esi-skills.read_skills.v1"
+      x-cached-seconds: 120
+      x-alternate-versions:
+      - "dev"
+securityDefinitions:
+  evesso:
+    type: "oauth2"
+    authorizationUrl: "https://login.eveonline.com/oauth/authorize"
+    flow: "implicit"
+    scopes:
+      esi-characters.read_contacts.v1: "EVE SSO scope esi-characters.read_contacts.v1"
+      esi-skills.read_skills.v1: "EVE SSO scope esi-skills.read_skills.v1"
+definitions:
+  internal_server_error:
+    type: "object"
+    required:
+    - "error"
+    properties:
+      error:
+        type: "string"
+        description: "Internal server error message"
+    title: "Internal server error"
+    description: "Internal server error model"
+  forbidden:
+    type: "object"
+    required:
+    - "error"
+    properties:
+      error:
+        type: "string"
+        description: "Forbidden message"
+      sso_status:
+        type: "integer"
+        description: "Status code received from SSO"
+    title: "Forbidden"
+    description: "Forbidden model"
+  get_characters_character_id_ok:
+    required:
+    - "birthday"
+    - "bloodline_id"
+    - "corporation_id"
+    - "gender"
+    - "name"
+    - "race_id"
+    properties:
+      name:
+        type: "string"
+        description: "name string"
+        title: "get_characters_character_id_name"
+      description:
+        type: "string"
+        description: "description string"
+        title: "get_characters_character_id_description"
+      corporation_id:
+        type: "integer"
+        format: "int32"
+        description: "The character's corporation ID"
+        title: "get_characters_character_id_corporation_id"
+      alliance_id:
+        type: "integer"
+        format: "int32"
+        description: "The character's alliance ID"
+        title: "get_characters_character_id_alliance_id"
+      birthday:
+        type: "string"
+        format: "date-time"
+        description: "Creation date of the character"
+        title: "get_characters_character_id_birthday"
+      gender:
+        type: "string"
+        description: "gender string"
+        title: "get_characters_character_id_gender"
+        enum:
+        - "female"
+        - "male"
+      race_id:
+        type: "integer"
+        format: "int32"
+        description: "race_id integer"
+        title: "get_characters_character_id_race_id"
+      bloodline_id:
+        type: "integer"
+        format: "int32"
+        description: "bloodline_id integer"
+        title: "get_characters_character_id_bloodline_id"
+      ancestry_id:
+        type: "integer"
+        format: "int32"
+        description: "ancestry_id integer"
+        title: "get_characters_character_id_ancestry_id"
+      security_status:
+        type: "number"
+        format: "float"
+        description: "security_status number"
+        title: "get_characters_character_id_security_status"
+        minimum: -10
+        maximum: 10
+      faction_id:
+        type: "integer"
+        format: "int32"
+        description: "ID of the faction the character is fighting for, if the character\
+          \ is enlisted in Factional Warfare"
+        title: "get_characters_character_id_faction_id"
+    description: "200 ok object"
+  get_characters_character_id_not_found:
+    properties:
+      error:
+        type: "string"
+        description: "Not found message"
+        title: "get_characters_character_id_404_not_found"
+    description: "Not found"
+  get_corporations_corporation_id_ok:
+    required:
+    - "ceo_id"
+    - "creator_id"
+    - "member_count"
+    - "name"
+    - "tax_rate"
+    - "ticker"
+    properties:
+      name:
+        type: "string"
+        description: "the full name of the corporation"
+        title: "get_corporations_corporation_id_name"
+      ticker:
+        type: "string"
+        description: "the short name of the corporation"
+        title: "get_corporations_corporation_id_ticker"
+      member_count:
+        type: "integer"
+        format: "int32"
+        description: "member_count integer"
+        title: "get_corporations_corporation_id_member_count"
+      ceo_id:
+        type: "integer"
+        format: "int32"
+        description: "ceo_id integer"
+        title: "get_corporations_corporation_id_ceo_id"
+      alliance_id:
+        type: "integer"
+        format: "int32"
+        description: "ID of the alliance that corporation is a member of, if any"
+        title: "get_corporations_corporation_id_alliance_id"
+      description:
+        type: "string"
+        description: "description string"
+        title: "get_corporations_corporation_id_description"
+      tax_rate:
+        type: "number"
+        format: "float"
+        description: "tax_rate number"
+        title: "get_corporations_corporation_id_tax_rate"
+        minimum: 0
+        maximum: 1
+      date_founded:
+        type: "string"
+        format: "date-time"
+        description: "date_founded string"
+        title: "get_corporations_corporation_id_date_founded"
+      creator_id:
+        type: "integer"
+        format: "int32"
+        description: "creator_id integer"
+        title: "get_corporations_corporation_id_creator_id"
+      url:
+        type: "string"
+        description: "url string"
+        title: "get_corporations_corporation_id_url"
+      faction_id:
+        type: "integer"
+        format: "int32"
+        description: "faction_id integer"
+        title: "get_corporations_corporation_id_faction_id"
+      home_station_id:
+        type: "integer"
+        format: "int32"
+        description: "home_station_id integer"
+        title: "get_corporations_corporation_id_home_station_id"
+      shares:
+        type: "integer"
+        format: "int64"
+        description: "shares integer"
+        title: "get_corporations_corporation_id_shares"
+    description: "200 ok object"
+  get_corporations_corporation_id_not_found:
+    properties:
+      error:
+        type: "string"
+        description: "Not found message"
+        title: "get_corporations_corporation_id_404_not_found"
+    description: "Not found"
+  get_characters_character_id_skills_skill:
+    required:
+    - "active_skill_level"
+    - "skill_id"
+    - "skillpoints_in_skill"
+    - "trained_skill_level"
+    properties:
+      skill_id:
+        type: "integer"
+        format: "int32"
+        description: "skill_id integer"
+        title: "get_characters_character_id_skills_skill_id"
+      skillpoints_in_skill:
+        type: "integer"
+        format: "int64"
+        description: "skillpoints_in_skill integer"
+        title: "get_characters_character_id_skills_skillpoints_in_skill"
+      trained_skill_level:
+        type: "integer"
+        format: "int32"
+        description: "trained_skill_level integer"
+        title: "get_characters_character_id_skills_trained_skill_level"
+      active_skill_level:
+        type: "integer"
+        format: "int32"
+        description: "active_skill_level integer"
+        title: "get_characters_character_id_skills_active_skill_level"
+    description: "skill object"
+  get_characters_character_id_skills_ok:
+    required:
+    - "skills"
+    - "total_sp"
+    properties:
+      skills:
+        type: "array"
+        description: "skills array"
+        title: "get_characters_character_id_skills_skills"
+        items:
+          $ref: "#/definitions/get_characters_character_id_skills_skill"
+        maxItems: 1000
+      total_sp:
+        type: "integer"
+        format: "int64"
+        description: "total_sp integer"
+        title: "get_characters_character_id_skills_total_sp"
+      unallocated_sp:
+        type: "integer"
+        format: "int32"
+        description: "Skill points available to be assigned"
+        title: "get_characters_character_id_skills_unallocated_sp"
+    description: "200 ok object"
+parameters:
+  datasource:
+    name: "datasource"
+    in: "query"
+    description: "The server name you would like data from"
+    required: false
+    type: "string"
+    default: "tranquility"
+    enum:
+    - "tranquility"
+    - "singularity"
+    x-exportParamName: "Datasource"
+  language:
+    name: "language"
+    in: "query"
+    description: "Language to use in the response"
+    required: false
+    type: "string"
+    default: "en-us"
+    enum:
+    - "de"
+    - "en-us"
+    - "fr"
+    - "ja"
+    - "ru"
+    - "zh"
+  user_agent:
+    name: "user_agent"
+    in: "query"
+    description: "Client identifier, takes precedence over headers"
+    required: false
+    type: "string"
+    x-exportParamName: "UserAgent"
+  X-User-Agent:
+    name: "X-User-Agent"
+    in: "header"
+    description: "Client identifier, takes precedence over User-Agent"
+    required: false
+    type: "string"
+    x-exportParamName: "XUserAgent"
+  page:
+    name: "page"
+    in: "query"
+    description: "Which page of results to return"
+    required: false
+    type: "integer"
+    default: 1
+    format: "int32"
+  token:
+    name: "token"
+    in: "query"
+    description: "Access token to use if unable to set a header"
+    required: false
+    type: "string"
+    x-exportParamName: "Token"
+  corporation_id:
+    name: "corporation_id"
+    in: "path"
+    description: "An EVE corporation ID"
+    required: true
+    type: "integer"
+    format: "int32"
+    x-exportParamName: "CorporationId"
+  character_id:
+    name: "character_id"
+    in: "path"
+    description: "An EVE character ID"
+    required: true
+    type: "integer"
+    format: "int32"
+    x-exportParamName: "CharacterId"
