@@ -17,8 +17,8 @@ paths:
       - "Alliance"
       summary: "Get alliance information"
       description: "Public information about an alliance\n\n---\nAlternate route:\
-        \ `/v2/alliances/{alliance_id}/`\n\n---\nThis route is cached for up to 3600\
-        \ seconds\n\n---\n[This route has an available update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/alliances/{alliance_id}/)"
+        \ `/dev/alliances/{alliance_id}/`\n\nAlternate route: `/v3/alliances/{alliance_id}/`\n\
+        \n---\nThis route is cached for up to 3600 seconds"
       operationId: "get_alliances_alliance_id"
       parameters:
       - name: "alliance_id"
@@ -57,9 +57,11 @@ paths:
             $ref: "#/definitions/get_alliances_alliance_id_ok"
           examples:
             application/json:
-              alliance_name: "C C P Alliance"
+              name: "C C P Alliance"
               ticker: "<C C P>"
-              executor_corp: 98356193
+              creator_id: 12345
+              creator_corporation_id: 45678
+              executor_corporation_id: 98356193
               date_founded: "2016-06-26T21:00:00Z"
           headers:
             Cache-Control:
@@ -77,7 +79,7 @@ paths:
             $ref: "#/definitions/get_alliances_alliance_id_not_found"
           examples:
             application/json:
-              error: "Alliance not found"
+              error: "Not found message"
         500:
           description: "Internal server error"
           schema:
@@ -87,7 +89,8 @@ paths:
               error: "Internal server error message"
       x-cached-seconds: 3600
       x-alternate-versions:
-      - "v2"
+      - "dev"
+      - "v3"
   /alliances/{alliance_id}/corporations/:
     get:
       tags:
@@ -173,9 +176,8 @@ paths:
       - "Alliance"
       summary: "Get alliance names"
       description: "Resolve a set of alliance IDs to alliance names\n\n---\nAlternate\
-        \ route: `/legacy/alliances/names/`\n\nAlternate route: `/v1/alliances/names/`\n\
-        \n---\nThis route is cached for up to 3600 seconds\n\n---\n[This route has\
-        \ an available update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/alliances/names/)"
+        \ route: `/dev/alliances/names/`\n\nAlternate route: `/v2/alliances/names/`\n\
+        \n---\nThis route is cached for up to 3600 seconds"
       operationId: "get_alliances_names"
       parameters:
       - name: "alliance_ids"
@@ -185,7 +187,7 @@ paths:
         type: "array"
         items:
           type: "integer"
-          format: "int64"
+          format: "int32"
         maxItems: 100
         minItems: 1
         x-exportParamName: "AllianceIds"
@@ -244,8 +246,8 @@ paths:
               error: "Internal server error message"
       x-cached-seconds: 3600
       x-alternate-versions:
-      - "legacy"
-      - "v1"
+      - "dev"
+      - "v2"
   /alliances/{alliance_id}/icons/:
     get:
       tags:
@@ -402,8 +404,8 @@ paths:
       - "Assets"
       summary: "Get character assets"
       description: "Return a list of the characters assets\n\n---\nAlternate route:\
-        \ `/v2/characters/{character_id}/assets/`\n\n---\nThis route is cached for\
-        \ up to 3600 seconds\n\n---\n[This route has an available update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/characters/{character_id}/assets/)"
+        \ `/dev/characters/{character_id}/assets/`\n\nAlternate route: `/v3/characters/{character_id}/assets/`\n\
+        \n---\nThis route is cached for up to 3600 seconds"
       operationId: "get_characters_character_id_assets"
       parameters:
       - name: "character_id"
@@ -458,7 +460,7 @@ paths:
             title: "get_characters_character_id_assets_ok"
             items:
               $ref: "#/definitions/get_characters_character_id_assets_200_ok"
-            maxItems: 5000
+            maxItems: 1000
           examples:
             application/json:
             - location_flag: "Hangar"
@@ -467,6 +469,7 @@ paths:
               type_id: 3516
               item_id: 1000000016835
               location_type: "station"
+              quantity: 1
           headers:
             X-Pages:
               type: "integer"
@@ -501,17 +504,17 @@ paths:
         - "esi-assets.read_assets.v1"
       x-cached-seconds: 3600
       x-alternate-versions:
-      - "v2"
+      - "dev"
+      - "v3"
   /corporations/{corporation_id}/assets/:
     get:
       tags:
       - "Assets"
       summary: "Get corporation assets"
       description: "Return a list of the corporation assets\n\n---\nAlternate route:\
-        \ `/legacy/corporations/{corporation_id}/assets/`\n\nAlternate route: `/v1/corporations/{corporation_id}/assets/`\n\
+        \ `/dev/corporations/{corporation_id}/assets/`\n\nAlternate route: `/v2/corporations/{corporation_id}/assets/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
-        \ the following EVE corporation role(s): Director\n\n\n---\n[This route has\
-        \ an available update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/corporations/{corporation_id}/assets/)"
+        \ the following EVE corporation role(s): Director\n"
       operationId: "get_corporations_corporation_id_assets"
       parameters:
       - name: "corporation_id"
@@ -566,7 +569,7 @@ paths:
             title: "get_corporations_corporation_id_assets_ok"
             items:
               $ref: "#/definitions/get_corporations_corporation_id_assets_200_ok"
-            maxItems: 5000
+            maxItems: 1000
           examples:
             application/json:
             - location_flag: "Hangar"
@@ -575,6 +578,7 @@ paths:
               type_id: 3516
               item_id: 1000000016835
               location_type: "station"
+              quantity: 1
           headers:
             X-Pages:
               type: "integer"
@@ -611,8 +615,8 @@ paths:
       - "Director"
       x-cached-seconds: 3600
       x-alternate-versions:
-      - "legacy"
-      - "v1"
+      - "dev"
+      - "v2"
   /characters/{character_id}/assets/names/:
     post:
       tags:
@@ -716,9 +720,8 @@ paths:
       summary: "Get character asset locations"
       description: "Return locations for a set of item ids, which you can get from\
         \ character assets endpoint. Coordinates for items in hangars or stations\
-        \ are set to (0,0,0)\n\n---\nAlternate route: `/legacy/characters/{character_id}/assets/locations/`\n\
-        \nAlternate route: `/v1/characters/{character_id}/assets/locations/`\n\n\n\
-        ---\n[This route has an available update](https://esi.tech.ccp.is/diff/latest/dev/#POST-/characters/{character_id}/assets/locations/)"
+        \ are set to (0,0,0)\n\n---\nAlternate route: `/dev/characters/{character_id}/assets/locations/`\n\
+        \nAlternate route: `/v2/characters/{character_id}/assets/locations/`\n"
       operationId: "post_characters_character_id_assets_locations"
       parameters:
       - name: "character_id"
@@ -783,9 +786,10 @@ paths:
           examples:
             application/json:
             - item_id: 12345
-              x: 1.2
-              y: 2.3
-              z: -3.4
+              position:
+                x: 1.2
+                y: 2.3
+                z: -3.4
         403:
           description: "Forbidden"
           schema:
@@ -804,8 +808,8 @@ paths:
       - evesso:
         - "esi-assets.read_assets.v1"
       x-alternate-versions:
-      - "legacy"
-      - "v1"
+      - "dev"
+      - "v2"
   /corporations/{corporation_id}/assets/names/:
     post:
       tags:
@@ -912,10 +916,9 @@ paths:
       summary: "Get corporation asset locations"
       description: "Return locations for a set of item ids, which you can get from\
         \ corporation assets endpoint. Coordinates for items in hangars or stations\
-        \ are set to (0,0,0)\n\n---\nAlternate route: `/legacy/corporations/{corporation_id}/assets/locations/`\n\
-        \nAlternate route: `/v1/corporations/{corporation_id}/assets/locations/`\n\
-        \n\n---\nRequires one of the following EVE corporation role(s): Director\n\
-        \n\n---\n[This route has an available update](https://esi.tech.ccp.is/diff/latest/dev/#POST-/corporations/{corporation_id}/assets/locations/)"
+        \ are set to (0,0,0)\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/assets/locations/`\n\
+        \nAlternate route: `/v2/corporations/{corporation_id}/assets/locations/`\n\
+        \n\n---\nRequires one of the following EVE corporation role(s): Director\n"
       operationId: "post_corporations_corporation_id_assets_locations"
       parameters:
       - name: "corporation_id"
@@ -980,9 +983,10 @@ paths:
           examples:
             application/json:
             - item_id: 12345
-              x: 1.2
-              y: 2.3
-              z: -3.4
+              position:
+                x: 1.2
+                y: 2.3
+                z: -3.4
         403:
           description: "Forbidden"
           schema:
@@ -1003,8 +1007,8 @@ paths:
       x-required-roles:
       - "Director"
       x-alternate-versions:
-      - "legacy"
-      - "v1"
+      - "dev"
+      - "v2"
   /characters/{character_id}/bookmarks/:
     get:
       tags:
@@ -2127,9 +2131,8 @@ paths:
       - "Character"
       summary: "Calculate a CSPA charge cost"
       description: "Takes a source character ID in the url and a set of target character\
-        \ ID's in the body, returns a CSPA charge cost\n\n---\nAlternate route: `/legacy/characters/{character_id}/cspa/`\n\
-        \nAlternate route: `/v3/characters/{character_id}/cspa/`\n\n\n---\n[This route\
-        \ has an available update](https://esi.tech.ccp.is/diff/latest/dev/#POST-/characters/{character_id}/cspa/)"
+        \ ID's in the body, returns a CSPA charge cost\n\n---\nAlternate route: `/dev/characters/{character_id}/cspa/`\n\
+        \nAlternate route: `/v4/characters/{character_id}/cspa/`\n"
       operationId: "post_characters_character_id_cspa"
       parameters:
       - name: "character_id"
@@ -2144,7 +2147,14 @@ paths:
         description: "The target characters to calculate the charge for"
         required: true
         schema:
-          $ref: "#/definitions/post_characters_character_id_cspa_characters"
+          title: "post_characters_character_id_cspa_characters"
+          type: "array"
+          description: "characters array"
+          items:
+            type: "integer"
+            format: "int32"
+            description: "character integer"
+            title: "post_characters_character_id_cspa_character"
         x-exportParamName: "Characters"
       - name: "datasource"
         in: "query"
@@ -2177,12 +2187,14 @@ paths:
       responses:
         201:
           description: "Aggregate cost of sending a mail from the source character\
-            \ to the target characters, in ISK hundredths"
+            \ to the target characters, in ISK"
           schema:
-            $ref: "#/definitions/post_characters_character_id_cspa_created"
+            type: "number"
+            format: "float"
+            description: "201 created number"
+            title: "post_characters_character_id_cspa_created"
           examples:
-            application/json:
-              cost: 295000
+            application/json: 2950.0
         403:
           description: "Forbidden"
           schema:
@@ -2201,8 +2213,8 @@ paths:
       - evesso:
         - "esi-characters.read_contacts.v1"
       x-alternate-versions:
-      - "legacy"
-      - "v3"
+      - "dev"
+      - "v4"
   /characters/names/:
     get:
       tags:
@@ -3244,9 +3256,8 @@ paths:
       - "Character"
       summary: "Get character corporation roles"
       description: "Returns a character's corporation roles\n\n---\nAlternate route:\
-        \ `/legacy/characters/{character_id}/roles/`\n\nAlternate route: `/v1/characters/{character_id}/roles/`\n\
-        \n---\nThis route is cached for up to 3600 seconds\n\n---\n[This route has\
-        \ an available update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/characters/{character_id}/roles/)"
+        \ `/dev/characters/{character_id}/roles/`\n\nAlternate route: `/v2/characters/{character_id}/roles/`\n\
+        \n---\nThis route is cached for up to 3600 seconds"
       operationId: "get_characters_character_id_roles"
       parameters:
       - name: "character_id"
@@ -3288,70 +3299,12 @@ paths:
         200:
           description: "The character's roles in thier corporation"
           schema:
-            type: "array"
-            description: "200 ok array"
-            title: "get_characters_character_id_roles_ok"
-            uniqueItems: true
-            items:
-              type: "string"
-              description: "200 ok string"
-              title: "get_characters_character_id_roles_200_ok"
-              enum:
-              - "Account_Take_1"
-              - "Account_Take_2"
-              - "Account_Take_3"
-              - "Account_Take_4"
-              - "Account_Take_5"
-              - "Account_Take_6"
-              - "Account_Take_7"
-              - "Accountant"
-              - "Auditor"
-              - "Communications_Officer"
-              - "Config_Equipment"
-              - "Config_Starbase_Equipment"
-              - "Container_Take_1"
-              - "Container_Take_2"
-              - "Container_Take_3"
-              - "Container_Take_4"
-              - "Container_Take_5"
-              - "Container_Take_6"
-              - "Container_Take_7"
-              - "Contract_Manager"
-              - "Diplomat"
-              - "Director"
-              - "Factory_Manager"
-              - "Fitting_Manager"
-              - "Hangar_Query_1"
-              - "Hangar_Query_2"
-              - "Hangar_Query_3"
-              - "Hangar_Query_4"
-              - "Hangar_Query_5"
-              - "Hangar_Query_6"
-              - "Hangar_Query_7"
-              - "Hangar_Take_1"
-              - "Hangar_Take_2"
-              - "Hangar_Take_3"
-              - "Hangar_Take_4"
-              - "Hangar_Take_5"
-              - "Hangar_Take_6"
-              - "Hangar_Take_7"
-              - "Junior_Accountant"
-              - "Personnel_Manager"
-              - "Rent_Factory_Facility"
-              - "Rent_Office"
-              - "Rent_Research_Facility"
-              - "Security_Officer"
-              - "Starbase_Defense_Operator"
-              - "Starbase_Fuel_Technician"
-              - "Station_Manager"
-              - "Terrestrial_Combat_Officer"
-              - "Terrestrial_Logistics_Officer"
-              - "Trader"
-            maxItems: 50
+            $ref: "#/definitions/get_characters_character_id_roles_ok"
           examples:
             application/json:
-            - "Director"
-            - "Station_Manager"
+              roles:
+              - "Director"
+              - "Station_Manager"
           headers:
             Cache-Control:
               type: "string"
@@ -3381,8 +3334,8 @@ paths:
         - "esi-characters.read_corporation_roles.v1"
       x-cached-seconds: 3600
       x-alternate-versions:
-      - "legacy"
-      - "v1"
+      - "dev"
+      - "v2"
   /characters/{character_id}/titles/:
     get:
       tags:
@@ -3480,9 +3433,9 @@ paths:
       tags:
       - "Clones"
       summary: "Get clones"
-      description: "A list of the character's clones\n\n---\nAlternate route: `/legacy/characters/{character_id}/clones/`\n\
-        \nAlternate route: `/v2/characters/{character_id}/clones/`\n\n---\nThis route\
-        \ is cached for up to 120 seconds\n\n---\n[This route has an available update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/characters/{character_id}/clones/)"
+      description: "A list of the character's clones\n\n---\nAlternate route: `/dev/characters/{character_id}/clones/`\n\
+        \nAlternate route: `/v3/characters/{character_id}/clones/`\n\n---\nThis route\
+        \ is cached for up to 120 seconds"
       operationId: "get_characters_character_id_clones"
       parameters:
       - name: "character_id"
@@ -3531,13 +3484,11 @@ paths:
                 location_id: 1021348135816
                 location_type: "structure"
               jump_clones:
-              - location_id: 60003463
+              - jump_clone_id: 12345
+                location_id: 60003463
                 location_type: "station"
                 implants:
                 - 22118
-              - location_id: 1021348135816
-                location_type: "structure"
-                implants: []
           headers:
             Cache-Control:
               type: "string"
@@ -3567,8 +3518,8 @@ paths:
         - "esi-clones.read_clones.v1"
       x-cached-seconds: 120
       x-alternate-versions:
-      - "legacy"
-      - "v2"
+      - "dev"
+      - "v3"
   /characters/{character_id}/implants/:
     get:
       tags:
@@ -4005,9 +3956,8 @@ paths:
       tags:
       - "Contacts"
       summary: "Delete contacts"
-      description: "Bulk delete contacts\n\n---\nAlternate route: `/legacy/characters/{character_id}/contacts/`\n\
-        \nAlternate route: `/v1/characters/{character_id}/contacts/`\n\n\n---\n[This\
-        \ route has an available update](https://esi.tech.ccp.is/diff/latest/dev/#DELETE-/characters/{character_id}/contacts/)"
+      description: "Bulk delete contacts\n\n---\nAlternate route: `/dev/characters/{character_id}/contacts/`\n\
+        \nAlternate route: `/v2/characters/{character_id}/contacts/`\n"
       operationId: "delete_characters_character_id_contacts"
       parameters:
       - name: "character_id"
@@ -4017,19 +3967,16 @@ paths:
         type: "integer"
         format: "int32"
         x-exportParamName: "CharacterId"
-      - in: "body"
-        name: "contact_ids"
+      - name: "contact_ids"
+        in: "query"
         description: "A list of contacts to delete"
         required: true
-        schema:
-          title: "delete_characters_character_id_contacts_contact_ids"
-          type: "array"
-          description: "contact_ids array"
-          items:
-            type: "integer"
-            format: "int32"
-            description: "ID of the contact to delete"
-            title: "delete_characters_character_id_contacts_contact_id"
+        type: "array"
+        items:
+          type: "integer"
+          format: "int32"
+        maxItems: 100
+        minItems: 1
         x-exportParamName: "ContactIds"
       - name: "datasource"
         in: "query"
@@ -4080,8 +4027,8 @@ paths:
       - evesso:
         - "esi-characters.write_contacts.v1"
       x-alternate-versions:
-      - "legacy"
-      - "v1"
+      - "dev"
+      - "v2"
   /corporations/{corporation_id}/contacts/:
     get:
       tags:
@@ -5161,8 +5108,8 @@ paths:
       - "Corporation"
       summary: "Get corporation information"
       description: "Public information about a corporation\n\n---\nAlternate route:\
-        \ `/v3/corporations/{corporation_id}/`\n\n---\nThis route is cached for up\
-        \ to 3600 seconds\n\n---\n[This route has an available update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/corporations/{corporation_id}/)"
+        \ `/dev/corporations/{corporation_id}/`\n\nAlternate route: `/v4/corporations/{corporation_id}/`\n\
+        \n---\nThis route is cached for up to 3600 seconds"
       operationId: "get_corporations_corporation_id"
       parameters:
       - name: "corporation_id"
@@ -5196,20 +5143,20 @@ paths:
         x-exportParamName: "XUserAgent"
       responses:
         200:
-          description: "Public data about a corporation"
+          description: "Public information about a corporation"
           schema:
             $ref: "#/definitions/get_corporations_corporation_id_ok"
           examples:
             application/json:
-              corporation_name: "C C P"
+              name: "C C P"
               ticker: "-CCP-"
               member_count: 656
               ceo_id: 180548812
               alliance_id: 434243723
-              corporation_description: "This is a corporation description, it's basically\
-                \ just a string"
+              description: "This is a corporation description, it's basically just\
+                \ a string"
               tax_rate: 0.256
-              creation_date: "2004-11-28T16:42:51Z"
+              date_founded: "2004-11-28T16:42:51Z"
               creator_id: 180548812
               url: "http://www.eveonline.com"
           headers:
@@ -5238,7 +5185,8 @@ paths:
               error: "Internal server error message"
       x-cached-seconds: 3600
       x-alternate-versions:
-      - "v3"
+      - "dev"
+      - "v4"
   /corporations/{corporation_id}/alliancehistory/:
     get:
       tags:
@@ -5324,9 +5272,8 @@ paths:
       - "Corporation"
       summary: "Get corporation names"
       description: "Resolve a set of corporation IDs to corporation names\n\n---\n\
-        Alternate route: `/legacy/corporations/names/`\n\nAlternate route: `/v1/corporations/names/`\n\
-        \n---\nThis route is cached for up to 3600 seconds\n\n---\n[This route has\
-        \ an available update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/corporations/names/)"
+        Alternate route: `/dev/corporations/names/`\n\nAlternate route: `/v2/corporations/names/`\n\
+        \n---\nThis route is cached for up to 3600 seconds"
       operationId: "get_corporations_names"
       parameters:
       - name: "corporation_ids"
@@ -5336,7 +5283,7 @@ paths:
         type: "array"
         items:
           type: "integer"
-          format: "int64"
+          format: "int32"
         maxItems: 100
         minItems: 1
         x-exportParamName: "CorporationIds"
@@ -5395,18 +5342,17 @@ paths:
               error: "Internal server error message"
       x-cached-seconds: 3600
       x-alternate-versions:
-      - "legacy"
-      - "v1"
+      - "dev"
+      - "v2"
   /corporations/{corporation_id}/members/:
     get:
       tags:
       - "Corporation"
       summary: "Get corporation members"
-      description: "Read the current list of members if the calling character is a\
-        \ member.\n\n---\nAlternate route: `/legacy/corporations/{corporation_id}/members/`\n\
-        \nAlternate route: `/v2/corporations/{corporation_id}/members/`\n\n---\nThis\
-        \ route is cached for up to 3600 seconds\n\n---\n[This route has an available\
-        \ update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/corporations/{corporation_id}/members/)"
+      description: "Return the current member list of a corporation, the token's character\
+        \ need to be a member of the corporation.\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/members/`\n\
+        \nAlternate route: `/v3/corporations/{corporation_id}/members/`\n\n---\nThis\
+        \ route is cached for up to 3600 seconds"
       operationId: "get_corporations_corporation_id_members"
       parameters:
       - name: "corporation_id"
@@ -5449,15 +5395,18 @@ paths:
           description: "List of member character IDs"
           schema:
             type: "array"
-            description: "200 ok array"
+            description: "A list of character IDs"
             title: "get_corporations_corporation_id_members_ok"
             items:
-              $ref: "#/definitions/get_corporations_corporation_id_members_200_ok"
+              type: "integer"
+              format: "int32"
+              description: "200 ok integer"
+              title: "get_corporations_corporation_id_members_200_ok"
             maxItems: 12601
           examples:
             application/json:
-            - character_id: 90000001
-            - character_id: 90000002
+            - 90000001
+            - 90000002
           headers:
             Cache-Control:
               type: "string"
@@ -5487,8 +5436,8 @@ paths:
         - "esi-corporations.read_corporation_membership.v1"
       x-cached-seconds: 3600
       x-alternate-versions:
-      - "legacy"
-      - "v2"
+      - "dev"
+      - "v3"
   /corporations/{corporation_id}/roles/:
     get:
       tags:
@@ -11799,9 +11748,8 @@ paths:
       - "Location"
       summary: "Get character online"
       description: "Checks if the character is currently online\n\n---\nAlternate\
-        \ route: `/legacy/characters/{character_id}/online/`\n\nAlternate route: `/v1/characters/{character_id}/online/`\n\
-        \n---\nThis route is cached for up to 60 seconds\n\n---\n[This route has an\
-        \ available update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/characters/{character_id}/online/)"
+        \ route: `/dev/characters/{character_id}/online/`\n\nAlternate route: `/v2/characters/{character_id}/online/`\n\
+        \n---\nThis route is cached for up to 60 seconds"
       operationId: "get_characters_character_id_online"
       parameters:
       - name: "character_id"
@@ -11841,13 +11789,15 @@ paths:
         x-exportParamName: "XUserAgent"
       responses:
         200:
-          description: "Boolean of if the character is currently online"
+          description: "Object describing the character's online status"
           schema:
-            type: "boolean"
-            description: "200 ok boolean"
-            title: "get_characters_character_id_online_ok"
+            $ref: "#/definitions/get_characters_character_id_online_ok"
           examples:
-            application/json: true
+            application/json:
+              online: true
+              last_login: "2017-01-02T03:04:05Z"
+              last_logout: "2017-01-02T04:05:06Z"
+              logins: 9001
           headers:
             Cache-Control:
               type: "string"
@@ -11877,8 +11827,8 @@ paths:
         - "esi-location.read_online.v1"
       x-cached-seconds: 60
       x-alternate-versions:
-      - "legacy"
-      - "v1"
+      - "dev"
+      - "v2"
   /loyalty/stores/{corporation_id}/offers/:
     get:
       tags:
@@ -14769,8 +14719,8 @@ paths:
       - "Search"
       summary: "Search on a string"
       description: "Search for entities that match a given sub-string.\n\n---\nAlternate\
-        \ route: `/v2/characters/{character_id}/search/`\n\n---\nThis route is cached\
-        \ for up to 3600 seconds\n\n---\n[This route has an available update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/characters/{character_id}/search/)"
+        \ route: `/dev/characters/{character_id}/search/`\n\nAlternate route: `/v3/characters/{character_id}/search/`\n\
+        \n---\nThis route is cached for up to 3600 seconds"
       operationId: "get_characters_character_id_search"
       parameters:
       - name: "categories"
@@ -14787,13 +14737,12 @@ paths:
           - "constellation"
           - "corporation"
           - "faction"
-          - "inventorytype"
+          - "inventory_type"
           - "region"
-          - "solarsystem"
+          - "solar_system"
           - "station"
           - "structure"
-          - "wormhole"
-        maxItems: 12
+        maxItems: 11
         minItems: 1
         uniqueItems: true
         x-exportParamName: "Categories"
@@ -14875,7 +14824,7 @@ paths:
               - 60012721
               - 60012724
               - 60012727
-              solarsystem:
+              solar_system:
               - 30002510
           headers:
             Content-Language:
@@ -14916,16 +14865,16 @@ paths:
         - "esi-search.search_structures.v1"
       x-cached-seconds: 3600
       x-alternate-versions:
-      - "v2"
+      - "dev"
+      - "v3"
   /search/:
     get:
       tags:
       - "Search"
       summary: "Search on a string"
       description: "Search for entities that match a given sub-string.\n\n---\nAlternate\
-        \ route: `/legacy/search/`\n\nAlternate route: `/v1/search/`\n\n---\nThis\
-        \ route is cached for up to 3600 seconds\n\n---\n[This route has an available\
-        \ update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/search/)"
+        \ route: `/dev/search/`\n\nAlternate route: `/v2/search/`\n\n---\nThis route\
+        \ is cached for up to 3600 seconds"
       operationId: "get_search"
       parameters:
       - name: "categories"
@@ -14942,11 +14891,10 @@ paths:
           - "constellation"
           - "corporation"
           - "faction"
-          - "inventorytype"
+          - "inventory_type"
           - "region"
-          - "solarsystem"
+          - "solar_system"
           - "station"
-          - "wormhole"
         maxItems: 10
         minItems: 1
         uniqueItems: true
@@ -15016,7 +14964,7 @@ paths:
               - 60012721
               - 60012724
               - 60012727
-              solarsystem:
+              solar_system:
               - 30002510
           headers:
             Content-Language:
@@ -15047,8 +14995,8 @@ paths:
               error: "Internal server error message"
       x-cached-seconds: 3600
       x-alternate-versions:
-      - "legacy"
-      - "v1"
+      - "dev"
+      - "v2"
   /characters/{character_id}/skillqueue/:
     get:
       tags:
@@ -15161,8 +15109,8 @@ paths:
       - "Skills"
       summary: "Get character skills"
       description: "List all trained skills for the given character\n\n---\nAlternate\
-        \ route: `/v3/characters/{character_id}/skills/`\n\n---\nThis route is cached\
-        \ for up to 120 seconds\n\n---\n[This route has an available update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/characters/{character_id}/skills/)"
+        \ route: `/dev/characters/{character_id}/skills/`\n\nAlternate route: `/v4/characters/{character_id}/skills/`\n\
+        \n---\nThis route is cached for up to 120 seconds"
       operationId: "get_characters_character_id_skills"
       parameters:
       - name: "character_id"
@@ -15210,10 +15158,12 @@ paths:
               skills:
               - skill_id: 1
                 skillpoints_in_skill: 10000
-                current_skill_level: 1
+                trained_skill_level: 4
+                active_skill_level: 3
               - skill_id: 2
                 skillpoints_in_skill: 10000
-                current_skill_level: 1
+                trained_skill_level: 1
+                active_skill_level: 1
               total_sp: 20000
           headers:
             Cache-Control:
@@ -15244,7 +15194,8 @@ paths:
         - "esi-skills.read_skills.v1"
       x-cached-seconds: 120
       x-alternate-versions:
-      - "v3"
+      - "dev"
+      - "v4"
   /characters/{character_id}/attributes/:
     get:
       tags:
@@ -15615,6 +15566,115 @@ paths:
             application/json:
               error: "Internal server error message"
       x-cached-seconds: 30
+      x-alternate-versions:
+      - "dev"
+      - "legacy"
+      - "v1"
+  /universe/ids/:
+    post:
+      tags:
+      - "Universe"
+      summary: "Bulk names to IDs"
+      description: "Resolve a set of names to IDs in the following categories: agents,\
+        \ alliances, characters, constellations, corporations factions, inventory_types,\
+        \ regions, stations, and systems. Only exact matches will be returned. All\
+        \ names searched for are cached for 12 hours.\n\n---\nAlternate route: `/dev/universe/ids/`\n\
+        \nAlternate route: `/legacy/universe/ids/`\n\nAlternate route: `/v1/universe/ids/`\n"
+      operationId: "post_universe_ids"
+      parameters:
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "language"
+        in: "query"
+        description: "Language to use in the response"
+        required: false
+        type: "string"
+        default: "en-us"
+        enum:
+        - "de"
+        - "en-us"
+        - "fr"
+        - "ja"
+        - "ru"
+        - "zh"
+        x-exportParamName: "Language"
+      - in: "body"
+        name: "names"
+        description: "The names to resolve"
+        required: true
+        schema:
+          title: "post_universe_ids_names"
+          type: "array"
+          description: "names array"
+          items:
+            type: "string"
+            description: "name string"
+            title: "post_universe_ids_name"
+            minLength: 1
+            maxLength: 100
+          example: "[\"CCP Zoetrope\"]"
+        x-exportParamName: "Names"
+      - name: "user_agent"
+        in: "query"
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        type: "string"
+        x-exportParamName: "UserAgent"
+      - name: "X-User-Agent"
+        in: "header"
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        type: "string"
+        x-exportParamName: "XUserAgent"
+      responses:
+        200:
+          description: "List of id/name associations for a set of names divided by\
+            \ category. Any name passed in that did not have a match will be ommitted."
+          schema:
+            $ref: "#/definitions/post_universe_ids_ok"
+          examples:
+            application/json:
+              characters:
+              - id: 95465499
+                name: "CCP Bartender"
+              - id: 2112625428
+                name: "CCP Zoetrope"
+              systems:
+              - id: 30000142
+                name: "Jita"
+          headers:
+            Content-Language:
+              type: "string"
+              description: "The language used in the response"
+              enum:
+              - "de"
+              - "en-us"
+              - "fr"
+              - "ja"
+              - "ru"
+              - "zh"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+        503:
+          description: "Search backend is unreachable, try again later."
+          schema:
+            $ref: "#/definitions/post_universe_ids_service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       x-alternate-versions:
       - "dev"
       - "legacy"
@@ -18427,9 +18487,9 @@ paths:
       tags:
       - "Wallet"
       summary: "Get character wallet journal"
-      description: "Retrieve character wallet journal\n\n---\nAlternate route: `/v2/characters/{character_id}/wallet/journal/`\n\
-        \n---\nThis route is cached for up to 3600 seconds\n\n---\n[This route has\
-        \ an available update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/characters/{character_id}/wallet/journal/)"
+      description: "Retrieve character wallet journal\n\n---\nAlternate route: `/dev/characters/{character_id}/wallet/journal/`\n\
+        \nAlternate route: `/v3/characters/{character_id}/wallet/journal/`\n\n---\n\
+        This route is cached for up to 3600 seconds"
       operationId: "get_characters_character_id_wallet_journal"
       parameters:
       - name: "character_id"
@@ -18519,7 +18579,8 @@ paths:
         - "esi-wallet.read_character_wallet.v1"
       x-cached-seconds: 3600
       x-alternate-versions:
-      - "v2"
+      - "dev"
+      - "v3"
   /characters/{character_id}/wallet/transactions/:
     get:
       tags:
@@ -18742,11 +18803,10 @@ paths:
       tags:
       - "Wallet"
       summary: "Get corporation wallet journal"
-      description: "Retrieve corporation wallet journal\n\n---\nAlternate route: `/legacy/corporations/{corporation_id}/wallets/{division}/journal/`\n\
-        \nAlternate route: `/v1/corporations/{corporation_id}/wallets/{division}/journal/`\n\
+      description: "Retrieve corporation wallet journal\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/wallets/{division}/journal/`\n\
+        \nAlternate route: `/v2/corporations/{corporation_id}/wallets/{division}/journal/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
-        \ the following EVE corporation role(s): Accountant, Junior_Accountant\n\n\
-        \n---\n[This route has an available update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/corporations/{corporation_id}/wallets/{division}/journal/)"
+        \ the following EVE corporation role(s): Accountant, Junior_Accountant\n"
       operationId: "get_corporations_corporation_id_wallets_division_journal"
       parameters:
       - name: "corporation_id"
@@ -18848,8 +18908,8 @@ paths:
       - "Junior_Accountant"
       x-cached-seconds: 3600
       x-alternate-versions:
-      - "legacy"
-      - "v1"
+      - "dev"
+      - "v2"
   /corporations/{corporation_id}/wallets/{division}/transactions/:
     get:
       tags:
@@ -19337,36 +19397,54 @@ definitions:
     description: "Forbidden model"
   get_alliances_alliance_id_ok:
     required:
-    - "alliance_name"
+    - "creator_corporation_id"
+    - "creator_id"
     - "date_founded"
+    - "name"
     - "ticker"
     properties:
-      alliance_name:
+      name:
         type: "string"
         description: "the full name of the alliance"
-        title: "get_alliances_alliance_id_alliance_name"
+        title: "get_alliances_alliance_id_name"
+      creator_id:
+        type: "integer"
+        format: "int32"
+        description: "ID of the character that created the alliance"
+        title: "get_alliances_alliance_id_creator_id"
+      creator_corporation_id:
+        type: "integer"
+        format: "int32"
+        description: "ID of the corporation that created the alliance"
+        title: "get_alliances_alliance_id_creator_corporation_id"
       ticker:
         type: "string"
         description: "the short name of the alliance"
         title: "get_alliances_alliance_id_ticker"
-      executor_corp:
+      executor_corporation_id:
         type: "integer"
         format: "int32"
         description: "the executor corporation ID, if this alliance is not closed"
-        title: "get_alliances_alliance_id_executor_corp"
+        title: "get_alliances_alliance_id_executor_corporation_id"
       date_founded:
         type: "string"
         format: "date-time"
         description: "date_founded string"
         title: "get_alliances_alliance_id_date_founded"
+      faction_id:
+        type: "integer"
+        format: "int32"
+        description: "Faction ID this alliance is fighting for, if this alliance is\
+          \ enlisted in factional warfare"
+        title: "get_alliances_alliance_id_faction_id"
     description: "200 ok object"
   get_alliances_alliance_id_not_found:
     properties:
       error:
         type: "string"
-        description: "error message"
-        title: "get_alliances_alliance_id_error"
-    description: "Alliance not found"
+        description: "Not found message"
+        title: "get_alliances_alliance_id_404_not_found"
+    description: "Not found"
   get_alliances_names_200_ok:
     required:
     - "alliance_id"
@@ -19407,6 +19485,7 @@ definitions:
     - "location_flag"
     - "location_id"
     - "location_type"
+    - "quantity"
     - "type_id"
     properties:
       type_id:
@@ -19532,6 +19611,7 @@ definitions:
     - "location_flag"
     - "location_id"
     - "location_type"
+    - "quantity"
     - "type_id"
     properties:
       type_id:
@@ -19702,18 +19782,12 @@ definitions:
         description: "name string"
         title: "post_characters_character_id_assets_names_name"
     description: "200 ok object"
-  post_characters_character_id_assets_locations_200_ok:
+  post_characters_character_id_assets_locations_position:
     required:
-    - "item_id"
     - "x"
     - "y"
     - "z"
     properties:
-      item_id:
-        type: "integer"
-        format: "int64"
-        description: "item_id integer"
-        title: "post_characters_character_id_assets_locations_item_id"
       x:
         type: "number"
         format: "double"
@@ -19729,6 +19803,19 @@ definitions:
         format: "double"
         description: "z number"
         title: "post_characters_character_id_assets_locations_z"
+    description: "position object"
+  post_characters_character_id_assets_locations_200_ok:
+    required:
+    - "item_id"
+    - "position"
+    properties:
+      item_id:
+        type: "integer"
+        format: "int64"
+        description: "item_id integer"
+        title: "post_characters_character_id_assets_locations_item_id"
+      position:
+        $ref: "#/definitions/post_characters_character_id_assets_locations_position"
     description: "200 ok object"
   post_corporations_corporation_id_assets_names_200_ok:
     required:
@@ -19745,18 +19832,12 @@ definitions:
         description: "name string"
         title: "post_corporations_corporation_id_assets_names_name"
     description: "200 ok object"
-  post_corporations_corporation_id_assets_locations_200_ok:
+  post_corporations_corporation_id_assets_locations_position:
     required:
-    - "item_id"
     - "x"
     - "y"
     - "z"
     properties:
-      item_id:
-        type: "integer"
-        format: "int64"
-        description: "item_id integer"
-        title: "post_corporations_corporation_id_assets_locations_item_id"
       x:
         type: "number"
         format: "double"
@@ -19772,6 +19853,19 @@ definitions:
         format: "double"
         description: "z number"
         title: "post_corporations_corporation_id_assets_locations_z"
+    description: "position object"
+  post_corporations_corporation_id_assets_locations_200_ok:
+    required:
+    - "item_id"
+    - "position"
+    properties:
+      item_id:
+        type: "integer"
+        format: "int64"
+        description: "item_id integer"
+        title: "post_corporations_corporation_id_assets_locations_item_id"
+      position:
+        $ref: "#/definitions/post_corporations_corporation_id_assets_locations_position"
     description: "200 ok object"
   get_characters_character_id_bookmarks_item:
     required:
@@ -21682,33 +21776,6 @@ definitions:
         description: "Not found message"
         title: "post_characters_affiliation_404_not_found"
     description: "Not found"
-  post_characters_character_id_cspa_characters:
-    type: "object"
-    required:
-    - "characters"
-    properties:
-      characters:
-        type: "array"
-        description: "characters array"
-        title: "post_characters_character_id_cspa_characters"
-        uniqueItems: true
-        items:
-          type: "integer"
-          format: "int32"
-          description: "character integer"
-          title: "post_characters_character_id_cspa_character"
-        maxItems: 100
-        minItems: 1
-    title: "post_characters_character_id_cspa_characters"
-    description: "characters object"
-  post_characters_character_id_cspa_created:
-    properties:
-      cost:
-        type: "integer"
-        format: "int64"
-        description: "cost integer"
-        title: "post_characters_character_id_cspa_cost"
-    description: "201 created object"
   get_characters_names_200_ok:
     required:
     - "character_id"
@@ -22504,6 +22571,249 @@ definitions:
         description: "text string"
         title: "get_characters_character_id_notifications_text"
     description: "200 ok object"
+  get_characters_character_id_roles_ok:
+    properties:
+      roles:
+        type: "array"
+        description: "roles array"
+        title: "get_characters_character_id_roles_roles"
+        items:
+          type: "string"
+          description: "role string"
+          title: "get_characters_character_id_roles_role"
+          enum:
+          - "Account_Take_1"
+          - "Account_Take_2"
+          - "Account_Take_3"
+          - "Account_Take_4"
+          - "Account_Take_5"
+          - "Account_Take_6"
+          - "Account_Take_7"
+          - "Accountant"
+          - "Auditor"
+          - "Communications_Officer"
+          - "Config_Equipment"
+          - "Config_Starbase_Equipment"
+          - "Container_Take_1"
+          - "Container_Take_2"
+          - "Container_Take_3"
+          - "Container_Take_4"
+          - "Container_Take_5"
+          - "Container_Take_6"
+          - "Container_Take_7"
+          - "Contract_Manager"
+          - "Diplomat"
+          - "Director"
+          - "Factory_Manager"
+          - "Fitting_Manager"
+          - "Hangar_Query_1"
+          - "Hangar_Query_2"
+          - "Hangar_Query_3"
+          - "Hangar_Query_4"
+          - "Hangar_Query_5"
+          - "Hangar_Query_6"
+          - "Hangar_Query_7"
+          - "Hangar_Take_1"
+          - "Hangar_Take_2"
+          - "Hangar_Take_3"
+          - "Hangar_Take_4"
+          - "Hangar_Take_5"
+          - "Hangar_Take_6"
+          - "Hangar_Take_7"
+          - "Junior_Accountant"
+          - "Personnel_Manager"
+          - "Rent_Factory_Facility"
+          - "Rent_Office"
+          - "Rent_Research_Facility"
+          - "Security_Officer"
+          - "Starbase_Defense_Operator"
+          - "Starbase_Fuel_Technician"
+          - "Station_Manager"
+          - "Terrestrial_Combat_Officer"
+          - "Terrestrial_Logistics_Officer"
+          - "Trader"
+        maxItems: 50
+      roles_at_hq:
+        type: "array"
+        description: "roles_at_hq array"
+        title: "get_characters_character_id_roles_roles_at_hq"
+        items:
+          type: "string"
+          description: "roles_at_hq string"
+          title: "get_characters_character_id_roles_roles_at_hq"
+          enum:
+          - "Account_Take_1"
+          - "Account_Take_2"
+          - "Account_Take_3"
+          - "Account_Take_4"
+          - "Account_Take_5"
+          - "Account_Take_6"
+          - "Account_Take_7"
+          - "Accountant"
+          - "Auditor"
+          - "Communications_Officer"
+          - "Config_Equipment"
+          - "Config_Starbase_Equipment"
+          - "Container_Take_1"
+          - "Container_Take_2"
+          - "Container_Take_3"
+          - "Container_Take_4"
+          - "Container_Take_5"
+          - "Container_Take_6"
+          - "Container_Take_7"
+          - "Contract_Manager"
+          - "Diplomat"
+          - "Director"
+          - "Factory_Manager"
+          - "Fitting_Manager"
+          - "Hangar_Query_1"
+          - "Hangar_Query_2"
+          - "Hangar_Query_3"
+          - "Hangar_Query_4"
+          - "Hangar_Query_5"
+          - "Hangar_Query_6"
+          - "Hangar_Query_7"
+          - "Hangar_Take_1"
+          - "Hangar_Take_2"
+          - "Hangar_Take_3"
+          - "Hangar_Take_4"
+          - "Hangar_Take_5"
+          - "Hangar_Take_6"
+          - "Hangar_Take_7"
+          - "Junior_Accountant"
+          - "Personnel_Manager"
+          - "Rent_Factory_Facility"
+          - "Rent_Office"
+          - "Rent_Research_Facility"
+          - "Security_Officer"
+          - "Starbase_Defense_Operator"
+          - "Starbase_Fuel_Technician"
+          - "Station_Manager"
+          - "Terrestrial_Combat_Officer"
+          - "Terrestrial_Logistics_Officer"
+          - "Trader"
+        maxItems: 50
+      roles_at_base:
+        type: "array"
+        description: "roles_at_base array"
+        title: "get_characters_character_id_roles_roles_at_base"
+        items:
+          type: "string"
+          description: "roles_at_base string"
+          title: "get_characters_character_id_roles_roles_at_base"
+          enum:
+          - "Account_Take_1"
+          - "Account_Take_2"
+          - "Account_Take_3"
+          - "Account_Take_4"
+          - "Account_Take_5"
+          - "Account_Take_6"
+          - "Account_Take_7"
+          - "Accountant"
+          - "Auditor"
+          - "Communications_Officer"
+          - "Config_Equipment"
+          - "Config_Starbase_Equipment"
+          - "Container_Take_1"
+          - "Container_Take_2"
+          - "Container_Take_3"
+          - "Container_Take_4"
+          - "Container_Take_5"
+          - "Container_Take_6"
+          - "Container_Take_7"
+          - "Contract_Manager"
+          - "Diplomat"
+          - "Director"
+          - "Factory_Manager"
+          - "Fitting_Manager"
+          - "Hangar_Query_1"
+          - "Hangar_Query_2"
+          - "Hangar_Query_3"
+          - "Hangar_Query_4"
+          - "Hangar_Query_5"
+          - "Hangar_Query_6"
+          - "Hangar_Query_7"
+          - "Hangar_Take_1"
+          - "Hangar_Take_2"
+          - "Hangar_Take_3"
+          - "Hangar_Take_4"
+          - "Hangar_Take_5"
+          - "Hangar_Take_6"
+          - "Hangar_Take_7"
+          - "Junior_Accountant"
+          - "Personnel_Manager"
+          - "Rent_Factory_Facility"
+          - "Rent_Office"
+          - "Rent_Research_Facility"
+          - "Security_Officer"
+          - "Starbase_Defense_Operator"
+          - "Starbase_Fuel_Technician"
+          - "Station_Manager"
+          - "Terrestrial_Combat_Officer"
+          - "Terrestrial_Logistics_Officer"
+          - "Trader"
+        maxItems: 50
+      roles_at_other:
+        type: "array"
+        description: "roles_at_other array"
+        title: "get_characters_character_id_roles_roles_at_other"
+        items:
+          type: "string"
+          description: "roles_at_other string"
+          title: "get_characters_character_id_roles_roles_at_other"
+          enum:
+          - "Account_Take_1"
+          - "Account_Take_2"
+          - "Account_Take_3"
+          - "Account_Take_4"
+          - "Account_Take_5"
+          - "Account_Take_6"
+          - "Account_Take_7"
+          - "Accountant"
+          - "Auditor"
+          - "Communications_Officer"
+          - "Config_Equipment"
+          - "Config_Starbase_Equipment"
+          - "Container_Take_1"
+          - "Container_Take_2"
+          - "Container_Take_3"
+          - "Container_Take_4"
+          - "Container_Take_5"
+          - "Container_Take_6"
+          - "Container_Take_7"
+          - "Contract_Manager"
+          - "Diplomat"
+          - "Director"
+          - "Factory_Manager"
+          - "Fitting_Manager"
+          - "Hangar_Query_1"
+          - "Hangar_Query_2"
+          - "Hangar_Query_3"
+          - "Hangar_Query_4"
+          - "Hangar_Query_5"
+          - "Hangar_Query_6"
+          - "Hangar_Query_7"
+          - "Hangar_Take_1"
+          - "Hangar_Take_2"
+          - "Hangar_Take_3"
+          - "Hangar_Take_4"
+          - "Hangar_Take_5"
+          - "Hangar_Take_6"
+          - "Hangar_Take_7"
+          - "Junior_Accountant"
+          - "Personnel_Manager"
+          - "Rent_Factory_Facility"
+          - "Rent_Office"
+          - "Rent_Research_Facility"
+          - "Security_Officer"
+          - "Starbase_Defense_Operator"
+          - "Starbase_Fuel_Technician"
+          - "Station_Manager"
+          - "Terrestrial_Combat_Officer"
+          - "Terrestrial_Logistics_Officer"
+          - "Trader"
+        maxItems: 50
+    description: "200 ok object"
   get_characters_character_id_titles_200_ok:
     properties:
       title_id:
@@ -22532,7 +22842,21 @@ definitions:
         - "structure"
     description: "home_location object"
   get_characters_character_id_clones_jump_clone:
+    required:
+    - "implants"
+    - "jump_clone_id"
+    - "location_id"
+    - "location_type"
     properties:
+      jump_clone_id:
+        type: "integer"
+        format: "int32"
+        description: "jump_clone_id integer"
+        title: "get_characters_character_id_clones_jump_clone_id"
+      name:
+        type: "string"
+        description: "name string"
+        title: "get_characters_character_id_clones_name"
       location_id:
         type: "integer"
         format: "int64"
@@ -22560,13 +22884,18 @@ definitions:
     required:
     - "jump_clones"
     properties:
-      last_jump_date:
+      last_clone_jump_date:
         type: "string"
         format: "date-time"
-        description: "last_jump_date string"
-        title: "get_characters_character_id_clones_last_jump_date"
+        description: "last_clone_jump_date string"
+        title: "get_characters_character_id_clones_last_clone_jump_date"
       home_location:
         $ref: "#/definitions/get_characters_character_id_clones_home_location"
+      last_station_change_date:
+        type: "string"
+        format: "date-time"
+        description: "last_station_change_date string"
+        title: "get_characters_character_id_clones_last_station_change_date"
       jump_clones:
         type: "array"
         description: "jump_clones array"
@@ -23145,18 +23474,16 @@ definitions:
   get_corporations_corporation_id_ok:
     required:
     - "ceo_id"
-    - "corporation_description"
-    - "corporation_name"
     - "creator_id"
     - "member_count"
+    - "name"
     - "tax_rate"
     - "ticker"
-    - "url"
     properties:
-      corporation_name:
+      name:
         type: "string"
         description: "the full name of the corporation"
-        title: "get_corporations_corporation_id_corporation_name"
+        title: "get_corporations_corporation_id_name"
       ticker:
         type: "string"
         description: "the short name of the corporation"
@@ -23174,12 +23501,12 @@ definitions:
       alliance_id:
         type: "integer"
         format: "int32"
-        description: "id of alliance that corporation is a member of, if any"
+        description: "ID of the alliance that corporation is a member of, if any"
         title: "get_corporations_corporation_id_alliance_id"
-      corporation_description:
+      description:
         type: "string"
-        description: "corporation_description string"
-        title: "get_corporations_corporation_id_corporation_description"
+        description: "description string"
+        title: "get_corporations_corporation_id_description"
       tax_rate:
         type: "number"
         format: "float"
@@ -23187,11 +23514,11 @@ definitions:
         title: "get_corporations_corporation_id_tax_rate"
         minimum: 0
         maximum: 1
-      creation_date:
+      date_founded:
         type: "string"
         format: "date-time"
-        description: "creation_date string"
-        title: "get_corporations_corporation_id_creation_date"
+        description: "date_founded string"
+        title: "get_corporations_corporation_id_date_founded"
       creator_id:
         type: "integer"
         format: "int32"
@@ -23201,15 +23528,21 @@ definitions:
         type: "string"
         description: "url string"
         title: "get_corporations_corporation_id_url"
-      faction:
-        type: "string"
-        description: "faction string"
-        title: "get_corporations_corporation_id_faction"
-        enum:
-        - "Minmatar"
-        - "Gallente"
-        - "Caldari"
-        - "Amarr"
+      faction_id:
+        type: "integer"
+        format: "int32"
+        description: "faction_id integer"
+        title: "get_corporations_corporation_id_faction_id"
+      home_station_id:
+        type: "integer"
+        format: "int32"
+        description: "home_station_id integer"
+        title: "get_corporations_corporation_id_home_station_id"
+      shares:
+        type: "integer"
+        format: "int64"
+        description: "shares integer"
+        title: "get_corporations_corporation_id_shares"
     description: "200 ok object"
   get_corporations_corporation_id_not_found:
     properties:
@@ -23258,16 +23591,6 @@ definitions:
         type: "string"
         description: "corporation_name string"
         title: "get_corporations_names_corporation_name"
-    description: "200 ok object"
-  get_corporations_corporation_id_members_200_ok:
-    required:
-    - "character_id"
-    properties:
-      character_id:
-        type: "integer"
-        format: "int32"
-        description: "character_id integer"
-        title: "get_corporations_corporation_id_members_character_id"
     description: "200 ok object"
   get_corporations_corporation_id_roles_200_ok:
     required:
@@ -27884,6 +28207,30 @@ definitions:
         description: "ship_name string"
         title: "get_characters_character_id_ship_ship_name"
     description: "200 ok object"
+  get_characters_character_id_online_ok:
+    required:
+    - "online"
+    properties:
+      online:
+        type: "boolean"
+        description: "If the character is online"
+        title: "get_characters_character_id_online_online"
+      last_login:
+        type: "string"
+        format: "date-time"
+        description: "Timestamp of the last login"
+        title: "get_characters_character_id_online_last_login"
+      last_logout:
+        type: "string"
+        format: "date-time"
+        description: "Timestamp of the last logout"
+        title: "get_characters_character_id_online_last_logout"
+      logins:
+        type: "integer"
+        format: "int32"
+        description: "Total number of times the character has logged in"
+        title: "get_characters_character_id_online_logins"
+    description: "200 ok object"
   get_loyalty_stores_corporation_id_offers_required_item:
     required:
     - "quantity"
@@ -29388,15 +29735,15 @@ definitions:
           description: "faction integer"
           title: "get_characters_character_id_search_faction"
         maxItems: 500
-      inventorytype:
+      inventory_type:
         type: "array"
-        description: "inventorytype array"
-        title: "get_characters_character_id_search_inventorytype"
+        description: "inventory_type array"
+        title: "get_characters_character_id_search_inventory_type"
         items:
           type: "integer"
           format: "int32"
-          description: "inventorytype integer"
-          title: "get_characters_character_id_search_inventorytype"
+          description: "inventory_type integer"
+          title: "get_characters_character_id_search_inventory_type"
         maxItems: 500
       region:
         type: "array"
@@ -29408,15 +29755,15 @@ definitions:
           description: "region integer"
           title: "get_characters_character_id_search_region"
         maxItems: 500
-      solarsystem:
+      solar_system:
         type: "array"
-        description: "solarsystem array"
-        title: "get_characters_character_id_search_solarsystem"
+        description: "solar_system array"
+        title: "get_characters_character_id_search_solar_system"
         items:
           type: "integer"
           format: "int32"
-          description: "solarsystem integer"
-          title: "get_characters_character_id_search_solarsystem"
+          description: "solar_system integer"
+          title: "get_characters_character_id_search_solar_system"
         maxItems: 500
       station:
         type: "array"
@@ -29437,16 +29784,6 @@ definitions:
           format: "int64"
           description: "structure integer"
           title: "get_characters_character_id_search_structure"
-        maxItems: 500
-      wormhole:
-        type: "array"
-        description: "wormhole array"
-        title: "get_characters_character_id_search_wormhole"
-        items:
-          type: "integer"
-          format: "int32"
-          description: "wormhole integer"
-          title: "get_characters_character_id_search_wormhole"
         maxItems: 500
     description: "200 ok object"
   get_search_ok:
@@ -29511,15 +29848,15 @@ definitions:
           description: "faction integer"
           title: "get_search_faction"
         maxItems: 500
-      inventorytype:
+      inventory_type:
         type: "array"
-        description: "inventorytype array"
-        title: "get_search_inventorytype"
+        description: "inventory_type array"
+        title: "get_search_inventory_type"
         items:
           type: "integer"
           format: "int32"
-          description: "inventorytype integer"
-          title: "get_search_inventorytype"
+          description: "inventory_type integer"
+          title: "get_search_inventory_type"
         maxItems: 500
       region:
         type: "array"
@@ -29531,15 +29868,15 @@ definitions:
           description: "region integer"
           title: "get_search_region"
         maxItems: 500
-      solarsystem:
+      solar_system:
         type: "array"
-        description: "solarsystem array"
-        title: "get_search_solarsystem"
+        description: "solar_system array"
+        title: "get_search_solar_system"
         items:
           type: "integer"
           format: "int32"
-          description: "solarsystem integer"
-          title: "get_search_solarsystem"
+          description: "solar_system integer"
+          title: "get_search_solar_system"
         maxItems: 500
       station:
         type: "array"
@@ -29550,16 +29887,6 @@ definitions:
           format: "int32"
           description: "station integer"
           title: "get_search_station"
-        maxItems: 500
-      wormhole:
-        type: "array"
-        description: "wormhole array"
-        title: "get_search_wormhole"
-        items:
-          type: "integer"
-          format: "int32"
-          description: "wormhole integer"
-          title: "get_search_wormhole"
         maxItems: 500
     description: "200 ok object"
   get_characters_character_id_skillqueue_200_ok:
@@ -29613,6 +29940,11 @@ definitions:
         title: "get_characters_character_id_skillqueue_level_start_sp"
     description: "200 ok object"
   get_characters_character_id_skills_skill:
+    required:
+    - "active_skill_level"
+    - "skill_id"
+    - "skillpoints_in_skill"
+    - "trained_skill_level"
     properties:
       skill_id:
         type: "integer"
@@ -29624,13 +29956,21 @@ definitions:
         format: "int64"
         description: "skillpoints_in_skill integer"
         title: "get_characters_character_id_skills_skillpoints_in_skill"
-      current_skill_level:
+      trained_skill_level:
         type: "integer"
         format: "int32"
-        description: "current_skill_level integer"
-        title: "get_characters_character_id_skills_current_skill_level"
+        description: "trained_skill_level integer"
+        title: "get_characters_character_id_skills_trained_skill_level"
+      active_skill_level:
+        type: "integer"
+        format: "int32"
+        description: "active_skill_level integer"
+        title: "get_characters_character_id_skills_active_skill_level"
     description: "skill object"
   get_characters_character_id_skills_ok:
+    required:
+    - "skills"
+    - "total_sp"
     properties:
       skills:
         type: "array"
@@ -29644,6 +29984,11 @@ definitions:
         format: "int64"
         description: "total_sp integer"
         title: "get_characters_character_id_skills_total_sp"
+      unallocated_sp:
+        type: "integer"
+        format: "int32"
+        description: "Skill points available to be assigned"
+        title: "get_characters_character_id_skills_unallocated_sp"
     description: "200 ok object"
   get_characters_character_id_attributes_ok:
     required:
@@ -29883,6 +30228,206 @@ definitions:
         description: "If the server is in VIP mode"
         title: "get_status_vip"
     description: "200 ok object"
+  post_universe_ids_agent:
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+        description: "id integer"
+        title: "post_universe_ids_id"
+      name:
+        type: "string"
+        description: "name string"
+        title: "post_universe_ids_name"
+    description: "agent object"
+  post_universe_ids_alliance:
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+        description: "id integer"
+        title: "post_universe_ids_id"
+      name:
+        type: "string"
+        description: "name string"
+        title: "post_universe_ids_name"
+    description: "alliance object"
+  post_universe_ids_character:
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+        description: "id integer"
+        title: "post_universe_ids_id"
+      name:
+        type: "string"
+        description: "name string"
+        title: "post_universe_ids_name"
+    description: "character object"
+  post_universe_ids_constellation:
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+        description: "id integer"
+        title: "post_universe_ids_id"
+      name:
+        type: "string"
+        description: "name string"
+        title: "post_universe_ids_name"
+    description: "constellation object"
+  post_universe_ids_corporation:
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+        description: "id integer"
+        title: "post_universe_ids_id"
+      name:
+        type: "string"
+        description: "name string"
+        title: "post_universe_ids_name"
+    description: "corporation object"
+  post_universe_ids_faction:
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+        description: "id integer"
+        title: "post_universe_ids_id"
+      name:
+        type: "string"
+        description: "name string"
+        title: "post_universe_ids_name"
+    description: "faction object"
+  post_universe_ids_inventory_type:
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+        description: "id integer"
+        title: "post_universe_ids_id"
+      name:
+        type: "string"
+        description: "name string"
+        title: "post_universe_ids_name"
+    description: "inventory_type object"
+  post_universe_ids_region:
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+        description: "id integer"
+        title: "post_universe_ids_id"
+      name:
+        type: "string"
+        description: "name string"
+        title: "post_universe_ids_name"
+    description: "region object"
+  post_universe_ids_system:
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+        description: "id integer"
+        title: "post_universe_ids_id"
+      name:
+        type: "string"
+        description: "name string"
+        title: "post_universe_ids_name"
+    description: "system object"
+  post_universe_ids_station:
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+        description: "id integer"
+        title: "post_universe_ids_id"
+      name:
+        type: "string"
+        description: "name string"
+        title: "post_universe_ids_name"
+    description: "station object"
+  post_universe_ids_ok:
+    properties:
+      agents:
+        type: "array"
+        description: "agents array"
+        title: "post_universe_ids_agents"
+        items:
+          $ref: "#/definitions/post_universe_ids_agent"
+        maxItems: 1000
+      alliances:
+        type: "array"
+        description: "alliances array"
+        title: "post_universe_ids_alliances"
+        items:
+          $ref: "#/definitions/post_universe_ids_alliance"
+        maxItems: 1000
+      characters:
+        type: "array"
+        description: "characters array"
+        title: "post_universe_ids_characters"
+        items:
+          $ref: "#/definitions/post_universe_ids_character"
+        maxItems: 1000
+      constellations:
+        type: "array"
+        description: "constellations array"
+        title: "post_universe_ids_constellations"
+        items:
+          $ref: "#/definitions/post_universe_ids_constellation"
+        maxItems: 1000
+      corporations:
+        type: "array"
+        description: "corporations array"
+        title: "post_universe_ids_corporations"
+        items:
+          $ref: "#/definitions/post_universe_ids_corporation"
+        maxItems: 1000
+      factions:
+        type: "array"
+        description: "factions array"
+        title: "post_universe_ids_factions"
+        items:
+          $ref: "#/definitions/post_universe_ids_faction"
+        maxItems: 1000
+      inventory_types:
+        type: "array"
+        description: "inventory_types array"
+        title: "post_universe_ids_inventory_types"
+        items:
+          $ref: "#/definitions/post_universe_ids_inventory_type"
+        maxItems: 1000
+      regions:
+        type: "array"
+        description: "regions array"
+        title: "post_universe_ids_regions"
+        items:
+          $ref: "#/definitions/post_universe_ids_region"
+        maxItems: 1000
+      systems:
+        type: "array"
+        description: "systems array"
+        title: "post_universe_ids_systems"
+        items:
+          $ref: "#/definitions/post_universe_ids_system"
+        maxItems: 1000
+      stations:
+        type: "array"
+        description: "stations array"
+        title: "post_universe_ids_stations"
+        items:
+          $ref: "#/definitions/post_universe_ids_station"
+        maxItems: 1000
+    description: "200 ok object"
+  post_universe_ids_service_unavailable:
+    properties:
+      error:
+        type: "string"
+        description: "Service unavailable message"
+        title: "post_universe_ids_503_service_unavailable"
+    description: "Service unavailable"
   get_universe_planets_planet_id_position:
     required:
     - "x"
@@ -31399,11 +31944,11 @@ definitions:
         type: "string"
         description: "reason string"
         title: "get_characters_character_id_wallet_journal_reason"
-      tax_reciever_id:
+      tax_receiver_id:
         type: "integer"
         format: "int32"
         description: "the corporation ID receiving any tax paid"
-        title: "get_characters_character_id_wallet_journal_tax_reciever_id"
+        title: "get_characters_character_id_wallet_journal_tax_receiver_id"
       tax:
         type: "number"
         format: "double"
@@ -31741,11 +32286,11 @@ definitions:
         type: "string"
         description: "reason string"
         title: "get_corporations_corporation_id_wallets_division_journal_reason"
-      tax_reciever_id:
+      tax_receiver_id:
         type: "integer"
         format: "int32"
         description: "the corporation ID receiving any tax paid"
-        title: "get_corporations_corporation_id_wallets_division_journal_tax_reciever_id"
+        title: "get_corporations_corporation_id_wallets_division_journal_tax_receiver_id"
       tax:
         type: "number"
         format: "double"

@@ -7,7 +7,7 @@ import "time"
 type GetCorporationsCorporationIdOk struct {
 	/*
 	 the full name of the corporation */
-	CorporationName string `json:"corporation_name,omitempty"`
+	Name string `json:"name,omitempty"`
 	/*
 	 the short name of the corporation */
 	Ticker string `json:"ticker,omitempty"`
@@ -18,17 +18,17 @@ type GetCorporationsCorporationIdOk struct {
 	 ceo_id integer */
 	CeoId int32 `json:"ceo_id,omitempty"`
 	/*
-	 id of alliance that corporation is a member of, if any */
+	 ID of the alliance that corporation is a member of, if any */
 	AllianceId int32 `json:"alliance_id,omitempty"`
 	/*
-	 corporation_description string */
-	CorporationDescription string `json:"corporation_description,omitempty"`
+	 description string */
+	Description string `json:"description,omitempty"`
 	/*
 	 tax_rate number */
 	TaxRate float32 `json:"tax_rate,omitempty"`
 	/*
-	 creation_date string */
-	CreationDate time.Time `json:"creation_date,omitempty"`
+	 date_founded string */
+	DateFounded time.Time `json:"date_founded,omitempty"`
 	/*
 	 creator_id integer */
 	CreatorId int32 `json:"creator_id,omitempty"`
@@ -36,6 +36,12 @@ type GetCorporationsCorporationIdOk struct {
 	 url string */
 	Url string `json:"url,omitempty"`
 	/*
-	 faction string */
-	Faction string `json:"faction,omitempty"`
+	 faction_id integer */
+	FactionId int32 `json:"faction_id,omitempty"`
+	/*
+	 home_station_id integer */
+	HomeStationId int32 `json:"home_station_id,omitempty"`
+	/*
+	 shares integer */
+	Shares int64 `json:"shares,omitempty"`
 }

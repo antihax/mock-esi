@@ -18,13 +18,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetAlliancesAllianceId",
-		"Get",
-		"/v1/alliances/{alliance_id}/",
-		GetAlliancesAllianceId,
-	)
-
-	mockesi.NewRoute(
 		"GetAlliancesAllianceIdCorporations",
 		"Get",
 		"/v1/alliances/{alliance_id}/corporations/",
@@ -43,13 +36,6 @@ func init() {
 		"Get",
 		"/v1/alliances/names/",
 		GetAlliancesNames,
-	)
-
-	mockesi.NewRoute(
-		"GetCharactersCharacterIdAssets",
-		"Get",
-		"/v1/characters/{character_id}/assets/",
-		GetCharactersCharacterIdAssets,
 	)
 
 	mockesi.NewRoute(
@@ -1012,13 +998,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCharactersCharacterIdSearch",
-		"Get",
-		"/v1/characters/{character_id}/search/",
-		GetCharactersCharacterIdSearch,
-	)
-
-	mockesi.NewRoute(
 		"GetSearch",
 		"Get",
 		"/v1/search/",
@@ -1229,6 +1208,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"PostUniverseIds",
+		"Post",
+		"/v1/universe/ids/",
+		PostUniverseIds,
+	)
+
+	mockesi.NewRoute(
 		"PostUniverseNames",
 		"Post",
 		"/v1/universe/names/",
@@ -1275,13 +1261,6 @@ func init() {
 		"Get",
 		"/v1/characters/{character_id}/wallet/",
 		GetCharactersCharacterIdWallet,
-	)
-
-	mockesi.NewRoute(
-		"GetCharactersCharacterIdWalletJournal",
-		"Get",
-		"/v1/characters/{character_id}/wallet/journal/",
-		GetCharactersCharacterIdWalletJournal,
 	)
 
 	mockesi.NewRoute(

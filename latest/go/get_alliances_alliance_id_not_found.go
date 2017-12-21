@@ -1,9 +1,9 @@
 package esilatest
 
 /*
-Alliance not found */
+Not found */
 type GetAlliancesAllianceIdNotFound struct {
 	/*
-	 error message */
+	 Not found message */
 	Error_ string `json:"error,omitempty"`
 }

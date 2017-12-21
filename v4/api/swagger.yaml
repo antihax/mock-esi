@@ -99,7 +99,8 @@ paths:
       - "Character"
       summary: "Calculate a CSPA charge cost"
       description: "Takes a source character ID in the url and a set of target character\
-        \ ID's in the body, returns a CSPA charge cost\n\n---\nAlternate route: `/dev/characters/{character_id}/cspa/`\n"
+        \ ID's in the body, returns a CSPA charge cost\n\n---\nAlternate route: `/dev/characters/{character_id}/cspa/`\n\
+        \nAlternate route: `/latest/characters/{character_id}/cspa/`\n"
       operationId: "post_characters_character_id_cspa"
       parameters:
       - name: "character_id"
@@ -181,14 +182,15 @@ paths:
         - "esi-characters.read_contacts.v1"
       x-alternate-versions:
       - "dev"
+      - "latest"
   /corporations/{corporation_id}/:
     get:
       tags:
       - "Corporation"
       summary: "Get corporation information"
       description: "Public information about a corporation\n\n---\nAlternate route:\
-        \ `/dev/corporations/{corporation_id}/`\n\n---\nThis route is cached for up\
-        \ to 3600 seconds"
+        \ `/dev/corporations/{corporation_id}/`\n\nAlternate route: `/latest/corporations/{corporation_id}/`\n\
+        \n---\nThis route is cached for up to 3600 seconds"
       operationId: "get_corporations_corporation_id"
       parameters:
       - name: "corporation_id"
@@ -265,14 +267,15 @@ paths:
       x-cached-seconds: 3600
       x-alternate-versions:
       - "dev"
+      - "latest"
   /characters/{character_id}/skills/:
     get:
       tags:
       - "Skills"
       summary: "Get character skills"
       description: "List all trained skills for the given character\n\n---\nAlternate\
-        \ route: `/dev/characters/{character_id}/skills/`\n\n---\nThis route is cached\
-        \ for up to 120 seconds"
+        \ route: `/dev/characters/{character_id}/skills/`\n\nAlternate route: `/latest/characters/{character_id}/skills/`\n\
+        \n---\nThis route is cached for up to 120 seconds"
       operationId: "get_characters_character_id_skills"
       parameters:
       - name: "character_id"
@@ -357,6 +360,7 @@ paths:
       x-cached-seconds: 120
       x-alternate-versions:
       - "dev"
+      - "latest"
 securityDefinitions:
   evesso:
     type: "oauth2"
@@ -366,16 +370,6 @@ securityDefinitions:
       esi-characters.read_contacts.v1: "EVE SSO scope esi-characters.read_contacts.v1"
       esi-skills.read_skills.v1: "EVE SSO scope esi-skills.read_skills.v1"
 definitions:
-  internal_server_error:
-    type: "object"
-    required:
-    - "error"
-    properties:
-      error:
-        type: "string"
-        description: "Internal server error message"
-    title: "Internal server error"
-    description: "Internal server error model"
   forbidden:
     type: "object"
     required:
@@ -389,6 +383,16 @@ definitions:
         description: "Status code received from SSO"
     title: "Forbidden"
     description: "Forbidden model"
+  internal_server_error:
+    type: "object"
+    required:
+    - "error"
+    properties:
+      error:
+        type: "string"
+        description: "Internal server error message"
+    title: "Internal server error"
+    description: "Internal server error model"
   get_characters_character_id_ok:
     required:
     - "birthday"
@@ -607,20 +611,6 @@ parameters:
     - "tranquility"
     - "singularity"
     x-exportParamName: "Datasource"
-  language:
-    name: "language"
-    in: "query"
-    description: "Language to use in the response"
-    required: false
-    type: "string"
-    default: "en-us"
-    enum:
-    - "de"
-    - "en-us"
-    - "fr"
-    - "ja"
-    - "ru"
-    - "zh"
   user_agent:
     name: "user_agent"
     in: "query"
@@ -635,14 +625,6 @@ parameters:
     required: false
     type: "string"
     x-exportParamName: "XUserAgent"
-  page:
-    name: "page"
-    in: "query"
-    description: "Which page of results to return"
-    required: false
-    type: "integer"
-    default: 1
-    format: "int32"
   token:
     name: "token"
     in: "query"
@@ -650,14 +632,6 @@ parameters:
     required: false
     type: "string"
     x-exportParamName: "Token"
-  corporation_id:
-    name: "corporation_id"
-    in: "path"
-    description: "An EVE corporation ID"
-    required: true
-    type: "integer"
-    format: "int32"
-    x-exportParamName: "CorporationId"
   character_id:
     name: "character_id"
     in: "path"
@@ -666,3 +640,33 @@ parameters:
     type: "integer"
     format: "int32"
     x-exportParamName: "CharacterId"
+  page:
+    name: "page"
+    in: "query"
+    description: "Which page of results to return"
+    required: false
+    type: "integer"
+    default: 1
+    format: "int32"
+  language:
+    name: "language"
+    in: "query"
+    description: "Language to use in the response"
+    required: false
+    type: "string"
+    default: "en-us"
+    enum:
+    - "de"
+    - "en-us"
+    - "fr"
+    - "ja"
+    - "ru"
+    - "zh"
+  corporation_id:
+    name: "corporation_id"
+    in: "path"
+    description: "An EVE corporation ID"
+    required: true
+    type: "integer"
+    format: "int32"
+    x-exportParamName: "CorporationId"

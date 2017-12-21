@@ -1,8 +1,8 @@
-package esiv2
+package esilegacy
 
 /*
-200 ok object */
-type GetCharactersCharacterIdSkills200Ok struct {
+skill object */
+type GetCharactersCharacterIdSkillsSkill struct {
 	/*
 	 skill_id integer */
 	SkillId int32 `json:"skill_id,omitempty"`

@@ -1327,6 +1327,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"PostUniverseIds",
+		"Post",
+		"/legacy/universe/ids/",
+		PostUniverseIds,
+	)
+
+	mockesi.NewRoute(
 		"PostUniverseNames",
 		"Post",
 		"/legacy/universe/names/",

@@ -37,7 +37,7 @@ type GetCharactersCharacterIdWalletJournal200Ok struct {
 	Reason string `json:"reason,omitempty"`
 	/*
 	 the corporation ID receiving any tax paid */
-	TaxRecieverId int32 `json:"tax_reciever_id,omitempty"`
+	TaxReceiverId int32 `json:"tax_receiver_id,omitempty"`
 	/*
 	 Tax amount received for tax related transactions */
 	Tax float64 `json:"tax,omitempty"`

@@ -10,6 +10,9 @@ type GetCharactersCharacterIdSkillsSkill struct {
 	 skillpoints_in_skill integer */
 	SkillpointsInSkill int64 `json:"skillpoints_in_skill,omitempty"`
 	/*
-	 current_skill_level integer */
-	CurrentSkillLevel int32 `json:"current_skill_level,omitempty"`
+	 trained_skill_level integer */
+	TrainedSkillLevel int32 `json:"trained_skill_level,omitempty"`
+	/*
+	 active_skill_level integer */
+	ActiveSkillLevel int32 `json:"active_skill_level,omitempty"`
 }

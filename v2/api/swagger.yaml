@@ -17,8 +17,9 @@ paths:
       - "Alliance"
       summary: "Get alliance information"
       description: "Public information about an alliance\n\n---\nAlternate route:\
-        \ `/latest/alliances/{alliance_id}/`\n\n---\nThis route is cached for up to\
-        \ 3600 seconds\n\n---\n[This route has an available update](https://esi.tech.ccp.is/diff/v2/dev/#GET-/alliances/{alliance_id}/)"
+        \ `/legacy/alliances/{alliance_id}/`\n\n---\nThis route is cached for up to\
+        \ 3600 seconds\n\n---\nWarning: This route is deprecated.\n\n---\n[This route\
+        \ has an available update](https://esi.tech.ccp.is/diff/v2/dev/#GET-/alliances/{alliance_id}/)"
       operationId: "get_alliances_alliance_id"
       parameters:
       - name: "alliance_id"
@@ -85,17 +86,18 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+      deprecated: true
       x-cached-seconds: 3600
       x-alternate-versions:
-      - "latest"
+      - "legacy"
   /alliances/names/:
     get:
       tags:
       - "Alliance"
       summary: "Get alliance names"
       description: "Resolve a set of alliance IDs to alliance names\n\n---\nAlternate\
-        \ route: `/dev/alliances/names/`\n\n---\nThis route is cached for up to 3600\
-        \ seconds"
+        \ route: `/dev/alliances/names/`\n\nAlternate route: `/latest/alliances/names/`\n\
+        \n---\nThis route is cached for up to 3600 seconds"
       operationId: "get_alliances_names"
       parameters:
       - name: "alliance_ids"
@@ -165,14 +167,16 @@ paths:
       x-cached-seconds: 3600
       x-alternate-versions:
       - "dev"
+      - "latest"
   /characters/{character_id}/assets/:
     get:
       tags:
       - "Assets"
       summary: "Get character assets"
       description: "Return a list of the characters assets\n\n---\nAlternate route:\
-        \ `/latest/characters/{character_id}/assets/`\n\n---\nThis route is cached\
-        \ for up to 3600 seconds\n\n---\n[This route has an available update](https://esi.tech.ccp.is/diff/v2/dev/#GET-/characters/{character_id}/assets/)"
+        \ `/legacy/characters/{character_id}/assets/`\n\n---\nThis route is cached\
+        \ for up to 3600 seconds\n\n---\nWarning: This route is deprecated.\n\n---\n\
+        [This route has an available update](https://esi.tech.ccp.is/diff/v2/dev/#GET-/characters/{character_id}/assets/)"
       operationId: "get_characters_character_id_assets"
       parameters:
       - name: "character_id"
@@ -268,18 +272,19 @@ paths:
       security:
       - evesso:
         - "esi-assets.read_assets.v1"
+      deprecated: true
       x-cached-seconds: 3600
       x-alternate-versions:
-      - "latest"
+      - "legacy"
   /corporations/{corporation_id}/assets/:
     get:
       tags:
       - "Assets"
       summary: "Get corporation assets"
       description: "Return a list of the corporation assets\n\n---\nAlternate route:\
-        \ `/dev/corporations/{corporation_id}/assets/`\n\n---\nThis route is cached\
-        \ for up to 3600 seconds\n\n---\nRequires one of the following EVE corporation\
-        \ role(s): Director\n"
+        \ `/dev/corporations/{corporation_id}/assets/`\n\nAlternate route: `/latest/corporations/{corporation_id}/assets/`\n\
+        \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
+        \ the following EVE corporation role(s): Director\n"
       operationId: "get_corporations_corporation_id_assets"
       parameters:
       - name: "corporation_id"
@@ -381,6 +386,7 @@ paths:
       x-cached-seconds: 3600
       x-alternate-versions:
       - "dev"
+      - "latest"
   /characters/{character_id}/assets/locations/:
     post:
       tags:
@@ -388,7 +394,8 @@ paths:
       summary: "Get character asset locations"
       description: "Return locations for a set of item ids, which you can get from\
         \ character assets endpoint. Coordinates for items in hangars or stations\
-        \ are set to (0,0,0)\n\n---\nAlternate route: `/dev/characters/{character_id}/assets/locations/`\n"
+        \ are set to (0,0,0)\n\n---\nAlternate route: `/dev/characters/{character_id}/assets/locations/`\n\
+        \nAlternate route: `/latest/characters/{character_id}/assets/locations/`\n"
       operationId: "post_characters_character_id_assets_locations"
       parameters:
       - name: "character_id"
@@ -476,6 +483,7 @@ paths:
         - "esi-assets.read_assets.v1"
       x-alternate-versions:
       - "dev"
+      - "latest"
   /corporations/{corporation_id}/assets/locations/:
     post:
       tags:
@@ -484,6 +492,7 @@ paths:
       description: "Return locations for a set of item ids, which you can get from\
         \ corporation assets endpoint. Coordinates for items in hangars or stations\
         \ are set to (0,0,0)\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/assets/locations/`\n\
+        \nAlternate route: `/latest/corporations/{corporation_id}/assets/locations/`\n\
         \n\n---\nRequires one of the following EVE corporation role(s): Director\n"
       operationId: "post_corporations_corporation_id_assets_locations"
       parameters:
@@ -574,6 +583,7 @@ paths:
       - "Director"
       x-alternate-versions:
       - "dev"
+      - "latest"
   /characters/{character_id}/bookmarks/:
     get:
       tags:
@@ -1284,8 +1294,8 @@ paths:
       - "Character"
       summary: "Get character corporation roles"
       description: "Returns a character's corporation roles\n\n---\nAlternate route:\
-        \ `/dev/characters/{character_id}/roles/`\n\n---\nThis route is cached for\
-        \ up to 3600 seconds"
+        \ `/dev/characters/{character_id}/roles/`\n\nAlternate route: `/latest/characters/{character_id}/roles/`\n\
+        \n---\nThis route is cached for up to 3600 seconds"
       operationId: "get_characters_character_id_roles"
       parameters:
       - name: "character_id"
@@ -1363,15 +1373,15 @@ paths:
       x-cached-seconds: 3600
       x-alternate-versions:
       - "dev"
+      - "latest"
   /characters/{character_id}/clones/:
     get:
       tags:
       - "Clones"
       summary: "Get clones"
-      description: "A list of the character's clones\n\n---\nAlternate route: `/latest/characters/{character_id}/clones/`\n\
-        \nAlternate route: `/legacy/characters/{character_id}/clones/`\n\n---\nThis\
-        \ route is cached for up to 120 seconds\n\n---\n[This route has an available\
-        \ update](https://esi.tech.ccp.is/diff/v2/dev/#GET-/characters/{character_id}/clones/)"
+      description: "A list of the character's clones\n\n---\nAlternate route: `/legacy/characters/{character_id}/clones/`\n\
+        \n---\nThis route is cached for up to 120 seconds\n\n---\nWarning: This route\
+        \ is deprecated.\n\n---\n[This route has an available update](https://esi.tech.ccp.is/diff/v2/dev/#GET-/characters/{character_id}/clones/)"
       operationId: "get_characters_character_id_clones"
       parameters:
       - name: "character_id"
@@ -1454,16 +1464,17 @@ paths:
       security:
       - evesso:
         - "esi-clones.read_clones.v1"
+      deprecated: true
       x-cached-seconds: 120
       x-alternate-versions:
-      - "latest"
       - "legacy"
   /characters/{character_id}/contacts/:
     delete:
       tags:
       - "Contacts"
       summary: "Delete contacts"
-      description: "Bulk delete contacts\n\n---\nAlternate route: `/dev/characters/{character_id}/contacts/`\n"
+      description: "Bulk delete contacts\n\n---\nAlternate route: `/dev/characters/{character_id}/contacts/`\n\
+        \nAlternate route: `/latest/characters/{character_id}/contacts/`\n"
       operationId: "delete_characters_character_id_contacts"
       parameters:
       - name: "character_id"
@@ -1534,86 +1545,7 @@ paths:
         - "esi-characters.write_contacts.v1"
       x-alternate-versions:
       - "dev"
-  /corporations/{corporation_id}/:
-    get:
-      tags:
-      - "Corporation"
-      summary: "Get corporation information"
-      description: "Public information about a corporation\n\n---\nAlternate route:\
-        \ `/legacy/corporations/{corporation_id}/`\n\n---\nThis route is cached for\
-        \ up to 3600 seconds\n\n---\nWarning: This route is deprecated.\n\n---\n[This\
-        \ route has an available update](https://esi.tech.ccp.is/diff/v2/dev/#GET-/corporations/{corporation_id}/)"
-      operationId: "get_corporations_corporation_id"
-      parameters:
-      - name: "corporation_id"
-        in: "path"
-        description: "An EVE corporation ID"
-        required: true
-        type: "integer"
-        format: "int32"
-        x-exportParamName: "CorporationId"
-      - name: "datasource"
-        in: "query"
-        description: "The server name you would like data from"
-        required: false
-        type: "string"
-        default: "tranquility"
-        enum:
-        - "tranquility"
-        - "singularity"
-        x-exportParamName: "Datasource"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
-      responses:
-        200:
-          description: "Public data about a corporation"
-          schema:
-            $ref: "#/definitions/get_corporations_corporation_id_ok"
-          examples:
-            application/json:
-              corporation_name: "C C P"
-              ticker: "-CCP-"
-              member_count: 656
-              ceo_id: 180548812
-              alliance_id: 434243723
-          headers:
-            Cache-Control:
-              type: "string"
-              description: "The caching mechanism used"
-            Last-Modified:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-            Expires:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-        404:
-          description: "Corporation not found"
-          schema:
-            $ref: "#/definitions/get_corporations_corporation_id_not_found"
-          examples:
-            application/json:
-              error: "Not found message"
-        500:
-          description: "Internal server error"
-          schema:
-            $ref: "#/definitions/internal_server_error"
-          examples:
-            application/json:
-              error: "Internal server error message"
-      deprecated: true
-      x-cached-seconds: 3600
-      x-alternate-versions:
-      - "legacy"
+      - "latest"
   /corporations/{corporation_id}/alliancehistory/:
     get:
       tags:
@@ -1699,8 +1631,8 @@ paths:
       - "Corporation"
       summary: "Get corporation names"
       description: "Resolve a set of corporation IDs to corporation names\n\n---\n\
-        Alternate route: `/dev/corporations/names/`\n\n---\nThis route is cached for\
-        \ up to 3600 seconds"
+        Alternate route: `/dev/corporations/names/`\n\nAlternate route: `/latest/corporations/names/`\n\
+        \n---\nThis route is cached for up to 3600 seconds"
       operationId: "get_corporations_names"
       parameters:
       - name: "corporation_ids"
@@ -1770,16 +1702,16 @@ paths:
       x-cached-seconds: 3600
       x-alternate-versions:
       - "dev"
+      - "latest"
   /corporations/{corporation_id}/members/:
     get:
       tags:
       - "Corporation"
       summary: "Get corporation members"
       description: "Read the current list of members if the calling character is a\
-        \ member.\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/members/`\n\
-        \nAlternate route: `/legacy/corporations/{corporation_id}/members/`\n\n---\n\
-        This route is cached for up to 3600 seconds\n\n---\n[This route has an available\
-        \ update](https://esi.tech.ccp.is/diff/v2/dev/#GET-/corporations/{corporation_id}/members/)"
+        \ member.\n\n---\nAlternate route: `/legacy/corporations/{corporation_id}/members/`\n\
+        \n---\nThis route is cached for up to 3600 seconds\n\n---\nWarning: This route\
+        \ is deprecated.\n\n---\n[This route has an available update](https://esi.tech.ccp.is/diff/v2/dev/#GET-/corporations/{corporation_id}/members/)"
       operationId: "get_corporations_corporation_id_members"
       parameters:
       - name: "corporation_id"
@@ -1858,9 +1790,9 @@ paths:
       security:
       - evesso:
         - "esi-corporations.read_corporation_membership.v1"
+      deprecated: true
       x-cached-seconds: 3600
       x-alternate-versions:
-      - "latest"
       - "legacy"
   /dogma/effects/{effect_id}/:
     get:
@@ -1950,8 +1882,8 @@ paths:
       - "Location"
       summary: "Get character online"
       description: "Checks if the character is currently online\n\n---\nAlternate\
-        \ route: `/dev/characters/{character_id}/online/`\n\n---\nThis route is cached\
-        \ for up to 60 seconds"
+        \ route: `/dev/characters/{character_id}/online/`\n\nAlternate route: `/latest/characters/{character_id}/online/`\n\
+        \n---\nThis route is cached for up to 60 seconds"
       operationId: "get_characters_character_id_online"
       parameters:
       - name: "character_id"
@@ -2030,6 +1962,7 @@ paths:
       x-cached-seconds: 60
       x-alternate-versions:
       - "dev"
+      - "latest"
   /characters/{character_id}/mail/labels/:
     get:
       tags:
@@ -2331,8 +2264,9 @@ paths:
       - "Search"
       summary: "Search on a string"
       description: "Search for entities that match a given sub-string.\n\n---\nAlternate\
-        \ route: `/latest/characters/{character_id}/search/`\n\n---\nThis route is\
-        \ cached for up to 3600 seconds\n\n---\n[This route has an available update](https://esi.tech.ccp.is/diff/v2/dev/#GET-/characters/{character_id}/search/)"
+        \ route: `/legacy/characters/{character_id}/search/`\n\n---\nThis route is\
+        \ cached for up to 3600 seconds\n\n---\nWarning: This route is deprecated.\n\
+        \n---\n[This route has an available update](https://esi.tech.ccp.is/diff/v2/dev/#GET-/characters/{character_id}/search/)"
       operationId: "get_characters_character_id_search"
       parameters:
       - name: "categories"
@@ -2476,16 +2410,18 @@ paths:
       security:
       - evesso:
         - "esi-search.search_structures.v1"
+      deprecated: true
       x-cached-seconds: 3600
       x-alternate-versions:
-      - "latest"
+      - "legacy"
   /search/:
     get:
       tags:
       - "Search"
       summary: "Search on a string"
       description: "Search for entities that match a given sub-string.\n\n---\nAlternate\
-        \ route: `/dev/search/`\n\n---\nThis route is cached for up to 3600 seconds"
+        \ route: `/dev/search/`\n\nAlternate route: `/latest/search/`\n\n---\nThis\
+        \ route is cached for up to 3600 seconds"
       operationId: "get_search"
       parameters:
       - name: "categories"
@@ -2607,6 +2543,7 @@ paths:
       x-cached-seconds: 3600
       x-alternate-versions:
       - "dev"
+      - "latest"
   /characters/{character_id}/skillqueue/:
     get:
       tags:
@@ -2712,101 +2649,6 @@ paths:
       x-alternate-versions:
       - "dev"
       - "latest"
-      - "legacy"
-  /characters/{character_id}/skills/:
-    get:
-      tags:
-      - "Skills"
-      summary: "Get character skills"
-      description: "List all trained skills for the given character\n\n---\nAlternate\
-        \ route: `/legacy/characters/{character_id}/skills/`\n\n---\nThis route is\
-        \ cached for up to 120 seconds\n\n---\nWarning: This route is deprecated.\n\
-        \n---\n[This route has an available update](https://esi.tech.ccp.is/diff/v2/dev/#GET-/characters/{character_id}/skills/)"
-      operationId: "get_characters_character_id_skills"
-      parameters:
-      - name: "character_id"
-        in: "path"
-        description: "An EVE character ID"
-        required: true
-        type: "integer"
-        format: "int32"
-        x-exportParamName: "CharacterId"
-      - name: "datasource"
-        in: "query"
-        description: "The server name you would like data from"
-        required: false
-        type: "string"
-        default: "tranquility"
-        enum:
-        - "tranquility"
-        - "singularity"
-        x-exportParamName: "Datasource"
-      - name: "token"
-        in: "query"
-        description: "Access token to use if unable to set a header"
-        required: false
-        type: "string"
-        x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
-      responses:
-        200:
-          description: "Known skills for the character"
-          schema:
-            type: "array"
-            description: "200 ok array"
-            title: "get_characters_character_id_skills_ok"
-            items:
-              $ref: "#/definitions/get_characters_character_id_skills_200_ok"
-            maxItems: 1000
-          examples:
-            application/json:
-            - skill_id: 1
-              skillpoints_in_skill: 10000
-              current_skill_level: 1
-            - skill_id: 2
-              skillpoints_in_skill: 10000
-              current_skill_level: 1
-          headers:
-            Cache-Control:
-              type: "string"
-              description: "The caching mechanism used"
-            Last-Modified:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-            Expires:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-        403:
-          description: "Forbidden"
-          schema:
-            $ref: "#/definitions/forbidden"
-          examples:
-            application/json:
-              error: "Forbidden message"
-        500:
-          description: "Internal server error"
-          schema:
-            $ref: "#/definitions/internal_server_error"
-          examples:
-            application/json:
-              error: "Internal server error message"
-      security:
-      - evesso:
-        - "esi-skills.read_skills.v1"
-      deprecated: true
-      x-cached-seconds: 120
-      x-alternate-versions:
       - "legacy"
   /universe/stations/{station_id}/:
     get:
@@ -3465,9 +3307,9 @@ paths:
       tags:
       - "Wallet"
       summary: "Get character wallet journal"
-      description: "Retrieve character wallet journal\n\n---\nAlternate route: `/latest/characters/{character_id}/wallet/journal/`\n\
-        \n---\nThis route is cached for up to 3600 seconds\n\n---\n[This route has\
-        \ an available update](https://esi.tech.ccp.is/diff/v2/dev/#GET-/characters/{character_id}/wallet/journal/)"
+      description: "Retrieve character wallet journal\n\n---\nAlternate route: `/legacy/characters/{character_id}/wallet/journal/`\n\
+        \n---\nThis route is cached for up to 3600 seconds\n\n---\nWarning: This route\
+        \ is deprecated.\n\n---\n[This route has an available update](https://esi.tech.ccp.is/diff/v2/dev/#GET-/characters/{character_id}/wallet/journal/)"
       operationId: "get_characters_character_id_wallet_journal"
       parameters:
       - name: "character_id"
@@ -3555,15 +3397,17 @@ paths:
       security:
       - evesso:
         - "esi-wallet.read_character_wallet.v1"
+      deprecated: true
       x-cached-seconds: 3600
       x-alternate-versions:
-      - "latest"
+      - "legacy"
   /corporations/{corporation_id}/wallets/{division}/journal/:
     get:
       tags:
       - "Wallet"
       summary: "Get corporation wallet journal"
       description: "Retrieve corporation wallet journal\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/wallets/{division}/journal/`\n\
+        \nAlternate route: `/latest/corporations/{corporation_id}/wallets/{division}/journal/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
         \ the following EVE corporation role(s): Accountant, Junior_Accountant\n"
       operationId: "get_corporations_corporation_id_wallets_division_journal"
@@ -3668,6 +3512,7 @@ paths:
       x-cached-seconds: 3600
       x-alternate-versions:
       - "dev"
+      - "latest"
 securityDefinitions:
   evesso:
     type: "oauth2"
@@ -3691,21 +3536,10 @@ securityDefinitions:
       esi-planets.manage_planets.v1: "EVE SSO scope esi-planets.manage_planets.v1"
       esi-search.search_structures.v1: "EVE SSO scope esi-search.search_structures.v1"
       esi-skills.read_skillqueue.v1: "EVE SSO scope esi-skills.read_skillqueue.v1"
-      esi-skills.read_skills.v1: "EVE SSO scope esi-skills.read_skills.v1"
       esi-ui.write_waypoint.v1: "EVE SSO scope esi-ui.write_waypoint.v1"
       esi-wallet.read_character_wallet.v1: "EVE SSO scope esi-wallet.read_character_wallet.v1"
       esi-wallet.read_corporation_wallets.v1: "EVE SSO scope esi-wallet.read_corporation_wallets.v1"
 definitions:
-  internal_server_error:
-    type: "object"
-    required:
-    - "error"
-    properties:
-      error:
-        type: "string"
-        description: "Internal server error message"
-    title: "Internal server error"
-    description: "Internal server error model"
   forbidden:
     type: "object"
     required:
@@ -3719,6 +3553,16 @@ definitions:
         description: "Status code received from SSO"
     title: "Forbidden"
     description: "Forbidden model"
+  internal_server_error:
+    type: "object"
+    required:
+    - "error"
+    properties:
+      error:
+        type: "string"
+        description: "Internal server error message"
+    title: "Internal server error"
+    description: "Internal server error model"
   get_alliances_alliance_id_ok:
     required:
     - "alliance_name"
@@ -6269,44 +6113,6 @@ definitions:
           $ref: "#/definitions/get_characters_character_id_clones_jump_clone"
         maxItems: 10
     description: "200 ok object"
-  get_corporations_corporation_id_ok:
-    required:
-    - "ceo_id"
-    - "corporation_name"
-    - "member_count"
-    - "ticker"
-    properties:
-      corporation_name:
-        type: "string"
-        description: "the full name of the corporation"
-        title: "get_corporations_corporation_id_corporation_name"
-      ticker:
-        type: "string"
-        description: "the short name of the corporation"
-        title: "get_corporations_corporation_id_ticker"
-      member_count:
-        type: "integer"
-        format: "int32"
-        description: "member_count integer"
-        title: "get_corporations_corporation_id_member_count"
-      ceo_id:
-        type: "integer"
-        format: "int32"
-        description: "ceo_id integer"
-        title: "get_corporations_corporation_id_ceo_id"
-      alliance_id:
-        type: "integer"
-        format: "int32"
-        description: "id of alliance that corporation is a member of, if any"
-        title: "get_corporations_corporation_id_alliance_id"
-    description: "200 ok object"
-  get_corporations_corporation_id_not_found:
-    properties:
-      error:
-        type: "string"
-        description: "Not found message"
-        title: "get_corporations_corporation_id_404_not_found"
-    description: "Not found"
   get_corporations_corporation_id_alliancehistory_200_ok:
     required:
     - "record_id"
@@ -7110,24 +6916,6 @@ definitions:
         description: "Amount of SP that was in the skill when it started training\
           \ it's current level. Used to calculate % of current level complete."
         title: "get_characters_character_id_skillqueue_level_start_sp"
-    description: "200 ok object"
-  get_characters_character_id_skills_200_ok:
-    properties:
-      skill_id:
-        type: "integer"
-        format: "int32"
-        description: "skill_id integer"
-        title: "get_characters_character_id_skills_skill_id"
-      skillpoints_in_skill:
-        type: "integer"
-        format: "int64"
-        description: "skillpoints_in_skill integer"
-        title: "get_characters_character_id_skills_skillpoints_in_skill"
-      current_skill_level:
-        type: "integer"
-        format: "int32"
-        description: "current_skill_level integer"
-        title: "get_characters_character_id_skills_current_skill_level"
     description: "200 ok object"
   get_universe_stations_station_id_position:
     required:
@@ -8144,43 +7932,6 @@ parameters:
     - "tranquility"
     - "singularity"
     x-exportParamName: "Datasource"
-  user_agent:
-    name: "user_agent"
-    in: "query"
-    description: "Client identifier, takes precedence over headers"
-    required: false
-    type: "string"
-    x-exportParamName: "UserAgent"
-  X-User-Agent:
-    name: "X-User-Agent"
-    in: "header"
-    description: "Client identifier, takes precedence over User-Agent"
-    required: false
-    type: "string"
-    x-exportParamName: "XUserAgent"
-  alliance_id:
-    name: "alliance_id"
-    in: "path"
-    description: "An EVE alliance ID"
-    required: true
-    type: "integer"
-    format: "int32"
-    x-exportParamName: "AllianceId"
-  token:
-    name: "token"
-    in: "query"
-    description: "Access token to use if unable to set a header"
-    required: false
-    type: "string"
-    x-exportParamName: "Token"
-  character_id:
-    name: "character_id"
-    in: "path"
-    description: "An EVE character ID"
-    required: true
-    type: "integer"
-    format: "int32"
-    x-exportParamName: "CharacterId"
   language:
     name: "language"
     in: "query"
@@ -8196,6 +7947,35 @@ parameters:
     - "ru"
     - "zh"
     x-exportParamName: "Language"
+  user_agent:
+    name: "user_agent"
+    in: "query"
+    description: "Client identifier, takes precedence over headers"
+    required: false
+    type: "string"
+    x-exportParamName: "UserAgent"
+  X-User-Agent:
+    name: "X-User-Agent"
+    in: "header"
+    description: "Client identifier, takes precedence over User-Agent"
+    required: false
+    type: "string"
+    x-exportParamName: "XUserAgent"
+  token:
+    name: "token"
+    in: "query"
+    description: "Access token to use if unable to set a header"
+    required: false
+    type: "string"
+    x-exportParamName: "Token"
+  character_id:
+    name: "character_id"
+    in: "path"
+    description: "An EVE character ID"
+    required: true
+    type: "integer"
+    format: "int32"
+    x-exportParamName: "CharacterId"
   page:
     name: "page"
     in: "query"
@@ -8213,3 +7993,11 @@ parameters:
     type: "integer"
     format: "int32"
     x-exportParamName: "CorporationId"
+  alliance_id:
+    name: "alliance_id"
+    in: "path"
+    description: "An EVE alliance ID"
+    required: true
+    type: "integer"
+    format: "int32"
+    x-exportParamName: "AllianceId"

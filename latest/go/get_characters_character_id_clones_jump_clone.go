@@ -4,6 +4,12 @@ package esilatest
 jump_clone object */
 type GetCharactersCharacterIdClonesJumpClone struct {
 	/*
+	 jump_clone_id integer */
+	JumpCloneId int32 `json:"jump_clone_id,omitempty"`
+	/*
+	 name string */
+	Name string `json:"name,omitempty"`
+	/*
 	 location_id integer */
 	LocationId int64 `json:"location_id,omitempty"`
 	/*

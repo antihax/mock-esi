@@ -17,6 +17,4 @@ type GetAlliancesAllianceIdOk struct {
 	/*
 	 date_founded string */
 	DateFounded time.Time `json:"date_founded,omitempty"`
-	/* */
-	LogoUrls GetAlliancesAllianceIdLogoUrls `json:"logo_urls,omitempty"`
 }

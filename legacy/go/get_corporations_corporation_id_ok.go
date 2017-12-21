@@ -1,5 +1,7 @@
 package esilegacy
 
+import "time"
+
 /*
 200 ok object */
 type GetCorporationsCorporationIdOk struct {
@@ -18,4 +20,22 @@ type GetCorporationsCorporationIdOk struct {
 	/*
 	 id of alliance that corporation is a member of, if any */
 	AllianceId int32 `json:"alliance_id,omitempty"`
+	/*
+	 corporation_description string */
+	CorporationDescription string `json:"corporation_description,omitempty"`
+	/*
+	 tax_rate number */
+	TaxRate float32 `json:"tax_rate,omitempty"`
+	/*
+	 creation_date string */
+	CreationDate time.Time `json:"creation_date,omitempty"`
+	/*
+	 creator_id integer */
+	CreatorId int32 `json:"creator_id,omitempty"`
+	/*
+	 url string */
+	Url string `json:"url,omitempty"`
+	/*
+	 faction string */
+	Faction string `json:"faction,omitempty"`
 }
