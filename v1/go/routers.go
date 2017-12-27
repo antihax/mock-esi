@@ -277,48 +277,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCharactersCharacterIdContracts",
-		"Get",
-		"/v1/characters/{character_id}/contracts/",
-		GetCharactersCharacterIdContracts,
-	)
-
-	mockesi.NewRoute(
-		"GetCharactersCharacterIdContractsContractIdBids",
-		"Get",
-		"/v1/characters/{character_id}/contracts/{contract_id}/bids/",
-		GetCharactersCharacterIdContractsContractIdBids,
-	)
-
-	mockesi.NewRoute(
-		"GetCharactersCharacterIdContractsContractIdItems",
-		"Get",
-		"/v1/characters/{character_id}/contracts/{contract_id}/items/",
-		GetCharactersCharacterIdContractsContractIdItems,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsCorporationIdContracts",
-		"Get",
-		"/v1/corporations/{corporation_id}/contracts/",
-		GetCorporationsCorporationIdContracts,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsCorporationIdContractsContractIdBids",
-		"Get",
-		"/v1/corporations/{corporation_id}/contracts/{contract_id}/bids/",
-		GetCorporationsCorporationIdContractsContractIdBids,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsCorporationIdContractsContractIdItems",
-		"Get",
-		"/v1/corporations/{corporation_id}/contracts/{contract_id}/items/",
-		GetCorporationsCorporationIdContractsContractIdItems,
-	)
-
-	mockesi.NewRoute(
 		"GetCorporationsCorporationIdAlliancehistory",
 		"Get",
 		"/v1/corporations/{corporation_id}/alliancehistory/",
