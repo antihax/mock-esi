@@ -326,6 +326,48 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdContracts",
+		"Get",
+		"/dev/characters/{character_id}/contracts/",
+		GetCharactersCharacterIdContracts,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdContractsContractIdBids",
+		"Get",
+		"/dev/characters/{character_id}/contracts/{contract_id}/bids/",
+		GetCharactersCharacterIdContractsContractIdBids,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdContractsContractIdItems",
+		"Get",
+		"/dev/characters/{character_id}/contracts/{contract_id}/items/",
+		GetCharactersCharacterIdContractsContractIdItems,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdContracts",
+		"Get",
+		"/dev/corporations/{corporation_id}/contracts/",
+		GetCorporationsCorporationIdContracts,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdContractsContractIdBids",
+		"Get",
+		"/dev/corporations/{corporation_id}/contracts/{contract_id}/bids/",
+		GetCorporationsCorporationIdContractsContractIdBids,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdContractsContractIdItems",
+		"Get",
+		"/dev/corporations/{corporation_id}/contracts/{contract_id}/items/",
+		GetCorporationsCorporationIdContractsContractIdItems,
+	)
+
+	mockesi.NewRoute(
 		"GetCorporationsCorporationId",
 		"Get",
 		"/dev/corporations/{corporation_id}/",

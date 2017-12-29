@@ -1005,8 +1005,8 @@ paths:
       - "Character"
       summary: "Yearly aggregate stats"
       description: "Returns aggregate yearly stats for a character\n\n---\nAlternate\
-        \ route: `/dev/characters/{character_id}/stats/`\n\n---\nThis route is cached\
-        \ for up to 86400 seconds"
+        \ route: `/dev/characters/{character_id}/stats/`\n\nAlternate route: `/latest/characters/{character_id}/stats/`\n\
+        \n---\nThis route is cached for up to 86400 seconds"
       operationId: "get_characters_character_id_stats"
       parameters:
       - name: "character_id"
@@ -1100,6 +1100,7 @@ paths:
       x-cached-seconds: 86400
       x-alternate-versions:
       - "dev"
+      - "latest"
   /characters/{character_id}/portrait/:
     get:
       tags:
