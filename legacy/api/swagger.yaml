@@ -27,6 +27,7 @@ paths:
         description: "An EVE alliance ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "AllianceId"
       - name: "datasource"
@@ -106,6 +107,7 @@ paths:
         description: "An EVE alliance ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "AllianceId"
       - name: "datasource"
@@ -264,6 +266,7 @@ paths:
         description: "An EVE alliance ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "AllianceId"
       - name: "datasource"
@@ -414,6 +417,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -523,6 +527,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -634,6 +639,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -730,6 +736,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -828,6 +835,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -927,6 +935,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -1025,6 +1034,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -1126,6 +1136,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -1218,6 +1229,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -1343,6 +1355,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -1451,6 +1464,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -1553,6 +1567,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -1656,6 +1671,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -1743,6 +1759,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -1844,6 +1861,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -1937,6 +1955,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -2112,6 +2131,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - in: "body"
@@ -2274,6 +2294,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -2354,6 +2375,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -2436,6 +2458,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -2536,6 +2559,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -2640,6 +2664,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -2742,6 +2767,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -2837,6 +2863,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -2935,6 +2962,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -3024,6 +3052,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -3119,6 +3148,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -3217,6 +3247,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -3362,6 +3393,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -3453,6 +3485,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -3548,6 +3581,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -3644,6 +3678,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -3750,6 +3785,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - in: "body"
@@ -3871,6 +3907,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - in: "body"
@@ -3978,6 +4015,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - in: "body"
@@ -4061,6 +4099,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -4169,6 +4208,7 @@ paths:
         description: "An EVE alliance ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "AllianceId"
       - name: "datasource"
@@ -4276,6 +4316,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -4370,6 +4411,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -4481,6 +4523,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "contract_id"
@@ -4584,6 +4627,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "contract_id"
@@ -4687,6 +4731,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -4742,9 +4787,7 @@ paths:
               date_expired: "2017-06-13T13:12:32Z"
               start_location_id: 60014719
               end_location_id: 60014719
-              date_accepted: "2017-06-06T13:12:32Z"
               days_to_complete: 0
-              date_completed: "2017-06-06T13:12:32Z"
               price: 1000000.01
               reward: 0.01
               buyout: 1.000000000001E10
@@ -4806,6 +4849,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -4910,6 +4954,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -5019,6 +5064,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -5134,6 +5180,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -5220,6 +5267,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -5379,6 +5427,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -5471,6 +5520,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -5567,6 +5617,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -5680,6 +5731,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -5831,6 +5883,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -5971,6 +6024,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -6061,6 +6115,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -6167,6 +6222,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -6262,6 +6318,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -6353,6 +6410,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -6452,6 +6510,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -6548,6 +6607,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -6662,6 +6722,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -6776,6 +6837,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -6886,6 +6948,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -7014,6 +7077,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -7146,6 +7210,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -7241,6 +7306,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -7352,6 +7418,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -7467,6 +7534,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -7583,6 +7651,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -8503,6 +8572,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -8600,6 +8670,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -8693,6 +8764,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -8770,6 +8842,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -8866,6 +8939,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -9131,6 +9205,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -10492,6 +10567,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -10605,6 +10681,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -10718,6 +10795,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -10828,6 +10906,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -10947,6 +11026,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -11077,6 +11157,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -11380,6 +11461,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -11492,6 +11574,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -11597,6 +11680,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -11686,6 +11770,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -11774,6 +11859,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -11861,6 +11947,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -11949,6 +12036,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -12043,6 +12131,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -12161,6 +12250,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -12253,6 +12343,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -12343,6 +12434,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -12426,6 +12518,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -12511,6 +12604,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -12603,6 +12697,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -12708,6 +12803,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - in: "body"
@@ -12797,6 +12893,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -12875,6 +12972,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -13542,6 +13640,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -13744,6 +13843,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -14183,6 +14283,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -14276,6 +14377,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -14382,6 +14484,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -14581,6 +14684,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -14855,6 +14959,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -15120,6 +15225,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -15225,6 +15331,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -15317,6 +15424,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -18478,6 +18586,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -18565,6 +18674,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -18666,6 +18776,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -18775,6 +18886,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -18883,6 +18995,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -18997,6 +19110,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -32151,15 +32265,6 @@ parameters:
     required: false
     type: "string"
     x-exportParamName: "XUserAgent"
-  page:
-    name: "page"
-    in: "query"
-    description: "Which page of results to return"
-    required: false
-    type: "integer"
-    default: 1
-    format: "int32"
-    x-exportParamName: "Page"
   language:
     name: "language"
     in: "query"
@@ -32188,6 +32293,7 @@ parameters:
     description: "An EVE character ID"
     required: true
     type: "integer"
+    minimum: 1
     format: "int32"
     x-exportParamName: "CharacterId"
   corporation_id:
@@ -32196,13 +32302,24 @@ parameters:
     description: "An EVE corporation ID"
     required: true
     type: "integer"
+    minimum: 1
     format: "int32"
     x-exportParamName: "CorporationId"
+  page:
+    name: "page"
+    in: "query"
+    description: "Which page of results to return"
+    required: false
+    type: "integer"
+    default: 1
+    format: "int32"
+    x-exportParamName: "Page"
   alliance_id:
     name: "alliance_id"
     in: "path"
     description: "An EVE alliance ID"
     required: true
     type: "integer"
+    minimum: 1
     format: "int32"
     x-exportParamName: "AllianceId"

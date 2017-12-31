@@ -26,6 +26,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -108,6 +109,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - in: "body"
@@ -198,6 +200,7 @@ paths:
         description: "An EVE corporation ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CorporationId"
       - name: "datasource"
@@ -283,6 +286,7 @@ paths:
         description: "An EVE character ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "CharacterId"
       - name: "datasource"
@@ -370,6 +374,16 @@ securityDefinitions:
       esi-characters.read_contacts.v1: "EVE SSO scope esi-characters.read_contacts.v1"
       esi-skills.read_skills.v1: "EVE SSO scope esi-skills.read_skills.v1"
 definitions:
+  internal_server_error:
+    type: "object"
+    required:
+    - "error"
+    properties:
+      error:
+        type: "string"
+        description: "Internal server error message"
+    title: "Internal server error"
+    description: "Internal server error model"
   forbidden:
     type: "object"
     required:
@@ -383,16 +397,6 @@ definitions:
         description: "Status code received from SSO"
     title: "Forbidden"
     description: "Forbidden model"
-  internal_server_error:
-    type: "object"
-    required:
-    - "error"
-    properties:
-      error:
-        type: "string"
-        description: "Internal server error message"
-    title: "Internal server error"
-    description: "Internal server error model"
   get_characters_character_id_ok:
     required:
     - "birthday"
@@ -625,6 +629,14 @@ parameters:
     required: false
     type: "string"
     x-exportParamName: "XUserAgent"
+  page:
+    name: "page"
+    in: "query"
+    description: "Which page of results to return"
+    required: false
+    type: "integer"
+    default: 1
+    format: "int32"
   token:
     name: "token"
     in: "query"
@@ -638,16 +650,9 @@ parameters:
     description: "An EVE character ID"
     required: true
     type: "integer"
+    minimum: 1
     format: "int32"
     x-exportParamName: "CharacterId"
-  page:
-    name: "page"
-    in: "query"
-    description: "Which page of results to return"
-    required: false
-    type: "integer"
-    default: 1
-    format: "int32"
   language:
     name: "language"
     in: "query"
@@ -668,5 +673,6 @@ parameters:
     description: "An EVE corporation ID"
     required: true
     type: "integer"
+    minimum: 1
     format: "int32"
     x-exportParamName: "CorporationId"
