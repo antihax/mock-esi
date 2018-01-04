@@ -4023,7 +4023,7 @@ paths:
         items:
           type: "integer"
           format: "int32"
-        maxItems: 100
+        maxItems: 20
         minItems: 1
         x-exportParamName: "ContactIds"
       - name: "datasource"
