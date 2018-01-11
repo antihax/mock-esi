@@ -1,0 +1,108 @@
+package {{packageName}}
+
+{{#operations}}
+import (
+	"net/http"
+	"github.com/gorilla/mux"
+	"time"
+)
+
+var _ time.Time
+var _ = mux.NewRouter
+
+{{#operation}}
+func {{nickname}}(w http.ResponseWriter, r *http.Request) {
+
+	var (
+		localV interface{}
+		err error
+		{{#allParams}}
+		{{^isBodyParam}}
+		{{^isHeaderParam}}
+		{{paramName}} {{dataType}}
+		{{/isHeaderParam}}
+		{{/isBodyParam}}
+		{{/allParams}}
+	)
+	// shut up warnings
+	localV = localV
+	err = err
+
+	j := `{{#examples}}{{{example}}}{{/examples}}`
+	{{#hasPathParams}}
+	vars := mux.Vars(r)
+	{{#pathParams}}
+	{{#required}}
+	localV, err = processParameters({{paramName}}, vars["{{baseName}}"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	{{paramName}} = localV.({{dataType}})
+	{{/required}}
+	{{^required}}
+	if vars["{{paramName}}"] != nil {
+		localV, err = processParameters({{paramName}}, vars["{{baseName}}"])
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		{{paramName}} = localV.({{dataType}})
+	}
+	{{/required}}
+	{{/pathParams}}
+	{{/hasPathParams}}
+	{{#hasQueryParams}}
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	{{#queryParams}}
+	{{#required}}
+	localV, err = processParameters({{paramName}}, r.Form.Get("{{baseName}}"))
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	{{/required}}
+	{{^required}}
+	if r.Form.Get("{{paramName}}") != "" {
+		localV, err = processParameters({{paramName}}, r.Form.Get("{{baseName}}"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		{{paramName}} = localV.({{dataType}})
+	}
+	{{/required}}
+	{{/queryParams}}
+
+	if r.Form.Get("page") != "" {
+		var (
+			localPage int32 
+			localIntPage interface{}
+		)
+		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		localPage = localIntPage.(int32)
+		if localPage > 1 {
+			w.Header().Set("Content-Type", "{{#responses}}{{#isDefault}}{{#examples}}{{{contentType}}}{{/examples}}{{/isDefault}}{{/responses}}")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("[]"))
+			return
+		}
+	} 
+	{{/hasQueryParams}}
+
+	w.Header().Set("Content-Type", "{{#responses}}{{#isDefault}}{{#examples}}{{{contentType}}}{{/examples}}{{/isDefault}}{{/responses}}")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
+}
+
+{{/operation}}
+{{/operations}}
+
