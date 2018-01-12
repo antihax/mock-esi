@@ -1,7 +1,7 @@
 package esilegacy
 
 /*
-mail schema */
+mail object */
 type PostCharactersCharacterIdMailMail struct {
 	/*
 	 recipients array */

@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "An OpenAPI for EVE Online"
-  version: "0.7.3"
+  version: "0.7.5"
   title: "EVE Swagger Interface"
 host: "esi.tech.ccp.is"
 basePath: "/v4"
@@ -374,6 +374,16 @@ securityDefinitions:
       esi-characters.read_contacts.v1: "EVE SSO scope esi-characters.read_contacts.v1"
       esi-skills.read_skills.v1: "EVE SSO scope esi-skills.read_skills.v1"
 definitions:
+  internal_server_error:
+    type: "object"
+    required:
+    - "error"
+    properties:
+      error:
+        type: "string"
+        description: "Internal server error message"
+    title: "Internal server error"
+    description: "Internal server error model"
   forbidden:
     type: "object"
     required:
@@ -387,16 +397,6 @@ definitions:
         description: "Status code received from SSO"
     title: "Forbidden"
     description: "Forbidden model"
-  internal_server_error:
-    type: "object"
-    required:
-    - "error"
-    properties:
-      error:
-        type: "string"
-        description: "Internal server error message"
-    title: "Internal server error"
-    description: "Internal server error model"
   get_characters_character_id_ok:
     required:
     - "birthday"
@@ -629,6 +629,14 @@ parameters:
     required: false
     type: "string"
     x-exportParamName: "XUserAgent"
+  page:
+    name: "page"
+    in: "query"
+    description: "Which page of results to return"
+    required: false
+    type: "integer"
+    default: 1
+    format: "int32"
   token:
     name: "token"
     in: "query"
@@ -645,14 +653,6 @@ parameters:
     minimum: 1
     format: "int32"
     x-exportParamName: "CharacterId"
-  page:
-    name: "page"
-    in: "query"
-    description: "Which page of results to return"
-    required: false
-    type: "integer"
-    default: 1
-    format: "int32"
   language:
     name: "language"
     in: "query"

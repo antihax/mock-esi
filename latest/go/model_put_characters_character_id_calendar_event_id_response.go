@@ -1,7 +1,7 @@
 package esilatest
 
 /*
-response schema */
+response object */
 type PutCharactersCharacterIdCalendarEventIdResponse struct {
 	/*
 	 response string */

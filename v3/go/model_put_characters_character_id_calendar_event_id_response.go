@@ -1,7 +1,7 @@
 package esiv3
 
 /*
-response schema */
+response object */
 type PutCharactersCharacterIdCalendarEventIdResponse struct {
 	/*
 	 response string */

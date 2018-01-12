@@ -669,7 +669,7 @@ func GetIndustrySystems(w http.ResponseWriter, r *http.Request) {
   "solar_system_id" : 30011392,
   "cost_indices" : [ {
     "activity" : "invention",
-    "cost_index" : 0.00480411064973412
+    "cost_index" : 0.0048
   } ]
 } ]`
 	if err := r.ParseForm(); err != nil {

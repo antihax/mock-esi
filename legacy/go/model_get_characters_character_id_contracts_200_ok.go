@@ -70,5 +70,5 @@ type GetCharactersCharacterIdContracts200Ok struct {
 	Buyout float64 `json:"buyout,omitempty"`
 	/*
 	 Volume of items in the contract */
-	Volume float32 `json:"volume,omitempty"`
+	Volume float64 `json:"volume,omitempty"`
 }

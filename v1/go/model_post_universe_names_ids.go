@@ -1,7 +1,7 @@
 package esiv1
 
 /*
-ids schema */
+ids object */
 type PostUniverseNamesIds struct {
 	/*
 	 ids array */

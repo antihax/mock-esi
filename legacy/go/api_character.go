@@ -522,7 +522,17 @@ func GetCharactersCharacterIdMedals(w http.ResponseWriter, r *http.Request) {
   "graphics" : [ {
     "part" : 1,
     "layer" : 0,
-    "graphic" : "gallente.1_1",
+    "graphic" : "caldari.1_1",
+    "color" : -1
+  }, {
+    "part" : 1,
+    "layer" : 1,
+    "graphic" : "caldari.1_2",
+    "color" : -330271
+  }, {
+    "part" : 2,
+    "layer" : 0,
+    "graphic" : "compass.1_2",
     "color" : -1
   } ]
 } ]`

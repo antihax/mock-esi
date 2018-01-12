@@ -1,7 +1,7 @@
 package esilegacy
 
 /*
-ids schema */
+ids object */
 type PostUniverseNamesIds struct {
 	/*
 	 ids array */

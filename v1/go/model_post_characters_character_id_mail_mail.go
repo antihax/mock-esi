@@ -1,7 +1,7 @@
 package esiv1
 
 /*
-mail schema */
+mail object */
 type PostCharactersCharacterIdMailMail struct {
 	/*
 	 recipients array */

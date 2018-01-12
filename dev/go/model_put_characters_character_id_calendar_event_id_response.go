@@ -1,7 +1,7 @@
 package esidev
 
 /*
-response schema */
+response object */
 type PutCharactersCharacterIdCalendarEventIdResponse struct {
 	/*
 	 response string */
