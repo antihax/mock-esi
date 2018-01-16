@@ -1630,6 +1630,16 @@ securityDefinitions:
       esi-skills.read_skills.v1: "EVE SSO scope esi-skills.read_skills.v1"
       esi-wallet.read_character_wallet.v1: "EVE SSO scope esi-wallet.read_character_wallet.v1"
 definitions:
+  internal_server_error:
+    type: "object"
+    required:
+    - "error"
+    properties:
+      error:
+        type: "string"
+        description: "Internal server error message"
+    title: "Internal server error"
+    description: "Internal server error model"
   forbidden:
     type: "object"
     required:
@@ -1643,16 +1653,6 @@ definitions:
         description: "Status code received from SSO"
     title: "Forbidden"
     description: "Forbidden model"
-  internal_server_error:
-    type: "object"
-    required:
-    - "error"
-    properties:
-      error:
-        type: "string"
-        description: "Internal server error message"
-    title: "Internal server error"
-    description: "Internal server error model"
   get_alliances_alliance_id_ok:
     required:
     - "creator_corporation_id"
@@ -3138,6 +3138,15 @@ parameters:
     required: false
     type: "string"
     x-exportParamName: "XUserAgent"
+  alliance_id:
+    name: "alliance_id"
+    in: "path"
+    description: "An EVE alliance ID"
+    required: true
+    type: "integer"
+    minimum: 1
+    format: "int32"
+    x-exportParamName: "AllianceId"
   token:
     name: "token"
     in: "query"
@@ -3154,30 +3163,6 @@ parameters:
     minimum: 1
     format: "int32"
     x-exportParamName: "CharacterId"
-  language:
-    name: "language"
-    in: "query"
-    description: "Language to use in the response"
-    required: false
-    type: "string"
-    default: "en-us"
-    enum:
-    - "de"
-    - "en-us"
-    - "fr"
-    - "ja"
-    - "ru"
-    - "zh"
-    x-exportParamName: "Language"
-  alliance_id:
-    name: "alliance_id"
-    in: "path"
-    description: "An EVE alliance ID"
-    required: true
-    type: "integer"
-    minimum: 1
-    format: "int32"
-    x-exportParamName: "AllianceId"
   page:
     name: "page"
     in: "query"
@@ -3196,3 +3181,18 @@ parameters:
     minimum: 1
     format: "int32"
     x-exportParamName: "CorporationId"
+  language:
+    name: "language"
+    in: "query"
+    description: "Language to use in the response"
+    required: false
+    type: "string"
+    default: "en-us"
+    enum:
+    - "de"
+    - "en-us"
+    - "fr"
+    - "ja"
+    - "ru"
+    - "zh"
+    x-exportParamName: "Language"
