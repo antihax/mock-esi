@@ -108,6 +108,7 @@ func GetLoyaltyStoresCorporationIdOffers(w http.ResponseWriter, r *http.Request)
   "quantity" : 1,
   "lp_cost" : 100,
   "isk_cost" : 0,
+  "ak_cost" : 35000,
   "required_items" : [ ]
 }, {
   "offer_id" : 2,

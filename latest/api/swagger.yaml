@@ -12017,6 +12017,7 @@ paths:
               quantity: 1
               lp_cost: 100
               isk_cost: 0
+              ak_cost: 35000
               required_items: []
             - offer_id: 2
               type_id: 1235
@@ -12036,6 +12037,13 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        404:
+          description: "No loyalty point store found for the provided corporation"
+          schema:
+            $ref: "#/definitions/get_loyalty_stores_corporation_id_offers_not_found"
+          examples:
+            application/json:
+              error: "Not found message"
         500:
           description: "Internal server error"
           schema:
@@ -28499,6 +28507,11 @@ definitions:
         format: "int64"
         description: "isk_cost integer"
         title: "get_loyalty_stores_corporation_id_offers_isk_cost"
+      ak_cost:
+        type: "integer"
+        format: "int32"
+        description: "Analysis kredit cost"
+        title: "get_loyalty_stores_corporation_id_offers_ak_cost"
       required_items:
         type: "array"
         description: "required_items array"
@@ -28507,6 +28520,13 @@ definitions:
           $ref: "#/definitions/get_loyalty_stores_corporation_id_offers_required_item"
         maxItems: 100
     description: "200 ok object"
+  get_loyalty_stores_corporation_id_offers_not_found:
+    properties:
+      error:
+        type: "string"
+        description: "Not found message"
+        title: "get_loyalty_stores_corporation_id_offers_404_not_found"
+    description: "Not found"
   get_characters_character_id_loyalty_points_200_ok:
     required:
     - "corporation_id"
@@ -32762,6 +32782,21 @@ parameters:
     minimum: 1
     format: "int32"
     x-exportParamName: "AllianceId"
+  language:
+    name: "language"
+    in: "query"
+    description: "Language to use in the response"
+    required: false
+    type: "string"
+    default: "en-us"
+    enum:
+    - "de"
+    - "en-us"
+    - "fr"
+    - "ja"
+    - "ru"
+    - "zh"
+    x-exportParamName: "Language"
   token:
     name: "token"
     in: "query"
@@ -32778,21 +32813,6 @@ parameters:
     minimum: 1
     format: "int32"
     x-exportParamName: "CharacterId"
-  language:
-    name: "language"
-    in: "query"
-    description: "Language to use in the response"
-    required: false
-    type: "string"
-    default: "en-us"
-    enum:
-    - "de"
-    - "en-us"
-    - "fr"
-    - "ja"
-    - "ru"
-    - "zh"
-    x-exportParamName: "Language"
   page:
     name: "page"
     in: "query"
