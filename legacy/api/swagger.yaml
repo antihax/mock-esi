@@ -6878,14 +6878,6 @@ paths:
         - "tranquility"
         - "singularity"
         x-exportParamName: "Datasource"
-      - name: "page"
-        in: "query"
-        description: "Which page of results to return"
-        required: false
-        type: "integer"
-        default: 1
-        format: "int32"
-        x-exportParamName: "Page"
       - name: "starbase_id"
         in: "path"
         description: "An EVE starbase (POS) ID"
@@ -6937,11 +6929,6 @@ paths:
               attack_if_other_security_status_dropping: false
               attack_if_at_war: true
           headers:
-            X-Pages:
-              type: "integer"
-              format: "int32"
-              description: "Maximum page number"
-              default: 1
             Cache-Control:
               type: "string"
               description: "The caching mechanism used"
@@ -11377,7 +11364,7 @@ paths:
       description: "Return a single killmail from its ID and hash\n\n---\nAlternate\
         \ route: `/dev/killmails/{killmail_id}/{killmail_hash}/`\n\nAlternate route:\
         \ `/latest/killmails/{killmail_id}/{killmail_hash}/`\n\nAlternate route: `/v1/killmails/{killmail_id}/{killmail_hash}/`\n\
-        \n---\nThis route is cached for up to 3600 seconds"
+        \n---\nThis route is cached for up to 1209600 seconds"
       operationId: "get_killmails_killmail_id_killmail_hash"
       parameters:
       - name: "datasource"
@@ -11473,7 +11460,7 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
-      x-cached-seconds: 3600
+      x-cached-seconds: 1209600
       x-alternate-versions:
       - "dev"
       - "latest"

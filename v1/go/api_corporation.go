@@ -1615,7 +1615,6 @@ func GetCorporationsCorporationIdStarbasesStarbaseId(w http.ResponseWriter, r *h
 		starbaseId    int64
 		systemId      int32
 		datasource    string
-		page          int32
 		token         string
 		userAgent     string
 	)
@@ -1660,14 +1659,6 @@ func GetCorporationsCorporationIdStarbasesStarbaseId(w http.ResponseWriter, r *h
 			return
 		}
 		datasource = localV.(string)
-	}
-	if r.Form.Get("page") != "" {
-		localV, err = processParameters(page, r.Form.Get("page"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		page = localV.(int32)
 	}
 	localV, err = processParameters(systemId, r.Form.Get("system_id"))
 	if err != nil {
