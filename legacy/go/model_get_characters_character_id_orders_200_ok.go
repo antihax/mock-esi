@@ -45,7 +45,7 @@ type GetCharactersCharacterIdOrders200Ok struct {
 	 Wallet division for the buyer or seller of this order. Always 1000 for characters. Currently 1000 through 1006 for corporations */
 	AccountId int32 `json:"account_id,omitempty"`
 	/*
-	 Numer of days for which order is valid (starting from the issued date). An order expires at time issued + duration */
+	 Number of days the order is valid for (starting from the issued date). An order expires at time issued + duration */
 	Duration int32 `json:"duration,omitempty"`
 	/*
 	 is_corp boolean */

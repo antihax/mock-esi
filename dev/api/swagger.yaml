@@ -7651,12 +7651,13 @@ paths:
     get:
       tags:
       - "Corporation"
-      summary: "Get corporation members"
-      description: "Return the current member list of a corporation, the token's character\
-        \ need to be a member of the corporation.\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/shareholders/`\n\
-        \nAlternate route: `/legacy/corporations/{corporation_id}/shareholders/`\n\
-        \nAlternate route: `/v1/corporations/{corporation_id}/shareholders/`\n\n---\n\
-        This route is cached for up to 3600 seconds"
+      summary: "Get corporation shareholders"
+      description: "Return the current shareholders of a corporation.\n\n---\nAlternate\
+        \ route: `/latest/corporations/{corporation_id}/shareholders/`\n\nAlternate\
+        \ route: `/legacy/corporations/{corporation_id}/shareholders/`\n\nAlternate\
+        \ route: `/v1/corporations/{corporation_id}/shareholders/`\n\n---\nThis route\
+        \ is cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
+        \ corporation role(s): Director\n"
       operationId: "get_corporations_corporation_id_shareholders"
       parameters:
       - name: "corporation_id"
@@ -7705,10 +7706,10 @@ paths:
         x-exportParamName: "XUserAgent"
       responses:
         200:
-          description: "List of member character IDs"
+          description: "List of shareholders"
           schema:
             type: "array"
-            description: "A list of character IDs"
+            description: "List of shareholders"
             title: "get_corporations_corporation_id_shareholders_ok"
             items:
               $ref: "#/definitions/get_corporations_corporation_id_shareholders_200_ok"
@@ -7759,6 +7760,8 @@ paths:
       security:
       - evesso:
         - "esi-wallet.read_corporation_wallets.v1"
+      x-required-roles:
+      - "Director"
       x-cached-seconds: 3600
       x-alternate-versions:
       - "latest"
@@ -13565,11 +13568,10 @@ paths:
     get:
       tags:
       - "Market"
-      summary: "List orders from a character"
-      description: "List market orders placed by a character\n\n---\nAlternate route:\
-        \ `/latest/characters/{character_id}/orders/`\n\nAlternate route: `/legacy/characters/{character_id}/orders/`\n\
-        \nAlternate route: `/v1/characters/{character_id}/orders/`\n\n---\nThis route\
-        \ is cached for up to 3600 seconds"
+      summary: "List open orders from a character"
+      description: "List open market orders placed by a character\n\n---\nAlternate\
+        \ route: `/v2/characters/{character_id}/orders/`\n\n---\nThis route is cached\
+        \ for up to 1200 seconds"
       operationId: "get_characters_character_id_orders"
       parameters:
       - name: "character_id"
@@ -13610,14 +13612,14 @@ paths:
         x-exportParamName: "XUserAgent"
       responses:
         200:
-          description: "Market orders placed by a character"
+          description: "Open market orders placed by a character"
           schema:
             type: "array"
             description: "200 ok array"
             title: "get_characters_character_id_orders_ok"
             items:
               $ref: "#/definitions/get_characters_character_id_orders_200_ok"
-            maxItems: 500
+            maxItems: 305
           examples:
             application/json:
             - order_id: 123
@@ -13630,13 +13632,129 @@ paths:
               volume_total: 123456
               volume_remain: 4422
               issued: "2016-09-03T05:12:25Z"
-              state: "open"
               min_volume: 1
-              account_id: 1000
               duration: 30
-              is_corp: false
+              is_corporation: false
               escrow: 45.6
           headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+      security:
+      - evesso:
+        - "esi-markets.read_character_orders.v1"
+      x-cached-seconds: 1200
+      x-alternate-versions:
+      - "v2"
+  /characters/{character_id}/orders/history/:
+    get:
+      tags:
+      - "Market"
+      summary: "List historical orders by a character"
+      description: "List cancelled and expired market orders placed by a character\
+        \ up to 90 days in the past.\n\n---\nAlternate route: `/latest/characters/{character_id}/orders/history/`\n\
+        \nAlternate route: `/legacy/characters/{character_id}/orders/history/`\n\n\
+        Alternate route: `/v1/characters/{character_id}/orders/history/`\n\n---\n\
+        This route is cached for up to 3600 seconds"
+      operationId: "get_characters_character_id_orders_history"
+      parameters:
+      - name: "character_id"
+        in: "path"
+        description: "An EVE character ID"
+        required: true
+        type: "integer"
+        minimum: 1
+        format: "int32"
+        x-exportParamName: "CharacterId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "page"
+        in: "query"
+        description: "Which page of results to return"
+        required: false
+        type: "integer"
+        default: 1
+        format: "int32"
+        x-exportParamName: "Page"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      - name: "user_agent"
+        in: "query"
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        type: "string"
+        x-exportParamName: "UserAgent"
+      - name: "X-User-Agent"
+        in: "header"
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        type: "string"
+        x-exportParamName: "XUserAgent"
+      responses:
+        200:
+          description: "Expired and cancelled market orders placed by a character"
+          schema:
+            type: "array"
+            description: "200 ok array"
+            title: "get_characters_character_id_orders_history_ok"
+            items:
+              $ref: "#/definitions/get_characters_character_id_orders_history_200_ok"
+            maxItems: 1000
+          examples:
+            application/json:
+            - order_id: 123
+              type_id: 456
+              region_id: 123
+              location_id: 456
+              range: "station"
+              is_buy_order: true
+              price: 33.3
+              volume_total: 123456
+              volume_remain: 4422
+              issued: "2016-09-03T05:12:25Z"
+              state: "expired"
+              min_volume: 1
+              duration: 30
+              is_corporation: false
+              escrow: 45.6
+          headers:
+            X-Pages:
+              type: "integer"
+              format: "int32"
+              description: "Maximum page number"
+              default: 1
             Cache-Control:
               type: "string"
               description: "The caching mechanism used"
@@ -13766,13 +13884,11 @@ paths:
     get:
       tags:
       - "Market"
-      summary: "List orders from a corporation"
-      description: "List market orders placed on behalf of a corporation\n\n---\n\
-        Alternate route: `/latest/corporations/{corporation_id}/orders/`\n\nAlternate\
-        \ route: `/legacy/corporations/{corporation_id}/orders/`\n\nAlternate route:\
-        \ `/v1/corporations/{corporation_id}/orders/`\n\n---\nThis route is cached\
-        \ for up to 3600 seconds\n\n---\nRequires one of the following EVE corporation\
-        \ role(s): Accountant, Trader\n"
+      summary: "List open orders from a corporation"
+      description: "List open market orders placed on behalf of a corporation\n\n\
+        ---\nAlternate route: `/v2/corporations/{corporation_id}/orders/`\n\n---\n\
+        This route is cached for up to 1200 seconds\n\n---\nRequires one of the following\
+        \ EVE corporation role(s): Accountant, Trader\n"
       operationId: "get_corporations_corporation_id_orders"
       parameters:
       - name: "corporation_id"
@@ -13821,7 +13937,7 @@ paths:
         x-exportParamName: "XUserAgent"
       responses:
         200:
-          description: "A list of market orders"
+          description: "A list of open market orders"
           schema:
             type: "array"
             description: "200 ok array"
@@ -13841,7 +13957,129 @@ paths:
               volume_total: 123456
               volume_remain: 4422
               issued: "2016-09-03T05:12:25Z"
-              state: "open"
+              min_volume: 1
+              wallet_division: 1
+              duration: 30
+              escrow: 45.6
+          headers:
+            X-Pages:
+              type: "integer"
+              format: "int32"
+              description: "Maximum page number"
+              default: 1
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+      security:
+      - evesso:
+        - "esi-markets.read_corporation_orders.v1"
+      x-required-roles:
+      - "Accountant"
+      - "Trader"
+      x-cached-seconds: 1200
+      x-alternate-versions:
+      - "v2"
+  /corporations/{corporation_id}/orders/history/:
+    get:
+      tags:
+      - "Market"
+      summary: "List historical orders from a corporation"
+      description: "List cancelled and expired market orders placed on behalf of a\
+        \ corporation up to 90 days in the past.\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/orders/history/`\n\
+        \nAlternate route: `/legacy/corporations/{corporation_id}/orders/history/`\n\
+        \nAlternate route: `/v1/corporations/{corporation_id}/orders/history/`\n\n\
+        ---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of the\
+        \ following EVE corporation role(s): Accountant, Trader\n"
+      operationId: "get_corporations_corporation_id_orders_history"
+      parameters:
+      - name: "corporation_id"
+        in: "path"
+        description: "An EVE corporation ID"
+        required: true
+        type: "integer"
+        minimum: 1
+        format: "int32"
+        x-exportParamName: "CorporationId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "page"
+        in: "query"
+        description: "Which page of results to return"
+        required: false
+        type: "integer"
+        default: 1
+        format: "int32"
+        x-exportParamName: "Page"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      - name: "user_agent"
+        in: "query"
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        type: "string"
+        x-exportParamName: "UserAgent"
+      - name: "X-User-Agent"
+        in: "header"
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        type: "string"
+        x-exportParamName: "XUserAgent"
+      responses:
+        200:
+          description: "Expired and cancelled market orders placed on behalf of a\
+            \ corporation"
+          schema:
+            type: "array"
+            description: "200 ok array"
+            title: "get_corporations_corporation_id_orders_history_ok"
+            items:
+              $ref: "#/definitions/get_corporations_corporation_id_orders_history_200_ok"
+            maxItems: 1000
+          examples:
+            application/json:
+            - order_id: 123
+              type_id: 456
+              region_id: 123
+              location_id: 456
+              range: "station"
+              is_buy_order: true
+              price: 33.3
+              volume_total: 123456
+              volume_remain: 4422
+              issued: "2016-09-03T05:12:25Z"
+              state: "expired"
               min_volume: 1
               wallet_division: 1
               duration: 30
@@ -29157,19 +29395,14 @@ definitions:
     description: "Not found"
   get_characters_character_id_orders_200_ok:
     required:
-    - "account_id"
     - "duration"
-    - "escrow"
-    - "is_buy_order"
-    - "is_corp"
+    - "is_corporation"
     - "issued"
     - "location_id"
-    - "min_volume"
     - "order_id"
     - "price"
     - "range"
     - "region_id"
-    - "state"
     - "type_id"
     - "volume_remain"
     - "volume_total"
@@ -29211,10 +29444,6 @@ definitions:
         - "region"
         - "solarsystem"
         - "station"
-      is_buy_order:
-        type: "boolean"
-        description: "True for a bid (buy) order. False for an offer (sell) order"
-        title: "get_characters_character_id_orders_is_buy_order"
       price:
         type: "number"
         format: "double"
@@ -29235,58 +29464,148 @@ definitions:
         format: "date-time"
         description: "Date and time when this order was issued"
         title: "get_characters_character_id_orders_issued"
-      state:
-        type: "string"
-        description: "Current order state"
-        title: "get_characters_character_id_orders_state"
-        enum:
-        - "cancelled"
-        - "character_deleted"
-        - "closed"
-        - "expired"
-        - "open"
-        - "pending"
+      is_buy_order:
+        type: "boolean"
+        description: "True if the order is a bid (buy) order"
+        title: "get_characters_character_id_orders_is_buy_order"
       min_volume:
         type: "integer"
         format: "int32"
-        description: "For bids (buy orders), the minimum quantity that will be accepted\
-          \ in a matching offer (sell order)"
+        description: "For buy orders, the minimum quantity that will be accepted in\
+          \ a matching sell order"
         title: "get_characters_character_id_orders_min_volume"
-      account_id:
-        type: "integer"
-        format: "int32"
-        description: "Wallet division for the buyer or seller of this order. Always\
-          \ 1000 for characters. Currently 1000 through 1006 for corporations"
-        title: "get_characters_character_id_orders_account_id"
-      duration:
-        type: "integer"
-        format: "int32"
-        description: "Numer of days for which order is valid (starting from the issued\
-          \ date). An order expires at time issued + duration"
-        title: "get_characters_character_id_orders_duration"
-      is_corp:
-        type: "boolean"
-        description: "is_corp boolean"
-        title: "get_characters_character_id_orders_is_corp"
       escrow:
         type: "number"
         format: "double"
         description: "For buy orders, the amount of ISK in escrow"
         title: "get_characters_character_id_orders_escrow"
+      duration:
+        type: "integer"
+        format: "int32"
+        description: "Number of days for which order is valid (starting from the issued\
+          \ date). An order expires at time issued + duration"
+        title: "get_characters_character_id_orders_duration"
+      is_corporation:
+        type: "boolean"
+        description: "Signifies whether the buy/sell order was placed on behalf of\
+          \ a corporation."
+        title: "get_characters_character_id_orders_is_corporation"
     description: "200 ok object"
-  get_corporations_corporation_id_orders_200_ok:
+  get_characters_character_id_orders_history_200_ok:
     required:
     - "duration"
-    - "escrow"
-    - "is_buy_order"
+    - "is_corporation"
     - "issued"
     - "location_id"
-    - "min_volume"
     - "order_id"
     - "price"
     - "range"
     - "region_id"
     - "state"
+    - "type_id"
+    - "volume_remain"
+    - "volume_total"
+    properties:
+      order_id:
+        type: "integer"
+        format: "int64"
+        description: "Unique order ID"
+        title: "get_characters_character_id_orders_history_order_id"
+      type_id:
+        type: "integer"
+        format: "int32"
+        description: "The type ID of the item transacted in this order"
+        title: "get_characters_character_id_orders_history_type_id"
+      region_id:
+        type: "integer"
+        format: "int32"
+        description: "ID of the region where order was placed"
+        title: "get_characters_character_id_orders_history_region_id"
+      location_id:
+        type: "integer"
+        format: "int64"
+        description: "ID of the location where order was placed"
+        title: "get_characters_character_id_orders_history_location_id"
+      range:
+        type: "string"
+        description: "Valid order range, numbers are ranges in jumps"
+        title: "get_characters_character_id_orders_history_range"
+        enum:
+        - "1"
+        - "10"
+        - "2"
+        - "20"
+        - "3"
+        - "30"
+        - "4"
+        - "40"
+        - "5"
+        - "region"
+        - "solarsystem"
+        - "station"
+      price:
+        type: "number"
+        format: "double"
+        description: "Cost per unit for this order"
+        title: "get_characters_character_id_orders_history_price"
+      volume_total:
+        type: "integer"
+        format: "int32"
+        description: "Quantity of items required or offered at time order was placed"
+        title: "get_characters_character_id_orders_history_volume_total"
+      volume_remain:
+        type: "integer"
+        format: "int32"
+        description: "Quantity of items still required or offered"
+        title: "get_characters_character_id_orders_history_volume_remain"
+      issued:
+        type: "string"
+        format: "date-time"
+        description: "Date and time when this order was issued"
+        title: "get_characters_character_id_orders_history_issued"
+      is_buy_order:
+        type: "boolean"
+        description: "True if the order is a bid (buy) order"
+        title: "get_characters_character_id_orders_history_is_buy_order"
+      min_volume:
+        type: "integer"
+        format: "int32"
+        description: "For buy orders, the minimum quantity that will be accepted in\
+          \ a matching sell order"
+        title: "get_characters_character_id_orders_history_min_volume"
+      escrow:
+        type: "number"
+        format: "double"
+        description: "For buy orders, the amount of ISK in escrow"
+        title: "get_characters_character_id_orders_history_escrow"
+      duration:
+        type: "integer"
+        format: "int32"
+        description: "Number of days the order was valid for (starting from the issued\
+          \ date). An order expires at time issued + duration"
+        title: "get_characters_character_id_orders_history_duration"
+      state:
+        type: "string"
+        description: "Current order state"
+        title: "get_characters_character_id_orders_history_state"
+        enum:
+        - "cancelled"
+        - "expired"
+      is_corporation:
+        type: "boolean"
+        description: "Signifies whether the buy/sell order was placed on behalf of\
+          \ a corporation."
+        title: "get_characters_character_id_orders_history_is_corporation"
+    description: "200 ok object"
+  get_corporations_corporation_id_orders_200_ok:
+    required:
+    - "duration"
+    - "issued"
+    - "location_id"
+    - "order_id"
+    - "price"
+    - "range"
+    - "region_id"
     - "type_id"
     - "volume_remain"
     - "volume_total"
@@ -29329,10 +29648,6 @@ definitions:
         - "region"
         - "solarsystem"
         - "station"
-      is_buy_order:
-        type: "boolean"
-        description: "True for a bid (buy) order. False for an offer (sell) order"
-        title: "get_corporations_corporation_id_orders_is_buy_order"
       price:
         type: "number"
         format: "double"
@@ -29353,41 +29668,142 @@ definitions:
         format: "date-time"
         description: "Date and time when this order was issued"
         title: "get_corporations_corporation_id_orders_issued"
-      state:
-        type: "string"
-        description: "Current order state"
-        title: "get_corporations_corporation_id_orders_state"
-        enum:
-        - "cancelled"
-        - "character_deleted"
-        - "closed"
-        - "expired"
-        - "open"
-        - "pending"
+      is_buy_order:
+        type: "boolean"
+        description: "True if the order is a bid (buy) order"
+        title: "get_corporations_corporation_id_orders_is_buy_order"
       min_volume:
         type: "integer"
         format: "int32"
-        description: "For bids (buy orders), the minimum quantity that will be accepted\
-          \ in a matching offer (sell order)"
+        description: "For buy orders, the minimum quantity that will be accepted in\
+          \ a matching sell order"
         title: "get_corporations_corporation_id_orders_min_volume"
-      wallet_division:
-        type: "integer"
-        format: "int32"
-        description: "Wallet division of which this order used"
-        title: "get_corporations_corporation_id_orders_wallet_division"
-        minimum: 1
-        maximum: 7
-      duration:
-        type: "integer"
-        format: "int32"
-        description: "Numer of days for which order is valid (starting from the issued\
-          \ date). An order expires at time issued + duration"
-        title: "get_corporations_corporation_id_orders_duration"
       escrow:
         type: "number"
         format: "double"
         description: "For buy orders, the amount of ISK in escrow"
         title: "get_corporations_corporation_id_orders_escrow"
+      duration:
+        type: "integer"
+        format: "int32"
+        description: "Number of days for which order is valid (starting from the issued\
+          \ date). An order expires at time issued + duration"
+        title: "get_corporations_corporation_id_orders_duration"
+      wallet_division:
+        type: "integer"
+        format: "int32"
+        description: "The corporation wallet division used for this order."
+        title: "get_corporations_corporation_id_orders_wallet_division"
+        minimum: 1
+        maximum: 7
+    description: "200 ok object"
+  get_corporations_corporation_id_orders_history_200_ok:
+    required:
+    - "duration"
+    - "issued"
+    - "location_id"
+    - "order_id"
+    - "price"
+    - "range"
+    - "region_id"
+    - "state"
+    - "type_id"
+    - "volume_remain"
+    - "volume_total"
+    - "wallet_division"
+    properties:
+      order_id:
+        type: "integer"
+        format: "int64"
+        description: "Unique order ID"
+        title: "get_corporations_corporation_id_orders_history_order_id"
+      type_id:
+        type: "integer"
+        format: "int32"
+        description: "The type ID of the item transacted in this order"
+        title: "get_corporations_corporation_id_orders_history_type_id"
+      region_id:
+        type: "integer"
+        format: "int32"
+        description: "ID of the region where order was placed"
+        title: "get_corporations_corporation_id_orders_history_region_id"
+      location_id:
+        type: "integer"
+        format: "int64"
+        description: "ID of the location where order was placed"
+        title: "get_corporations_corporation_id_orders_history_location_id"
+      range:
+        type: "string"
+        description: "Valid order range, numbers are ranges in jumps"
+        title: "get_corporations_corporation_id_orders_history_range"
+        enum:
+        - "1"
+        - "10"
+        - "2"
+        - "20"
+        - "3"
+        - "30"
+        - "4"
+        - "40"
+        - "5"
+        - "region"
+        - "solarsystem"
+        - "station"
+      price:
+        type: "number"
+        format: "double"
+        description: "Cost per unit for this order"
+        title: "get_corporations_corporation_id_orders_history_price"
+      volume_total:
+        type: "integer"
+        format: "int32"
+        description: "Quantity of items required or offered at time order was placed"
+        title: "get_corporations_corporation_id_orders_history_volume_total"
+      volume_remain:
+        type: "integer"
+        format: "int32"
+        description: "Quantity of items still required or offered"
+        title: "get_corporations_corporation_id_orders_history_volume_remain"
+      issued:
+        type: "string"
+        format: "date-time"
+        description: "Date and time when this order was issued"
+        title: "get_corporations_corporation_id_orders_history_issued"
+      is_buy_order:
+        type: "boolean"
+        description: "True if the order is a bid (buy) order"
+        title: "get_corporations_corporation_id_orders_history_is_buy_order"
+      min_volume:
+        type: "integer"
+        format: "int32"
+        description: "For buy orders, the minimum quantity that will be accepted in\
+          \ a matching sell order"
+        title: "get_corporations_corporation_id_orders_history_min_volume"
+      escrow:
+        type: "number"
+        format: "double"
+        description: "For buy orders, the amount of ISK in escrow"
+        title: "get_corporations_corporation_id_orders_history_escrow"
+      duration:
+        type: "integer"
+        format: "int32"
+        description: "Number of days the order was valid for (starting from the issued\
+          \ date). An order expires at time issued + duration"
+        title: "get_corporations_corporation_id_orders_history_duration"
+      state:
+        type: "string"
+        description: "Current order state"
+        title: "get_corporations_corporation_id_orders_history_state"
+        enum:
+        - "cancelled"
+        - "expired"
+      wallet_division:
+        type: "integer"
+        format: "int32"
+        description: "The corporation wallet division used for this order."
+        title: "get_corporations_corporation_id_orders_history_wallet_division"
+        minimum: 1
+        maximum: 7
     description: "200 ok object"
   get_opportunities_groups_group_id_ok:
     required:

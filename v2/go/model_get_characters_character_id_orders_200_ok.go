@@ -1,4 +1,4 @@
-package esilatest
+package esiv2
 
 import "time"
 
@@ -21,9 +21,6 @@ type GetCharactersCharacterIdOrders200Ok struct {
 	 Valid order range, numbers are ranges in jumps */
 	Range_ string `json:"range,omitempty"`
 	/*
-	 True for a bid (buy) order. False for an offer (sell) order */
-	IsBuyOrder bool `json:"is_buy_order,omitempty"`
-	/*
 	 Cost per unit for this order */
 	Price float64 `json:"price,omitempty"`
 	/*
@@ -36,21 +33,18 @@ type GetCharactersCharacterIdOrders200Ok struct {
 	 Date and time when this order was issued */
 	Issued time.Time `json:"issued,omitempty"`
 	/*
-	 Current order state */
-	State string `json:"state,omitempty"`
+	 True if the order is a bid (buy) order */
+	IsBuyOrder bool `json:"is_buy_order,omitempty"`
 	/*
-	 For bids (buy orders), the minimum quantity that will be accepted in a matching offer (sell order) */
+	 For buy orders, the minimum quantity that will be accepted in a matching sell order */
 	MinVolume int32 `json:"min_volume,omitempty"`
-	/*
-	 Wallet division for the buyer or seller of this order. Always 1000 for characters. Currently 1000 through 1006 for corporations */
-	AccountId int32 `json:"account_id,omitempty"`
-	/*
-	 Number of days the order is valid for (starting from the issued date). An order expires at time issued + duration */
-	Duration int32 `json:"duration,omitempty"`
-	/*
-	 is_corp boolean */
-	IsCorp bool `json:"is_corp,omitempty"`
 	/*
 	 For buy orders, the amount of ISK in escrow */
 	Escrow float64 `json:"escrow,omitempty"`
+	/*
+	 Number of days for which order is valid (starting from the issued date). An order expires at time issued + duration */
+	Duration int32 `json:"duration,omitempty"`
+	/*
+	 Signifies whether the buy/sell order was placed on behalf of a corporation. */
+	IsCorporation bool `json:"is_corporation,omitempty"`
 }

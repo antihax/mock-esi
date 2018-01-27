@@ -949,10 +949,24 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdOrdersHistory",
+		"Get",
+		"/dev/characters/{character_id}/orders/history/",
+		GetCharactersCharacterIdOrdersHistory,
+	)
+
+	mockesi.NewRoute(
 		"GetCorporationsCorporationIdOrders",
 		"Get",
 		"/dev/corporations/{corporation_id}/orders/",
 		GetCorporationsCorporationIdOrders,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdOrdersHistory",
+		"Get",
+		"/dev/corporations/{corporation_id}/orders/history/",
+		GetCorporationsCorporationIdOrdersHistory,
 	)
 
 	mockesi.NewRoute(
