@@ -8393,15 +8393,6 @@ parameters:
     required: false
     type: "string"
     x-exportParamName: "XUserAgent"
-  page:
-    name: "page"
-    in: "query"
-    description: "Which page of results to return"
-    required: false
-    type: "integer"
-    default: 1
-    format: "int32"
-    x-exportParamName: "Page"
   token:
     name: "token"
     in: "query"
@@ -8418,6 +8409,15 @@ parameters:
     minimum: 1
     format: "int32"
     x-exportParamName: "CharacterId"
+  page:
+    name: "page"
+    in: "query"
+    description: "Which page of results to return"
+    required: false
+    type: "integer"
+    default: 1
+    format: "int32"
+    x-exportParamName: "Page"
   corporation_id:
     name: "corporation_id"
     in: "path"
@@ -8427,15 +8427,6 @@ parameters:
     minimum: 1
     format: "int32"
     x-exportParamName: "CorporationId"
-  alliance_id:
-    name: "alliance_id"
-    in: "path"
-    description: "An EVE alliance ID"
-    required: true
-    type: "integer"
-    minimum: 1
-    format: "int32"
-    x-exportParamName: "AllianceId"
   language:
     name: "language"
     in: "query"
@@ -8451,3 +8442,12 @@ parameters:
     - "ru"
     - "zh"
     x-exportParamName: "Language"
+  alliance_id:
+    name: "alliance_id"
+    in: "path"
+    description: "An EVE alliance ID"
+    required: true
+    type: "integer"
+    minimum: 1
+    format: "int32"
+    x-exportParamName: "AllianceId"
