@@ -5902,10 +5902,10 @@ paths:
       - "Corporation"
       summary: "Get corporation structures"
       description: "Get a list of corporation structures\n\n---\nAlternate route:\
-        \ `/dev/corporations/{corporation_id}/structures/`\n\nAlternate route: `/legacy/corporations/{corporation_id}/structures/`\n\
-        \nAlternate route: `/v1/corporations/{corporation_id}/structures/`\n\n---\n\
-        This route is cached for up to 3600 seconds\n\n---\nRequires one of the following\
-        \ EVE corporation role(s): StationManager\n"
+        \ `/legacy/corporations/{corporation_id}/structures/`\n\nAlternate route:\
+        \ `/v1/corporations/{corporation_id}/structures/`\n\n---\nThis route is cached\
+        \ for up to 3600 seconds\n\n---\nRequires one of the following EVE corporation\
+        \ role(s): StationManager\n\n\n---\n[This route has an available update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/corporations/{corporation_id}/structures/)"
       operationId: "get_corporations_corporation_id_structures"
       parameters:
       - name: "corporation_id"
@@ -6035,7 +6035,6 @@ paths:
       - "StationManager"
       x-cached-seconds: 3600
       x-alternate-versions:
-      - "dev"
       - "legacy"
       - "v1"
   /corporations/{corporation_id}/structures/{structure_id}/:
@@ -24815,6 +24814,24 @@ definitions:
         description: "error message"
         title: "get_corporations_corporation_id_icons_error"
     description: "No image server for this datasource"
+  get_corporations_corporation_id_structures_service:
+    required:
+    - "name"
+    - "state"
+    properties:
+      name:
+        type: "string"
+        description: "name string"
+        title: "get_corporations_corporation_id_structures_name"
+      state:
+        type: "string"
+        description: "state string"
+        title: "get_corporations_corporation_id_structures_state"
+        enum:
+        - "online"
+        - "offline"
+        - "cleanup"
+    description: "service object"
   get_corporations_corporation_id_structures_current_vul:
     required:
     - "day"
@@ -24847,24 +24864,6 @@ definitions:
         description: "hour integer"
         title: "get_corporations_corporation_id_structures_hour"
     description: "next_vul object"
-  get_corporations_corporation_id_structures_service:
-    required:
-    - "name"
-    - "state"
-    properties:
-      name:
-        type: "string"
-        description: "name string"
-        title: "get_corporations_corporation_id_structures_name"
-      state:
-        type: "string"
-        description: "state string"
-        title: "get_corporations_corporation_id_structures_state"
-        enum:
-        - "online"
-        - "offline"
-        - "cleanup"
-    description: "service object"
   get_corporations_corporation_id_structures_200_ok:
     required:
     - "corporation_id"
@@ -24900,20 +24899,6 @@ definitions:
         format: "int32"
         description: "The id of the ACL profile for this citadel"
         title: "get_corporations_corporation_id_structures_profile_id"
-      current_vul:
-        type: "array"
-        description: "This week's vulnerability windows, Monday is day 0"
-        title: "get_corporations_corporation_id_structures_current_vul"
-        items:
-          $ref: "#/definitions/get_corporations_corporation_id_structures_current_vul"
-        maxItems: 168
-      next_vul:
-        type: "array"
-        description: "Next week's vulnerability windows, Monday is day 0"
-        title: "get_corporations_corporation_id_structures_next_vul"
-        items:
-          $ref: "#/definitions/get_corporations_corporation_id_structures_next_vul"
-        maxItems: 168
       fuel_expires:
         type: "string"
         format: "date-time"
@@ -24941,6 +24926,20 @@ definitions:
         format: "date-time"
         description: "Date at which the structure will unanchor"
         title: "get_corporations_corporation_id_structures_unanchors_at"
+      current_vul:
+        type: "array"
+        description: "This week's vulnerability windows, Monday is day 0"
+        title: "get_corporations_corporation_id_structures_current_vul"
+        items:
+          $ref: "#/definitions/get_corporations_corporation_id_structures_current_vul"
+        maxItems: 168
+      next_vul:
+        type: "array"
+        description: "Next week's vulnerability windows, Monday is day 0"
+        title: "get_corporations_corporation_id_structures_next_vul"
+        items:
+          $ref: "#/definitions/get_corporations_corporation_id_structures_next_vul"
+        maxItems: 168
     description: "200 ok object"
   put_corporations_corporation_id_structures_structure_id_new_schedule:
     required:

@@ -5902,12 +5902,11 @@ paths:
       tags:
       - "Corporation"
       summary: "Get corporation structures"
-      description: "Get a list of corporation structures\n\n---\nAlternate route:\
-        \ `/latest/corporations/{corporation_id}/structures/`\n\nAlternate route:\
-        \ `/legacy/corporations/{corporation_id}/structures/`\n\nAlternate route:\
-        \ `/v1/corporations/{corporation_id}/structures/`\n\n---\nThis route is cached\
-        \ for up to 3600 seconds\n\n---\nRequires one of the following EVE corporation\
-        \ role(s): StationManager\n"
+      description: "Get a list of corporation structures. This route's version includes\
+        \ the changes to structures detailed in this blog: https://www.eveonline.com/article/upwell-2.0-structures-changes-coming-on-february-13th\n\
+        \n---\nAlternate route: `/v2/corporations/{corporation_id}/structures/`\n\n\
+        ---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of the\
+        \ following EVE corporation role(s): StationManager\n"
       operationId: "get_corporations_corporation_id_structures"
       parameters:
       - name: "corporation_id"
@@ -5985,12 +5984,9 @@ paths:
               corporation_id: 667531913
               system_id: 30004763
               profile_id: 11237
-              current_vul:
-              - day: 1
-                hour: 2
-              next_vul:
-              - day: 3
-                hour: 4
+              state: "shield_vulnerable"
+              reinforce_weekday: 2
+              reinforce_hour: 22
           headers:
             X-Pages:
               type: "integer"
@@ -6037,9 +6033,7 @@ paths:
       - "StationManager"
       x-cached-seconds: 3600
       x-alternate-versions:
-      - "latest"
-      - "legacy"
-      - "v1"
+      - "v2"
   /corporations/{corporation_id}/structures/{structure_id}/:
     put:
       tags:
@@ -24809,38 +24803,6 @@ definitions:
         description: "error message"
         title: "get_corporations_corporation_id_icons_error"
     description: "No image server for this datasource"
-  get_corporations_corporation_id_structures_current_vul:
-    required:
-    - "day"
-    - "hour"
-    properties:
-      day:
-        type: "integer"
-        format: "int32"
-        description: "day integer"
-        title: "get_corporations_corporation_id_structures_day"
-      hour:
-        type: "integer"
-        format: "int32"
-        description: "hour integer"
-        title: "get_corporations_corporation_id_structures_hour"
-    description: "current_vul object"
-  get_corporations_corporation_id_structures_next_vul:
-    required:
-    - "day"
-    - "hour"
-    properties:
-      day:
-        type: "integer"
-        format: "int32"
-        description: "day integer"
-        title: "get_corporations_corporation_id_structures_day"
-      hour:
-        type: "integer"
-        format: "int32"
-        description: "hour integer"
-        title: "get_corporations_corporation_id_structures_hour"
-    description: "next_vul object"
   get_corporations_corporation_id_structures_service:
     required:
     - "name"
@@ -24862,9 +24824,10 @@ definitions:
   get_corporations_corporation_id_structures_200_ok:
     required:
     - "corporation_id"
-    - "current_vul"
-    - "next_vul"
     - "profile_id"
+    - "reinforce_hour"
+    - "reinforce_weekday"
+    - "state"
     - "structure_id"
     - "system_id"
     - "type_id"
@@ -24894,20 +24857,6 @@ definitions:
         format: "int32"
         description: "The id of the ACL profile for this citadel"
         title: "get_corporations_corporation_id_structures_profile_id"
-      current_vul:
-        type: "array"
-        description: "This week's vulnerability windows, Monday is day 0"
-        title: "get_corporations_corporation_id_structures_current_vul"
-        items:
-          $ref: "#/definitions/get_corporations_corporation_id_structures_current_vul"
-        maxItems: 168
-      next_vul:
-        type: "array"
-        description: "Next week's vulnerability windows, Monday is day 0"
-        title: "get_corporations_corporation_id_structures_next_vul"
-        items:
-          $ref: "#/definitions/get_corporations_corporation_id_structures_next_vul"
-        maxItems: 168
       fuel_expires:
         type: "string"
         format: "date-time"
@@ -24935,6 +24884,64 @@ definitions:
         format: "date-time"
         description: "Date at which the structure will unanchor"
         title: "get_corporations_corporation_id_structures_unanchors_at"
+      state:
+        type: "string"
+        description: "state string"
+        title: "get_corporations_corporation_id_structures_state"
+        enum:
+        - "anchor_vulnerable"
+        - "anchoring"
+        - "armor_reinforce"
+        - "armor_vulnerable"
+        - "fitting_invulnerable"
+        - "hull_reinforce"
+        - "hull_vulnerable"
+        - "online_deprecated"
+        - "onlining_vulnerable"
+        - "shield_vulnerable"
+        - "unanchored"
+        - "unknown"
+      reinforce_weekday:
+        type: "integer"
+        format: "int32"
+        description: "The day of the week when the structure exits its final reinforcement\
+          \ period and becomes vulnerable to attack against its hull. Monday is 0\
+          \ and Sunday is 6."
+        title: "get_corporations_corporation_id_structures_reinforce_weekday"
+        minimum: 0
+        maximum: 6
+      reinforce_hour:
+        type: "integer"
+        format: "int32"
+        description: "The hour of day that determines the four hour window when the\
+          \ structure will randomly exit its reinforcement periods and become vulnerable\
+          \ to attack against its armor and/or hull. The structure will become vulnerable\
+          \ at a random time that is +/- 2 hours centered on the value of this property."
+        title: "get_corporations_corporation_id_structures_reinforce_hour"
+        minimum: 0
+        maximum: 23
+      next_reinforce_weekday:
+        type: "integer"
+        format: "int32"
+        description: "The requested change to reinforce_weekday that will take effect\
+          \ at the time shown by next_reinforce_apply."
+        title: "get_corporations_corporation_id_structures_next_reinforce_weekday"
+        minimum: 0
+        maximum: 6
+      next_reinforce_hour:
+        type: "integer"
+        format: "int32"
+        description: "The requested change to reinforce_hour that will take effect\
+          \ at the time shown by next_reinforce_apply."
+        title: "get_corporations_corporation_id_structures_next_reinforce_hour"
+        minimum: 0
+        maximum: 23
+      next_reinforce_apply:
+        type: "string"
+        format: "date-time"
+        description: "The date and time when the structure's newly requested reinforcement\
+          \ times (e.g. next_reinforce_hour and next_reinforce_day) will take effect."
+        title: "get_corporations_corporation_id_structures_next_reinforce_apply"
     description: "200 ok object"
   put_corporations_corporation_id_structures_structure_id_new_schedule:
     required:

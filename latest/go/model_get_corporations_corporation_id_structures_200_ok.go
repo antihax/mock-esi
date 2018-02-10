@@ -21,12 +21,6 @@ type GetCorporationsCorporationIdStructures200Ok struct {
 	 The id of the ACL profile for this citadel */
 	ProfileId int32 `json:"profile_id,omitempty"`
 	/*
-	 This week's vulnerability windows, Monday is day 0 */
-	CurrentVul []GetCorporationsCorporationIdStructuresCurrentVul `json:"current_vul,omitempty"`
-	/*
-	 Next week's vulnerability windows, Monday is day 0 */
-	NextVul []GetCorporationsCorporationIdStructuresNextVul `json:"next_vul,omitempty"`
-	/*
 	 Date on which the structure will run out of fuel */
 	FuelExpires time.Time `json:"fuel_expires,omitempty"`
 	/*
@@ -41,4 +35,10 @@ type GetCorporationsCorporationIdStructures200Ok struct {
 	/*
 	 Date at which the structure will unanchor */
 	UnanchorsAt time.Time `json:"unanchors_at,omitempty"`
+	/*
+	 This week's vulnerability windows, Monday is day 0 */
+	CurrentVul []GetCorporationsCorporationIdStructuresCurrentVul `json:"current_vul,omitempty"`
+	/*
+	 Next week's vulnerability windows, Monday is day 0 */
+	NextVul []GetCorporationsCorporationIdStructuresNextVul `json:"next_vul,omitempty"`
 }

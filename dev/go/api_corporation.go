@@ -1881,14 +1881,9 @@ func GetCorporationsCorporationIdStructures(w http.ResponseWriter, r *http.Reque
   "corporation_id" : 667531913,
   "system_id" : 30004763,
   "profile_id" : 11237,
-  "current_vul" : [ {
-    "day" : 1,
-    "hour" : 2
-  } ],
-  "next_vul" : [ {
-    "day" : 3,
-    "hour" : 4
-  } ]
+  "state" : "shield_vulnerable",
+  "reinforce_weekday" : 2,
+  "reinforce_hour" : 22
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(corporationId, vars["corporation_id"])
