@@ -8971,7 +8971,7 @@ paths:
       - in: "body"
         name: "fitting"
         description: "Details about the new fitting"
-        required: false
+        required: true
         schema:
           $ref: "#/definitions/post_characters_character_id_fittings_fitting"
         x-exportParamName: "Fitting"
@@ -12477,7 +12477,7 @@ paths:
       - in: "body"
         name: "label"
         description: "Label to create"
-        required: false
+        required: true
         schema:
           $ref: "#/definitions/post_characters_character_id_mail_labels_label"
         x-exportParamName: "Label"
