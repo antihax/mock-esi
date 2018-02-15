@@ -5909,10 +5909,10 @@ paths:
       - "Corporation"
       summary: "Get corporation structures"
       description: "Get a list of corporation structures\n\n---\nAlternate route:\
-        \ `/latest/corporations/{corporation_id}/structures/`\n\nAlternate route:\
         \ `/v1/corporations/{corporation_id}/structures/`\n\n---\nThis route is cached\
         \ for up to 3600 seconds\n\n---\nRequires one of the following EVE corporation\
-        \ role(s): StationManager\n"
+        \ role(s): StationManager\n\n\n---\nWarning: This route is deprecated.\n\n\
+        ---\n[This route has an available update](https://esi.tech.ccp.is/diff/legacy/latest/#GET-/corporations/{corporation_id}/structures/)"
       operationId: "get_corporations_corporation_id_structures"
       parameters:
       - name: "corporation_id"
@@ -6038,21 +6038,23 @@ paths:
       security:
       - evesso:
         - "esi-corporations.read_structures.v1"
+      deprecated: true
       x-required-roles:
       - "StationManager"
       x-cached-seconds: 3600
       x-alternate-versions:
-      - "latest"
       - "v1"
   /corporations/{corporation_id}/structures/{structure_id}/:
     put:
       tags:
       - "Corporation"
-      summary: "Update structure vulnerability schedule"
-      description: "Update the vulnerability window schedule of a corporation structure\n\
-        \n---\nAlternate route: `/dev/corporations/{corporation_id}/structures/{structure_id}/`\n\
-        \nAlternate route: `/latest/corporations/{corporation_id}/structures/{structure_id}/`\n\
-        \nAlternate route: `/v1/corporations/{corporation_id}/structures/{structure_id}/`\n"
+      summary: "(deprecated) Update structure vulnerability schedule"
+      description: "This endpoint has been deprecated because of changes to structure\
+        \ vulnerability as outlined in this blog: https://developers.eveonline.com/blog/article/upwell-2.0-esi-structure-changes.\
+        \ This endpoint will now always return a 204 and be completely removed on\
+        \ 2018-02-27.\n\n---\nAlternate route: `/v1/corporations/{corporation_id}/structures/{structure_id}/`\n\
+        \n\n---\nWarning: This route is deprecated.\n\n---\n[This route has an available\
+        \ update](https://esi.tech.ccp.is/diff/legacy/latest/#PUT-/corporations/{corporation_id}/structures/{structure_id}/)"
       operationId: "put_corporations_corporation_id_structures_structure_id"
       parameters:
       - name: "corporation_id"
@@ -6111,7 +6113,7 @@ paths:
         x-exportParamName: "XUserAgent"
       responses:
         204:
-          description: "Structure vulnerability window updated"
+          description: "A request was made but nothing was updated."
         403:
           description: "Forbidden"
           schema:
@@ -6129,9 +6131,8 @@ paths:
       security:
       - evesso:
         - "esi-corporations.write_structures.v1"
+      deprecated: true
       x-alternate-versions:
-      - "dev"
-      - "latest"
       - "v1"
   /corporations/{corporation_id}/membertracking/:
     get:

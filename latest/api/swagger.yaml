@@ -5901,11 +5901,12 @@ paths:
       tags:
       - "Corporation"
       summary: "Get corporation structures"
-      description: "Get a list of corporation structures\n\n---\nAlternate route:\
-        \ `/legacy/corporations/{corporation_id}/structures/`\n\nAlternate route:\
-        \ `/v1/corporations/{corporation_id}/structures/`\n\n---\nThis route is cached\
-        \ for up to 3600 seconds\n\n---\nRequires one of the following EVE corporation\
-        \ role(s): StationManager\n\n\n---\n[This route has an available update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/corporations/{corporation_id}/structures/)"
+      description: "Get a list of corporation structures. This route's version includes\
+        \ the changes to structures detailed in this blog: https://www.eveonline.com/article/upwell-2.0-structures-changes-coming-on-february-13th\n\
+        \n---\nAlternate route: `/dev/corporations/{corporation_id}/structures/`\n\
+        \nAlternate route: `/v2/corporations/{corporation_id}/structures/`\n\n---\n\
+        This route is cached for up to 3600 seconds\n\n---\nRequires one of the following\
+        \ EVE corporation role(s): StationManager\n"
       operationId: "get_corporations_corporation_id_structures"
       parameters:
       - name: "corporation_id"
@@ -5975,7 +5976,7 @@ paths:
             title: "get_corporations_corporation_id_structures_ok"
             items:
               $ref: "#/definitions/get_corporations_corporation_id_structures_200_ok"
-            maxItems: 250
+            maxItems: 1000
           examples:
             application/json:
             - structure_id: 1021975535893
@@ -5983,12 +5984,9 @@ paths:
               corporation_id: 667531913
               system_id: 30004763
               profile_id: 11237
-              current_vul:
-              - day: 1
-                hour: 2
-              next_vul:
-              - day: 3
-                hour: 4
+              state: "shield_vulnerable"
+              reinforce_weekday: 2
+              reinforce_hour: 22
           headers:
             X-Pages:
               type: "integer"
@@ -6035,97 +6033,8 @@ paths:
       - "StationManager"
       x-cached-seconds: 3600
       x-alternate-versions:
-      - "legacy"
-      - "v1"
-  /corporations/{corporation_id}/structures/{structure_id}/:
-    put:
-      tags:
-      - "Corporation"
-      summary: "Update structure vulnerability schedule"
-      description: "Update the vulnerability window schedule of a corporation structure\n\
-        \n---\nAlternate route: `/dev/corporations/{corporation_id}/structures/{structure_id}/`\n\
-        \nAlternate route: `/legacy/corporations/{corporation_id}/structures/{structure_id}/`\n\
-        \nAlternate route: `/v1/corporations/{corporation_id}/structures/{structure_id}/`\n"
-      operationId: "put_corporations_corporation_id_structures_structure_id"
-      parameters:
-      - name: "corporation_id"
-        in: "path"
-        description: "An EVE corporation ID"
-        required: true
-        type: "integer"
-        minimum: 1
-        format: "int32"
-        x-exportParamName: "CorporationId"
-      - name: "datasource"
-        in: "query"
-        description: "The server name you would like data from"
-        required: false
-        type: "string"
-        default: "tranquility"
-        enum:
-        - "tranquility"
-        - "singularity"
-        x-exportParamName: "Datasource"
-      - in: "body"
-        name: "new_schedule"
-        description: "New vulnerability window schedule for the structure"
-        required: true
-        schema:
-          title: "put_corporations_corporation_id_structures_structure_id_new_schedule"
-          type: "array"
-          description: "new_schedule array"
-          items:
-            $ref: "#/definitions/put_corporations_corporation_id_structures_structure_id_new_schedule"
-        x-exportParamName: "NewSchedule"
-      - name: "structure_id"
-        in: "path"
-        description: "A structure ID"
-        required: true
-        type: "integer"
-        format: "int64"
-        x-exportParamName: "StructureId"
-      - name: "token"
-        in: "query"
-        description: "Access token to use if unable to set a header"
-        required: false
-        type: "string"
-        x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
-      responses:
-        204:
-          description: "Structure vulnerability window updated"
-        403:
-          description: "Forbidden"
-          schema:
-            $ref: "#/definitions/forbidden"
-          examples:
-            application/json:
-              error: "Forbidden message"
-        500:
-          description: "Internal server error"
-          schema:
-            $ref: "#/definitions/internal_server_error"
-          examples:
-            application/json:
-              error: "Internal server error message"
-      security:
-      - evesso:
-        - "esi-corporations.write_structures.v1"
-      x-alternate-versions:
       - "dev"
-      - "legacy"
-      - "v1"
+      - "v2"
   /corporations/{corporation_id}/membertracking/:
     get:
       tags:
@@ -19831,7 +19740,6 @@ securityDefinitions:
       esi-corporations.read_structures.v1: "EVE SSO scope esi-corporations.read_structures.v1"
       esi-corporations.read_titles.v1: "EVE SSO scope esi-corporations.read_titles.v1"
       esi-corporations.track_members.v1: "EVE SSO scope esi-corporations.track_members.v1"
-      esi-corporations.write_structures.v1: "EVE SSO scope esi-corporations.write_structures.v1"
       esi-fittings.read_fittings.v1: "EVE SSO scope esi-fittings.read_fittings.v1"
       esi-fittings.write_fittings.v1: "EVE SSO scope esi-fittings.write_fittings.v1"
       esi-fleets.read_fleet.v1: "EVE SSO scope esi-fleets.read_fleet.v1"
@@ -24832,44 +24740,13 @@ definitions:
         - "offline"
         - "cleanup"
     description: "service object"
-  get_corporations_corporation_id_structures_current_vul:
-    required:
-    - "day"
-    - "hour"
-    properties:
-      day:
-        type: "integer"
-        format: "int32"
-        description: "day integer"
-        title: "get_corporations_corporation_id_structures_day"
-      hour:
-        type: "integer"
-        format: "int32"
-        description: "hour integer"
-        title: "get_corporations_corporation_id_structures_hour"
-    description: "current_vul object"
-  get_corporations_corporation_id_structures_next_vul:
-    required:
-    - "day"
-    - "hour"
-    properties:
-      day:
-        type: "integer"
-        format: "int32"
-        description: "day integer"
-        title: "get_corporations_corporation_id_structures_day"
-      hour:
-        type: "integer"
-        format: "int32"
-        description: "hour integer"
-        title: "get_corporations_corporation_id_structures_hour"
-    description: "next_vul object"
   get_corporations_corporation_id_structures_200_ok:
     required:
     - "corporation_id"
-    - "current_vul"
-    - "next_vul"
     - "profile_id"
+    - "reinforce_hour"
+    - "reinforce_weekday"
+    - "state"
     - "structure_id"
     - "system_id"
     - "type_id"
@@ -24926,41 +24803,65 @@ definitions:
         format: "date-time"
         description: "Date at which the structure will unanchor"
         title: "get_corporations_corporation_id_structures_unanchors_at"
-      current_vul:
-        type: "array"
-        description: "This week's vulnerability windows, Monday is day 0"
-        title: "get_corporations_corporation_id_structures_current_vul"
-        items:
-          $ref: "#/definitions/get_corporations_corporation_id_structures_current_vul"
-        maxItems: 168
-      next_vul:
-        type: "array"
-        description: "Next week's vulnerability windows, Monday is day 0"
-        title: "get_corporations_corporation_id_structures_next_vul"
-        items:
-          $ref: "#/definitions/get_corporations_corporation_id_structures_next_vul"
-        maxItems: 168
-    description: "200 ok object"
-  put_corporations_corporation_id_structures_structure_id_new_schedule:
-    required:
-    - "day"
-    - "hour"
-    properties:
-      day:
+      state:
+        type: "string"
+        description: "state string"
+        title: "get_corporations_corporation_id_structures_state"
+        enum:
+        - "anchor_vulnerable"
+        - "anchoring"
+        - "armor_reinforce"
+        - "armor_vulnerable"
+        - "fitting_invulnerable"
+        - "hull_reinforce"
+        - "hull_vulnerable"
+        - "online_deprecated"
+        - "onlining_vulnerable"
+        - "shield_vulnerable"
+        - "unanchored"
+        - "unknown"
+      reinforce_weekday:
         type: "integer"
         format: "int32"
-        description: "Day of the week, zero-indexed to Monday"
-        title: "put_corporations_corporation_id_structures_structure_id_day"
+        description: "The day of the week when the structure exits its final reinforcement\
+          \ period and becomes vulnerable to attack against its hull. Monday is 0\
+          \ and Sunday is 6."
+        title: "get_corporations_corporation_id_structures_reinforce_weekday"
         minimum: 0
         maximum: 6
-      hour:
+      reinforce_hour:
         type: "integer"
         format: "int32"
-        description: "Hour of the day evetime, zero-indexed to midnight"
-        title: "put_corporations_corporation_id_structures_structure_id_hour"
+        description: "The hour of day that determines the four hour window when the\
+          \ structure will randomly exit its reinforcement periods and become vulnerable\
+          \ to attack against its armor and/or hull. The structure will become vulnerable\
+          \ at a random time that is +/- 2 hours centered on the value of this property."
+        title: "get_corporations_corporation_id_structures_reinforce_hour"
         minimum: 0
         maximum: 23
-    description: "new_schedule object"
+      next_reinforce_weekday:
+        type: "integer"
+        format: "int32"
+        description: "The requested change to reinforce_weekday that will take effect\
+          \ at the time shown by next_reinforce_apply."
+        title: "get_corporations_corporation_id_structures_next_reinforce_weekday"
+        minimum: 0
+        maximum: 6
+      next_reinforce_hour:
+        type: "integer"
+        format: "int32"
+        description: "The requested change to reinforce_hour that will take effect\
+          \ at the time shown by next_reinforce_apply."
+        title: "get_corporations_corporation_id_structures_next_reinforce_hour"
+        minimum: 0
+        maximum: 23
+      next_reinforce_apply:
+        type: "string"
+        format: "date-time"
+        description: "The date and time when the structure's newly requested reinforcement\
+          \ times (e.g. next_reinforce_hour and next_reinforce_day) will take effect."
+        title: "get_corporations_corporation_id_structures_next_reinforce_apply"
+    description: "200 ok object"
   get_corporations_corporation_id_membertracking_200_ok:
     required:
     - "character_id"

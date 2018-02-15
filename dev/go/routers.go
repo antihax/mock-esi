@@ -515,6 +515,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCorporationsCorporationIdStructures",
+		"Get",
+		"/dev/corporations/{corporation_id}/structures/",
+		GetCorporationsCorporationIdStructures,
+	)
+
+	mockesi.NewRoute(
 		"GetCorporationsCorporationIdTitles",
 		"Get",
 		"/dev/corporations/{corporation_id}/titles/",
@@ -533,13 +540,6 @@ func init() {
 		"Get",
 		"/dev/corporations/npccorps/",
 		GetCorporationsNpccorps,
-	)
-
-	mockesi.NewRoute(
-		"PutCorporationsCorporationIdStructuresStructureId",
-		"Put",
-		"/dev/corporations/{corporation_id}/structures/{structure_id}/",
-		PutCorporationsCorporationIdStructuresStructureId,
 	)
 
 	mockesi.NewRoute(
