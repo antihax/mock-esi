@@ -645,6 +645,14 @@ parameters:
     minimum: 1
     format: "int32"
     x-exportParamName: "CharacterId"
+  page:
+    name: "page"
+    in: "query"
+    description: "Which page of results to return"
+    required: false
+    type: "integer"
+    default: 1
+    format: "int32"
   language:
     name: "language"
     in: "query"
@@ -659,14 +667,6 @@ parameters:
     - "ja"
     - "ru"
     - "zh"
-  page:
-    name: "page"
-    in: "query"
-    description: "Which page of results to return"
-    required: false
-    type: "integer"
-    default: 1
-    format: "int32"
   corporation_id:
     name: "corporation_id"
     in: "path"

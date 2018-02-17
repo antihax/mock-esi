@@ -8698,6 +8698,15 @@ parameters:
     default: 1
     format: "int32"
     x-exportParamName: "Page"
+  alliance_id:
+    name: "alliance_id"
+    in: "path"
+    description: "An EVE alliance ID"
+    required: true
+    type: "integer"
+    minimum: 1
+    format: "int32"
+    x-exportParamName: "AllianceId"
   corporation_id:
     name: "corporation_id"
     in: "path"
@@ -8722,12 +8731,3 @@ parameters:
     - "ru"
     - "zh"
     x-exportParamName: "Language"
-  alliance_id:
-    name: "alliance_id"
-    in: "path"
-    description: "An EVE alliance ID"
-    required: true
-    type: "integer"
-    minimum: 1
-    format: "int32"
-    x-exportParamName: "AllianceId"

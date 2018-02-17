@@ -3172,15 +3172,6 @@ parameters:
     minimum: 1
     format: "int32"
     x-exportParamName: "CorporationId"
-  alliance_id:
-    name: "alliance_id"
-    in: "path"
-    description: "An EVE alliance ID"
-    required: true
-    type: "integer"
-    minimum: 1
-    format: "int32"
-    x-exportParamName: "AllianceId"
   language:
     name: "language"
     in: "query"
@@ -3196,3 +3187,12 @@ parameters:
     - "ru"
     - "zh"
     x-exportParamName: "Language"
+  alliance_id:
+    name: "alliance_id"
+    in: "path"
+    description: "An EVE alliance ID"
+    required: true
+    type: "integer"
+    minimum: 1
+    format: "int32"
+    x-exportParamName: "AllianceId"
