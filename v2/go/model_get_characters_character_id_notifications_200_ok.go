@@ -1,4 +1,4 @@
-package esilegacy
+package esiv2
 
 import "time"
 

@@ -2598,10 +2598,10 @@ paths:
       tags:
       - "Character"
       summary: "Get character notifications"
-      description: "Return character notifications\n\n---\nAlternate route: `/dev/characters/{character_id}/notifications/`\n\
-        \nAlternate route: `/latest/characters/{character_id}/notifications/`\n\n\
-        Alternate route: `/legacy/characters/{character_id}/notifications/`\n\n---\n\
-        This route is cached for up to 600 seconds"
+      description: "Return character notifications\n\n---\nAlternate route: `/latest/characters/{character_id}/notifications/`\n\
+        \nAlternate route: `/legacy/characters/{character_id}/notifications/`\n\n\
+        ---\nThis route is cached for up to 600 seconds\n\n---\n[This route has an\
+        \ available update](https://esi.tech.ccp.is/diff/v1/dev/#GET-/characters/{character_id}/notifications/)"
       operationId: "get_characters_character_id_notifications"
       parameters:
       - name: "character_id"
@@ -2689,7 +2689,6 @@ paths:
         - "esi-characters.read_notifications.v1"
       x-cached-seconds: 600
       x-alternate-versions:
-      - "dev"
       - "latest"
       - "legacy"
   /characters/{character_id}/roles/:
@@ -4439,126 +4438,6 @@ paths:
       - "dev"
       - "latest"
       - "legacy"
-  /corporations/{corporation_id}/shareholders/:
-    get:
-      tags:
-      - "Corporation"
-      summary: "Get corporation shareholders"
-      description: "Return the current shareholders of a corporation.\n\n---\nAlternate\
-        \ route: `/dev/corporations/{corporation_id}/shareholders/`\n\nAlternate route:\
-        \ `/latest/corporations/{corporation_id}/shareholders/`\n\nAlternate route:\
-        \ `/legacy/corporations/{corporation_id}/shareholders/`\n\n---\nThis route\
-        \ is cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
-        \ corporation role(s): Director\n"
-      operationId: "get_corporations_corporation_id_shareholders"
-      parameters:
-      - name: "corporation_id"
-        in: "path"
-        description: "An EVE corporation ID"
-        required: true
-        type: "integer"
-        minimum: 1
-        format: "int32"
-        x-exportParamName: "CorporationId"
-      - name: "datasource"
-        in: "query"
-        description: "The server name you would like data from"
-        required: false
-        type: "string"
-        default: "tranquility"
-        enum:
-        - "tranquility"
-        - "singularity"
-        x-exportParamName: "Datasource"
-      - name: "page"
-        in: "query"
-        description: "Which page of results to return"
-        required: false
-        type: "integer"
-        default: 1
-        format: "int32"
-        x-exportParamName: "Page"
-      - name: "token"
-        in: "query"
-        description: "Access token to use if unable to set a header"
-        required: false
-        type: "string"
-        x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
-      responses:
-        200:
-          description: "List of shareholders"
-          schema:
-            type: "array"
-            description: "List of shareholders"
-            title: "get_corporations_corporation_id_shareholders_ok"
-            items:
-              $ref: "#/definitions/get_corporations_corporation_id_shareholders_200_ok"
-            maxItems: 1000
-          examples:
-            application/json:
-            - shareholder_id: 98000001
-              shareholder_type: "corporation"
-              share_count: 580
-            - shareholder_id: 2112000003
-              shareholder_type: "character"
-              share_count: 20
-            - shareholder_id: 2112000004
-              shareholder_type: "character"
-              share_count: 300
-            - shareholder_id: 2112000001
-              shareholder_type: "character"
-              share_count: 100
-          headers:
-            X-Pages:
-              type: "integer"
-              format: "int32"
-              description: "Maximum page number"
-              default: 1
-            Cache-Control:
-              type: "string"
-              description: "The caching mechanism used"
-            Last-Modified:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-            Expires:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-        403:
-          description: "Forbidden"
-          schema:
-            $ref: "#/definitions/forbidden"
-          examples:
-            application/json:
-              error: "Forbidden message"
-        500:
-          description: "Internal server error"
-          schema:
-            $ref: "#/definitions/internal_server_error"
-          examples:
-            application/json:
-              error: "Internal server error message"
-      security:
-      - evesso:
-        - "esi-wallet.read_corporation_wallets.v1"
-      x-required-roles:
-      - "Director"
-      x-cached-seconds: 3600
-      x-alternate-versions:
-      - "dev"
-      - "latest"
-      - "legacy"
   /corporations/{corporation_id}/alliancehistory/:
     get:
       tags:
@@ -5811,11 +5690,11 @@ paths:
       - "Corporation"
       summary: "Get corporation blueprints"
       description: "Returns a list of blueprints the corporation owns\n\n---\nAlternate\
-        \ route: `/dev/corporations/{corporation_id}/blueprints/`\n\nAlternate route:\
-        \ `/latest/corporations/{corporation_id}/blueprints/`\n\nAlternate route:\
-        \ `/legacy/corporations/{corporation_id}/blueprints/`\n\n---\nThis route is\
-        \ cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
-        \ corporation role(s): Director\n"
+        \ route: `/latest/corporations/{corporation_id}/blueprints/`\n\nAlternate\
+        \ route: `/legacy/corporations/{corporation_id}/blueprints/`\n\n---\nThis\
+        \ route is cached for up to 3600 seconds\n\n---\nRequires one of the following\
+        \ EVE corporation role(s): Director\n\n\n---\n[This route has an available\
+        \ update](https://esi.tech.ccp.is/diff/v1/dev/#GET-/corporations/{corporation_id}/blueprints/)"
       operationId: "get_corporations_corporation_id_blueprints"
       parameters:
       - name: "corporation_id"
@@ -5918,7 +5797,6 @@ paths:
       - "Director"
       x-cached-seconds: 3600
       x-alternate-versions:
-      - "dev"
       - "latest"
       - "legacy"
   /corporations/{corporation_id}/standings/:
@@ -6268,11 +6146,11 @@ paths:
       summary: "Get all corporation ALSC logs"
       description: "Returns logs recorded in the past seven days from all audit log\
         \ secure containers (ALSC) owned by a given corporation\n\n---\nAlternate\
-        \ route: `/dev/corporations/{corporation_id}/containers/logs/`\n\nAlternate\
         \ route: `/latest/corporations/{corporation_id}/containers/logs/`\n\nAlternate\
         \ route: `/legacy/corporations/{corporation_id}/containers/logs/`\n\n---\n\
         This route is cached for up to 600 seconds\n\n---\nRequires one of the following\
-        \ EVE corporation role(s): Director\n"
+        \ EVE corporation role(s): Director\n\n\n---\n[This route has an available\
+        \ update](https://esi.tech.ccp.is/diff/v1/dev/#GET-/corporations/{corporation_id}/containers/logs/)"
       operationId: "get_corporations_corporation_id_containers_logs"
       parameters:
       - name: "corporation_id"
@@ -6393,7 +6271,6 @@ paths:
       - "Director"
       x-cached-seconds: 600
       x-alternate-versions:
-      - "dev"
       - "latest"
       - "legacy"
   /corporations/{corporation_id}/facilities/:
@@ -6944,6 +6821,126 @@ paths:
       security:
       - evesso:
         - "esi-corporations.read_outposts.v1"
+      x-required-roles:
+      - "Director"
+      x-cached-seconds: 3600
+      x-alternate-versions:
+      - "dev"
+      - "latest"
+      - "legacy"
+  /corporations/{corporation_id}/shareholders/:
+    get:
+      tags:
+      - "Corporation"
+      summary: "Get corporation shareholders"
+      description: "Return the current shareholders of a corporation.\n\n---\nAlternate\
+        \ route: `/dev/corporations/{corporation_id}/shareholders/`\n\nAlternate route:\
+        \ `/latest/corporations/{corporation_id}/shareholders/`\n\nAlternate route:\
+        \ `/legacy/corporations/{corporation_id}/shareholders/`\n\n---\nThis route\
+        \ is cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
+        \ corporation role(s): Director\n"
+      operationId: "get_corporations_corporation_id_shareholders"
+      parameters:
+      - name: "corporation_id"
+        in: "path"
+        description: "An EVE corporation ID"
+        required: true
+        type: "integer"
+        minimum: 1
+        format: "int32"
+        x-exportParamName: "CorporationId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "page"
+        in: "query"
+        description: "Which page of results to return"
+        required: false
+        type: "integer"
+        default: 1
+        format: "int32"
+        x-exportParamName: "Page"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      - name: "user_agent"
+        in: "query"
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        type: "string"
+        x-exportParamName: "UserAgent"
+      - name: "X-User-Agent"
+        in: "header"
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        type: "string"
+        x-exportParamName: "XUserAgent"
+      responses:
+        200:
+          description: "List of shareholders"
+          schema:
+            type: "array"
+            description: "List of shareholders"
+            title: "get_corporations_corporation_id_shareholders_ok"
+            items:
+              $ref: "#/definitions/get_corporations_corporation_id_shareholders_200_ok"
+            maxItems: 1000
+          examples:
+            application/json:
+            - shareholder_id: 98000001
+              shareholder_type: "corporation"
+              share_count: 580
+            - shareholder_id: 2112000003
+              shareholder_type: "character"
+              share_count: 20
+            - shareholder_id: 2112000004
+              shareholder_type: "character"
+              share_count: 300
+            - shareholder_id: 2112000001
+              shareholder_type: "character"
+              share_count: 100
+          headers:
+            X-Pages:
+              type: "integer"
+              format: "int32"
+              description: "Maximum page number"
+              default: 1
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+      security:
+      - evesso:
+        - "esi-wallet.read_corporation_wallets.v1"
       x-required-roles:
       - "Director"
       x-cached-seconds: 3600
@@ -18133,16 +18130,6 @@ securityDefinitions:
       esi-wallet.read_character_wallet.v1: "EVE SSO scope esi-wallet.read_character_wallet.v1"
       esi-wallet.read_corporation_wallets.v1: "EVE SSO scope esi-wallet.read_corporation_wallets.v1"
 definitions:
-  internal_server_error:
-    type: "object"
-    required:
-    - "error"
-    properties:
-      error:
-        type: "string"
-        description: "Internal server error message"
-    title: "Internal server error"
-    description: "Internal server error model"
   forbidden:
     type: "object"
     required:
@@ -18156,6 +18143,16 @@ definitions:
         description: "Status code received from SSO"
     title: "Forbidden"
     description: "Forbidden model"
+  internal_server_error:
+    type: "object"
+    required:
+    - "error"
+    properties:
+      error:
+        type: "string"
+        description: "Internal server error message"
+    title: "Internal server error"
+    description: "Internal server error model"
   get_alliances_names_200_ok:
     required:
     - "alliance_id"
@@ -20792,6 +20789,34 @@ definitions:
         format: "int64"
         description: "notification_id integer"
         title: "get_characters_character_id_notifications_notification_id"
+      sender_id:
+        type: "integer"
+        format: "int32"
+        description: "sender_id integer"
+        title: "get_characters_character_id_notifications_sender_id"
+      sender_type:
+        type: "string"
+        description: "sender_type string"
+        title: "get_characters_character_id_notifications_sender_type"
+        enum:
+        - "character"
+        - "corporation"
+        - "alliance"
+        - "faction"
+        - "other"
+      timestamp:
+        type: "string"
+        format: "date-time"
+        description: "timestamp string"
+        title: "get_characters_character_id_notifications_timestamp"
+      is_read:
+        type: "boolean"
+        description: "is_read boolean"
+        title: "get_characters_character_id_notifications_is_read"
+      text:
+        type: "string"
+        description: "text string"
+        title: "get_characters_character_id_notifications_text"
       type:
         type: "string"
         description: "type string"
@@ -20973,34 +20998,6 @@ definitions:
         - "WarSurrenderDeclinedMsg"
         - "WarSurrenderOfferMsg"
         - "notificationTypeMoonminingExtractionStarted"
-      sender_id:
-        type: "integer"
-        format: "int32"
-        description: "sender_id integer"
-        title: "get_characters_character_id_notifications_sender_id"
-      sender_type:
-        type: "string"
-        description: "sender_type string"
-        title: "get_characters_character_id_notifications_sender_type"
-        enum:
-        - "character"
-        - "corporation"
-        - "alliance"
-        - "faction"
-        - "other"
-      timestamp:
-        type: "string"
-        format: "date-time"
-        description: "timestamp string"
-        title: "get_characters_character_id_notifications_timestamp"
-      is_read:
-        type: "boolean"
-        description: "is_read boolean"
-        title: "get_characters_character_id_notifications_is_read"
-      text:
-        type: "string"
-        description: "text string"
-        title: "get_characters_character_id_notifications_text"
     description: "200 ok object"
   get_characters_character_id_titles_200_ok:
     properties:
@@ -21556,30 +21553,6 @@ definitions:
         format: "float"
         description: "The amount bid, in ISK"
         title: "get_corporations_corporation_id_contracts_contract_id_bids_amount"
-    description: "200 ok object"
-  get_corporations_corporation_id_shareholders_200_ok:
-    required:
-    - "share_count"
-    - "shareholder_id"
-    - "shareholder_type"
-    properties:
-      shareholder_id:
-        type: "integer"
-        format: "int32"
-        description: "shareholder_id integer"
-        title: "get_corporations_corporation_id_shareholders_shareholder_id"
-      shareholder_type:
-        type: "string"
-        description: "shareholder_type string"
-        title: "get_corporations_corporation_id_shareholders_shareholder_type"
-        enum:
-        - "character"
-        - "corporation"
-      share_count:
-        type: "integer"
-        format: "int64"
-        description: "share_count integer"
-        title: "get_corporations_corporation_id_shareholders_share_count"
     description: "200 ok object"
   get_corporations_corporation_id_alliancehistory_alliance:
     required:
@@ -23074,6 +23047,36 @@ definitions:
         description: "References a solar system, station or item_id if this blueprint\
           \ is located within a container."
         title: "get_corporations_corporation_id_blueprints_location_id"
+      quantity:
+        type: "integer"
+        format: "int32"
+        description: "A range of numbers with a minimum of -2 and no maximum value\
+          \ where -1 is an original and -2 is a copy. It can be a positive integer\
+          \ if it is a stack of blueprint originals fresh from the market (e.g. no\
+          \ activities performed on them yet)."
+        title: "get_corporations_corporation_id_blueprints_quantity"
+        minimum: -2
+      time_efficiency:
+        type: "integer"
+        format: "int32"
+        description: "Time Efficiency Level of the blueprint."
+        title: "get_corporations_corporation_id_blueprints_time_efficiency"
+        minimum: 0
+        maximum: 20
+      material_efficiency:
+        type: "integer"
+        format: "int32"
+        description: "Material Efficiency Level of the blueprint."
+        title: "get_corporations_corporation_id_blueprints_material_efficiency"
+        minimum: 0
+        maximum: 25
+      runs:
+        type: "integer"
+        format: "int32"
+        description: "Number of runs remaining if the blueprint is a copy, -1 if it\
+          \ is an original."
+        title: "get_corporations_corporation_id_blueprints_runs"
+        minimum: -1
       location_flag:
         type: "string"
         description: "Type of the location_id"
@@ -23194,36 +23197,6 @@ definitions:
         - "Unlocked"
         - "Wallet"
         - "Wardrobe"
-      quantity:
-        type: "integer"
-        format: "int32"
-        description: "A range of numbers with a minimum of -2 and no maximum value\
-          \ where -1 is an original and -2 is a copy. It can be a positive integer\
-          \ if it is a stack of blueprint originals fresh from the market (e.g. no\
-          \ activities performed on them yet)."
-        title: "get_corporations_corporation_id_blueprints_quantity"
-        minimum: -2
-      time_efficiency:
-        type: "integer"
-        format: "int32"
-        description: "Time Efficiency Level of the blueprint."
-        title: "get_corporations_corporation_id_blueprints_time_efficiency"
-        minimum: 0
-        maximum: 20
-      material_efficiency:
-        type: "integer"
-        format: "int32"
-        description: "Material Efficiency Level of the blueprint."
-        title: "get_corporations_corporation_id_blueprints_material_efficiency"
-        minimum: 0
-        maximum: 25
-      runs:
-        type: "integer"
-        format: "int32"
-        description: "Number of runs remaining if the blueprint is a copy, -1 if it\
-          \ is an original."
-        title: "get_corporations_corporation_id_blueprints_runs"
-        minimum: -1
     description: "200 ok object"
   get_corporations_corporation_id_standings_200_ok:
     required:
@@ -23472,6 +23445,48 @@ definitions:
         format: "int64"
         description: "location_id integer"
         title: "get_corporations_corporation_id_containers_logs_location_id"
+      action:
+        type: "string"
+        description: "action string"
+        title: "get_corporations_corporation_id_containers_logs_action"
+        enum:
+        - "add"
+        - "assemble"
+        - "configure"
+        - "enter_password"
+        - "lock"
+        - "move"
+        - "repackage"
+        - "set_name"
+        - "set_password"
+        - "unlock"
+      password_type:
+        type: "string"
+        description: "Type of password set if action is of type SetPassword or EnterPassword"
+        title: "get_corporations_corporation_id_containers_logs_password_type"
+        enum:
+        - "config"
+        - "general"
+      type_id:
+        type: "integer"
+        format: "int32"
+        description: "Type ID of the item being acted upon"
+        title: "get_corporations_corporation_id_containers_logs_type_id"
+      quantity:
+        type: "integer"
+        format: "int32"
+        description: "Quantity of the item being acted upon"
+        title: "get_corporations_corporation_id_containers_logs_quantity"
+      old_config_bitmask:
+        type: "integer"
+        format: "int32"
+        description: "old_config_bitmask integer"
+        title: "get_corporations_corporation_id_containers_logs_old_config_bitmask"
+      new_config_bitmask:
+        type: "integer"
+        format: "int32"
+        description: "new_config_bitmask integer"
+        title: "get_corporations_corporation_id_containers_logs_new_config_bitmask"
       location_flag:
         type: "string"
         description: "location_flag string"
@@ -23592,48 +23607,6 @@ definitions:
         - "Unlocked"
         - "Wallet"
         - "Wardrobe"
-      action:
-        type: "string"
-        description: "action string"
-        title: "get_corporations_corporation_id_containers_logs_action"
-        enum:
-        - "add"
-        - "assemble"
-        - "configure"
-        - "enter_password"
-        - "lock"
-        - "move"
-        - "repackage"
-        - "set_name"
-        - "set_password"
-        - "unlock"
-      password_type:
-        type: "string"
-        description: "Type of password set if action is of type SetPassword or EnterPassword"
-        title: "get_corporations_corporation_id_containers_logs_password_type"
-        enum:
-        - "config"
-        - "general"
-      type_id:
-        type: "integer"
-        format: "int32"
-        description: "Type ID of the item being acted upon"
-        title: "get_corporations_corporation_id_containers_logs_type_id"
-      quantity:
-        type: "integer"
-        format: "int32"
-        description: "Quantity of the item being acted upon"
-        title: "get_corporations_corporation_id_containers_logs_quantity"
-      old_config_bitmask:
-        type: "integer"
-        format: "int32"
-        description: "old_config_bitmask integer"
-        title: "get_corporations_corporation_id_containers_logs_old_config_bitmask"
-      new_config_bitmask:
-        type: "integer"
-        format: "int32"
-        description: "new_config_bitmask integer"
-        title: "get_corporations_corporation_id_containers_logs_new_config_bitmask"
     description: "200 ok object"
   get_corporations_corporation_id_facilities_200_ok:
     required:
@@ -23874,6 +23847,30 @@ definitions:
         items:
           $ref: "#/definitions/get_corporations_corporation_id_outposts_outpost_id_service"
         maxItems: 27
+    description: "200 ok object"
+  get_corporations_corporation_id_shareholders_200_ok:
+    required:
+    - "share_count"
+    - "shareholder_id"
+    - "shareholder_type"
+    properties:
+      shareholder_id:
+        type: "integer"
+        format: "int32"
+        description: "shareholder_id integer"
+        title: "get_corporations_corporation_id_shareholders_shareholder_id"
+      shareholder_type:
+        type: "string"
+        description: "shareholder_type string"
+        title: "get_corporations_corporation_id_shareholders_shareholder_type"
+        enum:
+        - "character"
+        - "corporation"
+      share_count:
+        type: "integer"
+        format: "int64"
+        description: "share_count integer"
+        title: "get_corporations_corporation_id_shareholders_share_count"
     description: "200 ok object"
   get_dogma_attributes_attribute_id_ok:
     required:
@@ -29659,6 +29656,15 @@ parameters:
     required: false
     type: "string"
     x-exportParamName: "XUserAgent"
+  page:
+    name: "page"
+    in: "query"
+    description: "Which page of results to return"
+    required: false
+    type: "integer"
+    default: 1
+    format: "int32"
+    x-exportParamName: "Page"
   token:
     name: "token"
     in: "query"
@@ -29684,15 +29690,6 @@ parameters:
     minimum: 1
     format: "int32"
     x-exportParamName: "CorporationId"
-  page:
-    name: "page"
-    in: "query"
-    description: "Which page of results to return"
-    required: false
-    type: "integer"
-    default: 1
-    format: "int32"
-    x-exportParamName: "Page"
   alliance_id:
     name: "alliance_id"
     in: "path"

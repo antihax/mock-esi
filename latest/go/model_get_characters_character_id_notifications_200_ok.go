@@ -9,9 +9,6 @@ type GetCharactersCharacterIdNotifications200Ok struct {
 	 notification_id integer */
 	NotificationId int64 `json:"notification_id,omitempty"`
 	/*
-	 type string */
-	Type_ string `json:"type,omitempty"`
-	/*
 	 sender_id integer */
 	SenderId int32 `json:"sender_id,omitempty"`
 	/*
@@ -26,4 +23,7 @@ type GetCharactersCharacterIdNotifications200Ok struct {
 	/*
 	 text string */
 	Text string `json:"text,omitempty"`
+	/*
+	 type string */
+	Type_ string `json:"type,omitempty"`
 }

@@ -13,9 +13,6 @@ type GetCorporationsCorporationIdBlueprints200Ok struct {
 	 References a solar system, station or item_id if this blueprint is located within a container. */
 	LocationId int64 `json:"location_id,omitempty"`
 	/*
-	 Type of the location_id */
-	LocationFlag string `json:"location_flag,omitempty"`
-	/*
 	 A range of numbers with a minimum of -2 and no maximum value where -1 is an original and -2 is a copy. It can be a positive integer if it is a stack of blueprint originals fresh from the market (e.g. no activities performed on them yet). */
 	Quantity int32 `json:"quantity,omitempty"`
 	/*
@@ -27,4 +24,7 @@ type GetCorporationsCorporationIdBlueprints200Ok struct {
 	/*
 	 Number of runs remaining if the blueprint is a copy, -1 if it is an original. */
 	Runs int32 `json:"runs,omitempty"`
+	/*
+	 Type of the location_id */
+	LocationFlag string `json:"location_flag,omitempty"`
 }

@@ -21,9 +21,6 @@ type GetCorporationsCorporationIdContainersLogs200Ok struct {
 	 location_id integer */
 	LocationId int64 `json:"location_id,omitempty"`
 	/*
-	 location_flag string */
-	LocationFlag string `json:"location_flag,omitempty"`
-	/*
 	 action string */
 	Action string `json:"action,omitempty"`
 	/*
@@ -41,4 +38,7 @@ type GetCorporationsCorporationIdContainersLogs200Ok struct {
 	/*
 	 new_config_bitmask integer */
 	NewConfigBitmask int32 `json:"new_config_bitmask,omitempty"`
+	/*
+	 location_flag string */
+	LocationFlag string `json:"location_flag,omitempty"`
 }
