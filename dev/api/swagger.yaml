@@ -1875,109 +1875,6 @@ paths:
       - "latest"
       - "legacy"
       - "v1"
-  /characters/{character_id}/stats/:
-    get:
-      tags:
-      - "Character"
-      summary: "Yearly aggregate stats"
-      description: "Returns aggregate yearly stats for a character\n\n---\nAlternate\
-        \ route: `/latest/characters/{character_id}/stats/`\n\nAlternate route: `/v2/characters/{character_id}/stats/`\n\
-        \n---\nThis route is cached for up to 86400 seconds"
-      operationId: "get_characters_character_id_stats"
-      parameters:
-      - name: "character_id"
-        in: "path"
-        description: "An EVE character ID"
-        required: true
-        type: "integer"
-        minimum: 1
-        format: "int32"
-        x-exportParamName: "CharacterId"
-      - name: "datasource"
-        in: "query"
-        description: "The server name you would like data from"
-        required: false
-        type: "string"
-        default: "tranquility"
-        enum:
-        - "tranquility"
-        - "singularity"
-        x-exportParamName: "Datasource"
-      - name: "token"
-        in: "query"
-        description: "Access token to use if unable to set a header"
-        required: false
-        type: "string"
-        x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
-      responses:
-        200:
-          description: "Character stats"
-          schema:
-            type: "array"
-            description: "List of character aggregate stats"
-            title: "get_characters_character_id_stats_ok"
-            items:
-              $ref: "#/definitions/get_characters_character_id_stats_200_ok"
-            maxItems: 1000
-          examples:
-            application/json:
-            - year: 2014
-              character:
-                days_of_activity: 365
-                minutes: 1000000
-                sessions_started: 500
-              combat:
-                kills_low_sec: 42
-            - year: 2015
-              character:
-                days_of_activity: 365
-                minutes: 1000000
-                sessions_started: 500
-              combat:
-                kills_null_sec: 1337
-          headers:
-            Cache-Control:
-              type: "string"
-              description: "The caching mechanism used"
-            Last-Modified:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-            Expires:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-        403:
-          description: "Forbidden"
-          schema:
-            $ref: "#/definitions/forbidden"
-          examples:
-            application/json:
-              error: "Forbidden message"
-        500:
-          description: "Internal server error"
-          schema:
-            $ref: "#/definitions/internal_server_error"
-          examples:
-            application/json:
-              error: "Internal server error message"
-      security:
-      - evesso:
-        - "esi-characterstats.read.v1"
-      x-cached-seconds: 86400
-      x-alternate-versions:
-      - "latest"
-      - "v2"
   /characters/{character_id}/:
     get:
       tags:
@@ -3473,6 +3370,109 @@ paths:
       - "latest"
       - "legacy"
       - "v1"
+  /characters/{character_id}/stats/:
+    get:
+      tags:
+      - "Character"
+      summary: "Yearly aggregate stats"
+      description: "Returns aggregate yearly stats for a character\n\n---\nAlternate\
+        \ route: `/latest/characters/{character_id}/stats/`\n\nAlternate route: `/v2/characters/{character_id}/stats/`\n\
+        \n---\nThis route is cached for up to 86400 seconds"
+      operationId: "get_characters_character_id_stats"
+      parameters:
+      - name: "character_id"
+        in: "path"
+        description: "An EVE character ID"
+        required: true
+        type: "integer"
+        minimum: 1
+        format: "int32"
+        x-exportParamName: "CharacterId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      - name: "user_agent"
+        in: "query"
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        type: "string"
+        x-exportParamName: "UserAgent"
+      - name: "X-User-Agent"
+        in: "header"
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        type: "string"
+        x-exportParamName: "XUserAgent"
+      responses:
+        200:
+          description: "Character stats"
+          schema:
+            type: "array"
+            description: "List of character aggregate stats"
+            title: "get_characters_character_id_stats_ok"
+            items:
+              $ref: "#/definitions/get_characters_character_id_stats_200_ok"
+            maxItems: 1000
+          examples:
+            application/json:
+            - year: 2014
+              character:
+                days_of_activity: 365
+                minutes: 1000000
+                sessions_started: 500
+              combat:
+                kills_low_sec: 42
+            - year: 2015
+              character:
+                days_of_activity: 365
+                minutes: 1000000
+                sessions_started: 500
+              combat:
+                kills_null_sec: 1337
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+      security:
+      - evesso:
+        - "esi-characterstats.read.v1"
+      x-cached-seconds: 86400
+      x-alternate-versions:
+      - "latest"
+      - "v2"
   /characters/{character_id}/clones/:
     get:
       tags:
@@ -5065,6 +5065,126 @@ paths:
       - evesso:
         - "esi-contracts.read_corporation_contracts.v1"
       x-required-roles: []
+      x-cached-seconds: 3600
+      x-alternate-versions:
+      - "latest"
+      - "legacy"
+      - "v1"
+  /corporations/{corporation_id}/shareholders/:
+    get:
+      tags:
+      - "Corporation"
+      summary: "Get corporation shareholders"
+      description: "Return the current shareholders of a corporation.\n\n---\nAlternate\
+        \ route: `/latest/corporations/{corporation_id}/shareholders/`\n\nAlternate\
+        \ route: `/legacy/corporations/{corporation_id}/shareholders/`\n\nAlternate\
+        \ route: `/v1/corporations/{corporation_id}/shareholders/`\n\n---\nThis route\
+        \ is cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
+        \ corporation role(s): Director\n"
+      operationId: "get_corporations_corporation_id_shareholders"
+      parameters:
+      - name: "corporation_id"
+        in: "path"
+        description: "An EVE corporation ID"
+        required: true
+        type: "integer"
+        minimum: 1
+        format: "int32"
+        x-exportParamName: "CorporationId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "page"
+        in: "query"
+        description: "Which page of results to return"
+        required: false
+        type: "integer"
+        default: 1
+        format: "int32"
+        x-exportParamName: "Page"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      - name: "user_agent"
+        in: "query"
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        type: "string"
+        x-exportParamName: "UserAgent"
+      - name: "X-User-Agent"
+        in: "header"
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        type: "string"
+        x-exportParamName: "XUserAgent"
+      responses:
+        200:
+          description: "List of shareholders"
+          schema:
+            type: "array"
+            description: "List of shareholders"
+            title: "get_corporations_corporation_id_shareholders_ok"
+            items:
+              $ref: "#/definitions/get_corporations_corporation_id_shareholders_200_ok"
+            maxItems: 1000
+          examples:
+            application/json:
+            - shareholder_id: 98000001
+              shareholder_type: "corporation"
+              share_count: 580
+            - shareholder_id: 2112000003
+              shareholder_type: "character"
+              share_count: 20
+            - shareholder_id: 2112000004
+              shareholder_type: "character"
+              share_count: 300
+            - shareholder_id: 2112000001
+              shareholder_type: "character"
+              share_count: 100
+          headers:
+            X-Pages:
+              type: "integer"
+              format: "int32"
+              description: "Maximum page number"
+              default: 1
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+      security:
+      - evesso:
+        - "esi-wallet.read_corporation_wallets.v1"
+      x-required-roles:
+      - "Director"
       x-cached-seconds: 3600
       x-alternate-versions:
       - "latest"
@@ -7534,126 +7654,6 @@ paths:
       security:
       - evesso:
         - "esi-corporations.read_outposts.v1"
-      x-required-roles:
-      - "Director"
-      x-cached-seconds: 3600
-      x-alternate-versions:
-      - "latest"
-      - "legacy"
-      - "v1"
-  /corporations/{corporation_id}/shareholders/:
-    get:
-      tags:
-      - "Corporation"
-      summary: "Get corporation shareholders"
-      description: "Return the current shareholders of a corporation.\n\n---\nAlternate\
-        \ route: `/latest/corporations/{corporation_id}/shareholders/`\n\nAlternate\
-        \ route: `/legacy/corporations/{corporation_id}/shareholders/`\n\nAlternate\
-        \ route: `/v1/corporations/{corporation_id}/shareholders/`\n\n---\nThis route\
-        \ is cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
-        \ corporation role(s): Director\n"
-      operationId: "get_corporations_corporation_id_shareholders"
-      parameters:
-      - name: "corporation_id"
-        in: "path"
-        description: "An EVE corporation ID"
-        required: true
-        type: "integer"
-        minimum: 1
-        format: "int32"
-        x-exportParamName: "CorporationId"
-      - name: "datasource"
-        in: "query"
-        description: "The server name you would like data from"
-        required: false
-        type: "string"
-        default: "tranquility"
-        enum:
-        - "tranquility"
-        - "singularity"
-        x-exportParamName: "Datasource"
-      - name: "page"
-        in: "query"
-        description: "Which page of results to return"
-        required: false
-        type: "integer"
-        default: 1
-        format: "int32"
-        x-exportParamName: "Page"
-      - name: "token"
-        in: "query"
-        description: "Access token to use if unable to set a header"
-        required: false
-        type: "string"
-        x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
-      responses:
-        200:
-          description: "List of shareholders"
-          schema:
-            type: "array"
-            description: "List of shareholders"
-            title: "get_corporations_corporation_id_shareholders_ok"
-            items:
-              $ref: "#/definitions/get_corporations_corporation_id_shareholders_200_ok"
-            maxItems: 1000
-          examples:
-            application/json:
-            - shareholder_id: 98000001
-              shareholder_type: "corporation"
-              share_count: 580
-            - shareholder_id: 2112000003
-              shareholder_type: "character"
-              share_count: 20
-            - shareholder_id: 2112000004
-              shareholder_type: "character"
-              share_count: 300
-            - shareholder_id: 2112000001
-              shareholder_type: "character"
-              share_count: 100
-          headers:
-            X-Pages:
-              type: "integer"
-              format: "int32"
-              description: "Maximum page number"
-              default: 1
-            Cache-Control:
-              type: "string"
-              description: "The caching mechanism used"
-            Last-Modified:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-            Expires:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-        403:
-          description: "Forbidden"
-          schema:
-            $ref: "#/definitions/forbidden"
-          examples:
-            application/json:
-              error: "Forbidden message"
-        500:
-          description: "Internal server error"
-          schema:
-            $ref: "#/definitions/internal_server_error"
-          examples:
-            application/json:
-              error: "Internal server error message"
-      security:
-      - evesso:
-        - "esi-wallet.read_corporation_wallets.v1"
       x-required-roles:
       - "Director"
       x-cached-seconds: 3600
@@ -19750,6 +19750,16 @@ securityDefinitions:
       esi-wallet.read_character_wallet.v1: "EVE SSO scope esi-wallet.read_character_wallet.v1"
       esi-wallet.read_corporation_wallets.v1: "EVE SSO scope esi-wallet.read_corporation_wallets.v1"
 definitions:
+  internal_server_error:
+    type: "object"
+    required:
+    - "error"
+    properties:
+      error:
+        type: "string"
+        description: "Internal server error message"
+    title: "Internal server error"
+    description: "Internal server error model"
   forbidden:
     type: "object"
     required:
@@ -19763,16 +19773,6 @@ definitions:
         description: "Status code received from SSO"
     title: "Forbidden"
     description: "Forbidden model"
-  internal_server_error:
-    type: "object"
-    required:
-    - "error"
-    properties:
-      error:
-        type: "string"
-        description: "Internal server error message"
-    title: "Internal server error"
-    description: "Internal server error model"
   get_alliances_alliance_id_ok:
     required:
     - "creator_corporation_id"
@@ -20582,6 +20582,1168 @@ definitions:
         - "accepted"
         - "tentative"
     description: "character_id and response of an attendee"
+  get_characters_character_id_ok:
+    required:
+    - "birthday"
+    - "bloodline_id"
+    - "corporation_id"
+    - "gender"
+    - "name"
+    - "race_id"
+    properties:
+      name:
+        type: "string"
+        description: "name string"
+        title: "get_characters_character_id_name"
+      description:
+        type: "string"
+        description: "description string"
+        title: "get_characters_character_id_description"
+      corporation_id:
+        type: "integer"
+        format: "int32"
+        description: "The character's corporation ID"
+        title: "get_characters_character_id_corporation_id"
+      alliance_id:
+        type: "integer"
+        format: "int32"
+        description: "The character's alliance ID"
+        title: "get_characters_character_id_alliance_id"
+      birthday:
+        type: "string"
+        format: "date-time"
+        description: "Creation date of the character"
+        title: "get_characters_character_id_birthday"
+      gender:
+        type: "string"
+        description: "gender string"
+        title: "get_characters_character_id_gender"
+        enum:
+        - "female"
+        - "male"
+      race_id:
+        type: "integer"
+        format: "int32"
+        description: "race_id integer"
+        title: "get_characters_character_id_race_id"
+      bloodline_id:
+        type: "integer"
+        format: "int32"
+        description: "bloodline_id integer"
+        title: "get_characters_character_id_bloodline_id"
+      ancestry_id:
+        type: "integer"
+        format: "int32"
+        description: "ancestry_id integer"
+        title: "get_characters_character_id_ancestry_id"
+      security_status:
+        type: "number"
+        format: "float"
+        description: "security_status number"
+        title: "get_characters_character_id_security_status"
+        minimum: -10
+        maximum: 10
+      faction_id:
+        type: "integer"
+        format: "int32"
+        description: "ID of the faction the character is fighting for, if the character\
+          \ is enlisted in Factional Warfare"
+        title: "get_characters_character_id_faction_id"
+    description: "200 ok object"
+  get_characters_character_id_not_found:
+    properties:
+      error:
+        type: "string"
+        description: "Not found message"
+        title: "get_characters_character_id_404_not_found"
+    description: "Not found"
+  post_characters_affiliation_200_ok:
+    required:
+    - "character_id"
+    - "corporation_id"
+    properties:
+      character_id:
+        type: "integer"
+        format: "int32"
+        description: "The character's ID"
+        title: "post_characters_affiliation_character_id"
+      corporation_id:
+        type: "integer"
+        format: "int32"
+        description: "The character's corporation ID"
+        title: "post_characters_affiliation_corporation_id"
+      alliance_id:
+        type: "integer"
+        format: "int32"
+        description: "The character's alliance ID, if their corporation is in an alliance"
+        title: "post_characters_affiliation_alliance_id"
+      faction_id:
+        type: "integer"
+        format: "int32"
+        description: "The character's faction ID, if their corporation is in a faction"
+        title: "post_characters_affiliation_faction_id"
+    description: "200 ok object"
+  post_characters_affiliation_not_found:
+    properties:
+      error:
+        type: "string"
+        description: "Not found message"
+        title: "post_characters_affiliation_404_not_found"
+    description: "Not found"
+  get_characters_names_200_ok:
+    required:
+    - "character_id"
+    - "character_name"
+    properties:
+      character_id:
+        type: "integer"
+        format: "int64"
+        description: "character_id integer"
+        title: "get_characters_names_character_id"
+      character_name:
+        type: "string"
+        description: "character_name string"
+        title: "get_characters_names_character_name"
+    description: "200 ok object"
+  get_characters_character_id_portrait_ok:
+    properties:
+      px64x64:
+        type: "string"
+        description: "px64x64 string"
+        title: "get_characters_character_id_portrait_px64x64"
+      px128x128:
+        type: "string"
+        description: "px128x128 string"
+        title: "get_characters_character_id_portrait_px128x128"
+      px256x256:
+        type: "string"
+        description: "px256x256 string"
+        title: "get_characters_character_id_portrait_px256x256"
+      px512x512:
+        type: "string"
+        description: "px512x512 string"
+        title: "get_characters_character_id_portrait_px512x512"
+    description: "200 ok object"
+  get_characters_character_id_portrait_not_found:
+    properties:
+      error:
+        type: "string"
+        description: "error message"
+        title: "get_characters_character_id_portrait_error"
+    description: "No image server for this datasource"
+  get_characters_character_id_corporationhistory_200_ok:
+    required:
+    - "corporation_id"
+    - "record_id"
+    - "start_date"
+    properties:
+      start_date:
+        type: "string"
+        format: "date-time"
+        description: "start_date string"
+        title: "get_characters_character_id_corporationhistory_start_date"
+      corporation_id:
+        type: "integer"
+        format: "int32"
+        description: "corporation_id integer"
+        title: "get_characters_character_id_corporationhistory_corporation_id"
+      is_deleted:
+        type: "boolean"
+        description: "True if the corporation has been deleted"
+        title: "get_characters_character_id_corporationhistory_is_deleted"
+      record_id:
+        type: "integer"
+        format: "int32"
+        description: "An incrementing ID that can be used to canonically establish\
+          \ order of records in cases where dates may be ambiguous"
+        title: "get_characters_character_id_corporationhistory_record_id"
+    description: "200 ok object"
+  get_characters_character_id_chat_channels_allowed:
+    required:
+    - "accessor_id"
+    - "accessor_type"
+    properties:
+      accessor_id:
+        type: "integer"
+        format: "int32"
+        description: "ID of an allowed channel member"
+        title: "get_characters_character_id_chat_channels_accessor_id"
+      accessor_type:
+        type: "string"
+        description: "accessor_type string"
+        title: "get_characters_character_id_chat_channels_accessor_type"
+        enum:
+        - "character"
+        - "corporation"
+        - "alliance"
+    description: "allowed object"
+  get_characters_character_id_chat_channels_operator:
+    required:
+    - "accessor_id"
+    - "accessor_type"
+    properties:
+      accessor_id:
+        type: "integer"
+        format: "int32"
+        description: "ID of a channel operator"
+        title: "get_characters_character_id_chat_channels_accessor_id"
+      accessor_type:
+        type: "string"
+        description: "accessor_type string"
+        title: "get_characters_character_id_chat_channels_accessor_type"
+        enum:
+        - "character"
+        - "corporation"
+        - "alliance"
+    description: "operator object"
+  get_characters_character_id_chat_channels_blocked:
+    required:
+    - "accessor_id"
+    - "accessor_type"
+    properties:
+      accessor_id:
+        type: "integer"
+        format: "int32"
+        description: "ID of a blocked channel member"
+        title: "get_characters_character_id_chat_channels_accessor_id"
+      accessor_type:
+        type: "string"
+        description: "accessor_type string"
+        title: "get_characters_character_id_chat_channels_accessor_type"
+        enum:
+        - "character"
+        - "corporation"
+        - "alliance"
+      reason:
+        type: "string"
+        description: "Reason this accessor is blocked"
+        title: "get_characters_character_id_chat_channels_reason"
+      end_at:
+        type: "string"
+        format: "date-time"
+        description: "Time at which this accessor will no longer be blocked"
+        title: "get_characters_character_id_chat_channels_end_at"
+    description: "blocked object"
+  get_characters_character_id_chat_channels_muted:
+    required:
+    - "accessor_id"
+    - "accessor_type"
+    properties:
+      accessor_id:
+        type: "integer"
+        format: "int32"
+        description: "ID of a muted channel member"
+        title: "get_characters_character_id_chat_channels_accessor_id"
+      accessor_type:
+        type: "string"
+        description: "accessor_type string"
+        title: "get_characters_character_id_chat_channels_accessor_type"
+        enum:
+        - "character"
+        - "corporation"
+        - "alliance"
+      reason:
+        type: "string"
+        description: "Reason this accessor is muted"
+        title: "get_characters_character_id_chat_channels_reason"
+      end_at:
+        type: "string"
+        format: "date-time"
+        description: "Time at which this accessor will no longer be muted"
+        title: "get_characters_character_id_chat_channels_end_at"
+    description: "muted object"
+  get_characters_character_id_chat_channels_200_ok:
+    required:
+    - "allowed"
+    - "blocked"
+    - "channel_id"
+    - "comparison_key"
+    - "has_password"
+    - "motd"
+    - "muted"
+    - "name"
+    - "operators"
+    - "owner_id"
+    properties:
+      channel_id:
+        type: "integer"
+        format: "int32"
+        description: "Unique channel ID. Always negative for player-created channels.\
+          \ Permanent (CCP created) channels have a positive ID, but don't appear\
+          \ in the API"
+        title: "get_characters_character_id_chat_channels_channel_id"
+      name:
+        type: "string"
+        description: "Displayed name of channel"
+        title: "get_characters_character_id_chat_channels_name"
+      owner_id:
+        type: "integer"
+        format: "int32"
+        description: "owner_id integer"
+        title: "get_characters_character_id_chat_channels_owner_id"
+      comparison_key:
+        type: "string"
+        description: "Normalized, unique string used to compare channel names"
+        title: "get_characters_character_id_chat_channels_comparison_key"
+      has_password:
+        type: "boolean"
+        description: "If this is a password protected channel"
+        title: "get_characters_character_id_chat_channels_has_password"
+      motd:
+        type: "string"
+        description: "Message of the day for this channel"
+        title: "get_characters_character_id_chat_channels_motd"
+      allowed:
+        type: "array"
+        description: "allowed array"
+        title: "get_characters_character_id_chat_channels_allowed"
+        items:
+          $ref: "#/definitions/get_characters_character_id_chat_channels_allowed"
+        maxItems: 1000
+      operators:
+        type: "array"
+        description: "operators array"
+        title: "get_characters_character_id_chat_channels_operators"
+        items:
+          $ref: "#/definitions/get_characters_character_id_chat_channels_operator"
+        maxItems: 1000
+      blocked:
+        type: "array"
+        description: "blocked array"
+        title: "get_characters_character_id_chat_channels_blocked"
+        items:
+          $ref: "#/definitions/get_characters_character_id_chat_channels_blocked"
+        maxItems: 1000
+      muted:
+        type: "array"
+        description: "muted array"
+        title: "get_characters_character_id_chat_channels_muted"
+        items:
+          $ref: "#/definitions/get_characters_character_id_chat_channels_muted"
+        maxItems: 1000
+    description: "200 ok object"
+  get_characters_character_id_medals_graphic:
+    required:
+    - "graphic"
+    - "layer"
+    - "part"
+    properties:
+      part:
+        type: "integer"
+        format: "int32"
+        description: "part integer"
+        title: "get_characters_character_id_medals_part"
+      layer:
+        type: "integer"
+        format: "int32"
+        description: "layer integer"
+        title: "get_characters_character_id_medals_layer"
+      graphic:
+        type: "string"
+        description: "graphic string"
+        title: "get_characters_character_id_medals_graphic"
+      color:
+        type: "integer"
+        format: "int32"
+        description: "color integer"
+        title: "get_characters_character_id_medals_color"
+    description: "graphic object"
+  get_characters_character_id_medals_200_ok:
+    required:
+    - "corporation_id"
+    - "date"
+    - "description"
+    - "graphics"
+    - "issuer_id"
+    - "medal_id"
+    - "reason"
+    - "status"
+    - "title"
+    properties:
+      medal_id:
+        type: "integer"
+        format: "int32"
+        description: "medal_id integer"
+        title: "get_characters_character_id_medals_medal_id"
+      title:
+        type: "string"
+        description: "title string"
+        title: "get_characters_character_id_medals_title"
+      description:
+        type: "string"
+        description: "description string"
+        title: "get_characters_character_id_medals_description"
+      corporation_id:
+        type: "integer"
+        format: "int32"
+        description: "corporation_id integer"
+        title: "get_characters_character_id_medals_corporation_id"
+      issuer_id:
+        type: "integer"
+        format: "int32"
+        description: "issuer_id integer"
+        title: "get_characters_character_id_medals_issuer_id"
+      date:
+        type: "string"
+        format: "date-time"
+        description: "date string"
+        title: "get_characters_character_id_medals_date"
+      reason:
+        type: "string"
+        description: "reason string"
+        title: "get_characters_character_id_medals_reason"
+      status:
+        type: "string"
+        description: "status string"
+        title: "get_characters_character_id_medals_status"
+        enum:
+        - "public"
+        - "private"
+      graphics:
+        type: "array"
+        description: "graphics array"
+        title: "get_characters_character_id_medals_graphics"
+        items:
+          $ref: "#/definitions/get_characters_character_id_medals_graphic"
+        maxItems: 9
+        minItems: 3
+    description: "200 ok object"
+  get_characters_character_id_standings_200_ok:
+    required:
+    - "from_id"
+    - "from_type"
+    - "standing"
+    properties:
+      from_id:
+        type: "integer"
+        format: "int32"
+        description: "from_id integer"
+        title: "get_characters_character_id_standings_from_id"
+      from_type:
+        type: "string"
+        description: "from_type string"
+        title: "get_characters_character_id_standings_from_type"
+        enum:
+        - "agent"
+        - "npc_corp"
+        - "faction"
+      standing:
+        type: "number"
+        format: "float"
+        description: "standing number"
+        title: "get_characters_character_id_standings_standing"
+        minimum: -10
+        maximum: 10
+    description: "200 ok object"
+  get_characters_character_id_agents_research_200_ok:
+    required:
+    - "agent_id"
+    - "points_per_day"
+    - "remainder_points"
+    - "skill_type_id"
+    - "started_at"
+    properties:
+      agent_id:
+        type: "integer"
+        format: "int32"
+        description: "agent_id integer"
+        title: "get_characters_character_id_agents_research_agent_id"
+      skill_type_id:
+        type: "integer"
+        format: "int32"
+        description: "skill_type_id integer"
+        title: "get_characters_character_id_agents_research_skill_type_id"
+      started_at:
+        type: "string"
+        format: "date-time"
+        description: "started_at string"
+        title: "get_characters_character_id_agents_research_started_at"
+      points_per_day:
+        type: "number"
+        format: "float"
+        description: "points_per_day number"
+        title: "get_characters_character_id_agents_research_points_per_day"
+      remainder_points:
+        type: "number"
+        format: "float"
+        description: "remainder_points number"
+        title: "get_characters_character_id_agents_research_remainder_points"
+    description: "200 ok object"
+  get_characters_character_id_blueprints_200_ok:
+    required:
+    - "item_id"
+    - "location_flag"
+    - "location_id"
+    - "material_efficiency"
+    - "quantity"
+    - "runs"
+    - "time_efficiency"
+    - "type_id"
+    properties:
+      item_id:
+        type: "integer"
+        format: "int64"
+        description: "Unique ID for this item."
+        title: "get_characters_character_id_blueprints_item_id"
+      type_id:
+        type: "integer"
+        format: "int32"
+        description: "type_id integer"
+        title: "get_characters_character_id_blueprints_type_id"
+      location_id:
+        type: "integer"
+        format: "int64"
+        description: "References a solar system, station or item_id if this blueprint\
+          \ is located within a container. If the return value is an item_id, then\
+          \ the Character AssetList API must be queried to find the container using\
+          \ the given item_id to determine the correct location of the Blueprint."
+        title: "get_characters_character_id_blueprints_location_id"
+      location_flag:
+        type: "string"
+        description: "Type of the location_id"
+        title: "get_characters_character_id_blueprints_location_flag"
+        enum:
+        - "AutoFit"
+        - "Cargo"
+        - "CorpseBay"
+        - "DroneBay"
+        - "FleetHangar"
+        - "Deliveries"
+        - "HiddenModifiers"
+        - "Hangar"
+        - "HangarAll"
+        - "LoSlot0"
+        - "LoSlot1"
+        - "LoSlot2"
+        - "LoSlot3"
+        - "LoSlot4"
+        - "LoSlot5"
+        - "LoSlot6"
+        - "LoSlot7"
+        - "MedSlot0"
+        - "MedSlot1"
+        - "MedSlot2"
+        - "MedSlot3"
+        - "MedSlot4"
+        - "MedSlot5"
+        - "MedSlot6"
+        - "MedSlot7"
+        - "HiSlot0"
+        - "HiSlot1"
+        - "HiSlot2"
+        - "HiSlot3"
+        - "HiSlot4"
+        - "HiSlot5"
+        - "HiSlot6"
+        - "HiSlot7"
+        - "AssetSafety"
+        - "Locked"
+        - "Unlocked"
+        - "Implant"
+        - "QuafeBay"
+        - "RigSlot0"
+        - "RigSlot1"
+        - "RigSlot2"
+        - "RigSlot3"
+        - "RigSlot4"
+        - "RigSlot5"
+        - "RigSlot6"
+        - "RigSlot7"
+        - "ShipHangar"
+        - "SpecializedFuelBay"
+        - "SpecializedOreHold"
+        - "SpecializedGasHold"
+        - "SpecializedMineralHold"
+        - "SpecializedSalvageHold"
+        - "SpecializedShipHold"
+        - "SpecializedSmallShipHold"
+        - "SpecializedMediumShipHold"
+        - "SpecializedLargeShipHold"
+        - "SpecializedIndustrialShipHold"
+        - "SpecializedAmmoHold"
+        - "SpecializedCommandCenterHold"
+        - "SpecializedPlanetaryCommoditiesHold"
+        - "SpecializedMaterialBay"
+        - "SubSystemSlot0"
+        - "SubSystemSlot1"
+        - "SubSystemSlot2"
+        - "SubSystemSlot3"
+        - "SubSystemSlot4"
+        - "SubSystemSlot5"
+        - "SubSystemSlot6"
+        - "SubSystemSlot7"
+        - "FighterBay"
+        - "FighterTube0"
+        - "FighterTube1"
+        - "FighterTube2"
+        - "FighterTube3"
+        - "FighterTube4"
+        - "Module"
+      quantity:
+        type: "integer"
+        format: "int32"
+        description: "A range of numbers with a minimum of -2 and no maximum value\
+          \ where -1 is an original and -2 is a copy. It can be a positive integer\
+          \ if it is a stack of blueprint originals fresh from the market (e.g. no\
+          \ activities performed on them yet)."
+        title: "get_characters_character_id_blueprints_quantity"
+        minimum: -2
+      time_efficiency:
+        type: "integer"
+        format: "int32"
+        description: "Time Efficiency Level of the blueprint."
+        title: "get_characters_character_id_blueprints_time_efficiency"
+        minimum: 0
+        maximum: 20
+      material_efficiency:
+        type: "integer"
+        format: "int32"
+        description: "Material Efficiency Level of the blueprint."
+        title: "get_characters_character_id_blueprints_material_efficiency"
+        minimum: 0
+        maximum: 25
+      runs:
+        type: "integer"
+        format: "int32"
+        description: "Number of runs remaining if the blueprint is a copy, -1 if it\
+          \ is an original."
+        title: "get_characters_character_id_blueprints_runs"
+        minimum: -1
+    description: "200 ok object"
+  get_characters_character_id_fatigue_ok:
+    properties:
+      last_jump_date:
+        type: "string"
+        format: "date-time"
+        description: "Character's last jump activation"
+        title: "get_characters_character_id_fatigue_last_jump_date"
+      jump_fatigue_expire_date:
+        type: "string"
+        format: "date-time"
+        description: "Character's jump fatigue expiry"
+        title: "get_characters_character_id_fatigue_jump_fatigue_expire_date"
+      last_update_date:
+        type: "string"
+        format: "date-time"
+        description: "Character's last jump update"
+        title: "get_characters_character_id_fatigue_last_update_date"
+    description: "200 ok object"
+  get_characters_character_id_notifications_contacts_200_ok:
+    required:
+    - "message"
+    - "notification_id"
+    - "send_date"
+    - "sender_character_id"
+    - "standing_level"
+    properties:
+      notification_id:
+        type: "integer"
+        format: "int32"
+        description: "notification_id integer"
+        title: "get_characters_character_id_notifications_contacts_notification_id"
+      send_date:
+        type: "string"
+        format: "date-time"
+        description: "send_date string"
+        title: "get_characters_character_id_notifications_contacts_send_date"
+      standing_level:
+        type: "number"
+        format: "float"
+        description: "A number representing the standing level the receiver has been\
+          \ added at by the sender. The standing levels are as follows: -10 -> Terrible\
+          \ | -5 -> Bad |  0 -> Neutral |  5 -> Good |  10 -> Excellent"
+        title: "get_characters_character_id_notifications_contacts_standing_level"
+      message:
+        type: "string"
+        description: "message string"
+        title: "get_characters_character_id_notifications_contacts_message"
+      sender_character_id:
+        type: "integer"
+        format: "int32"
+        description: "sender_character_id integer"
+        title: "get_characters_character_id_notifications_contacts_sender_character_id"
+    description: "200 ok object"
+  get_characters_character_id_notifications_200_ok:
+    required:
+    - "notification_id"
+    - "sender_id"
+    - "sender_type"
+    - "timestamp"
+    - "type"
+    properties:
+      notification_id:
+        type: "integer"
+        format: "int64"
+        description: "notification_id integer"
+        title: "get_characters_character_id_notifications_notification_id"
+      sender_id:
+        type: "integer"
+        format: "int32"
+        description: "sender_id integer"
+        title: "get_characters_character_id_notifications_sender_id"
+      sender_type:
+        type: "string"
+        description: "sender_type string"
+        title: "get_characters_character_id_notifications_sender_type"
+        enum:
+        - "character"
+        - "corporation"
+        - "alliance"
+        - "faction"
+        - "other"
+      timestamp:
+        type: "string"
+        format: "date-time"
+        description: "timestamp string"
+        title: "get_characters_character_id_notifications_timestamp"
+      is_read:
+        type: "boolean"
+        description: "is_read boolean"
+        title: "get_characters_character_id_notifications_is_read"
+      text:
+        type: "string"
+        description: "text string"
+        title: "get_characters_character_id_notifications_text"
+      type:
+        type: "string"
+        description: "type string"
+        title: "get_characters_character_id_notifications_type"
+        enum:
+        - "AcceptedAlly"
+        - "AcceptedSurrender"
+        - "AllAnchoringMsg"
+        - "AllMaintenanceBillMsg"
+        - "AllStrucInvulnerableMsg"
+        - "AllStructVulnerableMsg"
+        - "AllWarCorpJoinedAllianceMsg"
+        - "AllWarDeclaredMsg"
+        - "AllWarInvalidatedMsg"
+        - "AllWarRetractedMsg"
+        - "AllWarSurrenderMsg"
+        - "AllianceCapitalChanged"
+        - "AllyContractCancelled"
+        - "AllyJoinedWarAggressorMsg"
+        - "AllyJoinedWarAllyMsg"
+        - "AllyJoinedWarDefenderMsg"
+        - "BattlePunishFriendlyFire"
+        - "BillOutOfMoneyMsg"
+        - "BillPaidCorpAllMsg"
+        - "BountyClaimMsg"
+        - "BountyESSShared"
+        - "BountyESSTaken"
+        - "BountyPlacedAlliance"
+        - "BountyPlacedChar"
+        - "BountyPlacedCorp"
+        - "BountyYourBountyClaimed"
+        - "BuddyConnectContactAdd"
+        - "CharAppAcceptMsg"
+        - "CharAppRejectMsg"
+        - "CharAppWithdrawMsg"
+        - "CharLeftCorpMsg"
+        - "CharMedalMsg"
+        - "CharTerminationMsg"
+        - "CloneActivationMsg"
+        - "CloneActivationMsg2"
+        - "CloneMovedMsg"
+        - "CloneRevokedMsg1"
+        - "CloneRevokedMsg2"
+        - "ContactAdd"
+        - "ContactEdit"
+        - "ContainerPasswordMsg"
+        - "CorpAllBillMsg"
+        - "CorpAppAcceptMsg"
+        - "CorpAppInvitedMsg"
+        - "CorpAppNewMsg"
+        - "CorpAppRejectCustomMsg"
+        - "CorpAppRejectMsg"
+        - "CorpDividendMsg"
+        - "CorpFriendlyFireDisableTimerCompleted"
+        - "CorpFriendlyFireDisableTimerStarted"
+        - "CorpFriendlyFireEnableTimerCompleted"
+        - "CorpFriendlyFireEnableTimerStarted"
+        - "CorpKicked"
+        - "CorpLiquidationMsg"
+        - "CorpNewCEOMsg"
+        - "CorpNewsMsg"
+        - "CorpOfficeExpirationMsg"
+        - "CorpStructLostMsg"
+        - "CorpTaxChangeMsg"
+        - "CorpVoteCEORevokedMsg"
+        - "CorpVoteMsg"
+        - "CorpWarDeclaredMsg"
+        - "CorpWarFightingLegalMsg"
+        - "CorpWarInvalidatedMsg"
+        - "CorpWarRetractedMsg"
+        - "CorpWarSurrenderMsg"
+        - "CustomsMsg"
+        - "DeclareWar"
+        - "DistrictAttacked"
+        - "DustAppAcceptedMsg"
+        - "EntosisCaptureStarted"
+        - "FWAllianceKickMsg"
+        - "FWAllianceWarningMsg"
+        - "FWCharKickMsg"
+        - "FWCharRankGainMsg"
+        - "FWCharRankLossMsg"
+        - "FWCharWarningMsg"
+        - "FWCorpJoinMsg"
+        - "FWCorpKickMsg"
+        - "FWCorpLeaveMsg"
+        - "FWCorpWarningMsg"
+        - "FacWarCorpJoinRequestMsg"
+        - "FacWarCorpJoinWithdrawMsg"
+        - "FacWarCorpLeaveRequestMsg"
+        - "FacWarCorpLeaveWithdrawMsg"
+        - "FacWarLPDisqualifiedEvent"
+        - "FacWarLPDisqualifiedKill"
+        - "FacWarLPPayoutEvent"
+        - "FacWarLPPayoutKill"
+        - "GameTimeAdded"
+        - "GameTimeReceived"
+        - "GameTimeSent"
+        - "GiftReceived"
+        - "IHubDestroyedByBillFailure"
+        - "IncursionCompletedMsg"
+        - "IndustryTeamAuctionLost"
+        - "IndustryTeamAuctionWon"
+        - "InfrastructureHubBillAboutToExpire"
+        - "InsuranceExpirationMsg"
+        - "InsuranceFirstShipMsg"
+        - "InsuranceInvalidatedMsg"
+        - "InsuranceIssuedMsg"
+        - "InsurancePayoutMsg"
+        - "JumpCloneDeletedMsg1"
+        - "JumpCloneDeletedMsg2"
+        - "KillReportFinalBlow"
+        - "KillReportVictim"
+        - "KillRightAvailable"
+        - "KillRightAvailableOpen"
+        - "KillRightEarned"
+        - "KillRightUnavailable"
+        - "KillRightUnavailableOpen"
+        - "KillRightUsed"
+        - "LocateCharMsg"
+        - "MadeWarMutual"
+        - "MercOfferedNegotiationMsg"
+        - "MissionOfferExpirationMsg"
+        - "MissionTimeoutMsg"
+        - "MoonminingAutomaticFracture"
+        - "MoonminingExtractionCancelled"
+        - "MoonminingExtractionFinished"
+        - "MoonminingExtractionStarted"
+        - "MoonminingLaserFired"
+        - "NPCStandingsGained"
+        - "NPCStandingsLost"
+        - "OfferedSurrender"
+        - "OfferedToAlly"
+        - "OldLscMessages"
+        - "OperationFinished"
+        - "OrbitalAttacked"
+        - "OrbitalReinforced"
+        - "OwnershipTransferred"
+        - "ReimbursementMsg"
+        - "ResearchMissionAvailableMsg"
+        - "RetractsWar"
+        - "SeasonalChallengeCompleted"
+        - "SovAllClaimAquiredMsg"
+        - "SovAllClaimLostMsg"
+        - "SovCommandNodeEventStarted"
+        - "SovCorpBillLateMsg"
+        - "SovCorpClaimFailMsg"
+        - "SovDisruptorMsg"
+        - "SovStationEnteredFreeport"
+        - "SovStructureDestroyed"
+        - "SovStructureReinforced"
+        - "SovStructureSelfDestructCancel"
+        - "SovStructureSelfDestructFinished"
+        - "SovStructureSelfDestructRequested"
+        - "SovereigntyIHDamageMsg"
+        - "SovereigntySBUDamageMsg"
+        - "SovereigntyTCUDamageMsg"
+        - "StationAggressionMsg1"
+        - "StationAggressionMsg2"
+        - "StationConquerMsg"
+        - "StationServiceDisabled"
+        - "StationServiceEnabled"
+        - "StationStateChangeMsg"
+        - "StoryLineMissionAvailableMsg"
+        - "StructureAnchoring"
+        - "StructureCourierContractChanged"
+        - "StructureDestroyed"
+        - "StructureFuelAlert"
+        - "StructureItemsDelivered"
+        - "StructureLostArmor"
+        - "StructureLostShields"
+        - "StructureOnline"
+        - "StructureServicesOffline"
+        - "StructureUnanchoring"
+        - "StructureUnderAttack"
+        - "StructureWentHighPower"
+        - "StructureWentLowPower"
+        - "StructuresReinforcementChanged"
+        - "TowerAlertMsg"
+        - "TowerResourceAlertMsg"
+        - "TransactionReversalMsg"
+        - "TutorialMsg"
+        - "WarAllyOfferDeclinedMsg"
+        - "WarSurrenderDeclinedMsg"
+        - "WarSurrenderOfferMsg"
+    description: "200 ok object"
+  get_characters_character_id_roles_ok:
+    properties:
+      roles:
+        type: "array"
+        description: "roles array"
+        title: "get_characters_character_id_roles_roles"
+        items:
+          type: "string"
+          description: "role string"
+          title: "get_characters_character_id_roles_role"
+          enum:
+          - "Account_Take_1"
+          - "Account_Take_2"
+          - "Account_Take_3"
+          - "Account_Take_4"
+          - "Account_Take_5"
+          - "Account_Take_6"
+          - "Account_Take_7"
+          - "Accountant"
+          - "Auditor"
+          - "Communications_Officer"
+          - "Config_Equipment"
+          - "Config_Starbase_Equipment"
+          - "Container_Take_1"
+          - "Container_Take_2"
+          - "Container_Take_3"
+          - "Container_Take_4"
+          - "Container_Take_5"
+          - "Container_Take_6"
+          - "Container_Take_7"
+          - "Contract_Manager"
+          - "Diplomat"
+          - "Director"
+          - "Factory_Manager"
+          - "Fitting_Manager"
+          - "Hangar_Query_1"
+          - "Hangar_Query_2"
+          - "Hangar_Query_3"
+          - "Hangar_Query_4"
+          - "Hangar_Query_5"
+          - "Hangar_Query_6"
+          - "Hangar_Query_7"
+          - "Hangar_Take_1"
+          - "Hangar_Take_2"
+          - "Hangar_Take_3"
+          - "Hangar_Take_4"
+          - "Hangar_Take_5"
+          - "Hangar_Take_6"
+          - "Hangar_Take_7"
+          - "Junior_Accountant"
+          - "Personnel_Manager"
+          - "Rent_Factory_Facility"
+          - "Rent_Office"
+          - "Rent_Research_Facility"
+          - "Security_Officer"
+          - "Starbase_Defense_Operator"
+          - "Starbase_Fuel_Technician"
+          - "Station_Manager"
+          - "Terrestrial_Combat_Officer"
+          - "Terrestrial_Logistics_Officer"
+          - "Trader"
+        maxItems: 50
+      roles_at_hq:
+        type: "array"
+        description: "roles_at_hq array"
+        title: "get_characters_character_id_roles_roles_at_hq"
+        items:
+          type: "string"
+          description: "roles_at_hq string"
+          title: "get_characters_character_id_roles_roles_at_hq"
+          enum:
+          - "Account_Take_1"
+          - "Account_Take_2"
+          - "Account_Take_3"
+          - "Account_Take_4"
+          - "Account_Take_5"
+          - "Account_Take_6"
+          - "Account_Take_7"
+          - "Accountant"
+          - "Auditor"
+          - "Communications_Officer"
+          - "Config_Equipment"
+          - "Config_Starbase_Equipment"
+          - "Container_Take_1"
+          - "Container_Take_2"
+          - "Container_Take_3"
+          - "Container_Take_4"
+          - "Container_Take_5"
+          - "Container_Take_6"
+          - "Container_Take_7"
+          - "Contract_Manager"
+          - "Diplomat"
+          - "Director"
+          - "Factory_Manager"
+          - "Fitting_Manager"
+          - "Hangar_Query_1"
+          - "Hangar_Query_2"
+          - "Hangar_Query_3"
+          - "Hangar_Query_4"
+          - "Hangar_Query_5"
+          - "Hangar_Query_6"
+          - "Hangar_Query_7"
+          - "Hangar_Take_1"
+          - "Hangar_Take_2"
+          - "Hangar_Take_3"
+          - "Hangar_Take_4"
+          - "Hangar_Take_5"
+          - "Hangar_Take_6"
+          - "Hangar_Take_7"
+          - "Junior_Accountant"
+          - "Personnel_Manager"
+          - "Rent_Factory_Facility"
+          - "Rent_Office"
+          - "Rent_Research_Facility"
+          - "Security_Officer"
+          - "Starbase_Defense_Operator"
+          - "Starbase_Fuel_Technician"
+          - "Station_Manager"
+          - "Terrestrial_Combat_Officer"
+          - "Terrestrial_Logistics_Officer"
+          - "Trader"
+        maxItems: 50
+      roles_at_base:
+        type: "array"
+        description: "roles_at_base array"
+        title: "get_characters_character_id_roles_roles_at_base"
+        items:
+          type: "string"
+          description: "roles_at_base string"
+          title: "get_characters_character_id_roles_roles_at_base"
+          enum:
+          - "Account_Take_1"
+          - "Account_Take_2"
+          - "Account_Take_3"
+          - "Account_Take_4"
+          - "Account_Take_5"
+          - "Account_Take_6"
+          - "Account_Take_7"
+          - "Accountant"
+          - "Auditor"
+          - "Communications_Officer"
+          - "Config_Equipment"
+          - "Config_Starbase_Equipment"
+          - "Container_Take_1"
+          - "Container_Take_2"
+          - "Container_Take_3"
+          - "Container_Take_4"
+          - "Container_Take_5"
+          - "Container_Take_6"
+          - "Container_Take_7"
+          - "Contract_Manager"
+          - "Diplomat"
+          - "Director"
+          - "Factory_Manager"
+          - "Fitting_Manager"
+          - "Hangar_Query_1"
+          - "Hangar_Query_2"
+          - "Hangar_Query_3"
+          - "Hangar_Query_4"
+          - "Hangar_Query_5"
+          - "Hangar_Query_6"
+          - "Hangar_Query_7"
+          - "Hangar_Take_1"
+          - "Hangar_Take_2"
+          - "Hangar_Take_3"
+          - "Hangar_Take_4"
+          - "Hangar_Take_5"
+          - "Hangar_Take_6"
+          - "Hangar_Take_7"
+          - "Junior_Accountant"
+          - "Personnel_Manager"
+          - "Rent_Factory_Facility"
+          - "Rent_Office"
+          - "Rent_Research_Facility"
+          - "Security_Officer"
+          - "Starbase_Defense_Operator"
+          - "Starbase_Fuel_Technician"
+          - "Station_Manager"
+          - "Terrestrial_Combat_Officer"
+          - "Terrestrial_Logistics_Officer"
+          - "Trader"
+        maxItems: 50
+      roles_at_other:
+        type: "array"
+        description: "roles_at_other array"
+        title: "get_characters_character_id_roles_roles_at_other"
+        items:
+          type: "string"
+          description: "roles_at_other string"
+          title: "get_characters_character_id_roles_roles_at_other"
+          enum:
+          - "Account_Take_1"
+          - "Account_Take_2"
+          - "Account_Take_3"
+          - "Account_Take_4"
+          - "Account_Take_5"
+          - "Account_Take_6"
+          - "Account_Take_7"
+          - "Accountant"
+          - "Auditor"
+          - "Communications_Officer"
+          - "Config_Equipment"
+          - "Config_Starbase_Equipment"
+          - "Container_Take_1"
+          - "Container_Take_2"
+          - "Container_Take_3"
+          - "Container_Take_4"
+          - "Container_Take_5"
+          - "Container_Take_6"
+          - "Container_Take_7"
+          - "Contract_Manager"
+          - "Diplomat"
+          - "Director"
+          - "Factory_Manager"
+          - "Fitting_Manager"
+          - "Hangar_Query_1"
+          - "Hangar_Query_2"
+          - "Hangar_Query_3"
+          - "Hangar_Query_4"
+          - "Hangar_Query_5"
+          - "Hangar_Query_6"
+          - "Hangar_Query_7"
+          - "Hangar_Take_1"
+          - "Hangar_Take_2"
+          - "Hangar_Take_3"
+          - "Hangar_Take_4"
+          - "Hangar_Take_5"
+          - "Hangar_Take_6"
+          - "Hangar_Take_7"
+          - "Junior_Accountant"
+          - "Personnel_Manager"
+          - "Rent_Factory_Facility"
+          - "Rent_Office"
+          - "Rent_Research_Facility"
+          - "Security_Officer"
+          - "Starbase_Defense_Operator"
+          - "Starbase_Fuel_Technician"
+          - "Station_Manager"
+          - "Terrestrial_Combat_Officer"
+          - "Terrestrial_Logistics_Officer"
+          - "Trader"
+        maxItems: 50
+    description: "200 ok object"
+  get_characters_character_id_titles_200_ok:
+    properties:
+      title_id:
+        type: "integer"
+        format: "int32"
+        description: "title_id integer"
+        title: "get_characters_character_id_titles_title_id"
+      name:
+        type: "string"
+        description: "name string"
+        title: "get_characters_character_id_titles_name"
+    description: "200 ok object"
   get_characters_character_id_stats_character:
     properties:
       days_of_activity:
@@ -22107,1168 +23269,6 @@ definitions:
       travel:
         $ref: "#/definitions/get_characters_character_id_stats_travel"
     description: "Aggregate stats for a year"
-  get_characters_character_id_ok:
-    required:
-    - "birthday"
-    - "bloodline_id"
-    - "corporation_id"
-    - "gender"
-    - "name"
-    - "race_id"
-    properties:
-      name:
-        type: "string"
-        description: "name string"
-        title: "get_characters_character_id_name"
-      description:
-        type: "string"
-        description: "description string"
-        title: "get_characters_character_id_description"
-      corporation_id:
-        type: "integer"
-        format: "int32"
-        description: "The character's corporation ID"
-        title: "get_characters_character_id_corporation_id"
-      alliance_id:
-        type: "integer"
-        format: "int32"
-        description: "The character's alliance ID"
-        title: "get_characters_character_id_alliance_id"
-      birthday:
-        type: "string"
-        format: "date-time"
-        description: "Creation date of the character"
-        title: "get_characters_character_id_birthday"
-      gender:
-        type: "string"
-        description: "gender string"
-        title: "get_characters_character_id_gender"
-        enum:
-        - "female"
-        - "male"
-      race_id:
-        type: "integer"
-        format: "int32"
-        description: "race_id integer"
-        title: "get_characters_character_id_race_id"
-      bloodline_id:
-        type: "integer"
-        format: "int32"
-        description: "bloodline_id integer"
-        title: "get_characters_character_id_bloodline_id"
-      ancestry_id:
-        type: "integer"
-        format: "int32"
-        description: "ancestry_id integer"
-        title: "get_characters_character_id_ancestry_id"
-      security_status:
-        type: "number"
-        format: "float"
-        description: "security_status number"
-        title: "get_characters_character_id_security_status"
-        minimum: -10
-        maximum: 10
-      faction_id:
-        type: "integer"
-        format: "int32"
-        description: "ID of the faction the character is fighting for, if the character\
-          \ is enlisted in Factional Warfare"
-        title: "get_characters_character_id_faction_id"
-    description: "200 ok object"
-  get_characters_character_id_not_found:
-    properties:
-      error:
-        type: "string"
-        description: "Not found message"
-        title: "get_characters_character_id_404_not_found"
-    description: "Not found"
-  post_characters_affiliation_200_ok:
-    required:
-    - "character_id"
-    - "corporation_id"
-    properties:
-      character_id:
-        type: "integer"
-        format: "int32"
-        description: "The character's ID"
-        title: "post_characters_affiliation_character_id"
-      corporation_id:
-        type: "integer"
-        format: "int32"
-        description: "The character's corporation ID"
-        title: "post_characters_affiliation_corporation_id"
-      alliance_id:
-        type: "integer"
-        format: "int32"
-        description: "The character's alliance ID, if their corporation is in an alliance"
-        title: "post_characters_affiliation_alliance_id"
-      faction_id:
-        type: "integer"
-        format: "int32"
-        description: "The character's faction ID, if their corporation is in a faction"
-        title: "post_characters_affiliation_faction_id"
-    description: "200 ok object"
-  post_characters_affiliation_not_found:
-    properties:
-      error:
-        type: "string"
-        description: "Not found message"
-        title: "post_characters_affiliation_404_not_found"
-    description: "Not found"
-  get_characters_names_200_ok:
-    required:
-    - "character_id"
-    - "character_name"
-    properties:
-      character_id:
-        type: "integer"
-        format: "int64"
-        description: "character_id integer"
-        title: "get_characters_names_character_id"
-      character_name:
-        type: "string"
-        description: "character_name string"
-        title: "get_characters_names_character_name"
-    description: "200 ok object"
-  get_characters_character_id_portrait_ok:
-    properties:
-      px64x64:
-        type: "string"
-        description: "px64x64 string"
-        title: "get_characters_character_id_portrait_px64x64"
-      px128x128:
-        type: "string"
-        description: "px128x128 string"
-        title: "get_characters_character_id_portrait_px128x128"
-      px256x256:
-        type: "string"
-        description: "px256x256 string"
-        title: "get_characters_character_id_portrait_px256x256"
-      px512x512:
-        type: "string"
-        description: "px512x512 string"
-        title: "get_characters_character_id_portrait_px512x512"
-    description: "200 ok object"
-  get_characters_character_id_portrait_not_found:
-    properties:
-      error:
-        type: "string"
-        description: "error message"
-        title: "get_characters_character_id_portrait_error"
-    description: "No image server for this datasource"
-  get_characters_character_id_corporationhistory_200_ok:
-    required:
-    - "corporation_id"
-    - "record_id"
-    - "start_date"
-    properties:
-      start_date:
-        type: "string"
-        format: "date-time"
-        description: "start_date string"
-        title: "get_characters_character_id_corporationhistory_start_date"
-      corporation_id:
-        type: "integer"
-        format: "int32"
-        description: "corporation_id integer"
-        title: "get_characters_character_id_corporationhistory_corporation_id"
-      is_deleted:
-        type: "boolean"
-        description: "True if the corporation has been deleted"
-        title: "get_characters_character_id_corporationhistory_is_deleted"
-      record_id:
-        type: "integer"
-        format: "int32"
-        description: "An incrementing ID that can be used to canonically establish\
-          \ order of records in cases where dates may be ambiguous"
-        title: "get_characters_character_id_corporationhistory_record_id"
-    description: "200 ok object"
-  get_characters_character_id_chat_channels_allowed:
-    required:
-    - "accessor_id"
-    - "accessor_type"
-    properties:
-      accessor_id:
-        type: "integer"
-        format: "int32"
-        description: "ID of an allowed channel member"
-        title: "get_characters_character_id_chat_channels_accessor_id"
-      accessor_type:
-        type: "string"
-        description: "accessor_type string"
-        title: "get_characters_character_id_chat_channels_accessor_type"
-        enum:
-        - "character"
-        - "corporation"
-        - "alliance"
-    description: "allowed object"
-  get_characters_character_id_chat_channels_operator:
-    required:
-    - "accessor_id"
-    - "accessor_type"
-    properties:
-      accessor_id:
-        type: "integer"
-        format: "int32"
-        description: "ID of a channel operator"
-        title: "get_characters_character_id_chat_channels_accessor_id"
-      accessor_type:
-        type: "string"
-        description: "accessor_type string"
-        title: "get_characters_character_id_chat_channels_accessor_type"
-        enum:
-        - "character"
-        - "corporation"
-        - "alliance"
-    description: "operator object"
-  get_characters_character_id_chat_channels_blocked:
-    required:
-    - "accessor_id"
-    - "accessor_type"
-    properties:
-      accessor_id:
-        type: "integer"
-        format: "int32"
-        description: "ID of a blocked channel member"
-        title: "get_characters_character_id_chat_channels_accessor_id"
-      accessor_type:
-        type: "string"
-        description: "accessor_type string"
-        title: "get_characters_character_id_chat_channels_accessor_type"
-        enum:
-        - "character"
-        - "corporation"
-        - "alliance"
-      reason:
-        type: "string"
-        description: "Reason this accessor is blocked"
-        title: "get_characters_character_id_chat_channels_reason"
-      end_at:
-        type: "string"
-        format: "date-time"
-        description: "Time at which this accessor will no longer be blocked"
-        title: "get_characters_character_id_chat_channels_end_at"
-    description: "blocked object"
-  get_characters_character_id_chat_channels_muted:
-    required:
-    - "accessor_id"
-    - "accessor_type"
-    properties:
-      accessor_id:
-        type: "integer"
-        format: "int32"
-        description: "ID of a muted channel member"
-        title: "get_characters_character_id_chat_channels_accessor_id"
-      accessor_type:
-        type: "string"
-        description: "accessor_type string"
-        title: "get_characters_character_id_chat_channels_accessor_type"
-        enum:
-        - "character"
-        - "corporation"
-        - "alliance"
-      reason:
-        type: "string"
-        description: "Reason this accessor is muted"
-        title: "get_characters_character_id_chat_channels_reason"
-      end_at:
-        type: "string"
-        format: "date-time"
-        description: "Time at which this accessor will no longer be muted"
-        title: "get_characters_character_id_chat_channels_end_at"
-    description: "muted object"
-  get_characters_character_id_chat_channels_200_ok:
-    required:
-    - "allowed"
-    - "blocked"
-    - "channel_id"
-    - "comparison_key"
-    - "has_password"
-    - "motd"
-    - "muted"
-    - "name"
-    - "operators"
-    - "owner_id"
-    properties:
-      channel_id:
-        type: "integer"
-        format: "int32"
-        description: "Unique channel ID. Always negative for player-created channels.\
-          \ Permanent (CCP created) channels have a positive ID, but don't appear\
-          \ in the API"
-        title: "get_characters_character_id_chat_channels_channel_id"
-      name:
-        type: "string"
-        description: "Displayed name of channel"
-        title: "get_characters_character_id_chat_channels_name"
-      owner_id:
-        type: "integer"
-        format: "int32"
-        description: "owner_id integer"
-        title: "get_characters_character_id_chat_channels_owner_id"
-      comparison_key:
-        type: "string"
-        description: "Normalized, unique string used to compare channel names"
-        title: "get_characters_character_id_chat_channels_comparison_key"
-      has_password:
-        type: "boolean"
-        description: "If this is a password protected channel"
-        title: "get_characters_character_id_chat_channels_has_password"
-      motd:
-        type: "string"
-        description: "Message of the day for this channel"
-        title: "get_characters_character_id_chat_channels_motd"
-      allowed:
-        type: "array"
-        description: "allowed array"
-        title: "get_characters_character_id_chat_channels_allowed"
-        items:
-          $ref: "#/definitions/get_characters_character_id_chat_channels_allowed"
-        maxItems: 1000
-      operators:
-        type: "array"
-        description: "operators array"
-        title: "get_characters_character_id_chat_channels_operators"
-        items:
-          $ref: "#/definitions/get_characters_character_id_chat_channels_operator"
-        maxItems: 1000
-      blocked:
-        type: "array"
-        description: "blocked array"
-        title: "get_characters_character_id_chat_channels_blocked"
-        items:
-          $ref: "#/definitions/get_characters_character_id_chat_channels_blocked"
-        maxItems: 1000
-      muted:
-        type: "array"
-        description: "muted array"
-        title: "get_characters_character_id_chat_channels_muted"
-        items:
-          $ref: "#/definitions/get_characters_character_id_chat_channels_muted"
-        maxItems: 1000
-    description: "200 ok object"
-  get_characters_character_id_medals_graphic:
-    required:
-    - "graphic"
-    - "layer"
-    - "part"
-    properties:
-      part:
-        type: "integer"
-        format: "int32"
-        description: "part integer"
-        title: "get_characters_character_id_medals_part"
-      layer:
-        type: "integer"
-        format: "int32"
-        description: "layer integer"
-        title: "get_characters_character_id_medals_layer"
-      graphic:
-        type: "string"
-        description: "graphic string"
-        title: "get_characters_character_id_medals_graphic"
-      color:
-        type: "integer"
-        format: "int32"
-        description: "color integer"
-        title: "get_characters_character_id_medals_color"
-    description: "graphic object"
-  get_characters_character_id_medals_200_ok:
-    required:
-    - "corporation_id"
-    - "date"
-    - "description"
-    - "graphics"
-    - "issuer_id"
-    - "medal_id"
-    - "reason"
-    - "status"
-    - "title"
-    properties:
-      medal_id:
-        type: "integer"
-        format: "int32"
-        description: "medal_id integer"
-        title: "get_characters_character_id_medals_medal_id"
-      title:
-        type: "string"
-        description: "title string"
-        title: "get_characters_character_id_medals_title"
-      description:
-        type: "string"
-        description: "description string"
-        title: "get_characters_character_id_medals_description"
-      corporation_id:
-        type: "integer"
-        format: "int32"
-        description: "corporation_id integer"
-        title: "get_characters_character_id_medals_corporation_id"
-      issuer_id:
-        type: "integer"
-        format: "int32"
-        description: "issuer_id integer"
-        title: "get_characters_character_id_medals_issuer_id"
-      date:
-        type: "string"
-        format: "date-time"
-        description: "date string"
-        title: "get_characters_character_id_medals_date"
-      reason:
-        type: "string"
-        description: "reason string"
-        title: "get_characters_character_id_medals_reason"
-      status:
-        type: "string"
-        description: "status string"
-        title: "get_characters_character_id_medals_status"
-        enum:
-        - "public"
-        - "private"
-      graphics:
-        type: "array"
-        description: "graphics array"
-        title: "get_characters_character_id_medals_graphics"
-        items:
-          $ref: "#/definitions/get_characters_character_id_medals_graphic"
-        maxItems: 9
-        minItems: 3
-    description: "200 ok object"
-  get_characters_character_id_standings_200_ok:
-    required:
-    - "from_id"
-    - "from_type"
-    - "standing"
-    properties:
-      from_id:
-        type: "integer"
-        format: "int32"
-        description: "from_id integer"
-        title: "get_characters_character_id_standings_from_id"
-      from_type:
-        type: "string"
-        description: "from_type string"
-        title: "get_characters_character_id_standings_from_type"
-        enum:
-        - "agent"
-        - "npc_corp"
-        - "faction"
-      standing:
-        type: "number"
-        format: "float"
-        description: "standing number"
-        title: "get_characters_character_id_standings_standing"
-        minimum: -10
-        maximum: 10
-    description: "200 ok object"
-  get_characters_character_id_agents_research_200_ok:
-    required:
-    - "agent_id"
-    - "points_per_day"
-    - "remainder_points"
-    - "skill_type_id"
-    - "started_at"
-    properties:
-      agent_id:
-        type: "integer"
-        format: "int32"
-        description: "agent_id integer"
-        title: "get_characters_character_id_agents_research_agent_id"
-      skill_type_id:
-        type: "integer"
-        format: "int32"
-        description: "skill_type_id integer"
-        title: "get_characters_character_id_agents_research_skill_type_id"
-      started_at:
-        type: "string"
-        format: "date-time"
-        description: "started_at string"
-        title: "get_characters_character_id_agents_research_started_at"
-      points_per_day:
-        type: "number"
-        format: "float"
-        description: "points_per_day number"
-        title: "get_characters_character_id_agents_research_points_per_day"
-      remainder_points:
-        type: "number"
-        format: "float"
-        description: "remainder_points number"
-        title: "get_characters_character_id_agents_research_remainder_points"
-    description: "200 ok object"
-  get_characters_character_id_blueprints_200_ok:
-    required:
-    - "item_id"
-    - "location_flag"
-    - "location_id"
-    - "material_efficiency"
-    - "quantity"
-    - "runs"
-    - "time_efficiency"
-    - "type_id"
-    properties:
-      item_id:
-        type: "integer"
-        format: "int64"
-        description: "Unique ID for this item."
-        title: "get_characters_character_id_blueprints_item_id"
-      type_id:
-        type: "integer"
-        format: "int32"
-        description: "type_id integer"
-        title: "get_characters_character_id_blueprints_type_id"
-      location_id:
-        type: "integer"
-        format: "int64"
-        description: "References a solar system, station or item_id if this blueprint\
-          \ is located within a container. If the return value is an item_id, then\
-          \ the Character AssetList API must be queried to find the container using\
-          \ the given item_id to determine the correct location of the Blueprint."
-        title: "get_characters_character_id_blueprints_location_id"
-      location_flag:
-        type: "string"
-        description: "Type of the location_id"
-        title: "get_characters_character_id_blueprints_location_flag"
-        enum:
-        - "AutoFit"
-        - "Cargo"
-        - "CorpseBay"
-        - "DroneBay"
-        - "FleetHangar"
-        - "Deliveries"
-        - "HiddenModifiers"
-        - "Hangar"
-        - "HangarAll"
-        - "LoSlot0"
-        - "LoSlot1"
-        - "LoSlot2"
-        - "LoSlot3"
-        - "LoSlot4"
-        - "LoSlot5"
-        - "LoSlot6"
-        - "LoSlot7"
-        - "MedSlot0"
-        - "MedSlot1"
-        - "MedSlot2"
-        - "MedSlot3"
-        - "MedSlot4"
-        - "MedSlot5"
-        - "MedSlot6"
-        - "MedSlot7"
-        - "HiSlot0"
-        - "HiSlot1"
-        - "HiSlot2"
-        - "HiSlot3"
-        - "HiSlot4"
-        - "HiSlot5"
-        - "HiSlot6"
-        - "HiSlot7"
-        - "AssetSafety"
-        - "Locked"
-        - "Unlocked"
-        - "Implant"
-        - "QuafeBay"
-        - "RigSlot0"
-        - "RigSlot1"
-        - "RigSlot2"
-        - "RigSlot3"
-        - "RigSlot4"
-        - "RigSlot5"
-        - "RigSlot6"
-        - "RigSlot7"
-        - "ShipHangar"
-        - "SpecializedFuelBay"
-        - "SpecializedOreHold"
-        - "SpecializedGasHold"
-        - "SpecializedMineralHold"
-        - "SpecializedSalvageHold"
-        - "SpecializedShipHold"
-        - "SpecializedSmallShipHold"
-        - "SpecializedMediumShipHold"
-        - "SpecializedLargeShipHold"
-        - "SpecializedIndustrialShipHold"
-        - "SpecializedAmmoHold"
-        - "SpecializedCommandCenterHold"
-        - "SpecializedPlanetaryCommoditiesHold"
-        - "SpecializedMaterialBay"
-        - "SubSystemSlot0"
-        - "SubSystemSlot1"
-        - "SubSystemSlot2"
-        - "SubSystemSlot3"
-        - "SubSystemSlot4"
-        - "SubSystemSlot5"
-        - "SubSystemSlot6"
-        - "SubSystemSlot7"
-        - "FighterBay"
-        - "FighterTube0"
-        - "FighterTube1"
-        - "FighterTube2"
-        - "FighterTube3"
-        - "FighterTube4"
-        - "Module"
-      quantity:
-        type: "integer"
-        format: "int32"
-        description: "A range of numbers with a minimum of -2 and no maximum value\
-          \ where -1 is an original and -2 is a copy. It can be a positive integer\
-          \ if it is a stack of blueprint originals fresh from the market (e.g. no\
-          \ activities performed on them yet)."
-        title: "get_characters_character_id_blueprints_quantity"
-        minimum: -2
-      time_efficiency:
-        type: "integer"
-        format: "int32"
-        description: "Time Efficiency Level of the blueprint."
-        title: "get_characters_character_id_blueprints_time_efficiency"
-        minimum: 0
-        maximum: 20
-      material_efficiency:
-        type: "integer"
-        format: "int32"
-        description: "Material Efficiency Level of the blueprint."
-        title: "get_characters_character_id_blueprints_material_efficiency"
-        minimum: 0
-        maximum: 25
-      runs:
-        type: "integer"
-        format: "int32"
-        description: "Number of runs remaining if the blueprint is a copy, -1 if it\
-          \ is an original."
-        title: "get_characters_character_id_blueprints_runs"
-        minimum: -1
-    description: "200 ok object"
-  get_characters_character_id_fatigue_ok:
-    properties:
-      last_jump_date:
-        type: "string"
-        format: "date-time"
-        description: "Character's last jump activation"
-        title: "get_characters_character_id_fatigue_last_jump_date"
-      jump_fatigue_expire_date:
-        type: "string"
-        format: "date-time"
-        description: "Character's jump fatigue expiry"
-        title: "get_characters_character_id_fatigue_jump_fatigue_expire_date"
-      last_update_date:
-        type: "string"
-        format: "date-time"
-        description: "Character's last jump update"
-        title: "get_characters_character_id_fatigue_last_update_date"
-    description: "200 ok object"
-  get_characters_character_id_notifications_contacts_200_ok:
-    required:
-    - "message"
-    - "notification_id"
-    - "send_date"
-    - "sender_character_id"
-    - "standing_level"
-    properties:
-      notification_id:
-        type: "integer"
-        format: "int32"
-        description: "notification_id integer"
-        title: "get_characters_character_id_notifications_contacts_notification_id"
-      send_date:
-        type: "string"
-        format: "date-time"
-        description: "send_date string"
-        title: "get_characters_character_id_notifications_contacts_send_date"
-      standing_level:
-        type: "number"
-        format: "float"
-        description: "A number representing the standing level the receiver has been\
-          \ added at by the sender. The standing levels are as follows: -10 -> Terrible\
-          \ | -5 -> Bad |  0 -> Neutral |  5 -> Good |  10 -> Excellent"
-        title: "get_characters_character_id_notifications_contacts_standing_level"
-      message:
-        type: "string"
-        description: "message string"
-        title: "get_characters_character_id_notifications_contacts_message"
-      sender_character_id:
-        type: "integer"
-        format: "int32"
-        description: "sender_character_id integer"
-        title: "get_characters_character_id_notifications_contacts_sender_character_id"
-    description: "200 ok object"
-  get_characters_character_id_notifications_200_ok:
-    required:
-    - "notification_id"
-    - "sender_id"
-    - "sender_type"
-    - "timestamp"
-    - "type"
-    properties:
-      notification_id:
-        type: "integer"
-        format: "int64"
-        description: "notification_id integer"
-        title: "get_characters_character_id_notifications_notification_id"
-      sender_id:
-        type: "integer"
-        format: "int32"
-        description: "sender_id integer"
-        title: "get_characters_character_id_notifications_sender_id"
-      sender_type:
-        type: "string"
-        description: "sender_type string"
-        title: "get_characters_character_id_notifications_sender_type"
-        enum:
-        - "character"
-        - "corporation"
-        - "alliance"
-        - "faction"
-        - "other"
-      timestamp:
-        type: "string"
-        format: "date-time"
-        description: "timestamp string"
-        title: "get_characters_character_id_notifications_timestamp"
-      is_read:
-        type: "boolean"
-        description: "is_read boolean"
-        title: "get_characters_character_id_notifications_is_read"
-      text:
-        type: "string"
-        description: "text string"
-        title: "get_characters_character_id_notifications_text"
-      type:
-        type: "string"
-        description: "type string"
-        title: "get_characters_character_id_notifications_type"
-        enum:
-        - "AcceptedAlly"
-        - "AcceptedSurrender"
-        - "AllAnchoringMsg"
-        - "AllMaintenanceBillMsg"
-        - "AllStrucInvulnerableMsg"
-        - "AllStructVulnerableMsg"
-        - "AllWarCorpJoinedAllianceMsg"
-        - "AllWarDeclaredMsg"
-        - "AllWarInvalidatedMsg"
-        - "AllWarRetractedMsg"
-        - "AllWarSurrenderMsg"
-        - "AllianceCapitalChanged"
-        - "AllyContractCancelled"
-        - "AllyJoinedWarAggressorMsg"
-        - "AllyJoinedWarAllyMsg"
-        - "AllyJoinedWarDefenderMsg"
-        - "BattlePunishFriendlyFire"
-        - "BillOutOfMoneyMsg"
-        - "BillPaidCorpAllMsg"
-        - "BountyClaimMsg"
-        - "BountyESSShared"
-        - "BountyESSTaken"
-        - "BountyPlacedAlliance"
-        - "BountyPlacedChar"
-        - "BountyPlacedCorp"
-        - "BountyYourBountyClaimed"
-        - "BuddyConnectContactAdd"
-        - "CharAppAcceptMsg"
-        - "CharAppRejectMsg"
-        - "CharAppWithdrawMsg"
-        - "CharLeftCorpMsg"
-        - "CharMedalMsg"
-        - "CharTerminationMsg"
-        - "CloneActivationMsg"
-        - "CloneActivationMsg2"
-        - "CloneMovedMsg"
-        - "CloneRevokedMsg1"
-        - "CloneRevokedMsg2"
-        - "ContactAdd"
-        - "ContactEdit"
-        - "ContainerPasswordMsg"
-        - "CorpAllBillMsg"
-        - "CorpAppAcceptMsg"
-        - "CorpAppInvitedMsg"
-        - "CorpAppNewMsg"
-        - "CorpAppRejectCustomMsg"
-        - "CorpAppRejectMsg"
-        - "CorpDividendMsg"
-        - "CorpFriendlyFireDisableTimerCompleted"
-        - "CorpFriendlyFireDisableTimerStarted"
-        - "CorpFriendlyFireEnableTimerCompleted"
-        - "CorpFriendlyFireEnableTimerStarted"
-        - "CorpKicked"
-        - "CorpLiquidationMsg"
-        - "CorpNewCEOMsg"
-        - "CorpNewsMsg"
-        - "CorpOfficeExpirationMsg"
-        - "CorpStructLostMsg"
-        - "CorpTaxChangeMsg"
-        - "CorpVoteCEORevokedMsg"
-        - "CorpVoteMsg"
-        - "CorpWarDeclaredMsg"
-        - "CorpWarFightingLegalMsg"
-        - "CorpWarInvalidatedMsg"
-        - "CorpWarRetractedMsg"
-        - "CorpWarSurrenderMsg"
-        - "CustomsMsg"
-        - "DeclareWar"
-        - "DistrictAttacked"
-        - "DustAppAcceptedMsg"
-        - "EntosisCaptureStarted"
-        - "FWAllianceKickMsg"
-        - "FWAllianceWarningMsg"
-        - "FWCharKickMsg"
-        - "FWCharRankGainMsg"
-        - "FWCharRankLossMsg"
-        - "FWCharWarningMsg"
-        - "FWCorpJoinMsg"
-        - "FWCorpKickMsg"
-        - "FWCorpLeaveMsg"
-        - "FWCorpWarningMsg"
-        - "FacWarCorpJoinRequestMsg"
-        - "FacWarCorpJoinWithdrawMsg"
-        - "FacWarCorpLeaveRequestMsg"
-        - "FacWarCorpLeaveWithdrawMsg"
-        - "FacWarLPDisqualifiedEvent"
-        - "FacWarLPDisqualifiedKill"
-        - "FacWarLPPayoutEvent"
-        - "FacWarLPPayoutKill"
-        - "GameTimeAdded"
-        - "GameTimeReceived"
-        - "GameTimeSent"
-        - "GiftReceived"
-        - "IHubDestroyedByBillFailure"
-        - "IncursionCompletedMsg"
-        - "IndustryTeamAuctionLost"
-        - "IndustryTeamAuctionWon"
-        - "InfrastructureHubBillAboutToExpire"
-        - "InsuranceExpirationMsg"
-        - "InsuranceFirstShipMsg"
-        - "InsuranceInvalidatedMsg"
-        - "InsuranceIssuedMsg"
-        - "InsurancePayoutMsg"
-        - "JumpCloneDeletedMsg1"
-        - "JumpCloneDeletedMsg2"
-        - "KillReportFinalBlow"
-        - "KillReportVictim"
-        - "KillRightAvailable"
-        - "KillRightAvailableOpen"
-        - "KillRightEarned"
-        - "KillRightUnavailable"
-        - "KillRightUnavailableOpen"
-        - "KillRightUsed"
-        - "LocateCharMsg"
-        - "MadeWarMutual"
-        - "MercOfferedNegotiationMsg"
-        - "MissionOfferExpirationMsg"
-        - "MissionTimeoutMsg"
-        - "MoonminingAutomaticFracture"
-        - "MoonminingExtractionCancelled"
-        - "MoonminingExtractionFinished"
-        - "MoonminingExtractionStarted"
-        - "MoonminingLaserFired"
-        - "NPCStandingsGained"
-        - "NPCStandingsLost"
-        - "OfferedSurrender"
-        - "OfferedToAlly"
-        - "OldLscMessages"
-        - "OperationFinished"
-        - "OrbitalAttacked"
-        - "OrbitalReinforced"
-        - "OwnershipTransferred"
-        - "ReimbursementMsg"
-        - "ResearchMissionAvailableMsg"
-        - "RetractsWar"
-        - "SeasonalChallengeCompleted"
-        - "SovAllClaimAquiredMsg"
-        - "SovAllClaimLostMsg"
-        - "SovCommandNodeEventStarted"
-        - "SovCorpBillLateMsg"
-        - "SovCorpClaimFailMsg"
-        - "SovDisruptorMsg"
-        - "SovStationEnteredFreeport"
-        - "SovStructureDestroyed"
-        - "SovStructureReinforced"
-        - "SovStructureSelfDestructCancel"
-        - "SovStructureSelfDestructFinished"
-        - "SovStructureSelfDestructRequested"
-        - "SovereigntyIHDamageMsg"
-        - "SovereigntySBUDamageMsg"
-        - "SovereigntyTCUDamageMsg"
-        - "StationAggressionMsg1"
-        - "StationAggressionMsg2"
-        - "StationConquerMsg"
-        - "StationServiceDisabled"
-        - "StationServiceEnabled"
-        - "StationStateChangeMsg"
-        - "StoryLineMissionAvailableMsg"
-        - "StructureAnchoring"
-        - "StructureCourierContractChanged"
-        - "StructureDestroyed"
-        - "StructureFuelAlert"
-        - "StructureItemsDelivered"
-        - "StructureLostArmor"
-        - "StructureLostShields"
-        - "StructureOnline"
-        - "StructureServicesOffline"
-        - "StructureUnanchoring"
-        - "StructureUnderAttack"
-        - "StructureWentHighPower"
-        - "StructureWentLowPower"
-        - "StructuresReinforcementChanged"
-        - "TowerAlertMsg"
-        - "TowerResourceAlertMsg"
-        - "TransactionReversalMsg"
-        - "TutorialMsg"
-        - "WarAllyOfferDeclinedMsg"
-        - "WarSurrenderDeclinedMsg"
-        - "WarSurrenderOfferMsg"
-    description: "200 ok object"
-  get_characters_character_id_roles_ok:
-    properties:
-      roles:
-        type: "array"
-        description: "roles array"
-        title: "get_characters_character_id_roles_roles"
-        items:
-          type: "string"
-          description: "role string"
-          title: "get_characters_character_id_roles_role"
-          enum:
-          - "Account_Take_1"
-          - "Account_Take_2"
-          - "Account_Take_3"
-          - "Account_Take_4"
-          - "Account_Take_5"
-          - "Account_Take_6"
-          - "Account_Take_7"
-          - "Accountant"
-          - "Auditor"
-          - "Communications_Officer"
-          - "Config_Equipment"
-          - "Config_Starbase_Equipment"
-          - "Container_Take_1"
-          - "Container_Take_2"
-          - "Container_Take_3"
-          - "Container_Take_4"
-          - "Container_Take_5"
-          - "Container_Take_6"
-          - "Container_Take_7"
-          - "Contract_Manager"
-          - "Diplomat"
-          - "Director"
-          - "Factory_Manager"
-          - "Fitting_Manager"
-          - "Hangar_Query_1"
-          - "Hangar_Query_2"
-          - "Hangar_Query_3"
-          - "Hangar_Query_4"
-          - "Hangar_Query_5"
-          - "Hangar_Query_6"
-          - "Hangar_Query_7"
-          - "Hangar_Take_1"
-          - "Hangar_Take_2"
-          - "Hangar_Take_3"
-          - "Hangar_Take_4"
-          - "Hangar_Take_5"
-          - "Hangar_Take_6"
-          - "Hangar_Take_7"
-          - "Junior_Accountant"
-          - "Personnel_Manager"
-          - "Rent_Factory_Facility"
-          - "Rent_Office"
-          - "Rent_Research_Facility"
-          - "Security_Officer"
-          - "Starbase_Defense_Operator"
-          - "Starbase_Fuel_Technician"
-          - "Station_Manager"
-          - "Terrestrial_Combat_Officer"
-          - "Terrestrial_Logistics_Officer"
-          - "Trader"
-        maxItems: 50
-      roles_at_hq:
-        type: "array"
-        description: "roles_at_hq array"
-        title: "get_characters_character_id_roles_roles_at_hq"
-        items:
-          type: "string"
-          description: "roles_at_hq string"
-          title: "get_characters_character_id_roles_roles_at_hq"
-          enum:
-          - "Account_Take_1"
-          - "Account_Take_2"
-          - "Account_Take_3"
-          - "Account_Take_4"
-          - "Account_Take_5"
-          - "Account_Take_6"
-          - "Account_Take_7"
-          - "Accountant"
-          - "Auditor"
-          - "Communications_Officer"
-          - "Config_Equipment"
-          - "Config_Starbase_Equipment"
-          - "Container_Take_1"
-          - "Container_Take_2"
-          - "Container_Take_3"
-          - "Container_Take_4"
-          - "Container_Take_5"
-          - "Container_Take_6"
-          - "Container_Take_7"
-          - "Contract_Manager"
-          - "Diplomat"
-          - "Director"
-          - "Factory_Manager"
-          - "Fitting_Manager"
-          - "Hangar_Query_1"
-          - "Hangar_Query_2"
-          - "Hangar_Query_3"
-          - "Hangar_Query_4"
-          - "Hangar_Query_5"
-          - "Hangar_Query_6"
-          - "Hangar_Query_7"
-          - "Hangar_Take_1"
-          - "Hangar_Take_2"
-          - "Hangar_Take_3"
-          - "Hangar_Take_4"
-          - "Hangar_Take_5"
-          - "Hangar_Take_6"
-          - "Hangar_Take_7"
-          - "Junior_Accountant"
-          - "Personnel_Manager"
-          - "Rent_Factory_Facility"
-          - "Rent_Office"
-          - "Rent_Research_Facility"
-          - "Security_Officer"
-          - "Starbase_Defense_Operator"
-          - "Starbase_Fuel_Technician"
-          - "Station_Manager"
-          - "Terrestrial_Combat_Officer"
-          - "Terrestrial_Logistics_Officer"
-          - "Trader"
-        maxItems: 50
-      roles_at_base:
-        type: "array"
-        description: "roles_at_base array"
-        title: "get_characters_character_id_roles_roles_at_base"
-        items:
-          type: "string"
-          description: "roles_at_base string"
-          title: "get_characters_character_id_roles_roles_at_base"
-          enum:
-          - "Account_Take_1"
-          - "Account_Take_2"
-          - "Account_Take_3"
-          - "Account_Take_4"
-          - "Account_Take_5"
-          - "Account_Take_6"
-          - "Account_Take_7"
-          - "Accountant"
-          - "Auditor"
-          - "Communications_Officer"
-          - "Config_Equipment"
-          - "Config_Starbase_Equipment"
-          - "Container_Take_1"
-          - "Container_Take_2"
-          - "Container_Take_3"
-          - "Container_Take_4"
-          - "Container_Take_5"
-          - "Container_Take_6"
-          - "Container_Take_7"
-          - "Contract_Manager"
-          - "Diplomat"
-          - "Director"
-          - "Factory_Manager"
-          - "Fitting_Manager"
-          - "Hangar_Query_1"
-          - "Hangar_Query_2"
-          - "Hangar_Query_3"
-          - "Hangar_Query_4"
-          - "Hangar_Query_5"
-          - "Hangar_Query_6"
-          - "Hangar_Query_7"
-          - "Hangar_Take_1"
-          - "Hangar_Take_2"
-          - "Hangar_Take_3"
-          - "Hangar_Take_4"
-          - "Hangar_Take_5"
-          - "Hangar_Take_6"
-          - "Hangar_Take_7"
-          - "Junior_Accountant"
-          - "Personnel_Manager"
-          - "Rent_Factory_Facility"
-          - "Rent_Office"
-          - "Rent_Research_Facility"
-          - "Security_Officer"
-          - "Starbase_Defense_Operator"
-          - "Starbase_Fuel_Technician"
-          - "Station_Manager"
-          - "Terrestrial_Combat_Officer"
-          - "Terrestrial_Logistics_Officer"
-          - "Trader"
-        maxItems: 50
-      roles_at_other:
-        type: "array"
-        description: "roles_at_other array"
-        title: "get_characters_character_id_roles_roles_at_other"
-        items:
-          type: "string"
-          description: "roles_at_other string"
-          title: "get_characters_character_id_roles_roles_at_other"
-          enum:
-          - "Account_Take_1"
-          - "Account_Take_2"
-          - "Account_Take_3"
-          - "Account_Take_4"
-          - "Account_Take_5"
-          - "Account_Take_6"
-          - "Account_Take_7"
-          - "Accountant"
-          - "Auditor"
-          - "Communications_Officer"
-          - "Config_Equipment"
-          - "Config_Starbase_Equipment"
-          - "Container_Take_1"
-          - "Container_Take_2"
-          - "Container_Take_3"
-          - "Container_Take_4"
-          - "Container_Take_5"
-          - "Container_Take_6"
-          - "Container_Take_7"
-          - "Contract_Manager"
-          - "Diplomat"
-          - "Director"
-          - "Factory_Manager"
-          - "Fitting_Manager"
-          - "Hangar_Query_1"
-          - "Hangar_Query_2"
-          - "Hangar_Query_3"
-          - "Hangar_Query_4"
-          - "Hangar_Query_5"
-          - "Hangar_Query_6"
-          - "Hangar_Query_7"
-          - "Hangar_Take_1"
-          - "Hangar_Take_2"
-          - "Hangar_Take_3"
-          - "Hangar_Take_4"
-          - "Hangar_Take_5"
-          - "Hangar_Take_6"
-          - "Hangar_Take_7"
-          - "Junior_Accountant"
-          - "Personnel_Manager"
-          - "Rent_Factory_Facility"
-          - "Rent_Office"
-          - "Rent_Research_Facility"
-          - "Security_Officer"
-          - "Starbase_Defense_Operator"
-          - "Starbase_Fuel_Technician"
-          - "Station_Manager"
-          - "Terrestrial_Combat_Officer"
-          - "Terrestrial_Logistics_Officer"
-          - "Trader"
-        maxItems: 50
-    description: "200 ok object"
-  get_characters_character_id_titles_200_ok:
-    properties:
-      title_id:
-        type: "integer"
-        format: "int32"
-        description: "title_id integer"
-        title: "get_characters_character_id_titles_title_id"
-      name:
-        type: "string"
-        description: "name string"
-        title: "get_characters_character_id_titles_name"
-    description: "200 ok object"
   get_characters_character_id_clones_home_location:
     properties:
       location_id:
@@ -23889,6 +23889,30 @@ definitions:
         format: "float"
         description: "The amount bid, in ISK"
         title: "get_corporations_corporation_id_contracts_contract_id_bids_amount"
+    description: "200 ok object"
+  get_corporations_corporation_id_shareholders_200_ok:
+    required:
+    - "share_count"
+    - "shareholder_id"
+    - "shareholder_type"
+    properties:
+      shareholder_id:
+        type: "integer"
+        format: "int32"
+        description: "shareholder_id integer"
+        title: "get_corporations_corporation_id_shareholders_shareholder_id"
+      shareholder_type:
+        type: "string"
+        description: "shareholder_type string"
+        title: "get_corporations_corporation_id_shareholders_shareholder_type"
+        enum:
+        - "character"
+        - "corporation"
+      share_count:
+        type: "integer"
+        format: "int64"
+        description: "share_count integer"
+        title: "get_corporations_corporation_id_shareholders_share_count"
     description: "200 ok object"
   get_corporations_corporation_id_ok:
     required:
@@ -26248,30 +26272,6 @@ definitions:
         items:
           $ref: "#/definitions/get_corporations_corporation_id_outposts_outpost_id_service"
         maxItems: 27
-    description: "200 ok object"
-  get_corporations_corporation_id_shareholders_200_ok:
-    required:
-    - "share_count"
-    - "shareholder_id"
-    - "shareholder_type"
-    properties:
-      shareholder_id:
-        type: "integer"
-        format: "int32"
-        description: "shareholder_id integer"
-        title: "get_corporations_corporation_id_shareholders_shareholder_id"
-      shareholder_type:
-        type: "string"
-        description: "shareholder_type string"
-        title: "get_corporations_corporation_id_shareholders_shareholder_type"
-        enum:
-        - "character"
-        - "corporation"
-      share_count:
-        type: "integer"
-        format: "int64"
-        description: "share_count integer"
-        title: "get_corporations_corporation_id_shareholders_share_count"
     description: "200 ok object"
   get_dogma_attributes_attribute_id_ok:
     required:
@@ -33196,15 +33196,6 @@ parameters:
     required: false
     type: "string"
     x-exportParamName: "XUserAgent"
-  page:
-    name: "page"
-    in: "query"
-    description: "Which page of results to return"
-    required: false
-    type: "integer"
-    default: 1
-    format: "int32"
-    x-exportParamName: "Page"
   token:
     name: "token"
     in: "query"
@@ -33230,15 +33221,6 @@ parameters:
     minimum: 1
     format: "int32"
     x-exportParamName: "CorporationId"
-  alliance_id:
-    name: "alliance_id"
-    in: "path"
-    description: "An EVE alliance ID"
-    required: true
-    type: "integer"
-    minimum: 1
-    format: "int32"
-    x-exportParamName: "AllianceId"
   language:
     name: "language"
     in: "query"
@@ -33254,3 +33236,21 @@ parameters:
     - "ru"
     - "zh"
     x-exportParamName: "Language"
+  page:
+    name: "page"
+    in: "query"
+    description: "Which page of results to return"
+    required: false
+    type: "integer"
+    default: 1
+    format: "int32"
+    x-exportParamName: "Page"
+  alliance_id:
+    name: "alliance_id"
+    in: "path"
+    description: "An EVE alliance ID"
+    required: true
+    type: "integer"
+    minimum: 1
+    format: "int32"
+    x-exportParamName: "AllianceId"
