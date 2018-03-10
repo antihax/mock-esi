@@ -2640,8 +2640,8 @@ paths:
       - "Market"
       summary: "List open orders from a character"
       description: "List open market orders placed by a character\n\n---\nAlternate\
-        \ route: `/dev/characters/{character_id}/orders/`\n\n---\nThis route is cached\
-        \ for up to 1200 seconds"
+        \ route: `/dev/characters/{character_id}/orders/`\n\nAlternate route: `/latest/characters/{character_id}/orders/`\n\
+        \n---\nThis route is cached for up to 1200 seconds"
       operationId: "get_characters_character_id_orders"
       parameters:
       - name: "character_id"
@@ -2736,15 +2736,17 @@ paths:
       x-cached-seconds: 1200
       x-alternate-versions:
       - "dev"
+      - "latest"
   /corporations/{corporation_id}/orders/:
     get:
       tags:
       - "Market"
       summary: "List open orders from a corporation"
       description: "List open market orders placed on behalf of a corporation\n\n\
-        ---\nAlternate route: `/dev/corporations/{corporation_id}/orders/`\n\n---\n\
-        This route is cached for up to 1200 seconds\n\n---\nRequires one of the following\
-        \ EVE corporation role(s): Accountant, Trader\n"
+        ---\nAlternate route: `/dev/corporations/{corporation_id}/orders/`\n\nAlternate\
+        \ route: `/latest/corporations/{corporation_id}/orders/`\n\n---\nThis route\
+        \ is cached for up to 1200 seconds\n\n---\nRequires one of the following EVE\
+        \ corporation role(s): Accountant, Trader\n"
       operationId: "get_corporations_corporation_id_orders"
       parameters:
       - name: "corporation_id"
@@ -2855,6 +2857,7 @@ paths:
       x-cached-seconds: 1200
       x-alternate-versions:
       - "dev"
+      - "latest"
   /characters/{character_id}/planets/{planet_id}/:
     get:
       tags:
@@ -9615,15 +9618,6 @@ parameters:
     required: false
     type: "string"
     x-exportParamName: "XUserAgent"
-  page:
-    name: "page"
-    in: "query"
-    description: "Which page of results to return"
-    required: false
-    type: "integer"
-    default: 1
-    format: "int32"
-    x-exportParamName: "Page"
   token:
     name: "token"
     in: "query"
@@ -9640,6 +9634,15 @@ parameters:
     minimum: 1
     format: "int32"
     x-exportParamName: "CharacterId"
+  page:
+    name: "page"
+    in: "query"
+    description: "Which page of results to return"
+    required: false
+    type: "integer"
+    default: 1
+    format: "int32"
+    x-exportParamName: "Page"
   corporation_id:
     name: "corporation_id"
     in: "path"

@@ -35,11 +35,9 @@ func GetCharactersCharacterIdOrders(w http.ResponseWriter, r *http.Request) {
   "volume_total" : 123456,
   "volume_remain" : 4422,
   "issued" : "2016-09-03T05:12:25Z",
-  "state" : "open",
   "min_volume" : 1,
-  "account_id" : 1000,
   "duration" : 30,
-  "is_corp" : false,
+  "is_corporation" : false,
   "escrow" : 45.6
 } ]`
 	vars := mux.Vars(r)
@@ -230,7 +228,6 @@ func GetCorporationsCorporationIdOrders(w http.ResponseWriter, r *http.Request) 
   "volume_total" : 123456,
   "volume_remain" : 4422,
   "issued" : "2016-09-03T05:12:25Z",
-  "state" : "open",
   "min_volume" : 1,
   "wallet_division" : 1,
   "duration" : 30,
