@@ -19,9 +19,9 @@ type GetCorporationsCorporationIdAssets200Ok struct {
 	 item_id integer */
 	ItemId int64 `json:"item_id,omitempty"`
 	/*
-	 location_flag string */
-	LocationFlag string `json:"location_flag,omitempty"`
-	/*
 	 is_singleton boolean */
 	IsSingleton bool `json:"is_singleton,omitempty"`
+	/*
+	 location_flag string */
+	LocationFlag string `json:"location_flag,omitempty"`
 }

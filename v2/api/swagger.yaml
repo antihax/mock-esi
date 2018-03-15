@@ -284,9 +284,9 @@ paths:
       - "Assets"
       summary: "Get corporation assets"
       description: "Return a list of the corporation assets\n\n---\nAlternate route:\
-        \ `/dev/corporations/{corporation_id}/assets/`\n\nAlternate route: `/latest/corporations/{corporation_id}/assets/`\n\
-        \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
-        \ the following EVE corporation role(s): Director\n"
+        \ `/latest/corporations/{corporation_id}/assets/`\n\n---\nThis route is cached\
+        \ for up to 3600 seconds\n\n---\nRequires one of the following EVE corporation\
+        \ role(s): Director\n\n\n---\n[This route has an available update](https://esi.tech.ccp.is/diff/v2/dev/#GET-/corporations/{corporation_id}/assets/)"
       operationId: "get_corporations_corporation_id_assets"
       parameters:
       - name: "corporation_id"
@@ -388,7 +388,6 @@ paths:
       - "Director"
       x-cached-seconds: 3600
       x-alternate-versions:
-      - "dev"
       - "latest"
   /characters/{character_id}/assets/locations/:
     post:
@@ -1301,6 +1300,101 @@ paths:
       x-alternate-versions:
       - "dev"
       - "latest"
+  /characters/{character_id}/notifications/:
+    get:
+      tags:
+      - "Character"
+      summary: "Get character notifications"
+      description: "Return character notifications\n\n---\nAlternate route: `/dev/characters/{character_id}/notifications/`\n\
+        \n---\nThis route is cached for up to 600 seconds"
+      operationId: "get_characters_character_id_notifications"
+      parameters:
+      - name: "character_id"
+        in: "path"
+        description: "An EVE character ID"
+        required: true
+        type: "integer"
+        minimum: 1
+        format: "int32"
+        x-exportParamName: "CharacterId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      - name: "user_agent"
+        in: "query"
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        type: "string"
+        x-exportParamName: "UserAgent"
+      - name: "X-User-Agent"
+        in: "header"
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        type: "string"
+        x-exportParamName: "XUserAgent"
+      responses:
+        200:
+          description: "Returns your recent notifications"
+          schema:
+            type: "array"
+            description: "200 ok array"
+            title: "get_characters_character_id_notifications_ok"
+            items:
+              $ref: "#/definitions/get_characters_character_id_notifications_200_ok"
+            maxItems: 500
+          examples:
+            application/json:
+            - notification_id: 1
+              type: "InsurancePayoutMsg"
+              sender_id: 1000132
+              sender_type: "corporation"
+              timestamp: "2017-08-16T10:08:00Z"
+              is_read: true
+              text: "amount: 3731016.4000000004\\nitemID: 1024881021663\\npayout:\
+                \ 1\\n"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+      security:
+      - evesso:
+        - "esi-characters.read_notifications.v1"
+      x-cached-seconds: 600
+      x-alternate-versions:
+      - "dev"
   /characters/{character_id}/roles/:
     get:
       tags:
@@ -1812,6 +1906,388 @@ paths:
       x-cached-seconds: 3600
       x-alternate-versions:
       - "legacy"
+  /corporations/{corporation_id}/structures/:
+    get:
+      tags:
+      - "Corporation"
+      summary: "Get corporation structures"
+      description: "Get a list of corporation structures. This route's version includes\
+        \ the changes to structures detailed in this blog: https://www.eveonline.com/article/upwell-2.0-structures-changes-coming-on-february-13th\n\
+        \n---\nAlternate route: `/dev/corporations/{corporation_id}/structures/`\n\
+        \nAlternate route: `/latest/corporations/{corporation_id}/structures/`\n\n\
+        ---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of the\
+        \ following EVE corporation role(s): StationManager\n"
+      operationId: "get_corporations_corporation_id_structures"
+      parameters:
+      - name: "corporation_id"
+        in: "path"
+        description: "An EVE corporation ID"
+        required: true
+        type: "integer"
+        minimum: 1
+        format: "int32"
+        x-exportParamName: "CorporationId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "language"
+        in: "query"
+        description: "Language to use in the response"
+        required: false
+        type: "string"
+        default: "en-us"
+        enum:
+        - "de"
+        - "en-us"
+        - "fr"
+        - "ja"
+        - "ru"
+        - "zh"
+        x-exportParamName: "Language"
+      - name: "page"
+        in: "query"
+        description: "Which page of results to return"
+        required: false
+        type: "integer"
+        default: 1
+        format: "int32"
+        x-exportParamName: "Page"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      - name: "user_agent"
+        in: "query"
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        type: "string"
+        x-exportParamName: "UserAgent"
+      - name: "X-User-Agent"
+        in: "header"
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        type: "string"
+        x-exportParamName: "XUserAgent"
+      responses:
+        200:
+          description: "List of corporation structures' information"
+          schema:
+            type: "array"
+            description: "200 ok array"
+            title: "get_corporations_corporation_id_structures_ok"
+            items:
+              $ref: "#/definitions/get_corporations_corporation_id_structures_200_ok"
+            maxItems: 1000
+          examples:
+            application/json:
+            - structure_id: 1021975535893
+              type_id: 35833
+              corporation_id: 667531913
+              system_id: 30004763
+              profile_id: 11237
+              state: "shield_vulnerable"
+              reinforce_weekday: 2
+              reinforce_hour: 22
+          headers:
+            X-Pages:
+              type: "integer"
+              format: "int32"
+              description: "Maximum page number"
+              default: 1
+            Content-Language:
+              type: "string"
+              description: "The language used in the response"
+              enum:
+              - "de"
+              - "en-us"
+              - "fr"
+              - "ja"
+              - "ru"
+              - "zh"
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+      security:
+      - evesso:
+        - "esi-corporations.read_structures.v1"
+      x-required-roles:
+      - "StationManager"
+      x-cached-seconds: 3600
+      x-alternate-versions:
+      - "dev"
+      - "latest"
+  /corporations/{corporation_id}/blueprints/:
+    get:
+      tags:
+      - "Corporation"
+      summary: "Get corporation blueprints"
+      description: "Returns a list of blueprints the corporation owns\n\n---\nAlternate\
+        \ route: `/dev/corporations/{corporation_id}/blueprints/`\n\n---\nThis route\
+        \ is cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
+        \ corporation role(s): Director\n"
+      operationId: "get_corporations_corporation_id_blueprints"
+      parameters:
+      - name: "corporation_id"
+        in: "path"
+        description: "An EVE corporation ID"
+        required: true
+        type: "integer"
+        minimum: 1
+        format: "int32"
+        x-exportParamName: "CorporationId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "page"
+        in: "query"
+        description: "Which page of results to return"
+        required: false
+        type: "integer"
+        default: 1
+        format: "int32"
+        x-exportParamName: "Page"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      - name: "user_agent"
+        in: "query"
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        type: "string"
+        x-exportParamName: "UserAgent"
+      - name: "X-User-Agent"
+        in: "header"
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        type: "string"
+        x-exportParamName: "XUserAgent"
+      responses:
+        200:
+          description: "List of corporation blueprints"
+          schema:
+            type: "array"
+            description: "200 ok array"
+            title: "get_corporations_corporation_id_blueprints_ok"
+            items:
+              $ref: "#/definitions/get_corporations_corporation_id_blueprints_200_ok"
+            maxItems: 1000
+          examples:
+            application/json:
+            - item_id: 1000000010495
+              type_id: 691
+              location_id: 60014719
+              location_flag: "CorpSAG1"
+              quantity: 1
+              time_efficiency: 0
+              material_efficiency: 0
+              runs: -1
+          headers:
+            X-Pages:
+              type: "integer"
+              format: "int32"
+              description: "Maximum page number"
+              default: 1
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+      security:
+      - evesso:
+        - "esi-corporations.read_blueprints.v1"
+      x-required-roles:
+      - "Director"
+      x-cached-seconds: 3600
+      x-alternate-versions:
+      - "dev"
+  /corporations/{corporation_id}/containers/logs/:
+    get:
+      tags:
+      - "Corporation"
+      summary: "Get all corporation ALSC logs"
+      description: "Returns logs recorded in the past seven days from all audit log\
+        \ secure containers (ALSC) owned by a given corporation\n\n---\nAlternate\
+        \ route: `/dev/corporations/{corporation_id}/containers/logs/`\n\n---\nThis\
+        \ route is cached for up to 600 seconds\n\n---\nRequires one of the following\
+        \ EVE corporation role(s): Director\n"
+      operationId: "get_corporations_corporation_id_containers_logs"
+      parameters:
+      - name: "corporation_id"
+        in: "path"
+        description: "An EVE corporation ID"
+        required: true
+        type: "integer"
+        minimum: 1
+        format: "int32"
+        x-exportParamName: "CorporationId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "page"
+        in: "query"
+        description: "Which page of results to return"
+        required: false
+        type: "integer"
+        default: 1
+        format: "int32"
+        x-exportParamName: "Page"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      - name: "user_agent"
+        in: "query"
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        type: "string"
+        x-exportParamName: "UserAgent"
+      - name: "X-User-Agent"
+        in: "header"
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        type: "string"
+        x-exportParamName: "XUserAgent"
+      responses:
+        200:
+          description: "List of corporation ALSC logs"
+          schema:
+            type: "array"
+            description: "200 ok array"
+            title: "get_corporations_corporation_id_containers_logs_ok"
+            items:
+              $ref: "#/definitions/get_corporations_corporation_id_containers_logs_200_ok"
+            maxItems: 1000
+          examples:
+            application/json:
+            - logged_at: "2017-10-10T14:00:00Z"
+              container_id: 1000000012279
+              container_type_id: 17365
+              character_id: 2112625428
+              location_id: 1000000012278
+              action: "set_password"
+              location_flag: "CorpSAG1"
+              password_type: "general"
+            - logged_at: "2017-10-11T12:04:33Z"
+              container_id: 1000000012279
+              container_type_id: 17365
+              character_id: 2112625428
+              location_id: 1000000012278
+              action: "lock"
+              location_flag: "CorpSAG1"
+              type_id: 1230
+              quantity: 30
+            - logged_at: "2017-10-11T12:06:29Z"
+              container_id: 1000000012279
+              container_type_id: 17365
+              character_id: 2112625428
+              location_id: 1000000012278
+              action: "configure"
+              location_flag: "CorpSAG2"
+              old_config_bitmask: 23
+              new_config_bitmask: 31
+          headers:
+            X-Pages:
+              type: "integer"
+              format: "int32"
+              description: "Maximum page number"
+              default: 1
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+      security:
+      - evesso:
+        - "esi-corporations.read_container_logs.v1"
+      x-required-roles:
+      - "Director"
+      x-cached-seconds: 600
+      x-alternate-versions:
+      - "dev"
   /dogma/effects/{effect_id}/:
     get:
       tags:
@@ -2105,7 +2581,7 @@ paths:
       - in: "body"
         name: "label"
         description: "Label to create"
-        required: false
+        required: true
         schema:
           $ref: "#/definitions/post_characters_character_id_mail_labels_label"
         x-exportParamName: "Label"
@@ -2164,8 +2640,8 @@ paths:
       - "Market"
       summary: "List open orders from a character"
       description: "List open market orders placed by a character\n\n---\nAlternate\
-        \ route: `/dev/characters/{character_id}/orders/`\n\n---\nThis route is cached\
-        \ for up to 1200 seconds"
+        \ route: `/dev/characters/{character_id}/orders/`\n\nAlternate route: `/latest/characters/{character_id}/orders/`\n\
+        \n---\nThis route is cached for up to 1200 seconds"
       operationId: "get_characters_character_id_orders"
       parameters:
       - name: "character_id"
@@ -2260,15 +2736,17 @@ paths:
       x-cached-seconds: 1200
       x-alternate-versions:
       - "dev"
+      - "latest"
   /corporations/{corporation_id}/orders/:
     get:
       tags:
       - "Market"
       summary: "List open orders from a corporation"
       description: "List open market orders placed on behalf of a corporation\n\n\
-        ---\nAlternate route: `/dev/corporations/{corporation_id}/orders/`\n\n---\n\
-        This route is cached for up to 1200 seconds\n\n---\nRequires one of the following\
-        \ EVE corporation role(s): Accountant, Trader\n"
+        ---\nAlternate route: `/dev/corporations/{corporation_id}/orders/`\n\nAlternate\
+        \ route: `/latest/corporations/{corporation_id}/orders/`\n\n---\nThis route\
+        \ is cached for up to 1200 seconds\n\n---\nRequires one of the following EVE\
+        \ corporation role(s): Accountant, Trader\n"
       operationId: "get_corporations_corporation_id_orders"
       parameters:
       - name: "corporation_id"
@@ -2379,6 +2857,7 @@ paths:
       x-cached-seconds: 1200
       x-alternate-versions:
       - "dev"
+      - "latest"
   /characters/{character_id}/planets/{planet_id}/:
     get:
       tags:
@@ -3652,10 +4131,10 @@ paths:
       tags:
       - "Wallet"
       summary: "Get corporation wallet journal"
-      description: "Retrieve corporation wallet journal\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/wallets/{division}/journal/`\n\
-        \nAlternate route: `/latest/corporations/{corporation_id}/wallets/{division}/journal/`\n\
+      description: "Retrieve corporation wallet journal\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/wallets/{division}/journal/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
-        \ the following EVE corporation role(s): Accountant, Junior_Accountant\n"
+        \ the following EVE corporation role(s): Accountant, Junior_Accountant\n\n\
+        \n---\n[This route has an available update](https://esi.tech.ccp.is/diff/v2/dev/#GET-/corporations/{corporation_id}/wallets/{division}/journal/)"
       operationId: "get_corporations_corporation_id_wallets_division_journal"
       parameters:
       - name: "corporation_id"
@@ -3758,7 +4237,6 @@ paths:
       - "Junior_Accountant"
       x-cached-seconds: 3600
       x-alternate-versions:
-      - "dev"
       - "latest"
 securityDefinitions:
   evesso:
@@ -3773,10 +4251,14 @@ securityDefinitions:
       esi-calendar.respond_calendar_events.v1: "EVE SSO scope esi-calendar.respond_calendar_events.v1"
       esi-characters.read_blueprints.v1: "EVE SSO scope esi-characters.read_blueprints.v1"
       esi-characters.read_corporation_roles.v1: "EVE SSO scope esi-characters.read_corporation_roles.v1"
+      esi-characters.read_notifications.v1: "EVE SSO scope esi-characters.read_notifications.v1"
       esi-characters.write_contacts.v1: "EVE SSO scope esi-characters.write_contacts.v1"
       esi-characterstats.read.v1: "EVE SSO scope esi-characterstats.read.v1"
       esi-clones.read_clones.v1: "EVE SSO scope esi-clones.read_clones.v1"
+      esi-corporations.read_blueprints.v1: "EVE SSO scope esi-corporations.read_blueprints.v1"
+      esi-corporations.read_container_logs.v1: "EVE SSO scope esi-corporations.read_container_logs.v1"
       esi-corporations.read_corporation_membership.v1: "EVE SSO scope esi-corporations.read_corporation_membership.v1"
+      esi-corporations.read_structures.v1: "EVE SSO scope esi-corporations.read_structures.v1"
       esi-location.read_online.v1: "EVE SSO scope esi-location.read_online.v1"
       esi-mail.organize_mail.v1: "EVE SSO scope esi-mail.organize_mail.v1"
       esi-mail.read_mail.v1: "EVE SSO scope esi-mail.read_mail.v1"
@@ -3789,16 +4271,6 @@ securityDefinitions:
       esi-wallet.read_character_wallet.v1: "EVE SSO scope esi-wallet.read_character_wallet.v1"
       esi-wallet.read_corporation_wallets.v1: "EVE SSO scope esi-wallet.read_corporation_wallets.v1"
 definitions:
-  internal_server_error:
-    type: "object"
-    required:
-    - "error"
-    properties:
-      error:
-        type: "string"
-        description: "Internal server error message"
-    title: "Internal server error"
-    description: "Internal server error model"
   forbidden:
     type: "object"
     required:
@@ -3812,6 +4284,16 @@ definitions:
         description: "Status code received from SSO"
     title: "Forbidden"
     description: "Forbidden model"
+  internal_server_error:
+    type: "object"
+    required:
+    - "error"
+    properties:
+      error:
+        type: "string"
+        description: "Internal server error message"
+    title: "Internal server error"
+    description: "Internal server error model"
   get_alliances_alliance_id_ok:
     required:
     - "alliance_name"
@@ -4022,6 +4504,10 @@ definitions:
         format: "int64"
         description: "item_id integer"
         title: "get_corporations_corporation_id_assets_item_id"
+      is_singleton:
+        type: "boolean"
+        description: "is_singleton boolean"
+        title: "get_corporations_corporation_id_assets_is_singleton"
       location_flag:
         type: "string"
         description: "location_flag string"
@@ -4142,10 +4628,6 @@ definitions:
         - "Unlocked"
         - "Wallet"
         - "Wardrobe"
-      is_singleton:
-        type: "boolean"
-        description: "is_singleton boolean"
-        title: "get_corporations_corporation_id_assets_is_singleton"
     description: "200 ok object"
   post_characters_character_id_assets_locations_position:
     required:
@@ -6060,6 +6542,232 @@ definitions:
         title: "get_characters_character_id_blueprints_runs"
         minimum: -1
     description: "200 ok object"
+  get_characters_character_id_notifications_200_ok:
+    required:
+    - "notification_id"
+    - "sender_id"
+    - "sender_type"
+    - "timestamp"
+    - "type"
+    properties:
+      notification_id:
+        type: "integer"
+        format: "int64"
+        description: "notification_id integer"
+        title: "get_characters_character_id_notifications_notification_id"
+      sender_id:
+        type: "integer"
+        format: "int32"
+        description: "sender_id integer"
+        title: "get_characters_character_id_notifications_sender_id"
+      sender_type:
+        type: "string"
+        description: "sender_type string"
+        title: "get_characters_character_id_notifications_sender_type"
+        enum:
+        - "character"
+        - "corporation"
+        - "alliance"
+        - "faction"
+        - "other"
+      timestamp:
+        type: "string"
+        format: "date-time"
+        description: "timestamp string"
+        title: "get_characters_character_id_notifications_timestamp"
+      is_read:
+        type: "boolean"
+        description: "is_read boolean"
+        title: "get_characters_character_id_notifications_is_read"
+      text:
+        type: "string"
+        description: "text string"
+        title: "get_characters_character_id_notifications_text"
+      type:
+        type: "string"
+        description: "type string"
+        title: "get_characters_character_id_notifications_type"
+        enum:
+        - "AcceptedAlly"
+        - "AcceptedSurrender"
+        - "AllAnchoringMsg"
+        - "AllMaintenanceBillMsg"
+        - "AllStrucInvulnerableMsg"
+        - "AllStructVulnerableMsg"
+        - "AllWarCorpJoinedAllianceMsg"
+        - "AllWarDeclaredMsg"
+        - "AllWarInvalidatedMsg"
+        - "AllWarRetractedMsg"
+        - "AllWarSurrenderMsg"
+        - "AllianceCapitalChanged"
+        - "AllyContractCancelled"
+        - "AllyJoinedWarAggressorMsg"
+        - "AllyJoinedWarAllyMsg"
+        - "AllyJoinedWarDefenderMsg"
+        - "BattlePunishFriendlyFire"
+        - "BillOutOfMoneyMsg"
+        - "BillPaidCorpAllMsg"
+        - "BountyClaimMsg"
+        - "BountyESSShared"
+        - "BountyESSTaken"
+        - "BountyPlacedAlliance"
+        - "BountyPlacedChar"
+        - "BountyPlacedCorp"
+        - "BountyYourBountyClaimed"
+        - "BuddyConnectContactAdd"
+        - "CharAppAcceptMsg"
+        - "CharAppRejectMsg"
+        - "CharAppWithdrawMsg"
+        - "CharLeftCorpMsg"
+        - "CharMedalMsg"
+        - "CharTerminationMsg"
+        - "CloneActivationMsg"
+        - "CloneActivationMsg2"
+        - "CloneMovedMsg"
+        - "CloneRevokedMsg1"
+        - "CloneRevokedMsg2"
+        - "ContactAdd"
+        - "ContactEdit"
+        - "ContainerPasswordMsg"
+        - "CorpAllBillMsg"
+        - "CorpAppAcceptMsg"
+        - "CorpAppInvitedMsg"
+        - "CorpAppNewMsg"
+        - "CorpAppRejectCustomMsg"
+        - "CorpAppRejectMsg"
+        - "CorpDividendMsg"
+        - "CorpFriendlyFireDisableTimerCompleted"
+        - "CorpFriendlyFireDisableTimerStarted"
+        - "CorpFriendlyFireEnableTimerCompleted"
+        - "CorpFriendlyFireEnableTimerStarted"
+        - "CorpKicked"
+        - "CorpLiquidationMsg"
+        - "CorpNewCEOMsg"
+        - "CorpNewsMsg"
+        - "CorpOfficeExpirationMsg"
+        - "CorpStructLostMsg"
+        - "CorpTaxChangeMsg"
+        - "CorpVoteCEORevokedMsg"
+        - "CorpVoteMsg"
+        - "CorpWarDeclaredMsg"
+        - "CorpWarFightingLegalMsg"
+        - "CorpWarInvalidatedMsg"
+        - "CorpWarRetractedMsg"
+        - "CorpWarSurrenderMsg"
+        - "CustomsMsg"
+        - "DeclareWar"
+        - "DistrictAttacked"
+        - "DustAppAcceptedMsg"
+        - "EntosisCaptureStarted"
+        - "FWAllianceKickMsg"
+        - "FWAllianceWarningMsg"
+        - "FWCharKickMsg"
+        - "FWCharRankGainMsg"
+        - "FWCharRankLossMsg"
+        - "FWCharWarningMsg"
+        - "FWCorpJoinMsg"
+        - "FWCorpKickMsg"
+        - "FWCorpLeaveMsg"
+        - "FWCorpWarningMsg"
+        - "FacWarCorpJoinRequestMsg"
+        - "FacWarCorpJoinWithdrawMsg"
+        - "FacWarCorpLeaveRequestMsg"
+        - "FacWarCorpLeaveWithdrawMsg"
+        - "FacWarLPDisqualifiedEvent"
+        - "FacWarLPDisqualifiedKill"
+        - "FacWarLPPayoutEvent"
+        - "FacWarLPPayoutKill"
+        - "GameTimeAdded"
+        - "GameTimeReceived"
+        - "GameTimeSent"
+        - "GiftReceived"
+        - "IHubDestroyedByBillFailure"
+        - "IncursionCompletedMsg"
+        - "IndustryTeamAuctionLost"
+        - "IndustryTeamAuctionWon"
+        - "InfrastructureHubBillAboutToExpire"
+        - "InsuranceExpirationMsg"
+        - "InsuranceFirstShipMsg"
+        - "InsuranceInvalidatedMsg"
+        - "InsuranceIssuedMsg"
+        - "InsurancePayoutMsg"
+        - "JumpCloneDeletedMsg1"
+        - "JumpCloneDeletedMsg2"
+        - "KillReportFinalBlow"
+        - "KillReportVictim"
+        - "KillRightAvailable"
+        - "KillRightAvailableOpen"
+        - "KillRightEarned"
+        - "KillRightUnavailable"
+        - "KillRightUnavailableOpen"
+        - "KillRightUsed"
+        - "LocateCharMsg"
+        - "MadeWarMutual"
+        - "MercOfferedNegotiationMsg"
+        - "MissionOfferExpirationMsg"
+        - "MissionTimeoutMsg"
+        - "MoonminingAutomaticFracture"
+        - "MoonminingExtractionCancelled"
+        - "MoonminingExtractionFinished"
+        - "MoonminingExtractionStarted"
+        - "MoonminingLaserFired"
+        - "NPCStandingsGained"
+        - "NPCStandingsLost"
+        - "OfferedSurrender"
+        - "OfferedToAlly"
+        - "OldLscMessages"
+        - "OperationFinished"
+        - "OrbitalAttacked"
+        - "OrbitalReinforced"
+        - "OwnershipTransferred"
+        - "ReimbursementMsg"
+        - "ResearchMissionAvailableMsg"
+        - "RetractsWar"
+        - "SeasonalChallengeCompleted"
+        - "SovAllClaimAquiredMsg"
+        - "SovAllClaimLostMsg"
+        - "SovCommandNodeEventStarted"
+        - "SovCorpBillLateMsg"
+        - "SovCorpClaimFailMsg"
+        - "SovDisruptorMsg"
+        - "SovStationEnteredFreeport"
+        - "SovStructureDestroyed"
+        - "SovStructureReinforced"
+        - "SovStructureSelfDestructCancel"
+        - "SovStructureSelfDestructFinished"
+        - "SovStructureSelfDestructRequested"
+        - "SovereigntyIHDamageMsg"
+        - "SovereigntySBUDamageMsg"
+        - "SovereigntyTCUDamageMsg"
+        - "StationAggressionMsg1"
+        - "StationAggressionMsg2"
+        - "StationConquerMsg"
+        - "StationServiceDisabled"
+        - "StationServiceEnabled"
+        - "StationStateChangeMsg"
+        - "StoryLineMissionAvailableMsg"
+        - "StructureAnchoring"
+        - "StructureCourierContractChanged"
+        - "StructureDestroyed"
+        - "StructureFuelAlert"
+        - "StructureItemsDelivered"
+        - "StructureLostArmor"
+        - "StructureLostShields"
+        - "StructureOnline"
+        - "StructureServicesOffline"
+        - "StructureUnanchoring"
+        - "StructureUnderAttack"
+        - "StructureWentHighPower"
+        - "StructureWentLowPower"
+        - "StructuresReinforcementChanged"
+        - "TowerAlertMsg"
+        - "TowerResourceAlertMsg"
+        - "TransactionReversalMsg"
+        - "TutorialMsg"
+        - "WarAllyOfferDeclinedMsg"
+        - "WarSurrenderDeclinedMsg"
+        - "WarSurrenderOfferMsg"
+    description: "200 ok object"
   get_characters_character_id_roles_ok:
     properties:
       roles:
@@ -6412,6 +7120,522 @@ definitions:
         format: "int32"
         description: "character_id integer"
         title: "get_corporations_corporation_id_members_character_id"
+    description: "200 ok object"
+  get_corporations_corporation_id_structures_service:
+    required:
+    - "name"
+    - "state"
+    properties:
+      name:
+        type: "string"
+        description: "name string"
+        title: "get_corporations_corporation_id_structures_name"
+      state:
+        type: "string"
+        description: "state string"
+        title: "get_corporations_corporation_id_structures_state"
+        enum:
+        - "online"
+        - "offline"
+        - "cleanup"
+    description: "service object"
+  get_corporations_corporation_id_structures_200_ok:
+    required:
+    - "corporation_id"
+    - "profile_id"
+    - "reinforce_hour"
+    - "reinforce_weekday"
+    - "state"
+    - "structure_id"
+    - "system_id"
+    - "type_id"
+    properties:
+      structure_id:
+        type: "integer"
+        format: "int64"
+        description: "The Item ID of the structure"
+        title: "get_corporations_corporation_id_structures_structure_id"
+      type_id:
+        type: "integer"
+        format: "int32"
+        description: "The type id of the structure"
+        title: "get_corporations_corporation_id_structures_type_id"
+      corporation_id:
+        type: "integer"
+        format: "int32"
+        description: "ID of the corporation that owns the structure"
+        title: "get_corporations_corporation_id_structures_corporation_id"
+      system_id:
+        type: "integer"
+        format: "int32"
+        description: "The solar system the structure is in"
+        title: "get_corporations_corporation_id_structures_system_id"
+      profile_id:
+        type: "integer"
+        format: "int32"
+        description: "The id of the ACL profile for this citadel"
+        title: "get_corporations_corporation_id_structures_profile_id"
+      fuel_expires:
+        type: "string"
+        format: "date-time"
+        description: "Date on which the structure will run out of fuel"
+        title: "get_corporations_corporation_id_structures_fuel_expires"
+      services:
+        type: "array"
+        description: "Contains a list of service upgrades, and their state"
+        title: "get_corporations_corporation_id_structures_services"
+        items:
+          $ref: "#/definitions/get_corporations_corporation_id_structures_service"
+        maxItems: 10
+      state_timer_start:
+        type: "string"
+        format: "date-time"
+        description: "Date at which the structure entered it's current state"
+        title: "get_corporations_corporation_id_structures_state_timer_start"
+      state_timer_end:
+        type: "string"
+        format: "date-time"
+        description: "Date at which the structure will move to it's next state"
+        title: "get_corporations_corporation_id_structures_state_timer_end"
+      unanchors_at:
+        type: "string"
+        format: "date-time"
+        description: "Date at which the structure will unanchor"
+        title: "get_corporations_corporation_id_structures_unanchors_at"
+      state:
+        type: "string"
+        description: "state string"
+        title: "get_corporations_corporation_id_structures_state"
+        enum:
+        - "anchor_vulnerable"
+        - "anchoring"
+        - "armor_reinforce"
+        - "armor_vulnerable"
+        - "fitting_invulnerable"
+        - "hull_reinforce"
+        - "hull_vulnerable"
+        - "online_deprecated"
+        - "onlining_vulnerable"
+        - "shield_vulnerable"
+        - "unanchored"
+        - "unknown"
+      reinforce_weekday:
+        type: "integer"
+        format: "int32"
+        description: "The day of the week when the structure exits its final reinforcement\
+          \ period and becomes vulnerable to attack against its hull. Monday is 0\
+          \ and Sunday is 6."
+        title: "get_corporations_corporation_id_structures_reinforce_weekday"
+        minimum: 0
+        maximum: 6
+      reinforce_hour:
+        type: "integer"
+        format: "int32"
+        description: "The hour of day that determines the four hour window when the\
+          \ structure will randomly exit its reinforcement periods and become vulnerable\
+          \ to attack against its armor and/or hull. The structure will become vulnerable\
+          \ at a random time that is +/- 2 hours centered on the value of this property."
+        title: "get_corporations_corporation_id_structures_reinforce_hour"
+        minimum: 0
+        maximum: 23
+      next_reinforce_weekday:
+        type: "integer"
+        format: "int32"
+        description: "The requested change to reinforce_weekday that will take effect\
+          \ at the time shown by next_reinforce_apply."
+        title: "get_corporations_corporation_id_structures_next_reinforce_weekday"
+        minimum: 0
+        maximum: 6
+      next_reinforce_hour:
+        type: "integer"
+        format: "int32"
+        description: "The requested change to reinforce_hour that will take effect\
+          \ at the time shown by next_reinforce_apply."
+        title: "get_corporations_corporation_id_structures_next_reinforce_hour"
+        minimum: 0
+        maximum: 23
+      next_reinforce_apply:
+        type: "string"
+        format: "date-time"
+        description: "The date and time when the structure's newly requested reinforcement\
+          \ times (e.g. next_reinforce_hour and next_reinforce_day) will take effect."
+        title: "get_corporations_corporation_id_structures_next_reinforce_apply"
+    description: "200 ok object"
+  get_corporations_corporation_id_blueprints_200_ok:
+    required:
+    - "item_id"
+    - "location_flag"
+    - "location_id"
+    - "material_efficiency"
+    - "quantity"
+    - "runs"
+    - "time_efficiency"
+    - "type_id"
+    properties:
+      item_id:
+        type: "integer"
+        format: "int64"
+        description: "Unique ID for this item."
+        title: "get_corporations_corporation_id_blueprints_item_id"
+      type_id:
+        type: "integer"
+        format: "int32"
+        description: "type_id integer"
+        title: "get_corporations_corporation_id_blueprints_type_id"
+      location_id:
+        type: "integer"
+        format: "int64"
+        description: "References a solar system, station or item_id if this blueprint\
+          \ is located within a container."
+        title: "get_corporations_corporation_id_blueprints_location_id"
+      quantity:
+        type: "integer"
+        format: "int32"
+        description: "A range of numbers with a minimum of -2 and no maximum value\
+          \ where -1 is an original and -2 is a copy. It can be a positive integer\
+          \ if it is a stack of blueprint originals fresh from the market (e.g. no\
+          \ activities performed on them yet)."
+        title: "get_corporations_corporation_id_blueprints_quantity"
+        minimum: -2
+      time_efficiency:
+        type: "integer"
+        format: "int32"
+        description: "Time Efficiency Level of the blueprint."
+        title: "get_corporations_corporation_id_blueprints_time_efficiency"
+        minimum: 0
+        maximum: 20
+      material_efficiency:
+        type: "integer"
+        format: "int32"
+        description: "Material Efficiency Level of the blueprint."
+        title: "get_corporations_corporation_id_blueprints_material_efficiency"
+        minimum: 0
+        maximum: 25
+      runs:
+        type: "integer"
+        format: "int32"
+        description: "Number of runs remaining if the blueprint is a copy, -1 if it\
+          \ is an original."
+        title: "get_corporations_corporation_id_blueprints_runs"
+        minimum: -1
+      location_flag:
+        type: "string"
+        description: "Type of the location_id"
+        title: "get_corporations_corporation_id_blueprints_location_flag"
+        enum:
+        - "AssetSafety"
+        - "AutoFit"
+        - "Bonus"
+        - "Booster"
+        - "BoosterBay"
+        - "Capsule"
+        - "Cargo"
+        - "CorpDeliveries"
+        - "CorpSAG1"
+        - "CorpSAG2"
+        - "CorpSAG3"
+        - "CorpSAG4"
+        - "CorpSAG5"
+        - "CorpSAG6"
+        - "CorpSAG7"
+        - "CrateLoot"
+        - "Deliveries"
+        - "DroneBay"
+        - "DustBattle"
+        - "DustDatabank"
+        - "FighterBay"
+        - "FighterTube0"
+        - "FighterTube1"
+        - "FighterTube2"
+        - "FighterTube3"
+        - "FighterTube4"
+        - "FleetHangar"
+        - "Hangar"
+        - "HangarAll"
+        - "HiSlot0"
+        - "HiSlot1"
+        - "HiSlot2"
+        - "HiSlot3"
+        - "HiSlot4"
+        - "HiSlot5"
+        - "HiSlot6"
+        - "HiSlot7"
+        - "HiddenModifiers"
+        - "Implant"
+        - "Impounded"
+        - "JunkyardReprocessed"
+        - "JunkyardTrashed"
+        - "LoSlot0"
+        - "LoSlot1"
+        - "LoSlot2"
+        - "LoSlot3"
+        - "LoSlot4"
+        - "LoSlot5"
+        - "LoSlot6"
+        - "LoSlot7"
+        - "Locked"
+        - "MedSlot0"
+        - "MedSlot1"
+        - "MedSlot2"
+        - "MedSlot3"
+        - "MedSlot4"
+        - "MedSlot5"
+        - "MedSlot6"
+        - "MedSlot7"
+        - "OfficeFolder"
+        - "Pilot"
+        - "PlanetSurface"
+        - "QuafeBay"
+        - "Reward"
+        - "RigSlot0"
+        - "RigSlot1"
+        - "RigSlot2"
+        - "RigSlot3"
+        - "RigSlot4"
+        - "RigSlot5"
+        - "RigSlot6"
+        - "RigSlot7"
+        - "SecondaryStorage"
+        - "ServiceSlot0"
+        - "ServiceSlot1"
+        - "ServiceSlot2"
+        - "ServiceSlot3"
+        - "ServiceSlot4"
+        - "ServiceSlot5"
+        - "ServiceSlot6"
+        - "ServiceSlot7"
+        - "ShipHangar"
+        - "ShipOffline"
+        - "Skill"
+        - "SkillInTraining"
+        - "SpecializedAmmoHold"
+        - "SpecializedCommandCenterHold"
+        - "SpecializedFuelBay"
+        - "SpecializedGasHold"
+        - "SpecializedIndustrialShipHold"
+        - "SpecializedLargeShipHold"
+        - "SpecializedMaterialBay"
+        - "SpecializedMediumShipHold"
+        - "SpecializedMineralHold"
+        - "SpecializedOreHold"
+        - "SpecializedPlanetaryCommoditiesHold"
+        - "SpecializedSalvageHold"
+        - "SpecializedShipHold"
+        - "SpecializedSmallShipHold"
+        - "StructureActive"
+        - "StructureFuel"
+        - "StructureInactive"
+        - "StructureOffline"
+        - "SubSystemBay"
+        - "SubSystemSlot0"
+        - "SubSystemSlot1"
+        - "SubSystemSlot2"
+        - "SubSystemSlot3"
+        - "SubSystemSlot4"
+        - "SubSystemSlot5"
+        - "SubSystemSlot6"
+        - "SubSystemSlot7"
+        - "Unlocked"
+        - "Wallet"
+        - "Wardrobe"
+    description: "200 ok object"
+  get_corporations_corporation_id_containers_logs_200_ok:
+    required:
+    - "action"
+    - "character_id"
+    - "container_id"
+    - "container_type_id"
+    - "location_flag"
+    - "location_id"
+    - "logged_at"
+    properties:
+      logged_at:
+        type: "string"
+        format: "date-time"
+        description: "Timestamp when this log was created"
+        title: "get_corporations_corporation_id_containers_logs_logged_at"
+      container_id:
+        type: "integer"
+        format: "int64"
+        description: "ID of the container"
+        title: "get_corporations_corporation_id_containers_logs_container_id"
+      container_type_id:
+        type: "integer"
+        format: "int32"
+        description: "Type ID of the container"
+        title: "get_corporations_corporation_id_containers_logs_container_type_id"
+      character_id:
+        type: "integer"
+        format: "int32"
+        description: "ID of the character who performed the action."
+        title: "get_corporations_corporation_id_containers_logs_character_id"
+      location_id:
+        type: "integer"
+        format: "int64"
+        description: "location_id integer"
+        title: "get_corporations_corporation_id_containers_logs_location_id"
+      action:
+        type: "string"
+        description: "action string"
+        title: "get_corporations_corporation_id_containers_logs_action"
+        enum:
+        - "add"
+        - "assemble"
+        - "configure"
+        - "enter_password"
+        - "lock"
+        - "move"
+        - "repackage"
+        - "set_name"
+        - "set_password"
+        - "unlock"
+      password_type:
+        type: "string"
+        description: "Type of password set if action is of type SetPassword or EnterPassword"
+        title: "get_corporations_corporation_id_containers_logs_password_type"
+        enum:
+        - "config"
+        - "general"
+      type_id:
+        type: "integer"
+        format: "int32"
+        description: "Type ID of the item being acted upon"
+        title: "get_corporations_corporation_id_containers_logs_type_id"
+      quantity:
+        type: "integer"
+        format: "int32"
+        description: "Quantity of the item being acted upon"
+        title: "get_corporations_corporation_id_containers_logs_quantity"
+      old_config_bitmask:
+        type: "integer"
+        format: "int32"
+        description: "old_config_bitmask integer"
+        title: "get_corporations_corporation_id_containers_logs_old_config_bitmask"
+      new_config_bitmask:
+        type: "integer"
+        format: "int32"
+        description: "new_config_bitmask integer"
+        title: "get_corporations_corporation_id_containers_logs_new_config_bitmask"
+      location_flag:
+        type: "string"
+        description: "location_flag string"
+        title: "get_corporations_corporation_id_containers_logs_location_flag"
+        enum:
+        - "AssetSafety"
+        - "AutoFit"
+        - "Bonus"
+        - "Booster"
+        - "BoosterBay"
+        - "Capsule"
+        - "Cargo"
+        - "CorpDeliveries"
+        - "CorpSAG1"
+        - "CorpSAG2"
+        - "CorpSAG3"
+        - "CorpSAG4"
+        - "CorpSAG5"
+        - "CorpSAG6"
+        - "CorpSAG7"
+        - "CrateLoot"
+        - "Deliveries"
+        - "DroneBay"
+        - "DustBattle"
+        - "DustDatabank"
+        - "FighterBay"
+        - "FighterTube0"
+        - "FighterTube1"
+        - "FighterTube2"
+        - "FighterTube3"
+        - "FighterTube4"
+        - "FleetHangar"
+        - "Hangar"
+        - "HangarAll"
+        - "HiSlot0"
+        - "HiSlot1"
+        - "HiSlot2"
+        - "HiSlot3"
+        - "HiSlot4"
+        - "HiSlot5"
+        - "HiSlot6"
+        - "HiSlot7"
+        - "HiddenModifiers"
+        - "Implant"
+        - "Impounded"
+        - "JunkyardReprocessed"
+        - "JunkyardTrashed"
+        - "LoSlot0"
+        - "LoSlot1"
+        - "LoSlot2"
+        - "LoSlot3"
+        - "LoSlot4"
+        - "LoSlot5"
+        - "LoSlot6"
+        - "LoSlot7"
+        - "Locked"
+        - "MedSlot0"
+        - "MedSlot1"
+        - "MedSlot2"
+        - "MedSlot3"
+        - "MedSlot4"
+        - "MedSlot5"
+        - "MedSlot6"
+        - "MedSlot7"
+        - "OfficeFolder"
+        - "Pilot"
+        - "PlanetSurface"
+        - "QuafeBay"
+        - "Reward"
+        - "RigSlot0"
+        - "RigSlot1"
+        - "RigSlot2"
+        - "RigSlot3"
+        - "RigSlot4"
+        - "RigSlot5"
+        - "RigSlot6"
+        - "RigSlot7"
+        - "SecondaryStorage"
+        - "ServiceSlot0"
+        - "ServiceSlot1"
+        - "ServiceSlot2"
+        - "ServiceSlot3"
+        - "ServiceSlot4"
+        - "ServiceSlot5"
+        - "ServiceSlot6"
+        - "ServiceSlot7"
+        - "ShipHangar"
+        - "ShipOffline"
+        - "Skill"
+        - "SkillInTraining"
+        - "SpecializedAmmoHold"
+        - "SpecializedCommandCenterHold"
+        - "SpecializedFuelBay"
+        - "SpecializedGasHold"
+        - "SpecializedIndustrialShipHold"
+        - "SpecializedLargeShipHold"
+        - "SpecializedMaterialBay"
+        - "SpecializedMediumShipHold"
+        - "SpecializedMineralHold"
+        - "SpecializedOreHold"
+        - "SpecializedPlanetaryCommoditiesHold"
+        - "SpecializedSalvageHold"
+        - "SpecializedShipHold"
+        - "SpecializedSmallShipHold"
+        - "StructureActive"
+        - "StructureFuel"
+        - "StructureInactive"
+        - "StructureOffline"
+        - "SubSystemBay"
+        - "SubSystemSlot0"
+        - "SubSystemSlot1"
+        - "SubSystemSlot2"
+        - "SubSystemSlot3"
+        - "SubSystemSlot4"
+        - "SubSystemSlot5"
+        - "SubSystemSlot6"
+        - "SubSystemSlot7"
+        - "Unlocked"
+        - "Wallet"
+        - "Wardrobe"
     description: "200 ok object"
   get_dogma_effects_effect_id_modifier:
     required:
@@ -8393,24 +9617,6 @@ parameters:
     required: false
     type: "string"
     x-exportParamName: "XUserAgent"
-  alliance_id:
-    name: "alliance_id"
-    in: "path"
-    description: "An EVE alliance ID"
-    required: true
-    type: "integer"
-    minimum: 1
-    format: "int32"
-    x-exportParamName: "AllianceId"
-  page:
-    name: "page"
-    in: "query"
-    description: "Which page of results to return"
-    required: false
-    type: "integer"
-    default: 1
-    format: "int32"
-    x-exportParamName: "Page"
   token:
     name: "token"
     in: "query"
@@ -8427,6 +9633,15 @@ parameters:
     minimum: 1
     format: "int32"
     x-exportParamName: "CharacterId"
+  page:
+    name: "page"
+    in: "query"
+    description: "Which page of results to return"
+    required: false
+    type: "integer"
+    default: 1
+    format: "int32"
+    x-exportParamName: "Page"
   corporation_id:
     name: "corporation_id"
     in: "path"
@@ -8436,6 +9651,15 @@ parameters:
     minimum: 1
     format: "int32"
     x-exportParamName: "CorporationId"
+  alliance_id:
+    name: "alliance_id"
+    in: "path"
+    description: "An EVE alliance ID"
+    required: true
+    type: "integer"
+    minimum: 1
+    format: "int32"
+    x-exportParamName: "AllianceId"
   language:
     name: "language"
     in: "query"

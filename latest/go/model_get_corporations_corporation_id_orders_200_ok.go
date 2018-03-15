@@ -21,9 +21,6 @@ type GetCorporationsCorporationIdOrders200Ok struct {
 	 Valid order range, numbers are ranges in jumps */
 	Range_ string `json:"range,omitempty"`
 	/*
-	 True for a bid (buy) order. False for an offer (sell) order */
-	IsBuyOrder bool `json:"is_buy_order,omitempty"`
-	/*
 	 Cost per unit for this order */
 	Price float64 `json:"price,omitempty"`
 	/*
@@ -36,18 +33,18 @@ type GetCorporationsCorporationIdOrders200Ok struct {
 	 Date and time when this order was issued */
 	Issued time.Time `json:"issued,omitempty"`
 	/*
-	 Current order state */
-	State string `json:"state,omitempty"`
+	 True if the order is a bid (buy) order */
+	IsBuyOrder bool `json:"is_buy_order,omitempty"`
 	/*
-	 For bids (buy orders), the minimum quantity that will be accepted in a matching offer (sell order) */
+	 For buy orders, the minimum quantity that will be accepted in a matching sell order */
 	MinVolume int32 `json:"min_volume,omitempty"`
-	/*
-	 The corporation wallet division used for this order. */
-	WalletDivision int32 `json:"wallet_division,omitempty"`
-	/*
-	 Number of days the order is valid for (starting from the issued date). An order expires at time issued + duration */
-	Duration int32 `json:"duration,omitempty"`
 	/*
 	 For buy orders, the amount of ISK in escrow */
 	Escrow float64 `json:"escrow,omitempty"`
+	/*
+	 Number of days for which order is valid (starting from the issued date). An order expires at time issued + duration */
+	Duration int32 `json:"duration,omitempty"`
+	/*
+	 The corporation wallet division used for this order. */
+	WalletDivision int32 `json:"wallet_division,omitempty"`
 }

@@ -543,13 +543,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"PutCorporationsCorporationIdStructuresStructureId",
-		"Put",
-		"/latest/corporations/{corporation_id}/structures/{structure_id}/",
-		PutCorporationsCorporationIdStructuresStructureId,
-	)
-
-	mockesi.NewRoute(
 		"GetDogmaAttributes",
 		"Get",
 		"/latest/dogma/attributes/",
@@ -1149,6 +1142,13 @@ func init() {
 		"Get",
 		"/latest/status/",
 		GetStatus,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseAncestries",
+		"Get",
+		"/latest/universe/ancestries/",
+		GetUniverseAncestries,
 	)
 
 	mockesi.NewRoute(

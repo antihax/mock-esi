@@ -214,6 +214,7 @@ func GetCorporationCorporationIdMiningExtractions(w http.ResponseWriter, r *http
 		err           error
 		corporationId int32
 		datasource    string
+		page          int32
 		token         string
 		userAgent     string
 	)
@@ -246,6 +247,14 @@ func GetCorporationCorporationIdMiningExtractions(w http.ResponseWriter, r *http
 			return
 		}
 		datasource = localV.(string)
+	}
+	if r.Form.Get("page") != "" {
+		localV, err = processParameters(page, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		page = localV.(int32)
 	}
 	if r.Form.Get("token") != "" {
 		localV, err = processParameters(token, r.Form.Get("token"))

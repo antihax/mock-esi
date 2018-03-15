@@ -1054,6 +1054,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetUniverseAncestries",
+		"Get",
+		"/v1/universe/ancestries/",
+		GetUniverseAncestries,
+	)
+
+	mockesi.NewRoute(
 		"GetUniverseBloodlines",
 		"Get",
 		"/v1/universe/bloodlines/",
