@@ -4,7 +4,7 @@ info:
   description: "An OpenAPI for EVE Online"
   version: "0.7.5"
   title: "EVE Swagger Interface"
-host: "esi.tech.ccp.is"
+host: "esi.evetech.net"
 basePath: "/v4"
 schemes:
 - "https"
@@ -985,15 +985,6 @@ parameters:
     default: 1
     format: "int32"
     x-exportParamName: "Page"
-  corporation_id:
-    name: "corporation_id"
-    in: "path"
-    description: "An EVE corporation ID"
-    required: true
-    type: "integer"
-    minimum: 1
-    format: "int32"
-    x-exportParamName: "CorporationId"
   language:
     name: "language"
     in: "query"
@@ -1008,3 +999,12 @@ parameters:
     - "ja"
     - "ru"
     - "zh"
+  corporation_id:
+    name: "corporation_id"
+    in: "path"
+    description: "An EVE corporation ID"
+    required: true
+    type: "integer"
+    minimum: 1
+    format: "int32"
+    x-exportParamName: "CorporationId"

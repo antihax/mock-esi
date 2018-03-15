@@ -4,7 +4,7 @@ info:
   description: "An OpenAPI for EVE Online"
   version: "0.7.5"
   title: "EVE Swagger Interface"
-host: "esi.tech.ccp.is"
+host: "esi.evetech.net"
 basePath: "/v3"
 schemes:
 - "https"
@@ -508,7 +508,7 @@ paths:
       description: "Public information about a character\n\n---\nAlternate route:\
         \ `/legacy/characters/{character_id}/`\n\n---\nThis route is cached for up\
         \ to 3600 seconds\n\n---\nWarning: This route is deprecated.\n\n---\n[This\
-        \ route has an available update](https://esi.tech.ccp.is/diff/v3/dev/#GET-/characters/{character_id}/)"
+        \ route has an available update](https://esi.evetech.net/diff/v3/dev/#GET-/characters/{character_id}/)"
       operationId: "get_characters_character_id"
       parameters:
       - name: "character_id"
@@ -592,7 +592,7 @@ paths:
       description: "Takes a source character ID in the url and a set of target character\
         \ ID's in the body, returns a CSPA charge cost\n\n---\nAlternate route: `/legacy/characters/{character_id}/cspa/`\n\
         \n\n---\nWarning: This route is deprecated.\n\n---\n[This route has an available\
-        \ update](https://esi.tech.ccp.is/diff/v3/dev/#POST-/characters/{character_id}/cspa/)"
+        \ update](https://esi.evetech.net/diff/v3/dev/#POST-/characters/{character_id}/cspa/)"
       operationId: "post_characters_character_id_cspa"
       parameters:
       - name: "character_id"
@@ -768,7 +768,7 @@ paths:
       description: "Public information about a corporation\n\n---\nAlternate route:\
         \ `/legacy/corporations/{corporation_id}/`\n\n---\nThis route is cached for\
         \ up to 3600 seconds\n\n---\nWarning: This route is deprecated.\n\n---\n[This\
-        \ route has an available update](https://esi.tech.ccp.is/diff/v3/dev/#GET-/corporations/{corporation_id}/)"
+        \ route has an available update](https://esi.evetech.net/diff/v3/dev/#GET-/corporations/{corporation_id}/)"
       operationId: "get_corporations_corporation_id"
       parameters:
       - name: "corporation_id"
@@ -1322,7 +1322,7 @@ paths:
       description: "List all trained skills for the given character\n\n---\nAlternate\
         \ route: `/legacy/characters/{character_id}/skills/`\n\n---\nThis route is\
         \ cached for up to 120 seconds\n\n---\nWarning: This route is deprecated.\n\
-        \n---\n[This route has an available update](https://esi.tech.ccp.is/diff/v3/dev/#GET-/characters/{character_id}/skills/)"
+        \n---\n[This route has an available update](https://esi.evetech.net/diff/v3/dev/#GET-/characters/{character_id}/skills/)"
       operationId: "get_characters_character_id_skills"
       parameters:
       - name: "character_id"
@@ -1630,7 +1630,7 @@ paths:
       summary: "Get character wallet journal"
       description: "Retrieve character wallet journal\n\n---\nAlternate route: `/latest/characters/{character_id}/wallet/journal/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\n[This route has\
-        \ an available update](https://esi.tech.ccp.is/diff/v3/dev/#GET-/characters/{character_id}/wallet/journal/)"
+        \ an available update](https://esi.evetech.net/diff/v3/dev/#GET-/characters/{character_id}/wallet/journal/)"
       operationId: "get_characters_character_id_wallet_journal"
       parameters:
       - name: "character_id"
@@ -3791,6 +3791,15 @@ parameters:
     minimum: 1
     format: "int32"
     x-exportParamName: "CorporationId"
+  alliance_id:
+    name: "alliance_id"
+    in: "path"
+    description: "An EVE alliance ID"
+    required: true
+    type: "integer"
+    minimum: 1
+    format: "int32"
+    x-exportParamName: "AllianceId"
   language:
     name: "language"
     in: "query"
@@ -3806,12 +3815,3 @@ parameters:
     - "ru"
     - "zh"
     x-exportParamName: "Language"
-  alliance_id:
-    name: "alliance_id"
-    in: "path"
-    description: "An EVE alliance ID"
-    required: true
-    type: "integer"
-    minimum: 1
-    format: "int32"
-    x-exportParamName: "AllianceId"
