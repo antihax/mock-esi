@@ -10,37 +10,38 @@ type GetCharactersCharacterIdWalletJournal200Ok struct {
 	Date time.Time `json:"date,omitempty"`
 	/*
 	 Unique journal reference ID */
-	RefId int64 `json:"ref_id,omitempty"`
+	Id int64 `json:"id,omitempty"`
 	/*
-	 Transaction type, different type of transaction will populate different fields in `extra_info` Note: If you have an existing XML API application that is using ref_types, you will need to know which string ESI ref_type maps to which integer. You can use the following gist to see string->int mappings: https://gist.github.com/ccp-zoetrope/c03db66d90c2148724c06171bc52e0ec */
+	 The transaction type for the given transaction. Different transaction types will populate different attributes. Note: If you have an existing XML API application that is using ref_types, you will need to know which string ESI ref_type maps to which integer. You can look at the following file to see string->int mappings: https://github.com/ccpgames/eve-glue/blob/master/eve_glue/wallet_journal_ref.py */
 	RefType string `json:"ref_type,omitempty"`
 	/*
-	 first_party_id integer */
+	 The id of the first party involved in the transaction. This attribute has no consistency and is different or non existant for particular ref_types. The description attribute will help make sense of what this attribute means. For more info about the given ID it can be dropped into the /universe/names/ ESI route to determine its type and name */
 	FirstPartyId int32 `json:"first_party_id,omitempty"`
 	/*
-	 first_party_type string */
-	FirstPartyType string `json:"first_party_type,omitempty"`
-	/*
-	 second_party_id integer */
+	 The id of the second party involved in the transaction. This attribute has no consistency and is different or non existant for particular ref_types. The description attribute will help make sense of what this attribute means. For more info about the given ID it can be dropped into the /universe/names/ ESI route to determine its type and name */
 	SecondPartyId int32 `json:"second_party_id,omitempty"`
 	/*
-	 second_party_type string */
-	SecondPartyType string `json:"second_party_type,omitempty"`
-	/*
-	 Transaction amount. Positive when value transferred to the first party. Negative otherwise */
+	 The amount of ISK given or taken from the wallet as a result of the given transaction. Positive when ISK is deposited into the wallet and negative when ISK is withdrawn */
 	Amount float64 `json:"amount,omitempty"`
+	/*
+	 The user stated reason for the transaction. Only applies to some ref_types */
+	Reason string `json:"reason,omitempty"`
 	/*
 	 Wallet balance after transaction occurred */
 	Balance float64 `json:"balance,omitempty"`
 	/*
-	 reason string */
-	Reason string `json:"reason,omitempty"`
+	 The reason for the transaction, mirrors what is seen in the client */
+	Description string `json:"description,omitempty"`
 	/*
-	 the corporation ID receiving any tax paid */
+	 An ID that gives extra context to the particular transaction. Because of legacy reasons the context is completely different per ref_type and means different things. It is also possible to not have a context_id */
+	ContextId int32 `json:"context_id,omitempty"`
+	/*
+	 The type of the given context_id if present */
+	ContextIdType string `json:"context_id_type,omitempty"`
+	/*
+	 The corporation ID receiving any tax paid. Only applies to tax related transactions */
 	TaxReceiverId int32 `json:"tax_receiver_id,omitempty"`
 	/*
-	 Tax amount received for tax related transactions */
+	 Tax amount received. Only applies to tax related transactions */
 	Tax float64 `json:"tax,omitempty"`
-	/* */
-	ExtraInfo GetCharactersCharacterIdWalletJournalExtraInfo `json:"extra_info,omitempty"`
 }

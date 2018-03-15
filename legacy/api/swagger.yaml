@@ -11188,6 +11188,14 @@ paths:
         - "tranquility"
         - "singularity"
         x-exportParamName: "Datasource"
+      - name: "page"
+        in: "query"
+        description: "Which page of results to return"
+        required: false
+        type: "integer"
+        default: 1
+        format: "int32"
+        x-exportParamName: "Page"
       - name: "token"
         in: "query"
         description: "Access token to use if unable to set a header"
@@ -11224,6 +11232,11 @@ paths:
               chunk_arrival_time: "2017-10-17T11:00:59Z"
               natural_decay_time: "2017-10-17T14:00:59Z"
           headers:
+            X-Pages:
+              type: "integer"
+              format: "int32"
+              description: "Maximum page number"
+              default: 1
             Cache-Control:
               type: "string"
               description: "The caching mechanism used"

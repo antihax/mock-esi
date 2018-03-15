@@ -11090,6 +11090,14 @@ paths:
         - "tranquility"
         - "singularity"
         x-exportParamName: "Datasource"
+      - name: "page"
+        in: "query"
+        description: "Which page of results to return"
+        required: false
+        type: "integer"
+        default: 1
+        format: "int32"
+        x-exportParamName: "Page"
       - name: "token"
         in: "query"
         description: "Access token to use if unable to set a header"
@@ -11126,6 +11134,11 @@ paths:
               chunk_arrival_time: "2017-10-17T11:00:59Z"
               natural_decay_time: "2017-10-17T14:00:59Z"
           headers:
+            X-Pages:
+              type: "integer"
+              format: "int32"
+              description: "Maximum page number"
+              default: 1
             Cache-Control:
               type: "string"
               description: "The caching mechanism used"
@@ -18871,9 +18884,9 @@ paths:
       tags:
       - "Wallet"
       summary: "Get character wallet journal"
-      description: "Retrieve character wallet journal\n\n---\nAlternate route: `/dev/characters/{character_id}/wallet/journal/`\n\
-        \nAlternate route: `/v3/characters/{character_id}/wallet/journal/`\n\n---\n\
-        This route is cached for up to 3600 seconds"
+      description: "Retrieve character wallet journal\n\n---\nAlternate route: `/v3/characters/{character_id}/wallet/journal/`\n\
+        \n---\nThis route is cached for up to 3600 seconds\n\n---\n[This route has\
+        \ an available update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/characters/{character_id}/wallet/journal/)"
       operationId: "get_characters_character_id_wallet_journal"
       parameters:
       - name: "character_id"
@@ -18964,7 +18977,6 @@ paths:
         - "esi-wallet.read_character_wallet.v1"
       x-cached-seconds: 3600
       x-alternate-versions:
-      - "dev"
       - "v3"
   /characters/{character_id}/wallet/transactions/:
     get:
@@ -19190,10 +19202,10 @@ paths:
       tags:
       - "Wallet"
       summary: "Get corporation wallet journal"
-      description: "Retrieve corporation wallet journal\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/wallets/{division}/journal/`\n\
-        \nAlternate route: `/v2/corporations/{corporation_id}/wallets/{division}/journal/`\n\
+      description: "Retrieve corporation wallet journal\n\n---\nAlternate route: `/v2/corporations/{corporation_id}/wallets/{division}/journal/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
-        \ the following EVE corporation role(s): Accountant, Junior_Accountant\n"
+        \ the following EVE corporation role(s): Accountant, Junior_Accountant\n\n\
+        \n---\n[This route has an available update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/corporations/{corporation_id}/wallets/{division}/journal/)"
       operationId: "get_corporations_corporation_id_wallets_division_journal"
       parameters:
       - name: "corporation_id"
@@ -19296,7 +19308,6 @@ paths:
       - "Junior_Accountant"
       x-cached-seconds: 3600
       x-alternate-versions:
-      - "dev"
       - "v2"
   /corporations/{corporation_id}/wallets/{division}/transactions/:
     get:

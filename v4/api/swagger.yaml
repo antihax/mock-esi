@@ -365,6 +365,117 @@ paths:
       x-alternate-versions:
       - "dev"
       - "latest"
+  /characters/{character_id}/wallet/journal/:
+    get:
+      tags:
+      - "Wallet"
+      summary: "Get character wallet journal"
+      description: "Retrieve the given character's wallet journal going 30 days back\n\
+        \n---\nAlternate route: `/dev/characters/{character_id}/wallet/journal/`\n\
+        \n---\nThis route is cached for up to 3600 seconds"
+      operationId: "get_characters_character_id_wallet_journal"
+      parameters:
+      - name: "character_id"
+        in: "path"
+        description: "An EVE character ID"
+        required: true
+        type: "integer"
+        minimum: 1
+        format: "int32"
+        x-exportParamName: "CharacterId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "page"
+        in: "query"
+        description: "Which page of results to return"
+        required: false
+        type: "integer"
+        default: 1
+        format: "int32"
+        x-exportParamName: "Page"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      - name: "user_agent"
+        in: "query"
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        type: "string"
+        x-exportParamName: "UserAgent"
+      - name: "X-User-Agent"
+        in: "header"
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        type: "string"
+        x-exportParamName: "XUserAgent"
+      responses:
+        200:
+          description: "Journal entries"
+          schema:
+            type: "array"
+            description: "Wallet journal entries"
+            title: "get_characters_character_id_wallet_journal_ok"
+            items:
+              $ref: "#/definitions/get_characters_character_id_wallet_journal_200_ok"
+            maxItems: 2500
+          examples:
+            application/json:
+            - id: 89
+              date: "2018-02-23T14:31:32Z"
+              ref_type: "contract_deposit"
+              description: "Contract Deposit"
+              context_id: 4
+              context_id_type: "contract_id"
+              first_party_id: 2112625428
+              second_party_id: 1000132
+              amount: -100000
+              balance: 500000.4316
+          headers:
+            X-Pages:
+              type: "integer"
+              format: "int32"
+              description: "Maximum page number"
+              default: 1
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+      security:
+      - evesso:
+        - "esi-wallet.read_character_wallet.v1"
+      x-cached-seconds: 3600
+      x-alternate-versions:
+      - "dev"
 securityDefinitions:
   evesso:
     type: "oauth2"
@@ -373,6 +484,7 @@ securityDefinitions:
     scopes:
       esi-characters.read_contacts.v1: "EVE SSO scope esi-characters.read_contacts.v1"
       esi-skills.read_skills.v1: "EVE SSO scope esi-skills.read_skills.v1"
+      esi-wallet.read_character_wallet.v1: "EVE SSO scope esi-wallet.read_character_wallet.v1"
 definitions:
   forbidden:
     type: "object"
@@ -603,6 +715,225 @@ definitions:
         description: "Skill points available to be assigned"
         title: "get_characters_character_id_skills_unallocated_sp"
     description: "200 ok object"
+  get_characters_character_id_wallet_journal_200_ok:
+    required:
+    - "date"
+    - "description"
+    - "id"
+    - "ref_type"
+    properties:
+      date:
+        type: "string"
+        format: "date-time"
+        description: "Date and time of transaction"
+        title: "get_characters_character_id_wallet_journal_date"
+      id:
+        type: "integer"
+        format: "int64"
+        description: "Unique journal reference ID"
+        title: "get_characters_character_id_wallet_journal_id"
+      ref_type:
+        type: "string"
+        description: "The transaction type for the given transaction. Different transaction\
+          \ types will populate different attributes. Note: If you have an existing\
+          \ XML API application that is using ref_types, you will need to know which\
+          \ string ESI ref_type maps to which integer. You can look at the following\
+          \ file to see string->int mappings: https://github.com/ccpgames/eve-glue/blob/master/eve_glue/wallet_journal_ref.py"
+        title: "get_characters_character_id_wallet_journal_ref_type"
+        enum:
+        - "acceleration_gate_fee"
+        - "advertisement_listing_fee"
+        - "agent_donation"
+        - "agent_location_services"
+        - "agent_miscellaneous"
+        - "agent_mission_collateral_paid"
+        - "agent_mission_collateral_refunded"
+        - "agent_mission_reward"
+        - "agent_mission_reward_corporation_tax"
+        - "agent_mission_time_bonus_reward"
+        - "agent_mission_time_bonus_reward_corporation_tax"
+        - "agent_security_services"
+        - "agent_services_rendered"
+        - "agents_preward"
+        - "alliance_maintainance_fee"
+        - "alliance_registration_fee"
+        - "asset_safety_recovery_tax"
+        - "bounty"
+        - "bounty_prize"
+        - "bounty_prize_corporation_tax"
+        - "bounty_prizes"
+        - "bounty_reimbursement"
+        - "bounty_surcharge"
+        - "brokers_fee"
+        - "clone_activation"
+        - "clone_transfer"
+        - "contraband_fine"
+        - "contract_auction_bid"
+        - "contract_auction_bid_corp"
+        - "contract_auction_bid_refund"
+        - "contract_auction_sold"
+        - "contract_brokers_fee"
+        - "contract_brokers_fee_corp"
+        - "contract_collateral"
+        - "contract_collateral_deposited_corp"
+        - "contract_collateral_payout"
+        - "contract_collateral_refund"
+        - "contract_deposit"
+        - "contract_deposit_corp"
+        - "contract_deposit_refund"
+        - "contract_deposit_sales_tax"
+        - "contract_price"
+        - "contract_price_payment_corp"
+        - "contract_reversal"
+        - "contract_reward"
+        - "contract_reward_deposited"
+        - "contract_reward_deposited_corp"
+        - "contract_reward_refund"
+        - "contract_sales_tax"
+        - "copying"
+        - "corporate_reward_payout"
+        - "corporate_reward_tax"
+        - "corporation_account_withdrawal"
+        - "corporation_bulk_payment"
+        - "corporation_dividend_payment"
+        - "corporation_liquidation"
+        - "corporation_logo_change_cost"
+        - "corporation_payment"
+        - "corporation_registration_fee"
+        - "courier_mission_escrow"
+        - "cspa"
+        - "cspaofflinerefund"
+        - "datacore_fee"
+        - "dna_modification_fee"
+        - "docking_fee"
+        - "duel_wager_escrow"
+        - "duel_wager_payment"
+        - "duel_wager_refund"
+        - "factory_slot_rental_fee"
+        - "gm_cash_transfer"
+        - "industry_job_tax"
+        - "infrastructure_hub_maintenance"
+        - "inheritance"
+        - "insurance"
+        - "jump_clone_activation_fee"
+        - "jump_clone_installation_fee"
+        - "kill_right_fee"
+        - "lp_store"
+        - "manufacturing"
+        - "market_escrow"
+        - "market_fine_paid"
+        - "market_transaction"
+        - "medal_creation"
+        - "medal_issued"
+        - "mission_completion"
+        - "mission_cost"
+        - "mission_expiration"
+        - "mission_reward"
+        - "office_rental_fee"
+        - "operation_bonus"
+        - "opportunity_reward"
+        - "planetary_construction"
+        - "planetary_export_tax"
+        - "planetary_import_tax"
+        - "player_donation"
+        - "player_trading"
+        - "project_discovery_reward"
+        - "project_discovery_tax"
+        - "reaction"
+        - "release_of_impounded_property"
+        - "repair_bill"
+        - "reprocessing_tax"
+        - "researching_material_productivity"
+        - "researching_technology"
+        - "researching_time_productivity"
+        - "resource_wars_reward"
+        - "reverse_engineering"
+        - "security_processing_fee"
+        - "shares"
+        - "sovereignity_bill"
+        - "store_purchase"
+        - "store_purchase_refund"
+        - "transaction_tax"
+        - "upkeep_adjustment_fee"
+        - "war_ally_contract"
+        - "war_fee"
+        - "war_fee_surrender"
+      first_party_id:
+        type: "integer"
+        format: "int32"
+        description: "The id of the first party involved in the transaction. This\
+          \ attribute has no consistency and is different or non existant for particular\
+          \ ref_types. The description attribute will help make sense of what this\
+          \ attribute means. For more info about the given ID it can be dropped into\
+          \ the /universe/names/ ESI route to determine its type and name"
+        title: "get_characters_character_id_wallet_journal_first_party_id"
+      second_party_id:
+        type: "integer"
+        format: "int32"
+        description: "The id of the second party involved in the transaction. This\
+          \ attribute has no consistency and is different or non existant for particular\
+          \ ref_types. The description attribute will help make sense of what this\
+          \ attribute means. For more info about the given ID it can be dropped into\
+          \ the /universe/names/ ESI route to determine its type and name"
+        title: "get_characters_character_id_wallet_journal_second_party_id"
+      amount:
+        type: "number"
+        format: "double"
+        description: "The amount of ISK given or taken from the wallet as a result\
+          \ of the given transaction. Positive when ISK is deposited into the wallet\
+          \ and negative when ISK is withdrawn"
+        title: "get_characters_character_id_wallet_journal_amount"
+      reason:
+        type: "string"
+        description: "The user stated reason for the transaction. Only applies to\
+          \ some ref_types"
+        title: "get_characters_character_id_wallet_journal_reason"
+      balance:
+        type: "number"
+        format: "double"
+        description: "Wallet balance after transaction occurred"
+        title: "get_characters_character_id_wallet_journal_balance"
+      description:
+        type: "string"
+        description: "The reason for the transaction, mirrors what is seen in the\
+          \ client"
+        title: "get_characters_character_id_wallet_journal_description"
+      context_id:
+        type: "integer"
+        format: "int32"
+        description: "An ID that gives extra context to the particular transaction.\
+          \ Because of legacy reasons the context is completely different per ref_type\
+          \ and means different things. It is also possible to not have a context_id"
+        title: "get_characters_character_id_wallet_journal_context_id"
+      context_id_type:
+        type: "string"
+        description: "The type of the given context_id if present"
+        title: "get_characters_character_id_wallet_journal_context_id_type"
+        enum:
+        - "structure_id"
+        - "station_id"
+        - "market_transaction_id"
+        - "character_id"
+        - "corporation_id"
+        - "alliance_id"
+        - "eve_system"
+        - "industry_job_id"
+        - "contract_id"
+        - "planet_id"
+        - "system_id"
+        - "type_id"
+      tax_receiver_id:
+        type: "integer"
+        format: "int32"
+        description: "The corporation ID receiving any tax paid. Only applies to tax\
+          \ related transactions"
+        title: "get_characters_character_id_wallet_journal_tax_receiver_id"
+      tax:
+        type: "number"
+        format: "double"
+        description: "Tax amount received. Only applies to tax related transactions"
+        title: "get_characters_character_id_wallet_journal_tax"
+    description: "200 ok object"
 parameters:
   datasource:
     name: "datasource"
@@ -645,6 +976,24 @@ parameters:
     minimum: 1
     format: "int32"
     x-exportParamName: "CharacterId"
+  page:
+    name: "page"
+    in: "query"
+    description: "Which page of results to return"
+    required: false
+    type: "integer"
+    default: 1
+    format: "int32"
+    x-exportParamName: "Page"
+  corporation_id:
+    name: "corporation_id"
+    in: "path"
+    description: "An EVE corporation ID"
+    required: true
+    type: "integer"
+    minimum: 1
+    format: "int32"
+    x-exportParamName: "CorporationId"
   language:
     name: "language"
     in: "query"
@@ -659,20 +1008,3 @@ parameters:
     - "ja"
     - "ru"
     - "zh"
-  page:
-    name: "page"
-    in: "query"
-    description: "Which page of results to return"
-    required: false
-    type: "integer"
-    default: 1
-    format: "int32"
-  corporation_id:
-    name: "corporation_id"
-    in: "path"
-    description: "An EVE corporation ID"
-    required: true
-    type: "integer"
-    minimum: 1
-    format: "int32"
-    x-exportParamName: "CorporationId"

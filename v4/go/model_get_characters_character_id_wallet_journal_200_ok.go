@@ -1,10 +1,10 @@
-package esidev
+package esiv4
 
 import "time"
 
 /*
 200 ok object */
-type GetCorporationsCorporationIdWalletsDivisionJournal200Ok struct {
+type GetCharactersCharacterIdWalletJournal200Ok struct {
 	/*
 	 Date and time of transaction */
 	Date time.Time `json:"date,omitempty"`

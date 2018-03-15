@@ -11083,6 +11083,14 @@ paths:
         - "tranquility"
         - "singularity"
         x-exportParamName: "Datasource"
+      - name: "page"
+        in: "query"
+        description: "Which page of results to return"
+        required: false
+        type: "integer"
+        default: 1
+        format: "int32"
+        x-exportParamName: "Page"
       - name: "token"
         in: "query"
         description: "Access token to use if unable to set a header"
@@ -11119,6 +11127,11 @@ paths:
               chunk_arrival_time: "2017-10-17T11:00:59Z"
               natural_decay_time: "2017-10-17T14:00:59Z"
           headers:
+            X-Pages:
+              type: "integer"
+              format: "int32"
+              description: "Maximum page number"
+              default: 1
             Cache-Control:
               type: "string"
               description: "The caching mechanism used"
@@ -18864,9 +18877,9 @@ paths:
       tags:
       - "Wallet"
       summary: "Get character wallet journal"
-      description: "Retrieve character wallet journal\n\n---\nAlternate route: `/latest/characters/{character_id}/wallet/journal/`\n\
-        \nAlternate route: `/v3/characters/{character_id}/wallet/journal/`\n\n---\n\
-        This route is cached for up to 3600 seconds"
+      description: "Retrieve the given character's wallet journal going 30 days back\n\
+        \n---\nAlternate route: `/v4/characters/{character_id}/wallet/journal/`\n\n\
+        ---\nThis route is cached for up to 3600 seconds"
       operationId: "get_characters_character_id_wallet_journal"
       parameters:
       - name: "character_id"
@@ -18887,14 +18900,14 @@ paths:
         - "tranquility"
         - "singularity"
         x-exportParamName: "Datasource"
-      - name: "from_id"
+      - name: "page"
         in: "query"
-        description: "Only show journal entries happened before the transaction referenced\
-          \ by this id"
+        description: "Which page of results to return"
         required: false
         type: "integer"
-        format: "int64"
-        x-exportParamName: "FromId"
+        default: 1
+        format: "int32"
+        x-exportParamName: "Page"
       - name: "token"
         in: "query"
         description: "Access token to use if unable to set a header"
@@ -18918,17 +18931,29 @@ paths:
           description: "Journal entries"
           schema:
             type: "array"
-            description: "Journal entries"
+            description: "Wallet journal entries"
             title: "get_characters_character_id_wallet_journal_ok"
             items:
               $ref: "#/definitions/get_characters_character_id_wallet_journal_200_ok"
             maxItems: 2500
           examples:
             application/json:
-            - date: "2016-10-24T09:00:00Z"
-              ref_id: 1234567890
-              ref_type: "player_trading"
+            - id: 89
+              date: "2018-02-23T14:31:32Z"
+              ref_type: "contract_deposit"
+              description: "Contract Deposit"
+              context_id: 4
+              context_id_type: "contract_id"
+              first_party_id: 2112625428
+              second_party_id: 1000132
+              amount: -100000
+              balance: 500000.4316
           headers:
+            X-Pages:
+              type: "integer"
+              format: "int32"
+              description: "Maximum page number"
+              default: 1
             Cache-Control:
               type: "string"
               description: "The caching mechanism used"
@@ -18957,8 +18982,7 @@ paths:
         - "esi-wallet.read_character_wallet.v1"
       x-cached-seconds: 3600
       x-alternate-versions:
-      - "latest"
-      - "v3"
+      - "v4"
   /characters/{character_id}/wallet/transactions/:
     get:
       tags:
@@ -19183,8 +19207,8 @@ paths:
       tags:
       - "Wallet"
       summary: "Get corporation wallet journal"
-      description: "Retrieve corporation wallet journal\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/wallets/{division}/journal/`\n\
-        \nAlternate route: `/v2/corporations/{corporation_id}/wallets/{division}/journal/`\n\
+      description: "Retrieve the given corporation's wallet journal for the given\
+        \ division going 30 days back\n\n---\nAlternate route: `/v3/corporations/{corporation_id}/wallets/{division}/journal/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
         \ the following EVE corporation role(s): Accountant, Junior_Accountant\n"
       operationId: "get_corporations_corporation_id_wallets_division_journal"
@@ -19216,14 +19240,14 @@ paths:
         minimum: 1
         format: "int32"
         x-exportParamName: "Division"
-      - name: "from_id"
+      - name: "page"
         in: "query"
-        description: "Only show journal entries happened before the transaction referenced\
-          \ by this id"
+        description: "Which page of results to return"
         required: false
         type: "integer"
-        format: "int64"
-        x-exportParamName: "FromId"
+        default: 1
+        format: "int32"
+        x-exportParamName: "Page"
       - name: "token"
         in: "query"
         description: "Access token to use if unable to set a header"
@@ -19255,9 +19279,22 @@ paths:
           examples:
             application/json:
             - date: "2016-10-24T09:00:00Z"
-              ref_id: 1234567890
-              ref_type: "player_trading"
+              id: 1234567890
+              ref_type: "corporation_account_withdrawal"
+              description: "CCP Zoetrope transferred cash from C C P's corporate account\
+                \ to CCP SnowedIn's account"
+              first_party_id: 109299958
+              second_party_id: 95538921
+              amount: -1000
+              balance: 100000.0
+              context_id: 2112625428
+              context_id_type: "character_id"
           headers:
+            X-Pages:
+              type: "integer"
+              format: "int32"
+              description: "Maximum page number"
+              default: 1
             Cache-Control:
               type: "string"
               description: "The caching mechanism used"
@@ -19289,8 +19326,7 @@ paths:
       - "Junior_Accountant"
       x-cached-seconds: 3600
       x-alternate-versions:
-      - "latest"
-      - "v2"
+      - "v3"
   /corporations/{corporation_id}/wallets/{division}/transactions/:
     get:
       tags:
@@ -32360,72 +32396,11 @@ definitions:
         description: "Unprocessable entity message"
         title: "post_ui_openwindow_newmail_422_unprocessable_entity"
     description: "Unprocessable entity"
-  get_characters_character_id_wallet_journal_extra_info:
-    properties:
-      location_id:
-        type: "integer"
-        format: "int64"
-        description: "location_id integer"
-        title: "get_characters_character_id_wallet_journal_location_id"
-      transaction_id:
-        type: "integer"
-        format: "int64"
-        description: "transaction_id integer"
-        title: "get_characters_character_id_wallet_journal_transaction_id"
-      npc_name:
-        type: "string"
-        description: "npc_name string"
-        title: "get_characters_character_id_wallet_journal_npc_name"
-      npc_id:
-        type: "integer"
-        format: "int32"
-        description: "npc_id integer"
-        title: "get_characters_character_id_wallet_journal_npc_id"
-      destroyed_ship_type_id:
-        type: "integer"
-        format: "int32"
-        description: "destroyed_ship_type_id integer"
-        title: "get_characters_character_id_wallet_journal_destroyed_ship_type_id"
-      character_id:
-        type: "integer"
-        format: "int32"
-        description: "character_id integer"
-        title: "get_characters_character_id_wallet_journal_character_id"
-      corporation_id:
-        type: "integer"
-        format: "int32"
-        description: "corporation_id integer"
-        title: "get_characters_character_id_wallet_journal_corporation_id"
-      alliance_id:
-        type: "integer"
-        format: "int32"
-        description: "alliance_id integer"
-        title: "get_characters_character_id_wallet_journal_alliance_id"
-      job_id:
-        type: "integer"
-        format: "int32"
-        description: "job_id integer"
-        title: "get_characters_character_id_wallet_journal_job_id"
-      contract_id:
-        type: "integer"
-        format: "int32"
-        description: "contract_id integer"
-        title: "get_characters_character_id_wallet_journal_contract_id"
-      system_id:
-        type: "integer"
-        format: "int32"
-        description: "system_id integer"
-        title: "get_characters_character_id_wallet_journal_system_id"
-      planet_id:
-        type: "integer"
-        format: "int32"
-        description: "planet_id integer"
-        title: "get_characters_character_id_wallet_journal_planet_id"
-    description: "Extra information for different type of transaction"
   get_characters_character_id_wallet_journal_200_ok:
     required:
     - "date"
-    - "ref_id"
+    - "description"
+    - "id"
     - "ref_type"
     properties:
       date:
@@ -32433,18 +32408,18 @@ definitions:
         format: "date-time"
         description: "Date and time of transaction"
         title: "get_characters_character_id_wallet_journal_date"
-      ref_id:
+      id:
         type: "integer"
         format: "int64"
         description: "Unique journal reference ID"
-        title: "get_characters_character_id_wallet_journal_ref_id"
+        title: "get_characters_character_id_wallet_journal_id"
       ref_type:
         type: "string"
-        description: "Transaction type, different type of transaction will populate\
-          \ different fields in `extra_info` Note: If you have an existing XML API\
-          \ application that is using ref_types, you will need to know which string\
-          \ ESI ref_type maps to which integer. You can use the following gist to\
-          \ see string->int mappings: https://gist.github.com/ccp-zoetrope/c03db66d90c2148724c06171bc52e0ec"
+        description: "The transaction type for the given transaction. Different transaction\
+          \ types will populate different attributes. Note: If you have an existing\
+          \ XML API application that is using ref_types, you will need to know which\
+          \ string ESI ref_type maps to which integer. You can look at the following\
+          \ file to see string->int mappings: https://github.com/ccpgames/eve-glue/blob/master/eve_glue/wallet_journal_ref.py"
         title: "get_characters_character_id_wallet_journal_ref_type"
         enum:
         - "acceleration_gate_fee"
@@ -32567,60 +32542,78 @@ definitions:
       first_party_id:
         type: "integer"
         format: "int32"
-        description: "first_party_id integer"
+        description: "The id of the first party involved in the transaction. This\
+          \ attribute has no consistency and is different or non existant for particular\
+          \ ref_types. The description attribute will help make sense of what this\
+          \ attribute means. For more info about the given ID it can be dropped into\
+          \ the /universe/names/ ESI route to determine its type and name"
         title: "get_characters_character_id_wallet_journal_first_party_id"
-      first_party_type:
-        type: "string"
-        description: "first_party_type string"
-        title: "get_characters_character_id_wallet_journal_first_party_type"
-        enum:
-        - "character"
-        - "corporation"
-        - "alliance"
-        - "faction"
-        - "system"
       second_party_id:
         type: "integer"
         format: "int32"
-        description: "second_party_id integer"
+        description: "The id of the second party involved in the transaction. This\
+          \ attribute has no consistency and is different or non existant for particular\
+          \ ref_types. The description attribute will help make sense of what this\
+          \ attribute means. For more info about the given ID it can be dropped into\
+          \ the /universe/names/ ESI route to determine its type and name"
         title: "get_characters_character_id_wallet_journal_second_party_id"
-      second_party_type:
-        type: "string"
-        description: "second_party_type string"
-        title: "get_characters_character_id_wallet_journal_second_party_type"
-        enum:
-        - "character"
-        - "corporation"
-        - "alliance"
-        - "faction"
-        - "system"
       amount:
         type: "number"
         format: "double"
-        description: "Transaction amount. Positive when value transferred to the first\
-          \ party. Negative otherwise"
+        description: "The amount of ISK given or taken from the wallet as a result\
+          \ of the given transaction. Positive when ISK is deposited into the wallet\
+          \ and negative when ISK is withdrawn"
         title: "get_characters_character_id_wallet_journal_amount"
+      reason:
+        type: "string"
+        description: "The user stated reason for the transaction. Only applies to\
+          \ some ref_types"
+        title: "get_characters_character_id_wallet_journal_reason"
       balance:
         type: "number"
         format: "double"
         description: "Wallet balance after transaction occurred"
         title: "get_characters_character_id_wallet_journal_balance"
-      reason:
+      description:
         type: "string"
-        description: "reason string"
-        title: "get_characters_character_id_wallet_journal_reason"
+        description: "The reason for the transaction, mirrors what is seen in the\
+          \ client"
+        title: "get_characters_character_id_wallet_journal_description"
+      context_id:
+        type: "integer"
+        format: "int32"
+        description: "An ID that gives extra context to the particular transaction.\
+          \ Because of legacy reasons the context is completely different per ref_type\
+          \ and means different things. It is also possible to not have a context_id"
+        title: "get_characters_character_id_wallet_journal_context_id"
+      context_id_type:
+        type: "string"
+        description: "The type of the given context_id if present"
+        title: "get_characters_character_id_wallet_journal_context_id_type"
+        enum:
+        - "structure_id"
+        - "station_id"
+        - "market_transaction_id"
+        - "character_id"
+        - "corporation_id"
+        - "alliance_id"
+        - "eve_system"
+        - "industry_job_id"
+        - "contract_id"
+        - "planet_id"
+        - "system_id"
+        - "type_id"
       tax_receiver_id:
         type: "integer"
         format: "int32"
-        description: "the corporation ID receiving any tax paid"
+        description: "The corporation ID receiving any tax paid. Only applies to tax\
+          \ related transactions"
         title: "get_characters_character_id_wallet_journal_tax_receiver_id"
       tax:
         type: "number"
         format: "double"
-        description: "Tax amount received for tax related transactions"
+        description: "Tax amount received. Only applies to tax related transactions"
         title: "get_characters_character_id_wallet_journal_tax"
-      extra_info:
-        $ref: "#/definitions/get_characters_character_id_wallet_journal_extra_info"
     description: "200 ok object"
   get_characters_character_id_wallet_transactions_200_ok:
     required:
@@ -32702,72 +32695,11 @@ definitions:
         description: "balance number"
         title: "get_corporations_corporation_id_wallets_balance"
     description: "200 ok object"
-  get_corporations_corporation_id_wallets_division_journal_extra_info:
-    properties:
-      location_id:
-        type: "integer"
-        format: "int64"
-        description: "location_id integer"
-        title: "get_corporations_corporation_id_wallets_division_journal_location_id"
-      transaction_id:
-        type: "integer"
-        format: "int64"
-        description: "transaction_id integer"
-        title: "get_corporations_corporation_id_wallets_division_journal_transaction_id"
-      npc_name:
-        type: "string"
-        description: "npc_name string"
-        title: "get_corporations_corporation_id_wallets_division_journal_npc_name"
-      npc_id:
-        type: "integer"
-        format: "int32"
-        description: "npc_id integer"
-        title: "get_corporations_corporation_id_wallets_division_journal_npc_id"
-      destroyed_ship_type_id:
-        type: "integer"
-        format: "int32"
-        description: "destroyed_ship_type_id integer"
-        title: "get_corporations_corporation_id_wallets_division_journal_destroyed_ship_type_id"
-      character_id:
-        type: "integer"
-        format: "int32"
-        description: "character_id integer"
-        title: "get_corporations_corporation_id_wallets_division_journal_character_id"
-      corporation_id:
-        type: "integer"
-        format: "int32"
-        description: "corporation_id integer"
-        title: "get_corporations_corporation_id_wallets_division_journal_corporation_id"
-      alliance_id:
-        type: "integer"
-        format: "int32"
-        description: "alliance_id integer"
-        title: "get_corporations_corporation_id_wallets_division_journal_alliance_id"
-      job_id:
-        type: "integer"
-        format: "int32"
-        description: "job_id integer"
-        title: "get_corporations_corporation_id_wallets_division_journal_job_id"
-      contract_id:
-        type: "integer"
-        format: "int32"
-        description: "contract_id integer"
-        title: "get_corporations_corporation_id_wallets_division_journal_contract_id"
-      system_id:
-        type: "integer"
-        format: "int32"
-        description: "system_id integer"
-        title: "get_corporations_corporation_id_wallets_division_journal_system_id"
-      planet_id:
-        type: "integer"
-        format: "int32"
-        description: "planet_id integer"
-        title: "get_corporations_corporation_id_wallets_division_journal_planet_id"
-    description: "Extra information for different type of transaction"
   get_corporations_corporation_id_wallets_division_journal_200_ok:
     required:
     - "date"
-    - "ref_id"
+    - "description"
+    - "id"
     - "ref_type"
     properties:
       date:
@@ -32775,18 +32707,18 @@ definitions:
         format: "date-time"
         description: "Date and time of transaction"
         title: "get_corporations_corporation_id_wallets_division_journal_date"
-      ref_id:
+      id:
         type: "integer"
         format: "int64"
         description: "Unique journal reference ID"
-        title: "get_corporations_corporation_id_wallets_division_journal_ref_id"
+        title: "get_corporations_corporation_id_wallets_division_journal_id"
       ref_type:
         type: "string"
-        description: "Transaction type, different type of transaction will populate\
-          \ different fields in `extra_info` Note: If you have an existing XML API\
-          \ application that is using ref_types, you will need to know which string\
-          \ ESI ref_type maps to which integer. You can use the following gist to\
-          \ see string->int mappings: https://gist.github.com/ccp-zoetrope/c03db66d90c2148724c06171bc52e0ec"
+        description: "The transaction type for the given transaction. Different transaction\
+          \ types will populate different attributes. Note: If you have an existing\
+          \ XML API application that is using ref_types, you will need to know which\
+          \ string ESI ref_type maps to which integer. You can look at the following\
+          \ file to see string->int mappings: https://github.com/ccpgames/eve-glue/blob/master/eve_glue/wallet_journal_ref.py"
         title: "get_corporations_corporation_id_wallets_division_journal_ref_type"
         enum:
         - "acceleration_gate_fee"
@@ -32909,60 +32841,78 @@ definitions:
       first_party_id:
         type: "integer"
         format: "int32"
-        description: "first_party_id integer"
+        description: "The id of the first party involved in the transaction. This\
+          \ attribute has no consistency and is different or non existant for particular\
+          \ ref_types. The description attribute will help make sense of what this\
+          \ attribute means. For more info about the given ID it can be dropped into\
+          \ the /universe/names/ ESI route to determine its type and name"
         title: "get_corporations_corporation_id_wallets_division_journal_first_party_id"
-      first_party_type:
-        type: "string"
-        description: "first_party_type string"
-        title: "get_corporations_corporation_id_wallets_division_journal_first_party_type"
-        enum:
-        - "character"
-        - "corporation"
-        - "alliance"
-        - "faction"
-        - "system"
       second_party_id:
         type: "integer"
         format: "int32"
-        description: "second_party_id integer"
+        description: "The id of the second party involved in the transaction. This\
+          \ attribute has no consistency and is different or non existant for particular\
+          \ ref_types. The description attribute will help make sense of what this\
+          \ attribute means. For more info about the given ID it can be dropped into\
+          \ the /universe/names/ ESI route to determine its type and name"
         title: "get_corporations_corporation_id_wallets_division_journal_second_party_id"
-      second_party_type:
-        type: "string"
-        description: "second_party_type string"
-        title: "get_corporations_corporation_id_wallets_division_journal_second_party_type"
-        enum:
-        - "character"
-        - "corporation"
-        - "alliance"
-        - "faction"
-        - "system"
       amount:
         type: "number"
         format: "double"
-        description: "Transaction amount. Positive when value transferred to the first\
-          \ party. Negative otherwise"
+        description: "The amount of ISK given or taken from the wallet as a result\
+          \ of the given transaction. Positive when ISK is deposited into the wallet\
+          \ and negative when ISK is withdrawn"
         title: "get_corporations_corporation_id_wallets_division_journal_amount"
+      reason:
+        type: "string"
+        description: "The user stated reason for the transaction. Only applies to\
+          \ some ref_types"
+        title: "get_corporations_corporation_id_wallets_division_journal_reason"
       balance:
         type: "number"
         format: "double"
         description: "Wallet balance after transaction occurred"
         title: "get_corporations_corporation_id_wallets_division_journal_balance"
-      reason:
+      description:
         type: "string"
-        description: "reason string"
-        title: "get_corporations_corporation_id_wallets_division_journal_reason"
+        description: "The reason for the transaction, mirrors what is seen in the\
+          \ client"
+        title: "get_corporations_corporation_id_wallets_division_journal_description"
+      context_id:
+        type: "integer"
+        format: "int32"
+        description: "An ID that gives extra context to the particular transaction.\
+          \ Because of legacy reasons the context is completely different per ref_type\
+          \ and means different things. It is also possible to not have a context_id"
+        title: "get_corporations_corporation_id_wallets_division_journal_context_id"
+      context_id_type:
+        type: "string"
+        description: "The type of the given context_id if present"
+        title: "get_corporations_corporation_id_wallets_division_journal_context_id_type"
+        enum:
+        - "structure_id"
+        - "station_id"
+        - "market_transaction_id"
+        - "character_id"
+        - "corporation_id"
+        - "alliance_id"
+        - "eve_system"
+        - "industry_job_id"
+        - "contract_id"
+        - "planet_id"
+        - "system_id"
+        - "type_id"
       tax_receiver_id:
         type: "integer"
         format: "int32"
-        description: "the corporation ID receiving any tax paid"
+        description: "The corporation ID receiving any tax paid. Only applies to tax\
+          \ related transactions"
         title: "get_corporations_corporation_id_wallets_division_journal_tax_receiver_id"
       tax:
         type: "number"
         format: "double"
-        description: "Tax amount received for tax related transactions"
+        description: "Tax amount received. Only applies to tax related transactions"
         title: "get_corporations_corporation_id_wallets_division_journal_tax"
-      extra_info:
-        $ref: "#/definitions/get_corporations_corporation_id_wallets_division_journal_extra_info"
     description: "200 ok object"
   get_corporations_corporation_id_wallets_division_transactions_200_ok:
     required:

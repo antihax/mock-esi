@@ -38,6 +38,13 @@ func init() {
 		GetCharactersCharacterIdSkills,
 	)
 
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdWalletJournal",
+		"Get",
+		"/v4/characters/{character_id}/wallet/journal/",
+		GetCharactersCharacterIdWalletJournal,
+	)
+
 }
 
 func errorOut(w http.ResponseWriter, r *http.Request, e error) {
