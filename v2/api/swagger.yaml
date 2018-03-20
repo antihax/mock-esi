@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "An OpenAPI for EVE Online"
-  version: "0.7.5"
+  version: "0.7.6"
   title: "EVE Swagger Interface"
 host: "esi.tech.ccp.is"
 basePath: "/v2"
@@ -9633,6 +9633,21 @@ parameters:
     minimum: 1
     format: "int32"
     x-exportParamName: "CharacterId"
+  language:
+    name: "language"
+    in: "query"
+    description: "Language to use in the response"
+    required: false
+    type: "string"
+    default: "en-us"
+    enum:
+    - "de"
+    - "en-us"
+    - "fr"
+    - "ja"
+    - "ru"
+    - "zh"
+    x-exportParamName: "Language"
   page:
     name: "page"
     in: "query"
@@ -9660,18 +9675,3 @@ parameters:
     minimum: 1
     format: "int32"
     x-exportParamName: "AllianceId"
-  language:
-    name: "language"
-    in: "query"
-    description: "Language to use in the response"
-    required: false
-    type: "string"
-    default: "en-us"
-    enum:
-    - "de"
-    - "en-us"
-    - "fr"
-    - "ja"
-    - "ru"
-    - "zh"
-    x-exportParamName: "Language"

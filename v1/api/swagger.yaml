@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "An OpenAPI for EVE Online"
-  version: "0.7.5"
+  version: "0.7.6"
   title: "EVE Swagger Interface"
 host: "esi.tech.ccp.is"
 basePath: "/v1"
@@ -4438,126 +4438,6 @@ paths:
       - "dev"
       - "latest"
       - "legacy"
-  /corporations/{corporation_id}/shareholders/:
-    get:
-      tags:
-      - "Corporation"
-      summary: "Get corporation shareholders"
-      description: "Return the current shareholders of a corporation.\n\n---\nAlternate\
-        \ route: `/dev/corporations/{corporation_id}/shareholders/`\n\nAlternate route:\
-        \ `/latest/corporations/{corporation_id}/shareholders/`\n\nAlternate route:\
-        \ `/legacy/corporations/{corporation_id}/shareholders/`\n\n---\nThis route\
-        \ is cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
-        \ corporation role(s): Director\n"
-      operationId: "get_corporations_corporation_id_shareholders"
-      parameters:
-      - name: "corporation_id"
-        in: "path"
-        description: "An EVE corporation ID"
-        required: true
-        type: "integer"
-        minimum: 1
-        format: "int32"
-        x-exportParamName: "CorporationId"
-      - name: "datasource"
-        in: "query"
-        description: "The server name you would like data from"
-        required: false
-        type: "string"
-        default: "tranquility"
-        enum:
-        - "tranquility"
-        - "singularity"
-        x-exportParamName: "Datasource"
-      - name: "page"
-        in: "query"
-        description: "Which page of results to return"
-        required: false
-        type: "integer"
-        default: 1
-        format: "int32"
-        x-exportParamName: "Page"
-      - name: "token"
-        in: "query"
-        description: "Access token to use if unable to set a header"
-        required: false
-        type: "string"
-        x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
-      responses:
-        200:
-          description: "List of shareholders"
-          schema:
-            type: "array"
-            description: "List of shareholders"
-            title: "get_corporations_corporation_id_shareholders_ok"
-            items:
-              $ref: "#/definitions/get_corporations_corporation_id_shareholders_200_ok"
-            maxItems: 1000
-          examples:
-            application/json:
-            - shareholder_id: 98000001
-              shareholder_type: "corporation"
-              share_count: 580
-            - shareholder_id: 2112000003
-              shareholder_type: "character"
-              share_count: 20
-            - shareholder_id: 2112000004
-              shareholder_type: "character"
-              share_count: 300
-            - shareholder_id: 2112000001
-              shareholder_type: "character"
-              share_count: 100
-          headers:
-            X-Pages:
-              type: "integer"
-              format: "int32"
-              description: "Maximum page number"
-              default: 1
-            Cache-Control:
-              type: "string"
-              description: "The caching mechanism used"
-            Last-Modified:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-            Expires:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-        403:
-          description: "Forbidden"
-          schema:
-            $ref: "#/definitions/forbidden"
-          examples:
-            application/json:
-              error: "Forbidden message"
-        500:
-          description: "Internal server error"
-          schema:
-            $ref: "#/definitions/internal_server_error"
-          examples:
-            application/json:
-              error: "Internal server error message"
-      security:
-      - evesso:
-        - "esi-wallet.read_corporation_wallets.v1"
-      x-required-roles:
-      - "Director"
-      x-cached-seconds: 3600
-      x-alternate-versions:
-      - "dev"
-      - "latest"
-      - "legacy"
   /corporations/{corporation_id}/alliancehistory/:
     get:
       tags:
@@ -6941,6 +6821,126 @@ paths:
       security:
       - evesso:
         - "esi-corporations.read_outposts.v1"
+      x-required-roles:
+      - "Director"
+      x-cached-seconds: 3600
+      x-alternate-versions:
+      - "dev"
+      - "latest"
+      - "legacy"
+  /corporations/{corporation_id}/shareholders/:
+    get:
+      tags:
+      - "Corporation"
+      summary: "Get corporation shareholders"
+      description: "Return the current shareholders of a corporation.\n\n---\nAlternate\
+        \ route: `/dev/corporations/{corporation_id}/shareholders/`\n\nAlternate route:\
+        \ `/latest/corporations/{corporation_id}/shareholders/`\n\nAlternate route:\
+        \ `/legacy/corporations/{corporation_id}/shareholders/`\n\n---\nThis route\
+        \ is cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
+        \ corporation role(s): Director\n"
+      operationId: "get_corporations_corporation_id_shareholders"
+      parameters:
+      - name: "corporation_id"
+        in: "path"
+        description: "An EVE corporation ID"
+        required: true
+        type: "integer"
+        minimum: 1
+        format: "int32"
+        x-exportParamName: "CorporationId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "page"
+        in: "query"
+        description: "Which page of results to return"
+        required: false
+        type: "integer"
+        default: 1
+        format: "int32"
+        x-exportParamName: "Page"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      - name: "user_agent"
+        in: "query"
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        type: "string"
+        x-exportParamName: "UserAgent"
+      - name: "X-User-Agent"
+        in: "header"
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        type: "string"
+        x-exportParamName: "XUserAgent"
+      responses:
+        200:
+          description: "List of shareholders"
+          schema:
+            type: "array"
+            description: "List of shareholders"
+            title: "get_corporations_corporation_id_shareholders_ok"
+            items:
+              $ref: "#/definitions/get_corporations_corporation_id_shareholders_200_ok"
+            maxItems: 1000
+          examples:
+            application/json:
+            - shareholder_id: 98000001
+              shareholder_type: "corporation"
+              share_count: 580
+            - shareholder_id: 2112000003
+              shareholder_type: "character"
+              share_count: 20
+            - shareholder_id: 2112000004
+              shareholder_type: "character"
+              share_count: 300
+            - shareholder_id: 2112000001
+              shareholder_type: "character"
+              share_count: 100
+          headers:
+            X-Pages:
+              type: "integer"
+              format: "int32"
+              description: "Maximum page number"
+              default: 1
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+      security:
+      - evesso:
+        - "esi-wallet.read_corporation_wallets.v1"
       x-required-roles:
       - "Director"
       x-cached-seconds: 3600
@@ -18142,6 +18142,16 @@ securityDefinitions:
       esi-wallet.read_character_wallet.v1: "EVE SSO scope esi-wallet.read_character_wallet.v1"
       esi-wallet.read_corporation_wallets.v1: "EVE SSO scope esi-wallet.read_corporation_wallets.v1"
 definitions:
+  internal_server_error:
+    type: "object"
+    required:
+    - "error"
+    properties:
+      error:
+        type: "string"
+        description: "Internal server error message"
+    title: "Internal server error"
+    description: "Internal server error model"
   forbidden:
     type: "object"
     required:
@@ -18155,16 +18165,6 @@ definitions:
         description: "Status code received from SSO"
     title: "Forbidden"
     description: "Forbidden model"
-  internal_server_error:
-    type: "object"
-    required:
-    - "error"
-    properties:
-      error:
-        type: "string"
-        description: "Internal server error message"
-    title: "Internal server error"
-    description: "Internal server error model"
   get_alliances_names_200_ok:
     required:
     - "alliance_id"
@@ -21566,30 +21566,6 @@ definitions:
         description: "The amount bid, in ISK"
         title: "get_corporations_corporation_id_contracts_contract_id_bids_amount"
     description: "200 ok object"
-  get_corporations_corporation_id_shareholders_200_ok:
-    required:
-    - "share_count"
-    - "shareholder_id"
-    - "shareholder_type"
-    properties:
-      shareholder_id:
-        type: "integer"
-        format: "int32"
-        description: "shareholder_id integer"
-        title: "get_corporations_corporation_id_shareholders_shareholder_id"
-      shareholder_type:
-        type: "string"
-        description: "shareholder_type string"
-        title: "get_corporations_corporation_id_shareholders_shareholder_type"
-        enum:
-        - "character"
-        - "corporation"
-      share_count:
-        type: "integer"
-        format: "int64"
-        description: "share_count integer"
-        title: "get_corporations_corporation_id_shareholders_share_count"
-    description: "200 ok object"
   get_corporations_corporation_id_alliancehistory_alliance:
     required:
     - "alliance_id"
@@ -23883,6 +23859,30 @@ definitions:
         items:
           $ref: "#/definitions/get_corporations_corporation_id_outposts_outpost_id_service"
         maxItems: 27
+    description: "200 ok object"
+  get_corporations_corporation_id_shareholders_200_ok:
+    required:
+    - "share_count"
+    - "shareholder_id"
+    - "shareholder_type"
+    properties:
+      shareholder_id:
+        type: "integer"
+        format: "int32"
+        description: "shareholder_id integer"
+        title: "get_corporations_corporation_id_shareholders_shareholder_id"
+      shareholder_type:
+        type: "string"
+        description: "shareholder_type string"
+        title: "get_corporations_corporation_id_shareholders_shareholder_type"
+        enum:
+        - "character"
+        - "corporation"
+      share_count:
+        type: "integer"
+        format: "int64"
+        description: "share_count integer"
+        title: "get_corporations_corporation_id_shareholders_share_count"
     description: "200 ok object"
   get_dogma_attributes_attribute_id_ok:
     required:
@@ -29654,6 +29654,21 @@ parameters:
     - "tranquility"
     - "singularity"
     x-exportParamName: "Datasource"
+  language:
+    name: "language"
+    in: "query"
+    description: "Language to use in the response"
+    required: false
+    type: "string"
+    default: "en-us"
+    enum:
+    - "de"
+    - "en-us"
+    - "fr"
+    - "ja"
+    - "ru"
+    - "zh"
+    x-exportParamName: "Language"
   user_agent:
     name: "user_agent"
     in: "query"
@@ -29684,15 +29699,6 @@ parameters:
     minimum: 1
     format: "int32"
     x-exportParamName: "CharacterId"
-  page:
-    name: "page"
-    in: "query"
-    description: "Which page of results to return"
-    required: false
-    type: "integer"
-    default: 1
-    format: "int32"
-    x-exportParamName: "Page"
   corporation_id:
     name: "corporation_id"
     in: "path"
@@ -29702,6 +29708,15 @@ parameters:
     minimum: 1
     format: "int32"
     x-exportParamName: "CorporationId"
+  page:
+    name: "page"
+    in: "query"
+    description: "Which page of results to return"
+    required: false
+    type: "integer"
+    default: 1
+    format: "int32"
+    x-exportParamName: "Page"
   alliance_id:
     name: "alliance_id"
     in: "path"
@@ -29711,18 +29726,3 @@ parameters:
     minimum: 1
     format: "int32"
     x-exportParamName: "AllianceId"
-  language:
-    name: "language"
-    in: "query"
-    description: "Language to use in the response"
-    required: false
-    type: "string"
-    default: "en-us"
-    enum:
-    - "de"
-    - "en-us"
-    - "fr"
-    - "ja"
-    - "ru"
-    - "zh"
-    x-exportParamName: "Language"

@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "An OpenAPI for EVE Online"
-  version: "0.7.5"
+  version: "0.7.6"
   title: "EVE Swagger Interface"
 host: "esi.tech.ccp.is"
 basePath: "/v4"
@@ -486,6 +486,16 @@ securityDefinitions:
       esi-skills.read_skills.v1: "EVE SSO scope esi-skills.read_skills.v1"
       esi-wallet.read_character_wallet.v1: "EVE SSO scope esi-wallet.read_character_wallet.v1"
 definitions:
+  internal_server_error:
+    type: "object"
+    required:
+    - "error"
+    properties:
+      error:
+        type: "string"
+        description: "Internal server error message"
+    title: "Internal server error"
+    description: "Internal server error model"
   forbidden:
     type: "object"
     required:
@@ -499,16 +509,6 @@ definitions:
         description: "Status code received from SSO"
     title: "Forbidden"
     description: "Forbidden model"
-  internal_server_error:
-    type: "object"
-    required:
-    - "error"
-    properties:
-      error:
-        type: "string"
-        description: "Internal server error message"
-    title: "Internal server error"
-    description: "Internal server error model"
   get_characters_character_id_ok:
     required:
     - "birthday"
@@ -946,54 +946,6 @@ parameters:
     - "tranquility"
     - "singularity"
     x-exportParamName: "Datasource"
-  user_agent:
-    name: "user_agent"
-    in: "query"
-    description: "Client identifier, takes precedence over headers"
-    required: false
-    type: "string"
-    x-exportParamName: "UserAgent"
-  X-User-Agent:
-    name: "X-User-Agent"
-    in: "header"
-    description: "Client identifier, takes precedence over User-Agent"
-    required: false
-    type: "string"
-    x-exportParamName: "XUserAgent"
-  token:
-    name: "token"
-    in: "query"
-    description: "Access token to use if unable to set a header"
-    required: false
-    type: "string"
-    x-exportParamName: "Token"
-  character_id:
-    name: "character_id"
-    in: "path"
-    description: "An EVE character ID"
-    required: true
-    type: "integer"
-    minimum: 1
-    format: "int32"
-    x-exportParamName: "CharacterId"
-  page:
-    name: "page"
-    in: "query"
-    description: "Which page of results to return"
-    required: false
-    type: "integer"
-    default: 1
-    format: "int32"
-    x-exportParamName: "Page"
-  corporation_id:
-    name: "corporation_id"
-    in: "path"
-    description: "An EVE corporation ID"
-    required: true
-    type: "integer"
-    minimum: 1
-    format: "int32"
-    x-exportParamName: "CorporationId"
   language:
     name: "language"
     in: "query"
@@ -1008,3 +960,51 @@ parameters:
     - "ja"
     - "ru"
     - "zh"
+  user_agent:
+    name: "user_agent"
+    in: "query"
+    description: "Client identifier, takes precedence over headers"
+    required: false
+    type: "string"
+    x-exportParamName: "UserAgent"
+  X-User-Agent:
+    name: "X-User-Agent"
+    in: "header"
+    description: "Client identifier, takes precedence over User-Agent"
+    required: false
+    type: "string"
+    x-exportParamName: "XUserAgent"
+  page:
+    name: "page"
+    in: "query"
+    description: "Which page of results to return"
+    required: false
+    type: "integer"
+    default: 1
+    format: "int32"
+    x-exportParamName: "Page"
+  token:
+    name: "token"
+    in: "query"
+    description: "Access token to use if unable to set a header"
+    required: false
+    type: "string"
+    x-exportParamName: "Token"
+  corporation_id:
+    name: "corporation_id"
+    in: "path"
+    description: "An EVE corporation ID"
+    required: true
+    type: "integer"
+    minimum: 1
+    format: "int32"
+    x-exportParamName: "CorporationId"
+  character_id:
+    name: "character_id"
+    in: "path"
+    description: "An EVE character ID"
+    required: true
+    type: "integer"
+    minimum: 1
+    format: "int32"
+    x-exportParamName: "CharacterId"
