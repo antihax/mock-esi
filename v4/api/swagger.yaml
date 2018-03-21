@@ -900,7 +900,7 @@ definitions:
         title: "get_characters_character_id_wallet_journal_description"
       context_id:
         type: "integer"
-        format: "int32"
+        format: "int64"
         description: "An ID that gives extra context to the particular transaction.\
           \ Because of legacy reasons the context is completely different per ref_type\
           \ and means different things. It is also possible to not have a context_id"

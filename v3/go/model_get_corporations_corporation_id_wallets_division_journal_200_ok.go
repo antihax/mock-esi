@@ -34,7 +34,7 @@ type GetCorporationsCorporationIdWalletsDivisionJournal200Ok struct {
 	Description string `json:"description,omitempty"`
 	/*
 	 An ID that gives extra context to the particular transaction. Because of legacy reasons the context is completely different per ref_type and means different things. It is also possible to not have a context_id */
-	ContextId int32 `json:"context_id,omitempty"`
+	ContextId int64 `json:"context_id,omitempty"`
 	/*
 	 The type of the given context_id if present */
 	ContextIdType string `json:"context_id_type,omitempty"`
