@@ -946,20 +946,6 @@ parameters:
     - "tranquility"
     - "singularity"
     x-exportParamName: "Datasource"
-  language:
-    name: "language"
-    in: "query"
-    description: "Language to use in the response"
-    required: false
-    type: "string"
-    default: "en-us"
-    enum:
-    - "de"
-    - "en-us"
-    - "fr"
-    - "ja"
-    - "ru"
-    - "zh"
   user_agent:
     name: "user_agent"
     in: "query"
@@ -990,15 +976,6 @@ parameters:
     required: false
     type: "string"
     x-exportParamName: "Token"
-  corporation_id:
-    name: "corporation_id"
-    in: "path"
-    description: "An EVE corporation ID"
-    required: true
-    type: "integer"
-    minimum: 1
-    format: "int32"
-    x-exportParamName: "CorporationId"
   character_id:
     name: "character_id"
     in: "path"
@@ -1008,3 +985,26 @@ parameters:
     minimum: 1
     format: "int32"
     x-exportParamName: "CharacterId"
+  corporation_id:
+    name: "corporation_id"
+    in: "path"
+    description: "An EVE corporation ID"
+    required: true
+    type: "integer"
+    minimum: 1
+    format: "int32"
+    x-exportParamName: "CorporationId"
+  language:
+    name: "language"
+    in: "query"
+    description: "Language to use in the response"
+    required: false
+    type: "string"
+    default: "en-us"
+    enum:
+    - "de"
+    - "en-us"
+    - "fr"
+    - "ja"
+    - "ru"
+    - "zh"
