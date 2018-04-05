@@ -321,118 +321,6 @@ paths:
       - "dev"
       - "latest"
       - "legacy"
-  /corporations/{corporation_id}/assets/:
-    get:
-      tags:
-      - "Assets"
-      summary: "Get corporation assets"
-      description: "Return a list of the corporation assets\n\n---\nAlternate route:\
-        \ `/legacy/corporations/{corporation_id}/assets/`\n\n---\nThis route is cached\
-        \ for up to 3600 seconds\n\n---\nRequires one of the following EVE corporation\
-        \ role(s): Director\n\n\n---\nWarning: This route is deprecated.\n\n---\n\
-        [This route has an available update](https://esi.tech.ccp.is/diff/v1/dev/#GET-/corporations/{corporation_id}/assets/)"
-      operationId: "get_corporations_corporation_id_assets"
-      parameters:
-      - name: "corporation_id"
-        in: "path"
-        description: "An EVE corporation ID"
-        required: true
-        type: "integer"
-        minimum: 1
-        format: "int32"
-        x-exportParamName: "CorporationId"
-      - name: "datasource"
-        in: "query"
-        description: "The server name you would like data from"
-        required: false
-        type: "string"
-        default: "tranquility"
-        enum:
-        - "tranquility"
-        - "singularity"
-        x-exportParamName: "Datasource"
-      - name: "page"
-        in: "query"
-        description: "Which page of results to return"
-        required: false
-        type: "integer"
-        default: 1
-        format: "int32"
-        x-exportParamName: "Page"
-      - name: "token"
-        in: "query"
-        description: "Access token to use if unable to set a header"
-        required: false
-        type: "string"
-        x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
-      responses:
-        200:
-          description: "A list of assets"
-          schema:
-            type: "array"
-            description: "200 ok array"
-            title: "get_corporations_corporation_id_assets_ok"
-            items:
-              $ref: "#/definitions/get_corporations_corporation_id_assets_200_ok"
-            maxItems: 5000
-          examples:
-            application/json:
-            - location_flag: "Hangar"
-              location_id: 60002959
-              is_singleton: true
-              type_id: 3516
-              item_id: 1000000016835
-              location_type: "station"
-          headers:
-            X-Pages:
-              type: "integer"
-              format: "int32"
-              description: "Maximum page number"
-              default: 1
-            Cache-Control:
-              type: "string"
-              description: "The caching mechanism used"
-            Last-Modified:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-            Expires:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-        403:
-          description: "Forbidden"
-          schema:
-            $ref: "#/definitions/forbidden"
-          examples:
-            application/json:
-              error: "Forbidden message"
-        500:
-          description: "Internal server error"
-          schema:
-            $ref: "#/definitions/internal_server_error"
-          examples:
-            application/json:
-              error: "Internal server error message"
-      security:
-      - evesso:
-        - "esi-assets.read_corporation_assets.v1"
-      deprecated: true
-      x-required-roles:
-      - "Director"
-      x-cached-seconds: 3600
-      x-alternate-versions:
-      - "legacy"
   /characters/{character_id}/assets/names/:
     post:
       tags:
@@ -2504,10 +2392,9 @@ paths:
       tags:
       - "Character"
       summary: "Get character notifications"
-      description: "Return character notifications\n\n---\nAlternate route: `/latest/characters/{character_id}/notifications/`\n\
-        \nAlternate route: `/legacy/characters/{character_id}/notifications/`\n\n\
-        ---\nThis route is cached for up to 600 seconds\n\n---\n[This route has an\
-        \ available update](https://esi.tech.ccp.is/diff/v1/dev/#GET-/characters/{character_id}/notifications/)"
+      description: "Return character notifications\n\n---\nAlternate route: `/legacy/characters/{character_id}/notifications/`\n\
+        \n---\nThis route is cached for up to 600 seconds\n\n---\nWarning: This route\
+        \ is deprecated.\n\n---\n[This route has an available update](https://esi.tech.ccp.is/diff/v1/dev/#GET-/characters/{character_id}/notifications/)"
       operationId: "get_characters_character_id_notifications"
       parameters:
       - name: "character_id"
@@ -2593,9 +2480,9 @@ paths:
       security:
       - evesso:
         - "esi-characters.read_notifications.v1"
+      deprecated: true
       x-cached-seconds: 600
       x-alternate-versions:
-      - "latest"
       - "legacy"
   /characters/{character_id}/roles/:
     get:
@@ -5810,11 +5697,10 @@ paths:
       - "Corporation"
       summary: "Get corporation blueprints"
       description: "Returns a list of blueprints the corporation owns\n\n---\nAlternate\
-        \ route: `/latest/corporations/{corporation_id}/blueprints/`\n\nAlternate\
         \ route: `/legacy/corporations/{corporation_id}/blueprints/`\n\n---\nThis\
         \ route is cached for up to 3600 seconds\n\n---\nRequires one of the following\
-        \ EVE corporation role(s): Director\n\n\n---\n[This route has an available\
-        \ update](https://esi.tech.ccp.is/diff/v1/dev/#GET-/corporations/{corporation_id}/blueprints/)"
+        \ EVE corporation role(s): Director\n\n\n---\nWarning: This route is deprecated.\n\
+        \n---\n[This route has an available update](https://esi.tech.ccp.is/diff/v1/dev/#GET-/corporations/{corporation_id}/blueprints/)"
       operationId: "get_corporations_corporation_id_blueprints"
       parameters:
       - name: "corporation_id"
@@ -5913,11 +5799,11 @@ paths:
       security:
       - evesso:
         - "esi-corporations.read_blueprints.v1"
+      deprecated: true
       x-required-roles:
       - "Director"
       x-cached-seconds: 3600
       x-alternate-versions:
-      - "latest"
       - "legacy"
   /corporations/{corporation_id}/standings/:
     get:
@@ -6266,11 +6152,10 @@ paths:
       summary: "Get all corporation ALSC logs"
       description: "Returns logs recorded in the past seven days from all audit log\
         \ secure containers (ALSC) owned by a given corporation\n\n---\nAlternate\
-        \ route: `/latest/corporations/{corporation_id}/containers/logs/`\n\nAlternate\
         \ route: `/legacy/corporations/{corporation_id}/containers/logs/`\n\n---\n\
         This route is cached for up to 600 seconds\n\n---\nRequires one of the following\
-        \ EVE corporation role(s): Director\n\n\n---\n[This route has an available\
-        \ update](https://esi.tech.ccp.is/diff/v1/dev/#GET-/corporations/{corporation_id}/containers/logs/)"
+        \ EVE corporation role(s): Director\n\n\n---\nWarning: This route is deprecated.\n\
+        \n---\n[This route has an available update](https://esi.tech.ccp.is/diff/v1/dev/#GET-/corporations/{corporation_id}/containers/logs/)"
       operationId: "get_corporations_corporation_id_containers_logs"
       parameters:
       - name: "corporation_id"
@@ -6387,11 +6272,11 @@ paths:
       security:
       - evesso:
         - "esi-corporations.read_container_logs.v1"
+      deprecated: true
       x-required-roles:
       - "Director"
       x-cached-seconds: 600
       x-alternate-versions:
-      - "latest"
       - "legacy"
   /corporations/{corporation_id}/facilities/:
     get:
@@ -18198,168 +18083,6 @@ definitions:
         description: "error message"
         title: "get_alliances_alliance_id_icons_error"
     description: "No image server for this datasource"
-  get_corporations_corporation_id_assets_200_ok:
-    required:
-    - "is_singleton"
-    - "item_id"
-    - "location_flag"
-    - "location_id"
-    - "location_type"
-    - "type_id"
-    properties:
-      type_id:
-        type: "integer"
-        format: "int32"
-        description: "type_id integer"
-        title: "get_corporations_corporation_id_assets_type_id"
-      quantity:
-        type: "integer"
-        format: "int32"
-        description: "quantity integer"
-        title: "get_corporations_corporation_id_assets_quantity"
-      location_id:
-        type: "integer"
-        format: "int64"
-        description: "location_id integer"
-        title: "get_corporations_corporation_id_assets_location_id"
-      location_type:
-        type: "string"
-        description: "location_type string"
-        title: "get_corporations_corporation_id_assets_location_type"
-        enum:
-        - "station"
-        - "solar_system"
-        - "other"
-      item_id:
-        type: "integer"
-        format: "int64"
-        description: "item_id integer"
-        title: "get_corporations_corporation_id_assets_item_id"
-      location_flag:
-        type: "string"
-        description: "location_flag string"
-        title: "get_corporations_corporation_id_assets_location_flag"
-        enum:
-        - "AssetSafety"
-        - "AutoFit"
-        - "Bonus"
-        - "Booster"
-        - "BoosterBay"
-        - "Capsule"
-        - "Cargo"
-        - "CorpDeliveries"
-        - "CorpSAG1"
-        - "CorpSAG2"
-        - "CorpSAG3"
-        - "CorpSAG4"
-        - "CorpSAG5"
-        - "CorpSAG6"
-        - "CorpSAG7"
-        - "CrateLoot"
-        - "Deliveries"
-        - "DroneBay"
-        - "DustBattle"
-        - "DustDatabank"
-        - "FighterBay"
-        - "FighterTube0"
-        - "FighterTube1"
-        - "FighterTube2"
-        - "FighterTube3"
-        - "FighterTube4"
-        - "FleetHangar"
-        - "Hangar"
-        - "HangarAll"
-        - "HiSlot0"
-        - "HiSlot1"
-        - "HiSlot2"
-        - "HiSlot3"
-        - "HiSlot4"
-        - "HiSlot5"
-        - "HiSlot6"
-        - "HiSlot7"
-        - "HiddenModifers"
-        - "Implant"
-        - "Impounded"
-        - "JunkyardReprocessed"
-        - "JunkyardTrashed"
-        - "LoSlot0"
-        - "LoSlot1"
-        - "LoSlot2"
-        - "LoSlot3"
-        - "LoSlot4"
-        - "LoSlot5"
-        - "LoSlot6"
-        - "LoSlot7"
-        - "Locked"
-        - "MedSlot0"
-        - "MedSlot1"
-        - "MedSlot2"
-        - "MedSlot3"
-        - "MedSlot4"
-        - "MedSlot5"
-        - "MedSlot6"
-        - "MedSlot7"
-        - "OfficeFolder"
-        - "Pilot"
-        - "PlanetSurface"
-        - "QuafeBay"
-        - "Reward"
-        - "RigSlot0"
-        - "RigSlot1"
-        - "RigSlot2"
-        - "RigSlot3"
-        - "RigSlot4"
-        - "RigSlot5"
-        - "RigSlot6"
-        - "RigSlot7"
-        - "SecondaryStorage"
-        - "ServiceSlot0"
-        - "ServiceSlot1"
-        - "ServiceSlot2"
-        - "ServiceSlot3"
-        - "ServiceSlot4"
-        - "ServiceSlot5"
-        - "ServiceSlot6"
-        - "ServiceSlot7"
-        - "ShipHangar"
-        - "ShipOffline"
-        - "Skill"
-        - "SkillInTraining"
-        - "SpecializedAmmoHold"
-        - "SpecializedCommandCenterHold"
-        - "SpecializedFuelBay"
-        - "SpecializedGasHold"
-        - "SpecializedIndustrialShipHold"
-        - "SpecializedLargeShipHold"
-        - "SpecializedMaterialBay"
-        - "SpecializedMediumShipHold"
-        - "SpecializedMineralHold"
-        - "SpecializedOreHold"
-        - "SpecializedPlanetaryCommoditiesHold"
-        - "SpecializedSalvageHold"
-        - "SpecializedShipHold"
-        - "SpecializedSmallShipHold"
-        - "StructureActive"
-        - "StructureFuel"
-        - "StructureInactive"
-        - "StructureOffline"
-        - "SubSystemSlot0"
-        - "SubSystemSlot1"
-        - "SubSystemSlot2"
-        - "SubSystemSlot3"
-        - "SubSystemSlot4"
-        - "SubSystemSlot5"
-        - "SubSystemSlot6"
-        - "SubSystemSlot7"
-        - "SubsystemBay"
-        - "Unlocked"
-        - "Wallet"
-        - "Wardrobe"
-      is_singleton:
-        type: "boolean"
-        description: "is_singleton boolean"
-        title: "get_corporations_corporation_id_assets_is_singleton"
-    description: "200 ok object"
   post_characters_character_id_assets_names_200_ok:
     required:
     - "item_id"

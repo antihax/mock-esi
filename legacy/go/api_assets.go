@@ -123,7 +123,8 @@ func GetCorporationsCorporationIdAssets(w http.ResponseWriter, r *http.Request) 
   "is_singleton" : true,
   "type_id" : 3516,
   "item_id" : 1000000016835,
-  "location_type" : "station"
+  "location_type" : "station",
+  "quantity" : 1
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(corporationId, vars["corporation_id"])

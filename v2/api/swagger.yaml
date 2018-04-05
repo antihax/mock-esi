@@ -284,9 +284,10 @@ paths:
       - "Assets"
       summary: "Get corporation assets"
       description: "Return a list of the corporation assets\n\n---\nAlternate route:\
-        \ `/latest/corporations/{corporation_id}/assets/`\n\n---\nThis route is cached\
+        \ `/legacy/corporations/{corporation_id}/assets/`\n\n---\nThis route is cached\
         \ for up to 3600 seconds\n\n---\nRequires one of the following EVE corporation\
-        \ role(s): Director\n\n\n---\n[This route has an available update](https://esi.tech.ccp.is/diff/v2/dev/#GET-/corporations/{corporation_id}/assets/)"
+        \ role(s): Director\n\n\n---\nWarning: This route is deprecated.\n\n---\n\
+        [This route has an available update](https://esi.tech.ccp.is/diff/v2/dev/#GET-/corporations/{corporation_id}/assets/)"
       operationId: "get_corporations_corporation_id_assets"
       parameters:
       - name: "corporation_id"
@@ -384,11 +385,12 @@ paths:
       security:
       - evesso:
         - "esi-assets.read_corporation_assets.v1"
+      deprecated: true
       x-required-roles:
       - "Director"
       x-cached-seconds: 3600
       x-alternate-versions:
-      - "latest"
+      - "legacy"
   /characters/{character_id}/assets/locations/:
     post:
       tags:
@@ -1203,7 +1205,8 @@ paths:
       - "Character"
       summary: "Get character notifications"
       description: "Return character notifications\n\n---\nAlternate route: `/dev/characters/{character_id}/notifications/`\n\
-        \n---\nThis route is cached for up to 600 seconds"
+        \nAlternate route: `/latest/characters/{character_id}/notifications/`\n\n\
+        ---\nThis route is cached for up to 600 seconds"
       operationId: "get_characters_character_id_notifications"
       parameters:
       - name: "character_id"
@@ -1292,6 +1295,7 @@ paths:
       x-cached-seconds: 600
       x-alternate-versions:
       - "dev"
+      - "latest"
   /characters/{character_id}/roles/:
     get:
       tags:
@@ -2051,8 +2055,9 @@ paths:
       - "Corporation"
       summary: "Get corporation blueprints"
       description: "Returns a list of blueprints the corporation owns\n\n---\nAlternate\
-        \ route: `/dev/corporations/{corporation_id}/blueprints/`\n\n---\nThis route\
-        \ is cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
+        \ route: `/dev/corporations/{corporation_id}/blueprints/`\n\nAlternate route:\
+        \ `/latest/corporations/{corporation_id}/blueprints/`\n\n---\nThis route is\
+        \ cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
         \ corporation role(s): Director\n"
       operationId: "get_corporations_corporation_id_blueprints"
       parameters:
@@ -2157,6 +2162,7 @@ paths:
       x-cached-seconds: 3600
       x-alternate-versions:
       - "dev"
+      - "latest"
   /corporations/{corporation_id}/containers/logs/:
     get:
       tags:
@@ -2164,8 +2170,9 @@ paths:
       summary: "Get all corporation ALSC logs"
       description: "Returns logs recorded in the past seven days from all audit log\
         \ secure containers (ALSC) owned by a given corporation\n\n---\nAlternate\
-        \ route: `/dev/corporations/{corporation_id}/containers/logs/`\n\n---\nThis\
-        \ route is cached for up to 600 seconds\n\n---\nRequires one of the following\
+        \ route: `/dev/corporations/{corporation_id}/containers/logs/`\n\nAlternate\
+        \ route: `/latest/corporations/{corporation_id}/containers/logs/`\n\n---\n\
+        This route is cached for up to 600 seconds\n\n---\nRequires one of the following\
         \ EVE corporation role(s): Director\n"
       operationId: "get_corporations_corporation_id_containers_logs"
       parameters:
@@ -2288,6 +2295,7 @@ paths:
       x-cached-seconds: 600
       x-alternate-versions:
       - "dev"
+      - "latest"
   /dogma/effects/{effect_id}/:
     get:
       tags:

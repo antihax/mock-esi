@@ -516,9 +516,9 @@ paths:
       - "Assets"
       summary: "Get corporation assets"
       description: "Return a list of the corporation assets\n\n---\nAlternate route:\
-        \ `/v2/corporations/{corporation_id}/assets/`\n\n---\nThis route is cached\
-        \ for up to 3600 seconds\n\n---\nRequires one of the following EVE corporation\
-        \ role(s): Director\n\n\n---\n[This route has an available update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/corporations/{corporation_id}/assets/)"
+        \ `/dev/corporations/{corporation_id}/assets/`\n\nAlternate route: `/v3/corporations/{corporation_id}/assets/`\n\
+        \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
+        \ the following EVE corporation role(s): Director\n"
       operationId: "get_corporations_corporation_id_assets"
       parameters:
       - name: "corporation_id"
@@ -620,7 +620,8 @@ paths:
       - "Director"
       x-cached-seconds: 3600
       x-alternate-versions:
-      - "v2"
+      - "dev"
+      - "v3"
   /characters/{character_id}/assets/names/:
     post:
       tags:
@@ -3099,10 +3100,9 @@ paths:
       tags:
       - "Character"
       summary: "Get character notifications"
-      description: "Return character notifications\n\n---\nAlternate route: `/legacy/characters/{character_id}/notifications/`\n\
-        \nAlternate route: `/v1/characters/{character_id}/notifications/`\n\n---\n\
-        This route is cached for up to 600 seconds\n\n---\n[This route has an available\
-        \ update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/characters/{character_id}/notifications/)"
+      description: "Return character notifications\n\n---\nAlternate route: `/dev/characters/{character_id}/notifications/`\n\
+        \nAlternate route: `/v2/characters/{character_id}/notifications/`\n\n---\n\
+        This route is cached for up to 600 seconds"
       operationId: "get_characters_character_id_notifications"
       parameters:
       - name: "character_id"
@@ -3190,8 +3190,8 @@ paths:
         - "esi-characters.read_notifications.v1"
       x-cached-seconds: 600
       x-alternate-versions:
-      - "legacy"
-      - "v1"
+      - "dev"
+      - "v2"
   /characters/{character_id}/roles/:
     get:
       tags:
@@ -6531,10 +6531,10 @@ paths:
       - "Corporation"
       summary: "Get corporation blueprints"
       description: "Returns a list of blueprints the corporation owns\n\n---\nAlternate\
-        \ route: `/legacy/corporations/{corporation_id}/blueprints/`\n\nAlternate\
-        \ route: `/v1/corporations/{corporation_id}/blueprints/`\n\n---\nThis route\
-        \ is cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
-        \ corporation role(s): Director\n\n\n---\n[This route has an available update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/corporations/{corporation_id}/blueprints/)"
+        \ route: `/dev/corporations/{corporation_id}/blueprints/`\n\nAlternate route:\
+        \ `/v2/corporations/{corporation_id}/blueprints/`\n\n---\nThis route is cached\
+        \ for up to 3600 seconds\n\n---\nRequires one of the following EVE corporation\
+        \ role(s): Director\n"
       operationId: "get_corporations_corporation_id_blueprints"
       parameters:
       - name: "corporation_id"
@@ -6637,8 +6637,8 @@ paths:
       - "Director"
       x-cached-seconds: 3600
       x-alternate-versions:
-      - "legacy"
-      - "v1"
+      - "dev"
+      - "v2"
   /corporations/{corporation_id}/standings/:
     get:
       tags:
@@ -6986,11 +6986,10 @@ paths:
       summary: "Get all corporation ALSC logs"
       description: "Returns logs recorded in the past seven days from all audit log\
         \ secure containers (ALSC) owned by a given corporation\n\n---\nAlternate\
-        \ route: `/legacy/corporations/{corporation_id}/containers/logs/`\n\nAlternate\
-        \ route: `/v1/corporations/{corporation_id}/containers/logs/`\n\n---\nThis\
+        \ route: `/dev/corporations/{corporation_id}/containers/logs/`\n\nAlternate\
+        \ route: `/v2/corporations/{corporation_id}/containers/logs/`\n\n---\nThis\
         \ route is cached for up to 600 seconds\n\n---\nRequires one of the following\
-        \ EVE corporation role(s): Director\n\n\n---\n[This route has an available\
-        \ update](https://esi.tech.ccp.is/diff/latest/dev/#GET-/corporations/{corporation_id}/containers/logs/)"
+        \ EVE corporation role(s): Director\n"
       operationId: "get_corporations_corporation_id_containers_logs"
       parameters:
       - name: "corporation_id"
@@ -7111,8 +7110,8 @@ paths:
       - "Director"
       x-cached-seconds: 600
       x-alternate-versions:
-      - "legacy"
-      - "v1"
+      - "dev"
+      - "v2"
   /corporations/{corporation_id}/facilities/:
     get:
       tags:
@@ -20087,7 +20086,7 @@ definitions:
         - "HiSlot5"
         - "HiSlot6"
         - "HiSlot7"
-        - "HiddenModifers"
+        - "HiddenModifiers"
         - "Implant"
         - "Impounded"
         - "JunkyardReprocessed"
@@ -20153,6 +20152,7 @@ definitions:
         - "StructureFuel"
         - "StructureInactive"
         - "StructureOffline"
+        - "SubSystemBay"
         - "SubSystemSlot0"
         - "SubSystemSlot1"
         - "SubSystemSlot2"
@@ -20161,7 +20161,6 @@ definitions:
         - "SubSystemSlot5"
         - "SubSystemSlot6"
         - "SubSystemSlot7"
-        - "SubsystemBay"
         - "Unlocked"
         - "Wallet"
         - "Wardrobe"
@@ -21451,6 +21450,7 @@ definitions:
         - "MoonminingAutomaticFracture"
         - "MoonminingExtractionCancelled"
         - "MoonminingExtractionFinished"
+        - "MoonminingExtractionStarted"
         - "MoonminingLaserFired"
         - "NPCStandingsGained"
         - "NPCStandingsLost"
@@ -21498,6 +21498,9 @@ definitions:
         - "StructureServicesOffline"
         - "StructureUnanchoring"
         - "StructureUnderAttack"
+        - "StructureWentHighPower"
+        - "StructureWentLowPower"
+        - "StructuresReinforcementChanged"
         - "TowerAlertMsg"
         - "TowerResourceAlertMsg"
         - "TransactionReversalMsg"
@@ -21505,7 +21508,6 @@ definitions:
         - "WarAllyOfferDeclinedMsg"
         - "WarSurrenderDeclinedMsg"
         - "WarSurrenderOfferMsg"
-        - "notificationTypeMoonminingExtractionStarted"
     description: "200 ok object"
   get_characters_character_id_roles_ok:
     properties:
@@ -25562,7 +25564,7 @@ definitions:
         - "HiSlot5"
         - "HiSlot6"
         - "HiSlot7"
-        - "HiddenModifers"
+        - "HiddenModifiers"
         - "Implant"
         - "Impounded"
         - "JunkyardReprocessed"
@@ -25628,6 +25630,7 @@ definitions:
         - "StructureFuel"
         - "StructureInactive"
         - "StructureOffline"
+        - "SubSystemBay"
         - "SubSystemSlot0"
         - "SubSystemSlot1"
         - "SubSystemSlot2"
@@ -25636,7 +25639,6 @@ definitions:
         - "SubSystemSlot5"
         - "SubSystemSlot6"
         - "SubSystemSlot7"
-        - "SubsystemBay"
         - "Unlocked"
         - "Wallet"
         - "Wardrobe"
@@ -25972,7 +25974,7 @@ definitions:
         - "HiSlot5"
         - "HiSlot6"
         - "HiSlot7"
-        - "HiddenModifers"
+        - "HiddenModifiers"
         - "Implant"
         - "Impounded"
         - "JunkyardReprocessed"
@@ -26038,6 +26040,7 @@ definitions:
         - "StructureFuel"
         - "StructureInactive"
         - "StructureOffline"
+        - "SubSystemBay"
         - "SubSystemSlot0"
         - "SubSystemSlot1"
         - "SubSystemSlot2"
@@ -26046,7 +26049,6 @@ definitions:
         - "SubSystemSlot5"
         - "SubSystemSlot6"
         - "SubSystemSlot7"
-        - "SubsystemBay"
         - "Unlocked"
         - "Wallet"
         - "Wardrobe"
