@@ -15,6 +15,9 @@ type GetMarketsRegionIdOrders200Ok struct {
 	 location_id integer */
 	LocationId int64 `json:"location_id,omitempty"`
 	/*
+	 The solar system this order was placed */
+	SystemId int32 `json:"system_id,omitempty"`
+	/*
 	 volume_total integer */
 	VolumeTotal int32 `json:"volume_total,omitempty"`
 	/*

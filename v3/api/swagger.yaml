@@ -3047,6 +3047,16 @@ definitions:
           description: "moon integer"
           title: "get_universe_systems_system_id_moon"
         maxItems: 1000
+      asteroid_belts:
+        type: "array"
+        description: "asteroid_belts array"
+        title: "get_universe_systems_system_id_asteroid_belts"
+        items:
+          type: "integer"
+          format: "int32"
+          description: "asteroid_belt integer"
+          title: "get_universe_systems_system_id_asteroid_belt"
+        maxItems: 100
     description: "planet object"
   get_universe_systems_system_id_ok:
     required:

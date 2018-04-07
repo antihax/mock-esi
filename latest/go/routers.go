@@ -1152,6 +1152,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetUniverseAsteroidBeltsAsteroidBeltId",
+		"Get",
+		"/latest/universe/asteroid_belts/{asteroid_belt_id}/",
+		GetUniverseAsteroidBeltsAsteroidBeltId,
+	)
+
+	mockesi.NewRoute(
 		"GetUniverseBloodlines",
 		"Get",
 		"/latest/universe/bloodlines/",

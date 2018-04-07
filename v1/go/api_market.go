@@ -717,7 +717,8 @@ func GetMarketsRegionIdOrders(w http.ResponseWriter, r *http.Request) {
   "is_buy_order" : false,
   "duration" : 90,
   "issued" : "2016-09-03T05:12:25Z",
-  "range" : "region"
+  "range" : "region",
+  "system_id" : 30000053
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(regionId, vars["region_id"])

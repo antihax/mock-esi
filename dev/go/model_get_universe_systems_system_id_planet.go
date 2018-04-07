@@ -9,4 +9,7 @@ type GetUniverseSystemsSystemIdPlanet struct {
 	/*
 	 moons array */
 	Moons []int32 `json:"moons,omitempty"`
+	/*
+	 asteroid_belts array */
+	AsteroidBelts []int32 `json:"asteroid_belts,omitempty"`
 }

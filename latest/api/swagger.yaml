@@ -13057,6 +13057,7 @@ paths:
               duration: 90
               issued: "2016-09-03T05:12:25Z"
               range: "region"
+              system_id: 30000053
           headers:
             X-Pages:
               type: "integer"
@@ -18301,6 +18302,87 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+      x-alternate-versions:
+      - "dev"
+      - "legacy"
+      - "v1"
+  /universe/asteroid_belts/{asteroid_belt_id}/:
+    get:
+      tags:
+      - "Universe"
+      summary: "Get asteroid belt information"
+      description: "Get information on an asteroid belt\n\n---\nAlternate route: `/dev/universe/asteroid_belts/{asteroid_belt_id}/`\n\
+        \nAlternate route: `/legacy/universe/asteroid_belts/{asteroid_belt_id}/`\n\
+        \nAlternate route: `/v1/universe/asteroid_belts/{asteroid_belt_id}/`\n\n---\n\
+        This route expires daily at 11:05"
+      operationId: "get_universe_asteroid_belts_asteroid_belt_id"
+      parameters:
+      - name: "asteroid_belt_id"
+        in: "path"
+        description: "asteroid_belt_id integer"
+        required: true
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "AsteroidBeltId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "user_agent"
+        in: "query"
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        type: "string"
+        x-exportParamName: "UserAgent"
+      - name: "X-User-Agent"
+        in: "header"
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        type: "string"
+        x-exportParamName: "XUserAgent"
+      responses:
+        200:
+          description: "Information about an asteroid belt"
+          schema:
+            $ref: "#/definitions/get_universe_asteroid_belts_asteroid_belt_id_ok"
+          examples:
+            application/json:
+              name: "Tanoo I - Asteroid Belt 1"
+              position:
+                x: 161967513600
+                y: 21288837120
+                z: -73505464320
+              system_id: 30000001
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        404:
+          description: "Asteroid belt not found"
+          schema:
+            $ref: "#/definitions/get_universe_asteroid_belts_asteroid_belt_id_not_found"
+          examples:
+            application/json:
+              error: "Not found message"
         500:
           description: "Internal server error"
           schema:
@@ -29147,6 +29229,7 @@ definitions:
     - "order_id"
     - "price"
     - "range"
+    - "system_id"
     - "type_id"
     - "volume_remain"
     - "volume_total"
@@ -29166,6 +29249,11 @@ definitions:
         format: "int64"
         description: "location_id integer"
         title: "get_markets_region_id_orders_location_id"
+      system_id:
+        type: "integer"
+        format: "int32"
+        description: "The solar system this order was placed"
+        title: "get_markets_region_id_orders_system_id"
       volume_total:
         type: "integer"
         format: "int32"
@@ -31158,6 +31246,16 @@ definitions:
           description: "moon integer"
           title: "get_universe_systems_system_id_moon"
         maxItems: 1000
+      asteroid_belts:
+        type: "array"
+        description: "asteroid_belts array"
+        title: "get_universe_systems_system_id_asteroid_belts"
+        items:
+          type: "integer"
+          format: "int32"
+          description: "asteroid_belt integer"
+          title: "get_universe_systems_system_id_asteroid_belt"
+        maxItems: 100
     description: "planet object"
   get_universe_systems_system_id_ok:
     required:
@@ -32128,6 +32226,53 @@ definitions:
         description: "icon_id integer"
         title: "get_universe_ancestries_icon_id"
     description: "200 ok object"
+  get_universe_asteroid_belts_asteroid_belt_id_position:
+    required:
+    - "x"
+    - "y"
+    - "z"
+    properties:
+      x:
+        type: "number"
+        format: "double"
+        description: "x number"
+        title: "get_universe_asteroid_belts_asteroid_belt_id_x"
+      y:
+        type: "number"
+        format: "double"
+        description: "y number"
+        title: "get_universe_asteroid_belts_asteroid_belt_id_y"
+      z:
+        type: "number"
+        format: "double"
+        description: "z number"
+        title: "get_universe_asteroid_belts_asteroid_belt_id_z"
+    description: "position object"
+  get_universe_asteroid_belts_asteroid_belt_id_ok:
+    required:
+    - "name"
+    - "position"
+    - "system_id"
+    properties:
+      name:
+        type: "string"
+        description: "name string"
+        title: "get_universe_asteroid_belts_asteroid_belt_id_name"
+      position:
+        $ref: "#/definitions/get_universe_asteroid_belts_asteroid_belt_id_position"
+      system_id:
+        type: "integer"
+        format: "int32"
+        description: "The solar system this asteroid belt is in"
+        title: "get_universe_asteroid_belts_asteroid_belt_id_system_id"
+    description: "200 ok object"
+  get_universe_asteroid_belts_asteroid_belt_id_not_found:
+    properties:
+      error:
+        type: "string"
+        description: "Not found message"
+        title: "get_universe_asteroid_belts_asteroid_belt_id_404_not_found"
+    description: "Not found"
   post_universe_ids_agent:
     properties:
       id:
