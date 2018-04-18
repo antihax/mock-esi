@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "An OpenAPI for EVE Online"
-  version: "0.7.6"
+  version: "0.8.0"
   title: "EVE Swagger Interface"
 host: "esi.tech.ccp.is"
 basePath: "/v2"
@@ -73,6 +73,13 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
         404:
           description: "Alliance not found"
           schema:
@@ -87,6 +94,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       deprecated: true
       x-cached-seconds: 3600
       x-alternate-versions:
@@ -158,6 +179,13 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
         500:
           description: "Internal server error"
           schema:
@@ -165,6 +193,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       x-cached-seconds: 3600
       x-alternate-versions:
       - "dev"
@@ -257,6 +299,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -271,6 +327,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-assets.read_assets.v1"
@@ -368,6 +438,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -382,6 +466,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-assets.read_corporation_assets.v1"
@@ -469,6 +567,20 @@ paths:
                 x: 1.2
                 y: 2.3
                 z: -3.4
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -483,6 +595,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-assets.read_assets.v1"
@@ -568,6 +694,20 @@ paths:
                 x: 1.2
                 y: 2.3
                 z: -3.4
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -582,6 +722,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-assets.read_corporation_assets.v1"
@@ -692,6 +846,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -706,6 +874,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-bookmarks.read_character_bookmarks.v1"
@@ -797,6 +979,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -811,6 +1007,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-bookmarks.read_character_bookmarks.v1"
@@ -903,6 +1113,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -917,6 +1141,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-calendar.read_calendar_events.v1"
@@ -989,6 +1227,20 @@ paths:
       responses:
         204:
           description: "Event updated"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -1003,12 +1255,157 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-calendar.respond_calendar_events.v1"
       deprecated: true
       x-alternate-versions:
       - "legacy"
+  /characters/{character_id}/stats/:
+    get:
+      tags:
+      - "Character"
+      summary: "Yearly aggregate stats"
+      description: "Returns aggregate yearly stats for a character\n\n---\nAlternate\
+        \ route: `/dev/characters/{character_id}/stats/`\n\nAlternate route: `/latest/characters/{character_id}/stats/`\n\
+        \n---\nThis route is cached for up to 86400 seconds"
+      operationId: "get_characters_character_id_stats"
+      parameters:
+      - name: "character_id"
+        in: "path"
+        description: "An EVE character ID"
+        required: true
+        type: "integer"
+        minimum: 1
+        format: "int32"
+        x-exportParamName: "CharacterId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      - name: "user_agent"
+        in: "query"
+        description: "Client identifier, takes precedence over headers"
+        required: false
+        type: "string"
+        x-exportParamName: "UserAgent"
+      - name: "X-User-Agent"
+        in: "header"
+        description: "Client identifier, takes precedence over User-Agent"
+        required: false
+        type: "string"
+        x-exportParamName: "XUserAgent"
+      responses:
+        200:
+          description: "Character stats"
+          schema:
+            type: "array"
+            description: "List of character aggregate stats"
+            title: "get_characters_character_id_stats_ok"
+            items:
+              $ref: "#/definitions/get_characters_character_id_stats_200_ok"
+            maxItems: 1000
+          examples:
+            application/json:
+            - year: 2014
+              character:
+                days_of_activity: 365
+                minutes: 1000000
+                sessions_started: 500
+              combat:
+                kills_low_sec: 42
+            - year: 2015
+              character:
+                days_of_activity: 365
+                minutes: 1000000
+                sessions_started: 500
+              combat:
+                kills_null_sec: 1337
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
+      security:
+      - evesso:
+        - "esi-characterstats.read.v1"
+      x-cached-seconds: 86400
+      x-alternate-versions:
+      - "dev"
+      - "latest"
   /characters/{character_id}/portrait/:
     get:
       tags:
@@ -1070,6 +1467,13 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
         404:
           description: "No image server for this datasource"
           schema:
@@ -1084,6 +1488,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       x-cached-seconds: 3600
       x-alternate-versions:
       - "dev"
@@ -1178,6 +1596,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -1192,6 +1624,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-characters.read_blueprints.v1"
@@ -1275,6 +1721,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -1289,6 +1749,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-characters.read_notifications.v1"
@@ -1362,6 +1836,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -1376,113 +1864,24 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-characters.read_corporation_roles.v1"
       x-cached-seconds: 3600
-      x-alternate-versions:
-      - "dev"
-      - "latest"
-  /characters/{character_id}/stats/:
-    get:
-      tags:
-      - "Character"
-      summary: "Yearly aggregate stats"
-      description: "Returns aggregate yearly stats for a character\n\n---\nAlternate\
-        \ route: `/dev/characters/{character_id}/stats/`\n\nAlternate route: `/latest/characters/{character_id}/stats/`\n\
-        \n---\nThis route is cached for up to 86400 seconds"
-      operationId: "get_characters_character_id_stats"
-      parameters:
-      - name: "character_id"
-        in: "path"
-        description: "An EVE character ID"
-        required: true
-        type: "integer"
-        minimum: 1
-        format: "int32"
-        x-exportParamName: "CharacterId"
-      - name: "datasource"
-        in: "query"
-        description: "The server name you would like data from"
-        required: false
-        type: "string"
-        default: "tranquility"
-        enum:
-        - "tranquility"
-        - "singularity"
-        x-exportParamName: "Datasource"
-      - name: "token"
-        in: "query"
-        description: "Access token to use if unable to set a header"
-        required: false
-        type: "string"
-        x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
-      responses:
-        200:
-          description: "Character stats"
-          schema:
-            type: "array"
-            description: "List of character aggregate stats"
-            title: "get_characters_character_id_stats_ok"
-            items:
-              $ref: "#/definitions/get_characters_character_id_stats_200_ok"
-            maxItems: 1000
-          examples:
-            application/json:
-            - year: 2014
-              character:
-                days_of_activity: 365
-                minutes: 1000000
-                sessions_started: 500
-              combat:
-                kills_low_sec: 42
-            - year: 2015
-              character:
-                days_of_activity: 365
-                minutes: 1000000
-                sessions_started: 500
-              combat:
-                kills_null_sec: 1337
-          headers:
-            Cache-Control:
-              type: "string"
-              description: "The caching mechanism used"
-            Last-Modified:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-            Expires:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-        403:
-          description: "Forbidden"
-          schema:
-            $ref: "#/definitions/forbidden"
-          examples:
-            application/json:
-              error: "Forbidden message"
-        500:
-          description: "Internal server error"
-          schema:
-            $ref: "#/definitions/internal_server_error"
-          examples:
-            application/json:
-              error: "Internal server error message"
-      security:
-      - evesso:
-        - "esi-characterstats.read.v1"
-      x-cached-seconds: 86400
       x-alternate-versions:
       - "dev"
       - "latest"
@@ -1560,6 +1959,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -1574,6 +1987,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-clones.read_clones.v1"
@@ -1640,6 +2067,20 @@ paths:
       responses:
         204:
           description: "Contacts deleted"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -1654,6 +2095,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-characters.write_contacts.v1"
@@ -1729,6 +2184,13 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
         500:
           description: "Internal server error"
           schema:
@@ -1736,6 +2198,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       x-cached-seconds: 3600
       x-alternate-versions:
       - "dev"
@@ -1807,6 +2283,13 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
         500:
           description: "Internal server error"
           schema:
@@ -1814,6 +2297,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       x-cached-seconds: 3600
       x-alternate-versions:
       - "dev"
@@ -1889,6 +2386,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -1903,6 +2414,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-corporations.read_corporation_membership.v1"
@@ -2026,6 +2551,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -2040,6 +2579,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-corporations.read_structures.v1"
@@ -2140,6 +2693,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -2154,6 +2721,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-corporations.read_blueprints.v1"
@@ -2273,6 +2854,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -2287,6 +2882,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-corporations.read_container_logs.v1"
@@ -2361,6 +2970,13 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
         404:
           description: "Dogma effect not found"
           schema:
@@ -2375,6 +2991,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       x-alternate-versions:
       - "dev"
       - "latest"
@@ -2445,6 +3075,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -2459,6 +3103,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-location.read_online.v1"
@@ -2538,6 +3196,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -2552,6 +3224,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-mail.read_mail.v1"
@@ -2621,6 +3307,20 @@ paths:
             title: "post_characters_character_id_mail_labels_created"
           examples:
             application/json: 128
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -2635,6 +3335,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-mail.organize_mail.v1"
@@ -2724,6 +3438,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -2738,6 +3466,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-markets.read_character_orders.v1"
@@ -2842,6 +3584,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -2856,6 +3612,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-markets.read_corporation_orders.v1"
@@ -2934,16 +3704,14 @@ paths:
                 destination_pin_id: 1000000017022
                 link_level: 0
               pins:
-              - longitude: 0.717145933308
-                is_running: true
+              - longitude: 0.7171459333
                 type_id: 2254
                 pin_id: 1000000017021
-                latitude: 1.55087844973
-              - longitude: 0.709775584394
-                is_running: true
+                latitude: 1.5508784497
+              - longitude: 0.7097755844
                 type_id: 2256
                 pin_id: 1000000017022
-                latitude: 1.53360639935
+                latitude: 1.5336063994
               routes:
               - source_pin_id: 1000000017029
                 quantity: 20
@@ -2960,6 +3728,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -2981,6 +3763,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-planets.manage_planets.v1"
@@ -3124,6 +3920,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -3138,6 +3948,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-search.search_structures.v1"
@@ -3264,6 +4088,13 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
         500:
           description: "Internal server error"
           schema:
@@ -3271,6 +4102,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       x-cached-seconds: 3600
       x-alternate-versions:
       - "dev"
@@ -3360,6 +4205,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -3374,6 +4233,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-skills.read_skillqueue.v1"
@@ -3465,6 +4338,13 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
         404:
           description: "Station not found"
           schema:
@@ -3479,6 +4359,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       x-cached-seconds: 300
       x-alternate-versions:
       - "dev"
@@ -3549,7 +4443,7 @@ paths:
                 x: -91174141133075340
                 y: 43938227486247170
                 z: -56482824383339900
-              security_status: 0.8462923765182495
+              security_status: 0.8462923765
               constellation_id: 20000001
               planets:
               - planet_id: 40000041
@@ -3580,6 +4474,13 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
         404:
           description: "Solar system not found"
           schema:
@@ -3594,6 +4495,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       deprecated: true
       x-alternate-versions:
       - "legacy"
@@ -3682,6 +4597,13 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
         404:
           description: "Type not found"
           schema:
@@ -3696,6 +4618,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       deprecated: true
       x-alternate-versions:
       - "legacy"
@@ -3766,6 +4702,13 @@ paths:
             - id: 30000142
               name: "Jita"
               category: "solar_system"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
         404:
           description: "Ensure all IDs are valid before resolving."
           schema:
@@ -3780,6 +4723,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       x-alternate-versions:
       - "dev"
       - "latest"
@@ -3870,6 +4827,13 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
         500:
           description: "Internal server error"
           schema:
@@ -3877,6 +4841,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       x-alternate-versions:
       - "dev"
       - "latest"
@@ -3940,6 +4918,13 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
         500:
           description: "Internal server error"
           schema:
@@ -3947,6 +4932,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       x-cached-seconds: 3600
       x-alternate-versions:
       - "dev"
@@ -4014,6 +5013,20 @@ paths:
       responses:
         204:
           description: "Open window request received"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -4028,6 +5041,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-ui.write_waypoint.v1"
@@ -4113,6 +5140,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -4127,6 +5168,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-wallet.read_character_wallet.v1"
@@ -4223,6 +5278,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -4237,6 +5306,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-wallet.read_corporation_wallets.v1"
@@ -4279,6 +5362,16 @@ securityDefinitions:
       esi-wallet.read_character_wallet.v1: "EVE SSO scope esi-wallet.read_character_wallet.v1"
       esi-wallet.read_corporation_wallets.v1: "EVE SSO scope esi-wallet.read_corporation_wallets.v1"
 definitions:
+  unauthorized:
+    type: "object"
+    required:
+    - "error"
+    properties:
+      error:
+        type: "string"
+        description: "Unauthorized message"
+    title: "Unauthorized"
+    description: "Unauthorized model"
   forbidden:
     type: "object"
     required:
@@ -4292,6 +5385,16 @@ definitions:
         description: "Status code received from SSO"
     title: "Forbidden"
     description: "Forbidden model"
+  bad_request:
+    type: "object"
+    required:
+    - "error"
+    properties:
+      error:
+        type: "string"
+        description: "Bad request message"
+    title: "Bad request"
+    description: "Bad request model"
   internal_server_error:
     type: "object"
     required:
@@ -4302,6 +5405,26 @@ definitions:
         description: "Internal server error message"
     title: "Internal server error"
     description: "Internal server error model"
+  bad_gateway:
+    type: "object"
+    required:
+    - "error"
+    properties:
+      error:
+        type: "string"
+        description: "Bad gateway message"
+    title: "Bad gateway"
+    description: "Bad gateway model"
+  service_unavailable:
+    type: "object"
+    required:
+    - "error"
+    properties:
+      error:
+        type: "string"
+        description: "Service unavailable message"
+    title: "Service unavailable"
+    description: "Service unavailable model"
   get_alliances_alliance_id_ok:
     required:
     - "alliance_name"
@@ -4858,642 +5981,6 @@ definitions:
         description: "owner_type_id integer"
         title: "get_characters_character_id_calendar_event_id_owner_type_id"
     description: "Full details of a specific event"
-  get_characters_character_id_portrait_ok:
-    properties:
-      px64x64:
-        type: "string"
-        description: "px64x64 string"
-        title: "get_characters_character_id_portrait_px64x64"
-      px128x128:
-        type: "string"
-        description: "px128x128 string"
-        title: "get_characters_character_id_portrait_px128x128"
-      px256x256:
-        type: "string"
-        description: "px256x256 string"
-        title: "get_characters_character_id_portrait_px256x256"
-      px512x512:
-        type: "string"
-        description: "px512x512 string"
-        title: "get_characters_character_id_portrait_px512x512"
-    description: "200 ok object"
-  get_characters_character_id_portrait_not_found:
-    properties:
-      error:
-        type: "string"
-        description: "error message"
-        title: "get_characters_character_id_portrait_error"
-    description: "No image server for this datasource"
-  get_characters_character_id_blueprints_200_ok:
-    required:
-    - "item_id"
-    - "location_flag"
-    - "location_id"
-    - "material_efficiency"
-    - "quantity"
-    - "runs"
-    - "time_efficiency"
-    - "type_id"
-    properties:
-      item_id:
-        type: "integer"
-        format: "int64"
-        description: "Unique ID for this item."
-        title: "get_characters_character_id_blueprints_item_id"
-      type_id:
-        type: "integer"
-        format: "int32"
-        description: "type_id integer"
-        title: "get_characters_character_id_blueprints_type_id"
-      location_id:
-        type: "integer"
-        format: "int64"
-        description: "References a solar system, station or item_id if this blueprint\
-          \ is located within a container. If the return value is an item_id, then\
-          \ the Character AssetList API must be queried to find the container using\
-          \ the given item_id to determine the correct location of the Blueprint."
-        title: "get_characters_character_id_blueprints_location_id"
-      location_flag:
-        type: "string"
-        description: "Type of the location_id"
-        title: "get_characters_character_id_blueprints_location_flag"
-        enum:
-        - "AutoFit"
-        - "Cargo"
-        - "CorpseBay"
-        - "DroneBay"
-        - "FleetHangar"
-        - "Deliveries"
-        - "HiddenModifiers"
-        - "Hangar"
-        - "HangarAll"
-        - "LoSlot0"
-        - "LoSlot1"
-        - "LoSlot2"
-        - "LoSlot3"
-        - "LoSlot4"
-        - "LoSlot5"
-        - "LoSlot6"
-        - "LoSlot7"
-        - "MedSlot0"
-        - "MedSlot1"
-        - "MedSlot2"
-        - "MedSlot3"
-        - "MedSlot4"
-        - "MedSlot5"
-        - "MedSlot6"
-        - "MedSlot7"
-        - "HiSlot0"
-        - "HiSlot1"
-        - "HiSlot2"
-        - "HiSlot3"
-        - "HiSlot4"
-        - "HiSlot5"
-        - "HiSlot6"
-        - "HiSlot7"
-        - "AssetSafety"
-        - "Locked"
-        - "Unlocked"
-        - "Implant"
-        - "QuafeBay"
-        - "RigSlot0"
-        - "RigSlot1"
-        - "RigSlot2"
-        - "RigSlot3"
-        - "RigSlot4"
-        - "RigSlot5"
-        - "RigSlot6"
-        - "RigSlot7"
-        - "ShipHangar"
-        - "SpecializedFuelBay"
-        - "SpecializedOreHold"
-        - "SpecializedGasHold"
-        - "SpecializedMineralHold"
-        - "SpecializedSalvageHold"
-        - "SpecializedShipHold"
-        - "SpecializedSmallShipHold"
-        - "SpecializedMediumShipHold"
-        - "SpecializedLargeShipHold"
-        - "SpecializedIndustrialShipHold"
-        - "SpecializedAmmoHold"
-        - "SpecializedCommandCenterHold"
-        - "SpecializedPlanetaryCommoditiesHold"
-        - "SpecializedMaterialBay"
-        - "SubSystemSlot0"
-        - "SubSystemSlot1"
-        - "SubSystemSlot2"
-        - "SubSystemSlot3"
-        - "SubSystemSlot4"
-        - "SubSystemSlot5"
-        - "SubSystemSlot6"
-        - "SubSystemSlot7"
-        - "FighterBay"
-        - "FighterTube0"
-        - "FighterTube1"
-        - "FighterTube2"
-        - "FighterTube3"
-        - "FighterTube4"
-        - "Module"
-      quantity:
-        type: "integer"
-        format: "int32"
-        description: "A range of numbers with a minimum of -2 and no maximum value\
-          \ where -1 is an original and -2 is a copy. It can be a positive integer\
-          \ if it is a stack of blueprint originals fresh from the market (e.g. no\
-          \ activities performed on them yet)."
-        title: "get_characters_character_id_blueprints_quantity"
-        minimum: -2
-      time_efficiency:
-        type: "integer"
-        format: "int32"
-        description: "Time Efficiency Level of the blueprint."
-        title: "get_characters_character_id_blueprints_time_efficiency"
-        minimum: 0
-        maximum: 20
-      material_efficiency:
-        type: "integer"
-        format: "int32"
-        description: "Material Efficiency Level of the blueprint."
-        title: "get_characters_character_id_blueprints_material_efficiency"
-        minimum: 0
-        maximum: 25
-      runs:
-        type: "integer"
-        format: "int32"
-        description: "Number of runs remaining if the blueprint is a copy, -1 if it\
-          \ is an original."
-        title: "get_characters_character_id_blueprints_runs"
-        minimum: -1
-    description: "200 ok object"
-  get_characters_character_id_notifications_200_ok:
-    required:
-    - "notification_id"
-    - "sender_id"
-    - "sender_type"
-    - "timestamp"
-    - "type"
-    properties:
-      notification_id:
-        type: "integer"
-        format: "int64"
-        description: "notification_id integer"
-        title: "get_characters_character_id_notifications_notification_id"
-      sender_id:
-        type: "integer"
-        format: "int32"
-        description: "sender_id integer"
-        title: "get_characters_character_id_notifications_sender_id"
-      sender_type:
-        type: "string"
-        description: "sender_type string"
-        title: "get_characters_character_id_notifications_sender_type"
-        enum:
-        - "character"
-        - "corporation"
-        - "alliance"
-        - "faction"
-        - "other"
-      timestamp:
-        type: "string"
-        format: "date-time"
-        description: "timestamp string"
-        title: "get_characters_character_id_notifications_timestamp"
-      is_read:
-        type: "boolean"
-        description: "is_read boolean"
-        title: "get_characters_character_id_notifications_is_read"
-      text:
-        type: "string"
-        description: "text string"
-        title: "get_characters_character_id_notifications_text"
-      type:
-        type: "string"
-        description: "type string"
-        title: "get_characters_character_id_notifications_type"
-        enum:
-        - "AcceptedAlly"
-        - "AcceptedSurrender"
-        - "AllAnchoringMsg"
-        - "AllMaintenanceBillMsg"
-        - "AllStrucInvulnerableMsg"
-        - "AllStructVulnerableMsg"
-        - "AllWarCorpJoinedAllianceMsg"
-        - "AllWarDeclaredMsg"
-        - "AllWarInvalidatedMsg"
-        - "AllWarRetractedMsg"
-        - "AllWarSurrenderMsg"
-        - "AllianceCapitalChanged"
-        - "AllyContractCancelled"
-        - "AllyJoinedWarAggressorMsg"
-        - "AllyJoinedWarAllyMsg"
-        - "AllyJoinedWarDefenderMsg"
-        - "BattlePunishFriendlyFire"
-        - "BillOutOfMoneyMsg"
-        - "BillPaidCorpAllMsg"
-        - "BountyClaimMsg"
-        - "BountyESSShared"
-        - "BountyESSTaken"
-        - "BountyPlacedAlliance"
-        - "BountyPlacedChar"
-        - "BountyPlacedCorp"
-        - "BountyYourBountyClaimed"
-        - "BuddyConnectContactAdd"
-        - "CharAppAcceptMsg"
-        - "CharAppRejectMsg"
-        - "CharAppWithdrawMsg"
-        - "CharLeftCorpMsg"
-        - "CharMedalMsg"
-        - "CharTerminationMsg"
-        - "CloneActivationMsg"
-        - "CloneActivationMsg2"
-        - "CloneMovedMsg"
-        - "CloneRevokedMsg1"
-        - "CloneRevokedMsg2"
-        - "ContactAdd"
-        - "ContactEdit"
-        - "ContainerPasswordMsg"
-        - "CorpAllBillMsg"
-        - "CorpAppAcceptMsg"
-        - "CorpAppInvitedMsg"
-        - "CorpAppNewMsg"
-        - "CorpAppRejectCustomMsg"
-        - "CorpAppRejectMsg"
-        - "CorpDividendMsg"
-        - "CorpFriendlyFireDisableTimerCompleted"
-        - "CorpFriendlyFireDisableTimerStarted"
-        - "CorpFriendlyFireEnableTimerCompleted"
-        - "CorpFriendlyFireEnableTimerStarted"
-        - "CorpKicked"
-        - "CorpLiquidationMsg"
-        - "CorpNewCEOMsg"
-        - "CorpNewsMsg"
-        - "CorpOfficeExpirationMsg"
-        - "CorpStructLostMsg"
-        - "CorpTaxChangeMsg"
-        - "CorpVoteCEORevokedMsg"
-        - "CorpVoteMsg"
-        - "CorpWarDeclaredMsg"
-        - "CorpWarFightingLegalMsg"
-        - "CorpWarInvalidatedMsg"
-        - "CorpWarRetractedMsg"
-        - "CorpWarSurrenderMsg"
-        - "CustomsMsg"
-        - "DeclareWar"
-        - "DistrictAttacked"
-        - "DustAppAcceptedMsg"
-        - "EntosisCaptureStarted"
-        - "FWAllianceKickMsg"
-        - "FWAllianceWarningMsg"
-        - "FWCharKickMsg"
-        - "FWCharRankGainMsg"
-        - "FWCharRankLossMsg"
-        - "FWCharWarningMsg"
-        - "FWCorpJoinMsg"
-        - "FWCorpKickMsg"
-        - "FWCorpLeaveMsg"
-        - "FWCorpWarningMsg"
-        - "FacWarCorpJoinRequestMsg"
-        - "FacWarCorpJoinWithdrawMsg"
-        - "FacWarCorpLeaveRequestMsg"
-        - "FacWarCorpLeaveWithdrawMsg"
-        - "FacWarLPDisqualifiedEvent"
-        - "FacWarLPDisqualifiedKill"
-        - "FacWarLPPayoutEvent"
-        - "FacWarLPPayoutKill"
-        - "GameTimeAdded"
-        - "GameTimeReceived"
-        - "GameTimeSent"
-        - "GiftReceived"
-        - "IHubDestroyedByBillFailure"
-        - "IncursionCompletedMsg"
-        - "IndustryTeamAuctionLost"
-        - "IndustryTeamAuctionWon"
-        - "InfrastructureHubBillAboutToExpire"
-        - "InsuranceExpirationMsg"
-        - "InsuranceFirstShipMsg"
-        - "InsuranceInvalidatedMsg"
-        - "InsuranceIssuedMsg"
-        - "InsurancePayoutMsg"
-        - "JumpCloneDeletedMsg1"
-        - "JumpCloneDeletedMsg2"
-        - "KillReportFinalBlow"
-        - "KillReportVictim"
-        - "KillRightAvailable"
-        - "KillRightAvailableOpen"
-        - "KillRightEarned"
-        - "KillRightUnavailable"
-        - "KillRightUnavailableOpen"
-        - "KillRightUsed"
-        - "LocateCharMsg"
-        - "MadeWarMutual"
-        - "MercOfferedNegotiationMsg"
-        - "MissionOfferExpirationMsg"
-        - "MissionTimeoutMsg"
-        - "MoonminingAutomaticFracture"
-        - "MoonminingExtractionCancelled"
-        - "MoonminingExtractionFinished"
-        - "MoonminingExtractionStarted"
-        - "MoonminingLaserFired"
-        - "NPCStandingsGained"
-        - "NPCStandingsLost"
-        - "OfferedSurrender"
-        - "OfferedToAlly"
-        - "OldLscMessages"
-        - "OperationFinished"
-        - "OrbitalAttacked"
-        - "OrbitalReinforced"
-        - "OwnershipTransferred"
-        - "ReimbursementMsg"
-        - "ResearchMissionAvailableMsg"
-        - "RetractsWar"
-        - "SeasonalChallengeCompleted"
-        - "SovAllClaimAquiredMsg"
-        - "SovAllClaimLostMsg"
-        - "SovCommandNodeEventStarted"
-        - "SovCorpBillLateMsg"
-        - "SovCorpClaimFailMsg"
-        - "SovDisruptorMsg"
-        - "SovStationEnteredFreeport"
-        - "SovStructureDestroyed"
-        - "SovStructureReinforced"
-        - "SovStructureSelfDestructCancel"
-        - "SovStructureSelfDestructFinished"
-        - "SovStructureSelfDestructRequested"
-        - "SovereigntyIHDamageMsg"
-        - "SovereigntySBUDamageMsg"
-        - "SovereigntyTCUDamageMsg"
-        - "StationAggressionMsg1"
-        - "StationAggressionMsg2"
-        - "StationConquerMsg"
-        - "StationServiceDisabled"
-        - "StationServiceEnabled"
-        - "StationStateChangeMsg"
-        - "StoryLineMissionAvailableMsg"
-        - "StructureAnchoring"
-        - "StructureCourierContractChanged"
-        - "StructureDestroyed"
-        - "StructureFuelAlert"
-        - "StructureItemsDelivered"
-        - "StructureLostArmor"
-        - "StructureLostShields"
-        - "StructureOnline"
-        - "StructureServicesOffline"
-        - "StructureUnanchoring"
-        - "StructureUnderAttack"
-        - "StructureWentHighPower"
-        - "StructureWentLowPower"
-        - "StructuresReinforcementChanged"
-        - "TowerAlertMsg"
-        - "TowerResourceAlertMsg"
-        - "TransactionReversalMsg"
-        - "TutorialMsg"
-        - "WarAllyOfferDeclinedMsg"
-        - "WarSurrenderDeclinedMsg"
-        - "WarSurrenderOfferMsg"
-    description: "200 ok object"
-  get_characters_character_id_roles_ok:
-    properties:
-      roles:
-        type: "array"
-        description: "roles array"
-        title: "get_characters_character_id_roles_roles"
-        items:
-          type: "string"
-          description: "role string"
-          title: "get_characters_character_id_roles_role"
-          enum:
-          - "Account_Take_1"
-          - "Account_Take_2"
-          - "Account_Take_3"
-          - "Account_Take_4"
-          - "Account_Take_5"
-          - "Account_Take_6"
-          - "Account_Take_7"
-          - "Accountant"
-          - "Auditor"
-          - "Communications_Officer"
-          - "Config_Equipment"
-          - "Config_Starbase_Equipment"
-          - "Container_Take_1"
-          - "Container_Take_2"
-          - "Container_Take_3"
-          - "Container_Take_4"
-          - "Container_Take_5"
-          - "Container_Take_6"
-          - "Container_Take_7"
-          - "Contract_Manager"
-          - "Diplomat"
-          - "Director"
-          - "Factory_Manager"
-          - "Fitting_Manager"
-          - "Hangar_Query_1"
-          - "Hangar_Query_2"
-          - "Hangar_Query_3"
-          - "Hangar_Query_4"
-          - "Hangar_Query_5"
-          - "Hangar_Query_6"
-          - "Hangar_Query_7"
-          - "Hangar_Take_1"
-          - "Hangar_Take_2"
-          - "Hangar_Take_3"
-          - "Hangar_Take_4"
-          - "Hangar_Take_5"
-          - "Hangar_Take_6"
-          - "Hangar_Take_7"
-          - "Junior_Accountant"
-          - "Personnel_Manager"
-          - "Rent_Factory_Facility"
-          - "Rent_Office"
-          - "Rent_Research_Facility"
-          - "Security_Officer"
-          - "Starbase_Defense_Operator"
-          - "Starbase_Fuel_Technician"
-          - "Station_Manager"
-          - "Terrestrial_Combat_Officer"
-          - "Terrestrial_Logistics_Officer"
-          - "Trader"
-        maxItems: 50
-      roles_at_hq:
-        type: "array"
-        description: "roles_at_hq array"
-        title: "get_characters_character_id_roles_roles_at_hq"
-        items:
-          type: "string"
-          description: "roles_at_hq string"
-          title: "get_characters_character_id_roles_roles_at_hq"
-          enum:
-          - "Account_Take_1"
-          - "Account_Take_2"
-          - "Account_Take_3"
-          - "Account_Take_4"
-          - "Account_Take_5"
-          - "Account_Take_6"
-          - "Account_Take_7"
-          - "Accountant"
-          - "Auditor"
-          - "Communications_Officer"
-          - "Config_Equipment"
-          - "Config_Starbase_Equipment"
-          - "Container_Take_1"
-          - "Container_Take_2"
-          - "Container_Take_3"
-          - "Container_Take_4"
-          - "Container_Take_5"
-          - "Container_Take_6"
-          - "Container_Take_7"
-          - "Contract_Manager"
-          - "Diplomat"
-          - "Director"
-          - "Factory_Manager"
-          - "Fitting_Manager"
-          - "Hangar_Query_1"
-          - "Hangar_Query_2"
-          - "Hangar_Query_3"
-          - "Hangar_Query_4"
-          - "Hangar_Query_5"
-          - "Hangar_Query_6"
-          - "Hangar_Query_7"
-          - "Hangar_Take_1"
-          - "Hangar_Take_2"
-          - "Hangar_Take_3"
-          - "Hangar_Take_4"
-          - "Hangar_Take_5"
-          - "Hangar_Take_6"
-          - "Hangar_Take_7"
-          - "Junior_Accountant"
-          - "Personnel_Manager"
-          - "Rent_Factory_Facility"
-          - "Rent_Office"
-          - "Rent_Research_Facility"
-          - "Security_Officer"
-          - "Starbase_Defense_Operator"
-          - "Starbase_Fuel_Technician"
-          - "Station_Manager"
-          - "Terrestrial_Combat_Officer"
-          - "Terrestrial_Logistics_Officer"
-          - "Trader"
-        maxItems: 50
-      roles_at_base:
-        type: "array"
-        description: "roles_at_base array"
-        title: "get_characters_character_id_roles_roles_at_base"
-        items:
-          type: "string"
-          description: "roles_at_base string"
-          title: "get_characters_character_id_roles_roles_at_base"
-          enum:
-          - "Account_Take_1"
-          - "Account_Take_2"
-          - "Account_Take_3"
-          - "Account_Take_4"
-          - "Account_Take_5"
-          - "Account_Take_6"
-          - "Account_Take_7"
-          - "Accountant"
-          - "Auditor"
-          - "Communications_Officer"
-          - "Config_Equipment"
-          - "Config_Starbase_Equipment"
-          - "Container_Take_1"
-          - "Container_Take_2"
-          - "Container_Take_3"
-          - "Container_Take_4"
-          - "Container_Take_5"
-          - "Container_Take_6"
-          - "Container_Take_7"
-          - "Contract_Manager"
-          - "Diplomat"
-          - "Director"
-          - "Factory_Manager"
-          - "Fitting_Manager"
-          - "Hangar_Query_1"
-          - "Hangar_Query_2"
-          - "Hangar_Query_3"
-          - "Hangar_Query_4"
-          - "Hangar_Query_5"
-          - "Hangar_Query_6"
-          - "Hangar_Query_7"
-          - "Hangar_Take_1"
-          - "Hangar_Take_2"
-          - "Hangar_Take_3"
-          - "Hangar_Take_4"
-          - "Hangar_Take_5"
-          - "Hangar_Take_6"
-          - "Hangar_Take_7"
-          - "Junior_Accountant"
-          - "Personnel_Manager"
-          - "Rent_Factory_Facility"
-          - "Rent_Office"
-          - "Rent_Research_Facility"
-          - "Security_Officer"
-          - "Starbase_Defense_Operator"
-          - "Starbase_Fuel_Technician"
-          - "Station_Manager"
-          - "Terrestrial_Combat_Officer"
-          - "Terrestrial_Logistics_Officer"
-          - "Trader"
-        maxItems: 50
-      roles_at_other:
-        type: "array"
-        description: "roles_at_other array"
-        title: "get_characters_character_id_roles_roles_at_other"
-        items:
-          type: "string"
-          description: "roles_at_other string"
-          title: "get_characters_character_id_roles_roles_at_other"
-          enum:
-          - "Account_Take_1"
-          - "Account_Take_2"
-          - "Account_Take_3"
-          - "Account_Take_4"
-          - "Account_Take_5"
-          - "Account_Take_6"
-          - "Account_Take_7"
-          - "Accountant"
-          - "Auditor"
-          - "Communications_Officer"
-          - "Config_Equipment"
-          - "Config_Starbase_Equipment"
-          - "Container_Take_1"
-          - "Container_Take_2"
-          - "Container_Take_3"
-          - "Container_Take_4"
-          - "Container_Take_5"
-          - "Container_Take_6"
-          - "Container_Take_7"
-          - "Contract_Manager"
-          - "Diplomat"
-          - "Director"
-          - "Factory_Manager"
-          - "Fitting_Manager"
-          - "Hangar_Query_1"
-          - "Hangar_Query_2"
-          - "Hangar_Query_3"
-          - "Hangar_Query_4"
-          - "Hangar_Query_5"
-          - "Hangar_Query_6"
-          - "Hangar_Query_7"
-          - "Hangar_Take_1"
-          - "Hangar_Take_2"
-          - "Hangar_Take_3"
-          - "Hangar_Take_4"
-          - "Hangar_Take_5"
-          - "Hangar_Take_6"
-          - "Hangar_Take_7"
-          - "Junior_Accountant"
-          - "Personnel_Manager"
-          - "Rent_Factory_Facility"
-          - "Rent_Office"
-          - "Rent_Research_Facility"
-          - "Security_Officer"
-          - "Starbase_Defense_Operator"
-          - "Starbase_Fuel_Technician"
-          - "Station_Manager"
-          - "Terrestrial_Combat_Officer"
-          - "Terrestrial_Logistics_Officer"
-          - "Trader"
-        maxItems: 50
-    description: "200 ok object"
   get_characters_character_id_stats_character:
     properties:
       days_of_activity:
@@ -7019,6 +7506,642 @@ definitions:
       travel:
         $ref: "#/definitions/get_characters_character_id_stats_travel"
     description: "Aggregate stats for a year"
+  get_characters_character_id_portrait_ok:
+    properties:
+      px64x64:
+        type: "string"
+        description: "px64x64 string"
+        title: "get_characters_character_id_portrait_px64x64"
+      px128x128:
+        type: "string"
+        description: "px128x128 string"
+        title: "get_characters_character_id_portrait_px128x128"
+      px256x256:
+        type: "string"
+        description: "px256x256 string"
+        title: "get_characters_character_id_portrait_px256x256"
+      px512x512:
+        type: "string"
+        description: "px512x512 string"
+        title: "get_characters_character_id_portrait_px512x512"
+    description: "200 ok object"
+  get_characters_character_id_portrait_not_found:
+    properties:
+      error:
+        type: "string"
+        description: "error message"
+        title: "get_characters_character_id_portrait_error"
+    description: "No image server for this datasource"
+  get_characters_character_id_blueprints_200_ok:
+    required:
+    - "item_id"
+    - "location_flag"
+    - "location_id"
+    - "material_efficiency"
+    - "quantity"
+    - "runs"
+    - "time_efficiency"
+    - "type_id"
+    properties:
+      item_id:
+        type: "integer"
+        format: "int64"
+        description: "Unique ID for this item."
+        title: "get_characters_character_id_blueprints_item_id"
+      type_id:
+        type: "integer"
+        format: "int32"
+        description: "type_id integer"
+        title: "get_characters_character_id_blueprints_type_id"
+      location_id:
+        type: "integer"
+        format: "int64"
+        description: "References a solar system, station or item_id if this blueprint\
+          \ is located within a container. If the return value is an item_id, then\
+          \ the Character AssetList API must be queried to find the container using\
+          \ the given item_id to determine the correct location of the Blueprint."
+        title: "get_characters_character_id_blueprints_location_id"
+      location_flag:
+        type: "string"
+        description: "Type of the location_id"
+        title: "get_characters_character_id_blueprints_location_flag"
+        enum:
+        - "AutoFit"
+        - "Cargo"
+        - "CorpseBay"
+        - "DroneBay"
+        - "FleetHangar"
+        - "Deliveries"
+        - "HiddenModifiers"
+        - "Hangar"
+        - "HangarAll"
+        - "LoSlot0"
+        - "LoSlot1"
+        - "LoSlot2"
+        - "LoSlot3"
+        - "LoSlot4"
+        - "LoSlot5"
+        - "LoSlot6"
+        - "LoSlot7"
+        - "MedSlot0"
+        - "MedSlot1"
+        - "MedSlot2"
+        - "MedSlot3"
+        - "MedSlot4"
+        - "MedSlot5"
+        - "MedSlot6"
+        - "MedSlot7"
+        - "HiSlot0"
+        - "HiSlot1"
+        - "HiSlot2"
+        - "HiSlot3"
+        - "HiSlot4"
+        - "HiSlot5"
+        - "HiSlot6"
+        - "HiSlot7"
+        - "AssetSafety"
+        - "Locked"
+        - "Unlocked"
+        - "Implant"
+        - "QuafeBay"
+        - "RigSlot0"
+        - "RigSlot1"
+        - "RigSlot2"
+        - "RigSlot3"
+        - "RigSlot4"
+        - "RigSlot5"
+        - "RigSlot6"
+        - "RigSlot7"
+        - "ShipHangar"
+        - "SpecializedFuelBay"
+        - "SpecializedOreHold"
+        - "SpecializedGasHold"
+        - "SpecializedMineralHold"
+        - "SpecializedSalvageHold"
+        - "SpecializedShipHold"
+        - "SpecializedSmallShipHold"
+        - "SpecializedMediumShipHold"
+        - "SpecializedLargeShipHold"
+        - "SpecializedIndustrialShipHold"
+        - "SpecializedAmmoHold"
+        - "SpecializedCommandCenterHold"
+        - "SpecializedPlanetaryCommoditiesHold"
+        - "SpecializedMaterialBay"
+        - "SubSystemSlot0"
+        - "SubSystemSlot1"
+        - "SubSystemSlot2"
+        - "SubSystemSlot3"
+        - "SubSystemSlot4"
+        - "SubSystemSlot5"
+        - "SubSystemSlot6"
+        - "SubSystemSlot7"
+        - "FighterBay"
+        - "FighterTube0"
+        - "FighterTube1"
+        - "FighterTube2"
+        - "FighterTube3"
+        - "FighterTube4"
+        - "Module"
+      quantity:
+        type: "integer"
+        format: "int32"
+        description: "A range of numbers with a minimum of -2 and no maximum value\
+          \ where -1 is an original and -2 is a copy. It can be a positive integer\
+          \ if it is a stack of blueprint originals fresh from the market (e.g. no\
+          \ activities performed on them yet)."
+        title: "get_characters_character_id_blueprints_quantity"
+        minimum: -2
+      time_efficiency:
+        type: "integer"
+        format: "int32"
+        description: "Time Efficiency Level of the blueprint."
+        title: "get_characters_character_id_blueprints_time_efficiency"
+        minimum: 0
+        maximum: 20
+      material_efficiency:
+        type: "integer"
+        format: "int32"
+        description: "Material Efficiency Level of the blueprint."
+        title: "get_characters_character_id_blueprints_material_efficiency"
+        minimum: 0
+        maximum: 25
+      runs:
+        type: "integer"
+        format: "int32"
+        description: "Number of runs remaining if the blueprint is a copy, -1 if it\
+          \ is an original."
+        title: "get_characters_character_id_blueprints_runs"
+        minimum: -1
+    description: "200 ok object"
+  get_characters_character_id_notifications_200_ok:
+    required:
+    - "notification_id"
+    - "sender_id"
+    - "sender_type"
+    - "timestamp"
+    - "type"
+    properties:
+      notification_id:
+        type: "integer"
+        format: "int64"
+        description: "notification_id integer"
+        title: "get_characters_character_id_notifications_notification_id"
+      sender_id:
+        type: "integer"
+        format: "int32"
+        description: "sender_id integer"
+        title: "get_characters_character_id_notifications_sender_id"
+      sender_type:
+        type: "string"
+        description: "sender_type string"
+        title: "get_characters_character_id_notifications_sender_type"
+        enum:
+        - "character"
+        - "corporation"
+        - "alliance"
+        - "faction"
+        - "other"
+      timestamp:
+        type: "string"
+        format: "date-time"
+        description: "timestamp string"
+        title: "get_characters_character_id_notifications_timestamp"
+      is_read:
+        type: "boolean"
+        description: "is_read boolean"
+        title: "get_characters_character_id_notifications_is_read"
+      text:
+        type: "string"
+        description: "text string"
+        title: "get_characters_character_id_notifications_text"
+      type:
+        type: "string"
+        description: "type string"
+        title: "get_characters_character_id_notifications_type"
+        enum:
+        - "AcceptedAlly"
+        - "AcceptedSurrender"
+        - "AllAnchoringMsg"
+        - "AllMaintenanceBillMsg"
+        - "AllStrucInvulnerableMsg"
+        - "AllStructVulnerableMsg"
+        - "AllWarCorpJoinedAllianceMsg"
+        - "AllWarDeclaredMsg"
+        - "AllWarInvalidatedMsg"
+        - "AllWarRetractedMsg"
+        - "AllWarSurrenderMsg"
+        - "AllianceCapitalChanged"
+        - "AllyContractCancelled"
+        - "AllyJoinedWarAggressorMsg"
+        - "AllyJoinedWarAllyMsg"
+        - "AllyJoinedWarDefenderMsg"
+        - "BattlePunishFriendlyFire"
+        - "BillOutOfMoneyMsg"
+        - "BillPaidCorpAllMsg"
+        - "BountyClaimMsg"
+        - "BountyESSShared"
+        - "BountyESSTaken"
+        - "BountyPlacedAlliance"
+        - "BountyPlacedChar"
+        - "BountyPlacedCorp"
+        - "BountyYourBountyClaimed"
+        - "BuddyConnectContactAdd"
+        - "CharAppAcceptMsg"
+        - "CharAppRejectMsg"
+        - "CharAppWithdrawMsg"
+        - "CharLeftCorpMsg"
+        - "CharMedalMsg"
+        - "CharTerminationMsg"
+        - "CloneActivationMsg"
+        - "CloneActivationMsg2"
+        - "CloneMovedMsg"
+        - "CloneRevokedMsg1"
+        - "CloneRevokedMsg2"
+        - "ContactAdd"
+        - "ContactEdit"
+        - "ContainerPasswordMsg"
+        - "CorpAllBillMsg"
+        - "CorpAppAcceptMsg"
+        - "CorpAppInvitedMsg"
+        - "CorpAppNewMsg"
+        - "CorpAppRejectCustomMsg"
+        - "CorpAppRejectMsg"
+        - "CorpDividendMsg"
+        - "CorpFriendlyFireDisableTimerCompleted"
+        - "CorpFriendlyFireDisableTimerStarted"
+        - "CorpFriendlyFireEnableTimerCompleted"
+        - "CorpFriendlyFireEnableTimerStarted"
+        - "CorpKicked"
+        - "CorpLiquidationMsg"
+        - "CorpNewCEOMsg"
+        - "CorpNewsMsg"
+        - "CorpOfficeExpirationMsg"
+        - "CorpStructLostMsg"
+        - "CorpTaxChangeMsg"
+        - "CorpVoteCEORevokedMsg"
+        - "CorpVoteMsg"
+        - "CorpWarDeclaredMsg"
+        - "CorpWarFightingLegalMsg"
+        - "CorpWarInvalidatedMsg"
+        - "CorpWarRetractedMsg"
+        - "CorpWarSurrenderMsg"
+        - "CustomsMsg"
+        - "DeclareWar"
+        - "DistrictAttacked"
+        - "DustAppAcceptedMsg"
+        - "EntosisCaptureStarted"
+        - "FWAllianceKickMsg"
+        - "FWAllianceWarningMsg"
+        - "FWCharKickMsg"
+        - "FWCharRankGainMsg"
+        - "FWCharRankLossMsg"
+        - "FWCharWarningMsg"
+        - "FWCorpJoinMsg"
+        - "FWCorpKickMsg"
+        - "FWCorpLeaveMsg"
+        - "FWCorpWarningMsg"
+        - "FacWarCorpJoinRequestMsg"
+        - "FacWarCorpJoinWithdrawMsg"
+        - "FacWarCorpLeaveRequestMsg"
+        - "FacWarCorpLeaveWithdrawMsg"
+        - "FacWarLPDisqualifiedEvent"
+        - "FacWarLPDisqualifiedKill"
+        - "FacWarLPPayoutEvent"
+        - "FacWarLPPayoutKill"
+        - "GameTimeAdded"
+        - "GameTimeReceived"
+        - "GameTimeSent"
+        - "GiftReceived"
+        - "IHubDestroyedByBillFailure"
+        - "IncursionCompletedMsg"
+        - "IndustryTeamAuctionLost"
+        - "IndustryTeamAuctionWon"
+        - "InfrastructureHubBillAboutToExpire"
+        - "InsuranceExpirationMsg"
+        - "InsuranceFirstShipMsg"
+        - "InsuranceInvalidatedMsg"
+        - "InsuranceIssuedMsg"
+        - "InsurancePayoutMsg"
+        - "JumpCloneDeletedMsg1"
+        - "JumpCloneDeletedMsg2"
+        - "KillReportFinalBlow"
+        - "KillReportVictim"
+        - "KillRightAvailable"
+        - "KillRightAvailableOpen"
+        - "KillRightEarned"
+        - "KillRightUnavailable"
+        - "KillRightUnavailableOpen"
+        - "KillRightUsed"
+        - "LocateCharMsg"
+        - "MadeWarMutual"
+        - "MercOfferedNegotiationMsg"
+        - "MissionOfferExpirationMsg"
+        - "MissionTimeoutMsg"
+        - "MoonminingAutomaticFracture"
+        - "MoonminingExtractionCancelled"
+        - "MoonminingExtractionFinished"
+        - "MoonminingExtractionStarted"
+        - "MoonminingLaserFired"
+        - "NPCStandingsGained"
+        - "NPCStandingsLost"
+        - "OfferedSurrender"
+        - "OfferedToAlly"
+        - "OldLscMessages"
+        - "OperationFinished"
+        - "OrbitalAttacked"
+        - "OrbitalReinforced"
+        - "OwnershipTransferred"
+        - "ReimbursementMsg"
+        - "ResearchMissionAvailableMsg"
+        - "RetractsWar"
+        - "SeasonalChallengeCompleted"
+        - "SovAllClaimAquiredMsg"
+        - "SovAllClaimLostMsg"
+        - "SovCommandNodeEventStarted"
+        - "SovCorpBillLateMsg"
+        - "SovCorpClaimFailMsg"
+        - "SovDisruptorMsg"
+        - "SovStationEnteredFreeport"
+        - "SovStructureDestroyed"
+        - "SovStructureReinforced"
+        - "SovStructureSelfDestructCancel"
+        - "SovStructureSelfDestructFinished"
+        - "SovStructureSelfDestructRequested"
+        - "SovereigntyIHDamageMsg"
+        - "SovereigntySBUDamageMsg"
+        - "SovereigntyTCUDamageMsg"
+        - "StationAggressionMsg1"
+        - "StationAggressionMsg2"
+        - "StationConquerMsg"
+        - "StationServiceDisabled"
+        - "StationServiceEnabled"
+        - "StationStateChangeMsg"
+        - "StoryLineMissionAvailableMsg"
+        - "StructureAnchoring"
+        - "StructureCourierContractChanged"
+        - "StructureDestroyed"
+        - "StructureFuelAlert"
+        - "StructureItemsDelivered"
+        - "StructureLostArmor"
+        - "StructureLostShields"
+        - "StructureOnline"
+        - "StructureServicesOffline"
+        - "StructureUnanchoring"
+        - "StructureUnderAttack"
+        - "StructureWentHighPower"
+        - "StructureWentLowPower"
+        - "StructuresReinforcementChanged"
+        - "TowerAlertMsg"
+        - "TowerResourceAlertMsg"
+        - "TransactionReversalMsg"
+        - "TutorialMsg"
+        - "WarAllyOfferDeclinedMsg"
+        - "WarSurrenderDeclinedMsg"
+        - "WarSurrenderOfferMsg"
+    description: "200 ok object"
+  get_characters_character_id_roles_ok:
+    properties:
+      roles:
+        type: "array"
+        description: "roles array"
+        title: "get_characters_character_id_roles_roles"
+        items:
+          type: "string"
+          description: "role string"
+          title: "get_characters_character_id_roles_role"
+          enum:
+          - "Account_Take_1"
+          - "Account_Take_2"
+          - "Account_Take_3"
+          - "Account_Take_4"
+          - "Account_Take_5"
+          - "Account_Take_6"
+          - "Account_Take_7"
+          - "Accountant"
+          - "Auditor"
+          - "Communications_Officer"
+          - "Config_Equipment"
+          - "Config_Starbase_Equipment"
+          - "Container_Take_1"
+          - "Container_Take_2"
+          - "Container_Take_3"
+          - "Container_Take_4"
+          - "Container_Take_5"
+          - "Container_Take_6"
+          - "Container_Take_7"
+          - "Contract_Manager"
+          - "Diplomat"
+          - "Director"
+          - "Factory_Manager"
+          - "Fitting_Manager"
+          - "Hangar_Query_1"
+          - "Hangar_Query_2"
+          - "Hangar_Query_3"
+          - "Hangar_Query_4"
+          - "Hangar_Query_5"
+          - "Hangar_Query_6"
+          - "Hangar_Query_7"
+          - "Hangar_Take_1"
+          - "Hangar_Take_2"
+          - "Hangar_Take_3"
+          - "Hangar_Take_4"
+          - "Hangar_Take_5"
+          - "Hangar_Take_6"
+          - "Hangar_Take_7"
+          - "Junior_Accountant"
+          - "Personnel_Manager"
+          - "Rent_Factory_Facility"
+          - "Rent_Office"
+          - "Rent_Research_Facility"
+          - "Security_Officer"
+          - "Starbase_Defense_Operator"
+          - "Starbase_Fuel_Technician"
+          - "Station_Manager"
+          - "Terrestrial_Combat_Officer"
+          - "Terrestrial_Logistics_Officer"
+          - "Trader"
+        maxItems: 50
+      roles_at_hq:
+        type: "array"
+        description: "roles_at_hq array"
+        title: "get_characters_character_id_roles_roles_at_hq"
+        items:
+          type: "string"
+          description: "roles_at_hq string"
+          title: "get_characters_character_id_roles_roles_at_hq"
+          enum:
+          - "Account_Take_1"
+          - "Account_Take_2"
+          - "Account_Take_3"
+          - "Account_Take_4"
+          - "Account_Take_5"
+          - "Account_Take_6"
+          - "Account_Take_7"
+          - "Accountant"
+          - "Auditor"
+          - "Communications_Officer"
+          - "Config_Equipment"
+          - "Config_Starbase_Equipment"
+          - "Container_Take_1"
+          - "Container_Take_2"
+          - "Container_Take_3"
+          - "Container_Take_4"
+          - "Container_Take_5"
+          - "Container_Take_6"
+          - "Container_Take_7"
+          - "Contract_Manager"
+          - "Diplomat"
+          - "Director"
+          - "Factory_Manager"
+          - "Fitting_Manager"
+          - "Hangar_Query_1"
+          - "Hangar_Query_2"
+          - "Hangar_Query_3"
+          - "Hangar_Query_4"
+          - "Hangar_Query_5"
+          - "Hangar_Query_6"
+          - "Hangar_Query_7"
+          - "Hangar_Take_1"
+          - "Hangar_Take_2"
+          - "Hangar_Take_3"
+          - "Hangar_Take_4"
+          - "Hangar_Take_5"
+          - "Hangar_Take_6"
+          - "Hangar_Take_7"
+          - "Junior_Accountant"
+          - "Personnel_Manager"
+          - "Rent_Factory_Facility"
+          - "Rent_Office"
+          - "Rent_Research_Facility"
+          - "Security_Officer"
+          - "Starbase_Defense_Operator"
+          - "Starbase_Fuel_Technician"
+          - "Station_Manager"
+          - "Terrestrial_Combat_Officer"
+          - "Terrestrial_Logistics_Officer"
+          - "Trader"
+        maxItems: 50
+      roles_at_base:
+        type: "array"
+        description: "roles_at_base array"
+        title: "get_characters_character_id_roles_roles_at_base"
+        items:
+          type: "string"
+          description: "roles_at_base string"
+          title: "get_characters_character_id_roles_roles_at_base"
+          enum:
+          - "Account_Take_1"
+          - "Account_Take_2"
+          - "Account_Take_3"
+          - "Account_Take_4"
+          - "Account_Take_5"
+          - "Account_Take_6"
+          - "Account_Take_7"
+          - "Accountant"
+          - "Auditor"
+          - "Communications_Officer"
+          - "Config_Equipment"
+          - "Config_Starbase_Equipment"
+          - "Container_Take_1"
+          - "Container_Take_2"
+          - "Container_Take_3"
+          - "Container_Take_4"
+          - "Container_Take_5"
+          - "Container_Take_6"
+          - "Container_Take_7"
+          - "Contract_Manager"
+          - "Diplomat"
+          - "Director"
+          - "Factory_Manager"
+          - "Fitting_Manager"
+          - "Hangar_Query_1"
+          - "Hangar_Query_2"
+          - "Hangar_Query_3"
+          - "Hangar_Query_4"
+          - "Hangar_Query_5"
+          - "Hangar_Query_6"
+          - "Hangar_Query_7"
+          - "Hangar_Take_1"
+          - "Hangar_Take_2"
+          - "Hangar_Take_3"
+          - "Hangar_Take_4"
+          - "Hangar_Take_5"
+          - "Hangar_Take_6"
+          - "Hangar_Take_7"
+          - "Junior_Accountant"
+          - "Personnel_Manager"
+          - "Rent_Factory_Facility"
+          - "Rent_Office"
+          - "Rent_Research_Facility"
+          - "Security_Officer"
+          - "Starbase_Defense_Operator"
+          - "Starbase_Fuel_Technician"
+          - "Station_Manager"
+          - "Terrestrial_Combat_Officer"
+          - "Terrestrial_Logistics_Officer"
+          - "Trader"
+        maxItems: 50
+      roles_at_other:
+        type: "array"
+        description: "roles_at_other array"
+        title: "get_characters_character_id_roles_roles_at_other"
+        items:
+          type: "string"
+          description: "roles_at_other string"
+          title: "get_characters_character_id_roles_roles_at_other"
+          enum:
+          - "Account_Take_1"
+          - "Account_Take_2"
+          - "Account_Take_3"
+          - "Account_Take_4"
+          - "Account_Take_5"
+          - "Account_Take_6"
+          - "Account_Take_7"
+          - "Accountant"
+          - "Auditor"
+          - "Communications_Officer"
+          - "Config_Equipment"
+          - "Config_Starbase_Equipment"
+          - "Container_Take_1"
+          - "Container_Take_2"
+          - "Container_Take_3"
+          - "Container_Take_4"
+          - "Container_Take_5"
+          - "Container_Take_6"
+          - "Container_Take_7"
+          - "Contract_Manager"
+          - "Diplomat"
+          - "Director"
+          - "Factory_Manager"
+          - "Fitting_Manager"
+          - "Hangar_Query_1"
+          - "Hangar_Query_2"
+          - "Hangar_Query_3"
+          - "Hangar_Query_4"
+          - "Hangar_Query_5"
+          - "Hangar_Query_6"
+          - "Hangar_Query_7"
+          - "Hangar_Take_1"
+          - "Hangar_Take_2"
+          - "Hangar_Take_3"
+          - "Hangar_Take_4"
+          - "Hangar_Take_5"
+          - "Hangar_Take_6"
+          - "Hangar_Take_7"
+          - "Junior_Accountant"
+          - "Personnel_Manager"
+          - "Rent_Factory_Facility"
+          - "Rent_Office"
+          - "Rent_Research_Facility"
+          - "Security_Officer"
+          - "Starbase_Defense_Operator"
+          - "Starbase_Fuel_Technician"
+          - "Station_Manager"
+          - "Terrestrial_Combat_Officer"
+          - "Terrestrial_Logistics_Officer"
+          - "Trader"
+        maxItems: 50
+    description: "200 ok object"
   get_characters_character_id_clones_home_location:
     properties:
       location_id:

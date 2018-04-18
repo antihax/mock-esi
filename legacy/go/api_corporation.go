@@ -1233,7 +1233,6 @@ func GetCorporationsCorporationIdOutpostsOutpostId(w http.ResponseWriter, r *htt
   },
   "services" : [ {
     "service_name" : "Reprocessing Plant",
-    "owner_id" : 98000002,
     "minimum_standing" : 0,
     "surcharge_per_bad_standing" : 0,
     "discount_per_good_standing" : 10

@@ -300,12 +300,12 @@ func GetCharactersCharacterIdMailLabels(w http.ResponseWriter, r *http.Request) 
   "labels" : [ {
     "label_id" : 16,
     "name" : "PINK",
-    "color_hex" : "#660066",
+    "color" : "#660066",
     "unread_count" : 4
   }, {
     "label_id" : 17,
     "name" : "WHITE",
-    "color_hex" : "#ffffff",
+    "color" : "#ffffff",
     "unread_count" : 1
   } ]
 }`

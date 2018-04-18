@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "An OpenAPI for EVE Online"
-  version: "0.7.6"
+  version: "0.8.0"
   title: "EVE Swagger Interface"
 host: "esi.tech.ccp.is"
 basePath: "/v3"
@@ -74,6 +74,13 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
         404:
           description: "Alliance not found"
           schema:
@@ -88,6 +95,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       x-cached-seconds: 3600
       x-alternate-versions:
       - "dev"
@@ -180,6 +201,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -194,6 +229,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-assets.read_assets.v1"
@@ -290,6 +339,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -304,6 +367,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-assets.read_corporation_assets.v1"
@@ -398,6 +475,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -412,6 +503,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-calendar.read_calendar_events.v1"
@@ -481,6 +586,20 @@ paths:
       responses:
         204:
           description: "Event updated"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -495,6 +614,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-calendar.respond_calendar_events.v1"
@@ -567,6 +700,13 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
         422:
           description: "Is not a character ID"
           schema:
@@ -581,6 +721,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       deprecated: true
       x-cached-seconds: 3600
       x-alternate-versions:
@@ -648,6 +802,20 @@ paths:
           examples:
             application/json:
               cost: 295000
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -662,6 +830,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-characters.read_contacts.v1"
@@ -740,6 +922,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -754,6 +950,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-clones.read_clones.v1"
@@ -830,6 +1040,13 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
         404:
           description: "Corporation not found"
           schema:
@@ -844,6 +1061,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       deprecated: true
       x-cached-seconds: 3600
       x-alternate-versions:
@@ -922,6 +1153,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -936,6 +1181,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-corporations.read_corporation_membership.v1"
@@ -1001,11 +1260,11 @@ paths:
               labels:
               - label_id: 16
                 name: "PINK"
-                color_hex: "#660066"
+                color: "#660066"
                 unread_count: 4
               - label_id: 17
                 name: "WHITE"
-                color_hex: "#ffffff"
+                color: "#ffffff"
                 unread_count: 1
           headers:
             Cache-Control:
@@ -1017,6 +1276,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -1031,6 +1304,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-mail.read_mail.v1"
@@ -1106,16 +1393,14 @@ paths:
                 destination_pin_id: 1000000017022
                 link_level: 0
               pins:
-              - longitude: 0.717145933308
-                is_running: true
+              - longitude: 0.7171459333
                 type_id: 2254
                 pin_id: 1000000017021
-                latitude: 1.55087844973
-              - longitude: 0.709775584394
-                is_running: true
+                latitude: 1.5508784497
+              - longitude: 0.7097755844
                 type_id: 2256
                 pin_id: 1000000017022
-                latitude: 1.53360639935
+                latitude: 1.5336063994
               routes:
               - source_pin_id: 1000000017029
                 quantity: 20
@@ -1132,6 +1417,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -1153,6 +1452,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-planets.manage_planets.v1"
@@ -1294,6 +1607,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -1308,6 +1635,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-search.search_structures.v1"
@@ -1387,6 +1728,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -1401,6 +1756,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-skills.read_skills.v1"
@@ -1474,7 +1843,7 @@ paths:
                 x: -91174141133075340
                 y: 43938227486247170
                 z: -56482824383339900
-              security_status: 0.8462923765182495
+              security_status: 0.8462923765
               constellation_id: 20000001
               planets:
               - planet_id: 40000041
@@ -1505,6 +1874,13 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
         404:
           description: "Solar system not found"
           schema:
@@ -1519,6 +1895,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       x-alternate-versions:
       - "dev"
       - "latest"
@@ -1607,6 +1997,13 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
         404:
           description: "Type not found"
           schema:
@@ -1621,6 +2018,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       x-alternate-versions:
       - "dev"
       - "latest"
@@ -1703,6 +2114,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -1717,6 +2142,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-wallet.read_character_wallet.v1"
@@ -1825,6 +2264,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -1839,6 +2292,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-wallet.read_corporation_wallets.v1"
@@ -1868,6 +2335,16 @@ securityDefinitions:
       esi-wallet.read_character_wallet.v1: "EVE SSO scope esi-wallet.read_character_wallet.v1"
       esi-wallet.read_corporation_wallets.v1: "EVE SSO scope esi-wallet.read_corporation_wallets.v1"
 definitions:
+  unauthorized:
+    type: "object"
+    required:
+    - "error"
+    properties:
+      error:
+        type: "string"
+        description: "Unauthorized message"
+    title: "Unauthorized"
+    description: "Unauthorized model"
   forbidden:
     type: "object"
     required:
@@ -1881,6 +2358,16 @@ definitions:
         description: "Status code received from SSO"
     title: "Forbidden"
     description: "Forbidden model"
+  bad_request:
+    type: "object"
+    required:
+    - "error"
+    properties:
+      error:
+        type: "string"
+        description: "Bad request message"
+    title: "Bad request"
+    description: "Bad request model"
   internal_server_error:
     type: "object"
     required:
@@ -1891,6 +2378,26 @@ definitions:
         description: "Internal server error message"
     title: "Internal server error"
     description: "Internal server error model"
+  bad_gateway:
+    type: "object"
+    required:
+    - "error"
+    properties:
+      error:
+        type: "string"
+        description: "Bad gateway message"
+    title: "Bad gateway"
+    description: "Bad gateway model"
+  service_unavailable:
+    type: "object"
+    required:
+    - "error"
+    properties:
+      error:
+        type: "string"
+        description: "Service unavailable message"
+    title: "Service unavailable"
+    description: "Service unavailable model"
   get_alliances_alliance_id_ok:
     required:
     - "creator_corporation_id"

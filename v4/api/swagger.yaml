@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "An OpenAPI for EVE Online"
-  version: "0.7.6"
+  version: "0.8.0"
   title: "EVE Swagger Interface"
 host: "esi.tech.ccp.is"
 basePath: "/v4"
@@ -76,6 +76,13 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
         404:
           description: "Character not found"
           schema:
@@ -90,6 +97,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       x-cached-seconds: 3600
       x-alternate-versions:
       - "dev"
@@ -165,6 +186,20 @@ paths:
             title: "post_characters_character_id_cspa_created"
           examples:
             application/json: 2950.0
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -179,6 +214,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-characters.read_contacts.v1"
@@ -253,6 +302,13 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
         404:
           description: "Corporation not found"
           schema:
@@ -267,6 +323,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       x-cached-seconds: 3600
       x-alternate-versions:
       - "dev"
@@ -344,6 +414,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -358,6 +442,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-skills.read_skills.v1"
@@ -456,6 +554,20 @@ paths:
             Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
         403:
           description: "Forbidden"
           schema:
@@ -470,6 +582,20 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
+        502:
+          description: "Bad gateway"
+          schema:
+            $ref: "#/definitions/bad_gateway"
+          examples:
+            application/json:
+              error: "Bad gateway message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
       security:
       - evesso:
         - "esi-wallet.read_character_wallet.v1"
@@ -496,6 +622,16 @@ definitions:
         description: "Internal server error message"
     title: "Internal server error"
     description: "Internal server error model"
+  unauthorized:
+    type: "object"
+    required:
+    - "error"
+    properties:
+      error:
+        type: "string"
+        description: "Unauthorized message"
+    title: "Unauthorized"
+    description: "Unauthorized model"
   forbidden:
     type: "object"
     required:
@@ -509,6 +645,36 @@ definitions:
         description: "Status code received from SSO"
     title: "Forbidden"
     description: "Forbidden model"
+  bad_request:
+    type: "object"
+    required:
+    - "error"
+    properties:
+      error:
+        type: "string"
+        description: "Bad request message"
+    title: "Bad request"
+    description: "Bad request model"
+  bad_gateway:
+    type: "object"
+    required:
+    - "error"
+    properties:
+      error:
+        type: "string"
+        description: "Bad gateway message"
+    title: "Bad gateway"
+    description: "Bad gateway model"
+  service_unavailable:
+    type: "object"
+    required:
+    - "error"
+    properties:
+      error:
+        type: "string"
+        description: "Service unavailable message"
+    title: "Service unavailable"
+    description: "Service unavailable model"
   get_characters_character_id_ok:
     required:
     - "birthday"
@@ -946,20 +1112,6 @@ parameters:
     - "tranquility"
     - "singularity"
     x-exportParamName: "Datasource"
-  language:
-    name: "language"
-    in: "query"
-    description: "Language to use in the response"
-    required: false
-    type: "string"
-    default: "en-us"
-    enum:
-    - "de"
-    - "en-us"
-    - "fr"
-    - "ja"
-    - "ru"
-    - "zh"
   user_agent:
     name: "user_agent"
     in: "query"
@@ -990,15 +1142,6 @@ parameters:
     required: false
     type: "string"
     x-exportParamName: "Token"
-  corporation_id:
-    name: "corporation_id"
-    in: "path"
-    description: "An EVE corporation ID"
-    required: true
-    type: "integer"
-    minimum: 1
-    format: "int32"
-    x-exportParamName: "CorporationId"
   character_id:
     name: "character_id"
     in: "path"
@@ -1008,3 +1151,26 @@ parameters:
     minimum: 1
     format: "int32"
     x-exportParamName: "CharacterId"
+  corporation_id:
+    name: "corporation_id"
+    in: "path"
+    description: "An EVE corporation ID"
+    required: true
+    type: "integer"
+    minimum: 1
+    format: "int32"
+    x-exportParamName: "CorporationId"
+  language:
+    name: "language"
+    in: "query"
+    description: "Language to use in the response"
+    required: false
+    type: "string"
+    default: "en-us"
+    enum:
+    - "de"
+    - "en-us"
+    - "fr"
+    - "ja"
+    - "ru"
+    - "zh"

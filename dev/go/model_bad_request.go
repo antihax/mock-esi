@@ -1,8 +1,8 @@
-package esilatest
+package esidev
 
 /*
-Bad request */
-type PutFleetsFleetIdBadRequest struct {
+Bad request model */
+type BadRequest struct {
 	/*
 	 Bad request message */
 	Error_ string `json:"error,omitempty"`

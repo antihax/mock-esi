@@ -258,7 +258,7 @@ func GetUniverseSystemsSystemId(w http.ResponseWriter, r *http.Request) {
     "y" : 43938227486247170,
     "z" : -56482824383339900
   },
-  "security_status" : 0.8462923765182495,
+  "security_status" : 0.8462923765,
   "constellation_id" : 20000001,
   "planets" : [ {
     "planet_id" : 40000041,

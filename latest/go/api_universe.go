@@ -1345,7 +1345,7 @@ func GetUniverseStarsStarId(w http.ResponseWriter, r *http.Request) {
   "type_id" : 45033,
   "age" : 9398686722,
   "name" : "BKG-Q2 - Star",
-  "luminosity" : 0.06615000218153,
+  "luminosity" : 0.0661500022,
   "radius" : 346600000,
   "spectral_class" : "K2 V",
   "temperature" : 3953,
@@ -1833,7 +1833,7 @@ func GetUniverseSystemsSystemId(w http.ResponseWriter, r *http.Request) {
     "y" : 43938227486247170,
     "z" : -56482824383339900
   },
-  "security_status" : 0.8462923765182495,
+  "security_status" : 0.8462923765,
   "constellation_id" : 20000001,
   "planets" : [ {
     "planet_id" : 40000041,

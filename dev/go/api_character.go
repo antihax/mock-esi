@@ -104,7 +104,7 @@ func GetCharactersCharacterIdAgentsResearch(w http.ResponseWriter, r *http.Reque
   "agent_id" : 3009358,
   "skill_type_id" : 11450,
   "started_at" : "2017-03-23T14:47:00Z",
-  "points_per_day" : 53.5346162146776,
+  "points_per_day" : 53.5346162147,
   "remainder_points" : 53604.0634303189
 } ]`
 	vars := mux.Vars(r)
