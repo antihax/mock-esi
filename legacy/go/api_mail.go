@@ -99,7 +99,7 @@ func DeleteCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Reques
 		localV      interface{}
 		err         error
 		characterId int32
-		mailId      int32
+		mailId      int64
 		datasource  string
 		token       string
 		userAgent   string
@@ -121,7 +121,7 @@ func DeleteCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Reques
 		errorOut(w, r, err)
 		return
 	}
-	mailId = localV.(int32)
+	mailId = localV.(int64)
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)
 		return
@@ -184,7 +184,7 @@ func GetCharactersCharacterIdMail(w http.ResponseWriter, r *http.Request) {
 		characterId int32
 		datasource  string
 		labels      []int64
-		lastMailId  int32
+		lastMailId  int64
 		token       string
 		userAgent   string
 	)
@@ -237,7 +237,7 @@ func GetCharactersCharacterIdMail(w http.ResponseWriter, r *http.Request) {
 			errorOut(w, r, err)
 			return
 		}
-		lastMailId = localV.(int32)
+		lastMailId = localV.(int64)
 	}
 	if r.Form.Get("token") != "" {
 		localV, err = processParameters(token, r.Form.Get("token"))
@@ -446,7 +446,7 @@ func GetCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Request) 
 		localV      interface{}
 		err         error
 		characterId int32
-		mailId      int32
+		mailId      int64
 		datasource  string
 		token       string
 		userAgent   string
@@ -475,7 +475,7 @@ func GetCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Request) 
 		errorOut(w, r, err)
 		return
 	}
-	mailId = localV.(int32)
+	mailId = localV.(int64)
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)
 		return
@@ -764,7 +764,7 @@ func PutCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Request) 
 		localV      interface{}
 		err         error
 		characterId int32
-		mailId      int32
+		mailId      int64
 		datasource  string
 		token       string
 		userAgent   string
@@ -786,7 +786,7 @@ func PutCharactersCharacterIdMailMailId(w http.ResponseWriter, r *http.Request) 
 		errorOut(w, r, err)
 		return
 	}
-	mailId = localV.(int32)
+	mailId = localV.(int64)
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)
 		return
