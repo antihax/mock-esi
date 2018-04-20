@@ -1688,6 +1688,13 @@ paths:
           examples:
             application/json:
               error: "Forbidden message"
+        404:
+          description: "Not found"
+          schema:
+            $ref: "#/definitions/get_characters_character_id_calendar_event_id_attendees_not_found"
+          examples:
+            application/json:
+              error: "Not found message"
         500:
           description: "Internal server error"
           schema:
@@ -3977,6 +3984,13 @@ paths:
           examples:
             application/json:
               error: "Service unavailable message"
+        520:
+          description: "Internal error thrown from the EVE server."
+          schema:
+            $ref: "#/definitions/post_characters_character_id_contacts_520_response"
+          examples:
+            application/json:
+              error: "520 response message"
       security:
       - evesso:
         - "esi-characters.write_contacts.v1"
@@ -4881,6 +4895,13 @@ paths:
           examples:
             application/json:
               error: "Forbidden message"
+        404:
+          description: "Not found"
+          schema:
+            $ref: "#/definitions/get_characters_character_id_contracts_contract_id_items_not_found"
+          examples:
+            application/json:
+              error: "Not found message"
         500:
           description: "Internal server error"
           schema:
@@ -5012,6 +5033,13 @@ paths:
           examples:
             application/json:
               error: "Forbidden message"
+        404:
+          description: "Not found"
+          schema:
+            $ref: "#/definitions/get_characters_character_id_contracts_contract_id_bids_not_found"
+          examples:
+            application/json:
+              error: "Not found message"
         500:
           description: "Internal server error"
           schema:
@@ -5297,6 +5325,13 @@ paths:
           examples:
             application/json:
               error: "Forbidden message"
+        404:
+          description: "Not found"
+          schema:
+            $ref: "#/definitions/get_corporations_corporation_id_contracts_contract_id_items_not_found"
+          examples:
+            application/json:
+              error: "Not found message"
         500:
           description: "Internal server error"
           schema:
@@ -5318,6 +5353,14 @@ paths:
           examples:
             application/json:
               error: "Service unavailable message"
+        520:
+          description: "Internal error thrown from the EVE server. Most of the time\
+            \ this means you have hit an EVE server rate limit."
+          schema:
+            $ref: "#/definitions/get_corporations_corporation_id_contracts_contract_id_items_520_response"
+          examples:
+            application/json:
+              error: "520 response message"
       security:
       - evesso:
         - "esi-contracts.read_corporation_contracts.v1"
@@ -5442,6 +5485,13 @@ paths:
           examples:
             application/json:
               error: "Forbidden message"
+        404:
+          description: "Not found"
+          schema:
+            $ref: "#/definitions/get_corporations_corporation_id_contracts_contract_id_bids_not_found"
+          examples:
+            application/json:
+              error: "Not found message"
         500:
           description: "Internal server error"
           schema:
@@ -14463,6 +14513,14 @@ paths:
           examples:
             application/json:
               error: "Service unavailable message"
+        520:
+          description: "Internal error thrown from the EVE server. Most of the time\
+            \ this means you have hit an EVE server rate limit."
+          schema:
+            $ref: "#/definitions/post_characters_character_id_mail_520_response"
+          examples:
+            application/json:
+              error: "520 response message"
       security:
       - evesso:
         - "esi-mail.send_mail.v1"
@@ -15491,6 +15549,13 @@ paths:
           examples:
             application/json:
               error: "Bad request message"
+        404:
+          description: "Type not found"
+          schema:
+            $ref: "#/definitions/get_markets_region_id_history_not_found"
+          examples:
+            application/json:
+              error: "Not found message"
         422:
           description: "Not found"
           schema:
@@ -22574,6 +22639,7 @@ paths:
         description: "ID for a war"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "WarId"
       - name: "X-User-Agent"
@@ -22691,6 +22757,7 @@ paths:
         description: "A valid war ID"
         required: true
         type: "integer"
+        minimum: 1
         format: "int32"
         x-exportParamName: "WarId"
       - name: "X-User-Agent"
@@ -23295,6 +23362,13 @@ definitions:
         - "accepted"
         - "tentative"
     description: "character_id and response of an attendee"
+  get_characters_character_id_calendar_event_id_attendees_not_found:
+    properties:
+      error:
+        type: "string"
+        description: "Not found message"
+        title: "get_characters_character_id_calendar_event_id_attendees_404_not_found"
+    description: "Not found"
   get_characters_character_id_stats_200_ok:
     required:
     - "year"
@@ -25642,6 +25716,13 @@ definitions:
         description: "Custom label of the contact"
         title: "get_characters_character_id_contacts_label_id"
     description: "200 ok object"
+  post_characters_character_id_contacts_520_response:
+    properties:
+      error:
+        type: "string"
+        description: "520 response message"
+        title: "post_characters_character_id_contacts_520_520_response"
+    description: "520 response"
   get_corporations_corporation_id_contacts_200_ok:
     required:
     - "contact_id"
@@ -25906,6 +25987,13 @@ definitions:
           \ contract, false if the isser is asking for this item in the contract."
         title: "get_characters_character_id_contracts_contract_id_items_is_included"
     description: "200 ok object"
+  get_characters_character_id_contracts_contract_id_items_not_found:
+    properties:
+      error:
+        type: "string"
+        description: "Not found message"
+        title: "get_characters_character_id_contracts_contract_id_items_404_not_found"
+    description: "Not found"
   get_characters_character_id_contracts_contract_id_bids_200_ok:
     required:
     - "amount"
@@ -25934,6 +26022,13 @@ definitions:
         description: "The amount bid, in ISK"
         title: "get_characters_character_id_contracts_contract_id_bids_amount"
     description: "200 ok object"
+  get_characters_character_id_contracts_contract_id_bids_not_found:
+    properties:
+      error:
+        type: "string"
+        description: "Not found message"
+        title: "get_characters_character_id_contracts_contract_id_bids_404_not_found"
+    description: "Not found"
   get_corporations_corporation_id_contracts_200_ok:
     required:
     - "acceptor_id"
@@ -26117,6 +26212,20 @@ definitions:
           \ contract, false if the isser is asking for this item in the contract."
         title: "get_corporations_corporation_id_contracts_contract_id_items_is_included"
     description: "200 ok object"
+  get_corporations_corporation_id_contracts_contract_id_items_not_found:
+    properties:
+      error:
+        type: "string"
+        description: "Not found message"
+        title: "get_corporations_corporation_id_contracts_contract_id_items_404_not_found"
+    description: "Not found"
+  get_corporations_corporation_id_contracts_contract_id_items_520_response:
+    properties:
+      error:
+        type: "string"
+        description: "520 response message"
+        title: "get_corporations_corporation_id_contracts_contract_id_items_520_520_response"
+    description: "520 response"
   get_corporations_corporation_id_contracts_contract_id_bids_200_ok:
     required:
     - "amount"
@@ -26145,6 +26254,13 @@ definitions:
         description: "The amount bid, in ISK"
         title: "get_corporations_corporation_id_contracts_contract_id_bids_amount"
     description: "200 ok object"
+  get_corporations_corporation_id_contracts_contract_id_bids_not_found:
+    properties:
+      error:
+        type: "string"
+        description: "Not found message"
+        title: "get_corporations_corporation_id_contracts_contract_id_bids_404_not_found"
+    description: "Not found"
   get_corporations_corporation_id_shareholders_200_ok:
     required:
     - "share_count"
@@ -31030,6 +31146,13 @@ definitions:
         default: 0
     title: "post_characters_character_id_mail_mail"
     description: "mail object"
+  post_characters_character_id_mail_520_response:
+    properties:
+      error:
+        type: "string"
+        description: "520 response message"
+        title: "post_characters_character_id_mail_520_520_response"
+    description: "520 response"
   delete_characters_character_id_mail_labels_label_id_unprocessable_entity:
     properties:
       error:
@@ -31298,6 +31421,13 @@ definitions:
         description: "lowest number"
         title: "get_markets_region_id_history_lowest"
     description: "200 ok object"
+  get_markets_region_id_history_not_found:
+    properties:
+      error:
+        type: "string"
+        description: "Not found message"
+        title: "get_markets_region_id_history_404_not_found"
+    description: "Not found"
   get_markets_region_id_history_unprocessable_entity:
     properties:
       error:

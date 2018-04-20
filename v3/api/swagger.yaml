@@ -496,6 +496,13 @@ paths:
           examples:
             application/json:
               error: "Forbidden message"
+        404:
+          description: "Not found"
+          schema:
+            $ref: "#/definitions/get_characters_character_id_calendar_event_id_not_found"
+          examples:
+            application/json:
+              error: "Not found message"
         500:
           description: "Internal server error"
           schema:
@@ -2802,6 +2809,13 @@ definitions:
         - "character"
         - "alliance"
     description: "Full details of a specific event"
+  get_characters_character_id_calendar_event_id_not_found:
+    properties:
+      error:
+        type: "string"
+        description: "Not found message"
+        title: "get_characters_character_id_calendar_event_id_404_not_found"
+    description: "Not found"
   put_characters_character_id_calendar_event_id_response:
     type: "object"
     required:
