@@ -3309,7 +3309,7 @@ paths:
           description: "Label created"
           schema:
             type: "integer"
-            format: "int64"
+            format: "int32"
             description: "Label ID"
             title: "post_characters_character_id_mail_labels_created"
           examples:

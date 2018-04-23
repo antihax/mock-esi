@@ -7,7 +7,7 @@ import "time"
 type GetCharactersCharacterIdMail200Ok struct {
 	/*
 	 mail_id integer */
-	MailId int64 `json:"mail_id,omitempty"`
+	MailId int32 `json:"mail_id,omitempty"`
 	/*
 	 Mail subject */
 	Subject string `json:"subject,omitempty"`
@@ -19,7 +19,7 @@ type GetCharactersCharacterIdMail200Ok struct {
 	Timestamp time.Time `json:"timestamp,omitempty"`
 	/*
 	 labels array */
-	Labels []int64 `json:"labels,omitempty"`
+	Labels []int32 `json:"labels,omitempty"`
 	/*
 	 Recipients of the mail */
 	Recipients []GetCharactersCharacterIdMailRecipient `json:"recipients,omitempty"`

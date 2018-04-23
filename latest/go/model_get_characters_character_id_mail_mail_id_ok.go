@@ -22,7 +22,7 @@ type GetCharactersCharacterIdMailMailIdOk struct {
 	Body string `json:"body,omitempty"`
 	/*
 	 Labels attached to the mail */
-	Labels []int64 `json:"labels,omitempty"`
+	Labels []int32 `json:"labels,omitempty"`
 	/*
 	 Whether the mail is flagged as read */
 	Read bool `json:"read,omitempty"`

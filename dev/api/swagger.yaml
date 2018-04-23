@@ -15369,7 +15369,7 @@ paths:
         type: "array"
         items:
           type: "integer"
-          format: "int64"
+          format: "int32"
           minimum: 0
         maxItems: 25
         minItems: 1
@@ -15380,7 +15380,7 @@ paths:
         description: "List only mail with an ID lower than the given ID, if present"
         required: false
         type: "integer"
-        format: "int64"
+        format: "int32"
         x-exportParamName: "LastMailId"
       - name: "token"
         in: "query"
@@ -15539,7 +15539,7 @@ paths:
           description: "Mail created"
           schema:
             type: "integer"
-            format: "int64"
+            format: "int32"
             description: "Mail ID"
             title: "post_characters_character_id_mail_created"
           examples:
@@ -15781,7 +15781,7 @@ paths:
           description: "Label created"
           schema:
             type: "integer"
-            format: "int64"
+            format: "int32"
             description: "Label ID"
             title: "post_characters_character_id_mail_labels_created"
           examples:
@@ -16103,7 +16103,7 @@ paths:
         description: "An EVE mail ID"
         required: true
         type: "integer"
-        format: "int64"
+        format: "int32"
         x-exportParamName: "MailId"
       - name: "token"
         in: "query"
@@ -16244,7 +16244,7 @@ paths:
         description: "An EVE mail ID"
         required: true
         type: "integer"
-        format: "int64"
+        format: "int32"
         x-exportParamName: "MailId"
       - name: "token"
         in: "query"
@@ -16348,7 +16348,7 @@ paths:
         description: "An EVE mail ID"
         required: true
         type: "integer"
-        format: "int64"
+        format: "int32"
         x-exportParamName: "MailId"
       - name: "token"
         in: "query"
@@ -34251,7 +34251,7 @@ definitions:
     properties:
       mail_id:
         type: "integer"
-        format: "int64"
+        format: "int32"
         description: "mail_id integer"
         title: "get_characters_character_id_mail_mail_id"
       subject:
@@ -34275,7 +34275,7 @@ definitions:
         uniqueItems: true
         items:
           type: "integer"
-          format: "int64"
+          format: "int32"
           description: "label integer"
           title: "get_characters_character_id_mail_label"
         maxItems: 25
@@ -34527,7 +34527,7 @@ definitions:
         title: "get_characters_character_id_mail_mail_id_labels"
         items:
           type: "integer"
-          format: "int64"
+          format: "int32"
           description: "label integer"
           title: "get_characters_character_id_mail_mail_id_label"
           minimum: 0
@@ -34557,7 +34557,7 @@ definitions:
         title: "put_characters_character_id_mail_mail_id_labels"
         items:
           type: "integer"
-          format: "int64"
+          format: "int32"
           description: "label integer"
           title: "put_characters_character_id_mail_mail_id_label"
           minimum: 0
