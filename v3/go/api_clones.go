@@ -30,10 +30,10 @@ func GetCharactersCharacterIdClones(w http.ResponseWriter, r *http.Request) {
     "location_type" : "structure"
   },
   "jump_clones" : [ {
+    "implants" : [ 22118 ],
     "jump_clone_id" : 12345,
     "location_id" : 60003463,
-    "location_type" : "station",
-    "implants" : [ 22118 ]
+    "location_type" : "station"
   } ]
 }`
 	vars := mux.Vars(r)

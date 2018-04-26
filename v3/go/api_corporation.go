@@ -24,15 +24,15 @@ func GetCorporationsCorporationId(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "corporation_name" : "C C P",
-  "ticker" : "-CCP-",
-  "member_count" : 656,
-  "ceo_id" : 180548812,
   "alliance_id" : 434243723,
+  "ceo_id" : 180548812,
   "corporation_description" : "This is a corporation description, it's basically just a string",
-  "tax_rate" : 0.256,
+  "corporation_name" : "C C P",
   "creation_date" : "2004-11-28T16:42:51Z",
   "creator_id" : 180548812,
+  "member_count" : 656,
+  "tax_rate" : 0.256,
+  "ticker" : "-CCP-",
   "url" : "http://www.eveonline.com"
 }`
 	vars := mux.Vars(r)

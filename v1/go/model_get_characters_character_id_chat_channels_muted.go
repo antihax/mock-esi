@@ -12,9 +12,9 @@ type GetCharactersCharacterIdChatChannelsMuted struct {
 	 accessor_type string */
 	AccessorType string `json:"accessor_type,omitempty"`
 	/*
-	 Reason this accessor is muted */
-	Reason string `json:"reason,omitempty"`
-	/*
 	 Time at which this accessor will no longer be muted */
 	EndAt time.Time `json:"end_at,omitempty"`
+	/*
+	 Reason this accessor is muted */
+	Reason string `json:"reason,omitempty"`
 }

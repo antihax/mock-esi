@@ -4,9 +4,6 @@ package esiv1
 Aggregate stats for a year */
 type GetCharactersCharacterIdStats200Ok struct {
 	/*
-	 Gregorian year for this set of aggregates */
-	Year int32 `json:"year,omitempty"`
-	/*
 	 character_minutes integer */
 	CharacterMinutes int64 `json:"character_minutes,omitempty"`
 	/*
@@ -879,4 +876,7 @@ type GetCharactersCharacterIdStats200Ok struct {
 	/*
 	 travel_warps_wormhole integer */
 	TravelWarpsWormhole int64 `json:"travel_warps_wormhole,omitempty"`
+	/*
+	 Gregorian year for this set of aggregates */
+	Year int32 `json:"year,omitempty"`
 }

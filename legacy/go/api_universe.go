@@ -24,10 +24,10 @@ func GetUniverseAncestries(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
+  "bloodline_id" : 1,
+  "description" : "Acutely aware of the small population...",
   "id" : 12,
   "name" : "Tube Child",
-  "description" : "Acutely aware of the small population...",
-  "bloodline_id" : 1,
   "short_description" : "Manufactured citizens of the State."
 } ]`
 	if err := r.ParseForm(); err != nil {
@@ -174,16 +174,16 @@ func GetUniverseBloodlines(w http.ResponseWriter, r *http.Request) {
 
 	j := `[ {
   "bloodline_id" : 1,
-  "name" : "Deteis",
+  "charisma" : 6,
+  "corporation_id" : 1000006,
   "description" : "The Deteis are regarded as ...",
+  "intelligence" : 7,
+  "memory" : 7,
+  "name" : "Deteis",
+  "perception" : 5,
   "race_id" : 1,
   "ship_type_id" : 601,
-  "corporation_id" : 1000006,
-  "perception" : 5,
-  "willpower" : 5,
-  "charisma" : 6,
-  "memory" : 7,
-  "intelligence" : 7
+  "willpower" : 5
 } ]`
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)
@@ -314,9 +314,9 @@ func GetUniverseCategoriesCategoryId(w http.ResponseWriter, r *http.Request) {
 
 	j := `{
   "category_id" : 6,
+  "groups" : [ 25, 26, 27 ],
   "name" : "Ship",
-  "published" : true,
-  "groups" : [ 25, 26, 27 ]
+  "published" : true
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(categoryId, vars["category_id"])
@@ -538,15 +538,15 @@ func GetUniverseFactions(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
-  "faction_id" : 1,
-  "name" : "Faction",
-  "description" : "blah blah",
-  "solar_system_id" : 123,
   "corporation_id" : 456,
+  "description" : "blah blah",
+  "faction_id" : 1,
+  "is_unique" : true,
+  "name" : "Faction",
   "size_factor" : 1.0,
+  "solar_system_id" : 123,
   "station_count" : 1000,
-  "station_system_count" : 100,
-  "is_unique" : true
+  "station_system_count" : 100
 } ]`
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)
@@ -675,8 +675,8 @@ func GetUniverseGraphicsGraphicId(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "graphic_id" : 10,
-  "graphic_file" : "res:/dx9/model/worldobject/planet/moon.red"
+  "graphic_file" : "res:/dx9/model/worldobject/planet/moon.red",
+  "graphic_id" : 10
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(graphicId, vars["graphic_id"])
@@ -814,10 +814,10 @@ func GetUniverseGroupsGroupId(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
+  "category_id" : 6,
   "group_id" : 25,
   "name" : "Frigate",
   "published" : true,
-  "category_id" : 6,
   "types" : [ 587, 586, 585 ]
 }`
 	vars := mux.Vars(r)
@@ -971,15 +971,15 @@ func GetUniversePlanetsPlanetId(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "planet_id" : 40000046,
   "name" : "Akpivem III",
-  "type_id" : 13,
+  "planet_id" : 40000046,
   "position" : {
     "x" : -189226344497,
     "y" : 9901605317,
     "z" : -254852632979
   },
-  "system_id" : 30000003
+  "system_id" : 30000003,
+  "type_id" : 13
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(planetId, vars["planet_id"])
@@ -1048,10 +1048,10 @@ func GetUniverseRaces(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
-  "race_id" : 1,
-  "name" : "Caldari",
+  "alliance_id" : 500001,
   "description" : "Founded on the tenets of patriotism and hard work...",
-  "alliance_id" : 500001
+  "name" : "Caldari",
+  "race_id" : 1
 } ]`
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)
@@ -1181,10 +1181,10 @@ func GetUniverseRegionsRegionId(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "region_id" : 10000042,
-  "name" : "Metropolis",
+  "constellations" : [ 20000302, 20000303 ],
   "description" : "It has long been an established fact of civilization...",
-  "constellations" : [ 20000302, 20000303 ]
+  "name" : "Metropolis",
+  "region_id" : 10000042
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(regionId, vars["region_id"])
@@ -1261,19 +1261,19 @@ func GetUniverseStargatesStargateId(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "stargate_id" : 50000342,
+  "destination" : {
+    "stargate_id" : 50000056,
+    "system_id" : 30000001
+  },
   "name" : "Stargate (Tanoo)",
-  "type_id" : 29624,
   "position" : {
     "x" : -101092761600,
     "y" : 5279539200,
     "z" : 1550503403520
   },
+  "stargate_id" : 50000342,
   "system_id" : 30000003,
-  "destination" : {
-    "system_id" : 30000001,
-    "stargate_id" : 50000056
-  }
+  "type_id" : 29624
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(stargateId, vars["stargate_id"])
@@ -1342,14 +1342,14 @@ func GetUniverseStarsStarId(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "type_id" : 45033,
   "age" : 9398686722,
-  "name" : "BKG-Q2 - Star",
   "luminosity" : 0.0661500022,
+  "name" : "BKG-Q2 - Star",
   "radius" : 346600000,
+  "solar_system_id" : 30004333,
   "spectral_class" : "K2 V",
   "temperature" : 3953,
-  "solar_system_id" : 30004333
+  "type_id" : 45033
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(starId, vars["star_id"])
@@ -1418,8 +1418,8 @@ func GetUniverseStationsStationId(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "station_name" : "Jita IV Moon IV - Caldari Navy Assembly Plant",
-  "solar_system_id" : 30000142
+  "solar_system_id" : 30000142,
+  "station_name" : "Jita IV Moon IV - Caldari Navy Assembly Plant"
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(stationId, vars["station_id"])
@@ -1625,8 +1625,8 @@ func GetUniverseSystemJumps(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
-  "system_id" : 30002410,
-  "ship_jumps" : 42
+  "ship_jumps" : 42,
+  "system_id" : 30002410
 } ]`
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)
@@ -1687,10 +1687,10 @@ func GetUniverseSystemKills(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
-  "system_id" : 30002410,
-  "ship_kills" : 42,
   "npc_kills" : 0,
-  "pod_kills" : 24
+  "pod_kills" : 24,
+  "ship_kills" : 42,
+  "system_id" : 30002410
 } ]`
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)
@@ -1812,24 +1812,24 @@ func GetUniverseSystemsSystemId(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "system_id" : 30000003,
+  "constellation_id" : 20000001,
   "name" : "Akpivem",
+  "planets" : [ {
+    "moons" : [ 40000042 ],
+    "planet_id" : 40000041
+  }, {
+    "planet_id" : 40000043
+  } ],
   "position" : {
     "x" : -91174141133075340,
     "y" : 43938227486247170,
     "z" : -56482824383339900
   },
+  "security_class" : "B",
   "security_status" : 0.8462923765,
-  "constellation_id" : 20000001,
-  "planets" : [ {
-    "planet_id" : 40000041,
-    "moons" : [ 40000042 ]
-  }, {
-    "planet_id" : 40000043
-  } ],
-  "stargates" : [ 50000342 ],
   "star_id" : 40000040,
-  "security_class" : "B"
+  "stargates" : [ 50000342 ],
+  "system_id" : 30000003
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(systemId, vars["system_id"])
@@ -1975,11 +1975,11 @@ func GetUniverseTypesTypeId(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "type_id" : 587,
-  "name" : "Rifter",
   "description" : "The Rifter is a...",
+  "group_id" : 25,
+  "name" : "Rifter",
   "published" : true,
-  "group_id" : 25
+  "type_id" : 587
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(typeId, vars["type_id"])
@@ -2135,13 +2135,13 @@ func PostUniverseNames(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
+  "category" : "character",
   "id" : 95465499,
-  "name" : "CCP Bartender",
-  "category" : "character"
+  "name" : "CCP Bartender"
 }, {
+  "category" : "solar_system",
   "id" : 30000142,
-  "name" : "Jita",
-  "category" : "solar_system"
+  "name" : "Jita"
 } ]`
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)

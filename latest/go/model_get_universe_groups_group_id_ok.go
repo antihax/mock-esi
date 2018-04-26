@@ -4,6 +4,9 @@ package esilatest
 200 ok object */
 type GetUniverseGroupsGroupIdOk struct {
 	/*
+	 category_id integer */
+	CategoryId int32 `json:"category_id,omitempty"`
+	/*
 	 group_id integer */
 	GroupId int32 `json:"group_id,omitempty"`
 	/*
@@ -12,9 +15,6 @@ type GetUniverseGroupsGroupIdOk struct {
 	/*
 	 published boolean */
 	Published bool `json:"published,omitempty"`
-	/*
-	 category_id integer */
-	CategoryId int32 `json:"category_id,omitempty"`
 	/*
 	 types array */
 	Types []int32 `json:"types,omitempty"`

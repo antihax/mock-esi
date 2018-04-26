@@ -25,9 +25,9 @@ func GetCharactersCharacterIdMailLabels(w http.ResponseWriter, r *http.Request) 
 	err = err
 
 	j := `[ {
+  "color" : "#660066",
   "label_id" : 16,
-  "name" : "PINK",
-  "color" : "#660066"
+  "name" : "PINK"
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])

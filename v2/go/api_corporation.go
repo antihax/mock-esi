@@ -24,10 +24,10 @@ func GetCorporationsCorporationIdAlliancehistory(w http.ResponseWriter, r *http.
 	err = err
 
 	j := `[ {
-  "record_id" : 23,
-  "start_date" : "2016-10-25T14:46:00Z",
   "alliance_id" : 99000006,
-  "is_deleted" : true
+  "is_deleted" : true,
+  "record_id" : 23,
+  "start_date" : "2016-10-25T14:46:00Z"
 }, {
   "record_id" : 1,
   "start_date" : "2015-07-06T20:56:00Z"
@@ -102,13 +102,13 @@ func GetCorporationsCorporationIdBlueprints(w http.ResponseWriter, r *http.Reque
 
 	j := `[ {
   "item_id" : 1000000010495,
-  "type_id" : 691,
-  "location_id" : 60014719,
   "location_flag" : "CorpSAG1",
-  "quantity" : 1,
-  "time_efficiency" : 0,
+  "location_id" : 60014719,
   "material_efficiency" : 0,
-  "runs" : -1
+  "quantity" : 1,
+  "runs" : -1,
+  "time_efficiency" : 0,
+  "type_id" : 691
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(corporationId, vars["corporation_id"])
@@ -195,34 +195,34 @@ func GetCorporationsCorporationIdContainersLogs(w http.ResponseWriter, r *http.R
 	err = err
 
 	j := `[ {
-  "logged_at" : "2017-10-10T14:00:00Z",
+  "action" : "set_password",
+  "character_id" : 2112625428,
   "container_id" : 1000000012279,
   "container_type_id" : 17365,
-  "character_id" : 2112625428,
-  "location_id" : 1000000012278,
-  "action" : "set_password",
   "location_flag" : "CorpSAG1",
+  "location_id" : 1000000012278,
+  "logged_at" : "2017-10-10T14:00:00Z",
   "password_type" : "general"
 }, {
-  "logged_at" : "2017-10-11T12:04:33Z",
-  "container_id" : 1000000012279,
-  "container_type_id" : 17365,
-  "character_id" : 2112625428,
-  "location_id" : 1000000012278,
   "action" : "lock",
-  "location_flag" : "CorpSAG1",
-  "type_id" : 1230,
-  "quantity" : 30
-}, {
-  "logged_at" : "2017-10-11T12:06:29Z",
+  "character_id" : 2112625428,
   "container_id" : 1000000012279,
   "container_type_id" : 17365,
-  "character_id" : 2112625428,
+  "location_flag" : "CorpSAG1",
   "location_id" : 1000000012278,
+  "logged_at" : "2017-10-11T12:04:33Z",
+  "quantity" : 30,
+  "type_id" : 1230
+}, {
   "action" : "configure",
+  "character_id" : 2112625428,
+  "container_id" : 1000000012279,
+  "container_type_id" : 17365,
   "location_flag" : "CorpSAG2",
-  "old_config_bitmask" : 23,
-  "new_config_bitmask" : 31
+  "location_id" : 1000000012278,
+  "logged_at" : "2017-10-11T12:06:29Z",
+  "new_config_bitmask" : 31,
+  "old_config_bitmask" : 23
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(corporationId, vars["corporation_id"])
@@ -390,14 +390,14 @@ func GetCorporationsCorporationIdStructures(w http.ResponseWriter, r *http.Reque
 	err = err
 
 	j := `[ {
-  "structure_id" : 1021975535893,
-  "type_id" : 35833,
   "corporation_id" : 667531913,
-  "system_id" : 30004763,
   "profile_id" : 11237,
-  "state" : "shield_vulnerable",
+  "reinforce_hour" : 22,
   "reinforce_weekday" : 2,
-  "reinforce_hour" : 22
+  "state" : "shield_vulnerable",
+  "structure_id" : 1021975535893,
+  "system_id" : 30004763,
+  "type_id" : 35833
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(corporationId, vars["corporation_id"])

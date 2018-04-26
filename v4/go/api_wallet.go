@@ -26,16 +26,16 @@ func GetCharactersCharacterIdWalletJournal(w http.ResponseWriter, r *http.Reques
 	err = err
 
 	j := `[ {
-  "id" : 89,
-  "date" : "2018-02-23T14:31:32Z",
-  "ref_type" : "contract_deposit",
-  "description" : "Contract Deposit",
+  "amount" : -100000,
+  "balance" : 500000.4316,
   "context_id" : 4,
   "context_id_type" : "contract_id",
+  "date" : "2018-02-23T14:31:32Z",
+  "description" : "Contract Deposit",
   "first_party_id" : 2112625428,
-  "second_party_id" : 1000132,
-  "amount" : -100000,
-  "balance" : 500000.4316
+  "id" : 89,
+  "ref_type" : "contract_deposit",
+  "second_party_id" : 1000132
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])

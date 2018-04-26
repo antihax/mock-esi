@@ -24,14 +24,14 @@ func GetCharactersCharacterId(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "corporation_id" : 109299958,
+  "ancestry_id" : 19,
   "birthday" : "2015-03-24T11:37:00Z",
-  "name" : "CCP Bartender",
-  "gender" : "male",
-  "race_id" : 2,
-  "description" : "",
   "bloodline_id" : 3,
-  "ancestry_id" : 19
+  "corporation_id" : 109299958,
+  "description" : "",
+  "gender" : "male",
+  "name" : "CCP Bartender",
+  "race_id" : 2
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])

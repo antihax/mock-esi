@@ -25,9 +25,9 @@ func GetAlliancesAllianceId(w http.ResponseWriter, r *http.Request) {
 
 	j := `{
   "alliance_name" : "C C P Alliance",
-  "ticker" : "<C C P>",
+  "date_founded" : "2016-06-26T21:00:00Z",
   "executor_corp" : 98356193,
-  "date_founded" : "2016-06-26T21:00:00Z"
+  "ticker" : "<C C P>"
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(allianceId, vars["alliance_id"])

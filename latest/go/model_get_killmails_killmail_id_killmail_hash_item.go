@@ -4,6 +4,9 @@ package esilatest
 item object */
 type GetKillmailsKillmailIdKillmailHashItem struct {
 	/*
+	 flag integer */
+	Flag int32 `json:"flag,omitempty"`
+	/*
 	 item_type_id integer */
 	ItemTypeId int32 `json:"item_type_id,omitempty"`
 	/*
@@ -15,7 +18,4 @@ type GetKillmailsKillmailIdKillmailHashItem struct {
 	/*
 	 singleton integer */
 	Singleton int32 `json:"singleton,omitempty"`
-	/*
-	 flag integer */
-	Flag int32 `json:"flag,omitempty"`
 }

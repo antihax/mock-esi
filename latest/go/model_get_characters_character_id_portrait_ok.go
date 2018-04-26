@@ -4,9 +4,6 @@ package esilatest
 200 ok object */
 type GetCharactersCharacterIdPortraitOk struct {
 	/*
-	 px64x64 string */
-	Px64x64 string `json:"px64x64,omitempty"`
-	/*
 	 px128x128 string */
 	Px128x128 string `json:"px128x128,omitempty"`
 	/*
@@ -15,4 +12,7 @@ type GetCharactersCharacterIdPortraitOk struct {
 	/*
 	 px512x512 string */
 	Px512x512 string `json:"px512x512,omitempty"`
+	/*
+	 px64x64 string */
+	Px64x64 string `json:"px64x64,omitempty"`
 }

@@ -26,22 +26,22 @@ func GetCharactersCharacterIdIndustryJobs(w http.ResponseWriter, r *http.Request
 	err = err
 
 	j := `[ {
-  "job_id" : 229136101,
-  "installer_id" : 498338451,
-  "facility_id" : 60006382,
-  "station_id" : 60006382,
   "activity_id" : 1,
   "blueprint_id" : 1015116533326,
-  "blueprint_type_id" : 2047,
   "blueprint_location_id" : 60006382,
+  "blueprint_type_id" : 2047,
+  "cost" : 118.01,
+  "duration" : 548,
+  "end_date" : "2014-07-19T15:56:14Z",
+  "facility_id" : 60006382,
+  "installer_id" : 498338451,
+  "job_id" : 229136101,
+  "licensed_runs" : 200,
   "output_location_id" : 60006382,
   "runs" : 1,
-  "cost" : 118.01,
-  "licensed_runs" : 200,
-  "status" : "active",
-  "duration" : 548,
   "start_date" : "2014-07-19T15:47:06Z",
-  "end_date" : "2014-07-19T15:56:14Z"
+  "station_id" : 60006382,
+  "status" : "active"
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -129,14 +129,14 @@ func GetCharactersCharacterIdMining(w http.ResponseWriter, r *http.Request) {
 
 	j := `[ {
   "date" : "2017-09-19",
+  "quantity" : 7004,
   "solar_system_id" : 30003707,
-  "type_id" : 17471,
-  "quantity" : 7004
+  "type_id" : 17471
 }, {
   "date" : "2017-09-18",
+  "quantity" : 5199,
   "solar_system_id" : 30003707,
-  "type_id" : 17471,
-  "quantity" : 5199
+  "type_id" : 17471
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -223,11 +223,11 @@ func GetCorporationCorporationIdMiningExtractions(w http.ResponseWriter, r *http
 	err = err
 
 	j := `[ {
-  "structure_id" : 1000000010579,
-  "moon_id" : 40307229,
-  "extraction_start_time" : "2017-10-11T10:37:04Z",
   "chunk_arrival_time" : "2017-10-17T11:00:59Z",
-  "natural_decay_time" : "2017-10-17T14:00:59Z"
+  "extraction_start_time" : "2017-10-11T10:37:04Z",
+  "moon_id" : 40307229,
+  "natural_decay_time" : "2017-10-17T14:00:59Z",
+  "structure_id" : 1000000010579
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(corporationId, vars["corporation_id"])
@@ -404,11 +404,11 @@ func GetCorporationCorporationIdMiningObserversObserverId(w http.ResponseWriter,
 	err = err
 
 	j := `[ {
-  "last_updated" : "2017-09-19",
   "character_id" : 95465499,
+  "last_updated" : "2017-09-19",
+  "quantity" : 500,
   "recorded_corporation_id" : 109299958,
-  "type_id" : 1230,
-  "quantity" : 500
+  "type_id" : 1230
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(corporationId, vars["corporation_id"])
@@ -502,22 +502,22 @@ func GetCorporationsCorporationIdIndustryJobs(w http.ResponseWriter, r *http.Req
 	err = err
 
 	j := `[ {
-  "job_id" : 229136101,
-  "installer_id" : 498338451,
-  "facility_id" : 60006382,
-  "location_id" : 60006382,
   "activity_id" : 1,
   "blueprint_id" : 1015116533326,
-  "blueprint_type_id" : 2047,
   "blueprint_location_id" : 60006382,
+  "blueprint_type_id" : 2047,
+  "cost" : 118.01,
+  "duration" : 548,
+  "end_date" : "2014-07-19T15:56:14Z",
+  "facility_id" : 60006382,
+  "installer_id" : 498338451,
+  "job_id" : 229136101,
+  "licensed_runs" : 200,
+  "location_id" : 60006382,
   "output_location_id" : 60006382,
   "runs" : 1,
-  "cost" : 118.01,
-  "licensed_runs" : 200,
-  "status" : "active",
-  "duration" : 548,
   "start_date" : "2014-07-19T15:47:06Z",
-  "end_date" : "2014-07-19T15:56:14Z"
+  "status" : "active"
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(corporationId, vars["corporation_id"])
@@ -610,11 +610,11 @@ func GetIndustryFacilities(w http.ResponseWriter, r *http.Request) {
 
 	j := `[ {
   "facility_id" : 60012544,
-  "tax" : 0.1,
   "owner_id" : 1000126,
-  "type_id" : 2502,
+  "region_id" : 10000001,
   "solar_system_id" : 30000032,
-  "region_id" : 10000001
+  "tax" : 0.1,
+  "type_id" : 2502
 } ]`
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)
@@ -675,11 +675,11 @@ func GetIndustrySystems(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
-  "solar_system_id" : 30011392,
   "cost_indices" : [ {
     "activity" : "invention",
     "cost_index" : 0.0048
-  } ]
+  } ],
+  "solar_system_id" : 30011392
 } ]`
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)

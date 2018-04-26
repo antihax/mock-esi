@@ -6,9 +6,6 @@ import "time"
 200 ok object */
 type GetCharactersCharacterIdOnlineOk struct {
 	/*
-	 If the character is online */
-	Online bool `json:"online,omitempty"`
-	/*
 	 Timestamp of the last login */
 	LastLogin time.Time `json:"last_login,omitempty"`
 	/*
@@ -17,4 +14,7 @@ type GetCharactersCharacterIdOnlineOk struct {
 	/*
 	 Total number of times the character has logged in */
 	Logins int32 `json:"logins,omitempty"`
+	/*
+	 If the character is online */
+	Online bool `json:"online,omitempty"`
 }

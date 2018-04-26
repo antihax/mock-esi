@@ -23,15 +23,15 @@ func GetSovereigntyCampaigns(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
+  "attackers_score" : 0.4,
   "campaign_id" : 32833,
-  "structure_id" : 61001096,
-  "solar_system_id" : 30000856,
   "constellation_id" : 20000125,
-  "event_type" : "station_defense",
-  "start_time" : "2016-10-29T14:34:40Z",
   "defender_id" : 1695357456,
   "defender_score" : 0.6,
-  "attackers_score" : 0.4
+  "event_type" : "station_defense",
+  "solar_system_id" : 30000856,
+  "start_time" : "2016-10-29T14:34:40Z",
+  "structure_id" : 61001096
 } ]`
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)
@@ -92,8 +92,8 @@ func GetSovereigntyMap(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
-  "system_id" : 30045334,
-  "faction_id" : 500001
+  "faction_id" : 500001,
+  "system_id" : 30045334
 } ]`
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)
@@ -159,8 +159,8 @@ func GetSovereigntyStructures(w http.ResponseWriter, r *http.Request) {
   "structure_id" : 1018253388776,
   "structure_type_id" : 32226,
   "vulnerability_occupancy_level" : 2,
-  "vulnerable_start_time" : "2016-10-28T20:30:00Z",
-  "vulnerable_end_time" : "2016-10-29T05:30:00Z"
+  "vulnerable_end_time" : "2016-10-29T05:30:00Z",
+  "vulnerable_start_time" : "2016-10-28T20:30:00Z"
 } ]`
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)

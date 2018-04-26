@@ -24,15 +24,15 @@ func GetUniverseFactions(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
-  "faction_id" : 1,
-  "name" : "Faction",
-  "description" : "blah blah",
-  "solar_system_id" : 123,
   "corporation_id" : 456,
+  "description" : "blah blah",
+  "faction_id" : 1,
+  "is_unique" : true,
+  "name" : "Faction",
   "size_factor" : 1.0,
+  "solar_system_id" : 123,
   "station_count" : 1000,
-  "station_system_count" : 100,
-  "is_unique" : true
+  "station_system_count" : 100
 } ]`
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)
@@ -102,22 +102,22 @@ func GetUniverseStationsStationId(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "station_id" : 60000277,
+  "max_dockable_ship_volume" : 50000000,
   "name" : "Jakanerva III - Moon 15 - Prompt Delivery Storage",
-  "type_id" : 1531,
+  "office_rental_cost" : 10000,
+  "owner" : 1000003,
   "position" : {
     "x" : 165632286720,
     "y" : 2771804160,
     "z" : -2455331266560
   },
-  "system_id" : 30000148,
+  "race_id" : 1,
   "reprocessing_efficiency" : 0.5,
   "reprocessing_stations_take" : 0.05,
-  "max_dockable_ship_volume" : 50000000,
-  "office_rental_cost" : 10000,
   "services" : [ "courier-missions", "reprocessing-plant", "market", "repair-facilities", "fitting", "news", "storage", "insurance", "docking", "office-rental", "loyalty-point-store", "navy-offices" ],
-  "owner" : 1000003,
-  "race_id" : 1
+  "station_id" : 60000277,
+  "system_id" : 30000148,
+  "type_id" : 1531
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(stationId, vars["station_id"])
@@ -185,10 +185,10 @@ func GetUniverseSystemKills(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
-  "system_id" : 30002410,
-  "ship_kills" : 42,
   "npc_kills" : 0,
-  "pod_kills" : 24
+  "pod_kills" : 24,
+  "ship_kills" : 42,
+  "system_id" : 30002410
 } ]`
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)
@@ -251,24 +251,24 @@ func GetUniverseSystemsSystemId(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "system_id" : 30000003,
+  "constellation_id" : 20000001,
   "name" : "Akpivem",
+  "planets" : [ {
+    "moons" : [ 40000042 ],
+    "planet_id" : 40000041
+  }, {
+    "planet_id" : 40000043
+  } ],
   "position" : {
     "x" : -91174141133075340,
     "y" : 43938227486247170,
     "z" : -56482824383339900
   },
+  "security_class" : "B",
   "security_status" : 0.8462923765,
-  "constellation_id" : 20000001,
-  "planets" : [ {
-    "planet_id" : 40000041,
-    "moons" : [ 40000042 ]
-  }, {
-    "planet_id" : 40000043
-  } ],
-  "stargates" : [ 50000342 ],
   "star_id" : 40000040,
-  "security_class" : "B"
+  "stargates" : [ 50000342 ],
+  "system_id" : 30000003
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(systemId, vars["system_id"])
@@ -346,11 +346,11 @@ func GetUniverseTypesTypeId(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "type_id" : 587,
-  "name" : "Rifter",
   "description" : "The Rifter is a...",
+  "group_id" : 25,
+  "name" : "Rifter",
   "published" : true,
-  "group_id" : 25
+  "type_id" : 587
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(typeId, vars["type_id"])
@@ -426,13 +426,13 @@ func PostUniverseNames(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
+  "category" : "character",
   "id" : 95465499,
-  "name" : "CCP Bartender",
-  "category" : "character"
+  "name" : "CCP Bartender"
 }, {
+  "category" : "solar_system",
   "id" : 30000142,
-  "name" : "Jita",
-  "category" : "solar_system"
+  "name" : "Jita"
 } ]`
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)

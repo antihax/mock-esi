@@ -3,9 +3,6 @@ package esilatest
 /*
 Aggregate stats for a year */
 type GetCharactersCharacterIdStats200Ok struct {
-	/*
-	 Gregorian year for this set of aggregates */
-	Year int32 `json:"year,omitempty"`
 	/* */
 	Character GetCharactersCharacterIdStatsCharacter `json:"character,omitempty"`
 	/* */
@@ -30,4 +27,7 @@ type GetCharactersCharacterIdStats200Ok struct {
 	Social GetCharactersCharacterIdStatsSocial `json:"social,omitempty"`
 	/* */
 	Travel GetCharactersCharacterIdStatsTravel `json:"travel,omitempty"`
+	/*
+	 Gregorian year for this set of aggregates */
+	Year int32 `json:"year,omitempty"`
 }

@@ -4,8 +4,8 @@ package esilatest
 label object */
 type GetCharactersCharacterIdMailLabelsLabel struct {
 	/*
-	 unread_count integer */
-	UnreadCount int32 `json:"unread_count,omitempty"`
+	 color string */
+	Color string `json:"color,omitempty"`
 	/*
 	 label_id integer */
 	LabelId int32 `json:"label_id,omitempty"`
@@ -13,6 +13,6 @@ type GetCharactersCharacterIdMailLabelsLabel struct {
 	 name string */
 	Name string `json:"name,omitempty"`
 	/*
-	 color string */
-	Color string `json:"color,omitempty"`
+	 unread_count integer */
+	UnreadCount int32 `json:"unread_count,omitempty"`
 }

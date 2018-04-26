@@ -28,9 +28,9 @@ type PostUniverseIdsOk struct {
 	 regions array */
 	Regions []PostUniverseIdsRegion `json:"regions,omitempty"`
 	/*
-	 systems array */
-	Systems []PostUniverseIdsSystem `json:"systems,omitempty"`
-	/*
 	 stations array */
 	Stations []PostUniverseIdsStation `json:"stations,omitempty"`
+	/*
+	 systems array */
+	Systems []PostUniverseIdsSystem `json:"systems,omitempty"`
 }

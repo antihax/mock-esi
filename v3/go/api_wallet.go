@@ -116,16 +116,16 @@ func GetCorporationsCorporationIdWalletsDivisionJournal(w http.ResponseWriter, r
 	err = err
 
 	j := `[ {
-  "date" : "2016-10-24T09:00:00Z",
-  "id" : 1234567890,
-  "ref_type" : "corporation_account_withdrawal",
-  "description" : "CCP Zoetrope transferred cash from C C P's corporate account to CCP SnowedIn's account",
-  "first_party_id" : 109299958,
-  "second_party_id" : 95538921,
   "amount" : -1000,
   "balance" : 100000.0,
   "context_id" : 2112625428,
-  "context_id_type" : "character_id"
+  "context_id_type" : "character_id",
+  "date" : "2016-10-24T09:00:00Z",
+  "description" : "CCP Zoetrope transferred cash from C C P's corporate account to CCP SnowedIn's account",
+  "first_party_id" : 109299958,
+  "id" : 1234567890,
+  "ref_type" : "corporation_account_withdrawal",
+  "second_party_id" : 95538921
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(corporationId, vars["corporation_id"])

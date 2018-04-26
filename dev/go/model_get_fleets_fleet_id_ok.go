@@ -4,9 +4,6 @@ package esidev
 200 ok object */
 type GetFleetsFleetIdOk struct {
 	/*
-	 Fleet MOTD in CCP flavoured HTML */
-	Motd string `json:"motd,omitempty"`
-	/*
 	 Is free-move enabled */
 	IsFreeMove bool `json:"is_free_move,omitempty"`
 	/*
@@ -15,4 +12,7 @@ type GetFleetsFleetIdOk struct {
 	/*
 	 Is EVE Voice enabled */
 	IsVoiceEnabled bool `json:"is_voice_enabled,omitempty"`
+	/*
+	 Fleet MOTD in CCP flavoured HTML */
+	Motd string `json:"motd,omitempty"`
 }

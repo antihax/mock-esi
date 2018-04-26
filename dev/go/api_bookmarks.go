@@ -27,29 +27,29 @@ func GetCharactersCharacterIdBookmarks(w http.ResponseWriter, r *http.Request) {
 
 	j := `[ {
   "bookmark_id" : 4,
-  "location_id" : 30003430,
-  "item" : {
-    "type_id" : 29633,
-    "item_id" : 50006722
-  },
-  "folder_id" : 5,
-  "label" : "Stargate",
-  "notes" : "This is a stargate",
   "created" : "2016-08-09T11:57:47Z",
-  "creator_id" : 2112625428
+  "creator_id" : 2112625428,
+  "folder_id" : 5,
+  "item" : {
+    "item_id" : 50006722,
+    "type_id" : 29633
+  },
+  "label" : "Stargate",
+  "location_id" : 30003430,
+  "notes" : "This is a stargate"
 }, {
   "bookmark_id" : 5,
-  "location_id" : 30003430,
   "coordinates" : {
     "x" : -2958928814000,
     "y" : -338367275823,
     "z" : 2114538075090
   },
+  "created" : "2016-08-09T11:57:47Z",
+  "creator_id" : 2112625428,
   "folder_id" : 5,
   "label" : "Random location",
-  "notes" : "This is a random location in space",
-  "created" : "2016-08-09T11:57:47Z",
-  "creator_id" : 2112625428
+  "location_id" : 30003430,
+  "notes" : "This is a random location in space"
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -225,29 +225,29 @@ func GetCorporationsCorporationIdBookmarks(w http.ResponseWriter, r *http.Reques
 
 	j := `[ {
   "bookmark_id" : 4,
-  "location_id" : 30003430,
-  "item" : {
-    "type_id" : 29633,
-    "item_id" : 50006722
-  },
+  "created" : "2016-08-09T11:57:47Z",
   "creator_id" : 2112625428,
   "folder_id" : 5,
+  "item" : {
+    "item_id" : 50006722,
+    "type_id" : 29633
+  },
   "label" : "Stargate",
-  "notes" : "This is a stargate",
-  "created" : "2016-08-09T11:57:47Z"
+  "location_id" : 30003430,
+  "notes" : "This is a stargate"
 }, {
   "bookmark_id" : 5,
-  "location_id" : 30003430,
   "coordinates" : {
     "x" : -2958928814000,
     "y" : -338367275823,
     "z" : 2114538075090
   },
+  "created" : "2016-08-09T11:57:47Z",
   "creator_id" : 2112625428,
   "folder_id" : 5,
   "label" : "Random location",
-  "notes" : "This is a random location in space",
-  "created" : "2016-08-09T11:57:47Z"
+  "location_id" : 30003430,
+  "notes" : "This is a random location in space"
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(corporationId, vars["corporation_id"])

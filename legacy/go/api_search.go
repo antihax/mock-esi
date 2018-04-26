@@ -29,8 +29,8 @@ func GetCharactersCharacterIdSearch(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "station" : [ 60004588, 60004594, 60005725, 60009106, 60012721, 60012724, 60012727 ],
-  "solarsystem" : [ 30002510 ]
+  "solarsystem" : [ 30002510 ],
+  "station" : [ 60004588, 60004594, 60005725, 60009106, 60012721, 60012724, 60012727 ]
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -136,8 +136,8 @@ func GetSearch(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "station" : [ 60004588, 60004594, 60005725, 60009106, 60012721, 60012724, 60012727 ],
-  "solarsystem" : [ 30002510 ]
+  "solarsystem" : [ 30002510 ],
+  "station" : [ 60004588, 60004594, 60005725, 60009106, 60012721, 60012724, 60012727 ]
 }`
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)

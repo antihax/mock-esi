@@ -275,9 +275,9 @@ func GetCharactersCharacterIdFleet(w http.ResponseWriter, r *http.Request) {
 
 	j := `{
   "fleet_id" : 1234567890,
-  "wing_id" : -1,
+  "role" : "fleet_commander",
   "squad_id" : -1,
-  "role" : "fleet_commander"
+  "wing_id" : -1
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -355,10 +355,10 @@ func GetFleetsFleetId(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "motd" : "This is an <b>awesome</b> fleet!",
   "is_free_move" : false,
   "is_registered" : false,
-  "is_voice_enabled" : false
+  "is_voice_enabled" : false,
+  "motd" : "This is an <b>awesome</b> fleet!"
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(fleetId, vars["fleet_id"])
@@ -438,15 +438,15 @@ func GetFleetsFleetIdMembers(w http.ResponseWriter, r *http.Request) {
 
 	j := `[ {
   "character_id" : 93265215,
-  "ship_type_id" : 33328,
-  "wing_id" : 2073711261968,
-  "squad_id" : 3129411261968,
+  "join_time" : "2016-04-29T12:34:56Z",
   "role" : "squad_commander",
   "role_name" : "Squad Commander (Boss)",
-  "join_time" : "2016-04-29T12:34:56Z",
-  "takes_fleet_warp" : true,
+  "ship_type_id" : 33328,
   "solar_system_id" : 30003729,
-  "station_id" : 61000180
+  "squad_id" : 3129411261968,
+  "station_id" : 61000180,
+  "takes_fleet_warp" : true,
+  "wing_id" : 2073711261968
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(fleetId, vars["fleet_id"])
@@ -533,11 +533,11 @@ func GetFleetsFleetIdWings(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
-  "name" : "Wing 1",
   "id" : 2073711261968,
+  "name" : "Wing 1",
   "squads" : [ {
-    "name" : "Squad 1",
-    "id" : 3129411261968
+    "id" : 3129411261968,
+    "name" : "Squad 1"
   } ]
 } ]`
 	vars := mux.Vars(r)

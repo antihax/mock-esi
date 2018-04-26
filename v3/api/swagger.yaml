@@ -8,6 +8,8 @@ host: "esi.tech.ccp.is"
 basePath: "/v3"
 schemes:
 - "https"
+consumes:
+- "application/json"
 produces:
 - "application/json"
 paths:
@@ -39,6 +41,13 @@ paths:
         - "tranquility"
         - "singularity"
         x-exportParamName: "Datasource"
+      - name: "If-None-Match"
+        in: "header"
+        description: "ETag from a previous request. A 304 will be returned if this\
+          \ matches the current ETag"
+        required: false
+        type: "string"
+        x-exportParamName: "IfNoneMatch"
       - name: "user_agent"
         in: "query"
         description: "Client identifier, takes precedence over headers"
@@ -58,20 +67,38 @@ paths:
             $ref: "#/definitions/get_alliances_alliance_id_ok"
           examples:
             application/json:
+              creator_corporation_id: 45678
+              creator_id: 12345
+              date_founded: "2016-06-26T21:00:00Z"
+              executor_corporation_id: 98356193
               name: "C C P Alliance"
               ticker: "<C C P>"
-              creator_id: 12345
-              creator_corporation_id: 45678
-              executor_corporation_id: 98356193
-              date_founded: "2016-06-26T21:00:00Z"
           headers:
             Cache-Control:
               type: "string"
               description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
             Last-Modified:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        304:
+          description: "Not modified"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
             Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
               type: "string"
               description: "RFC7231 formatted datetime string"
         400:
@@ -109,10 +136,10 @@ paths:
           examples:
             application/json:
               error: "Service unavailable message"
-      x-cached-seconds: 3600
       x-alternate-versions:
       - "dev"
       - "latest"
+      x-cached-seconds: 3600
   /characters/{character_id}/assets/:
     get:
       tags:
@@ -141,6 +168,13 @@ paths:
         - "tranquility"
         - "singularity"
         x-exportParamName: "Datasource"
+      - name: "If-None-Match"
+        in: "header"
+        description: "ETag from a previous request. A 304 will be returned if this\
+          \ matches the current ETag"
+        required: false
+        type: "string"
+        x-exportParamName: "IfNoneMatch"
       - name: "page"
         in: "query"
         description: "Which page of results to return"
@@ -179,26 +213,44 @@ paths:
             maxItems: 1000
           examples:
             application/json:
-            - location_flag: "Hangar"
-              location_id: 60002959
-              is_singleton: true
-              type_id: 3516
+            - is_singleton: true
               item_id: 1000000016835
+              location_flag: "Hangar"
+              location_id: 60002959
               location_type: "station"
               quantity: 1
+              type_id: 3516
           headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
             X-Pages:
               type: "integer"
               format: "int32"
               description: "Maximum page number"
               default: 1
+        304:
+          description: "Not modified"
+          headers:
             Cache-Control:
               type: "string"
               description: "The caching mechanism used"
-            Last-Modified:
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
-            Expires:
+            Last-Modified:
               type: "string"
               description: "RFC7231 formatted datetime string"
         400:
@@ -246,10 +298,10 @@ paths:
       security:
       - evesso:
         - "esi-assets.read_assets.v1"
-      x-cached-seconds: 3600
       x-alternate-versions:
       - "dev"
       - "latest"
+      x-cached-seconds: 3600
   /corporations/{corporation_id}/assets/:
     get:
       tags:
@@ -279,6 +331,13 @@ paths:
         - "tranquility"
         - "singularity"
         x-exportParamName: "Datasource"
+      - name: "If-None-Match"
+        in: "header"
+        description: "ETag from a previous request. A 304 will be returned if this\
+          \ matches the current ETag"
+        required: false
+        type: "string"
+        x-exportParamName: "IfNoneMatch"
       - name: "page"
         in: "query"
         description: "Which page of results to return"
@@ -317,26 +376,44 @@ paths:
             maxItems: 1000
           examples:
             application/json:
-            - location_flag: "Hangar"
-              location_id: 60002959
-              is_singleton: true
-              type_id: 3516
+            - is_singleton: true
               item_id: 1000000016835
+              location_flag: "Hangar"
+              location_id: 60002959
               location_type: "station"
               quantity: 1
+              type_id: 3516
           headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
             X-Pages:
               type: "integer"
               format: "int32"
               description: "Maximum page number"
               default: 1
+        304:
+          description: "Not modified"
+          headers:
             Cache-Control:
               type: "string"
               description: "The caching mechanism used"
-            Last-Modified:
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
-            Expires:
+            Last-Modified:
               type: "string"
               description: "RFC7231 formatted datetime string"
         400:
@@ -384,12 +461,12 @@ paths:
       security:
       - evesso:
         - "esi-assets.read_corporation_assets.v1"
-      x-required-roles:
-      - "Director"
-      x-cached-seconds: 3600
       x-alternate-versions:
       - "dev"
       - "latest"
+      x-cached-seconds: 3600
+      x-required-roles:
+      - "Director"
   /characters/{character_id}/calendar/{event_id}/:
     get:
       tags:
@@ -426,6 +503,13 @@ paths:
         type: "integer"
         format: "int32"
         x-exportParamName: "EventId"
+      - name: "If-None-Match"
+        in: "header"
+        description: "ETag from a previous request. A 304 will be returned if this\
+          \ matches the current ETag"
+        required: false
+        type: "string"
+        x-exportParamName: "IfNoneMatch"
       - name: "token"
         in: "query"
         description: "Access token to use if unable to set a header"
@@ -451,28 +535,46 @@ paths:
             $ref: "#/definitions/get_characters_character_id_calendar_event_id_ok"
           examples:
             application/json:
+              date: "2016-06-26T21:00:00Z"
+              duration: 60
               event_id: 1386435
+              importance: 1
               owner_id: 1
               owner_name: "EVE System"
-              date: "2016-06-26T21:00:00Z"
-              title: "o7 The EVE Online Show"
-              duration: 60
-              importance: 1
+              owner_type: "eve_server"
               response: "Undecided"
               text: "o7: The EVE Online Show features latest developer news, fast\
                 \ paced action, community overviews and a lot more with CCP Guard\
                 \ and CCP Mimic. Join the thrilling o7 live broadcast at 20:00 EVE\
                 \ time (=UTC) on <a href=\"http://www.twitch.tv/ccp\">EVE TV</a>.\
                 \ Don't miss it!"
-              owner_type: "eve_server"
+              title: "o7 The EVE Online Show"
           headers:
             Cache-Control:
               type: "string"
               description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
             Last-Modified:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        304:
+          description: "Not modified"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
             Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
               type: "string"
               description: "RFC7231 formatted datetime string"
         400:
@@ -527,10 +629,10 @@ paths:
       security:
       - evesso:
         - "esi-calendar.read_calendar_events.v1"
-      x-cached-seconds: 5
       x-alternate-versions:
       - "dev"
       - "latest"
+      x-cached-seconds: 5
     put:
       tags:
       - "Calendar"
@@ -670,6 +772,13 @@ paths:
         - "tranquility"
         - "singularity"
         x-exportParamName: "Datasource"
+      - name: "If-None-Match"
+        in: "header"
+        description: "ETag from a previous request. A 304 will be returned if this\
+          \ matches the current ETag"
+        required: false
+        type: "string"
+        x-exportParamName: "IfNoneMatch"
       - name: "user_agent"
         in: "query"
         description: "Client identifier, takes precedence over headers"
@@ -689,22 +798,40 @@ paths:
             $ref: "#/definitions/get_characters_character_id_ok"
           examples:
             application/json:
-              corporation_id: 109299958
-              birthday: "2015-03-24T11:37:00Z"
-              name: "CCP Bartender"
-              gender: "male"
-              race_id: 2
-              description: ""
-              bloodline_id: 3
               ancestry_id: 19
+              birthday: "2015-03-24T11:37:00Z"
+              bloodline_id: 3
+              corporation_id: 109299958
+              description: ""
+              gender: "male"
+              name: "CCP Bartender"
+              race_id: 2
           headers:
             Cache-Control:
               type: "string"
               description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
             Last-Modified:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        304:
+          description: "Not modified"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
             Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
               type: "string"
               description: "RFC7231 formatted datetime string"
         400:
@@ -743,9 +870,9 @@ paths:
             application/json:
               error: "Service unavailable message"
       deprecated: true
-      x-cached-seconds: 3600
       x-alternate-versions:
       - "legacy"
+      x-cached-seconds: 3600
   /characters/{character_id}/cspa/:
     post:
       tags:
@@ -885,6 +1012,13 @@ paths:
         - "tranquility"
         - "singularity"
         x-exportParamName: "Datasource"
+      - name: "If-None-Match"
+        in: "header"
+        description: "ETag from a previous request. A 304 will be returned if this\
+          \ matches the current ETag"
+        required: false
+        type: "string"
+        x-exportParamName: "IfNoneMatch"
       - name: "token"
         in: "query"
         description: "Access token to use if unable to set a header"
@@ -914,19 +1048,37 @@ paths:
                 location_id: 1021348135816
                 location_type: "structure"
               jump_clones:
-              - jump_clone_id: 12345
+              - implants:
+                - 22118
+                jump_clone_id: 12345
                 location_id: 60003463
                 location_type: "station"
-                implants:
-                - 22118
           headers:
             Cache-Control:
               type: "string"
               description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
             Last-Modified:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        304:
+          description: "Not modified"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
             Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
               type: "string"
               description: "RFC7231 formatted datetime string"
         400:
@@ -974,10 +1126,10 @@ paths:
       security:
       - evesso:
         - "esi-clones.read_clones.v1"
-      x-cached-seconds: 120
       x-alternate-versions:
       - "dev"
       - "latest"
+      x-cached-seconds: 120
   /corporations/{corporation_id}/:
     get:
       tags:
@@ -1007,6 +1159,13 @@ paths:
         - "tranquility"
         - "singularity"
         x-exportParamName: "Datasource"
+      - name: "If-None-Match"
+        in: "header"
+        description: "ETag from a previous request. A 304 will be returned if this\
+          \ matches the current ETag"
+        required: false
+        type: "string"
+        x-exportParamName: "IfNoneMatch"
       - name: "user_agent"
         in: "query"
         description: "Client identifier, takes precedence over headers"
@@ -1026,25 +1185,43 @@ paths:
             $ref: "#/definitions/get_corporations_corporation_id_ok"
           examples:
             application/json:
-              corporation_name: "C C P"
-              ticker: "-CCP-"
-              member_count: 656
-              ceo_id: 180548812
               alliance_id: 434243723
+              ceo_id: 180548812
               corporation_description: "This is a corporation description, it's basically\
                 \ just a string"
-              tax_rate: 0.256
+              corporation_name: "C C P"
               creation_date: "2004-11-28T16:42:51Z"
               creator_id: 180548812
+              member_count: 656
+              tax_rate: 0.256
+              ticker: "-CCP-"
               url: "http://www.eveonline.com"
           headers:
             Cache-Control:
               type: "string"
               description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
             Last-Modified:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        304:
+          description: "Not modified"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
             Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
               type: "string"
               description: "RFC7231 formatted datetime string"
         400:
@@ -1083,9 +1260,9 @@ paths:
             application/json:
               error: "Service unavailable message"
       deprecated: true
-      x-cached-seconds: 3600
       x-alternate-versions:
       - "legacy"
+      x-cached-seconds: 3600
   /corporations/{corporation_id}/members/:
     get:
       tags:
@@ -1115,6 +1292,13 @@ paths:
         - "tranquility"
         - "singularity"
         x-exportParamName: "Datasource"
+      - name: "If-None-Match"
+        in: "header"
+        description: "ETag from a previous request. A 304 will be returned if this\
+          \ matches the current ETag"
+        required: false
+        type: "string"
+        x-exportParamName: "IfNoneMatch"
       - name: "token"
         in: "query"
         description: "Access token to use if unable to set a header"
@@ -1154,10 +1338,28 @@ paths:
             Cache-Control:
               type: "string"
               description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
             Last-Modified:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        304:
+          description: "Not modified"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
             Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
               type: "string"
               description: "RFC7231 formatted datetime string"
         400:
@@ -1205,10 +1407,10 @@ paths:
       security:
       - evesso:
         - "esi-corporations.read_corporation_membership.v1"
-      x-cached-seconds: 3600
       x-alternate-versions:
       - "dev"
       - "latest"
+      x-cached-seconds: 3600
   /characters/{character_id}/mail/labels/:
     get:
       tags:
@@ -1238,6 +1440,13 @@ paths:
         - "tranquility"
         - "singularity"
         x-exportParamName: "Datasource"
+      - name: "If-None-Match"
+        in: "header"
+        description: "ETag from a previous request. A 304 will be returned if this\
+          \ matches the current ETag"
+        required: false
+        type: "string"
+        x-exportParamName: "IfNoneMatch"
       - name: "token"
         in: "query"
         description: "Access token to use if unable to set a header"
@@ -1263,24 +1472,42 @@ paths:
             $ref: "#/definitions/get_characters_character_id_mail_labels_ok"
           examples:
             application/json:
-              total_unread_count: 5
               labels:
-              - label_id: 16
+              - color: "#660066"
+                label_id: 16
                 name: "PINK"
-                color: "#660066"
                 unread_count: 4
-              - label_id: 17
+              - color: "#ffffff"
+                label_id: 17
                 name: "WHITE"
-                color: "#ffffff"
                 unread_count: 1
+              total_unread_count: 5
           headers:
             Cache-Control:
               type: "string"
               description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
             Last-Modified:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        304:
+          description: "Not modified"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
             Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
               type: "string"
               description: "RFC7231 formatted datetime string"
         400:
@@ -1328,10 +1555,10 @@ paths:
       security:
       - evesso:
         - "esi-mail.read_mail.v1"
-      x-cached-seconds: 30
       x-alternate-versions:
       - "dev"
       - "latest"
+      x-cached-seconds: 30
   /characters/{character_id}/planets/{planet_id}/:
     get:
       tags:
@@ -1363,6 +1590,13 @@ paths:
         - "tranquility"
         - "singularity"
         x-exportParamName: "Datasource"
+      - name: "If-None-Match"
+        in: "header"
+        description: "ETag from a previous request. A 304 will be returned if this\
+          \ matches the current ETag"
+        required: false
+        type: "string"
+        x-exportParamName: "IfNoneMatch"
       - name: "planet_id"
         in: "path"
         description: "Planet id of the target planet"
@@ -1396,32 +1630,50 @@ paths:
           examples:
             application/json:
               links:
-              - source_pin_id: 1000000017021
-                destination_pin_id: 1000000017022
+              - destination_pin_id: 1000000017022
                 link_level: 0
+                source_pin_id: 1000000017021
               pins:
-              - longitude: 0.7171459333
-                type_id: 2254
+              - latitude: 1.5508784497
+                longitude: 0.7171459333
                 pin_id: 1000000017021
-                latitude: 1.5508784497
-              - longitude: 0.7097755844
-                type_id: 2256
+                type_id: 2254
+              - latitude: 1.5336063994
+                longitude: 0.7097755844
                 pin_id: 1000000017022
-                latitude: 1.5336063994
+                type_id: 2256
               routes:
-              - source_pin_id: 1000000017029
-                quantity: 20
-                content_type_id: 2393
-                route_id: 4
+              - content_type_id: 2393
                 destination_pin_id: 1000000017030
+                quantity: 20
+                route_id: 4
+                source_pin_id: 1000000017029
           headers:
             Cache-Control:
               type: "string"
               description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
             Last-Modified:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        304:
+          description: "Not modified"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
             Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
               type: "string"
               description: "RFC7231 formatted datetime string"
         400:
@@ -1476,10 +1728,10 @@ paths:
       security:
       - evesso:
         - "esi-planets.manage_planets.v1"
-      x-cached-seconds: 600
       x-alternate-versions:
       - "dev"
       - "latest"
+      x-cached-seconds: 600
   /characters/{character_id}/search/:
     get:
       tags:
@@ -1531,6 +1783,13 @@ paths:
         - "tranquility"
         - "singularity"
         x-exportParamName: "Datasource"
+      - name: "If-None-Match"
+        in: "header"
+        description: "ETag from a previous request. A 304 will be returned if this\
+          \ matches the current ETag"
+        required: false
+        type: "string"
+        x-exportParamName: "IfNoneMatch"
       - name: "language"
         in: "query"
         description: "Language to use in the response"
@@ -1584,6 +1843,8 @@ paths:
             $ref: "#/definitions/get_characters_character_id_search_ok"
           examples:
             application/json:
+              solar_system:
+              - 30002510
               station:
               - 60004588
               - 60004594
@@ -1592,9 +1853,10 @@ paths:
               - 60012721
               - 60012724
               - 60012727
-              solar_system:
-              - 30002510
           headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
             Content-Language:
               type: "string"
               description: "The language used in the response"
@@ -1605,13 +1867,28 @@ paths:
               - "ja"
               - "ru"
               - "zh"
-            Cache-Control:
+            ETag:
               type: "string"
-              description: "The caching mechanism used"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
             Last-Modified:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        304:
+          description: "Not modified"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
             Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
               type: "string"
               description: "RFC7231 formatted datetime string"
         400:
@@ -1659,10 +1936,10 @@ paths:
       security:
       - evesso:
         - "esi-search.search_structures.v1"
-      x-cached-seconds: 3600
       x-alternate-versions:
       - "dev"
       - "latest"
+      x-cached-seconds: 3600
   /characters/{character_id}/skills/:
     get:
       tags:
@@ -1692,6 +1969,13 @@ paths:
         - "tranquility"
         - "singularity"
         x-exportParamName: "Datasource"
+      - name: "If-None-Match"
+        in: "header"
+        description: "ETag from a previous request. A 304 will be returned if this\
+          \ matches the current ETag"
+        required: false
+        type: "string"
+        x-exportParamName: "IfNoneMatch"
       - name: "token"
         in: "query"
         description: "Access token to use if unable to set a header"
@@ -1718,21 +2002,39 @@ paths:
           examples:
             application/json:
               skills:
-              - skill_id: 1
+              - current_skill_level: 1
+                skill_id: 1
                 skillpoints_in_skill: 10000
-                current_skill_level: 1
-              - skill_id: 2
+              - current_skill_level: 1
+                skill_id: 2
                 skillpoints_in_skill: 10000
-                current_skill_level: 1
               total_sp: 20000
           headers:
             Cache-Control:
               type: "string"
               description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
             Last-Modified:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        304:
+          description: "Not modified"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
             Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
               type: "string"
               description: "RFC7231 formatted datetime string"
         400:
@@ -1781,9 +2083,9 @@ paths:
       - evesso:
         - "esi-skills.read_skills.v1"
       deprecated: true
-      x-cached-seconds: 120
       x-alternate-versions:
       - "legacy"
+      x-cached-seconds: 120
   /universe/systems/{system_id}/:
     get:
       tags:
@@ -1804,6 +2106,13 @@ paths:
         - "tranquility"
         - "singularity"
         x-exportParamName: "Datasource"
+      - name: "If-None-Match"
+        in: "header"
+        description: "ETag from a previous request. A 304 will be returned if this\
+          \ matches the current ETag"
+        required: false
+        type: "string"
+        x-exportParamName: "IfNoneMatch"
       - name: "language"
         in: "query"
         description: "Language to use in the response"
@@ -1844,24 +2153,27 @@ paths:
             $ref: "#/definitions/get_universe_systems_system_id_ok"
           examples:
             application/json:
-              system_id: 30000003
+              constellation_id: 20000001
               name: "Akpivem"
+              planets:
+              - moons:
+                - 40000042
+                planet_id: 40000041
+              - planet_id: 40000043
               position:
                 x: -91174141133075340
                 y: 43938227486247170
                 z: -56482824383339900
+              security_class: "B"
               security_status: 0.8462923765
-              constellation_id: 20000001
-              planets:
-              - planet_id: 40000041
-                moons:
-                - 40000042
-              - planet_id: 40000043
+              star_id: 40000040
               stargates:
               - 50000342
-              star_id: 40000040
-              security_class: "B"
+              system_id: 30000003
           headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
             Content-Language:
               type: "string"
               description: "The language used in the response"
@@ -1872,13 +2184,28 @@ paths:
               - "ja"
               - "ru"
               - "zh"
-            Cache-Control:
+            ETag:
               type: "string"
-              description: "The caching mechanism used"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
             Last-Modified:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        304:
+          description: "Not modified"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
             Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
               type: "string"
               description: "RFC7231 formatted datetime string"
         400:
@@ -1939,6 +2266,13 @@ paths:
         - "tranquility"
         - "singularity"
         x-exportParamName: "Datasource"
+      - name: "If-None-Match"
+        in: "header"
+        description: "ETag from a previous request. A 304 will be returned if this\
+          \ matches the current ETag"
+        required: false
+        type: "string"
+        x-exportParamName: "IfNoneMatch"
       - name: "language"
         in: "query"
         description: "Language to use in the response"
@@ -1979,12 +2313,15 @@ paths:
             $ref: "#/definitions/get_universe_types_type_id_ok"
           examples:
             application/json:
-              type_id: 587
-              name: "Rifter"
               description: "The Rifter is a..."
-              published: true
               group_id: 25
+              name: "Rifter"
+              published: true
+              type_id: 587
           headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
             Content-Language:
               type: "string"
               description: "The language used in the response"
@@ -1995,13 +2332,28 @@ paths:
               - "ja"
               - "ru"
               - "zh"
-            Cache-Control:
+            ETag:
               type: "string"
-              description: "The caching mechanism used"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
             Last-Modified:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        304:
+          description: "Not modified"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
             Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
               type: "string"
               description: "RFC7231 formatted datetime string"
         400:
@@ -2047,9 +2399,9 @@ paths:
       tags:
       - "Wallet"
       summary: "Get character wallet journal"
-      description: "Retrieve character wallet journal\n\n---\nAlternate route: `/latest/characters/{character_id}/wallet/journal/`\n\
-        \n---\nThis route is cached for up to 3600 seconds\n\n---\n[This route has\
-        \ an available update](https://esi.tech.ccp.is/diff/v3/dev/#GET-/characters/{character_id}/wallet/journal/)"
+      description: "Retrieve character wallet journal\n\n---\nAlternate route: `/legacy/characters/{character_id}/wallet/journal/`\n\
+        \n---\nThis route is cached for up to 3600 seconds\n\n---\nWarning: This route\
+        \ is deprecated.\n\n---\n[This route has an available update](https://esi.tech.ccp.is/diff/v3/dev/#GET-/characters/{character_id}/wallet/journal/)"
       operationId: "get_characters_character_id_wallet_journal"
       parameters:
       - name: "character_id"
@@ -2078,6 +2430,13 @@ paths:
         type: "integer"
         format: "int64"
         x-exportParamName: "FromId"
+      - name: "If-None-Match"
+        in: "header"
+        description: "ETag from a previous request. A 304 will be returned if this\
+          \ matches the current ETag"
+        required: false
+        type: "string"
+        x-exportParamName: "IfNoneMatch"
       - name: "token"
         in: "query"
         description: "Access token to use if unable to set a header"
@@ -2115,10 +2474,28 @@ paths:
             Cache-Control:
               type: "string"
               description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
             Last-Modified:
               type: "string"
               description: "RFC7231 formatted datetime string"
+        304:
+          description: "Not modified"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
             Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
               type: "string"
               description: "RFC7231 formatted datetime string"
         400:
@@ -2166,9 +2543,10 @@ paths:
       security:
       - evesso:
         - "esi-wallet.read_character_wallet.v1"
-      x-cached-seconds: 3600
+      deprecated: true
       x-alternate-versions:
-      - "latest"
+      - "legacy"
+      x-cached-seconds: 3600
   /corporations/{corporation_id}/wallets/{division}/journal/:
     get:
       tags:
@@ -2176,6 +2554,7 @@ paths:
       summary: "Get corporation wallet journal"
       description: "Retrieve the given corporation's wallet journal for the given\
         \ division going 30 days back\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/wallets/{division}/journal/`\n\
+        \nAlternate route: `/latest/corporations/{corporation_id}/wallets/{division}/journal/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
         \ the following EVE corporation role(s): Accountant, Junior_Accountant\n"
       operationId: "get_corporations_corporation_id_wallets_division_journal"
@@ -2207,6 +2586,13 @@ paths:
         minimum: 1
         format: "int32"
         x-exportParamName: "Division"
+      - name: "If-None-Match"
+        in: "header"
+        description: "ETag from a previous request. A 304 will be returned if this\
+          \ matches the current ETag"
+        required: false
+        type: "string"
+        x-exportParamName: "IfNoneMatch"
       - name: "page"
         in: "query"
         description: "Which page of results to return"
@@ -2245,30 +2631,48 @@ paths:
             maxItems: 2500
           examples:
             application/json:
-            - date: "2016-10-24T09:00:00Z"
-              id: 1234567890
-              ref_type: "corporation_account_withdrawal"
-              description: "CCP Zoetrope transferred cash from C C P's corporate account\
-                \ to CCP SnowedIn's account"
-              first_party_id: 109299958
-              second_party_id: 95538921
-              amount: -1000
+            - amount: -1000
               balance: 100000.0
               context_id: 2112625428
               context_id_type: "character_id"
+              date: "2016-10-24T09:00:00Z"
+              description: "CCP Zoetrope transferred cash from C C P's corporate account\
+                \ to CCP SnowedIn's account"
+              first_party_id: 109299958
+              id: 1234567890
+              ref_type: "corporation_account_withdrawal"
+              second_party_id: 95538921
           headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
             X-Pages:
               type: "integer"
               format: "int32"
               description: "Maximum page number"
               default: 1
+        304:
+          description: "Not modified"
+          headers:
             Cache-Control:
               type: "string"
               description: "The caching mechanism used"
-            Last-Modified:
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
               type: "string"
               description: "RFC7231 formatted datetime string"
-            Expires:
+            Last-Modified:
               type: "string"
               description: "RFC7231 formatted datetime string"
         400:
@@ -2316,12 +2720,13 @@ paths:
       security:
       - evesso:
         - "esi-wallet.read_corporation_wallets.v1"
+      x-alternate-versions:
+      - "dev"
+      - "latest"
+      x-cached-seconds: 3600
       x-required-roles:
       - "Accountant"
       - "Junior_Accountant"
-      x-cached-seconds: 3600
-      x-alternate-versions:
-      - "dev"
 securityDefinitions:
   evesso:
     type: "oauth2"
@@ -2342,16 +2747,26 @@ securityDefinitions:
       esi-wallet.read_character_wallet.v1: "EVE SSO scope esi-wallet.read_character_wallet.v1"
       esi-wallet.read_corporation_wallets.v1: "EVE SSO scope esi-wallet.read_corporation_wallets.v1"
 definitions:
-  unauthorized:
+  bad_gateway:
     type: "object"
     required:
     - "error"
     properties:
       error:
         type: "string"
-        description: "Unauthorized message"
-    title: "Unauthorized"
-    description: "Unauthorized model"
+        description: "Bad gateway message"
+    title: "Bad gateway"
+    description: "Bad gateway model"
+  bad_request:
+    type: "object"
+    required:
+    - "error"
+    properties:
+      error:
+        type: "string"
+        description: "Bad request message"
+    title: "Bad request"
+    description: "Bad request model"
   forbidden:
     type: "object"
     required:
@@ -2365,16 +2780,6 @@ definitions:
         description: "Status code received from SSO"
     title: "Forbidden"
     description: "Forbidden model"
-  bad_request:
-    type: "object"
-    required:
-    - "error"
-    properties:
-      error:
-        type: "string"
-        description: "Bad request message"
-    title: "Bad request"
-    description: "Bad request model"
   internal_server_error:
     type: "object"
     required:
@@ -2385,16 +2790,6 @@ definitions:
         description: "Internal server error message"
     title: "Internal server error"
     description: "Internal server error model"
-  bad_gateway:
-    type: "object"
-    required:
-    - "error"
-    properties:
-      error:
-        type: "string"
-        description: "Bad gateway message"
-    title: "Bad gateway"
-    description: "Bad gateway model"
   service_unavailable:
     type: "object"
     required:
@@ -2405,6 +2800,16 @@ definitions:
         description: "Service unavailable message"
     title: "Service unavailable"
     description: "Service unavailable model"
+  unauthorized:
+    type: "object"
+    required:
+    - "error"
+    properties:
+      error:
+        type: "string"
+        description: "Unauthorized message"
+    title: "Unauthorized"
+    description: "Unauthorized model"
   get_alliances_alliance_id_ok:
     required:
     - "creator_corporation_id"
@@ -2413,40 +2818,40 @@ definitions:
     - "name"
     - "ticker"
     properties:
-      name:
-        type: "string"
-        description: "the full name of the alliance"
-        title: "get_alliances_alliance_id_name"
-      creator_id:
-        type: "integer"
-        format: "int32"
-        description: "ID of the character that created the alliance"
-        title: "get_alliances_alliance_id_creator_id"
       creator_corporation_id:
         type: "integer"
         format: "int32"
         description: "ID of the corporation that created the alliance"
         title: "get_alliances_alliance_id_creator_corporation_id"
-      ticker:
-        type: "string"
-        description: "the short name of the alliance"
-        title: "get_alliances_alliance_id_ticker"
-      executor_corporation_id:
+      creator_id:
         type: "integer"
         format: "int32"
-        description: "the executor corporation ID, if this alliance is not closed"
-        title: "get_alliances_alliance_id_executor_corporation_id"
+        description: "ID of the character that created the alliance"
+        title: "get_alliances_alliance_id_creator_id"
       date_founded:
         type: "string"
         format: "date-time"
         description: "date_founded string"
         title: "get_alliances_alliance_id_date_founded"
+      executor_corporation_id:
+        type: "integer"
+        format: "int32"
+        description: "the executor corporation ID, if this alliance is not closed"
+        title: "get_alliances_alliance_id_executor_corporation_id"
       faction_id:
         type: "integer"
         format: "int32"
         description: "Faction ID this alliance is fighting for, if this alliance is\
           \ enlisted in factional warfare"
         title: "get_alliances_alliance_id_faction_id"
+      name:
+        type: "string"
+        description: "the full name of the alliance"
+        title: "get_alliances_alliance_id_name"
+      ticker:
+        type: "string"
+        description: "the short name of the alliance"
+        title: "get_alliances_alliance_id_ticker"
     description: "200 ok object"
   get_alliances_alliance_id_not_found:
     properties:
@@ -2465,29 +2870,10 @@ definitions:
     - "quantity"
     - "type_id"
     properties:
-      type_id:
-        type: "integer"
-        format: "int32"
-        description: "type_id integer"
-        title: "get_characters_character_id_assets_type_id"
-      quantity:
-        type: "integer"
-        format: "int32"
-        description: "quantity integer"
-        title: "get_characters_character_id_assets_quantity"
-      location_id:
-        type: "integer"
-        format: "int64"
-        description: "location_id integer"
-        title: "get_characters_character_id_assets_location_id"
-      location_type:
-        type: "string"
-        description: "location_type string"
-        title: "get_characters_character_id_assets_location_type"
-        enum:
-        - "station"
-        - "solar_system"
-        - "other"
+      is_singleton:
+        type: "boolean"
+        description: "is_singleton boolean"
+        title: "get_characters_character_id_assets_is_singleton"
       item_id:
         type: "integer"
         format: "int64"
@@ -2576,10 +2962,29 @@ definitions:
         - "SubSystemSlot7"
         - "Unlocked"
         - "Wardrobe"
-      is_singleton:
-        type: "boolean"
-        description: "is_singleton boolean"
-        title: "get_characters_character_id_assets_is_singleton"
+      location_id:
+        type: "integer"
+        format: "int64"
+        description: "location_id integer"
+        title: "get_characters_character_id_assets_location_id"
+      location_type:
+        type: "string"
+        description: "location_type string"
+        title: "get_characters_character_id_assets_location_type"
+        enum:
+        - "station"
+        - "solar_system"
+        - "other"
+      quantity:
+        type: "integer"
+        format: "int32"
+        description: "quantity integer"
+        title: "get_characters_character_id_assets_quantity"
+      type_id:
+        type: "integer"
+        format: "int32"
+        description: "type_id integer"
+        title: "get_characters_character_id_assets_type_id"
     description: "200 ok object"
   get_corporations_corporation_id_assets_200_ok:
     required:
@@ -2591,38 +2996,15 @@ definitions:
     - "quantity"
     - "type_id"
     properties:
-      type_id:
-        type: "integer"
-        format: "int32"
-        description: "type_id integer"
-        title: "get_corporations_corporation_id_assets_type_id"
-      quantity:
-        type: "integer"
-        format: "int32"
-        description: "quantity integer"
-        title: "get_corporations_corporation_id_assets_quantity"
-      location_id:
-        type: "integer"
-        format: "int64"
-        description: "location_id integer"
-        title: "get_corporations_corporation_id_assets_location_id"
-      location_type:
-        type: "string"
-        description: "location_type string"
-        title: "get_corporations_corporation_id_assets_location_type"
-        enum:
-        - "station"
-        - "solar_system"
-        - "other"
+      is_singleton:
+        type: "boolean"
+        description: "is_singleton boolean"
+        title: "get_corporations_corporation_id_assets_is_singleton"
       item_id:
         type: "integer"
         format: "int64"
         description: "item_id integer"
         title: "get_corporations_corporation_id_assets_item_id"
-      is_singleton:
-        type: "boolean"
-        description: "is_singleton boolean"
-        title: "get_corporations_corporation_id_assets_is_singleton"
       location_flag:
         type: "string"
         description: "location_flag string"
@@ -2743,6 +3125,29 @@ definitions:
         - "Unlocked"
         - "Wallet"
         - "Wardrobe"
+      location_id:
+        type: "integer"
+        format: "int64"
+        description: "location_id integer"
+        title: "get_corporations_corporation_id_assets_location_id"
+      location_type:
+        type: "string"
+        description: "location_type string"
+        title: "get_corporations_corporation_id_assets_location_type"
+        enum:
+        - "station"
+        - "solar_system"
+        - "other"
+      quantity:
+        type: "integer"
+        format: "int32"
+        description: "quantity integer"
+        title: "get_corporations_corporation_id_assets_quantity"
+      type_id:
+        type: "integer"
+        format: "int32"
+        description: "type_id integer"
+        title: "get_corporations_corporation_id_assets_type_id"
     description: "200 ok object"
   get_characters_character_id_calendar_event_id_ok:
     required:
@@ -2757,11 +3162,26 @@ definitions:
     - "text"
     - "title"
     properties:
+      date:
+        type: "string"
+        format: "date-time"
+        description: "date string"
+        title: "get_characters_character_id_calendar_event_id_date"
+      duration:
+        type: "integer"
+        format: "int32"
+        description: "Length in minutes"
+        title: "get_characters_character_id_calendar_event_id_duration"
       event_id:
         type: "integer"
         format: "int32"
         description: "event_id integer"
         title: "get_characters_character_id_calendar_event_id_event_id"
+      importance:
+        type: "integer"
+        format: "int32"
+        description: "importance integer"
+        title: "get_characters_character_id_calendar_event_id_importance"
       owner_id:
         type: "integer"
         format: "int32"
@@ -2771,33 +3191,6 @@ definitions:
         type: "string"
         description: "owner_name string"
         title: "get_characters_character_id_calendar_event_id_owner_name"
-      date:
-        type: "string"
-        format: "date-time"
-        description: "date string"
-        title: "get_characters_character_id_calendar_event_id_date"
-      title:
-        type: "string"
-        description: "title string"
-        title: "get_characters_character_id_calendar_event_id_title"
-      duration:
-        type: "integer"
-        format: "int32"
-        description: "Length in minutes"
-        title: "get_characters_character_id_calendar_event_id_duration"
-      importance:
-        type: "integer"
-        format: "int32"
-        description: "importance integer"
-        title: "get_characters_character_id_calendar_event_id_importance"
-      response:
-        type: "string"
-        description: "response string"
-        title: "get_characters_character_id_calendar_event_id_response"
-      text:
-        type: "string"
-        description: "text string"
-        title: "get_characters_character_id_calendar_event_id_text"
       owner_type:
         type: "string"
         description: "owner_type string"
@@ -2808,6 +3201,18 @@ definitions:
         - "faction"
         - "character"
         - "alliance"
+      response:
+        type: "string"
+        description: "response string"
+        title: "get_characters_character_id_calendar_event_id_response"
+      text:
+        type: "string"
+        description: "text string"
+        title: "get_characters_character_id_calendar_event_id_text"
+      title:
+        type: "string"
+        description: "title string"
+        title: "get_characters_character_id_calendar_event_id_title"
     description: "Full details of a specific event"
   get_characters_character_id_calendar_event_id_not_found:
     properties:
@@ -2841,20 +3246,30 @@ definitions:
     - "name"
     - "race_id"
     properties:
-      corporation_id:
+      ancestry_id:
         type: "integer"
         format: "int32"
-        description: "The character's corporation ID"
-        title: "get_characters_character_id_corporation_id"
+        description: "ancestry_id integer"
+        title: "get_characters_character_id_ancestry_id"
       birthday:
         type: "string"
         format: "date-time"
         description: "Creation date of the character"
         title: "get_characters_character_id_birthday"
-      name:
+      bloodline_id:
+        type: "integer"
+        format: "int32"
+        description: "bloodline_id integer"
+        title: "get_characters_character_id_bloodline_id"
+      corporation_id:
+        type: "integer"
+        format: "int32"
+        description: "The character's corporation ID"
+        title: "get_characters_character_id_corporation_id"
+      description:
         type: "string"
-        description: "The name of the character"
-        title: "get_characters_character_id_name"
+        description: "description string"
+        title: "get_characters_character_id_description"
       gender:
         type: "string"
         description: "gender string"
@@ -2862,25 +3277,15 @@ definitions:
         enum:
         - "female"
         - "male"
+      name:
+        type: "string"
+        description: "The name of the character"
+        title: "get_characters_character_id_name"
       race_id:
         type: "integer"
         format: "int32"
         description: "race_id integer"
         title: "get_characters_character_id_race_id"
-      description:
-        type: "string"
-        description: "description string"
-        title: "get_characters_character_id_description"
-      bloodline_id:
-        type: "integer"
-        format: "int32"
-        description: "bloodline_id integer"
-        title: "get_characters_character_id_bloodline_id"
-      ancestry_id:
-        type: "integer"
-        format: "int32"
-        description: "ancestry_id integer"
-        title: "get_characters_character_id_ancestry_id"
       security_status:
         type: "number"
         format: "float"
@@ -2945,15 +3350,21 @@ definitions:
     - "location_id"
     - "location_type"
     properties:
+      implants:
+        type: "array"
+        description: "implants array"
+        title: "get_characters_character_id_clones_implants"
+        items:
+          type: "integer"
+          format: "int32"
+          description: "implant integer"
+          title: "get_characters_character_id_clones_implant"
+        maxItems: 11
       jump_clone_id:
         type: "integer"
         format: "int32"
         description: "jump_clone_id integer"
         title: "get_characters_character_id_clones_jump_clone_id"
-      name:
-        type: "string"
-        description: "name string"
-        title: "get_characters_character_id_clones_name"
       location_id:
         type: "integer"
         format: "int64"
@@ -2966,33 +3377,17 @@ definitions:
         enum:
         - "station"
         - "structure"
-      implants:
-        type: "array"
-        description: "implants array"
-        title: "get_characters_character_id_clones_implants"
-        items:
-          type: "integer"
-          format: "int32"
-          description: "implant integer"
-          title: "get_characters_character_id_clones_implant"
-        maxItems: 11
+      name:
+        type: "string"
+        description: "name string"
+        title: "get_characters_character_id_clones_name"
     description: "jump_clone object"
   get_characters_character_id_clones_ok:
     required:
     - "jump_clones"
     properties:
-      last_clone_jump_date:
-        type: "string"
-        format: "date-time"
-        description: "last_clone_jump_date string"
-        title: "get_characters_character_id_clones_last_clone_jump_date"
       home_location:
         $ref: "#/definitions/get_characters_character_id_clones_home_location"
-      last_station_change_date:
-        type: "string"
-        format: "date-time"
-        description: "last_station_change_date string"
-        title: "get_characters_character_id_clones_last_station_change_date"
       jump_clones:
         type: "array"
         description: "jump_clones array"
@@ -3000,6 +3395,16 @@ definitions:
         items:
           $ref: "#/definitions/get_characters_character_id_clones_jump_clone"
         maxItems: 10
+      last_clone_jump_date:
+        type: "string"
+        format: "date-time"
+        description: "last_clone_jump_date string"
+        title: "get_characters_character_id_clones_last_clone_jump_date"
+      last_station_change_date:
+        type: "string"
+        format: "date-time"
+        description: "last_station_change_date string"
+        title: "get_characters_character_id_clones_last_station_change_date"
     description: "200 ok object"
   get_corporations_corporation_id_ok:
     required:
@@ -3012,40 +3417,24 @@ definitions:
     - "ticker"
     - "url"
     properties:
-      corporation_name:
-        type: "string"
-        description: "the full name of the corporation"
-        title: "get_corporations_corporation_id_corporation_name"
-      ticker:
-        type: "string"
-        description: "the short name of the corporation"
-        title: "get_corporations_corporation_id_ticker"
-      member_count:
-        type: "integer"
-        format: "int32"
-        description: "member_count integer"
-        title: "get_corporations_corporation_id_member_count"
-      ceo_id:
-        type: "integer"
-        format: "int32"
-        description: "ceo_id integer"
-        title: "get_corporations_corporation_id_ceo_id"
       alliance_id:
         type: "integer"
         format: "int32"
         description: "id of alliance that corporation is a member of, if any"
         title: "get_corporations_corporation_id_alliance_id"
+      ceo_id:
+        type: "integer"
+        format: "int32"
+        description: "ceo_id integer"
+        title: "get_corporations_corporation_id_ceo_id"
       corporation_description:
         type: "string"
         description: "corporation_description string"
         title: "get_corporations_corporation_id_corporation_description"
-      tax_rate:
-        type: "number"
-        format: "float"
-        description: "tax_rate number"
-        title: "get_corporations_corporation_id_tax_rate"
-        minimum: 0
-        maximum: 1
+      corporation_name:
+        type: "string"
+        description: "the full name of the corporation"
+        title: "get_corporations_corporation_id_corporation_name"
       creation_date:
         type: "string"
         format: "date-time"
@@ -3056,10 +3445,6 @@ definitions:
         format: "int32"
         description: "creator_id integer"
         title: "get_corporations_corporation_id_creator_id"
-      url:
-        type: "string"
-        description: "url string"
-        title: "get_corporations_corporation_id_url"
       faction:
         type: "string"
         description: "faction string"
@@ -3069,6 +3454,26 @@ definitions:
         - "Gallente"
         - "Caldari"
         - "Amarr"
+      member_count:
+        type: "integer"
+        format: "int32"
+        description: "member_count integer"
+        title: "get_corporations_corporation_id_member_count"
+      tax_rate:
+        type: "number"
+        format: "float"
+        description: "tax_rate number"
+        title: "get_corporations_corporation_id_tax_rate"
+        minimum: 0
+        maximum: 1
+      ticker:
+        type: "string"
+        description: "the short name of the corporation"
+        title: "get_corporations_corporation_id_ticker"
+      url:
+        type: "string"
+        description: "url string"
+        title: "get_corporations_corporation_id_url"
     description: "200 ok object"
   get_corporations_corporation_id_not_found:
     properties:
@@ -3079,23 +3484,6 @@ definitions:
     description: "Not found"
   get_characters_character_id_mail_labels_label:
     properties:
-      unread_count:
-        type: "integer"
-        format: "int32"
-        description: "unread_count integer"
-        title: "get_characters_character_id_mail_labels_unread_count"
-        minimum: 0
-      label_id:
-        type: "integer"
-        format: "int32"
-        description: "label_id integer"
-        title: "get_characters_character_id_mail_labels_label_id"
-        minimum: 0
-      name:
-        type: "string"
-        description: "name string"
-        title: "get_characters_character_id_mail_labels_name"
-        maxLength: 40
       color:
         type: "string"
         description: "color string"
@@ -3120,15 +3508,26 @@ definitions:
         - "#ffffcd"
         - "#ffffff"
         default: "#ffffff"
+      label_id:
+        type: "integer"
+        format: "int32"
+        description: "label_id integer"
+        title: "get_characters_character_id_mail_labels_label_id"
+        minimum: 0
+      name:
+        type: "string"
+        description: "name string"
+        title: "get_characters_character_id_mail_labels_name"
+        maxLength: 40
+      unread_count:
+        type: "integer"
+        format: "int32"
+        description: "unread_count integer"
+        title: "get_characters_character_id_mail_labels_unread_count"
+        minimum: 0
     description: "label object"
   get_characters_character_id_mail_labels_ok:
     properties:
-      total_unread_count:
-        type: "integer"
-        format: "int32"
-        description: "total_unread_count integer"
-        title: "get_characters_character_id_mail_labels_total_unread_count"
-        minimum: 0
       labels:
         type: "array"
         description: "labels array"
@@ -3136,6 +3535,12 @@ definitions:
         items:
           $ref: "#/definitions/get_characters_character_id_mail_labels_label"
         maxItems: 30
+      total_unread_count:
+        type: "integer"
+        format: "int32"
+        description: "total_unread_count integer"
+        title: "get_characters_character_id_mail_labels_total_unread_count"
+        minimum: 0
     description: "200 ok object"
   get_characters_character_id_planets_planet_id_link:
     required:
@@ -3143,11 +3548,6 @@ definitions:
     - "link_level"
     - "source_pin_id"
     properties:
-      source_pin_id:
-        type: "integer"
-        format: "int64"
-        description: "source_pin_id integer"
-        title: "get_characters_character_id_planets_planet_id_source_pin_id"
       destination_pin_id:
         type: "integer"
         format: "int64"
@@ -3160,7 +3560,28 @@ definitions:
         title: "get_characters_character_id_planets_planet_id_link_level"
         minimum: 0
         maximum: 10
+      source_pin_id:
+        type: "integer"
+        format: "int64"
+        description: "source_pin_id integer"
+        title: "get_characters_character_id_planets_planet_id_source_pin_id"
     description: "link object"
+  get_characters_character_id_planets_planet_id_content:
+    required:
+    - "amount"
+    - "type_id"
+    properties:
+      amount:
+        type: "integer"
+        format: "int64"
+        description: "amount integer"
+        title: "get_characters_character_id_planets_planet_id_amount"
+      type_id:
+        type: "integer"
+        format: "int32"
+        description: "type_id integer"
+        title: "get_characters_character_id_planets_planet_id_type_id"
+    description: "content object"
   get_characters_character_id_planets_planet_id_head:
     required:
     - "head_id"
@@ -3189,6 +3610,16 @@ definitions:
     required:
     - "heads"
     properties:
+      cycle_time:
+        type: "integer"
+        format: "int32"
+        description: "in seconds"
+        title: "get_characters_character_id_planets_planet_id_cycle_time"
+      head_radius:
+        type: "number"
+        format: "float"
+        description: "head_radius number"
+        title: "get_characters_character_id_planets_planet_id_head_radius"
       heads:
         type: "array"
         description: "heads array"
@@ -3201,16 +3632,6 @@ definitions:
         format: "int32"
         description: "product_type_id integer"
         title: "get_characters_character_id_planets_planet_id_product_type_id"
-      cycle_time:
-        type: "integer"
-        format: "int32"
-        description: "in seconds"
-        title: "get_characters_character_id_planets_planet_id_cycle_time"
-      head_radius:
-        type: "number"
-        format: "float"
-        description: "head_radius number"
-        title: "get_characters_character_id_planets_planet_id_head_radius"
       qty_per_cycle:
         type: "integer"
         format: "int32"
@@ -3227,22 +3648,6 @@ definitions:
         description: "schematic_id integer"
         title: "get_characters_character_id_planets_planet_id_schematic_id"
     description: "factory_details object"
-  get_characters_character_id_planets_planet_id_content:
-    required:
-    - "amount"
-    - "type_id"
-    properties:
-      type_id:
-        type: "integer"
-        format: "int32"
-        description: "type_id integer"
-        title: "get_characters_character_id_planets_planet_id_type_id"
-      amount:
-        type: "integer"
-        format: "int64"
-        description: "amount integer"
-        title: "get_characters_character_id_planets_planet_id_amount"
-    description: "content object"
   get_characters_character_id_planets_planet_id_pin:
     required:
     - "latitude"
@@ -3250,6 +3655,32 @@ definitions:
     - "pin_id"
     - "type_id"
     properties:
+      contents:
+        type: "array"
+        description: "contents array"
+        title: "get_characters_character_id_planets_planet_id_contents"
+        items:
+          $ref: "#/definitions/get_characters_character_id_planets_planet_id_content"
+        maxItems: 90
+      expiry_time:
+        type: "string"
+        format: "date-time"
+        description: "expiry_time string"
+        title: "get_characters_character_id_planets_planet_id_expiry_time"
+      extractor_details:
+        $ref: "#/definitions/get_characters_character_id_planets_planet_id_extractor_details"
+      factory_details:
+        $ref: "#/definitions/get_characters_character_id_planets_planet_id_factory_details"
+      install_time:
+        type: "string"
+        format: "date-time"
+        description: "install_time string"
+        title: "get_characters_character_id_planets_planet_id_install_time"
+      last_cycle_start:
+        type: "string"
+        format: "date-time"
+        description: "last_cycle_start string"
+        title: "get_characters_character_id_planets_planet_id_last_cycle_start"
       latitude:
         type: "number"
         format: "float"
@@ -3265,42 +3696,16 @@ definitions:
         format: "int64"
         description: "pin_id integer"
         title: "get_characters_character_id_planets_planet_id_pin_id"
-      type_id:
-        type: "integer"
-        format: "int32"
-        description: "type_id integer"
-        title: "get_characters_character_id_planets_planet_id_type_id"
       schematic_id:
         type: "integer"
         format: "int32"
         description: "schematic_id integer"
         title: "get_characters_character_id_planets_planet_id_schematic_id"
-      extractor_details:
-        $ref: "#/definitions/get_characters_character_id_planets_planet_id_extractor_details"
-      factory_details:
-        $ref: "#/definitions/get_characters_character_id_planets_planet_id_factory_details"
-      contents:
-        type: "array"
-        description: "contents array"
-        title: "get_characters_character_id_planets_planet_id_contents"
-        items:
-          $ref: "#/definitions/get_characters_character_id_planets_planet_id_content"
-        maxItems: 90
-      install_time:
-        type: "string"
-        format: "date-time"
-        description: "install_time string"
-        title: "get_characters_character_id_planets_planet_id_install_time"
-      expiry_time:
-        type: "string"
-        format: "date-time"
-        description: "expiry_time string"
-        title: "get_characters_character_id_planets_planet_id_expiry_time"
-      last_cycle_start:
-        type: "string"
-        format: "date-time"
-        description: "last_cycle_start string"
-        title: "get_characters_character_id_planets_planet_id_last_cycle_start"
+      type_id:
+        type: "integer"
+        format: "int32"
+        description: "type_id integer"
+        title: "get_characters_character_id_planets_planet_id_type_id"
     description: "pin object"
   get_characters_character_id_planets_planet_id_route:
     required:
@@ -3310,6 +3715,21 @@ definitions:
     - "route_id"
     - "source_pin_id"
     properties:
+      content_type_id:
+        type: "integer"
+        format: "int32"
+        description: "content_type_id integer"
+        title: "get_characters_character_id_planets_planet_id_content_type_id"
+      destination_pin_id:
+        type: "integer"
+        format: "int64"
+        description: "destination_pin_id integer"
+        title: "get_characters_character_id_planets_planet_id_destination_pin_id"
+      quantity:
+        type: "number"
+        format: "float"
+        description: "quantity number"
+        title: "get_characters_character_id_planets_planet_id_quantity"
       route_id:
         type: "integer"
         format: "int64"
@@ -3320,21 +3740,6 @@ definitions:
         format: "int64"
         description: "source_pin_id integer"
         title: "get_characters_character_id_planets_planet_id_source_pin_id"
-      destination_pin_id:
-        type: "integer"
-        format: "int64"
-        description: "destination_pin_id integer"
-        title: "get_characters_character_id_planets_planet_id_destination_pin_id"
-      content_type_id:
-        type: "integer"
-        format: "int32"
-        description: "content_type_id integer"
-        title: "get_characters_character_id_planets_planet_id_content_type_id"
-      quantity:
-        type: "number"
-        format: "float"
-        description: "quantity number"
-        title: "get_characters_character_id_planets_planet_id_quantity"
       waypoints:
         type: "array"
         description: "list of pin ID waypoints"
@@ -3496,6 +3901,11 @@ definitions:
     description: "200 ok object"
   get_characters_character_id_skills_skill:
     properties:
+      current_skill_level:
+        type: "integer"
+        format: "int32"
+        description: "current_skill_level integer"
+        title: "get_characters_character_id_skills_current_skill_level"
       skill_id:
         type: "integer"
         format: "int32"
@@ -3506,11 +3916,6 @@ definitions:
         format: "int64"
         description: "skillpoints_in_skill integer"
         title: "get_characters_character_id_skills_skillpoints_in_skill"
-      current_skill_level:
-        type: "integer"
-        format: "int32"
-        description: "current_skill_level integer"
-        title: "get_characters_character_id_skills_current_skill_level"
     description: "skill object"
   get_characters_character_id_skills_ok:
     properties:
@@ -3527,6 +3932,36 @@ definitions:
         description: "total_sp integer"
         title: "get_characters_character_id_skills_total_sp"
     description: "200 ok object"
+  get_universe_systems_system_id_planet:
+    required:
+    - "planet_id"
+    properties:
+      asteroid_belts:
+        type: "array"
+        description: "asteroid_belts array"
+        title: "get_universe_systems_system_id_asteroid_belts"
+        items:
+          type: "integer"
+          format: "int32"
+          description: "asteroid_belt integer"
+          title: "get_universe_systems_system_id_asteroid_belt"
+        maxItems: 100
+      moons:
+        type: "array"
+        description: "moons array"
+        title: "get_universe_systems_system_id_moons"
+        items:
+          type: "integer"
+          format: "int32"
+          description: "moon integer"
+          title: "get_universe_systems_system_id_moon"
+        maxItems: 1000
+      planet_id:
+        type: "integer"
+        format: "int32"
+        description: "planet_id integer"
+        title: "get_universe_systems_system_id_planet_id"
+    description: "planet object"
   get_universe_systems_system_id_position:
     required:
     - "x"
@@ -3549,36 +3984,6 @@ definitions:
         description: "z number"
         title: "get_universe_systems_system_id_z"
     description: "position object"
-  get_universe_systems_system_id_planet:
-    required:
-    - "planet_id"
-    properties:
-      planet_id:
-        type: "integer"
-        format: "int32"
-        description: "planet_id integer"
-        title: "get_universe_systems_system_id_planet_id"
-      moons:
-        type: "array"
-        description: "moons array"
-        title: "get_universe_systems_system_id_moons"
-        items:
-          type: "integer"
-          format: "int32"
-          description: "moon integer"
-          title: "get_universe_systems_system_id_moon"
-        maxItems: 1000
-      asteroid_belts:
-        type: "array"
-        description: "asteroid_belts array"
-        title: "get_universe_systems_system_id_asteroid_belts"
-        items:
-          type: "integer"
-          format: "int32"
-          description: "asteroid_belt integer"
-          title: "get_universe_systems_system_id_asteroid_belt"
-        maxItems: 100
-    description: "planet object"
   get_universe_systems_system_id_ok:
     required:
     - "constellation_id"
@@ -3589,36 +3994,15 @@ definitions:
     - "star_id"
     - "system_id"
     properties:
-      star_id:
-        type: "integer"
-        format: "int32"
-        description: "star_id integer"
-        title: "get_universe_systems_system_id_star_id"
-      system_id:
-        type: "integer"
-        format: "int32"
-        description: "system_id integer"
-        title: "get_universe_systems_system_id_system_id"
-      name:
-        type: "string"
-        description: "name string"
-        title: "get_universe_systems_system_id_name"
-      position:
-        $ref: "#/definitions/get_universe_systems_system_id_position"
-      security_status:
-        type: "number"
-        format: "float"
-        description: "security_status number"
-        title: "get_universe_systems_system_id_security_status"
-      security_class:
-        type: "string"
-        description: "security_class string"
-        title: "get_universe_systems_system_id_security_class"
       constellation_id:
         type: "integer"
         format: "int32"
         description: "The constellation this solar system is in"
         title: "get_universe_systems_system_id_constellation_id"
+      name:
+        type: "string"
+        description: "name string"
+        title: "get_universe_systems_system_id_name"
       planets:
         type: "array"
         description: "planets array"
@@ -3626,6 +4010,22 @@ definitions:
         items:
           $ref: "#/definitions/get_universe_systems_system_id_planet"
         maxItems: 1000
+      position:
+        $ref: "#/definitions/get_universe_systems_system_id_position"
+      security_class:
+        type: "string"
+        description: "security_class string"
+        title: "get_universe_systems_system_id_security_class"
+      security_status:
+        type: "number"
+        format: "float"
+        description: "security_status number"
+        title: "get_universe_systems_system_id_security_status"
+      star_id:
+        type: "integer"
+        format: "int32"
+        description: "star_id integer"
+        title: "get_universe_systems_system_id_star_id"
       stargates:
         type: "array"
         description: "stargates array"
@@ -3646,6 +4046,11 @@ definitions:
           description: "station integer"
           title: "get_universe_systems_system_id_station"
         maxItems: 25
+      system_id:
+        type: "integer"
+        format: "int32"
+        description: "system_id integer"
+        title: "get_universe_systems_system_id_system_id"
     description: "200 ok object"
   get_universe_systems_system_id_not_found:
     properties:
@@ -3693,73 +4098,15 @@ definitions:
     - "published"
     - "type_id"
     properties:
-      type_id:
-        type: "integer"
-        format: "int32"
-        description: "type_id integer"
-        title: "get_universe_types_type_id_type_id"
-      name:
-        type: "string"
-        description: "name string"
-        title: "get_universe_types_type_id_name"
-      description:
-        type: "string"
-        description: "description string"
-        title: "get_universe_types_type_id_description"
-      published:
-        type: "boolean"
-        description: "published boolean"
-        title: "get_universe_types_type_id_published"
-      group_id:
-        type: "integer"
-        format: "int32"
-        description: "group_id integer"
-        title: "get_universe_types_type_id_group_id"
-      market_group_id:
-        type: "integer"
-        format: "int32"
-        description: "This only exists for types that can be put on the market"
-        title: "get_universe_types_type_id_market_group_id"
-      radius:
-        type: "number"
-        format: "float"
-        description: "radius number"
-        title: "get_universe_types_type_id_radius"
-      volume:
-        type: "number"
-        format: "float"
-        description: "volume number"
-        title: "get_universe_types_type_id_volume"
-      packaged_volume:
-        type: "number"
-        format: "float"
-        description: "packaged_volume number"
-        title: "get_universe_types_type_id_packaged_volume"
-      icon_id:
-        type: "integer"
-        format: "int32"
-        description: "icon_id integer"
-        title: "get_universe_types_type_id_icon_id"
       capacity:
         type: "number"
         format: "float"
         description: "capacity number"
         title: "get_universe_types_type_id_capacity"
-      portion_size:
-        type: "integer"
-        format: "int32"
-        description: "portion_size integer"
-        title: "get_universe_types_type_id_portion_size"
-      mass:
-        type: "number"
-        format: "float"
-        description: "mass number"
-        title: "get_universe_types_type_id_mass"
-      graphic_id:
-        type: "integer"
-        format: "int32"
-        description: "graphic_id integer"
-        title: "get_universe_types_type_id_graphic_id"
+      description:
+        type: "string"
+        description: "description string"
+        title: "get_universe_types_type_id_description"
       dogma_attributes:
         type: "array"
         description: "dogma_attributes array"
@@ -3774,6 +4121,64 @@ definitions:
         items:
           $ref: "#/definitions/get_universe_types_type_id_dogma_effect"
         maxItems: 1000
+      graphic_id:
+        type: "integer"
+        format: "int32"
+        description: "graphic_id integer"
+        title: "get_universe_types_type_id_graphic_id"
+      group_id:
+        type: "integer"
+        format: "int32"
+        description: "group_id integer"
+        title: "get_universe_types_type_id_group_id"
+      icon_id:
+        type: "integer"
+        format: "int32"
+        description: "icon_id integer"
+        title: "get_universe_types_type_id_icon_id"
+      market_group_id:
+        type: "integer"
+        format: "int32"
+        description: "This only exists for types that can be put on the market"
+        title: "get_universe_types_type_id_market_group_id"
+      mass:
+        type: "number"
+        format: "float"
+        description: "mass number"
+        title: "get_universe_types_type_id_mass"
+      name:
+        type: "string"
+        description: "name string"
+        title: "get_universe_types_type_id_name"
+      packaged_volume:
+        type: "number"
+        format: "float"
+        description: "packaged_volume number"
+        title: "get_universe_types_type_id_packaged_volume"
+      portion_size:
+        type: "integer"
+        format: "int32"
+        description: "portion_size integer"
+        title: "get_universe_types_type_id_portion_size"
+      published:
+        type: "boolean"
+        description: "published boolean"
+        title: "get_universe_types_type_id_published"
+      radius:
+        type: "number"
+        format: "float"
+        description: "radius number"
+        title: "get_universe_types_type_id_radius"
+      type_id:
+        type: "integer"
+        format: "int32"
+        description: "type_id integer"
+        title: "get_universe_types_type_id_type_id"
+      volume:
+        type: "number"
+        format: "float"
+        description: "volume number"
+        title: "get_universe_types_type_id_volume"
     description: "200 ok object"
   get_universe_types_type_id_not_found:
     properties:
@@ -3784,65 +4189,65 @@ definitions:
     description: "Not found"
   get_characters_character_id_wallet_journal_extra_info:
     properties:
-      location_id:
-        type: "integer"
-        format: "int64"
-        description: "location_id integer"
-        title: "get_characters_character_id_wallet_journal_location_id"
-      transaction_id:
-        type: "integer"
-        format: "int64"
-        description: "transaction_id integer"
-        title: "get_characters_character_id_wallet_journal_transaction_id"
-      npc_name:
-        type: "string"
-        description: "npc_name string"
-        title: "get_characters_character_id_wallet_journal_npc_name"
-      npc_id:
-        type: "integer"
-        format: "int32"
-        description: "npc_id integer"
-        title: "get_characters_character_id_wallet_journal_npc_id"
-      destroyed_ship_type_id:
-        type: "integer"
-        format: "int32"
-        description: "destroyed_ship_type_id integer"
-        title: "get_characters_character_id_wallet_journal_destroyed_ship_type_id"
-      character_id:
-        type: "integer"
-        format: "int32"
-        description: "character_id integer"
-        title: "get_characters_character_id_wallet_journal_character_id"
-      corporation_id:
-        type: "integer"
-        format: "int32"
-        description: "corporation_id integer"
-        title: "get_characters_character_id_wallet_journal_corporation_id"
       alliance_id:
         type: "integer"
         format: "int32"
         description: "alliance_id integer"
         title: "get_characters_character_id_wallet_journal_alliance_id"
-      job_id:
+      character_id:
         type: "integer"
         format: "int32"
-        description: "job_id integer"
-        title: "get_characters_character_id_wallet_journal_job_id"
+        description: "character_id integer"
+        title: "get_characters_character_id_wallet_journal_character_id"
       contract_id:
         type: "integer"
         format: "int32"
         description: "contract_id integer"
         title: "get_characters_character_id_wallet_journal_contract_id"
-      system_id:
+      corporation_id:
         type: "integer"
         format: "int32"
-        description: "system_id integer"
-        title: "get_characters_character_id_wallet_journal_system_id"
+        description: "corporation_id integer"
+        title: "get_characters_character_id_wallet_journal_corporation_id"
+      destroyed_ship_type_id:
+        type: "integer"
+        format: "int32"
+        description: "destroyed_ship_type_id integer"
+        title: "get_characters_character_id_wallet_journal_destroyed_ship_type_id"
+      job_id:
+        type: "integer"
+        format: "int32"
+        description: "job_id integer"
+        title: "get_characters_character_id_wallet_journal_job_id"
+      location_id:
+        type: "integer"
+        format: "int64"
+        description: "location_id integer"
+        title: "get_characters_character_id_wallet_journal_location_id"
+      npc_id:
+        type: "integer"
+        format: "int32"
+        description: "npc_id integer"
+        title: "get_characters_character_id_wallet_journal_npc_id"
+      npc_name:
+        type: "string"
+        description: "npc_name string"
+        title: "get_characters_character_id_wallet_journal_npc_name"
       planet_id:
         type: "integer"
         format: "int32"
         description: "planet_id integer"
         title: "get_characters_character_id_wallet_journal_planet_id"
+      system_id:
+        type: "integer"
+        format: "int32"
+        description: "system_id integer"
+        title: "get_characters_character_id_wallet_journal_system_id"
+      transaction_id:
+        type: "integer"
+        format: "int64"
+        description: "transaction_id integer"
+        title: "get_characters_character_id_wallet_journal_transaction_id"
     description: "Extra information for different type of transaction"
   get_characters_character_id_wallet_journal_200_ok:
     required:
@@ -3850,11 +4255,43 @@ definitions:
     - "ref_id"
     - "ref_type"
     properties:
+      amount:
+        type: "number"
+        format: "double"
+        description: "Transaction amount. Positive when value transferred to the first\
+          \ party. Negative otherwise"
+        title: "get_characters_character_id_wallet_journal_amount"
+      balance:
+        type: "number"
+        format: "double"
+        description: "Wallet balance after transaction occurred"
+        title: "get_characters_character_id_wallet_journal_balance"
       date:
         type: "string"
         format: "date-time"
         description: "Date and time of transaction"
         title: "get_characters_character_id_wallet_journal_date"
+      extra_info:
+        $ref: "#/definitions/get_characters_character_id_wallet_journal_extra_info"
+      first_party_id:
+        type: "integer"
+        format: "int32"
+        description: "first_party_id integer"
+        title: "get_characters_character_id_wallet_journal_first_party_id"
+      first_party_type:
+        type: "string"
+        description: "first_party_type string"
+        title: "get_characters_character_id_wallet_journal_first_party_type"
+        enum:
+        - "character"
+        - "corporation"
+        - "alliance"
+        - "faction"
+        - "system"
+      reason:
+        type: "string"
+        description: "reason string"
+        title: "get_characters_character_id_wallet_journal_reason"
       ref_id:
         type: "integer"
         format: "int64"
@@ -3986,21 +4423,6 @@ definitions:
         - "war_ally_contract"
         - "war_fee"
         - "war_fee_surrender"
-      first_party_id:
-        type: "integer"
-        format: "int32"
-        description: "first_party_id integer"
-        title: "get_characters_character_id_wallet_journal_first_party_id"
-      first_party_type:
-        type: "string"
-        description: "first_party_type string"
-        title: "get_characters_character_id_wallet_journal_first_party_type"
-        enum:
-        - "character"
-        - "corporation"
-        - "alliance"
-        - "faction"
-        - "system"
       second_party_id:
         type: "integer"
         format: "int32"
@@ -4016,33 +4438,16 @@ definitions:
         - "alliance"
         - "faction"
         - "system"
-      amount:
-        type: "number"
-        format: "double"
-        description: "Transaction amount. Positive when value transferred to the first\
-          \ party. Negative otherwise"
-        title: "get_characters_character_id_wallet_journal_amount"
-      balance:
-        type: "number"
-        format: "double"
-        description: "Wallet balance after transaction occurred"
-        title: "get_characters_character_id_wallet_journal_balance"
-      reason:
-        type: "string"
-        description: "reason string"
-        title: "get_characters_character_id_wallet_journal_reason"
-      tax_receiver_id:
-        type: "integer"
-        format: "int32"
-        description: "the corporation ID receiving any tax paid"
-        title: "get_characters_character_id_wallet_journal_tax_receiver_id"
       tax:
         type: "number"
         format: "double"
         description: "Tax amount received for tax related transactions"
         title: "get_characters_character_id_wallet_journal_tax"
-      extra_info:
-        $ref: "#/definitions/get_characters_character_id_wallet_journal_extra_info"
+      tax_receiver_id:
+        type: "integer"
+        format: "int32"
+        description: "the corporation ID receiving any tax paid"
+        title: "get_characters_character_id_wallet_journal_tax_receiver_id"
     description: "200 ok object"
   get_corporations_corporation_id_wallets_division_journal_200_ok:
     required:
@@ -4051,16 +4456,71 @@ definitions:
     - "id"
     - "ref_type"
     properties:
+      amount:
+        type: "number"
+        format: "double"
+        description: "The amount of ISK given or taken from the wallet as a result\
+          \ of the given transaction. Positive when ISK is deposited into the wallet\
+          \ and negative when ISK is withdrawn"
+        title: "get_corporations_corporation_id_wallets_division_journal_amount"
+      balance:
+        type: "number"
+        format: "double"
+        description: "Wallet balance after transaction occurred"
+        title: "get_corporations_corporation_id_wallets_division_journal_balance"
+      context_id:
+        type: "integer"
+        format: "int64"
+        description: "An ID that gives extra context to the particular transaction.\
+          \ Because of legacy reasons the context is completely different per ref_type\
+          \ and means different things. It is also possible to not have a context_id"
+        title: "get_corporations_corporation_id_wallets_division_journal_context_id"
+      context_id_type:
+        type: "string"
+        description: "The type of the given context_id if present"
+        title: "get_corporations_corporation_id_wallets_division_journal_context_id_type"
+        enum:
+        - "structure_id"
+        - "station_id"
+        - "market_transaction_id"
+        - "character_id"
+        - "corporation_id"
+        - "alliance_id"
+        - "eve_system"
+        - "industry_job_id"
+        - "contract_id"
+        - "planet_id"
+        - "system_id"
+        - "type_id"
       date:
         type: "string"
         format: "date-time"
         description: "Date and time of transaction"
         title: "get_corporations_corporation_id_wallets_division_journal_date"
+      description:
+        type: "string"
+        description: "The reason for the transaction, mirrors what is seen in the\
+          \ client"
+        title: "get_corporations_corporation_id_wallets_division_journal_description"
+      first_party_id:
+        type: "integer"
+        format: "int32"
+        description: "The id of the first party involved in the transaction. This\
+          \ attribute has no consistency and is different or non existant for particular\
+          \ ref_types. The description attribute will help make sense of what this\
+          \ attribute means. For more info about the given ID it can be dropped into\
+          \ the /universe/names/ ESI route to determine its type and name"
+        title: "get_corporations_corporation_id_wallets_division_journal_first_party_id"
       id:
         type: "integer"
         format: "int64"
         description: "Unique journal reference ID"
         title: "get_corporations_corporation_id_wallets_division_journal_id"
+      reason:
+        type: "string"
+        description: "The user stated reason for the transaction. Only applies to\
+          \ some ref_types"
+        title: "get_corporations_corporation_id_wallets_division_journal_reason"
       ref_type:
         type: "string"
         description: "The transaction type for the given transaction. Different transaction\
@@ -4187,15 +4647,6 @@ definitions:
         - "war_ally_contract"
         - "war_fee"
         - "war_fee_surrender"
-      first_party_id:
-        type: "integer"
-        format: "int32"
-        description: "The id of the first party involved in the transaction. This\
-          \ attribute has no consistency and is different or non existant for particular\
-          \ ref_types. The description attribute will help make sense of what this\
-          \ attribute means. For more info about the given ID it can be dropped into\
-          \ the /universe/names/ ESI route to determine its type and name"
-        title: "get_corporations_corporation_id_wallets_division_journal_first_party_id"
       second_party_id:
         type: "integer"
         format: "int32"
@@ -4205,65 +4656,43 @@ definitions:
           \ attribute means. For more info about the given ID it can be dropped into\
           \ the /universe/names/ ESI route to determine its type and name"
         title: "get_corporations_corporation_id_wallets_division_journal_second_party_id"
-      amount:
+      tax:
         type: "number"
         format: "double"
-        description: "The amount of ISK given or taken from the wallet as a result\
-          \ of the given transaction. Positive when ISK is deposited into the wallet\
-          \ and negative when ISK is withdrawn"
-        title: "get_corporations_corporation_id_wallets_division_journal_amount"
-      reason:
-        type: "string"
-        description: "The user stated reason for the transaction. Only applies to\
-          \ some ref_types"
-        title: "get_corporations_corporation_id_wallets_division_journal_reason"
-      balance:
-        type: "number"
-        format: "double"
-        description: "Wallet balance after transaction occurred"
-        title: "get_corporations_corporation_id_wallets_division_journal_balance"
-      description:
-        type: "string"
-        description: "The reason for the transaction, mirrors what is seen in the\
-          \ client"
-        title: "get_corporations_corporation_id_wallets_division_journal_description"
-      context_id:
-        type: "integer"
-        format: "int64"
-        description: "An ID that gives extra context to the particular transaction.\
-          \ Because of legacy reasons the context is completely different per ref_type\
-          \ and means different things. It is also possible to not have a context_id"
-        title: "get_corporations_corporation_id_wallets_division_journal_context_id"
-      context_id_type:
-        type: "string"
-        description: "The type of the given context_id if present"
-        title: "get_corporations_corporation_id_wallets_division_journal_context_id_type"
-        enum:
-        - "structure_id"
-        - "station_id"
-        - "market_transaction_id"
-        - "character_id"
-        - "corporation_id"
-        - "alliance_id"
-        - "eve_system"
-        - "industry_job_id"
-        - "contract_id"
-        - "planet_id"
-        - "system_id"
-        - "type_id"
+        description: "Tax amount received. Only applies to tax related transactions"
+        title: "get_corporations_corporation_id_wallets_division_journal_tax"
       tax_receiver_id:
         type: "integer"
         format: "int32"
         description: "The corporation ID receiving any tax paid. Only applies to tax\
           \ related transactions"
         title: "get_corporations_corporation_id_wallets_division_journal_tax_receiver_id"
-      tax:
-        type: "number"
-        format: "double"
-        description: "Tax amount received. Only applies to tax related transactions"
-        title: "get_corporations_corporation_id_wallets_division_journal_tax"
     description: "200 ok object"
 parameters:
+  If-None-Match:
+    name: "If-None-Match"
+    in: "header"
+    description: "ETag from a previous request. A 304 will be returned if this matches\
+      \ the current ETag"
+    required: false
+    type: "string"
+    x-exportParamName: "IfNoneMatch"
+  X-User-Agent:
+    name: "X-User-Agent"
+    in: "header"
+    description: "Client identifier, takes precedence over User-Agent"
+    required: false
+    type: "string"
+    x-exportParamName: "XUserAgent"
+  character_id:
+    name: "character_id"
+    in: "path"
+    description: "An EVE character ID"
+    required: true
+    type: "integer"
+    minimum: 1
+    format: "int32"
+    x-exportParamName: "CharacterId"
   datasource:
     name: "datasource"
     in: "query"
@@ -4275,6 +4704,13 @@ parameters:
     - "tranquility"
     - "singularity"
     x-exportParamName: "Datasource"
+  token:
+    name: "token"
+    in: "query"
+    description: "Access token to use if unable to set a header"
+    required: false
+    type: "string"
+    x-exportParamName: "Token"
   user_agent:
     name: "user_agent"
     in: "query"
@@ -4282,13 +4718,15 @@ parameters:
     required: false
     type: "string"
     x-exportParamName: "UserAgent"
-  X-User-Agent:
-    name: "X-User-Agent"
-    in: "header"
-    description: "Client identifier, takes precedence over User-Agent"
-    required: false
-    type: "string"
-    x-exportParamName: "XUserAgent"
+  alliance_id:
+    name: "alliance_id"
+    in: "path"
+    description: "An EVE alliance ID"
+    required: true
+    type: "integer"
+    minimum: 1
+    format: "int32"
+    x-exportParamName: "AllianceId"
   page:
     name: "page"
     in: "query"
@@ -4298,22 +4736,6 @@ parameters:
     default: 1
     format: "int32"
     x-exportParamName: "Page"
-  token:
-    name: "token"
-    in: "query"
-    description: "Access token to use if unable to set a header"
-    required: false
-    type: "string"
-    x-exportParamName: "Token"
-  character_id:
-    name: "character_id"
-    in: "path"
-    description: "An EVE character ID"
-    required: true
-    type: "integer"
-    minimum: 1
-    format: "int32"
-    x-exportParamName: "CharacterId"
   corporation_id:
     name: "corporation_id"
     in: "path"
@@ -4338,12 +4760,3 @@ parameters:
     - "ru"
     - "zh"
     x-exportParamName: "Language"
-  alliance_id:
-    name: "alliance_id"
-    in: "path"
-    description: "An EVE alliance ID"
-    required: true
-    type: "integer"
-    minimum: 1
-    format: "int32"
-    x-exportParamName: "AllianceId"

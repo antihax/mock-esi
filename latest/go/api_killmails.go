@@ -27,11 +27,11 @@ func GetCharactersCharacterIdKillmailsRecent(w http.ResponseWriter, r *http.Requ
 	err = err
 
 	j := `[ {
-  "killmail_id" : 2,
-  "killmail_hash" : "8eef5e8fb6b88fe3407c489df33822b2e3b57a5e"
+  "killmail_hash" : "8eef5e8fb6b88fe3407c489df33822b2e3b57a5e",
+  "killmail_id" : 2
 }, {
-  "killmail_id" : 1,
-  "killmail_hash" : "b41ccb498ece33d64019f64c0db392aa3aa701fb"
+  "killmail_hash" : "b41ccb498ece33d64019f64c0db392aa3aa701fb",
+  "killmail_id" : 1
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -126,11 +126,11 @@ func GetCorporationsCorporationIdKillmailsRecent(w http.ResponseWriter, r *http.
 	err = err
 
 	j := `[ {
-  "killmail_id" : 2,
-  "killmail_hash" : "8eef5e8fb6b88fe3407c489df33822b2e3b57a5e"
+  "killmail_hash" : "8eef5e8fb6b88fe3407c489df33822b2e3b57a5e",
+  "killmail_id" : 2
 }, {
-  "killmail_id" : 1,
-  "killmail_hash" : "b41ccb498ece33d64019f64c0db392aa3aa701fb"
+  "killmail_hash" : "b41ccb498ece33d64019f64c0db392aa3aa701fb",
+  "killmail_id" : 1
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(corporationId, vars["corporation_id"])
@@ -216,36 +216,36 @@ func GetKillmailsKillmailIdKillmailHash(w http.ResponseWriter, r *http.Request) 
 	err = err
 
 	j := `{
-  "solar_system_id" : 30002976,
-  "killmail_id" : 56733821,
-  "killmail_time" : "2016-10-22T17:13:36Z",
   "attackers" : [ {
-    "ship_type_id" : 17841,
-    "faction_id" : 500003,
-    "corporation_id" : 1000179,
     "character_id" : 95810944,
-    "weapon_type_id" : 3074,
+    "corporation_id" : 1000179,
+    "damage_done" : 5745,
+    "faction_id" : 500003,
     "final_blow" : true,
     "security_status" : -0.3,
-    "damage_done" : 5745
+    "ship_type_id" : 17841,
+    "weapon_type_id" : 3074
   } ],
+  "killmail_id" : 56733821,
+  "killmail_time" : "2016-10-22T17:13:36Z",
+  "solar_system_id" : 30002976,
   "victim" : {
     "alliance_id" : 621338554,
+    "character_id" : 92796241,
+    "corporation_id" : 841363671,
     "damage_taken" : 5745,
     "items" : [ {
-      "singleton" : 0,
-      "item_type_id" : 5973,
       "flag" : 20,
-      "quantity_dropped" : 1
+      "item_type_id" : 5973,
+      "quantity_dropped" : 1,
+      "singleton" : 0
     } ],
-    "character_id" : 92796241,
-    "ship_type_id" : 17812,
-    "corporation_id" : 841363671,
     "position" : {
-      "y" : 1.4670496149090222E11,
       "x" : 4.521866005694748E11,
+      "y" : 1.4670496149090222E11,
       "z" : 1.0951459653254477E11
-    }
+    },
+    "ship_type_id" : 17812
   }
 }`
 	vars := mux.Vars(r)

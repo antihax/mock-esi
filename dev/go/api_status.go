@@ -23,9 +23,9 @@ func GetStatus(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "start_time" : "2017-01-02T12:34:56Z",
   "players" : 12345,
-  "server_version" : "1132976"
+  "server_version" : "1132976",
+  "start_time" : "2017-01-02T12:34:56Z"
 }`
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)

@@ -26,13 +26,13 @@ func GetCharactersCharacterIdAssets(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
+  "is_singleton" : true,
+  "item_id" : 1000000016835,
   "location_flag" : "Hangar",
   "location_id" : 60002959,
-  "is_singleton" : true,
-  "type_id" : 3516,
-  "item_id" : 1000000016835,
   "location_type" : "station",
-  "quantity" : 1
+  "quantity" : 1,
+  "type_id" : 3516
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -119,13 +119,13 @@ func GetCorporationsCorporationIdAssets(w http.ResponseWriter, r *http.Request) 
 	err = err
 
 	j := `[ {
+  "is_singleton" : true,
+  "item_id" : 1000000016835,
   "location_flag" : "Hangar",
   "location_id" : 60002959,
-  "is_singleton" : true,
-  "type_id" : 3516,
-  "item_id" : 1000000016835,
   "location_type" : "station",
-  "quantity" : 1
+  "quantity" : 1,
+  "type_id" : 3516
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(corporationId, vars["corporation_id"])

@@ -25,20 +25,20 @@ func GetCharactersCharacterIdOrders(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
-  "order_id" : 123,
-  "type_id" : 456,
-  "region_id" : 123,
-  "location_id" : 456,
-  "range" : "station",
-  "is_buy_order" : true,
-  "price" : 33.3,
-  "volume_total" : 123456,
-  "volume_remain" : 4422,
-  "issued" : "2016-09-03T05:12:25Z",
-  "min_volume" : 1,
   "duration" : 30,
+  "escrow" : 45.6,
+  "is_buy_order" : true,
   "is_corporation" : false,
-  "escrow" : 45.6
+  "issued" : "2016-09-03T05:12:25Z",
+  "location_id" : 456,
+  "min_volume" : 1,
+  "order_id" : 123,
+  "price" : 33.3,
+  "range" : "station",
+  "region_id" : 123,
+  "type_id" : 456,
+  "volume_remain" : 4422,
+  "volume_total" : 123456
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -117,20 +117,20 @@ func GetCorporationsCorporationIdOrders(w http.ResponseWriter, r *http.Request) 
 	err = err
 
 	j := `[ {
-  "order_id" : 123,
-  "type_id" : 456,
-  "region_id" : 123,
-  "location_id" : 456,
-  "range" : "station",
-  "is_buy_order" : true,
-  "price" : 33.3,
-  "volume_total" : 123456,
-  "volume_remain" : 4422,
-  "issued" : "2016-09-03T05:12:25Z",
-  "min_volume" : 1,
-  "wallet_division" : 1,
   "duration" : 30,
-  "escrow" : 45.6
+  "escrow" : 45.6,
+  "is_buy_order" : true,
+  "issued" : "2016-09-03T05:12:25Z",
+  "location_id" : 456,
+  "min_volume" : 1,
+  "order_id" : 123,
+  "price" : 33.3,
+  "range" : "station",
+  "region_id" : 123,
+  "type_id" : 456,
+  "volume_remain" : 4422,
+  "volume_total" : 123456,
+  "wallet_division" : 1
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(corporationId, vars["corporation_id"])

@@ -4,11 +4,11 @@ package esilegacy
 modifier object */
 type GetDogmaEffectsEffectIdModifier struct {
 	/*
-	 func string */
-	Func_ string `json:"func,omitempty"`
-	/*
 	 domain string */
 	Domain string `json:"domain,omitempty"`
+	/*
+	 func string */
+	Func_ string `json:"func,omitempty"`
 	/*
 	 modified_attribute_id integer */
 	ModifiedAttributeId int32 `json:"modified_attribute_id,omitempty"`

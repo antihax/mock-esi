@@ -24,14 +24,14 @@ func GetCharactersCharacterId(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "corporation_id" : 109299958,
+  "ancestry_id" : 19,
   "birthday" : "2015-03-24T11:37:00Z",
-  "name" : "CCP Bartender",
-  "gender" : "male",
-  "race_id" : 2,
-  "description" : "",
   "bloodline_id" : 3,
-  "ancestry_id" : 19
+  "corporation_id" : 109299958,
+  "description" : "",
+  "gender" : "male",
+  "name" : "CCP Bartender",
+  "race_id" : 2
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -102,10 +102,10 @@ func GetCharactersCharacterIdAgentsResearch(w http.ResponseWriter, r *http.Reque
 
 	j := `[ {
   "agent_id" : 3009358,
-  "skill_type_id" : 11450,
-  "started_at" : "2017-03-23T14:47:00Z",
   "points_per_day" : 53.5346162147,
-  "remainder_points" : 53604.0634303189
+  "remainder_points" : 53604.0634303189,
+  "skill_type_id" : 11450,
+  "started_at" : "2017-03-23T14:47:00Z"
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -185,13 +185,13 @@ func GetCharactersCharacterIdBlueprints(w http.ResponseWriter, r *http.Request) 
 
 	j := `[ {
   "item_id" : 1000000010495,
-  "type_id" : 691,
-  "location_id" : 60014719,
   "location_flag" : "Hangar",
-  "quantity" : 1,
-  "time_efficiency" : 0,
+  "location_id" : 60014719,
   "material_efficiency" : 0,
-  "runs" : -1
+  "quantity" : 1,
+  "runs" : -1,
+  "time_efficiency" : 0,
+  "type_id" : 691
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -277,16 +277,16 @@ func GetCharactersCharacterIdChatChannels(w http.ResponseWriter, r *http.Request
 	err = err
 
 	j := `[ {
+  "allowed" : [ ],
+  "blocked" : [ ],
   "channel_id" : -69329950,
-  "name" : "Players' Haven",
-  "owner_id" : 95578451,
   "comparison_key" : "players'haven",
   "has_password" : false,
   "motd" : "<b>Feed pineapples to the cats!</b>",
-  "allowed" : [ ],
+  "muted" : [ ],
+  "name" : "Players' Haven",
   "operators" : [ ],
-  "blocked" : [ ],
-  "muted" : [ ]
+  "owner_id" : 95578451
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -363,14 +363,14 @@ func GetCharactersCharacterIdCorporationhistory(w http.ResponseWriter, r *http.R
 	err = err
 
 	j := `[ {
-  "start_date" : "2016-06-26T20:00:00Z",
   "corporation_id" : 90000001,
   "is_deleted" : true,
-  "record_id" : 500
+  "record_id" : 500,
+  "start_date" : "2016-06-26T20:00:00Z"
 }, {
-  "start_date" : "2016-07-26T20:00:00Z",
   "corporation_id" : 90000002,
-  "record_id" : 501
+  "record_id" : 501,
+  "start_date" : "2016-07-26T20:00:00Z"
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -440,8 +440,8 @@ func GetCharactersCharacterIdFatigue(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "last_jump_date" : "2017-07-05T15:47:00Z",
   "jump_fatigue_expire_date" : "2017-07-06T15:47:00Z",
+  "last_jump_date" : "2017-07-05T15:47:00Z",
   "last_update_date" : "2017-07-05T15:42:00Z"
 }`
 	vars := mux.Vars(r)
@@ -520,30 +520,30 @@ func GetCharactersCharacterIdMedals(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
-  "medal_id" : 3,
-  "title" : "33 tester medal",
-  "description" : "For 33 corp!",
   "corporation_id" : 98000001,
-  "issuer_id" : 2112000002,
   "date" : "2017-03-16T15:01:45Z",
+  "description" : "For 33 corp!",
+  "graphics" : [ {
+    "color" : -1,
+    "graphic" : "caldari.1_1",
+    "layer" : 0,
+    "part" : 1
+  }, {
+    "color" : -330271,
+    "graphic" : "caldari.1_2",
+    "layer" : 1,
+    "part" : 1
+  }, {
+    "color" : -1,
+    "graphic" : "compass.1_2",
+    "layer" : 0,
+    "part" : 2
+  } ],
+  "issuer_id" : 2112000002,
+  "medal_id" : 3,
   "reason" : "Thanks!",
   "status" : "private",
-  "graphics" : [ {
-    "part" : 1,
-    "layer" : 0,
-    "graphic" : "caldari.1_1",
-    "color" : -1
-  }, {
-    "part" : 1,
-    "layer" : 1,
-    "graphic" : "caldari.1_2",
-    "color" : -330271
-  }, {
-    "part" : 2,
-    "layer" : 0,
-    "graphic" : "compass.1_2",
-    "color" : -1
-  } ]
+  "title" : "33 tester medal"
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -621,13 +621,13 @@ func GetCharactersCharacterIdNotifications(w http.ResponseWriter, r *http.Reques
 	err = err
 
 	j := `[ {
+  "is_read" : true,
   "notification_id" : 1,
-  "type" : "InsurancePayoutMsg",
   "sender_id" : 1000132,
   "sender_type" : "corporation",
+  "text" : "amount: 3731016.4000000004\\nitemID: 1024881021663\\npayout: 1\\n",
   "timestamp" : "2017-08-16T10:08:00Z",
-  "is_read" : true,
-  "text" : "amount: 3731016.4000000004\\nitemID: 1024881021663\\npayout: 1\\n"
+  "type" : "InsurancePayoutMsg"
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -705,11 +705,11 @@ func GetCharactersCharacterIdNotificationsContacts(w http.ResponseWriter, r *htt
 	err = err
 
 	j := `[ {
+  "message" : "hello friend :3",
   "notification_id" : 1,
-  "sender_character_id" : 95465499,
   "send_date" : "2017-08-16T10:08:00Z",
-  "standing_level" : 1.5,
-  "message" : "hello friend :3"
+  "sender_character_id" : 95465499,
+  "standing_level" : 1.5
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -786,10 +786,10 @@ func GetCharactersCharacterIdPortrait(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "px64x64" : "https://imageserver.eveonline.com/Character/95465499_64.jpg",
   "px128x128" : "https://imageserver.eveonline.com/Character/95465499_128.jpg",
   "px256x256" : "https://imageserver.eveonline.com/Character/95465499_256.jpg",
-  "px512x512" : "https://imageserver.eveonline.com/Character/95465499_512.jpg"
+  "px512x512" : "https://imageserver.eveonline.com/Character/95465499_512.jpg",
+  "px64x64" : "https://imageserver.eveonline.com/Character/95465499_64.jpg"
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -1025,7 +1025,6 @@ func GetCharactersCharacterIdStats(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
-  "year" : 2014,
   "character" : {
     "days_of_activity" : 365,
     "minutes" : 1000000,
@@ -1033,9 +1032,9 @@ func GetCharactersCharacterIdStats(w http.ResponseWriter, r *http.Request) {
   },
   "combat" : {
     "kills_low_sec" : 42
-  }
+  },
+  "year" : 2014
 }, {
-  "year" : 2015,
   "character" : {
     "days_of_activity" : 365,
     "minutes" : 1000000,
@@ -1043,7 +1042,8 @@ func GetCharactersCharacterIdStats(w http.ResponseWriter, r *http.Request) {
   },
   "combat" : {
     "kills_null_sec" : 1337
-  }
+  },
+  "year" : 2015
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -1121,8 +1121,8 @@ func GetCharactersCharacterIdTitles(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
-  "title_id" : 1,
-  "name" : "Awesome Title"
+  "name" : "Awesome Title",
+  "title_id" : 1
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -1266,9 +1266,9 @@ func PostCharactersAffiliation(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
+  "alliance_id" : 434243723,
   "character_id" : 95538921,
-  "corporation_id" : 109299958,
-  "alliance_id" : 434243723
+  "corporation_id" : 109299958
 } ]`
 	if err := r.ParseForm(); err != nil {
 		errorOut(w, r, err)

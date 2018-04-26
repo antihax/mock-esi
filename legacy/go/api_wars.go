@@ -92,20 +92,20 @@ func GetWarsWarId(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "id" : 1941,
-  "declared" : "2004-05-22T05:20:00Z",
-  "mutual" : false,
-  "open_for_allies" : false,
   "aggressor" : {
     "corporation_id" : 986665792,
-    "ships_killed" : 0,
-    "isk_destroyed" : 0
+    "isk_destroyed" : 0,
+    "ships_killed" : 0
   },
+  "declared" : "2004-05-22T05:20:00Z",
   "defender" : {
     "corporation_id" : 1001562011,
-    "ships_killed" : 0,
-    "isk_destroyed" : 0
-  }
+    "isk_destroyed" : 0,
+    "ships_killed" : 0
+  },
+  "id" : 1941,
+  "mutual" : false,
+  "open_for_allies" : false
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(warId, vars["war_id"])
@@ -175,11 +175,11 @@ func GetWarsWarIdKillmails(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
-  "killmail_id" : 2,
-  "killmail_hash" : "8eef5e8fb6b88fe3407c489df33822b2e3b57a5e"
+  "killmail_hash" : "8eef5e8fb6b88fe3407c489df33822b2e3b57a5e",
+  "killmail_id" : 2
 }, {
-  "killmail_id" : 1,
-  "killmail_hash" : "b41ccb498ece33d64019f64c0db392aa3aa701fb"
+  "killmail_hash" : "b41ccb498ece33d64019f64c0db392aa3aa701fb",
+  "killmail_id" : 1
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(warId, vars["war_id"])

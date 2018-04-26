@@ -12,9 +12,9 @@ type GetCharactersCharacterIdChatChannelsBlocked struct {
 	 accessor_type string */
 	AccessorType string `json:"accessor_type,omitempty"`
 	/*
-	 Reason this accessor is blocked */
-	Reason string `json:"reason,omitempty"`
-	/*
 	 Time at which this accessor will no longer be blocked */
 	EndAt time.Time `json:"end_at,omitempty"`
+	/*
+	 Reason this accessor is blocked */
+	Reason string `json:"reason,omitempty"`
 }

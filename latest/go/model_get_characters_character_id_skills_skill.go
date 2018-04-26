@@ -4,6 +4,9 @@ package esilatest
 skill object */
 type GetCharactersCharacterIdSkillsSkill struct {
 	/*
+	 active_skill_level integer */
+	ActiveSkillLevel int32 `json:"active_skill_level,omitempty"`
+	/*
 	 skill_id integer */
 	SkillId int32 `json:"skill_id,omitempty"`
 	/*
@@ -12,7 +15,4 @@ type GetCharactersCharacterIdSkillsSkill struct {
 	/*
 	 trained_skill_level integer */
 	TrainedSkillLevel int32 `json:"trained_skill_level,omitempty"`
-	/*
-	 active_skill_level integer */
-	ActiveSkillLevel int32 `json:"active_skill_level,omitempty"`
 }

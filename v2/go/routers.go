@@ -130,6 +130,41 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetAlliancesAllianceIdContacts",
+		"Get",
+		"/v2/alliances/{alliance_id}/contacts/",
+		GetAlliancesAllianceIdContacts,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdContacts",
+		"Get",
+		"/v2/characters/{character_id}/contacts/",
+		GetCharactersCharacterIdContacts,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdContacts",
+		"Get",
+		"/v2/corporations/{corporation_id}/contacts/",
+		GetCorporationsCorporationIdContacts,
+	)
+
+	mockesi.NewRoute(
+		"PostCharactersCharacterIdContacts",
+		"Post",
+		"/v2/characters/{character_id}/contacts/",
+		PostCharactersCharacterIdContacts,
+	)
+
+	mockesi.NewRoute(
+		"PutCharactersCharacterIdContacts",
+		"Put",
+		"/v2/characters/{character_id}/contacts/",
+		PutCharactersCharacterIdContacts,
+	)
+
+	mockesi.NewRoute(
 		"GetCorporationsCorporationIdAlliancehistory",
 		"Get",
 		"/v2/corporations/{corporation_id}/alliancehistory/",
@@ -288,13 +323,6 @@ func init() {
 		"Post",
 		"/v2/ui/autopilot/waypoint/",
 		PostUiAutopilotWaypoint,
-	)
-
-	mockesi.NewRoute(
-		"GetCharactersCharacterIdWalletJournal",
-		"Get",
-		"/v2/characters/{character_id}/wallet/journal/",
-		GetCharactersCharacterIdWalletJournal,
 	)
 
 	mockesi.NewRoute(

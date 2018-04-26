@@ -107,23 +107,23 @@ func GetCharactersCharacterIdSkillqueue(w http.ResponseWriter, r *http.Request) 
 	err = err
 
 	j := `[ {
-  "skill_id" : 1,
   "finish_date" : "2016-06-29T10:47:00Z",
-  "start_date" : "2016-06-29T10:46:00Z",
   "finished_level" : 3,
-  "queue_position" : 0
-}, {
+  "queue_position" : 0,
   "skill_id" : 1,
-  "finish_date" : "2016-07-15T10:47:00Z",
-  "start_date" : "2016-06-29T10:47:00Z",
-  "finished_level" : 4,
-  "queue_position" : 1
+  "start_date" : "2016-06-29T10:46:00Z"
 }, {
-  "skill_id" : 2,
+  "finish_date" : "2016-07-15T10:47:00Z",
+  "finished_level" : 4,
+  "queue_position" : 1,
+  "skill_id" : 1,
+  "start_date" : "2016-06-29T10:47:00Z"
+}, {
   "finish_date" : "2016-08-30T10:47:00Z",
-  "start_date" : "2016-07-15T10:47:00Z",
   "finished_level" : 2,
-  "queue_position" : 2
+  "queue_position" : 2,
+  "skill_id" : 2,
+  "start_date" : "2016-07-15T10:47:00Z"
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -202,13 +202,13 @@ func GetCharactersCharacterIdSkills(w http.ResponseWriter, r *http.Request) {
 
 	j := `{
   "skills" : [ {
+    "current_skill_level" : 1,
     "skill_id" : 1,
-    "skillpoints_in_skill" : 10000,
-    "current_skill_level" : 1
+    "skillpoints_in_skill" : 10000
   }, {
+    "current_skill_level" : 1,
     "skill_id" : 2,
-    "skillpoints_in_skill" : 10000,
-    "current_skill_level" : 1
+    "skillpoints_in_skill" : 10000
   } ],
   "total_sp" : 20000
 }`

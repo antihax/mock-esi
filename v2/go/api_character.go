@@ -27,13 +27,13 @@ func GetCharactersCharacterIdBlueprints(w http.ResponseWriter, r *http.Request) 
 
 	j := `[ {
   "item_id" : 1000000010495,
-  "type_id" : 691,
-  "location_id" : 60014719,
   "location_flag" : "Hangar",
-  "quantity" : 1,
-  "time_efficiency" : 0,
+  "location_id" : 60014719,
   "material_efficiency" : 0,
-  "runs" : -1
+  "quantity" : 1,
+  "runs" : -1,
+  "time_efficiency" : 0,
+  "type_id" : 691
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -119,13 +119,13 @@ func GetCharactersCharacterIdNotifications(w http.ResponseWriter, r *http.Reques
 	err = err
 
 	j := `[ {
+  "is_read" : true,
   "notification_id" : 1,
-  "type" : "InsurancePayoutMsg",
   "sender_id" : 1000132,
   "sender_type" : "corporation",
+  "text" : "amount: 3731016.4000000004\\nitemID: 1024881021663\\npayout: 1\\n",
   "timestamp" : "2017-08-16T10:08:00Z",
-  "is_read" : true,
-  "text" : "amount: 3731016.4000000004\\nitemID: 1024881021663\\npayout: 1\\n"
+  "type" : "InsurancePayoutMsg"
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -202,10 +202,10 @@ func GetCharactersCharacterIdPortrait(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "px64x64" : "https://imageserver.eveonline.com/Character/95465499_64.jpg",
   "px128x128" : "https://imageserver.eveonline.com/Character/95465499_128.jpg",
   "px256x256" : "https://imageserver.eveonline.com/Character/95465499_256.jpg",
-  "px512x512" : "https://imageserver.eveonline.com/Character/95465499_512.jpg"
+  "px512x512" : "https://imageserver.eveonline.com/Character/95465499_512.jpg",
+  "px64x64" : "https://imageserver.eveonline.com/Character/95465499_64.jpg"
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -353,7 +353,6 @@ func GetCharactersCharacterIdStats(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
-  "year" : 2014,
   "character" : {
     "days_of_activity" : 365,
     "minutes" : 1000000,
@@ -361,9 +360,9 @@ func GetCharactersCharacterIdStats(w http.ResponseWriter, r *http.Request) {
   },
   "combat" : {
     "kills_low_sec" : 42
-  }
+  },
+  "year" : 2014
 }, {
-  "year" : 2015,
   "character" : {
     "days_of_activity" : 365,
     "minutes" : 1000000,
@@ -371,7 +370,8 @@ func GetCharactersCharacterIdStats(w http.ResponseWriter, r *http.Request) {
   },
   "combat" : {
     "kills_null_sec" : 1337
-  }
+  },
+  "year" : 2015
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
