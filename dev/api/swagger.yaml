@@ -27922,7 +27922,7 @@ paths:
       summary: "Get station information"
       description: "Get information on a station\n\n---\nAlternate route: `/latest/universe/stations/{station_id}/`\n\
         \nAlternate route: `/v2/universe/stations/{station_id}/`\n\n---\nThis route\
-        \ is cached for up to 300 seconds"
+        \ expires daily at 11:05"
       operationId: "get_universe_stations_station_id"
       parameters:
       - name: "datasource"
@@ -28061,7 +28061,6 @@ paths:
       x-alternate-versions:
       - "latest"
       - "v2"
-      x-cached-seconds: 300
   /universe/structures/:
     get:
       tags:
