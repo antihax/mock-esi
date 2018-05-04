@@ -2,8 +2,9 @@ package esiv1
 
 import (
 	"net/http"
-	"github.com/gorilla/mux"
 	"time"
+
+	"github.com/gorilla/mux"
 )
 
 var _ time.Time
@@ -12,13 +13,13 @@ var _ = mux.NewRouter
 func GetCharactersCharacterIdContracts(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV      interface{}
+		err         error
 		characterId int32
-		datasource string
-		page int32
-		token string
-		userAgent string
+		datasource  string
+		page        int32
+		token       string
+		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -92,7 +93,7 @@ func GetCharactersCharacterIdContracts(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -107,7 +108,7 @@ func GetCharactersCharacterIdContracts(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -118,13 +119,13 @@ func GetCharactersCharacterIdContracts(w http.ResponseWriter, r *http.Request) {
 func GetCharactersCharacterIdContractsContractIdBids(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV      interface{}
+		err         error
 		characterId int32
-		contractId int32
-		datasource string
-		token string
-		userAgent string
+		contractId  int32
+		datasource  string
+		token       string
+		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -180,7 +181,7 @@ func GetCharactersCharacterIdContractsContractIdBids(w http.ResponseWriter, r *h
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -195,7 +196,7 @@ func GetCharactersCharacterIdContractsContractIdBids(w http.ResponseWriter, r *h
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -206,13 +207,13 @@ func GetCharactersCharacterIdContractsContractIdBids(w http.ResponseWriter, r *h
 func GetCharactersCharacterIdContractsContractIdItems(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV      interface{}
+		err         error
 		characterId int32
-		contractId int32
-		datasource string
-		token string
-		userAgent string
+		contractId  int32
+		datasource  string
+		token       string
+		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -269,7 +270,7 @@ func GetCharactersCharacterIdContractsContractIdItems(w http.ResponseWriter, r *
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -284,7 +285,7 @@ func GetCharactersCharacterIdContractsContractIdItems(w http.ResponseWriter, r *
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -295,13 +296,13 @@ func GetCharactersCharacterIdContractsContractIdItems(w http.ResponseWriter, r *
 func GetCorporationsCorporationIdContracts(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV        interface{}
+		err           error
 		corporationId int32
-		datasource string
-		page int32
-		token string
-		userAgent string
+		datasource    string
+		page          int32
+		token         string
+		userAgent     string
 	)
 	// shut up warnings
 	localV = localV
@@ -373,7 +374,7 @@ func GetCorporationsCorporationIdContracts(w http.ResponseWriter, r *http.Reques
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -388,7 +389,7 @@ func GetCorporationsCorporationIdContracts(w http.ResponseWriter, r *http.Reques
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -399,14 +400,14 @@ func GetCorporationsCorporationIdContracts(w http.ResponseWriter, r *http.Reques
 func GetCorporationsCorporationIdContractsContractIdBids(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
-		contractId int32
+		localV        interface{}
+		err           error
+		contractId    int32
 		corporationId int32
-		datasource string
-		page int32
-		token string
-		userAgent string
+		datasource    string
+		page          int32
+		token         string
+		userAgent     string
 	)
 	// shut up warnings
 	localV = localV
@@ -470,7 +471,7 @@ func GetCorporationsCorporationIdContractsContractIdBids(w http.ResponseWriter, 
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -485,7 +486,7 @@ func GetCorporationsCorporationIdContractsContractIdBids(w http.ResponseWriter, 
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -496,13 +497,13 @@ func GetCorporationsCorporationIdContractsContractIdBids(w http.ResponseWriter, 
 func GetCorporationsCorporationIdContractsContractIdItems(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
-		contractId int32
+		localV        interface{}
+		err           error
+		contractId    int32
 		corporationId int32
-		datasource string
-		token string
-		userAgent string
+		datasource    string
+		token         string
+		userAgent     string
 	)
 	// shut up warnings
 	localV = localV
@@ -559,7 +560,7 @@ func GetCorporationsCorporationIdContractsContractIdItems(w http.ResponseWriter,
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -574,12 +575,10 @@ func GetCorporationsCorporationIdContractsContractIdItems(w http.ResponseWriter,
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 
 	w.Write([]byte(j))
 }
-
-

@@ -2,8 +2,9 @@ package esiv2
 
 import (
 	"net/http"
-	"github.com/gorilla/mux"
 	"time"
+
+	"github.com/gorilla/mux"
 )
 
 var _ time.Time
@@ -12,13 +13,13 @@ var _ = mux.NewRouter
 func GetCharactersCharacterIdAssets(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV      interface{}
+		err         error
 		characterId int32
-		datasource string
-		page int32
-		token string
-		userAgent string
+		datasource  string
+		page        int32
+		token       string
+		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -78,7 +79,7 @@ func GetCharactersCharacterIdAssets(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -93,7 +94,7 @@ func GetCharactersCharacterIdAssets(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -104,13 +105,13 @@ func GetCharactersCharacterIdAssets(w http.ResponseWriter, r *http.Request) {
 func GetCorporationsCorporationIdAssets(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV        interface{}
+		err           error
 		corporationId int32
-		datasource string
-		page int32
-		token string
-		userAgent string
+		datasource    string
+		page          int32
+		token         string
+		userAgent     string
 	)
 	// shut up warnings
 	localV = localV
@@ -171,7 +172,7 @@ func GetCorporationsCorporationIdAssets(w http.ResponseWriter, r *http.Request) 
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -186,7 +187,7 @@ func GetCorporationsCorporationIdAssets(w http.ResponseWriter, r *http.Request) 
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -197,12 +198,12 @@ func GetCorporationsCorporationIdAssets(w http.ResponseWriter, r *http.Request) 
 func PostCharactersCharacterIdAssetsLocations(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV      interface{}
+		err         error
 		characterId int32
-		datasource string
-		token string
-		userAgent string
+		datasource  string
+		token       string
+		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -254,7 +255,7 @@ func PostCharactersCharacterIdAssetsLocations(w http.ResponseWriter, r *http.Req
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -269,7 +270,7 @@ func PostCharactersCharacterIdAssetsLocations(w http.ResponseWriter, r *http.Req
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -280,12 +281,12 @@ func PostCharactersCharacterIdAssetsLocations(w http.ResponseWriter, r *http.Req
 func PostCorporationsCorporationIdAssetsLocations(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV        interface{}
+		err           error
 		corporationId int32
-		datasource string
-		token string
-		userAgent string
+		datasource    string
+		token         string
+		userAgent     string
 	)
 	// shut up warnings
 	localV = localV
@@ -337,7 +338,7 @@ func PostCorporationsCorporationIdAssetsLocations(w http.ResponseWriter, r *http
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -352,12 +353,10 @@ func PostCorporationsCorporationIdAssetsLocations(w http.ResponseWriter, r *http
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 
 	w.Write([]byte(j))
 }
-
-

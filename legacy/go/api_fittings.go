@@ -2,8 +2,9 @@ package esilegacy
 
 import (
 	"net/http"
-	"github.com/gorilla/mux"
 	"time"
+
+	"github.com/gorilla/mux"
 )
 
 var _ time.Time
@@ -12,13 +13,13 @@ var _ = mux.NewRouter
 func DeleteCharactersCharacterIdFittingsFittingId(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV      interface{}
+		err         error
 		characterId int32
-		fittingId int32
-		datasource string
-		token string
-		userAgent string
+		fittingId   int32
+		datasource  string
+		token       string
+		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -69,7 +70,7 @@ func DeleteCharactersCharacterIdFittingsFittingId(w http.ResponseWriter, r *http
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -84,7 +85,7 @@ func DeleteCharactersCharacterIdFittingsFittingId(w http.ResponseWriter, r *http
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "")
 	w.WriteHeader(http.StatusOK)
@@ -95,12 +96,12 @@ func DeleteCharactersCharacterIdFittingsFittingId(w http.ResponseWriter, r *http
 func GetCharactersCharacterIdFittings(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV      interface{}
+		err         error
 		characterId int32
-		datasource string
-		token string
-		userAgent string
+		datasource  string
+		token       string
+		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -155,7 +156,7 @@ func GetCharactersCharacterIdFittings(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -170,7 +171,7 @@ func GetCharactersCharacterIdFittings(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -181,12 +182,12 @@ func GetCharactersCharacterIdFittings(w http.ResponseWriter, r *http.Request) {
 func PostCharactersCharacterIdFittings(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV      interface{}
+		err         error
 		characterId int32
-		datasource string
-		token string
-		userAgent string
+		datasource  string
+		token       string
+		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -233,7 +234,7 @@ func PostCharactersCharacterIdFittings(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -248,12 +249,10 @@ func PostCharactersCharacterIdFittings(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 
 	w.Write([]byte(j))
 }
-
-

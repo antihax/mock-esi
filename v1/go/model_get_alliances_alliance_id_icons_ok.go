@@ -1,14 +1,12 @@
 package esiv1
 
-
-
-/* 
+/*
 200 ok object */
 type GetAlliancesAllianceIdIconsOk struct {
-/*
+	/*
 	 px128x128 string */
 	Px128x128 string `json:"px128x128,omitempty"`
-/*
+	/*
 	 px64x64 string */
 	Px64x64 string `json:"px64x64,omitempty"`
 }

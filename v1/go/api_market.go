@@ -2,8 +2,9 @@ package esiv1
 
 import (
 	"net/http"
-	"github.com/gorilla/mux"
 	"time"
+
+	"github.com/gorilla/mux"
 )
 
 var _ time.Time
@@ -12,12 +13,12 @@ var _ = mux.NewRouter
 func GetCharactersCharacterIdOrders(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV      interface{}
+		err         error
 		characterId int32
-		datasource string
-		token string
-		userAgent string
+		datasource  string
+		token       string
+		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -79,7 +80,7 @@ func GetCharactersCharacterIdOrders(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -94,7 +95,7 @@ func GetCharactersCharacterIdOrders(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -105,13 +106,13 @@ func GetCharactersCharacterIdOrders(w http.ResponseWriter, r *http.Request) {
 func GetCharactersCharacterIdOrdersHistory(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV      interface{}
+		err         error
 		characterId int32
-		datasource string
-		page int32
-		token string
-		userAgent string
+		datasource  string
+		page        int32
+		token       string
+		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -180,7 +181,7 @@ func GetCharactersCharacterIdOrdersHistory(w http.ResponseWriter, r *http.Reques
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -195,7 +196,7 @@ func GetCharactersCharacterIdOrdersHistory(w http.ResponseWriter, r *http.Reques
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -206,13 +207,13 @@ func GetCharactersCharacterIdOrdersHistory(w http.ResponseWriter, r *http.Reques
 func GetCorporationsCorporationIdOrders(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV        interface{}
+		err           error
 		corporationId int32
-		datasource string
-		page int32
-		token string
-		userAgent string
+		datasource    string
+		page          int32
+		token         string
+		userAgent     string
 	)
 	// shut up warnings
 	localV = localV
@@ -281,7 +282,7 @@ func GetCorporationsCorporationIdOrders(w http.ResponseWriter, r *http.Request) 
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -296,7 +297,7 @@ func GetCorporationsCorporationIdOrders(w http.ResponseWriter, r *http.Request) 
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -307,13 +308,13 @@ func GetCorporationsCorporationIdOrders(w http.ResponseWriter, r *http.Request) 
 func GetCorporationsCorporationIdOrdersHistory(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV        interface{}
+		err           error
 		corporationId int32
-		datasource string
-		page int32
-		token string
-		userAgent string
+		datasource    string
+		page          int32
+		token         string
+		userAgent     string
 	)
 	// shut up warnings
 	localV = localV
@@ -382,7 +383,7 @@ func GetCorporationsCorporationIdOrdersHistory(w http.ResponseWriter, r *http.Re
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -397,7 +398,7 @@ func GetCorporationsCorporationIdOrdersHistory(w http.ResponseWriter, r *http.Re
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -408,10 +409,10 @@ func GetCorporationsCorporationIdOrdersHistory(w http.ResponseWriter, r *http.Re
 func GetMarketsGroups(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV     interface{}
+		err        error
 		datasource string
-		userAgent string
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -441,7 +442,7 @@ func GetMarketsGroups(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -456,7 +457,7 @@ func GetMarketsGroups(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -467,12 +468,12 @@ func GetMarketsGroups(w http.ResponseWriter, r *http.Request) {
 func GetMarketsGroupsMarketGroupId(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV        interface{}
+		err           error
 		marketGroupId int32
-		datasource string
-		language string
-		userAgent string
+		datasource    string
+		language      string
+		userAgent     string
 	)
 	// shut up warnings
 	localV = localV
@@ -523,7 +524,7 @@ func GetMarketsGroupsMarketGroupId(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -538,7 +539,7 @@ func GetMarketsGroupsMarketGroupId(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -549,10 +550,10 @@ func GetMarketsGroupsMarketGroupId(w http.ResponseWriter, r *http.Request) {
 func GetMarketsPrices(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV     interface{}
+		err        error
 		datasource string
-		userAgent string
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -586,7 +587,7 @@ func GetMarketsPrices(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -601,7 +602,7 @@ func GetMarketsPrices(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -612,12 +613,12 @@ func GetMarketsPrices(w http.ResponseWriter, r *http.Request) {
 func GetMarketsRegionIdHistory(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
-		regionId int32
-		typeId int32
+		localV     interface{}
+		err        error
+		regionId   int32
+		typeId     int32
 		datasource string
-		userAgent string
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -666,7 +667,7 @@ func GetMarketsRegionIdHistory(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -681,7 +682,7 @@ func GetMarketsRegionIdHistory(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -692,14 +693,14 @@ func GetMarketsRegionIdHistory(w http.ResponseWriter, r *http.Request) {
 func GetMarketsRegionIdOrders(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
-		orderType string
-		regionId int32
+		localV     interface{}
+		err        error
+		orderType  string
+		regionId   int32
 		datasource string
-		page int32
-		typeId int32
-		userAgent string
+		page       int32
+		typeId     int32
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -770,7 +771,7 @@ func GetMarketsRegionIdOrders(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -785,7 +786,7 @@ func GetMarketsRegionIdOrders(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -796,12 +797,12 @@ func GetMarketsRegionIdOrders(w http.ResponseWriter, r *http.Request) {
 func GetMarketsRegionIdTypes(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
-		regionId int32
+		localV     interface{}
+		err        error
+		regionId   int32
 		datasource string
-		page int32
-		userAgent string
+		page       int32
+		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -846,7 +847,7 @@ func GetMarketsRegionIdTypes(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -861,7 +862,7 @@ func GetMarketsRegionIdTypes(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -872,13 +873,13 @@ func GetMarketsRegionIdTypes(w http.ResponseWriter, r *http.Request) {
 func GetMarketsStructuresStructureId(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV interface{}
-		err error
+		localV      interface{}
+		err         error
 		structureId int64
-		datasource string
-		page int32
-		token string
-		userAgent string
+		datasource  string
+		page        int32
+		token       string
+		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -943,7 +944,7 @@ func GetMarketsStructuresStructureId(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage int32 
+			localPage    int32
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -958,12 +959,10 @@ func GetMarketsStructuresStructureId(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	} 
+	}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 
 	w.Write([]byte(j))
 }
-
-
