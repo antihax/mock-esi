@@ -2,9 +2,8 @@ package esiv1
 
 import (
 	"net/http"
-	"time"
-
 	"github.com/gorilla/mux"
+	"time"
 )
 
 var _ time.Time
@@ -13,12 +12,12 @@ var _ = mux.NewRouter
 func GetCharactersCharacterIdWallet(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV      interface{}
-		err         error
+		localV interface{}
+		err error
 		characterId int32
-		datasource  string
-		token       string
-		userAgent   string
+		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -63,7 +62,7 @@ func GetCharactersCharacterIdWallet(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -78,7 +77,7 @@ func GetCharactersCharacterIdWallet(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -89,13 +88,13 @@ func GetCharactersCharacterIdWallet(w http.ResponseWriter, r *http.Request) {
 func GetCharactersCharacterIdWalletTransactions(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV      interface{}
-		err         error
+		localV interface{}
+		err error
 		characterId int32
-		datasource  string
-		fromId      int64
-		token       string
-		userAgent   string
+		datasource string
+		fromId int64
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -159,7 +158,7 @@ func GetCharactersCharacterIdWalletTransactions(w http.ResponseWriter, r *http.R
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -174,7 +173,7 @@ func GetCharactersCharacterIdWalletTransactions(w http.ResponseWriter, r *http.R
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -185,12 +184,12 @@ func GetCharactersCharacterIdWalletTransactions(w http.ResponseWriter, r *http.R
 func GetCorporationsCorporationIdWallets(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV        interface{}
-		err           error
+		localV interface{}
+		err error
 		corporationId int32
-		datasource    string
-		token         string
-		userAgent     string
+		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -256,7 +255,7 @@ func GetCorporationsCorporationIdWallets(w http.ResponseWriter, r *http.Request)
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -271,7 +270,7 @@ func GetCorporationsCorporationIdWallets(w http.ResponseWriter, r *http.Request)
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -282,14 +281,14 @@ func GetCorporationsCorporationIdWallets(w http.ResponseWriter, r *http.Request)
 func GetCorporationsCorporationIdWalletsDivisionTransactions(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV        interface{}
-		err           error
+		localV interface{}
+		err error
 		corporationId int32
-		division      int32
-		datasource    string
-		fromId        int64
-		token         string
-		userAgent     string
+		division int32
+		datasource string
+		fromId int64
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -358,7 +357,7 @@ func GetCorporationsCorporationIdWalletsDivisionTransactions(w http.ResponseWrit
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -373,10 +372,12 @@ func GetCorporationsCorporationIdWalletsDivisionTransactions(w http.ResponseWrit
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 
 	w.Write([]byte(j))
 }
+
+

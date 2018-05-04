@@ -2,9 +2,8 @@ package esiv3
 
 import (
 	"net/http"
-	"time"
-
 	"github.com/gorilla/mux"
+	"time"
 )
 
 var _ time.Time
@@ -13,11 +12,11 @@ var _ = mux.NewRouter
 func GetAlliancesAllianceId(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV     interface{}
-		err        error
+		localV interface{}
+		err error
 		allianceId int32
 		datasource string
-		userAgent  string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -61,7 +60,7 @@ func GetAlliancesAllianceId(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -76,10 +75,12 @@ func GetAlliancesAllianceId(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 
 	w.Write([]byte(j))
 }
+
+

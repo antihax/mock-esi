@@ -2,9 +2,8 @@ package esiv2
 
 import (
 	"net/http"
-	"time"
-
 	"github.com/gorilla/mux"
+	"time"
 )
 
 var _ time.Time
@@ -13,12 +12,12 @@ var _ = mux.NewRouter
 func GetCharactersCharacterIdOrders(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV      interface{}
-		err         error
+		localV interface{}
+		err error
 		characterId int32
-		datasource  string
-		token       string
-		userAgent   string
+		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -78,7 +77,7 @@ func GetCharactersCharacterIdOrders(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -93,7 +92,7 @@ func GetCharactersCharacterIdOrders(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -104,13 +103,13 @@ func GetCharactersCharacterIdOrders(w http.ResponseWriter, r *http.Request) {
 func GetCorporationsCorporationIdOrders(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV        interface{}
-		err           error
+		localV interface{}
+		err error
 		corporationId int32
-		datasource    string
-		page          int32
-		token         string
-		userAgent     string
+		datasource string
+		page int32
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -178,7 +177,7 @@ func GetCorporationsCorporationIdOrders(w http.ResponseWriter, r *http.Request) 
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -193,10 +192,12 @@ func GetCorporationsCorporationIdOrders(w http.ResponseWriter, r *http.Request) 
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 
 	w.Write([]byte(j))
 }
+
+

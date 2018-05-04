@@ -1,7 +1,7 @@
 #!/bin/bash
 go get github.com/sqs/goreturns
 set -e
-curl -s https://esi.tech.ccp.is/versions/ | grep -Po '[a-z0-9]+' | {
+curl -s https://esi.evetech.net/versions/ | grep -Po '[a-z0-9]+' | {
     imports=()
 
     while read -r version ; do
@@ -12,7 +12,7 @@ curl -s https://esi.tech.ccp.is/versions/ | grep -Po '[a-z0-9]+' | {
    
         java -jar swagger-codegen-cli.jar generate -DpackageName=esi$version \
             -o ./$version -t ./mock-esi-template -l go-server \
-            -i https://esi.tech.ccp.is/$version/swagger.json?datasource=tranquility
+            -i https://esi.evetech.net/$version/swagger.json?datasource=tranquility
     done
 
     imp=${imports[@]}

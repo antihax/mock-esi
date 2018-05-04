@@ -2,9 +2,8 @@ package esilegacy
 
 import (
 	"net/http"
-	"time"
-
 	"github.com/gorilla/mux"
+	"time"
 )
 
 var _ time.Time
@@ -13,11 +12,11 @@ var _ = mux.NewRouter
 func GetCharactersCharacterId(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV      interface{}
-		err         error
+		localV interface{}
+		err error
 		characterId int32
-		datasource  string
-		userAgent   string
+		datasource string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -63,7 +62,7 @@ func GetCharactersCharacterId(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -78,7 +77,7 @@ func GetCharactersCharacterId(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -89,12 +88,12 @@ func GetCharactersCharacterId(w http.ResponseWriter, r *http.Request) {
 func GetCharactersCharacterIdAgentsResearch(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV      interface{}
-		err         error
+		localV interface{}
+		err error
 		characterId int32
-		datasource  string
-		token       string
-		userAgent   string
+		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -145,7 +144,7 @@ func GetCharactersCharacterIdAgentsResearch(w http.ResponseWriter, r *http.Reque
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -160,7 +159,7 @@ func GetCharactersCharacterIdAgentsResearch(w http.ResponseWriter, r *http.Reque
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -171,12 +170,12 @@ func GetCharactersCharacterIdAgentsResearch(w http.ResponseWriter, r *http.Reque
 func GetCharactersCharacterIdBlueprints(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV      interface{}
-		err         error
+		localV interface{}
+		err error
 		characterId int32
-		datasource  string
-		token       string
-		userAgent   string
+		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -230,7 +229,7 @@ func GetCharactersCharacterIdBlueprints(w http.ResponseWriter, r *http.Request) 
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -245,7 +244,7 @@ func GetCharactersCharacterIdBlueprints(w http.ResponseWriter, r *http.Request) 
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -256,12 +255,12 @@ func GetCharactersCharacterIdBlueprints(w http.ResponseWriter, r *http.Request) 
 func GetCharactersCharacterIdChatChannels(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV      interface{}
-		err         error
+		localV interface{}
+		err error
 		characterId int32
-		datasource  string
-		token       string
-		userAgent   string
+		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -317,7 +316,7 @@ func GetCharactersCharacterIdChatChannels(w http.ResponseWriter, r *http.Request
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -332,7 +331,7 @@ func GetCharactersCharacterIdChatChannels(w http.ResponseWriter, r *http.Request
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -343,11 +342,11 @@ func GetCharactersCharacterIdChatChannels(w http.ResponseWriter, r *http.Request
 func GetCharactersCharacterIdCorporationhistory(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV      interface{}
-		err         error
+		localV interface{}
+		err error
 		characterId int32
-		datasource  string
-		userAgent   string
+		datasource string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -393,7 +392,7 @@ func GetCharactersCharacterIdCorporationhistory(w http.ResponseWriter, r *http.R
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -408,7 +407,7 @@ func GetCharactersCharacterIdCorporationhistory(w http.ResponseWriter, r *http.R
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -419,12 +418,12 @@ func GetCharactersCharacterIdCorporationhistory(w http.ResponseWriter, r *http.R
 func GetCharactersCharacterIdFatigue(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV      interface{}
-		err         error
+		localV interface{}
+		err error
 		characterId int32
-		datasource  string
-		token       string
-		userAgent   string
+		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -473,7 +472,7 @@ func GetCharactersCharacterIdFatigue(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -488,7 +487,7 @@ func GetCharactersCharacterIdFatigue(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -499,12 +498,12 @@ func GetCharactersCharacterIdFatigue(w http.ResponseWriter, r *http.Request) {
 func GetCharactersCharacterIdMedals(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV      interface{}
-		err         error
+		localV interface{}
+		err error
 		characterId int32
-		datasource  string
-		token       string
-		userAgent   string
+		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -574,7 +573,7 @@ func GetCharactersCharacterIdMedals(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -589,7 +588,7 @@ func GetCharactersCharacterIdMedals(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -600,12 +599,12 @@ func GetCharactersCharacterIdMedals(w http.ResponseWriter, r *http.Request) {
 func GetCharactersCharacterIdNotifications(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV      interface{}
-		err         error
+		localV interface{}
+		err error
 		characterId int32
-		datasource  string
-		token       string
-		userAgent   string
+		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -658,7 +657,7 @@ func GetCharactersCharacterIdNotifications(w http.ResponseWriter, r *http.Reques
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -673,7 +672,7 @@ func GetCharactersCharacterIdNotifications(w http.ResponseWriter, r *http.Reques
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -684,12 +683,12 @@ func GetCharactersCharacterIdNotifications(w http.ResponseWriter, r *http.Reques
 func GetCharactersCharacterIdNotificationsContacts(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV      interface{}
-		err         error
+		localV interface{}
+		err error
 		characterId int32
-		datasource  string
-		token       string
-		userAgent   string
+		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -740,7 +739,7 @@ func GetCharactersCharacterIdNotificationsContacts(w http.ResponseWriter, r *htt
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -755,7 +754,7 @@ func GetCharactersCharacterIdNotificationsContacts(w http.ResponseWriter, r *htt
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -766,11 +765,11 @@ func GetCharactersCharacterIdNotificationsContacts(w http.ResponseWriter, r *htt
 func GetCharactersCharacterIdPortrait(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV      interface{}
-		err         error
+		localV interface{}
+		err error
 		characterId int32
-		datasource  string
-		userAgent   string
+		datasource string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -812,7 +811,7 @@ func GetCharactersCharacterIdPortrait(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -827,7 +826,7 @@ func GetCharactersCharacterIdPortrait(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -838,12 +837,12 @@ func GetCharactersCharacterIdPortrait(w http.ResponseWriter, r *http.Request) {
 func GetCharactersCharacterIdRoles(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV      interface{}
-		err         error
+		localV interface{}
+		err error
 		characterId int32
-		datasource  string
-		token       string
-		userAgent   string
+		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -888,7 +887,7 @@ func GetCharactersCharacterIdRoles(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -903,7 +902,7 @@ func GetCharactersCharacterIdRoles(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -914,12 +913,12 @@ func GetCharactersCharacterIdRoles(w http.ResponseWriter, r *http.Request) {
 func GetCharactersCharacterIdStandings(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV      interface{}
-		err         error
+		localV interface{}
+		err error
 		characterId int32
-		datasource  string
-		token       string
-		userAgent   string
+		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -976,7 +975,7 @@ func GetCharactersCharacterIdStandings(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -991,7 +990,7 @@ func GetCharactersCharacterIdStandings(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -1002,12 +1001,12 @@ func GetCharactersCharacterIdStandings(w http.ResponseWriter, r *http.Request) {
 func GetCharactersCharacterIdStats(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV      interface{}
-		err         error
+		localV interface{}
+		err error
 		characterId int32
-		datasource  string
-		token       string
-		userAgent   string
+		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -1058,7 +1057,7 @@ func GetCharactersCharacterIdStats(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -1073,7 +1072,7 @@ func GetCharactersCharacterIdStats(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -1084,12 +1083,12 @@ func GetCharactersCharacterIdStats(w http.ResponseWriter, r *http.Request) {
 func GetCharactersCharacterIdTitles(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV      interface{}
-		err         error
+		localV interface{}
+		err error
 		characterId int32
-		datasource  string
-		token       string
-		userAgent   string
+		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -1137,7 +1136,7 @@ func GetCharactersCharacterIdTitles(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -1152,7 +1151,7 @@ func GetCharactersCharacterIdTitles(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -1163,11 +1162,11 @@ func GetCharactersCharacterIdTitles(w http.ResponseWriter, r *http.Request) {
 func GetCharactersNames(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV       interface{}
-		err          error
+		localV interface{}
+		err error
 		characterIds []int64
-		datasource   string
-		userAgent    string
+		datasource string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -1205,7 +1204,7 @@ func GetCharactersNames(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -1220,7 +1219,7 @@ func GetCharactersNames(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -1231,10 +1230,10 @@ func GetCharactersNames(w http.ResponseWriter, r *http.Request) {
 func PostCharactersAffiliation(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV     interface{}
-		err        error
+		localV interface{}
+		err error
 		datasource string
-		userAgent  string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -1268,7 +1267,7 @@ func PostCharactersAffiliation(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -1283,7 +1282,7 @@ func PostCharactersAffiliation(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -1294,12 +1293,12 @@ func PostCharactersAffiliation(w http.ResponseWriter, r *http.Request) {
 func PostCharactersCharacterIdCspa(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV      interface{}
-		err         error
+		localV interface{}
+		err error
 		characterId int32
-		datasource  string
-		token       string
-		userAgent   string
+		datasource string
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -1346,7 +1345,7 @@ func PostCharactersCharacterIdCspa(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -1361,10 +1360,12 @@ func PostCharactersCharacterIdCspa(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 
 	w.Write([]byte(j))
 }
+
+

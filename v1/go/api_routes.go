@@ -2,9 +2,8 @@ package esiv1
 
 import (
 	"net/http"
-	"time"
-
 	"github.com/gorilla/mux"
+	"time"
 )
 
 var _ time.Time
@@ -13,15 +12,15 @@ var _ = mux.NewRouter
 func GetRouteOriginDestination(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV      interface{}
-		err         error
+		localV interface{}
+		err error
 		destination int32
-		origin      int32
-		avoid       []int32
+		origin int32
+		avoid []int32
 		connections [][]int32
-		datasource  string
-		flag        string
-		userAgent   string
+		datasource string
+		flag string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -88,7 +87,7 @@ func GetRouteOriginDestination(w http.ResponseWriter, r *http.Request) {
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -103,10 +102,12 @@ func GetRouteOriginDestination(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 
 	w.Write([]byte(j))
 }
+
+

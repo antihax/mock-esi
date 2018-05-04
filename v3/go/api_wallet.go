@@ -2,9 +2,8 @@ package esiv3
 
 import (
 	"net/http"
-	"time"
-
 	"github.com/gorilla/mux"
+	"time"
 )
 
 var _ time.Time
@@ -13,13 +12,13 @@ var _ = mux.NewRouter
 func GetCharactersCharacterIdWalletJournal(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV      interface{}
-		err         error
+		localV interface{}
+		err error
 		characterId int32
-		datasource  string
-		fromId      int64
-		token       string
-		userAgent   string
+		datasource string
+		fromId int64
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -76,7 +75,7 @@ func GetCharactersCharacterIdWalletJournal(w http.ResponseWriter, r *http.Reques
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -91,7 +90,7 @@ func GetCharactersCharacterIdWalletJournal(w http.ResponseWriter, r *http.Reques
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -102,14 +101,14 @@ func GetCharactersCharacterIdWalletJournal(w http.ResponseWriter, r *http.Reques
 func GetCorporationsCorporationIdWalletsDivisionJournal(w http.ResponseWriter, r *http.Request) {
 
 	var (
-		localV        interface{}
-		err           error
+		localV interface{}
+		err error
 		corporationId int32
-		division      int32
-		datasource    string
-		page          int32
-		token         string
-		userAgent     string
+		division int32
+		datasource string
+		page int32
+		token string
+		userAgent string
 	)
 	// shut up warnings
 	localV = localV
@@ -179,7 +178,7 @@ func GetCorporationsCorporationIdWalletsDivisionJournal(w http.ResponseWriter, r
 
 	if r.Form.Get("page") != "" {
 		var (
-			localPage    int32
+			localPage int32 
 			localIntPage interface{}
 		)
 		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
@@ -194,10 +193,12 @@ func GetCorporationsCorporationIdWalletsDivisionJournal(w http.ResponseWriter, r
 			w.Write([]byte("[]"))
 			return
 		}
-	}
+	} 
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 
 	w.Write([]byte(j))
 }
+
+

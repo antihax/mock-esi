@@ -4,7 +4,7 @@ info:
   description: "An OpenAPI for EVE Online"
   version: "0.8.0"
   title: "EVE Swagger Interface"
-host: "esi.tech.ccp.is"
+host: "esi.evetech.net"
 basePath: "/v2"
 schemes:
 - "https"
@@ -145,7 +145,7 @@ paths:
       description: "Public information about an alliance\n\n---\nAlternate route:\
         \ `/legacy/alliances/{alliance_id}/`\n\n---\nThis route is cached for up to\
         \ 3600 seconds\n\n---\nWarning: This route is deprecated.\n\n---\n[This route\
-        \ has an available update](https://esi.tech.ccp.is/diff/v2/dev/#GET-/alliances/{alliance_id}/)"
+        \ has an available update](https://esi.evetech.net/diff/v2/dev/#GET-/alliances/{alliance_id}/)"
       operationId: "get_alliances_alliance_id"
       parameters:
       - name: "alliance_id"
@@ -427,7 +427,7 @@ paths:
       description: "Return a list of the characters assets\n\n---\nAlternate route:\
         \ `/legacy/characters/{character_id}/assets/`\n\n---\nThis route is cached\
         \ for up to 3600 seconds\n\n---\nWarning: This route is deprecated.\n\n---\n\
-        [This route has an available update](https://esi.tech.ccp.is/diff/v2/dev/#GET-/characters/{character_id}/assets/)"
+        [This route has an available update](https://esi.evetech.net/diff/v2/dev/#GET-/characters/{character_id}/assets/)"
       operationId: "get_characters_character_id_assets"
       parameters:
       - name: "character_id"
@@ -1213,7 +1213,7 @@ paths:
       description: "Get all the information for a specific event\n\n---\nAlternate\
         \ route: `/legacy/characters/{character_id}/calendar/{event_id}/`\n\n---\n\
         This route is cached for up to 5 seconds\n\n---\nWarning: This route is deprecated.\n\
-        \n---\n[This route has an available update](https://esi.tech.ccp.is/diff/v2/dev/#GET-/characters/{character_id}/calendar/{event_id}/)"
+        \n---\n[This route has an available update](https://esi.evetech.net/diff/v2/dev/#GET-/characters/{character_id}/calendar/{event_id}/)"
       operationId: "get_characters_character_id_calendar_event_id"
       parameters:
       - name: "character_id"
@@ -1377,7 +1377,7 @@ paths:
       summary: "Respond to an event"
       description: "Set your response status to an event\n\n---\nAlternate route:\
         \ `/legacy/characters/{character_id}/calendar/{event_id}/`\n\n\n---\nWarning:\
-        \ This route is deprecated.\n\n---\n[This route has an available update](https://esi.tech.ccp.is/diff/v2/dev/#PUT-/characters/{character_id}/calendar/{event_id}/)"
+        \ This route is deprecated.\n\n---\n[This route has an available update](https://esi.evetech.net/diff/v2/dev/#PUT-/characters/{character_id}/calendar/{event_id}/)"
       operationId: "put_characters_character_id_calendar_event_id"
       parameters:
       - name: "character_id"
@@ -1491,7 +1491,7 @@ paths:
       summary: "Get clones"
       description: "A list of the character's clones\n\n---\nAlternate route: `/legacy/characters/{character_id}/clones/`\n\
         \n---\nThis route is cached for up to 120 seconds\n\n---\nWarning: This route\
-        \ is deprecated.\n\n---\n[This route has an available update](https://esi.tech.ccp.is/diff/v2/dev/#GET-/characters/{character_id}/clones/)"
+        \ is deprecated.\n\n---\n[This route has an available update](https://esi.evetech.net/diff/v2/dev/#GET-/characters/{character_id}/clones/)"
       operationId: "get_characters_character_id_clones"
       parameters:
       - name: "character_id"
@@ -2195,7 +2195,7 @@ paths:
       description: "Return a list of the users mail labels\n\n---\nAlternate route:\
         \ `/legacy/characters/{character_id}/mail/labels/`\n\n---\nThis route is cached\
         \ for up to 30 seconds\n\n---\nWarning: This route is deprecated.\n\n---\n\
-        [This route has an available update](https://esi.tech.ccp.is/diff/v2/dev/#GET-/characters/{character_id}/mail/labels/)"
+        [This route has an available update](https://esi.evetech.net/diff/v2/dev/#GET-/characters/{character_id}/mail/labels/)"
       operationId: "get_characters_character_id_mail_labels"
       parameters:
       - name: "character_id"
@@ -2901,7 +2901,7 @@ paths:
         \ when the colony is viewed through the client. Information will not update\
         \ until this criteria is met.\n\n---\nAlternate route: `/legacy/characters/{character_id}/planets/{planet_id}/`\n\
         \n---\nThis route is cached for up to 600 seconds\n\n---\nWarning: This route\
-        \ is deprecated.\n\n---\n[This route has an available update](https://esi.tech.ccp.is/diff/v2/dev/#GET-/characters/{character_id}/planets/{planet_id}/)"
+        \ is deprecated.\n\n---\n[This route has an available update](https://esi.evetech.net/diff/v2/dev/#GET-/characters/{character_id}/planets/{planet_id}/)"
       operationId: "get_characters_character_id_planets_planet_id"
       parameters:
       - name: "character_id"
@@ -3337,7 +3337,7 @@ paths:
       description: "Search for entities that match a given sub-string.\n\n---\nAlternate\
         \ route: `/legacy/characters/{character_id}/search/`\n\n---\nThis route is\
         \ cached for up to 3600 seconds\n\n---\nWarning: This route is deprecated.\n\
-        \n---\n[This route has an available update](https://esi.tech.ccp.is/diff/v2/dev/#GET-/characters/{character_id}/search/)"
+        \n---\n[This route has an available update](https://esi.evetech.net/diff/v2/dev/#GET-/characters/{character_id}/search/)"
       operationId: "get_characters_character_id_search"
       parameters:
       - name: "categories"
@@ -4114,7 +4114,7 @@ paths:
         \ `/legacy/corporations/{corporation_id}/assets/`\n\n---\nThis route is cached\
         \ for up to 3600 seconds\n\n---\nRequires one of the following EVE corporation\
         \ role(s): Director\n\n\n---\nWarning: This route is deprecated.\n\n---\n\
-        [This route has an available update](https://esi.tech.ccp.is/diff/v2/dev/#GET-/corporations/{corporation_id}/assets/)"
+        [This route has an available update](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/assets/)"
       operationId: "get_corporations_corporation_id_assets"
       parameters:
       - name: "corporation_id"
@@ -4919,7 +4919,7 @@ paths:
       description: "Read the current list of members if the calling character is a\
         \ member.\n\n---\nAlternate route: `/legacy/corporations/{corporation_id}/members/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nWarning: This route\
-        \ is deprecated.\n\n---\n[This route has an available update](https://esi.tech.ccp.is/diff/v2/dev/#GET-/corporations/{corporation_id}/members/)"
+        \ is deprecated.\n\n---\n[This route has an available update](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/members/)"
       operationId: "get_corporations_corporation_id_members"
       parameters:
       - name: "corporation_id"
@@ -5431,7 +5431,7 @@ paths:
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
         \ the following EVE corporation role(s): Accountant, Junior_Accountant\n\n\
         \n---\nWarning: This route is deprecated.\n\n---\n[This route has an available\
-        \ update](https://esi.tech.ccp.is/diff/v2/dev/#GET-/corporations/{corporation_id}/wallets/{division}/journal/)"
+        \ update](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/wallets/{division}/journal/)"
       operationId: "get_corporations_corporation_id_wallets_division_journal"
       parameters:
       - name: "corporation_id"
@@ -6523,7 +6523,7 @@ paths:
       summary: "Get solar system information"
       description: "Get information on a solar system\n\n---\nAlternate route: `/legacy/universe/systems/{system_id}/`\n\
         \n---\nThis route expires daily at 11:05\n\n---\nWarning: This route is deprecated.\n\
-        \n---\n[This route has an available update](https://esi.tech.ccp.is/diff/v2/dev/#GET-/universe/systems/{system_id}/)"
+        \n---\n[This route has an available update](https://esi.evetech.net/diff/v2/dev/#GET-/universe/systems/{system_id}/)"
       operationId: "get_universe_systems_system_id"
       parameters:
       - name: "datasource"
@@ -6683,7 +6683,7 @@ paths:
       summary: "Get type information"
       description: "Get information on a type\n\n---\nAlternate route: `/legacy/universe/types/{type_id}/`\n\
         \n---\nThis route expires daily at 11:05\n\n---\nWarning: This route is deprecated.\n\
-        \n---\n[This route has an available update](https://esi.tech.ccp.is/diff/v2/dev/#GET-/universe/types/{type_id}/)"
+        \n---\n[This route has an available update](https://esi.evetech.net/diff/v2/dev/#GET-/universe/types/{type_id}/)"
       operationId: "get_universe_types_type_id"
       parameters:
       - name: "datasource"

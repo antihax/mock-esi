@@ -4,7 +4,7 @@ info:
   description: "An OpenAPI for EVE Online"
   version: "0.8.0"
   title: "EVE Swagger Interface"
-host: "esi.tech.ccp.is"
+host: "esi.evetech.net"
 basePath: "/dev"
 schemes:
 - "https"
