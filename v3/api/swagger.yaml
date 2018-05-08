@@ -311,6 +311,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -1968,6 +1969,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -2291,6 +2293,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -4744,6 +4747,7 @@ parameters:
     required: false
     type: "integer"
     default: 1
+    minimum: 1
     format: "int32"
     x-exportParamName: "Page"
   token:

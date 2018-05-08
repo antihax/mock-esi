@@ -422,6 +422,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -1521,6 +1522,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -2079,6 +2081,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -2243,6 +2246,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -2420,6 +2424,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -3320,6 +3325,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -4026,6 +4032,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -7714,6 +7721,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -8623,6 +8631,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -10647,6 +10656,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -10978,6 +10988,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -11144,6 +11155,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -11315,6 +11327,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -11978,6 +11991,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -12401,6 +12415,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -12567,6 +12582,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -12746,6 +12762,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -12903,6 +12920,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -13213,6 +13231,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -13399,6 +13418,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -13583,6 +13603,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -13927,6 +13948,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -14683,6 +14705,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -15017,6 +15040,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -15182,6 +15206,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -15952,6 +15977,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -16127,6 +16153,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -16307,6 +16334,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -16793,6 +16821,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -16962,6 +16991,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -17134,6 +17164,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -17302,6 +17333,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -17648,6 +17680,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -18148,6 +18181,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -22594,6 +22628,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "structure_id"
@@ -22926,6 +22961,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "region_id"
@@ -23093,6 +23129,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "region_id"
@@ -26399,6 +26436,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "user_agent"
@@ -28870,6 +28908,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "user_agent"
@@ -29408,6 +29447,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "user_agent"
@@ -43044,6 +43084,7 @@ parameters:
     required: false
     type: "integer"
     default: 1
+    minimum: 1
     format: "int32"
     x-exportParamName: "Page"
   token:
