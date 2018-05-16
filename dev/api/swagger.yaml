@@ -21181,9 +21181,8 @@ paths:
       - "Faction Warfare"
       summary: "Ownership of faction warfare systems"
       description: "An overview of the current ownership of faction warfare solar\
-        \ systems\n\n---\nAlternate route: `/latest/fw/systems/`\n\nAlternate route:\
-        \ `/legacy/fw/systems/`\n\nAlternate route: `/v1/fw/systems/`\n\n---\nThis\
-        \ route is cached for up to 1800 seconds"
+        \ systems\n\n---\nAlternate route: `/v2/fw/systems/`\n\n---\nThis route is\
+        \ cached for up to 1800 seconds"
       operationId: "get_fw_systems"
       parameters:
       - name: "datasource"
@@ -21217,7 +21216,7 @@ paths:
         x-exportParamName: "XUserAgent"
       responses:
         200:
-          description: "All faction war solar systems"
+          description: "All faction warfare solar systems"
           schema:
             type: "array"
             description: "200 ok array"
@@ -21227,7 +21226,7 @@ paths:
             maxItems: 171
           examples:
             application/json:
-            - contested: true
+            - contested: "uncontested"
               occupier_faction_id: 500001
               owner_faction_id: 500001
               solar_system_id: 30002096
@@ -21290,9 +21289,7 @@ paths:
             application/json:
               error: "Service unavailable message"
       x-alternate-versions:
-      - "latest"
-      - "legacy"
-      - "v1"
+      - "v2"
       x-cached-seconds: 1800
   /fw/wars/:
     get:
@@ -40069,9 +40066,14 @@ definitions:
     - "victory_points_threshold"
     properties:
       contested:
-        type: "boolean"
-        description: "contested boolean"
+        type: "string"
+        description: "contested string"
         title: "get_fw_systems_contested"
+        enum:
+        - "captured"
+        - "contested"
+        - "uncontested"
+        - "vulnerable"
       occupier_faction_id:
         type: "integer"
         format: "int32"

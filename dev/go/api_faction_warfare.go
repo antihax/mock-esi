@@ -593,7 +593,7 @@ func GetFwSystems(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
-  "contested" : true,
+  "contested" : "uncontested",
   "occupier_faction_id" : 500001,
   "owner_faction_id" : 500001,
   "solar_system_id" : 30002096,

@@ -214,6 +214,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetFwSystems",
+		"Get",
+		"/v2/fw/systems/",
+		GetFwSystems,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdOnline",
 		"Get",
 		"/v2/characters/{character_id}/online/",
