@@ -389,7 +389,8 @@ paths:
       summary: "Get alliance contacts"
       description: "Return contacts of an alliance\n\n---\nAlternate route: `/legacy/alliances/{alliance_id}/contacts/`\n\
         \nAlternate route: `/v1/alliances/{alliance_id}/contacts/`\n\n---\nThis route\
-        \ is cached for up to 300 seconds\n\n---\n[This route has an available update](https://esi.evetech.net/diff/latest/dev/#GET-/alliances/{alliance_id}/contacts/)"
+        \ is cached for up to 300 seconds\n\n---\nWarning: This route has an upgrade\
+        \ available.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/alliances/{alliance_id}/contacts/)"
       operationId: "get_alliances_alliance_id_contacts"
       parameters:
       - name: "alliance_id"
@@ -3293,8 +3294,8 @@ paths:
       summary: "Get contacts"
       description: "Return contacts of a character\n\n---\nAlternate route: `/legacy/characters/{character_id}/contacts/`\n\
         \nAlternate route: `/v1/characters/{character_id}/contacts/`\n\n---\nThis\
-        \ route is cached for up to 300 seconds\n\n---\n[This route has an available\
-        \ update](https://esi.evetech.net/diff/latest/dev/#GET-/characters/{character_id}/contacts/)"
+        \ route is cached for up to 300 seconds\n\n---\nWarning: This route has an\
+        \ upgrade available.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/characters/{character_id}/contacts/)"
       operationId: "get_characters_character_id_contacts"
       parameters:
       - name: "character_id"
@@ -3454,7 +3455,8 @@ paths:
       summary: "Add contacts"
       description: "Bulk add contacts with same settings\n\n---\nAlternate route:\
         \ `/legacy/characters/{character_id}/contacts/`\n\nAlternate route: `/v1/characters/{character_id}/contacts/`\n\
-        \n\n---\n[This route has an available update](https://esi.evetech.net/diff/latest/dev/#POST-/characters/{character_id}/contacts/)"
+        \n\n---\nWarning: This route has an upgrade available.\n\n---\n[Diff of the\
+        \ upcoming changes](https://esi.evetech.net/diff/latest/dev/#POST-/characters/{character_id}/contacts/)"
       operationId: "post_characters_character_id_contacts"
       parameters:
       - name: "character_id"
@@ -3603,7 +3605,8 @@ paths:
       summary: "Edit contacts"
       description: "Bulk edit contacts with same settings\n\n---\nAlternate route:\
         \ `/legacy/characters/{character_id}/contacts/`\n\nAlternate route: `/v1/characters/{character_id}/contacts/`\n\
-        \n\n---\n[This route has an available update](https://esi.evetech.net/diff/latest/dev/#PUT-/characters/{character_id}/contacts/)"
+        \n\n---\nWarning: This route has an upgrade available.\n\n---\n[Diff of the\
+        \ upcoming changes](https://esi.evetech.net/diff/latest/dev/#PUT-/characters/{character_id}/contacts/)"
       operationId: "put_characters_character_id_contacts"
       parameters:
       - name: "character_id"
@@ -12212,6 +12215,13 @@ paths:
           examples:
             application/json:
               error: "Forbidden message"
+        404:
+          description: "Invalid IDs"
+          schema:
+            $ref: "#/definitions/post_corporations_corporation_id_assets_locations_not_found"
+          examples:
+            application/json:
+              error: "Not found message"
         500:
           description: "Internal server error"
           schema:
@@ -12339,6 +12349,13 @@ paths:
           examples:
             application/json:
               error: "Forbidden message"
+        404:
+          description: "Invalid IDs"
+          schema:
+            $ref: "#/definitions/post_corporations_corporation_id_assets_names_not_found"
+          examples:
+            application/json:
+              error: "Not found message"
         500:
           description: "Internal server error"
           schema:
@@ -12884,8 +12901,8 @@ paths:
       summary: "Get corporation contacts"
       description: "Return contacts of a corporation\n\n---\nAlternate route: `/legacy/corporations/{corporation_id}/contacts/`\n\
         \nAlternate route: `/v1/corporations/{corporation_id}/contacts/`\n\n---\n\
-        This route is cached for up to 300 seconds\n\n---\n[This route has an available\
-        \ update](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/contacts/)"
+        This route is cached for up to 300 seconds\n\n---\nWarning: This route has\
+        \ an upgrade available.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/contacts/)"
       operationId: "get_corporations_corporation_id_contacts"
       parameters:
       - name: "corporation_id"
@@ -21183,7 +21200,8 @@ paths:
       description: "An overview of the current ownership of faction warfare solar\
         \ systems\n\n---\nAlternate route: `/legacy/fw/systems/`\n\nAlternate route:\
         \ `/v1/fw/systems/`\n\n---\nThis route is cached for up to 1800 seconds\n\n\
-        ---\n[This route has an available update](https://esi.evetech.net/diff/latest/dev/#GET-/fw/systems/)"
+        ---\nWarning: This route has an upgrade available.\n\n---\n[Diff of the upcoming\
+        \ changes](https://esi.evetech.net/diff/latest/dev/#GET-/fw/systems/)"
       operationId: "get_fw_systems"
       parameters:
       - name: "datasource"
@@ -35456,6 +35474,13 @@ definitions:
       position:
         $ref: "#/definitions/post_corporations_corporation_id_assets_locations_position"
     description: "200 ok object"
+  post_corporations_corporation_id_assets_locations_not_found:
+    properties:
+      error:
+        type: "string"
+        description: "Not found message"
+        title: "post_corporations_corporation_id_assets_locations_404_not_found"
+    description: "Not found"
   post_corporations_corporation_id_assets_names_200_ok:
     required:
     - "item_id"
@@ -35471,6 +35496,13 @@ definitions:
         description: "name string"
         title: "post_corporations_corporation_id_assets_names_name"
     description: "200 ok object"
+  post_corporations_corporation_id_assets_names_not_found:
+    properties:
+      error:
+        type: "string"
+        description: "Not found message"
+        title: "post_corporations_corporation_id_assets_names_404_not_found"
+    description: "Not found"
   get_corporations_corporation_id_blueprints_200_ok:
     required:
     - "item_id"

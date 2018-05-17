@@ -138,8 +138,8 @@ paths:
       summary: "Get alliance names"
       description: "Resolve a set of alliance IDs to alliance names\n\n---\nAlternate\
         \ route: `/legacy/alliances/names/`\n\n---\nThis route is cached for up to\
-        \ 3600 seconds\n\n---\nWarning: This route is deprecated.\n\n---\n[This route\
-        \ has an available update](https://esi.evetech.net/diff/v1/dev/#GET-/alliances/names/)"
+        \ 3600 seconds\n\n---\nWarning: This route is deprecated.\n\n---\n[Diff of\
+        \ the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/alliances/names/)"
       operationId: "get_alliances_names"
       parameters:
       - name: "alliance_ids"
@@ -263,8 +263,8 @@ paths:
       summary: "Get alliance contacts"
       description: "Return contacts of an alliance\n\n---\nAlternate route: `/latest/alliances/{alliance_id}/contacts/`\n\
         \nAlternate route: `/legacy/alliances/{alliance_id}/contacts/`\n\n---\nThis\
-        \ route is cached for up to 300 seconds\n\n---\n[This route has an available\
-        \ update](https://esi.evetech.net/diff/v1/dev/#GET-/alliances/{alliance_id}/contacts/)"
+        \ route is cached for up to 300 seconds\n\n---\nWarning: This route has an\
+        \ upgrade available.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/alliances/{alliance_id}/contacts/)"
       operationId: "get_alliances_alliance_id_contacts"
       parameters:
       - name: "alliance_id"
@@ -1237,8 +1237,8 @@ paths:
       description: "Return locations for a set of item ids, which you can get from\
         \ character assets endpoint. Coordinates for items in hangars or stations\
         \ are set to (0,0,0)\n\n---\nAlternate route: `/legacy/characters/{character_id}/assets/locations/`\n\
-        \n\n---\nWarning: This route is deprecated.\n\n---\n[This route has an available\
-        \ update](https://esi.evetech.net/diff/v1/dev/#POST-/characters/{character_id}/assets/locations/)"
+        \n\n---\nWarning: This route is deprecated.\n\n---\n[Diff of the upcoming\
+        \ changes](https://esi.evetech.net/diff/v1/dev/#POST-/characters/{character_id}/assets/locations/)"
       operationId: "post_characters_character_id_assets_locations"
       parameters:
       - name: "character_id"
@@ -1632,7 +1632,7 @@ paths:
       description: "Return a list of blueprints the character has\n\n---\nAlternate\
         \ route: `/legacy/characters/{character_id}/blueprints/`\n\n---\nThis route\
         \ is cached for up to 3600 seconds\n\n---\nWarning: This route is deprecated.\n\
-        \n---\n[This route has an available update](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/blueprints/)"
+        \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/blueprints/)"
       operationId: "get_characters_character_id_blueprints"
       parameters:
       - name: "character_id"
@@ -1783,7 +1783,7 @@ paths:
       description: "List your character's personal bookmarks\n\n---\nAlternate route:\
         \ `/legacy/characters/{character_id}/bookmarks/`\n\n---\nThis route is cached\
         \ for up to 3600 seconds\n\n---\nWarning: This route is deprecated.\n\n---\n\
-        [This route has an available update](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/bookmarks/)"
+        [Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/bookmarks/)"
       operationId: "get_characters_character_id_bookmarks"
       parameters:
       - name: "character_id"
@@ -1938,7 +1938,7 @@ paths:
       description: "List your character's personal bookmark folders\n\n---\nAlternate\
         \ route: `/legacy/characters/{character_id}/bookmarks/folders/`\n\n---\nThis\
         \ route is cached for up to 3600 seconds\n\n---\nWarning: This route is deprecated.\n\
-        \n---\n[This route has an available update](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/bookmarks/folders/)"
+        \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/bookmarks/folders/)"
       operationId: "get_characters_character_id_bookmarks_folders"
       parameters:
       - name: "character_id"
@@ -2406,7 +2406,7 @@ paths:
       description: "Return chat channels that a character is the owner or operator\
         \ of\n\n---\nAlternate route: `/legacy/characters/{character_id}/chat_channels/`\n\
         \n---\nThis route is cached for up to 300 seconds\n\n---\nWarning: This route\
-        \ is deprecated.\n\n---\n[This route has an available update](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/chat_channels/)"
+        \ is deprecated.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/chat_channels/)"
       operationId: "get_characters_character_id_chat_channels"
       parameters:
       - name: "character_id"
@@ -2558,8 +2558,8 @@ paths:
       summary: "Get contacts"
       description: "Return contacts of a character\n\n---\nAlternate route: `/latest/characters/{character_id}/contacts/`\n\
         \nAlternate route: `/legacy/characters/{character_id}/contacts/`\n\n---\n\
-        This route is cached for up to 300 seconds\n\n---\n[This route has an available\
-        \ update](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/contacts/)"
+        This route is cached for up to 300 seconds\n\n---\nWarning: This route has\
+        \ an upgrade available.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/contacts/)"
       operationId: "get_characters_character_id_contacts"
       parameters:
       - name: "character_id"
@@ -2719,7 +2719,8 @@ paths:
       summary: "Add contacts"
       description: "Bulk add contacts with same settings\n\n---\nAlternate route:\
         \ `/latest/characters/{character_id}/contacts/`\n\nAlternate route: `/legacy/characters/{character_id}/contacts/`\n\
-        \n\n---\n[This route has an available update](https://esi.evetech.net/diff/v1/dev/#POST-/characters/{character_id}/contacts/)"
+        \n\n---\nWarning: This route has an upgrade available.\n\n---\n[Diff of the\
+        \ upcoming changes](https://esi.evetech.net/diff/v1/dev/#POST-/characters/{character_id}/contacts/)"
       operationId: "post_characters_character_id_contacts"
       parameters:
       - name: "character_id"
@@ -2868,7 +2869,8 @@ paths:
       summary: "Edit contacts"
       description: "Bulk edit contacts with same settings\n\n---\nAlternate route:\
         \ `/latest/characters/{character_id}/contacts/`\n\nAlternate route: `/legacy/characters/{character_id}/contacts/`\n\
-        \n\n---\n[This route has an available update](https://esi.evetech.net/diff/v1/dev/#PUT-/characters/{character_id}/contacts/)"
+        \n\n---\nWarning: This route has an upgrade available.\n\n---\n[Diff of the\
+        \ upcoming changes](https://esi.evetech.net/diff/v1/dev/#PUT-/characters/{character_id}/contacts/)"
       operationId: "put_characters_character_id_contacts"
       parameters:
       - name: "character_id"
@@ -3002,8 +3004,8 @@ paths:
       - "Contacts"
       summary: "Delete contacts"
       description: "Bulk delete contacts\n\n---\nAlternate route: `/legacy/characters/{character_id}/contacts/`\n\
-        \n\n---\nWarning: This route is deprecated.\n\n---\n[This route has an available\
-        \ update](https://esi.evetech.net/diff/v1/dev/#DELETE-/characters/{character_id}/contacts/)"
+        \n\n---\nWarning: This route is deprecated.\n\n---\n[Diff of the upcoming\
+        \ changes](https://esi.evetech.net/diff/v1/dev/#DELETE-/characters/{character_id}/contacts/)"
       operationId: "delete_characters_character_id_contacts"
       parameters:
       - name: "character_id"
@@ -6033,7 +6035,7 @@ paths:
       description: "Return the number of unread mails for the character\n\n---\nAlternate\
         \ route: `/legacy/characters/{character_id}/mail/unread/`\n\n---\nThis route\
         \ is cached for up to 5 seconds\n\n---\nWarning: This route is deprecated\
-        \ as of 2016-10-10.\n\n---\n[This route has an available update](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/mail/unread/)"
+        \ as of 2016-10-10.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/mail/unread/)"
       operationId: "get_characters_character_id_mail_unread"
       parameters:
       - name: "character_id"
@@ -6882,7 +6884,7 @@ paths:
       summary: "Get character notifications"
       description: "Return character notifications\n\n---\nAlternate route: `/legacy/characters/{character_id}/notifications/`\n\
         \n---\nThis route is cached for up to 600 seconds\n\n---\nWarning: This route\
-        \ is deprecated.\n\n---\n[This route has an available update](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/notifications/)"
+        \ is deprecated.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/notifications/)"
       operationId: "get_characters_character_id_notifications"
       parameters:
       - name: "character_id"
@@ -7183,7 +7185,7 @@ paths:
       description: "Checks if the character is currently online\n\n---\nAlternate\
         \ route: `/legacy/characters/{character_id}/online/`\n\n---\nThis route is\
         \ cached for up to 60 seconds\n\n---\nWarning: This route is deprecated.\n\
-        \n---\n[This route has an available update](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/online/)"
+        \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/online/)"
       operationId: "get_characters_character_id_online"
       parameters:
       - name: "character_id"
@@ -7469,7 +7471,7 @@ paths:
       description: "List market orders placed by a character\n\n---\nAlternate route:\
         \ `/legacy/characters/{character_id}/orders/`\n\n---\nThis route is cached\
         \ for up to 3600 seconds\n\n---\nWarning: This route is deprecated.\n\n---\n\
-        [This route has an available update](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/orders/)"
+        [Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/orders/)"
       operationId: "get_characters_character_id_orders"
       parameters:
       - name: "character_id"
@@ -7960,7 +7962,7 @@ paths:
       summary: "Get character portraits"
       description: "Get portrait urls for a character\n\n---\nAlternate route: `/legacy/characters/{character_id}/portrait/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nWarning: This route\
-        \ is deprecated as of 2016-10-01.\n\n---\n[This route has an available update](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/portrait/)"
+        \ is deprecated as of 2016-10-01.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/portrait/)"
       operationId: "get_characters_character_id_portrait"
       parameters:
       - name: "character_id"
@@ -8086,7 +8088,7 @@ paths:
       description: "Returns a character's corporation roles\n\n---\nAlternate route:\
         \ `/legacy/characters/{character_id}/roles/`\n\n---\nThis route is cached\
         \ for up to 3600 seconds\n\n---\nWarning: This route is deprecated.\n\n---\n\
-        [This route has an available update](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/roles/)"
+        [Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/roles/)"
       operationId: "get_characters_character_id_roles"
       parameters:
       - name: "character_id"
@@ -8581,7 +8583,7 @@ paths:
       description: "Returns aggregate yearly stats for a character\n\n---\nAlternate\
         \ route: `/legacy/characters/{character_id}/stats/`\n\n---\nThis route is\
         \ cached for up to 86400 seconds\n\n---\nWarning: This route is deprecated.\n\
-        \n---\n[This route has an available update](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/stats/)"
+        \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/stats/)"
       operationId: "get_characters_character_id_stats"
       parameters:
       - name: "character_id"
@@ -9685,7 +9687,7 @@ paths:
       description: "Resolve a set of corporation IDs to corporation names\n\n---\n\
         Alternate route: `/legacy/corporations/names/`\n\n---\nThis route is cached\
         \ for up to 3600 seconds\n\n---\nWarning: This route is deprecated.\n\n---\n\
-        [This route has an available update](https://esi.evetech.net/diff/v1/dev/#GET-/corporations/names/)"
+        [Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/corporations/names/)"
       operationId: "get_corporations_names"
       parameters:
       - name: "corporation_ids"
@@ -9927,7 +9929,7 @@ paths:
       description: "Get a list of all the alliances a corporation has been a member\
         \ of\n\n---\nAlternate route: `/legacy/corporations/{corporation_id}/alliancehistory/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nWarning: This route\
-        \ is deprecated.\n\n---\n[This route has an available update](https://esi.evetech.net/diff/v1/dev/#GET-/corporations/{corporation_id}/alliancehistory/)"
+        \ is deprecated.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/corporations/{corporation_id}/alliancehistory/)"
       operationId: "get_corporations_corporation_id_alliancehistory"
       parameters:
       - name: "corporation_id"
@@ -10055,8 +10057,8 @@ paths:
         \ corporation assets endpoint. Coordinates for items in hangars or stations\
         \ are set to (0,0,0)\n\n---\nAlternate route: `/legacy/corporations/{corporation_id}/assets/locations/`\n\
         \n\n---\nRequires one of the following EVE corporation role(s): Director\n\
-        \n\n---\nWarning: This route is deprecated.\n\n---\n[This route has an available\
-        \ update](https://esi.evetech.net/diff/v1/dev/#POST-/corporations/{corporation_id}/assets/locations/)"
+        \n\n---\nWarning: This route is deprecated.\n\n---\n[Diff of the upcoming\
+        \ changes](https://esi.evetech.net/diff/v1/dev/#POST-/corporations/{corporation_id}/assets/locations/)"
       operationId: "post_corporations_corporation_id_assets_locations"
       parameters:
       - name: "corporation_id"
@@ -10146,6 +10148,13 @@ paths:
           examples:
             application/json:
               error: "Forbidden message"
+        404:
+          description: "Invalid IDs"
+          schema:
+            $ref: "#/definitions/post_corporations_corporation_id_assets_locations_not_found"
+          examples:
+            application/json:
+              error: "Not found message"
         500:
           description: "Internal server error"
           schema:
@@ -10273,6 +10282,13 @@ paths:
           examples:
             application/json:
               error: "Forbidden message"
+        404:
+          description: "Invalid IDs"
+          schema:
+            $ref: "#/definitions/post_corporations_corporation_id_assets_names_not_found"
+          examples:
+            application/json:
+              error: "Not found message"
         500:
           description: "Internal server error"
           schema:
@@ -10312,7 +10328,7 @@ paths:
         \ route: `/legacy/corporations/{corporation_id}/blueprints/`\n\n---\nThis\
         \ route is cached for up to 3600 seconds\n\n---\nRequires one of the following\
         \ EVE corporation role(s): Director\n\n\n---\nWarning: This route is deprecated.\n\
-        \n---\n[This route has an available update](https://esi.evetech.net/diff/v1/dev/#GET-/corporations/{corporation_id}/blueprints/)"
+        \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/corporations/{corporation_id}/blueprints/)"
       operationId: "get_corporations_corporation_id_blueprints"
       parameters:
       - name: "corporation_id"
@@ -10818,8 +10834,8 @@ paths:
       summary: "Get corporation contacts"
       description: "Return contacts of a corporation\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/contacts/`\n\
         \nAlternate route: `/legacy/corporations/{corporation_id}/contacts/`\n\n---\n\
-        This route is cached for up to 300 seconds\n\n---\n[This route has an available\
-        \ update](https://esi.evetech.net/diff/v1/dev/#GET-/corporations/{corporation_id}/contacts/)"
+        This route is cached for up to 300 seconds\n\n---\nWarning: This route has\
+        \ an upgrade available.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/corporations/{corporation_id}/contacts/)"
       operationId: "get_corporations_corporation_id_contacts"
       parameters:
       - name: "corporation_id"
@@ -11131,7 +11147,7 @@ paths:
         \ route: `/legacy/corporations/{corporation_id}/containers/logs/`\n\n---\n\
         This route is cached for up to 600 seconds\n\n---\nRequires one of the following\
         \ EVE corporation role(s): Director\n\n\n---\nWarning: This route is deprecated.\n\
-        \n---\n[This route has an available update](https://esi.evetech.net/diff/v1/dev/#GET-/corporations/{corporation_id}/containers/logs/)"
+        \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/corporations/{corporation_id}/containers/logs/)"
       operationId: "get_corporations_corporation_id_containers_logs"
       parameters:
       - name: "corporation_id"
@@ -13729,7 +13745,7 @@ paths:
         ---\nAlternate route: `/legacy/corporations/{corporation_id}/orders/`\n\n\
         ---\nThis route is cached for up to 1200 seconds\n\n---\nRequires one of the\
         \ following EVE corporation role(s): Accountant, Trader\n\n\n---\nWarning:\
-        \ This route is deprecated.\n\n---\n[This route has an available update](https://esi.evetech.net/diff/v1/dev/#GET-/corporations/{corporation_id}/orders/)"
+        \ This route is deprecated.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/corporations/{corporation_id}/orders/)"
       operationId: "get_corporations_corporation_id_orders"
       parameters:
       - name: "corporation_id"
@@ -15418,7 +15434,7 @@ paths:
         \ `/legacy/corporations/{corporation_id}/structures/`\n\n---\nThis route is\
         \ cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
         \ corporation role(s): StationManager\n\n\n---\nWarning: This route is deprecated.\n\
-        \n---\n[This route has an available update](https://esi.evetech.net/diff/v1/dev/#GET-/corporations/{corporation_id}/structures/)"
+        \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/corporations/{corporation_id}/structures/)"
       operationId: "get_corporations_corporation_id_structures"
       parameters:
       - name: "corporation_id"
@@ -15613,8 +15629,8 @@ paths:
         \ vulnerability as outlined in this blog: https://developers.eveonline.com/blog/article/upwell-2.0-esi-structure-changes.\
         \ This endpoint will now always return a 204 and be completely removed on\
         \ 2018-02-27.\n\n---\nAlternate route: `/legacy/corporations/{corporation_id}/structures/{structure_id}/`\n\
-        \n\n---\nWarning: This route is deprecated.\n\n---\n[This route has an available\
-        \ update](https://esi.evetech.net/diff/v1/dev/#PUT-/corporations/{corporation_id}/structures/{structure_id}/)"
+        \n\n---\nWarning: This route is deprecated.\n\n---\n[Diff of the upcoming\
+        \ changes](https://esi.evetech.net/diff/v1/dev/#PUT-/corporations/{corporation_id}/structures/{structure_id}/)"
       operationId: "put_corporations_corporation_id_structures_structure_id"
       parameters:
       - name: "corporation_id"
@@ -16582,7 +16598,7 @@ paths:
       summary: "Get effect information"
       description: "Get information on a dogma effect\n\n---\nAlternate route: `/legacy/dogma/effects/{effect_id}/`\n\
         \n---\nThis route expires daily at 11:05\n\n---\nWarning: This route is deprecated.\n\
-        \n---\n[This route has an available update](https://esi.evetech.net/diff/v1/dev/#GET-/dogma/effects/{effect_id}/)"
+        \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/dogma/effects/{effect_id}/)"
       operationId: "get_dogma_effects_effect_id"
       parameters:
       - name: "datasource"
@@ -18911,7 +18927,8 @@ paths:
       description: "An overview of the current ownership of faction warfare solar\
         \ systems\n\n---\nAlternate route: `/latest/fw/systems/`\n\nAlternate route:\
         \ `/legacy/fw/systems/`\n\n---\nThis route is cached for up to 1800 seconds\n\
-        \n---\n[This route has an available update](https://esi.evetech.net/diff/v1/dev/#GET-/fw/systems/)"
+        \n---\nWarning: This route has an upgrade available.\n\n---\n[Diff of the\
+        \ upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/fw/systems/)"
       operationId: "get_fw_systems"
       parameters:
       - name: "datasource"
@@ -21651,8 +21668,7 @@ paths:
       summary: "Search on a string"
       description: "Search for entities that match a given sub-string.\n\n---\nAlternate\
         \ route: `/legacy/search/`\n\n---\nThis route is cached for up to 3600 seconds\n\
-        \n---\nWarning: This route is deprecated.\n\n---\n[This route has an available\
-        \ update](https://esi.evetech.net/diff/v1/dev/#GET-/search/)"
+        \n---\nWarning: This route is deprecated.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/search/)"
       operationId: "get_search"
       parameters:
       - name: "categories"
@@ -22297,7 +22313,7 @@ paths:
       summary: "Set Autopilot Waypoint"
       description: "Set a solar system as autopilot waypoint\n\n---\nAlternate route:\
         \ `/legacy/ui/autopilot/waypoint/`\n\n\n---\nWarning: This route is deprecated\
-        \ as of 2016-12-23.\n\n---\n[This route has an available update](https://esi.evetech.net/diff/v1/dev/#POST-/ui/autopilot/waypoint/)"
+        \ as of 2016-12-23.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#POST-/ui/autopilot/waypoint/)"
       operationId: "post_ui_autopilot_waypoint"
       parameters:
       - name: "add_to_beginning"
@@ -23758,7 +23774,7 @@ paths:
       summary: "Get factions"
       description: "Get a list of factions\n\n---\nAlternate route: `/legacy/universe/factions/`\n\
         \n---\nThis route expires daily at 11:05\n\n---\nWarning: This route is deprecated.\n\
-        \n---\n[This route has an available update](https://esi.evetech.net/diff/v1/dev/#GET-/universe/factions/)"
+        \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/universe/factions/)"
       operationId: "get_universe_factions"
       parameters:
       - name: "datasource"
@@ -24676,8 +24692,8 @@ paths:
       description: "Resolve a set of IDs to names and categories. Supported ID's for\
         \ resolving are: Characters, Corporations, Alliances, Stations, Solar Systems,\
         \ Constellations, Regions, Types.\n\n---\nAlternate route: `/legacy/universe/names/`\n\
-        \n\n---\nWarning: This route is deprecated.\n\n---\n[This route has an available\
-        \ update](https://esi.evetech.net/diff/v1/dev/#POST-/universe/names/)"
+        \n\n---\nWarning: This route is deprecated.\n\n---\n[Diff of the upcoming\
+        \ changes](https://esi.evetech.net/diff/v1/dev/#POST-/universe/names/)"
       operationId: "post_universe_names"
       parameters:
       - name: "datasource"
@@ -25686,7 +25702,7 @@ paths:
       summary: "Get station information"
       description: "Public information on stations\n\n---\nAlternate route: `/legacy/universe/stations/{station_id}/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nWarning: This route\
-        \ is deprecated.\n\n---\n[This route has an available update](https://esi.evetech.net/diff/v1/dev/#GET-/universe/stations/{station_id}/)"
+        \ is deprecated.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/universe/stations/{station_id}/)"
       operationId: "get_universe_stations_station_id"
       parameters:
       - name: "datasource"
@@ -26186,8 +26202,8 @@ paths:
         \ the last hour ending at the timestamp of the Last-Modified header, excluding\
         \ wormhole space. Only systems with kills will be listed\n\n---\nAlternate\
         \ route: `/legacy/universe/system_kills/`\n\n---\nThis route is cached for\
-        \ up to 3600 seconds\n\n---\nWarning: This route is deprecated.\n\n---\n[This\
-        \ route has an available update](https://esi.evetech.net/diff/v1/dev/#GET-/universe/system_kills/)"
+        \ up to 3600 seconds\n\n---\nWarning: This route is deprecated.\n\n---\n[Diff\
+        \ of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/universe/system_kills/)"
       operationId: "get_universe_system_kills"
       parameters:
       - name: "datasource"
@@ -31273,6 +31289,13 @@ definitions:
         description: "z number"
         title: "post_corporations_corporation_id_assets_locations_z"
     description: "200 ok object"
+  post_corporations_corporation_id_assets_locations_not_found:
+    properties:
+      error:
+        type: "string"
+        description: "Not found message"
+        title: "post_corporations_corporation_id_assets_locations_404_not_found"
+    description: "Not found"
   post_corporations_corporation_id_assets_names_200_ok:
     required:
     - "item_id"
@@ -31288,6 +31311,13 @@ definitions:
         description: "name string"
         title: "post_corporations_corporation_id_assets_names_name"
     description: "200 ok object"
+  post_corporations_corporation_id_assets_names_not_found:
+    properties:
+      error:
+        type: "string"
+        description: "Not found message"
+        title: "post_corporations_corporation_id_assets_names_404_not_found"
+    description: "Not found"
   get_corporations_corporation_id_blueprints_200_ok:
     required:
     - "item_id"

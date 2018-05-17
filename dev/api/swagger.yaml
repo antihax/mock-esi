@@ -12215,6 +12215,13 @@ paths:
           examples:
             application/json:
               error: "Forbidden message"
+        404:
+          description: "Invalid IDs"
+          schema:
+            $ref: "#/definitions/post_corporations_corporation_id_assets_locations_not_found"
+          examples:
+            application/json:
+              error: "Not found message"
         500:
           description: "Internal server error"
           schema:
@@ -12342,6 +12349,13 @@ paths:
           examples:
             application/json:
               error: "Forbidden message"
+        404:
+          description: "Invalid IDs"
+          schema:
+            $ref: "#/definitions/post_corporations_corporation_id_assets_names_not_found"
+          examples:
+            application/json:
+              error: "Not found message"
         500:
           description: "Internal server error"
           schema:
@@ -35471,6 +35485,13 @@ definitions:
       position:
         $ref: "#/definitions/post_corporations_corporation_id_assets_locations_position"
     description: "200 ok object"
+  post_corporations_corporation_id_assets_locations_not_found:
+    properties:
+      error:
+        type: "string"
+        description: "Not found message"
+        title: "post_corporations_corporation_id_assets_locations_404_not_found"
+    description: "Not found"
   post_corporations_corporation_id_assets_names_200_ok:
     required:
     - "item_id"
@@ -35486,6 +35507,13 @@ definitions:
         description: "name string"
         title: "post_corporations_corporation_id_assets_names_name"
     description: "200 ok object"
+  post_corporations_corporation_id_assets_names_not_found:
+    properties:
+      error:
+        type: "string"
+        description: "Not found message"
+        title: "post_corporations_corporation_id_assets_names_404_not_found"
+    description: "Not found"
   get_corporations_corporation_id_blueprints_200_ok:
     required:
     - "item_id"
