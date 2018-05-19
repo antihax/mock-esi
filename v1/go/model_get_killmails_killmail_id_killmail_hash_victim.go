@@ -20,7 +20,7 @@ type GetKillmailsKillmailIdKillmailHashVictim struct {
 	FactionId int32 `json:"faction_id,omitempty"`
 	/*
 	 items array */
-	Items []GetKillmailsKillmailIdKillmailHashItem1 `json:"items,omitempty"`
+	Items []GetKillmailsKillmailIdKillmailHashItem `json:"items,omitempty"`
 	/* */
 	Position GetKillmailsKillmailIdKillmailHashPosition `json:"position,omitempty"`
 	/*

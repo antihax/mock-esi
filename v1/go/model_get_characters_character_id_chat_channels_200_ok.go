@@ -5,10 +5,10 @@ package esiv1
 type GetCharactersCharacterIdChatChannels200Ok struct {
 	/*
 	 allowed array */
-	Allowed []GetCharactersCharacterIdChatChannelsAllowed `json:"allowed,omitempty"`
+	Allowed []GetCharactersCharacterIdChatChannelsAllowedAllowed `json:"allowed,omitempty"`
 	/*
 	 blocked array */
-	Blocked []GetCharactersCharacterIdChatChannelsBlocked `json:"blocked,omitempty"`
+	Blocked []GetCharactersCharacterIdChatChannelsBlockedBlocked `json:"blocked,omitempty"`
 	/*
 	 Unique channel ID. Always negative for player-created channels. Permanent (CCP created) channels have a positive ID, but don't appear in the API */
 	ChannelId int32 `json:"channel_id,omitempty"`
@@ -23,7 +23,7 @@ type GetCharactersCharacterIdChatChannels200Ok struct {
 	Motd string `json:"motd,omitempty"`
 	/*
 	 muted array */
-	Muted []GetCharactersCharacterIdChatChannelsMuted `json:"muted,omitempty"`
+	Muted []GetCharactersCharacterIdChatChannelsMutedMuted `json:"muted,omitempty"`
 	/*
 	 Displayed name of channel */
 	Name string `json:"name,omitempty"`

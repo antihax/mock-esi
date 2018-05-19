@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "An OpenAPI for EVE Online"
-  version: "0.8.1"
+  version: "0.8.2"
   title: "EVE Swagger Interface"
 host: "esi.evetech.net"
 basePath: "/v3"
@@ -3134,7 +3134,7 @@ definitions:
       response:
         type: "string"
         description: "response string"
-        title: "put_characters_character_id_calendar_event_id_response"
+        title: "put_characters_character_id_calendar_event_id_response_response"
         enum:
         - "accepted"
         - "declined"
@@ -3182,11 +3182,11 @@ definitions:
         type: "integer"
         format: "int64"
         description: "location_id integer"
-        title: "get_characters_character_id_clones_location_id"
+        title: "get_characters_character_id_clones_jump_clone_location_id"
       location_type:
         type: "string"
         description: "location_type string"
-        title: "get_characters_character_id_clones_location_type"
+        title: "get_characters_character_id_clones_jump_clone_location_type"
         enum:
         - "station"
         - "structure"
@@ -3227,7 +3227,7 @@ definitions:
       characters:
         type: "array"
         description: "characters array"
-        title: "post_characters_character_id_cspa_characters"
+        title: "post_characters_character_id_cspa_characters_characters"
         uniqueItems: true
         items:
           type: "integer"
@@ -3344,7 +3344,7 @@ definitions:
         type: "integer"
         format: "int32"
         description: "type_id integer"
-        title: "get_characters_character_id_planets_planet_id_type_id"
+        title: "get_characters_character_id_planets_planet_id_content_type_id"
     description: "content object"
   get_characters_character_id_planets_planet_id_head:
     required:
@@ -3363,12 +3363,12 @@ definitions:
         type: "number"
         format: "float"
         description: "latitude number"
-        title: "get_characters_character_id_planets_planet_id_latitude"
+        title: "get_characters_character_id_planets_planet_id_head_latitude"
       longitude:
         type: "number"
         format: "float"
         description: "longitude number"
-        title: "get_characters_character_id_planets_planet_id_longitude"
+        title: "get_characters_character_id_planets_planet_id_head_longitude"
     description: "head object"
   get_characters_character_id_planets_planet_id_extractor_details:
     required:
@@ -3410,7 +3410,7 @@ definitions:
         type: "integer"
         format: "int32"
         description: "schematic_id integer"
-        title: "get_characters_character_id_planets_planet_id_schematic_id"
+        title: "get_characters_character_id_planets_planet_id_factory_details_schematic_id"
     description: "factory_details object"
   get_characters_character_id_planets_planet_id_pin:
     required:
@@ -3483,12 +3483,12 @@ definitions:
         type: "integer"
         format: "int32"
         description: "content_type_id integer"
-        title: "get_characters_character_id_planets_planet_id_content_type_id"
+        title: "get_characters_character_id_planets_planet_id_route_content_type_id"
       destination_pin_id:
         type: "integer"
         format: "int64"
         description: "destination_pin_id integer"
-        title: "get_characters_character_id_planets_planet_id_destination_pin_id"
+        title: "get_characters_character_id_planets_planet_id_route_destination_pin_id"
       quantity:
         type: "number"
         format: "float"
@@ -3503,7 +3503,7 @@ definitions:
         type: "integer"
         format: "int64"
         description: "source_pin_id integer"
-        title: "get_characters_character_id_planets_planet_id_source_pin_id"
+        title: "get_characters_character_id_planets_planet_id_route_source_pin_id"
       waypoints:
         type: "array"
         description: "list of pin ID waypoints"
@@ -3560,7 +3560,7 @@ definitions:
           type: "integer"
           format: "int32"
           description: "agent integer"
-          title: "get_characters_character_id_search_agent"
+          title: "get_characters_character_id_search_agent_agent"
         maxItems: 500
       alliance:
         type: "array"
@@ -3570,7 +3570,7 @@ definitions:
           type: "integer"
           format: "int32"
           description: "alliance integer"
-          title: "get_characters_character_id_search_alliance"
+          title: "get_characters_character_id_search_alliance_alliance"
         maxItems: 500
       character:
         type: "array"
@@ -3580,7 +3580,7 @@ definitions:
           type: "integer"
           format: "int32"
           description: "character integer"
-          title: "get_characters_character_id_search_character"
+          title: "get_characters_character_id_search_character_character"
         maxItems: 500
       constellation:
         type: "array"
@@ -3590,7 +3590,7 @@ definitions:
           type: "integer"
           format: "int32"
           description: "constellation integer"
-          title: "get_characters_character_id_search_constellation"
+          title: "get_characters_character_id_search_constellation_constellation"
         maxItems: 500
       corporation:
         type: "array"
@@ -3600,7 +3600,7 @@ definitions:
           type: "integer"
           format: "int32"
           description: "corporation integer"
-          title: "get_characters_character_id_search_corporation"
+          title: "get_characters_character_id_search_corporation_corporation"
         maxItems: 500
       faction:
         type: "array"
@@ -3610,7 +3610,7 @@ definitions:
           type: "integer"
           format: "int32"
           description: "faction integer"
-          title: "get_characters_character_id_search_faction"
+          title: "get_characters_character_id_search_faction_faction"
         maxItems: 500
       inventory_type:
         type: "array"
@@ -3620,7 +3620,7 @@ definitions:
           type: "integer"
           format: "int32"
           description: "inventory_type integer"
-          title: "get_characters_character_id_search_inventory_type"
+          title: "get_characters_character_id_search_inventory_type_inventory_type"
         maxItems: 500
       region:
         type: "array"
@@ -3630,7 +3630,7 @@ definitions:
           type: "integer"
           format: "int32"
           description: "region integer"
-          title: "get_characters_character_id_search_region"
+          title: "get_characters_character_id_search_region_region"
         maxItems: 500
       solar_system:
         type: "array"
@@ -3640,7 +3640,7 @@ definitions:
           type: "integer"
           format: "int32"
           description: "solar_system integer"
-          title: "get_characters_character_id_search_solar_system"
+          title: "get_characters_character_id_search_solar_system_solar_system"
         maxItems: 500
       station:
         type: "array"
@@ -3650,7 +3650,7 @@ definitions:
           type: "integer"
           format: "int32"
           description: "station integer"
-          title: "get_characters_character_id_search_station"
+          title: "get_characters_character_id_search_station_station"
         maxItems: 500
       structure:
         type: "array"
@@ -3660,7 +3660,7 @@ definitions:
           type: "integer"
           format: "int64"
           description: "structure integer"
-          title: "get_characters_character_id_search_structure"
+          title: "get_characters_character_id_search_structure_structure"
         maxItems: 500
     description: "200 ok object"
   get_characters_character_id_skills_skill:
