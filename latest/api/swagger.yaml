@@ -5871,12 +5871,12 @@ paths:
     get:
       tags:
       - "Killmails"
-      summary: "Get character kills and losses"
-      description: "Return a list of character's recent kills and losses\n\n---\n\
-        Alternate route: `/dev/characters/{character_id}/killmails/recent/`\n\nAlternate\
-        \ route: `/legacy/characters/{character_id}/killmails/recent/`\n\nAlternate\
-        \ route: `/v1/characters/{character_id}/killmails/recent/`\n\n---\nThis route\
-        \ is cached for up to 120 seconds"
+      summary: "Get a character's recent kills and losses"
+      description: "Return a list of a character's kills and losses going back 90\
+        \ days\n\n---\nAlternate route: `/dev/characters/{character_id}/killmails/recent/`\n\
+        \nAlternate route: `/legacy/characters/{character_id}/killmails/recent/`\n\
+        \nAlternate route: `/v1/characters/{character_id}/killmails/recent/`\n\n---\n\
+        This route is cached for up to 300 seconds"
       operationId: "get_characters_character_id_killmails_recent"
       parameters:
       - name: "character_id"
@@ -5904,22 +5904,15 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "max_count"
+      - name: "page"
         in: "query"
-        description: "How many killmails to return at maximum"
+        description: "Which page of results to return"
         required: false
         type: "integer"
-        default: 50
-        maximum: 5000
+        default: 1
+        minimum: 1
         format: "int32"
-        x-exportParamName: "MaxCount"
-      - name: "max_kill_id"
-        in: "query"
-        description: "Only return killmails with ID smaller than this.\n"
-        required: false
-        type: "integer"
-        format: "int32"
-        x-exportParamName: "MaxKillId"
+        x-exportParamName: "Page"
       - name: "token"
         in: "query"
         description: "Access token to use if unable to set a header"
@@ -5947,7 +5940,7 @@ paths:
             title: "get_characters_character_id_killmails_recent_ok"
             items:
               $ref: "#/definitions/get_characters_character_id_killmails_recent_200_ok"
-            maxItems: 5000
+            maxItems: 1000
           examples:
             application/json:
             - killmail_hash: "8eef5e8fb6b88fe3407c489df33822b2e3b57a5e"
@@ -5967,6 +5960,11 @@ paths:
             Last-Modified:
               type: "string"
               description: "RFC7231 formatted datetime string"
+            X-Pages:
+              type: "integer"
+              format: "int32"
+              description: "Maximum page number"
+              default: 1
         304:
           description: "Not modified"
           headers:
@@ -6031,7 +6029,7 @@ paths:
       - "dev"
       - "legacy"
       - "v1"
-      x-cached-seconds: 120
+      x-cached-seconds: 300
   /characters/{character_id}/location/:
     get:
       tags:
@@ -14860,13 +14858,13 @@ paths:
     get:
       tags:
       - "Killmails"
-      summary: "Get corporation kills and losses"
-      description: "Get a list of corporation's recent kills and losses\n\n---\nAlternate\
-        \ route: `/dev/corporations/{corporation_id}/killmails/recent/`\n\nAlternate\
-        \ route: `/legacy/corporations/{corporation_id}/killmails/recent/`\n\nAlternate\
-        \ route: `/v1/corporations/{corporation_id}/killmails/recent/`\n\n---\nThis\
-        \ route is cached for up to 300 seconds\n\n---\nRequires one of the following\
-        \ EVE corporation role(s): Director\n"
+      summary: "Get a corporation's recent kills and losses"
+      description: "Get a list of a corporation's kills and losses going back 90 days\n\
+        \n---\nAlternate route: `/dev/corporations/{corporation_id}/killmails/recent/`\n\
+        \nAlternate route: `/legacy/corporations/{corporation_id}/killmails/recent/`\n\
+        \nAlternate route: `/v1/corporations/{corporation_id}/killmails/recent/`\n\
+        \n---\nThis route is cached for up to 300 seconds\n\n---\nRequires one of\
+        \ the following EVE corporation role(s): Director\n"
       operationId: "get_corporations_corporation_id_killmails_recent"
       parameters:
       - name: "corporation_id"
@@ -14894,13 +14892,15 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "max_kill_id"
+      - name: "page"
         in: "query"
-        description: "Only return killmails with ID smaller than this"
+        description: "Which page of results to return"
         required: false
         type: "integer"
+        default: 1
+        minimum: 1
         format: "int32"
-        x-exportParamName: "MaxKillId"
+        x-exportParamName: "Page"
       - name: "token"
         in: "query"
         description: "Access token to use if unable to set a header"
@@ -14948,6 +14948,11 @@ paths:
             Last-Modified:
               type: "string"
               description: "RFC7231 formatted datetime string"
+            X-Pages:
+              type: "integer"
+              format: "int32"
+              description: "Maximum page number"
+              default: 1
         304:
           description: "Not modified"
           headers:

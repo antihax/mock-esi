@@ -17,8 +17,7 @@ func GetCharactersCharacterIdKillmailsRecent(w http.ResponseWriter, r *http.Requ
 		err         error
 		characterId int32
 		datasource  string
-		maxCount    int32
-		maxKillId   int32
+		page        int32
 		token       string
 		userAgent   string
 	)
@@ -52,21 +51,13 @@ func GetCharactersCharacterIdKillmailsRecent(w http.ResponseWriter, r *http.Requ
 		}
 		datasource = localV.(string)
 	}
-	if r.Form.Get("maxCount") != "" {
-		localV, err = processParameters(maxCount, r.Form.Get("max_count"))
+	if r.Form.Get("page") != "" {
+		localV, err = processParameters(page, r.Form.Get("page"))
 		if err != nil {
 			errorOut(w, r, err)
 			return
 		}
-		maxCount = localV.(int32)
-	}
-	if r.Form.Get("maxKillId") != "" {
-		localV, err = processParameters(maxKillId, r.Form.Get("max_kill_id"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		maxKillId = localV.(int32)
+		page = localV.(int32)
 	}
 	if r.Form.Get("token") != "" {
 		localV, err = processParameters(token, r.Form.Get("token"))
@@ -117,7 +108,7 @@ func GetCorporationsCorporationIdKillmailsRecent(w http.ResponseWriter, r *http.
 		err           error
 		corporationId int32
 		datasource    string
-		maxKillId     int32
+		page          int32
 		token         string
 		userAgent     string
 	)
@@ -151,13 +142,13 @@ func GetCorporationsCorporationIdKillmailsRecent(w http.ResponseWriter, r *http.
 		}
 		datasource = localV.(string)
 	}
-	if r.Form.Get("maxKillId") != "" {
-		localV, err = processParameters(maxKillId, r.Form.Get("max_kill_id"))
+	if r.Form.Get("page") != "" {
+		localV, err = processParameters(page, r.Form.Get("page"))
 		if err != nil {
 			errorOut(w, r, err)
 			return
 		}
-		maxKillId = localV.(int32)
+		page = localV.(int32)
 	}
 	if r.Form.Get("token") != "" {
 		localV, err = processParameters(token, r.Form.Get("token"))
