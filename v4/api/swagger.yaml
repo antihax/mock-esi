@@ -117,6 +117,13 @@ paths:
           examples:
             application/json:
               error: "Not found message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
         500:
           description: "Internal server error"
           schema:
@@ -234,6 +241,13 @@ paths:
           examples:
             application/json:
               error: "Forbidden message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
         500:
           description: "Internal server error"
           schema:
@@ -380,6 +394,13 @@ paths:
           examples:
             application/json:
               error: "Forbidden message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
         500:
           description: "Internal server error"
           schema:
@@ -547,6 +568,13 @@ paths:
           examples:
             application/json:
               error: "Forbidden message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
         500:
           description: "Internal server error"
           schema:
@@ -682,6 +710,13 @@ paths:
           examples:
             application/json:
               error: "Not found message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
         500:
           description: "Internal server error"
           schema:
@@ -737,6 +772,16 @@ definitions:
         description: "Bad request message"
     title: "Bad request"
     description: "Bad request model"
+  error_limited:
+    type: "object"
+    required:
+    - "error"
+    properties:
+      error:
+        type: "string"
+        description: "Error limited message"
+    title: "Error limited"
+    description: "Error limited model"
   forbidden:
     type: "object"
     required:
