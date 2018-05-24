@@ -18,7 +18,6 @@ func DeleteCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request)
 		characterId int32
 		datasource  string
 		token       string
-		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -51,14 +50,6 @@ func DeleteCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request)
 			return
 		}
 		token = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -95,7 +86,6 @@ func GetAlliancesAllianceIdContacts(w http.ResponseWriter, r *http.Request) {
 		datasource string
 		page       int32
 		token      string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -141,14 +131,6 @@ func GetAlliancesAllianceIdContacts(w http.ResponseWriter, r *http.Request) {
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -183,7 +165,6 @@ func GetAlliancesAllianceIdContactsLabels(w http.ResponseWriter, r *http.Request
 		allianceId int32
 		datasource string
 		token      string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -220,14 +201,6 @@ func GetAlliancesAllianceIdContactsLabels(w http.ResponseWriter, r *http.Request
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -263,7 +236,6 @@ func GetCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request) {
 		datasource  string
 		page        int32
 		token       string
-		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -311,14 +283,6 @@ func GetCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request) {
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -353,7 +317,6 @@ func GetCharactersCharacterIdContactsLabels(w http.ResponseWriter, r *http.Reque
 		characterId int32
 		datasource  string
 		token       string
-		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -390,14 +353,6 @@ func GetCharactersCharacterIdContactsLabels(w http.ResponseWriter, r *http.Reque
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -433,7 +388,6 @@ func GetCorporationsCorporationIdContacts(w http.ResponseWriter, r *http.Request
 		datasource    string
 		page          int32
 		token         string
-		userAgent     string
 	)
 	// shut up warnings
 	localV = localV
@@ -480,14 +434,6 @@ func GetCorporationsCorporationIdContacts(w http.ResponseWriter, r *http.Request
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -522,7 +468,6 @@ func GetCorporationsCorporationIdContactsLabels(w http.ResponseWriter, r *http.R
 		corporationId int32
 		datasource    string
 		token         string
-		userAgent     string
 	)
 	// shut up warnings
 	localV = localV
@@ -558,14 +503,6 @@ func GetCorporationsCorporationIdContactsLabels(w http.ResponseWriter, r *http.R
 			return
 		}
 		token = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -603,7 +540,6 @@ func PostCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request) {
 		datasource  string
 		labelId     int64
 		token       string
-		userAgent   string
 		watched     bool
 	)
 	// shut up warnings
@@ -651,14 +587,6 @@ func PostCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request) {
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 	if r.Form.Get("watched") != "" {
 		localV, err = processParameters(watched, r.Form.Get("watched"))
 		if err != nil {
@@ -703,7 +631,6 @@ func PutCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request) {
 		datasource  string
 		labelId     int64
 		token       string
-		userAgent   string
 		watched     bool
 	)
 	// shut up warnings
@@ -750,14 +677,6 @@ func PutCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		token = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 	if r.Form.Get("watched") != "" {
 		localV, err = processParameters(watched, r.Form.Get("watched"))

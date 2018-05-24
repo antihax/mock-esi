@@ -19,7 +19,6 @@ func DeleteFleetsFleetIdMembersMemberId(w http.ResponseWriter, r *http.Request) 
 		memberId   int32
 		datasource string
 		token      string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -59,14 +58,6 @@ func DeleteFleetsFleetIdMembersMemberId(w http.ResponseWriter, r *http.Request) 
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -102,7 +93,6 @@ func DeleteFleetsFleetIdSquadsSquadId(w http.ResponseWriter, r *http.Request) {
 		squadId    int64
 		datasource string
 		token      string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -142,14 +132,6 @@ func DeleteFleetsFleetIdSquadsSquadId(w http.ResponseWriter, r *http.Request) {
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -185,7 +167,6 @@ func DeleteFleetsFleetIdWingsWingId(w http.ResponseWriter, r *http.Request) {
 		wingId     int64
 		datasource string
 		token      string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -225,14 +206,6 @@ func DeleteFleetsFleetIdWingsWingId(w http.ResponseWriter, r *http.Request) {
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -267,7 +240,6 @@ func GetCharactersCharacterIdFleet(w http.ResponseWriter, r *http.Request) {
 		characterId int32
 		datasource  string
 		token       string
-		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -306,14 +278,6 @@ func GetCharactersCharacterIdFleet(w http.ResponseWriter, r *http.Request) {
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -348,7 +312,6 @@ func GetFleetsFleetId(w http.ResponseWriter, r *http.Request) {
 		fleetId    int64
 		datasource string
 		token      string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -387,14 +350,6 @@ func GetFleetsFleetId(w http.ResponseWriter, r *http.Request) {
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -430,7 +385,6 @@ func GetFleetsFleetIdMembers(w http.ResponseWriter, r *http.Request) {
 		datasource string
 		language   string
 		token      string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -483,14 +437,6 @@ func GetFleetsFleetIdMembers(w http.ResponseWriter, r *http.Request) {
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -526,7 +472,6 @@ func GetFleetsFleetIdWings(w http.ResponseWriter, r *http.Request) {
 		datasource string
 		language   string
 		token      string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -575,14 +520,6 @@ func GetFleetsFleetIdWings(w http.ResponseWriter, r *http.Request) {
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -617,7 +554,6 @@ func PostFleetsFleetIdMembers(w http.ResponseWriter, r *http.Request) {
 		fleetId    int64
 		datasource string
 		token      string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -650,14 +586,6 @@ func PostFleetsFleetIdMembers(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		token = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -693,7 +621,6 @@ func PostFleetsFleetIdWings(w http.ResponseWriter, r *http.Request) {
 		fleetId    int64
 		datasource string
 		token      string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -728,14 +655,6 @@ func PostFleetsFleetIdWings(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		token = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -772,7 +691,6 @@ func PostFleetsFleetIdWingsWingIdSquads(w http.ResponseWriter, r *http.Request) 
 		wingId     int64
 		datasource string
 		token      string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -814,14 +732,6 @@ func PostFleetsFleetIdWingsWingIdSquads(w http.ResponseWriter, r *http.Request) 
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -856,7 +766,6 @@ func PutFleetsFleetId(w http.ResponseWriter, r *http.Request) {
 		fleetId    int64
 		datasource string
 		token      string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -889,14 +798,6 @@ func PutFleetsFleetId(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		token = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -933,7 +834,6 @@ func PutFleetsFleetIdMembersMemberId(w http.ResponseWriter, r *http.Request) {
 		memberId   int32
 		datasource string
 		token      string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -973,14 +873,6 @@ func PutFleetsFleetIdMembersMemberId(w http.ResponseWriter, r *http.Request) {
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -1016,7 +908,6 @@ func PutFleetsFleetIdSquadsSquadId(w http.ResponseWriter, r *http.Request) {
 		squadId    int64
 		datasource string
 		token      string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -1056,14 +947,6 @@ func PutFleetsFleetIdSquadsSquadId(w http.ResponseWriter, r *http.Request) {
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -1099,7 +982,6 @@ func PutFleetsFleetIdWingsWingId(w http.ResponseWriter, r *http.Request) {
 		wingId     int64
 		datasource string
 		token      string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -1138,14 +1020,6 @@ func PutFleetsFleetIdWingsWingId(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		token = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {

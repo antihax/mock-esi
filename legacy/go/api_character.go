@@ -17,7 +17,6 @@ func GetCharactersCharacterId(w http.ResponseWriter, r *http.Request) {
 		err         error
 		characterId int32
 		datasource  string
-		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -51,14 +50,6 @@ func GetCharactersCharacterId(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		datasource = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -94,7 +85,6 @@ func GetCharactersCharacterIdAgentsResearch(w http.ResponseWriter, r *http.Reque
 		characterId int32
 		datasource  string
 		token       string
-		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -134,14 +124,6 @@ func GetCharactersCharacterIdAgentsResearch(w http.ResponseWriter, r *http.Reque
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -176,7 +158,6 @@ func GetCharactersCharacterIdBlueprints(w http.ResponseWriter, r *http.Request) 
 		characterId int32
 		datasource  string
 		token       string
-		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -219,14 +200,6 @@ func GetCharactersCharacterIdBlueprints(w http.ResponseWriter, r *http.Request) 
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -260,7 +233,6 @@ func GetCharactersCharacterIdCorporationhistory(w http.ResponseWriter, r *http.R
 		err         error
 		characterId int32
 		datasource  string
-		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -294,14 +266,6 @@ func GetCharactersCharacterIdCorporationhistory(w http.ResponseWriter, r *http.R
 			return
 		}
 		datasource = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -337,7 +301,6 @@ func GetCharactersCharacterIdFatigue(w http.ResponseWriter, r *http.Request) {
 		characterId int32
 		datasource  string
 		token       string
-		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -375,14 +338,6 @@ func GetCharactersCharacterIdFatigue(w http.ResponseWriter, r *http.Request) {
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -417,7 +372,6 @@ func GetCharactersCharacterIdMedals(w http.ResponseWriter, r *http.Request) {
 		characterId int32
 		datasource  string
 		token       string
-		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -476,14 +430,6 @@ func GetCharactersCharacterIdMedals(w http.ResponseWriter, r *http.Request) {
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -518,7 +464,6 @@ func GetCharactersCharacterIdNotifications(w http.ResponseWriter, r *http.Reques
 		characterId int32
 		datasource  string
 		token       string
-		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -560,14 +505,6 @@ func GetCharactersCharacterIdNotifications(w http.ResponseWriter, r *http.Reques
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -602,7 +539,6 @@ func GetCharactersCharacterIdNotificationsContacts(w http.ResponseWriter, r *htt
 		characterId int32
 		datasource  string
 		token       string
-		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -642,14 +578,6 @@ func GetCharactersCharacterIdNotificationsContacts(w http.ResponseWriter, r *htt
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -683,7 +611,6 @@ func GetCharactersCharacterIdPortrait(w http.ResponseWriter, r *http.Request) {
 		err         error
 		characterId int32
 		datasource  string
-		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -713,14 +640,6 @@ func GetCharactersCharacterIdPortrait(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		datasource = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -756,7 +675,6 @@ func GetCharactersCharacterIdRoles(w http.ResponseWriter, r *http.Request) {
 		characterId int32
 		datasource  string
 		token       string
-		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -789,14 +707,6 @@ func GetCharactersCharacterIdRoles(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		token = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -832,7 +742,6 @@ func GetCharactersCharacterIdStandings(w http.ResponseWriter, r *http.Request) {
 		characterId int32
 		datasource  string
 		token       string
-		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -878,14 +787,6 @@ func GetCharactersCharacterIdStandings(w http.ResponseWriter, r *http.Request) {
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -920,7 +821,6 @@ func GetCharactersCharacterIdStats(w http.ResponseWriter, r *http.Request) {
 		characterId int32
 		datasource  string
 		token       string
-		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -960,14 +860,6 @@ func GetCharactersCharacterIdStats(w http.ResponseWriter, r *http.Request) {
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -1002,7 +894,6 @@ func GetCharactersCharacterIdTitles(w http.ResponseWriter, r *http.Request) {
 		characterId int32
 		datasource  string
 		token       string
-		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -1039,14 +930,6 @@ func GetCharactersCharacterIdTitles(w http.ResponseWriter, r *http.Request) {
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -1080,7 +963,6 @@ func GetCharactersNames(w http.ResponseWriter, r *http.Request) {
 		err          error
 		characterIds []int64
 		datasource   string
-		userAgent    string
 	)
 	// shut up warnings
 	localV = localV
@@ -1106,14 +988,6 @@ func GetCharactersNames(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		datasource = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -1147,7 +1021,6 @@ func PostCharactersAffiliation(w http.ResponseWriter, r *http.Request) {
 		localV     interface{}
 		err        error
 		datasource string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -1169,14 +1042,6 @@ func PostCharactersAffiliation(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		datasource = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -1212,7 +1077,6 @@ func PostCharactersCharacterIdCspa(w http.ResponseWriter, r *http.Request) {
 		characterId int32
 		datasource  string
 		token       string
-		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -1247,14 +1111,6 @@ func PostCharactersCharacterIdCspa(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		token = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {

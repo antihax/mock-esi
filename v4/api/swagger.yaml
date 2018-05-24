@@ -48,18 +48,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Public data for the given character"
@@ -197,18 +185,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         201:
           description: "Aggregate cost of sending a mail from the source character\
@@ -316,18 +292,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Known skills for the character"
@@ -480,18 +444,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Journal entries"
@@ -638,18 +590,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Public information about a corporation"
@@ -1251,6 +1191,20 @@ definitions:
         title: "get_corporations_corporation_id_404_not_found"
     description: "Not found"
 parameters:
+  Accept-Language:
+    name: "Accept-Language"
+    in: "header"
+    description: "Language to use in the response"
+    required: false
+    type: "string"
+    default: "en-us"
+    enum:
+    - "de"
+    - "en-us"
+    - "fr"
+    - "ja"
+    - "ru"
+    - "zh"
   If-None-Match:
     name: "If-None-Match"
     in: "header"
@@ -1259,13 +1213,6 @@ parameters:
     required: false
     type: "string"
     x-exportParamName: "IfNoneMatch"
-  X-User-Agent:
-    name: "X-User-Agent"
-    in: "header"
-    description: "Client identifier, takes precedence over User-Agent"
-    required: false
-    type: "string"
-    x-exportParamName: "XUserAgent"
   character_id:
     name: "character_id"
     in: "path"
@@ -1298,7 +1245,7 @@ parameters:
   language:
     name: "language"
     in: "query"
-    description: "Language to use in the response"
+    description: "Language to use in the response, takes precedence over Accept-Language"
     required: false
     type: "string"
     default: "en-us"
@@ -1326,10 +1273,3 @@ parameters:
     required: false
     type: "string"
     x-exportParamName: "Token"
-  user_agent:
-    name: "user_agent"
-    in: "query"
-    description: "Client identifier, takes precedence over headers"
-    required: false
-    type: "string"
-    x-exportParamName: "UserAgent"

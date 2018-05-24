@@ -20,7 +20,6 @@ func PostUiAutopilotWaypoint(w http.ResponseWriter, r *http.Request) {
 		solarSystemId       int32
 		datasource          string
 		token               string
-		userAgent           string
 	)
 	// shut up warnings
 	localV = localV
@@ -62,14 +61,6 @@ func PostUiAutopilotWaypoint(w http.ResponseWriter, r *http.Request) {
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -104,7 +95,6 @@ func PostUiOpenwindowContract(w http.ResponseWriter, r *http.Request) {
 		contractId int32
 		datasource string
 		token      string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -135,14 +125,6 @@ func PostUiOpenwindowContract(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		token = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -178,7 +160,6 @@ func PostUiOpenwindowInformation(w http.ResponseWriter, r *http.Request) {
 		targetId   int32
 		datasource string
 		token      string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -209,14 +190,6 @@ func PostUiOpenwindowInformation(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		token = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -252,7 +225,6 @@ func PostUiOpenwindowMarketdetails(w http.ResponseWriter, r *http.Request) {
 		typeId     int32
 		datasource string
 		token      string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -283,14 +255,6 @@ func PostUiOpenwindowMarketdetails(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		errorOut(w, r, err)
 		return
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -325,7 +289,6 @@ func PostUiOpenwindowNewmail(w http.ResponseWriter, r *http.Request) {
 		err        error
 		datasource string
 		token      string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -351,14 +314,6 @@ func PostUiOpenwindowNewmail(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		token = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {

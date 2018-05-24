@@ -19,7 +19,6 @@ func GetCharactersCharacterIdContracts(w http.ResponseWriter, r *http.Request) {
 		datasource  string
 		page        int32
 		token       string
-		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -82,14 +81,6 @@ func GetCharactersCharacterIdContracts(w http.ResponseWriter, r *http.Request) {
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -125,7 +116,6 @@ func GetCharactersCharacterIdContractsContractIdBids(w http.ResponseWriter, r *h
 		contractId  int32
 		datasource  string
 		token       string
-		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -170,14 +160,6 @@ func GetCharactersCharacterIdContractsContractIdBids(w http.ResponseWriter, r *h
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -213,7 +195,6 @@ func GetCharactersCharacterIdContractsContractIdItems(w http.ResponseWriter, r *
 		contractId  int32
 		datasource  string
 		token       string
-		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -259,14 +240,6 @@ func GetCharactersCharacterIdContractsContractIdItems(w http.ResponseWriter, r *
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -302,7 +275,6 @@ func GetCorporationsCorporationIdContracts(w http.ResponseWriter, r *http.Reques
 		datasource    string
 		page          int32
 		token         string
-		userAgent     string
 	)
 	// shut up warnings
 	localV = localV
@@ -363,14 +335,6 @@ func GetCorporationsCorporationIdContracts(w http.ResponseWriter, r *http.Reques
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -407,7 +371,6 @@ func GetCorporationsCorporationIdContractsContractIdBids(w http.ResponseWriter, 
 		datasource    string
 		page          int32
 		token         string
-		userAgent     string
 	)
 	// shut up warnings
 	localV = localV
@@ -460,14 +423,6 @@ func GetCorporationsCorporationIdContractsContractIdBids(w http.ResponseWriter, 
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -503,7 +458,6 @@ func GetCorporationsCorporationIdContractsContractIdItems(w http.ResponseWriter,
 		corporationId int32
 		datasource    string
 		token         string
-		userAgent     string
 	)
 	// shut up warnings
 	localV = localV
@@ -548,14 +502,6 @@ func GetCorporationsCorporationIdContractsContractIdItems(w http.ResponseWriter,
 			return
 		}
 		token = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {

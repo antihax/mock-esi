@@ -17,7 +17,6 @@ func GetWars(w http.ResponseWriter, r *http.Request) {
 		err        error
 		datasource string
 		maxWarId   int32
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -43,14 +42,6 @@ func GetWars(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		maxWarId = localV.(int32)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -85,7 +76,6 @@ func GetWarsWarId(w http.ResponseWriter, r *http.Request) {
 		err        error
 		warId      int32
 		datasource string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -126,14 +116,6 @@ func GetWarsWarId(w http.ResponseWriter, r *http.Request) {
 		}
 		datasource = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -168,7 +150,6 @@ func GetWarsWarIdKillmails(w http.ResponseWriter, r *http.Request) {
 		warId      int32
 		datasource string
 		page       int32
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -207,14 +188,6 @@ func GetWarsWarIdKillmails(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		page = localV.(int32)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {

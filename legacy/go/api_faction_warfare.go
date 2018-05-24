@@ -18,7 +18,6 @@ func GetCharactersCharacterIdFwStats(w http.ResponseWriter, r *http.Request) {
 		characterId int32
 		datasource  string
 		token       string
-		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -65,14 +64,6 @@ func GetCharactersCharacterIdFwStats(w http.ResponseWriter, r *http.Request) {
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -107,7 +98,6 @@ func GetCorporationsCorporationIdFwStats(w http.ResponseWriter, r *http.Request)
 		corporationId int32
 		datasource    string
 		token         string
-		userAgent     string
 	)
 	// shut up warnings
 	localV = localV
@@ -155,14 +145,6 @@ func GetCorporationsCorporationIdFwStats(w http.ResponseWriter, r *http.Request)
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -195,7 +177,6 @@ func GetFwLeaderboards(w http.ResponseWriter, r *http.Request) {
 		localV     interface{}
 		err        error
 		datasource string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -261,14 +242,6 @@ func GetFwLeaderboards(w http.ResponseWriter, r *http.Request) {
 		}
 		datasource = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -301,7 +274,6 @@ func GetFwLeaderboardsCharacters(w http.ResponseWriter, r *http.Request) {
 		localV     interface{}
 		err        error
 		datasource string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -367,14 +339,6 @@ func GetFwLeaderboardsCharacters(w http.ResponseWriter, r *http.Request) {
 		}
 		datasource = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -407,7 +371,6 @@ func GetFwLeaderboardsCorporations(w http.ResponseWriter, r *http.Request) {
 		localV     interface{}
 		err        error
 		datasource string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -473,14 +436,6 @@ func GetFwLeaderboardsCorporations(w http.ResponseWriter, r *http.Request) {
 		}
 		datasource = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -513,7 +468,6 @@ func GetFwStats(w http.ResponseWriter, r *http.Request) {
 		localV     interface{}
 		err        error
 		datasource string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -545,14 +499,6 @@ func GetFwStats(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		datasource = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -586,7 +532,6 @@ func GetFwSystems(w http.ResponseWriter, r *http.Request) {
 		localV     interface{}
 		err        error
 		datasource string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -611,14 +556,6 @@ func GetFwSystems(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		datasource = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -652,7 +589,6 @@ func GetFwWars(w http.ResponseWriter, r *http.Request) {
 		localV     interface{}
 		err        error
 		datasource string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -673,14 +609,6 @@ func GetFwWars(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		datasource = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {

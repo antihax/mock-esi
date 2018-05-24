@@ -18,7 +18,6 @@ func GetCharactersCharacterIdOpportunities(w http.ResponseWriter, r *http.Reques
 		characterId int32
 		datasource  string
 		token       string
-		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -55,14 +54,6 @@ func GetCharactersCharacterIdOpportunities(w http.ResponseWriter, r *http.Reques
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -95,7 +86,6 @@ func GetOpportunitiesGroups(w http.ResponseWriter, r *http.Request) {
 		localV     interface{}
 		err        error
 		datasource string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -113,14 +103,6 @@ func GetOpportunitiesGroups(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		datasource = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -156,7 +138,6 @@ func GetOpportunitiesGroupsGroupId(w http.ResponseWriter, r *http.Request) {
 		groupId    int32
 		datasource string
 		language   string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -197,14 +178,6 @@ func GetOpportunitiesGroupsGroupId(w http.ResponseWriter, r *http.Request) {
 		}
 		language = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -237,7 +210,6 @@ func GetOpportunitiesTasks(w http.ResponseWriter, r *http.Request) {
 		localV     interface{}
 		err        error
 		datasource string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -255,14 +227,6 @@ func GetOpportunitiesTasks(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		datasource = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -297,7 +261,6 @@ func GetOpportunitiesTasksTaskId(w http.ResponseWriter, r *http.Request) {
 		err        error
 		taskId     int32
 		datasource string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -327,14 +290,6 @@ func GetOpportunitiesTasksTaskId(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		datasource = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {

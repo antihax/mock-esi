@@ -40,18 +40,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "List of Alliance IDs"
@@ -176,18 +164,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "List of id/name associations"
@@ -304,18 +280,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Public data about an alliance"
@@ -454,18 +418,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of contacts"
@@ -612,18 +564,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of alliance contact labels"
@@ -759,18 +699,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "List of corporation IDs"
@@ -892,18 +820,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Icon URLs for the given alliance id and server"
@@ -1031,18 +947,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Character corporation, alliance and faction IDs"
@@ -1172,18 +1076,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "List of id/name associations"
@@ -1301,18 +1193,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Public data for the given character"
@@ -1447,18 +1327,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of agents research information"
@@ -1611,18 +1479,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A flat list of the users assets"
@@ -1780,18 +1636,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "List of asset locations"
@@ -1914,18 +1758,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "List of asset names"
@@ -2038,18 +1870,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Attributes of a character"
@@ -2198,18 +2018,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of blueprints"
@@ -2369,18 +2177,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of bookmarks"
@@ -2554,18 +2350,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "List of bookmark folders"
@@ -2721,18 +2505,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A collection of event summaries"
@@ -2884,18 +2656,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Full details of a specific event"
@@ -3055,18 +2815,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         204:
           description: "Event updated"
@@ -3175,18 +2923,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "List of attendees"
@@ -3336,18 +3072,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Clone information for the given character"
@@ -3499,18 +3223,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of contacts"
@@ -3682,12 +3394,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
       - name: "watched"
         in: "query"
         description: "Whether the contact should be watched, note this is only effective\
@@ -3696,12 +3402,6 @@ paths:
         type: "boolean"
         default: false
         x-exportParamName: "Watched"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         201:
           description: "A list of contact ids that successfully created"
@@ -3839,12 +3539,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
       - name: "watched"
         in: "query"
         description: "Whether the contact should be watched, note this is only effective\
@@ -3853,12 +3547,6 @@ paths:
         type: "boolean"
         default: false
         x-exportParamName: "Watched"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         204:
           description: "Contacts updated"
@@ -3960,18 +3648,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         204:
           description: "Contacts deleted"
@@ -4073,18 +3749,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of contact labels"
@@ -4237,18 +3901,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of contracts"
@@ -4421,18 +4073,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of bids"
@@ -4591,18 +4231,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of items in this contract"
@@ -4749,18 +4377,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Corporation history for the given character"
@@ -4896,18 +4512,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         201:
           description: "Aggregate cost of sending a mail from the source character\
@@ -5017,18 +4621,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Jump activation and fatigue information"
@@ -5166,18 +4758,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of fittings"
@@ -5323,18 +4903,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         201:
           description: "A list of fittings"
@@ -5440,18 +5008,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         204:
           description: "Fitting deleted"
@@ -5553,18 +5109,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Details about the character's fleet"
@@ -5711,18 +5255,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Faction warfare statistics for a given character"
@@ -5866,18 +5398,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of implant type ids"
@@ -6029,18 +5549,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Industry jobs placed by a character"
@@ -6206,18 +5714,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of killmail IDs and hashes"
@@ -6368,18 +5864,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Information about the characters current location. Returns\
@@ -6519,18 +6003,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of loyalty points"
@@ -6694,18 +6166,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "The requested mail"
@@ -6853,18 +6313,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         201:
           description: "Mail created"
@@ -6981,18 +6429,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of mail labels and unread counts"
@@ -7134,18 +6570,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         201:
           description: "Label created"
@@ -7253,18 +6677,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         204:
           description: "Label deleted"
@@ -7374,18 +6786,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Mailing lists"
@@ -7534,18 +6934,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Contents of a mail"
@@ -7700,18 +7088,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         204:
           description: "Mail updated"
@@ -7811,18 +7187,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         204:
           description: "Mail deleted"
@@ -7924,18 +7288,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of medals"
@@ -8106,18 +7458,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Mining ledger of a character"
@@ -8269,18 +7609,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Returns your recent notifications"
@@ -8428,18 +7756,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of contact notifications"
@@ -8583,18 +7899,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Object describing the character's online status"
@@ -8732,18 +8036,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of opportunities task ids"
@@ -8884,18 +8176,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Open market orders placed by a character"
@@ -9058,18 +8338,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Expired and cancelled market orders placed by a character"
@@ -9230,18 +8498,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "List of colonies"
@@ -9404,18 +8660,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Colony layout"
@@ -9568,18 +8812,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Public data for the given character"
@@ -9706,18 +8938,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "The character's roles in thier corporation"
@@ -9822,6 +9042,20 @@ paths:
         \n---\nThis route is cached for up to 3600 seconds"
       operationId: "get_characters_character_id_search"
       parameters:
+      - name: "Accept-Language"
+        in: "header"
+        description: "Language to use in the response"
+        required: false
+        type: "string"
+        default: "en-us"
+        enum:
+        - "de"
+        - "en-us"
+        - "fr"
+        - "ja"
+        - "ru"
+        - "zh"
+        x-exportParamName: "AcceptLanguage"
       - name: "categories"
         in: "query"
         description: "Type of entities to search for"
@@ -9872,7 +9106,7 @@ paths:
         x-exportParamName: "IfNoneMatch"
       - name: "language"
         in: "query"
-        description: "Language to use in the response"
+        description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
         default: "en-us"
@@ -9904,18 +9138,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of search results"
@@ -10069,18 +9291,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Get the current ship type, name and id"
@@ -10219,18 +9429,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "The current skill queue, sorted ascending by finishing time"
@@ -10384,18 +9582,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Known skills for the character"
@@ -10540,18 +9726,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of standings"
@@ -10699,18 +9873,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Character stats"
@@ -10863,18 +10025,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of titles"
@@ -11016,18 +10166,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Wallet balance"
@@ -11174,18 +10312,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Journal entries"
@@ -11348,18 +10474,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Wallet transactions"
@@ -11520,18 +10634,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of chunk timers"
@@ -11694,18 +10796,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Observer list of a corporation"
@@ -11873,18 +10963,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Mining ledger of an observer"
@@ -12032,18 +11110,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "List of id/name associations"
@@ -12152,18 +11218,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of npc corporation ids"
@@ -12284,18 +11338,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Public information about a corporation"
@@ -12424,18 +11466,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Alliance history for the given corporation"
@@ -12572,18 +11602,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of assets"
@@ -12744,18 +11762,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "List of asset locations"
@@ -12888,18 +11894,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "List of asset names"
@@ -13031,18 +12025,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "List of corporation blueprints"
@@ -13205,18 +12187,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "List of corporation owned bookmarks"
@@ -13392,18 +12362,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "List of corporation owned bookmark folders"
@@ -13559,18 +12517,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of contacts"
@@ -13720,18 +12666,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of corporation contact labels"
@@ -13885,18 +12819,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "List of corporation ALSC logs"
@@ -14079,18 +13001,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of contracts"
@@ -14271,18 +13181,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of bids"
@@ -14447,18 +13345,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of items in this contract"
@@ -14630,18 +13516,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of customs offices and their settings"
@@ -14802,18 +13676,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "List of corporation division names"
@@ -14957,18 +13819,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "List of corporation facilities"
@@ -15114,18 +13964,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Faction warfare statistics for a given corporation"
@@ -15265,18 +14103,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Urls for icons for the given corporation id and server"
@@ -15422,18 +14248,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of corporation industry jobs"
@@ -15607,18 +14421,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of killmail IDs and hashes"
@@ -15778,18 +14580,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of medals"
@@ -15951,18 +14741,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of issued medals"
@@ -16115,18 +14893,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "List of member character IDs"
@@ -16272,18 +15038,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "The corporation's member limit"
@@ -16425,18 +15179,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of members and theirs titles"
@@ -16582,18 +15324,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "List of member character IDs"
@@ -16757,18 +15487,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of open market orders"
@@ -16940,18 +15658,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Expired and cancelled market orders placed on behalf of a\
@@ -17128,18 +15834,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "List of corporation outpost IDs"
@@ -17304,18 +15998,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Details about the given outpost"
@@ -17470,18 +16152,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "List of member character ID's and roles"
@@ -17636,18 +16306,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "List of role changes"
@@ -17813,18 +16471,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "List of shareholders"
@@ -17993,18 +16639,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of standings"
@@ -18169,18 +16803,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "List of starbases (POSes)"
@@ -18346,18 +16968,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "List of starbases (POSes)"
@@ -18476,6 +17086,20 @@ paths:
         \ EVE corporation role(s): StationManager\n"
       operationId: "get_corporations_corporation_id_structures"
       parameters:
+      - name: "Accept-Language"
+        in: "header"
+        description: "Language to use in the response"
+        required: false
+        type: "string"
+        default: "en-us"
+        enum:
+        - "de"
+        - "en-us"
+        - "fr"
+        - "ja"
+        - "ru"
+        - "zh"
+        x-exportParamName: "AcceptLanguage"
       - name: "corporation_id"
         in: "path"
         description: "An EVE corporation ID"
@@ -18503,7 +17127,7 @@ paths:
         x-exportParamName: "IfNoneMatch"
       - name: "language"
         in: "query"
-        description: "Language to use in the response"
+        description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
         default: "en-us"
@@ -18530,18 +17154,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "List of corporation structures' information"
@@ -18706,18 +17318,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of titles"
@@ -18865,18 +17465,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "List of corporation wallets"
@@ -19052,18 +17640,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Journal entries"
@@ -19240,18 +17816,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Wallet transactions"
@@ -19388,18 +17952,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of dogma attribute ids"
@@ -19520,18 +18072,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Information about a dogma attribute"
@@ -19649,18 +18189,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of dogma effect ids"
@@ -19780,18 +18308,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Information about a dogma effect"
@@ -19921,18 +18437,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Details about a fleet"
@@ -20074,18 +18578,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         204:
           description: "Fleet updated"
@@ -20163,6 +18655,20 @@ paths:
         \ cached for up to 5 seconds"
       operationId: "get_fleets_fleet_id_members"
       parameters:
+      - name: "Accept-Language"
+        in: "header"
+        description: "Language to use in the response"
+        required: false
+        type: "string"
+        default: "en-us"
+        enum:
+        - "de"
+        - "en-us"
+        - "fr"
+        - "ja"
+        - "ru"
+        - "zh"
+        x-exportParamName: "AcceptLanguage"
       - name: "datasource"
         in: "query"
         description: "The server name you would like data from"
@@ -20189,7 +18695,7 @@ paths:
         x-exportParamName: "IfNoneMatch"
       - name: "language"
         in: "query"
-        description: "Language to use in the response"
+        description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
         default: "en-us"
@@ -20207,18 +18713,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of fleet members"
@@ -20383,18 +18877,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         204:
           description: "Fleet invitation sent"
@@ -20515,18 +18997,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         204:
           description: "Fleet invitation sent"
@@ -20639,18 +19109,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         204:
           description: "Fleet member kicked"
@@ -20764,18 +19222,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         204:
           description: "Squad renamed"
@@ -20882,18 +19328,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         204:
           description: "Squad deleted"
@@ -20971,6 +19405,20 @@ paths:
         \ for up to 5 seconds"
       operationId: "get_fleets_fleet_id_wings"
       parameters:
+      - name: "Accept-Language"
+        in: "header"
+        description: "Language to use in the response"
+        required: false
+        type: "string"
+        default: "en-us"
+        enum:
+        - "de"
+        - "en-us"
+        - "fr"
+        - "ja"
+        - "ru"
+        - "zh"
+        x-exportParamName: "AcceptLanguage"
       - name: "datasource"
         in: "query"
         description: "The server name you would like data from"
@@ -20997,7 +19445,7 @@ paths:
         x-exportParamName: "IfNoneMatch"
       - name: "language"
         in: "query"
-        description: "Language to use in the response"
+        description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
         default: "en-us"
@@ -21015,18 +19463,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of fleet wings"
@@ -21178,18 +19614,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         201:
           description: "Wing created"
@@ -21301,12 +19725,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
       - name: "wing_id"
         in: "path"
         description: "The wing to rename"
@@ -21314,12 +19732,6 @@ paths:
         type: "integer"
         format: "int64"
         x-exportParamName: "WingId"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         204:
           description: "Wing renamed"
@@ -21419,12 +19831,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
       - name: "wing_id"
         in: "path"
         description: "The wing to delete"
@@ -21432,12 +19838,6 @@ paths:
         type: "integer"
         format: "int64"
         x-exportParamName: "WingId"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         204:
           description: "Wing deleted"
@@ -21537,12 +19937,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
       - name: "wing_id"
         in: "path"
         description: "The wing_id to create squad in"
@@ -21550,12 +19944,6 @@ paths:
         type: "integer"
         format: "int64"
         x-exportParamName: "WingId"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         201:
           description: "Squad created"
@@ -21655,18 +20043,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Corporation leaderboard of kills and victory points within\
@@ -21802,18 +20178,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Character leaderboard of kills and victory points within faction\
@@ -21950,18 +20314,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Corporation leaderboard of kills and victory points within\
@@ -22096,18 +20448,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Per faction breakdown of faction warfare statistics"
@@ -22227,18 +20567,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "All faction warfare solar systems"
@@ -22351,18 +20679,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of NPC factions at war"
@@ -22471,18 +20787,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of incursions"
@@ -22606,18 +20910,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of facilities"
@@ -22732,18 +21024,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of cost indicies"
@@ -22839,6 +21119,20 @@ paths:
         \ up to 3600 seconds"
       operationId: "get_insurance_prices"
       parameters:
+      - name: "Accept-Language"
+        in: "header"
+        description: "Language to use in the response"
+        required: false
+        type: "string"
+        default: "en-us"
+        enum:
+        - "de"
+        - "en-us"
+        - "fr"
+        - "ja"
+        - "ru"
+        - "zh"
+        x-exportParamName: "AcceptLanguage"
       - name: "datasource"
         in: "query"
         description: "The server name you would like data from"
@@ -22858,7 +21152,7 @@ paths:
         x-exportParamName: "IfNoneMatch"
       - name: "language"
         in: "query"
-        description: "Language to use in the response"
+        description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
         default: "en-us"
@@ -22870,18 +21164,6 @@ paths:
         - "ru"
         - "zh"
         x-exportParamName: "Language"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of insurance levels for all ship types"
@@ -23018,18 +21300,6 @@ paths:
         type: "integer"
         format: "int32"
         x-exportParamName: "KillmailId"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A killmail"
@@ -23176,18 +21446,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of offers"
@@ -23316,18 +21574,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of item group ids"
@@ -23424,6 +21670,20 @@ paths:
         \ daily at 11:05"
       operationId: "get_markets_groups_market_group_id"
       parameters:
+      - name: "Accept-Language"
+        in: "header"
+        description: "Language to use in the response"
+        required: false
+        type: "string"
+        default: "en-us"
+        enum:
+        - "de"
+        - "en-us"
+        - "fr"
+        - "ja"
+        - "ru"
+        - "zh"
+        x-exportParamName: "AcceptLanguage"
       - name: "datasource"
         in: "query"
         description: "The server name you would like data from"
@@ -23443,7 +21703,7 @@ paths:
         x-exportParamName: "IfNoneMatch"
       - name: "language"
         in: "query"
-        description: "Language to use in the response"
+        description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
         default: "en-us"
@@ -23462,18 +21722,6 @@ paths:
         type: "integer"
         format: "int32"
         x-exportParamName: "MarketGroupId"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Information about an item group"
@@ -23599,18 +21847,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of prices"
@@ -23744,18 +21980,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of orders"
@@ -23911,18 +22135,6 @@ paths:
         type: "integer"
         format: "int32"
         x-exportParamName: "TypeId"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of historical market statistics"
@@ -24092,18 +22304,6 @@ paths:
         type: "integer"
         format: "int32"
         x-exportParamName: "TypeId"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of orders"
@@ -24260,18 +22460,6 @@ paths:
         type: "integer"
         format: "int32"
         x-exportParamName: "RegionId"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of type IDs"
@@ -24391,18 +22579,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of opportunities group ids"
@@ -24500,6 +22676,20 @@ paths:
         \ expires daily at 11:05"
       operationId: "get_opportunities_groups_group_id"
       parameters:
+      - name: "Accept-Language"
+        in: "header"
+        description: "Language to use in the response"
+        required: false
+        type: "string"
+        default: "en-us"
+        enum:
+        - "de"
+        - "en-us"
+        - "fr"
+        - "ja"
+        - "ru"
+        - "zh"
+        x-exportParamName: "AcceptLanguage"
       - name: "datasource"
         in: "query"
         description: "The server name you would like data from"
@@ -24526,7 +22716,7 @@ paths:
         x-exportParamName: "IfNoneMatch"
       - name: "language"
         in: "query"
-        description: "Language to use in the response"
+        description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
         default: "en-us"
@@ -24538,18 +22728,6 @@ paths:
         - "ru"
         - "zh"
         x-exportParamName: "Language"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Details of an opportunities group"
@@ -24670,18 +22848,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of opportunities task ids"
@@ -24803,18 +22969,6 @@ paths:
         type: "integer"
         format: "int32"
         x-exportParamName: "TaskId"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Details of an opportunities task"
@@ -24973,18 +23127,6 @@ paths:
         type: "integer"
         format: "int32"
         x-exportParamName: "Origin"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Solar systems in route from origin to destination"
@@ -25089,6 +23231,20 @@ paths:
         \ is cached for up to 3600 seconds"
       operationId: "get_search"
       parameters:
+      - name: "Accept-Language"
+        in: "header"
+        description: "Language to use in the response"
+        required: false
+        type: "string"
+        default: "en-us"
+        enum:
+        - "de"
+        - "en-us"
+        - "fr"
+        - "ja"
+        - "ru"
+        - "zh"
+        x-exportParamName: "AcceptLanguage"
       - name: "categories"
         in: "query"
         description: "Type of entities to search for"
@@ -25130,7 +23286,7 @@ paths:
         x-exportParamName: "IfNoneMatch"
       - name: "language"
         in: "query"
-        description: "Language to use in the response"
+        description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
         default: "en-us"
@@ -25156,18 +23312,6 @@ paths:
         type: "boolean"
         default: false
         x-exportParamName: "Strict"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of search results"
@@ -25290,18 +23434,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of sovereignty campaigns"
@@ -25419,18 +23551,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of sovereignty information for solar systems in New\
@@ -25542,18 +23662,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of sovereignty structures"
@@ -25668,18 +23776,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Server status"
@@ -25806,18 +23902,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         204:
           description: "Open window request received"
@@ -25909,18 +23993,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         204:
           description: "Open window request received"
@@ -26014,18 +24086,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         204:
           description: "Open window request received"
@@ -26119,18 +24179,6 @@ paths:
         type: "integer"
         format: "int32"
         x-exportParamName: "TypeId"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         204:
           description: "Open window request received"
@@ -26223,18 +24271,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         204:
           description: "Open window request received"
@@ -26311,6 +24347,20 @@ paths:
         \n---\nThis route expires daily at 11:05"
       operationId: "get_universe_ancestries"
       parameters:
+      - name: "Accept-Language"
+        in: "header"
+        description: "Language to use in the response"
+        required: false
+        type: "string"
+        default: "en-us"
+        enum:
+        - "de"
+        - "en-us"
+        - "fr"
+        - "ja"
+        - "ru"
+        - "zh"
+        x-exportParamName: "AcceptLanguage"
       - name: "datasource"
         in: "query"
         description: "The server name you would like data from"
@@ -26330,7 +24380,7 @@ paths:
         x-exportParamName: "IfNoneMatch"
       - name: "language"
         in: "query"
-        description: "Language to use in the response"
+        description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
         default: "en-us"
@@ -26342,18 +24392,6 @@ paths:
         - "ru"
         - "zh"
         x-exportParamName: "Language"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of ancestries"
@@ -26483,18 +24521,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Information about an asteroid belt"
@@ -26592,6 +24618,20 @@ paths:
         \n---\nThis route expires daily at 11:05"
       operationId: "get_universe_bloodlines"
       parameters:
+      - name: "Accept-Language"
+        in: "header"
+        description: "Language to use in the response"
+        required: false
+        type: "string"
+        default: "en-us"
+        enum:
+        - "de"
+        - "en-us"
+        - "fr"
+        - "ja"
+        - "ru"
+        - "zh"
+        x-exportParamName: "AcceptLanguage"
       - name: "datasource"
         in: "query"
         description: "The server name you would like data from"
@@ -26611,7 +24651,7 @@ paths:
         x-exportParamName: "IfNoneMatch"
       - name: "language"
         in: "query"
-        description: "Language to use in the response"
+        description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
         default: "en-us"
@@ -26623,18 +24663,6 @@ paths:
         - "ru"
         - "zh"
         x-exportParamName: "Language"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of bloodlines"
@@ -26762,18 +24790,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of item category ids"
@@ -26870,6 +24886,20 @@ paths:
         \ daily at 11:05"
       operationId: "get_universe_categories_category_id"
       parameters:
+      - name: "Accept-Language"
+        in: "header"
+        description: "Language to use in the response"
+        required: false
+        type: "string"
+        default: "en-us"
+        enum:
+        - "de"
+        - "en-us"
+        - "fr"
+        - "ja"
+        - "ru"
+        - "zh"
+        x-exportParamName: "AcceptLanguage"
       - name: "category_id"
         in: "path"
         description: "An Eve item category ID"
@@ -26896,7 +24926,7 @@ paths:
         x-exportParamName: "IfNoneMatch"
       - name: "language"
         in: "query"
-        description: "Language to use in the response"
+        description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
         default: "en-us"
@@ -26908,18 +24938,6 @@ paths:
         - "ru"
         - "zh"
         x-exportParamName: "Language"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Information about an item category"
@@ -27045,18 +25063,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of constellation ids"
@@ -27152,6 +25158,20 @@ paths:
         This route expires daily at 11:05"
       operationId: "get_universe_constellations_constellation_id"
       parameters:
+      - name: "Accept-Language"
+        in: "header"
+        description: "Language to use in the response"
+        required: false
+        type: "string"
+        default: "en-us"
+        enum:
+        - "de"
+        - "en-us"
+        - "fr"
+        - "ja"
+        - "ru"
+        - "zh"
+        x-exportParamName: "AcceptLanguage"
       - name: "constellation_id"
         in: "path"
         description: "constellation_id integer"
@@ -27178,7 +25198,7 @@ paths:
         x-exportParamName: "IfNoneMatch"
       - name: "language"
         in: "query"
-        description: "Language to use in the response"
+        description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
         default: "en-us"
@@ -27190,18 +25210,6 @@ paths:
         - "ru"
         - "zh"
         x-exportParamName: "Language"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Information about a constellation"
@@ -27313,6 +25321,20 @@ paths:
         \ at 11:05"
       operationId: "get_universe_factions"
       parameters:
+      - name: "Accept-Language"
+        in: "header"
+        description: "Language to use in the response"
+        required: false
+        type: "string"
+        default: "en-us"
+        enum:
+        - "de"
+        - "en-us"
+        - "fr"
+        - "ja"
+        - "ru"
+        - "zh"
+        x-exportParamName: "AcceptLanguage"
       - name: "datasource"
         in: "query"
         description: "The server name you would like data from"
@@ -27332,7 +25354,7 @@ paths:
         x-exportParamName: "IfNoneMatch"
       - name: "language"
         in: "query"
-        description: "Language to use in the response"
+        description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
         default: "en-us"
@@ -27344,18 +25366,6 @@ paths:
         - "ru"
         - "zh"
         x-exportParamName: "Language"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of factions"
@@ -27480,18 +25490,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of graphic ids"
@@ -27611,18 +25609,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Information about a graphic"
@@ -27742,18 +25728,6 @@ paths:
         minimum: 1
         format: "int32"
         x-exportParamName: "Page"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of item group ids"
@@ -27854,6 +25828,20 @@ paths:
         \ `/v1/universe/groups/{group_id}/`\n\n---\nThis route expires daily at 11:05"
       operationId: "get_universe_groups_group_id"
       parameters:
+      - name: "Accept-Language"
+        in: "header"
+        description: "Language to use in the response"
+        required: false
+        type: "string"
+        default: "en-us"
+        enum:
+        - "de"
+        - "en-us"
+        - "fr"
+        - "ja"
+        - "ru"
+        - "zh"
+        x-exportParamName: "AcceptLanguage"
       - name: "datasource"
         in: "query"
         description: "The server name you would like data from"
@@ -27880,7 +25868,7 @@ paths:
         x-exportParamName: "IfNoneMatch"
       - name: "language"
         in: "query"
-        description: "Language to use in the response"
+        description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
         default: "en-us"
@@ -27892,18 +25880,6 @@ paths:
         - "ru"
         - "zh"
         x-exportParamName: "Language"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Information about an item group"
@@ -28015,6 +25991,20 @@ paths:
         \nAlternate route: `/legacy/universe/ids/`\n\nAlternate route: `/v1/universe/ids/`\n"
       operationId: "post_universe_ids"
       parameters:
+      - name: "Accept-Language"
+        in: "header"
+        description: "Language to use in the response"
+        required: false
+        type: "string"
+        default: "en-us"
+        enum:
+        - "de"
+        - "en-us"
+        - "fr"
+        - "ja"
+        - "ru"
+        - "zh"
+        x-exportParamName: "AcceptLanguage"
       - name: "datasource"
         in: "query"
         description: "The server name you would like data from"
@@ -28027,7 +26017,7 @@ paths:
         x-exportParamName: "Datasource"
       - name: "language"
         in: "query"
-        description: "Language to use in the response"
+        description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
         default: "en-us"
@@ -28055,18 +26045,6 @@ paths:
             maxLength: 100
           example: "[\"CCP Zoetrope\"]"
         x-exportParamName: "Names"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "List of id/name associations for a set of names divided by\
@@ -28167,18 +26145,6 @@ paths:
         type: "integer"
         format: "int32"
         x-exportParamName: "MoonId"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Information about a moon"
@@ -28303,18 +26269,6 @@ paths:
             title: "post_universe_names_id"
           example: "[95465499,30000142]"
         x-exportParamName: "Ids"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "List of id/name associations for a set of ID's. All ID's must\
@@ -28414,18 +26368,6 @@ paths:
         type: "integer"
         format: "int32"
         x-exportParamName: "PlanetId"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Information about a planet"
@@ -28525,6 +26467,20 @@ paths:
         \n---\nThis route expires daily at 11:05"
       operationId: "get_universe_races"
       parameters:
+      - name: "Accept-Language"
+        in: "header"
+        description: "Language to use in the response"
+        required: false
+        type: "string"
+        default: "en-us"
+        enum:
+        - "de"
+        - "en-us"
+        - "fr"
+        - "ja"
+        - "ru"
+        - "zh"
+        x-exportParamName: "AcceptLanguage"
       - name: "datasource"
         in: "query"
         description: "The server name you would like data from"
@@ -28544,7 +26500,7 @@ paths:
         x-exportParamName: "IfNoneMatch"
       - name: "language"
         in: "query"
-        description: "Language to use in the response"
+        description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
         default: "en-us"
@@ -28556,18 +26512,6 @@ paths:
         - "ru"
         - "zh"
         x-exportParamName: "Language"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of character races"
@@ -28688,18 +26632,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of region ids"
@@ -28795,6 +26727,20 @@ paths:
         \ 11:05"
       operationId: "get_universe_regions_region_id"
       parameters:
+      - name: "Accept-Language"
+        in: "header"
+        description: "Language to use in the response"
+        required: false
+        type: "string"
+        default: "en-us"
+        enum:
+        - "de"
+        - "en-us"
+        - "fr"
+        - "ja"
+        - "ru"
+        - "zh"
+        x-exportParamName: "AcceptLanguage"
       - name: "datasource"
         in: "query"
         description: "The server name you would like data from"
@@ -28814,7 +26760,7 @@ paths:
         x-exportParamName: "IfNoneMatch"
       - name: "language"
         in: "query"
-        description: "Language to use in the response"
+        description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
         default: "en-us"
@@ -28833,18 +26779,6 @@ paths:
         type: "integer"
         format: "int32"
         x-exportParamName: "RegionId"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Information about a region"
@@ -28977,18 +26911,6 @@ paths:
         type: "integer"
         format: "int32"
         x-exportParamName: "SchematicId"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Public data about a schematic"
@@ -29108,18 +27030,6 @@ paths:
         type: "integer"
         format: "int32"
         x-exportParamName: "StargateId"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Information about a stargate"
@@ -29246,18 +27156,6 @@ paths:
         type: "integer"
         format: "int32"
         x-exportParamName: "StarId"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Information about a star"
@@ -29374,18 +27272,6 @@ paths:
         type: "integer"
         format: "int32"
         x-exportParamName: "StationId"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Information about a station"
@@ -29520,18 +27406,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "List of public structure IDs"
@@ -29661,18 +27535,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Data about a structure"
@@ -29803,18 +27665,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of systems and number of jumps"
@@ -29926,18 +27776,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of systems and number of ship, pod and NPC kills"
@@ -30048,18 +27886,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of solar system ids"
@@ -30154,6 +27980,20 @@ paths:
         \ expires daily at 11:05"
       operationId: "get_universe_systems_system_id"
       parameters:
+      - name: "Accept-Language"
+        in: "header"
+        description: "Language to use in the response"
+        required: false
+        type: "string"
+        default: "en-us"
+        enum:
+        - "de"
+        - "en-us"
+        - "fr"
+        - "ja"
+        - "ru"
+        - "zh"
+        x-exportParamName: "AcceptLanguage"
       - name: "datasource"
         in: "query"
         description: "The server name you would like data from"
@@ -30173,7 +28013,7 @@ paths:
         x-exportParamName: "IfNoneMatch"
       - name: "language"
         in: "query"
-        description: "Language to use in the response"
+        description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
         default: "en-us"
@@ -30192,18 +28032,6 @@ paths:
         type: "integer"
         format: "int32"
         x-exportParamName: "SystemId"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Information about a solar system"
@@ -30347,18 +28175,6 @@ paths:
         minimum: 1
         format: "int32"
         x-exportParamName: "Page"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of type ids"
@@ -30459,6 +28275,20 @@ paths:
         \ daily at 11:05"
       operationId: "get_universe_types_type_id"
       parameters:
+      - name: "Accept-Language"
+        in: "header"
+        description: "Language to use in the response"
+        required: false
+        type: "string"
+        default: "en-us"
+        enum:
+        - "de"
+        - "en-us"
+        - "fr"
+        - "ja"
+        - "ru"
+        - "zh"
+        x-exportParamName: "AcceptLanguage"
       - name: "datasource"
         in: "query"
         description: "The server name you would like data from"
@@ -30478,7 +28308,7 @@ paths:
         x-exportParamName: "IfNoneMatch"
       - name: "language"
         in: "query"
-        description: "Language to use in the response"
+        description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
         default: "en-us"
@@ -30497,18 +28327,6 @@ paths:
         type: "integer"
         format: "int32"
         x-exportParamName: "TypeId"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Information about a type"
@@ -30638,18 +28456,6 @@ paths:
         type: "integer"
         format: "int32"
         x-exportParamName: "MaxWarId"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of war IDs, in decending order by war_id."
@@ -30763,12 +28569,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
       - name: "war_id"
         in: "path"
         description: "ID for a war"
@@ -30777,12 +28577,6 @@ paths:
         minimum: 1
         format: "int32"
         x-exportParamName: "WarId"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Details about a war"
@@ -30914,12 +28708,6 @@ paths:
         minimum: 1
         format: "int32"
         x-exportParamName: "Page"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
       - name: "war_id"
         in: "path"
         description: "A valid war ID"
@@ -30928,12 +28716,6 @@ paths:
         minimum: 1
         format: "int32"
         x-exportParamName: "WarId"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of killmail IDs and hashes"
@@ -44482,6 +42264,21 @@ definitions:
         title: "get_wars_war_id_killmails_422_unprocessable_entity"
     description: "Unprocessable entity"
 parameters:
+  Accept-Language:
+    name: "Accept-Language"
+    in: "header"
+    description: "Language to use in the response"
+    required: false
+    type: "string"
+    default: "en-us"
+    enum:
+    - "de"
+    - "en-us"
+    - "fr"
+    - "ja"
+    - "ru"
+    - "zh"
+    x-exportParamName: "AcceptLanguage"
   If-None-Match:
     name: "If-None-Match"
     in: "header"
@@ -44490,13 +42287,6 @@ parameters:
     required: false
     type: "string"
     x-exportParamName: "IfNoneMatch"
-  X-User-Agent:
-    name: "X-User-Agent"
-    in: "header"
-    description: "Client identifier, takes precedence over User-Agent"
-    required: false
-    type: "string"
-    x-exportParamName: "XUserAgent"
   alliance_id:
     name: "alliance_id"
     in: "path"
@@ -44538,7 +42328,7 @@ parameters:
   language:
     name: "language"
     in: "query"
-    description: "Language to use in the response"
+    description: "Language to use in the response, takes precedence over Accept-Language"
     required: false
     type: "string"
     default: "en-us"
@@ -44567,10 +42357,3 @@ parameters:
     required: false
     type: "string"
     x-exportParamName: "Token"
-  user_agent:
-    name: "user_agent"
-    in: "query"
-    description: "Client identifier, takes precedence over headers"
-    required: false
-    type: "string"
-    x-exportParamName: "UserAgent"

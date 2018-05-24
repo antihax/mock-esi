@@ -19,7 +19,6 @@ func GetCharactersCharacterIdIndustryJobs(w http.ResponseWriter, r *http.Request
 		datasource       string
 		includeCompleted bool
 		token            string
-		userAgent        string
 	)
 	// shut up warnings
 	localV = localV
@@ -78,14 +77,6 @@ func GetCharactersCharacterIdIndustryJobs(w http.ResponseWriter, r *http.Request
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -121,7 +112,6 @@ func GetCharactersCharacterIdMining(w http.ResponseWriter, r *http.Request) {
 		datasource  string
 		page        int32
 		token       string
-		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -173,14 +163,6 @@ func GetCharactersCharacterIdMining(w http.ResponseWriter, r *http.Request) {
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -216,7 +198,6 @@ func GetCorporationCorporationIdMiningExtractions(w http.ResponseWriter, r *http
 		datasource    string
 		page          int32
 		token         string
-		userAgent     string
 	)
 	// shut up warnings
 	localV = localV
@@ -264,14 +245,6 @@ func GetCorporationCorporationIdMiningExtractions(w http.ResponseWriter, r *http
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -307,7 +280,6 @@ func GetCorporationCorporationIdMiningObservers(w http.ResponseWriter, r *http.R
 		datasource    string
 		page          int32
 		token         string
-		userAgent     string
 	)
 	// shut up warnings
 	localV = localV
@@ -353,14 +325,6 @@ func GetCorporationCorporationIdMiningObservers(w http.ResponseWriter, r *http.R
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -397,7 +361,6 @@ func GetCorporationCorporationIdMiningObserversObserverId(w http.ResponseWriter,
 		datasource    string
 		page          int32
 		token         string
-		userAgent     string
 	)
 	// shut up warnings
 	localV = localV
@@ -451,14 +414,6 @@ func GetCorporationCorporationIdMiningObserversObserverId(w http.ResponseWriter,
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -495,7 +450,6 @@ func GetCorporationsCorporationIdIndustryJobs(w http.ResponseWriter, r *http.Req
 		includeCompleted bool
 		page             int32
 		token            string
-		userAgent        string
 	)
 	// shut up warnings
 	localV = localV
@@ -562,14 +516,6 @@ func GetCorporationsCorporationIdIndustryJobs(w http.ResponseWriter, r *http.Req
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -602,7 +548,6 @@ func GetIndustryFacilities(w http.ResponseWriter, r *http.Request) {
 		localV     interface{}
 		err        error
 		datasource string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -627,14 +572,6 @@ func GetIndustryFacilities(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		datasource = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -668,7 +605,6 @@ func GetIndustrySystems(w http.ResponseWriter, r *http.Request) {
 		localV     interface{}
 		err        error
 		datasource string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -692,14 +628,6 @@ func GetIndustrySystems(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		datasource = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {

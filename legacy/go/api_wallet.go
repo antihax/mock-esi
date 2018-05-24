@@ -18,7 +18,6 @@ func GetCharactersCharacterIdWallet(w http.ResponseWriter, r *http.Request) {
 		characterId int32
 		datasource  string
 		token       string
-		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -51,14 +50,6 @@ func GetCharactersCharacterIdWallet(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		token = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -95,7 +86,6 @@ func GetCharactersCharacterIdWalletJournal(w http.ResponseWriter, r *http.Reques
 		datasource  string
 		fromId      int64
 		token       string
-		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -141,14 +131,6 @@ func GetCharactersCharacterIdWalletJournal(w http.ResponseWriter, r *http.Reques
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -184,7 +166,6 @@ func GetCharactersCharacterIdWalletTransactions(w http.ResponseWriter, r *http.R
 		datasource  string
 		fromId      int64
 		token       string
-		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -237,14 +218,6 @@ func GetCharactersCharacterIdWalletTransactions(w http.ResponseWriter, r *http.R
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -279,7 +252,6 @@ func GetCorporationsCorporationIdWallets(w http.ResponseWriter, r *http.Request)
 		corporationId int32
 		datasource    string
 		token         string
-		userAgent     string
 	)
 	// shut up warnings
 	localV = localV
@@ -334,14 +306,6 @@ func GetCorporationsCorporationIdWallets(w http.ResponseWriter, r *http.Request)
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -378,7 +342,6 @@ func GetCorporationsCorporationIdWalletsDivisionJournal(w http.ResponseWriter, r
 		datasource    string
 		fromId        int64
 		token         string
-		userAgent     string
 	)
 	// shut up warnings
 	localV = localV
@@ -430,14 +393,6 @@ func GetCorporationsCorporationIdWalletsDivisionJournal(w http.ResponseWriter, r
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -474,7 +429,6 @@ func GetCorporationsCorporationIdWalletsDivisionTransactions(w http.ResponseWrit
 		datasource    string
 		fromId        int64
 		token         string
-		userAgent     string
 	)
 	// shut up warnings
 	localV = localV
@@ -531,14 +485,6 @@ func GetCorporationsCorporationIdWalletsDivisionTransactions(w http.ResponseWrit
 			return
 		}
 		token = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
