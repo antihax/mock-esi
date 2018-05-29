@@ -13113,8 +13113,8 @@ paths:
     get:
       tags:
       - "Contracts"
-      summary: "Get coporation contracts"
-      description: "Returns contracts available to a coporation, only if the corporation\
+      summary: "Get corporation contracts"
+      description: "Returns contracts available to a corporation, only if the corporation\
         \ is issuer, acceptor or assignee. Only returns contracts no older than 30\
         \ days, or if the status is \"in_progress\".\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/contracts/`\n\
         \nAlternate route: `/latest/corporations/{corporation_id}/contracts/`\n\n\
@@ -18402,6 +18402,139 @@ paths:
           description: "Dogma attribute not found"
           schema:
             $ref: "#/definitions/get_dogma_attributes_attribute_id_not_found"
+          examples:
+            application/json:
+              error: "Not found message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
+      x-alternate-versions:
+      - "dev"
+      - "latest"
+      - "v1"
+  /dogma/dynamic/items/{type_id}/{item_id}/:
+    get:
+      tags:
+      - "Dogma"
+      summary: "Stats about a dynamic item resulting from a mutator"
+      description: "Returns info about a dynamic item resulting from a mutator\n\n\
+        ---\nAlternate route: `/dev/dogma/dynamic/items/{type_id}/{item_id}/`\n\n\
+        Alternate route: `/latest/dogma/dynamic/items/{type_id}/{item_id}/`\n\nAlternate\
+        \ route: `/v1/dogma/dynamic/items/{type_id}/{item_id}/`\n\n---\nThis route\
+        \ expires daily at 11:05\n\n---\nWarning: This is a legacy route."
+      operationId: "get_dogma_dynamic_items_type_id_item_id"
+      parameters:
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "If-None-Match"
+        in: "header"
+        description: "ETag from a previous request. A 304 will be returned if this\
+          \ matches the current ETag"
+        required: false
+        type: "string"
+        x-exportParamName: "IfNoneMatch"
+      - name: "item_id"
+        in: "path"
+        description: "item_id integer"
+        required: true
+        type: "integer"
+        format: "int64"
+        x-exportParamName: "ItemId"
+      - name: "type_id"
+        in: "path"
+        description: "type_id integer"
+        required: true
+        type: "integer"
+        format: "int32"
+        x-exportParamName: "TypeId"
+      responses:
+        200:
+          description: "Details about a dynamic item"
+          schema:
+            $ref: "#/definitions/get_dogma_dynamic_items_type_id_item_id_ok"
+          examples:
+            application/json:
+              created_by: 2112625428
+              dogma_attributes:
+              - attribute_id: 9
+                value: 350
+              dogma_effects:
+              - effect_id: 508
+                is_default: false
+              mutator_type_id: 47845
+              source_type_id: 33103
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        304:
+          description: "Not modified"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        404:
+          description: "Item not found"
+          schema:
+            $ref: "#/definitions/get_dogma_dynamic_items_type_id_item_id_not_found"
           examples:
             application/json:
               error: "Not found message"
@@ -27774,10 +27907,9 @@ paths:
       summary: "Get structure information"
       description: "Returns information on requested structure, if you are on the\
         \ ACL. Otherwise, returns \"Forbidden\" for all inputs.\n\n---\nAlternate\
-        \ route: `/dev/universe/structures/{structure_id}/`\n\nAlternate route: `/latest/universe/structures/{structure_id}/`\n\
-        \nAlternate route: `/v1/universe/structures/{structure_id}/`\n\n---\nThis\
-        \ route is cached for up to 3600 seconds\n\n---\nWarning: This is a legacy\
-        \ route."
+        \ route: `/latest/universe/structures/{structure_id}/`\n\nAlternate route:\
+        \ `/v1/universe/structures/{structure_id}/`\n\n---\nThis route is cached for\
+        \ up to 3600 seconds\n\n---\nWarning: This is a legacy route."
       operationId: "get_universe_structures_structure_id"
       parameters:
       - name: "datasource"
@@ -27907,7 +28039,6 @@ paths:
       - evesso:
         - "esi-universe.read_structures.v1"
       x-alternate-versions:
-      - "dev"
       - "latest"
       - "v1"
       x-cached-seconds: 3600
@@ -38289,6 +38420,83 @@ definitions:
         type: "string"
         description: "Not found message"
         title: "get_dogma_attributes_attribute_id_404_not_found"
+    description: "Not found"
+  get_dogma_dynamic_items_type_id_item_id_dogma_attribute:
+    required:
+    - "attribute_id"
+    - "value"
+    properties:
+      attribute_id:
+        type: "integer"
+        format: "int32"
+        description: "attribute_id integer"
+        title: "get_dogma_dynamic_items_type_id_item_id_attribute_id"
+      value:
+        type: "number"
+        format: "float"
+        description: "value number"
+        title: "get_dogma_dynamic_items_type_id_item_id_value"
+    description: "dogma_attribute object"
+  get_dogma_dynamic_items_type_id_item_id_dogma_effect:
+    required:
+    - "effect_id"
+    - "is_default"
+    properties:
+      effect_id:
+        type: "integer"
+        format: "int32"
+        description: "effect_id integer"
+        title: "get_dogma_dynamic_items_type_id_item_id_effect_id"
+      is_default:
+        type: "boolean"
+        description: "is_default boolean"
+        title: "get_dogma_dynamic_items_type_id_item_id_is_default"
+    description: "dogma_effect object"
+  get_dogma_dynamic_items_type_id_item_id_ok:
+    required:
+    - "created_by"
+    - "dogma_attributes"
+    - "dogma_effects"
+    - "mutator_type_id"
+    - "source_type_id"
+    properties:
+      created_by:
+        type: "integer"
+        format: "int32"
+        description: "The ID of the character who created the item"
+        title: "get_dogma_dynamic_items_type_id_item_id_created_by"
+      dogma_attributes:
+        type: "array"
+        description: "dogma_attributes array"
+        title: "get_dogma_dynamic_items_type_id_item_id_dogma_attributes"
+        items:
+          $ref: "#/definitions/get_dogma_dynamic_items_type_id_item_id_dogma_attribute"
+        maxItems: 1000
+      dogma_effects:
+        type: "array"
+        description: "dogma_effects array"
+        title: "get_dogma_dynamic_items_type_id_item_id_dogma_effects"
+        items:
+          $ref: "#/definitions/get_dogma_dynamic_items_type_id_item_id_dogma_effect"
+        maxItems: 1000
+      mutator_type_id:
+        type: "integer"
+        format: "int32"
+        description: "The type ID of the mutator used to generate the dynamic item."
+        title: "get_dogma_dynamic_items_type_id_item_id_mutator_type_id"
+      source_type_id:
+        type: "integer"
+        format: "int32"
+        description: "The type ID of the source item the mutator was applied to create\
+          \ the dynamic item."
+        title: "get_dogma_dynamic_items_type_id_item_id_source_type_id"
+    description: "200 ok object"
+  get_dogma_dynamic_items_type_id_item_id_not_found:
+    properties:
+      error:
+        type: "string"
+        description: "Not found message"
+        title: "get_dogma_dynamic_items_type_id_item_id_404_not_found"
     description: "Not found"
   get_dogma_effects_effect_id_modifier:
     required:

@@ -128,6 +128,83 @@ func GetDogmaAttributesAttributeId(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte(j))
 }
 
+func GetDogmaDynamicItemsTypeIdItemId(w http.ResponseWriter, r *http.Request) {
+
+	var (
+		localV     interface{}
+		err        error
+		itemId     int64
+		typeId     int32
+		datasource string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
+
+	j := `{
+  "created_by" : 2112625428,
+  "dogma_attributes" : [ {
+    "attribute_id" : 9,
+    "value" : 350
+  } ],
+  "dogma_effects" : [ {
+    "effect_id" : 508,
+    "is_default" : false
+  } ],
+  "mutator_type_id" : 47845,
+  "source_type_id" : 33103
+}`
+	vars := mux.Vars(r)
+	localV, err = processParameters(itemId, vars["item_id"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	itemId = localV.(int64)
+	localV, err = processParameters(typeId, vars["type_id"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	typeId = localV.(int32)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
+
+	if r.Form.Get("page") != "" {
+		var (
+			localPage    int32
+			localIntPage interface{}
+		)
+		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		localPage = localIntPage.(int32)
+		if localPage > 1 {
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("[]"))
+			return
+		}
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
+}
+
 func GetDogmaEffects(w http.ResponseWriter, r *http.Request) {
 
 	var (

@@ -1373,6 +1373,7 @@ func GetUniverseStructuresStructureId(w http.ResponseWriter, r *http.Request) {
 
 	j := `{
   "name" : "V-3YG7 VI - The Capital",
+  "owner_id" : 109299958,
   "solar_system_id" : 30000142
 }`
 	vars := mux.Vars(r)

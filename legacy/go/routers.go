@@ -571,6 +571,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetDogmaDynamicItemsTypeIdItemId",
+		"Get",
+		"/legacy/dogma/dynamic/items/{type_id}/{item_id}/",
+		GetDogmaDynamicItemsTypeIdItemId,
+	)
+
+	mockesi.NewRoute(
 		"GetDogmaEffects",
 		"Get",
 		"/legacy/dogma/effects/",

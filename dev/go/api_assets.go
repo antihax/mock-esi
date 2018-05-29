@@ -25,6 +25,7 @@ func GetCharactersCharacterIdAssets(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `[ {
+  "is_blueprint_copy" : true,
   "is_singleton" : true,
   "item_id" : 1000000016835,
   "location_flag" : "Hangar",
@@ -109,6 +110,7 @@ func GetCorporationsCorporationIdAssets(w http.ResponseWriter, r *http.Request) 
 	err = err
 
 	j := `[ {
+  "is_blueprint_copy" : true,
   "is_singleton" : true,
   "item_id" : 1000000016835,
   "location_flag" : "Hangar",

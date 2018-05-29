@@ -322,7 +322,8 @@ paths:
             maxItems: 1000
           examples:
             application/json:
-            - is_singleton: true
+            - is_blueprint_copy: true
+              is_singleton: true
               item_id: 1000000016835
               location_flag: "Hangar"
               location_id: 60002959
@@ -1939,7 +1940,8 @@ paths:
             maxItems: 1000
           examples:
             application/json:
-            - is_singleton: true
+            - is_blueprint_copy: true
+              is_singleton: true
               item_id: 1000000016835
               location_flag: "Hangar"
               location_id: 60002959
@@ -2361,9 +2363,10 @@ paths:
       tags:
       - "Universe"
       summary: "Get solar system information"
-      description: "Get information on a solar system\n\n---\nAlternate route: `/dev/universe/systems/{system_id}/`\n\
-        \nAlternate route: `/latest/universe/systems/{system_id}/`\n\n---\nThis route\
-        \ expires daily at 11:05"
+      description: "Get information on a solar system. NOTE: This route does not work\
+        \ with abyssal systems.\n\n---\nAlternate route: `/latest/universe/systems/{system_id}/`\n\
+        \n---\nThis route expires daily at 11:05\n\n---\nWarning: This route has an\
+        \ upgrade available.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v3/dev/#GET-/universe/systems/{system_id}/)"
       operationId: "get_universe_systems_system_id"
       parameters:
       - name: "Accept-Language"
@@ -2523,7 +2526,6 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "latest"
   /universe/types/{type_id}/:
     get:
@@ -2903,6 +2905,10 @@ definitions:
     - "quantity"
     - "type_id"
     properties:
+      is_blueprint_copy:
+        type: "boolean"
+        description: "is_blueprint_copy boolean"
+        title: "get_characters_character_id_assets_is_blueprint_copy"
       is_singleton:
         type: "boolean"
         description: "is_singleton boolean"
@@ -4009,6 +4015,10 @@ definitions:
     - "quantity"
     - "type_id"
     properties:
+      is_blueprint_copy:
+        type: "boolean"
+        description: "is_blueprint_copy boolean"
+        title: "get_corporations_corporation_id_assets_is_blueprint_copy"
       is_singleton:
         type: "boolean"
         description: "is_singleton boolean"

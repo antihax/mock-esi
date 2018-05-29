@@ -39,6 +39,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetUniverseSystemsSystemId",
+		"Get",
+		"/v4/universe/systems/{system_id}/",
+		GetUniverseSystemsSystemId,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdWalletJournal",
 		"Get",
 		"/v4/characters/{character_id}/wallet/journal/",

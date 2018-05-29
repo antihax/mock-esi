@@ -298,6 +298,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetUniverseStructuresStructureId",
+		"Get",
+		"/v2/universe/structures/{structure_id}/",
+		GetUniverseStructuresStructureId,
+	)
+
+	mockesi.NewRoute(
 		"GetUniverseSystemKills",
 		"Get",
 		"/v2/universe/system_kills/",
