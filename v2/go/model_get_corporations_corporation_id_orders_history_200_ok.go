@@ -1,4 +1,4 @@
-package esiv1
+package esiv2
 
 import "time"
 
@@ -17,6 +17,9 @@ type GetCorporationsCorporationIdOrdersHistory200Ok struct {
 	/*
 	 Date and time when this order was issued */
 	Issued time.Time `json:"issued,omitempty"`
+	/*
+	 The character who issued this order */
+	IssuedBy int32 `json:"issued_by,omitempty"`
 	/*
 	 ID of the location where order was placed */
 	LocationId int64 `json:"location_id,omitempty"`

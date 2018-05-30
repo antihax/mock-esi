@@ -48,6 +48,6 @@ type GetCorporationsCorporationIdOrdersHistory200Ok struct {
 	 Quantity of items required or offered at time order was placed */
 	VolumeTotal int32 `json:"volume_total,omitempty"`
 	/*
-	 The corporation wallet division used for this order. */
+	 The corporation wallet division used for this order */
 	WalletDivision int32 `json:"wallet_division,omitempty"`
 }
