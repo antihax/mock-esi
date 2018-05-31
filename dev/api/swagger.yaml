@@ -32596,8 +32596,6 @@ definitions:
         format: "float"
         description: "standing number"
         title: "get_characters_character_id_standings_standing"
-        minimum: -10
-        maximum: 10
     description: "200 ok object"
   get_characters_character_id_stats_character:
     properties:
@@ -37242,8 +37240,6 @@ definitions:
         format: "float"
         description: "standing number"
         title: "get_corporations_corporation_id_standings_standing"
-        minimum: -10
-        maximum: 10
     description: "200 ok object"
   get_corporations_corporation_id_starbases_200_ok:
     required:
