@@ -214,6 +214,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetFwSystems",
+		"Get",
+		"/v2/fw/systems/",
+		GetFwSystems,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdOnline",
 		"Get",
 		"/v2/characters/{character_id}/online/",
@@ -246,6 +253,13 @@ func init() {
 		"Get",
 		"/v2/corporations/{corporation_id}/orders/",
 		GetCorporationsCorporationIdOrders,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdOrdersHistory",
+		"Get",
+		"/v2/corporations/{corporation_id}/orders/history/",
+		GetCorporationsCorporationIdOrdersHistory,
 	)
 
 	mockesi.NewRoute(
@@ -288,6 +302,13 @@ func init() {
 		"Get",
 		"/v2/universe/stations/{station_id}/",
 		GetUniverseStationsStationId,
+	)
+
+	mockesi.NewRoute(
+		"GetUniverseStructuresStructureId",
+		"Get",
+		"/v2/universe/structures/{structure_id}/",
+		GetUniverseStructuresStructureId,
 	)
 
 	mockesi.NewRoute(

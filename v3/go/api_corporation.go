@@ -17,7 +17,6 @@ func GetCorporationsCorporationId(w http.ResponseWriter, r *http.Request) {
 		err           error
 		corporationId int32
 		datasource    string
-		userAgent     string
 	)
 	// shut up warnings
 	localV = localV
@@ -54,14 +53,6 @@ func GetCorporationsCorporationId(w http.ResponseWriter, r *http.Request) {
 		}
 		datasource = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -75,12 +66,15 @@ func GetCorporationsCorporationId(w http.ResponseWriter, r *http.Request) {
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -96,7 +90,6 @@ func GetCorporationsCorporationIdMembers(w http.ResponseWriter, r *http.Request)
 		corporationId int32
 		datasource    string
 		token         string
-		userAgent     string
 	)
 	// shut up warnings
 	localV = localV
@@ -129,14 +122,6 @@ func GetCorporationsCorporationIdMembers(w http.ResponseWriter, r *http.Request)
 			return
 		}
 		token = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {

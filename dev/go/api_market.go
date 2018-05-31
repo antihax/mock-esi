@@ -18,7 +18,6 @@ func GetCharactersCharacterIdOrders(w http.ResponseWriter, r *http.Request) {
 		characterId int32
 		datasource  string
 		token       string
-		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -66,14 +65,6 @@ func GetCharactersCharacterIdOrders(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		token = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -110,7 +101,6 @@ func GetCharactersCharacterIdOrdersHistory(w http.ResponseWriter, r *http.Reques
 		datasource  string
 		page        int32
 		token       string
-		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -168,14 +158,6 @@ func GetCharactersCharacterIdOrdersHistory(w http.ResponseWriter, r *http.Reques
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -211,7 +193,6 @@ func GetCorporationsCorporationIdOrders(w http.ResponseWriter, r *http.Request) 
 		datasource    string
 		page          int32
 		token         string
-		userAgent     string
 	)
 	// shut up warnings
 	localV = localV
@@ -222,6 +203,7 @@ func GetCorporationsCorporationIdOrders(w http.ResponseWriter, r *http.Request) 
   "escrow" : 45.6,
   "is_buy_order" : true,
   "issued" : "2016-09-03T05:12:25Z",
+  "issued_by" : 2112625428,
   "location_id" : 456,
   "min_volume" : 1,
   "order_id" : 123,
@@ -268,14 +250,6 @@ func GetCorporationsCorporationIdOrders(w http.ResponseWriter, r *http.Request) 
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -311,7 +285,6 @@ func GetCorporationsCorporationIdOrdersHistory(w http.ResponseWriter, r *http.Re
 		datasource    string
 		page          int32
 		token         string
-		userAgent     string
 	)
 	// shut up warnings
 	localV = localV
@@ -322,6 +295,7 @@ func GetCorporationsCorporationIdOrdersHistory(w http.ResponseWriter, r *http.Re
   "escrow" : 45.6,
   "is_buy_order" : true,
   "issued" : "2016-09-03T05:12:25Z",
+  "issued_by" : 2112625428,
   "location_id" : 456,
   "min_volume" : 1,
   "order_id" : 123,
@@ -369,14 +343,6 @@ func GetCorporationsCorporationIdOrdersHistory(w http.ResponseWriter, r *http.Re
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -409,7 +375,6 @@ func GetMarketsGroups(w http.ResponseWriter, r *http.Request) {
 		localV     interface{}
 		err        error
 		datasource string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -427,14 +392,6 @@ func GetMarketsGroups(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		datasource = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -470,7 +427,6 @@ func GetMarketsGroupsMarketGroupId(w http.ResponseWriter, r *http.Request) {
 		marketGroupId int32
 		datasource    string
 		language      string
-		userAgent     string
 	)
 	// shut up warnings
 	localV = localV
@@ -510,14 +466,6 @@ func GetMarketsGroupsMarketGroupId(w http.ResponseWriter, r *http.Request) {
 		}
 		language = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -550,7 +498,6 @@ func GetMarketsPrices(w http.ResponseWriter, r *http.Request) {
 		localV     interface{}
 		err        error
 		datasource string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -572,14 +519,6 @@ func GetMarketsPrices(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		datasource = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -615,7 +554,6 @@ func GetMarketsRegionIdHistory(w http.ResponseWriter, r *http.Request) {
 		regionId   int32
 		typeId     int32
 		datasource string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -653,14 +591,6 @@ func GetMarketsRegionIdHistory(w http.ResponseWriter, r *http.Request) {
 		errorOut(w, r, err)
 		return
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -697,7 +627,6 @@ func GetMarketsRegionIdOrders(w http.ResponseWriter, r *http.Request) {
 		datasource string
 		page       int32
 		typeId     int32
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -757,14 +686,6 @@ func GetMarketsRegionIdOrders(w http.ResponseWriter, r *http.Request) {
 		}
 		typeId = localV.(int32)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -799,7 +720,6 @@ func GetMarketsRegionIdTypes(w http.ResponseWriter, r *http.Request) {
 		regionId   int32
 		datasource string
 		page       int32
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -832,14 +752,6 @@ func GetMarketsRegionIdTypes(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		page = localV.(int32)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -876,7 +788,6 @@ func GetMarketsStructuresStructureId(w http.ResponseWriter, r *http.Request) {
 		datasource  string
 		page        int32
 		token       string
-		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
@@ -929,14 +840,6 @@ func GetMarketsStructuresStructureId(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		token = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {

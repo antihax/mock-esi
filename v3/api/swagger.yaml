@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "An OpenAPI for EVE Online"
-  version: "0.8.0"
+  version: "0.8.3"
   title: "EVE Swagger Interface"
 host: "esi.evetech.net"
 basePath: "/v3"
@@ -48,18 +48,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Public data about an alliance"
@@ -115,6 +103,13 @@ paths:
           examples:
             application/json:
               error: "Not found message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
         500:
           description: "Internal server error"
           schema:
@@ -122,13 +117,6 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
-        502:
-          description: "Bad gateway"
-          schema:
-            $ref: "#/definitions/bad_gateway"
-          examples:
-            application/json:
-              error: "Bad gateway message"
         503:
           description: "Service unavailable"
           schema:
@@ -136,6 +124,13 @@ paths:
           examples:
             application/json:
               error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
       x-alternate-versions:
       - "dev"
       - "latest"
@@ -147,8 +142,8 @@ paths:
       summary: "Get character's public information"
       description: "Public information about a character\n\n---\nAlternate route:\
         \ `/legacy/characters/{character_id}/`\n\n---\nThis route is cached for up\
-        \ to 3600 seconds\n\n---\nWarning: This route is deprecated.\n\n---\n[This\
-        \ route has an available update](https://esi.evetech.net/diff/v3/dev/#GET-/characters/{character_id}/)"
+        \ to 3600 seconds\n\n---\nWarning: This route is deprecated.\n\n---\n[Diff\
+        \ of the upcoming changes](https://esi.evetech.net/diff/v3/dev/#GET-/characters/{character_id}/)"
       operationId: "get_characters_character_id"
       parameters:
       - name: "character_id"
@@ -176,18 +171,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Public data for the given character"
@@ -238,6 +221,13 @@ paths:
           examples:
             application/json:
               error: "Bad request message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
         422:
           description: "Is not a character ID"
           schema:
@@ -252,13 +242,6 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
-        502:
-          description: "Bad gateway"
-          schema:
-            $ref: "#/definitions/bad_gateway"
-          examples:
-            application/json:
-              error: "Bad gateway message"
         503:
           description: "Service unavailable"
           schema:
@@ -266,6 +249,13 @@ paths:
           examples:
             application/json:
               error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
       deprecated: true
       x-alternate-versions:
       - "legacy"
@@ -311,6 +301,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -319,18 +310,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A flat list of the users assets"
@@ -343,7 +322,8 @@ paths:
             maxItems: 1000
           examples:
             application/json:
-            - is_singleton: true
+            - is_blueprint_copy: true
+              is_singleton: true
               item_id: 1000000016835
               location_flag: "Hangar"
               location_id: 60002959
@@ -404,6 +384,13 @@ paths:
           examples:
             application/json:
               error: "Forbidden message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
         500:
           description: "Internal server error"
           schema:
@@ -411,13 +398,6 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
-        502:
-          description: "Bad gateway"
-          schema:
-            $ref: "#/definitions/bad_gateway"
-          examples:
-            application/json:
-              error: "Bad gateway message"
         503:
           description: "Service unavailable"
           schema:
@@ -425,6 +405,13 @@ paths:
           examples:
             application/json:
               error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
       security:
       - evesso:
         - "esi-assets.read_assets.v1"
@@ -481,18 +468,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Full details of a specific event"
@@ -570,6 +545,13 @@ paths:
           examples:
             application/json:
               error: "Not found message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
         500:
           description: "Internal server error"
           schema:
@@ -577,13 +559,6 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
-        502:
-          description: "Bad gateway"
-          schema:
-            $ref: "#/definitions/bad_gateway"
-          examples:
-            application/json:
-              error: "Bad gateway message"
         503:
           description: "Service unavailable"
           schema:
@@ -591,6 +566,13 @@ paths:
           examples:
             application/json:
               error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
       security:
       - evesso:
         - "esi-calendar.read_calendar_events.v1"
@@ -645,18 +627,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         204:
           description: "Event updated"
@@ -681,6 +651,13 @@ paths:
           examples:
             application/json:
               error: "Forbidden message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
         500:
           description: "Internal server error"
           schema:
@@ -688,13 +665,6 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
-        502:
-          description: "Bad gateway"
-          schema:
-            $ref: "#/definitions/bad_gateway"
-          examples:
-            application/json:
-              error: "Bad gateway message"
         503:
           description: "Service unavailable"
           schema:
@@ -702,6 +672,13 @@ paths:
           examples:
             application/json:
               error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
       security:
       - evesso:
         - "esi-calendar.respond_calendar_events.v1"
@@ -749,18 +726,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Clone information for the given character"
@@ -826,6 +791,13 @@ paths:
           examples:
             application/json:
               error: "Forbidden message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
         500:
           description: "Internal server error"
           schema:
@@ -833,13 +805,6 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
-        502:
-          description: "Bad gateway"
-          schema:
-            $ref: "#/definitions/bad_gateway"
-          examples:
-            application/json:
-              error: "Bad gateway message"
         503:
           description: "Service unavailable"
           schema:
@@ -847,6 +812,13 @@ paths:
           examples:
             application/json:
               error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
       security:
       - evesso:
         - "esi-clones.read_clones.v1"
@@ -861,8 +833,8 @@ paths:
       summary: "Calculate a CSPA charge cost"
       description: "Takes a source character ID in the url and a set of target character\
         \ ID's in the body, returns a CSPA charge cost\n\n---\nAlternate route: `/legacy/characters/{character_id}/cspa/`\n\
-        \n\n---\nWarning: This route is deprecated.\n\n---\n[This route has an available\
-        \ update](https://esi.evetech.net/diff/v3/dev/#POST-/characters/{character_id}/cspa/)"
+        \n\n---\nWarning: This route is deprecated.\n\n---\n[Diff of the upcoming\
+        \ changes](https://esi.evetech.net/diff/v3/dev/#POST-/characters/{character_id}/cspa/)"
       operationId: "post_characters_character_id_cspa"
       parameters:
       - name: "character_id"
@@ -896,18 +868,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         201:
           description: "Aggregate cost of sending a mail from the source character\
@@ -938,6 +898,13 @@ paths:
           examples:
             application/json:
               error: "Forbidden message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
         500:
           description: "Internal server error"
           schema:
@@ -945,13 +912,6 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
-        502:
-          description: "Bad gateway"
-          schema:
-            $ref: "#/definitions/bad_gateway"
-          examples:
-            application/json:
-              error: "Bad gateway message"
         503:
           description: "Service unavailable"
           schema:
@@ -959,6 +919,13 @@ paths:
           examples:
             application/json:
               error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
       security:
       - evesso:
         - "esi-characters.read_contacts.v1"
@@ -1007,18 +974,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of mail labels and unread counts"
@@ -1085,6 +1040,13 @@ paths:
           examples:
             application/json:
               error: "Forbidden message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
         500:
           description: "Internal server error"
           schema:
@@ -1092,13 +1054,6 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
-        502:
-          description: "Bad gateway"
-          schema:
-            $ref: "#/definitions/bad_gateway"
-          examples:
-            application/json:
-              error: "Bad gateway message"
         503:
           description: "Service unavailable"
           schema:
@@ -1106,6 +1061,13 @@ paths:
           examples:
             application/json:
               error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
       security:
       - evesso:
         - "esi-mail.read_mail.v1"
@@ -1164,18 +1126,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Colony layout"
@@ -1258,6 +1208,13 @@ paths:
           examples:
             application/json:
               error: "Colony not found"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
         500:
           description: "Internal server error"
           schema:
@@ -1265,13 +1222,6 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
-        502:
-          description: "Bad gateway"
-          schema:
-            $ref: "#/definitions/bad_gateway"
-          examples:
-            application/json:
-              error: "Bad gateway message"
         503:
           description: "Service unavailable"
           schema:
@@ -1279,6 +1229,13 @@ paths:
           examples:
             application/json:
               error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
       security:
       - evesso:
         - "esi-planets.manage_planets.v1"
@@ -1296,6 +1253,20 @@ paths:
         \n---\nThis route is cached for up to 3600 seconds"
       operationId: "get_characters_character_id_search"
       parameters:
+      - name: "Accept-Language"
+        in: "header"
+        description: "Language to use in the response"
+        required: false
+        type: "string"
+        default: "en-us"
+        enum:
+        - "de"
+        - "en-us"
+        - "fr"
+        - "ja"
+        - "ru"
+        - "zh"
+        x-exportParamName: "AcceptLanguage"
       - name: "categories"
         in: "query"
         description: "Type of entities to search for"
@@ -1346,7 +1317,7 @@ paths:
         x-exportParamName: "IfNoneMatch"
       - name: "language"
         in: "query"
-        description: "Language to use in the response"
+        description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
         default: "en-us"
@@ -1378,18 +1349,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of search results"
@@ -1466,6 +1425,13 @@ paths:
           examples:
             application/json:
               error: "Forbidden message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
         500:
           description: "Internal server error"
           schema:
@@ -1473,13 +1439,6 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
-        502:
-          description: "Bad gateway"
-          schema:
-            $ref: "#/definitions/bad_gateway"
-          examples:
-            application/json:
-              error: "Bad gateway message"
         503:
           description: "Service unavailable"
           schema:
@@ -1487,6 +1446,13 @@ paths:
           examples:
             application/json:
               error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
       security:
       - evesso:
         - "esi-search.search_structures.v1"
@@ -1502,7 +1468,7 @@ paths:
       description: "List all trained skills for the given character\n\n---\nAlternate\
         \ route: `/legacy/characters/{character_id}/skills/`\n\n---\nThis route is\
         \ cached for up to 120 seconds\n\n---\nWarning: This route is deprecated.\n\
-        \n---\n[This route has an available update](https://esi.evetech.net/diff/v3/dev/#GET-/characters/{character_id}/skills/)"
+        \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v3/dev/#GET-/characters/{character_id}/skills/)"
       operationId: "get_characters_character_id_skills"
       parameters:
       - name: "character_id"
@@ -1536,18 +1502,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Known skills for the character"
@@ -1612,6 +1566,13 @@ paths:
           examples:
             application/json:
               error: "Forbidden message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
         500:
           description: "Internal server error"
           schema:
@@ -1619,13 +1580,6 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
-        502:
-          description: "Bad gateway"
-          schema:
-            $ref: "#/definitions/bad_gateway"
-          examples:
-            application/json:
-              error: "Bad gateway message"
         503:
           description: "Service unavailable"
           schema:
@@ -1633,6 +1587,13 @@ paths:
           examples:
             application/json:
               error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
       security:
       - evesso:
         - "esi-skills.read_skills.v1"
@@ -1647,7 +1608,7 @@ paths:
       summary: "Get character wallet journal"
       description: "Retrieve character wallet journal\n\n---\nAlternate route: `/legacy/characters/{character_id}/wallet/journal/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nWarning: This route\
-        \ is deprecated.\n\n---\n[This route has an available update](https://esi.evetech.net/diff/v3/dev/#GET-/characters/{character_id}/wallet/journal/)"
+        \ is deprecated.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v3/dev/#GET-/characters/{character_id}/wallet/journal/)"
       operationId: "get_characters_character_id_wallet_journal"
       parameters:
       - name: "character_id"
@@ -1689,18 +1650,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Journal entries"
@@ -1765,6 +1714,13 @@ paths:
           examples:
             application/json:
               error: "Forbidden message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
         500:
           description: "Internal server error"
           schema:
@@ -1772,13 +1728,6 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
-        502:
-          description: "Bad gateway"
-          schema:
-            $ref: "#/definitions/bad_gateway"
-          examples:
-            application/json:
-              error: "Bad gateway message"
         503:
           description: "Service unavailable"
           schema:
@@ -1786,6 +1735,13 @@ paths:
           examples:
             application/json:
               error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
       security:
       - evesso:
         - "esi-wallet.read_character_wallet.v1"
@@ -1800,8 +1756,8 @@ paths:
       summary: "Get corporation information"
       description: "Public information about a corporation\n\n---\nAlternate route:\
         \ `/legacy/corporations/{corporation_id}/`\n\n---\nThis route is cached for\
-        \ up to 3600 seconds\n\n---\nWarning: This route is deprecated.\n\n---\n[This\
-        \ route has an available update](https://esi.evetech.net/diff/v3/dev/#GET-/corporations/{corporation_id}/)"
+        \ up to 3600 seconds\n\n---\nWarning: This route is deprecated.\n\n---\n[Diff\
+        \ of the upcoming changes](https://esi.evetech.net/diff/v3/dev/#GET-/corporations/{corporation_id}/)"
       operationId: "get_corporations_corporation_id"
       parameters:
       - name: "corporation_id"
@@ -1829,18 +1785,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Public data about a corporation"
@@ -1901,6 +1845,13 @@ paths:
           examples:
             application/json:
               error: "Not found message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
         500:
           description: "Internal server error"
           schema:
@@ -1908,13 +1859,6 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
-        502:
-          description: "Bad gateway"
-          schema:
-            $ref: "#/definitions/bad_gateway"
-          examples:
-            application/json:
-              error: "Bad gateway message"
         503:
           description: "Service unavailable"
           schema:
@@ -1922,6 +1866,13 @@ paths:
           examples:
             application/json:
               error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
       deprecated: true
       x-alternate-versions:
       - "legacy"
@@ -1968,6 +1919,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -1976,18 +1928,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "A list of assets"
@@ -2000,7 +1940,8 @@ paths:
             maxItems: 1000
           examples:
             application/json:
-            - is_singleton: true
+            - is_blueprint_copy: true
+              is_singleton: true
               item_id: 1000000016835
               location_flag: "Hangar"
               location_id: 60002959
@@ -2061,6 +2002,13 @@ paths:
           examples:
             application/json:
               error: "Forbidden message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
         500:
           description: "Internal server error"
           schema:
@@ -2068,13 +2016,6 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
-        502:
-          description: "Bad gateway"
-          schema:
-            $ref: "#/definitions/bad_gateway"
-          examples:
-            application/json:
-              error: "Bad gateway message"
         503:
           description: "Service unavailable"
           schema:
@@ -2082,6 +2023,13 @@ paths:
           examples:
             application/json:
               error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
       security:
       - evesso:
         - "esi-assets.read_corporation_assets.v1"
@@ -2133,18 +2081,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "List of member character IDs"
@@ -2211,6 +2147,13 @@ paths:
           examples:
             application/json:
               error: "Forbidden message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
         500:
           description: "Internal server error"
           schema:
@@ -2218,13 +2161,6 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
-        502:
-          description: "Bad gateway"
-          schema:
-            $ref: "#/definitions/bad_gateway"
-          examples:
-            application/json:
-              error: "Bad gateway message"
         503:
           description: "Service unavailable"
           schema:
@@ -2232,6 +2168,13 @@ paths:
           examples:
             application/json:
               error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
       security:
       - evesso:
         - "esi-corporations.read_corporation_membership.v1"
@@ -2239,6 +2182,175 @@ paths:
       - "dev"
       - "latest"
       x-cached-seconds: 3600
+  /corporations/{corporation_id}/orders/:
+    get:
+      tags:
+      - "Market"
+      summary: "List open orders from a corporation"
+      description: "List open market orders placed on behalf of a corporation\n\n\
+        ---\nAlternate route: `/dev/corporations/{corporation_id}/orders/`\n\n---\n\
+        This route is cached for up to 1200 seconds\n\n---\nRequires one of the following\
+        \ EVE corporation role(s): Accountant, Trader\n"
+      operationId: "get_corporations_corporation_id_orders"
+      parameters:
+      - name: "corporation_id"
+        in: "path"
+        description: "An EVE corporation ID"
+        required: true
+        type: "integer"
+        minimum: 1
+        format: "int32"
+        x-exportParamName: "CorporationId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "If-None-Match"
+        in: "header"
+        description: "ETag from a previous request. A 304 will be returned if this\
+          \ matches the current ETag"
+        required: false
+        type: "string"
+        x-exportParamName: "IfNoneMatch"
+      - name: "page"
+        in: "query"
+        description: "Which page of results to return"
+        required: false
+        type: "integer"
+        default: 1
+        minimum: 1
+        format: "int32"
+        x-exportParamName: "Page"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      responses:
+        200:
+          description: "A list of open market orders"
+          schema:
+            type: "array"
+            description: "200 ok array"
+            title: "get_corporations_corporation_id_orders_ok"
+            items:
+              $ref: "#/definitions/get_corporations_corporation_id_orders_200_ok"
+            maxItems: 1000
+          examples:
+            application/json:
+            - duration: 30
+              escrow: 45.6
+              is_buy_order: true
+              issued: "2016-09-03T05:12:25Z"
+              issued_by: 2112625428
+              location_id: 456
+              min_volume: 1
+              order_id: 123
+              price: 33.3
+              range: "station"
+              region_id: 123
+              type_id: 456
+              volume_remain: 4422
+              volume_total: 123456
+              wallet_division: 1
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            X-Pages:
+              type: "integer"
+              format: "int32"
+              description: "Maximum page number"
+              default: 1
+        304:
+          description: "Not modified"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
+      security:
+      - evesso:
+        - "esi-markets.read_corporation_orders.v1"
+      x-alternate-versions:
+      - "dev"
+      x-cached-seconds: 1200
+      x-required-roles:
+      - "Accountant"
+      - "Trader"
   /corporations/{corporation_id}/wallets/{division}/journal/:
     get:
       tags:
@@ -2291,6 +2403,7 @@ paths:
         required: false
         type: "integer"
         default: 1
+        minimum: 1
         format: "int32"
         x-exportParamName: "Page"
       - name: "token"
@@ -2299,18 +2412,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "Token"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Journal entries"
@@ -2388,6 +2489,13 @@ paths:
           examples:
             application/json:
               error: "Forbidden message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
         500:
           description: "Internal server error"
           schema:
@@ -2395,13 +2503,6 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
-        502:
-          description: "Bad gateway"
-          schema:
-            $ref: "#/definitions/bad_gateway"
-          examples:
-            application/json:
-              error: "Bad gateway message"
         503:
           description: "Service unavailable"
           schema:
@@ -2409,6 +2510,13 @@ paths:
           examples:
             application/json:
               error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
       security:
       - evesso:
         - "esi-wallet.read_corporation_wallets.v1"
@@ -2424,11 +2532,26 @@ paths:
       tags:
       - "Universe"
       summary: "Get solar system information"
-      description: "Get information on a solar system\n\n---\nAlternate route: `/dev/universe/systems/{system_id}/`\n\
-        \nAlternate route: `/latest/universe/systems/{system_id}/`\n\n---\nThis route\
-        \ expires daily at 11:05"
+      description: "Get information on a solar system. NOTE: This route does not work\
+        \ with abyssal systems.\n\n---\nAlternate route: `/latest/universe/systems/{system_id}/`\n\
+        \n---\nThis route expires daily at 11:05\n\n---\nWarning: This route has an\
+        \ upgrade available.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v3/dev/#GET-/universe/systems/{system_id}/)"
       operationId: "get_universe_systems_system_id"
       parameters:
+      - name: "Accept-Language"
+        in: "header"
+        description: "Language to use in the response"
+        required: false
+        type: "string"
+        default: "en-us"
+        enum:
+        - "de"
+        - "en-us"
+        - "fr"
+        - "ja"
+        - "ru"
+        - "zh"
+        x-exportParamName: "AcceptLanguage"
       - name: "datasource"
         in: "query"
         description: "The server name you would like data from"
@@ -2448,7 +2571,7 @@ paths:
         x-exportParamName: "IfNoneMatch"
       - name: "language"
         in: "query"
-        description: "Language to use in the response"
+        description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
         default: "en-us"
@@ -2467,18 +2590,6 @@ paths:
         type: "integer"
         format: "int32"
         x-exportParamName: "SystemId"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Information about a solar system"
@@ -2555,6 +2666,13 @@ paths:
           examples:
             application/json:
               error: "Not found message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
         500:
           description: "Internal server error"
           schema:
@@ -2562,13 +2680,6 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
-        502:
-          description: "Bad gateway"
-          schema:
-            $ref: "#/definitions/bad_gateway"
-          examples:
-            application/json:
-              error: "Bad gateway message"
         503:
           description: "Service unavailable"
           schema:
@@ -2576,8 +2687,14 @@ paths:
           examples:
             application/json:
               error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "latest"
   /universe/types/{type_id}/:
     get:
@@ -2589,6 +2706,20 @@ paths:
         \ expires daily at 11:05"
       operationId: "get_universe_types_type_id"
       parameters:
+      - name: "Accept-Language"
+        in: "header"
+        description: "Language to use in the response"
+        required: false
+        type: "string"
+        default: "en-us"
+        enum:
+        - "de"
+        - "en-us"
+        - "fr"
+        - "ja"
+        - "ru"
+        - "zh"
+        x-exportParamName: "AcceptLanguage"
       - name: "datasource"
         in: "query"
         description: "The server name you would like data from"
@@ -2608,7 +2739,7 @@ paths:
         x-exportParamName: "IfNoneMatch"
       - name: "language"
         in: "query"
-        description: "Language to use in the response"
+        description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
         default: "en-us"
@@ -2627,18 +2758,6 @@ paths:
         type: "integer"
         format: "int32"
         x-exportParamName: "TypeId"
-      - name: "user_agent"
-        in: "query"
-        description: "Client identifier, takes precedence over headers"
-        required: false
-        type: "string"
-        x-exportParamName: "UserAgent"
-      - name: "X-User-Agent"
-        in: "header"
-        description: "Client identifier, takes precedence over User-Agent"
-        required: false
-        type: "string"
-        x-exportParamName: "XUserAgent"
       responses:
         200:
           description: "Information about a type"
@@ -2703,6 +2822,13 @@ paths:
           examples:
             application/json:
               error: "Not found message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
         500:
           description: "Internal server error"
           schema:
@@ -2710,13 +2836,6 @@ paths:
           examples:
             application/json:
               error: "Internal server error message"
-        502:
-          description: "Bad gateway"
-          schema:
-            $ref: "#/definitions/bad_gateway"
-          examples:
-            application/json:
-              error: "Bad gateway message"
         503:
           description: "Service unavailable"
           schema:
@@ -2724,6 +2843,13 @@ paths:
           examples:
             application/json:
               error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
       x-alternate-versions:
       - "dev"
       - "latest"
@@ -2741,22 +2867,13 @@ securityDefinitions:
       esi-clones.read_clones.v1: "EVE SSO scope esi-clones.read_clones.v1"
       esi-corporations.read_corporation_membership.v1: "EVE SSO scope esi-corporations.read_corporation_membership.v1"
       esi-mail.read_mail.v1: "EVE SSO scope esi-mail.read_mail.v1"
+      esi-markets.read_corporation_orders.v1: "EVE SSO scope esi-markets.read_corporation_orders.v1"
       esi-planets.manage_planets.v1: "EVE SSO scope esi-planets.manage_planets.v1"
       esi-search.search_structures.v1: "EVE SSO scope esi-search.search_structures.v1"
       esi-skills.read_skills.v1: "EVE SSO scope esi-skills.read_skills.v1"
       esi-wallet.read_character_wallet.v1: "EVE SSO scope esi-wallet.read_character_wallet.v1"
       esi-wallet.read_corporation_wallets.v1: "EVE SSO scope esi-wallet.read_corporation_wallets.v1"
 definitions:
-  bad_gateway:
-    type: "object"
-    required:
-    - "error"
-    properties:
-      error:
-        type: "string"
-        description: "Bad gateway message"
-    title: "Bad gateway"
-    description: "Bad gateway model"
   bad_request:
     type: "object"
     required:
@@ -2767,6 +2884,16 @@ definitions:
         description: "Bad request message"
     title: "Bad request"
     description: "Bad request model"
+  error_limited:
+    type: "object"
+    required:
+    - "error"
+    properties:
+      error:
+        type: "string"
+        description: "Error limited message"
+    title: "Error limited"
+    description: "Error limited model"
   forbidden:
     type: "object"
     required:
@@ -2777,9 +2904,22 @@ definitions:
         description: "Forbidden message"
       sso_status:
         type: "integer"
-        description: "Status code received from SSO"
+        description: "status code received from SSO"
     title: "Forbidden"
     description: "Forbidden model"
+  gateway_timeout:
+    type: "object"
+    required:
+    - "error"
+    properties:
+      error:
+        type: "string"
+        description: "Gateway timeout message"
+      timeout:
+        type: "integer"
+        description: "number of seconds the request was given"
+    title: "Gateway timeout"
+    description: "Gateway timeout model"
   internal_server_error:
     type: "object"
     required:
@@ -2935,6 +3075,10 @@ definitions:
     - "quantity"
     - "type_id"
     properties:
+      is_blueprint_copy:
+        type: "boolean"
+        description: "is_blueprint_copy boolean"
+        title: "get_characters_character_id_assets_is_blueprint_copy"
       is_singleton:
         type: "boolean"
         description: "is_singleton boolean"
@@ -3131,7 +3275,7 @@ definitions:
       response:
         type: "string"
         description: "response string"
-        title: "put_characters_character_id_calendar_event_id_response"
+        title: "put_characters_character_id_calendar_event_id_response_response"
         enum:
         - "accepted"
         - "declined"
@@ -3179,11 +3323,11 @@ definitions:
         type: "integer"
         format: "int64"
         description: "location_id integer"
-        title: "get_characters_character_id_clones_location_id"
+        title: "get_characters_character_id_clones_jump_clone_location_id"
       location_type:
         type: "string"
         description: "location_type string"
-        title: "get_characters_character_id_clones_location_type"
+        title: "get_characters_character_id_clones_jump_clone_location_type"
         enum:
         - "station"
         - "structure"
@@ -3224,7 +3368,7 @@ definitions:
       characters:
         type: "array"
         description: "characters array"
-        title: "post_characters_character_id_cspa_characters"
+        title: "post_characters_character_id_cspa_characters_characters"
         uniqueItems: true
         items:
           type: "integer"
@@ -3341,7 +3485,7 @@ definitions:
         type: "integer"
         format: "int32"
         description: "type_id integer"
-        title: "get_characters_character_id_planets_planet_id_type_id"
+        title: "get_characters_character_id_planets_planet_id_content_type_id"
     description: "content object"
   get_characters_character_id_planets_planet_id_head:
     required:
@@ -3360,12 +3504,12 @@ definitions:
         type: "number"
         format: "float"
         description: "latitude number"
-        title: "get_characters_character_id_planets_planet_id_latitude"
+        title: "get_characters_character_id_planets_planet_id_head_latitude"
       longitude:
         type: "number"
         format: "float"
         description: "longitude number"
-        title: "get_characters_character_id_planets_planet_id_longitude"
+        title: "get_characters_character_id_planets_planet_id_head_longitude"
     description: "head object"
   get_characters_character_id_planets_planet_id_extractor_details:
     required:
@@ -3407,7 +3551,7 @@ definitions:
         type: "integer"
         format: "int32"
         description: "schematic_id integer"
-        title: "get_characters_character_id_planets_planet_id_schematic_id"
+        title: "get_characters_character_id_planets_planet_id_factory_details_schematic_id"
     description: "factory_details object"
   get_characters_character_id_planets_planet_id_pin:
     required:
@@ -3480,12 +3624,12 @@ definitions:
         type: "integer"
         format: "int32"
         description: "content_type_id integer"
-        title: "get_characters_character_id_planets_planet_id_content_type_id"
+        title: "get_characters_character_id_planets_planet_id_route_content_type_id"
       destination_pin_id:
         type: "integer"
         format: "int64"
         description: "destination_pin_id integer"
-        title: "get_characters_character_id_planets_planet_id_destination_pin_id"
+        title: "get_characters_character_id_planets_planet_id_route_destination_pin_id"
       quantity:
         type: "number"
         format: "float"
@@ -3500,7 +3644,7 @@ definitions:
         type: "integer"
         format: "int64"
         description: "source_pin_id integer"
-        title: "get_characters_character_id_planets_planet_id_source_pin_id"
+        title: "get_characters_character_id_planets_planet_id_route_source_pin_id"
       waypoints:
         type: "array"
         description: "list of pin ID waypoints"
@@ -3557,7 +3701,7 @@ definitions:
           type: "integer"
           format: "int32"
           description: "agent integer"
-          title: "get_characters_character_id_search_agent"
+          title: "get_characters_character_id_search_agent_agent"
         maxItems: 500
       alliance:
         type: "array"
@@ -3567,7 +3711,7 @@ definitions:
           type: "integer"
           format: "int32"
           description: "alliance integer"
-          title: "get_characters_character_id_search_alliance"
+          title: "get_characters_character_id_search_alliance_alliance"
         maxItems: 500
       character:
         type: "array"
@@ -3577,7 +3721,7 @@ definitions:
           type: "integer"
           format: "int32"
           description: "character integer"
-          title: "get_characters_character_id_search_character"
+          title: "get_characters_character_id_search_character_character"
         maxItems: 500
       constellation:
         type: "array"
@@ -3587,7 +3731,7 @@ definitions:
           type: "integer"
           format: "int32"
           description: "constellation integer"
-          title: "get_characters_character_id_search_constellation"
+          title: "get_characters_character_id_search_constellation_constellation"
         maxItems: 500
       corporation:
         type: "array"
@@ -3597,7 +3741,7 @@ definitions:
           type: "integer"
           format: "int32"
           description: "corporation integer"
-          title: "get_characters_character_id_search_corporation"
+          title: "get_characters_character_id_search_corporation_corporation"
         maxItems: 500
       faction:
         type: "array"
@@ -3607,7 +3751,7 @@ definitions:
           type: "integer"
           format: "int32"
           description: "faction integer"
-          title: "get_characters_character_id_search_faction"
+          title: "get_characters_character_id_search_faction_faction"
         maxItems: 500
       inventory_type:
         type: "array"
@@ -3617,7 +3761,7 @@ definitions:
           type: "integer"
           format: "int32"
           description: "inventory_type integer"
-          title: "get_characters_character_id_search_inventory_type"
+          title: "get_characters_character_id_search_inventory_type_inventory_type"
         maxItems: 500
       region:
         type: "array"
@@ -3627,7 +3771,7 @@ definitions:
           type: "integer"
           format: "int32"
           description: "region integer"
-          title: "get_characters_character_id_search_region"
+          title: "get_characters_character_id_search_region_region"
         maxItems: 500
       solar_system:
         type: "array"
@@ -3637,7 +3781,7 @@ definitions:
           type: "integer"
           format: "int32"
           description: "solar_system integer"
-          title: "get_characters_character_id_search_solar_system"
+          title: "get_characters_character_id_search_solar_system_solar_system"
         maxItems: 500
       station:
         type: "array"
@@ -3647,7 +3791,7 @@ definitions:
           type: "integer"
           format: "int32"
           description: "station integer"
-          title: "get_characters_character_id_search_station"
+          title: "get_characters_character_id_search_station_station"
         maxItems: 500
       structure:
         type: "array"
@@ -3657,7 +3801,7 @@ definitions:
           type: "integer"
           format: "int64"
           description: "structure integer"
-          title: "get_characters_character_id_search_structure"
+          title: "get_characters_character_id_search_structure_structure"
         maxItems: 500
     description: "200 ok object"
   get_characters_character_id_skills_skill:
@@ -4041,6 +4185,10 @@ definitions:
     - "quantity"
     - "type_id"
     properties:
+      is_blueprint_copy:
+        type: "boolean"
+        description: "is_blueprint_copy boolean"
+        title: "get_corporations_corporation_id_assets_is_blueprint_copy"
       is_singleton:
         type: "boolean"
         description: "is_singleton boolean"
@@ -4193,6 +4341,112 @@ definitions:
         format: "int32"
         description: "type_id integer"
         title: "get_corporations_corporation_id_assets_type_id"
+    description: "200 ok object"
+  get_corporations_corporation_id_orders_200_ok:
+    required:
+    - "duration"
+    - "issued"
+    - "issued_by"
+    - "location_id"
+    - "order_id"
+    - "price"
+    - "range"
+    - "region_id"
+    - "type_id"
+    - "volume_remain"
+    - "volume_total"
+    - "wallet_division"
+    properties:
+      duration:
+        type: "integer"
+        format: "int32"
+        description: "Number of days for which order is valid (starting from the issued\
+          \ date). An order expires at time issued + duration"
+        title: "get_corporations_corporation_id_orders_duration"
+      escrow:
+        type: "number"
+        format: "double"
+        description: "For buy orders, the amount of ISK in escrow"
+        title: "get_corporations_corporation_id_orders_escrow"
+      is_buy_order:
+        type: "boolean"
+        description: "True if the order is a bid (buy) order"
+        title: "get_corporations_corporation_id_orders_is_buy_order"
+      issued:
+        type: "string"
+        format: "date-time"
+        description: "Date and time when this order was issued"
+        title: "get_corporations_corporation_id_orders_issued"
+      issued_by:
+        type: "integer"
+        format: "int32"
+        description: "The character who issued this order"
+        title: "get_corporations_corporation_id_orders_issued_by"
+      location_id:
+        type: "integer"
+        format: "int64"
+        description: "ID of the location where order was placed"
+        title: "get_corporations_corporation_id_orders_location_id"
+      min_volume:
+        type: "integer"
+        format: "int32"
+        description: "For buy orders, the minimum quantity that will be accepted in\
+          \ a matching sell order"
+        title: "get_corporations_corporation_id_orders_min_volume"
+      order_id:
+        type: "integer"
+        format: "int64"
+        description: "Unique order ID"
+        title: "get_corporations_corporation_id_orders_order_id"
+      price:
+        type: "number"
+        format: "double"
+        description: "Cost per unit for this order"
+        title: "get_corporations_corporation_id_orders_price"
+      range:
+        type: "string"
+        description: "Valid order range, numbers are ranges in jumps"
+        title: "get_corporations_corporation_id_orders_range"
+        enum:
+        - "1"
+        - "10"
+        - "2"
+        - "20"
+        - "3"
+        - "30"
+        - "4"
+        - "40"
+        - "5"
+        - "region"
+        - "solarsystem"
+        - "station"
+      region_id:
+        type: "integer"
+        format: "int32"
+        description: "ID of the region where order was placed"
+        title: "get_corporations_corporation_id_orders_region_id"
+      type_id:
+        type: "integer"
+        format: "int32"
+        description: "The type ID of the item transacted in this order"
+        title: "get_corporations_corporation_id_orders_type_id"
+      volume_remain:
+        type: "integer"
+        format: "int32"
+        description: "Quantity of items still required or offered"
+        title: "get_corporations_corporation_id_orders_volume_remain"
+      volume_total:
+        type: "integer"
+        format: "int32"
+        description: "Quantity of items required or offered at time order was placed"
+        title: "get_corporations_corporation_id_orders_volume_total"
+      wallet_division:
+        type: "integer"
+        format: "int32"
+        description: "The corporation wallet division used for this order."
+        title: "get_corporations_corporation_id_orders_wallet_division"
+        minimum: 1
+        maximum: 7
     description: "200 ok object"
   get_corporations_corporation_id_wallets_division_journal_200_ok:
     required:
@@ -4669,6 +4923,21 @@ definitions:
         title: "get_universe_types_type_id_404_not_found"
     description: "Not found"
 parameters:
+  Accept-Language:
+    name: "Accept-Language"
+    in: "header"
+    description: "Language to use in the response"
+    required: false
+    type: "string"
+    default: "en-us"
+    enum:
+    - "de"
+    - "en-us"
+    - "fr"
+    - "ja"
+    - "ru"
+    - "zh"
+    x-exportParamName: "AcceptLanguage"
   If-None-Match:
     name: "If-None-Match"
     in: "header"
@@ -4677,13 +4946,6 @@ parameters:
     required: false
     type: "string"
     x-exportParamName: "IfNoneMatch"
-  X-User-Agent:
-    name: "X-User-Agent"
-    in: "header"
-    description: "Client identifier, takes precedence over User-Agent"
-    required: false
-    type: "string"
-    x-exportParamName: "XUserAgent"
   alliance_id:
     name: "alliance_id"
     in: "path"
@@ -4725,7 +4987,7 @@ parameters:
   language:
     name: "language"
     in: "query"
-    description: "Language to use in the response"
+    description: "Language to use in the response, takes precedence over Accept-Language"
     required: false
     type: "string"
     default: "en-us"
@@ -4744,6 +5006,7 @@ parameters:
     required: false
     type: "integer"
     default: 1
+    minimum: 1
     format: "int32"
     x-exportParamName: "Page"
   token:
@@ -4753,10 +5016,3 @@ parameters:
     required: false
     type: "string"
     x-exportParamName: "Token"
-  user_agent:
-    name: "user_agent"
-    in: "query"
-    description: "Client identifier, takes precedence over headers"
-    required: false
-    type: "string"
-    x-exportParamName: "UserAgent"

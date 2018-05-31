@@ -19,13 +19,13 @@ func GetCharactersCharacterIdAssets(w http.ResponseWriter, r *http.Request) {
 		datasource  string
 		page        int32
 		token       string
-		userAgent   string
 	)
 	// shut up warnings
 	localV = localV
 	err = err
 
 	j := `[ {
+  "is_blueprint_copy" : true,
   "is_singleton" : true,
   "item_id" : 1000000016835,
   "location_flag" : "Hangar",
@@ -69,14 +69,6 @@ func GetCharactersCharacterIdAssets(w http.ResponseWriter, r *http.Request) {
 		}
 		token = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -112,13 +104,13 @@ func GetCorporationsCorporationIdAssets(w http.ResponseWriter, r *http.Request) 
 		datasource    string
 		page          int32
 		token         string
-		userAgent     string
 	)
 	// shut up warnings
 	localV = localV
 	err = err
 
 	j := `[ {
+  "is_blueprint_copy" : true,
   "is_singleton" : true,
   "item_id" : 1000000016835,
   "location_flag" : "Hangar",
@@ -161,14 +153,6 @@ func GetCorporationsCorporationIdAssets(w http.ResponseWriter, r *http.Request) 
 			return
 		}
 		token = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {

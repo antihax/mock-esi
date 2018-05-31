@@ -123,13 +123,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCharactersCharacterIdChatChannels",
-		"Get",
-		"/v1/characters/{character_id}/chat_channels/",
-		GetCharactersCharacterIdChatChannels,
-	)
-
-	mockesi.NewRoute(
 		"GetCharactersCharacterIdCorporationhistory",
 		"Get",
 		"/v1/characters/{character_id}/corporationhistory/",
@@ -505,6 +498,13 @@ func init() {
 		"Get",
 		"/v1/dogma/attributes/{attribute_id}/",
 		GetDogmaAttributesAttributeId,
+	)
+
+	mockesi.NewRoute(
+		"GetDogmaDynamicItemsTypeIdItemId",
+		"Get",
+		"/v1/dogma/dynamic/items/{type_id}/{item_id}/",
+		GetDogmaDynamicItemsTypeIdItemId,
 	)
 
 	mockesi.NewRoute(

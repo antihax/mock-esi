@@ -89,6 +89,9 @@ func {{nickname}}(w http.ResponseWriter, r *http.Request) {
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			{{#isDeprecated}}
+			w.Header().Set("warning", "299 - This route is deprecated.")
+			{{/isDeprecated}}
 			w.Header().Set("Content-Type", "{{#responses}}{{#isDefault}}{{#examples}}{{{contentType}}}{{/examples}}{{/isDefault}}{{/responses}}")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
@@ -96,6 +99,10 @@ func {{nickname}}(w http.ResponseWriter, r *http.Request) {
 		}
 	} 
 	{{/hasQueryParams}}
+
+	{{#isDeprecated}}
+	w.Header().Set("warning", "299 - This route is deprecated.")
+	{{/isDeprecated}}
 
 	w.Header().Set("Content-Type", "{{#responses}}{{#isDefault}}{{#examples}}{{{contentType}}}{{/examples}}{{/isDefault}}{{/responses}}")
 	w.WriteHeader(http.StatusOK)

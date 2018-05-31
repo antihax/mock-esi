@@ -18,7 +18,6 @@ func GetUniverseSystemsSystemId(w http.ResponseWriter, r *http.Request) {
 		systemId   int32
 		datasource string
 		language   string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -71,14 +70,6 @@ func GetUniverseSystemsSystemId(w http.ResponseWriter, r *http.Request) {
 		}
 		language = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -113,7 +104,6 @@ func GetUniverseTypesTypeId(w http.ResponseWriter, r *http.Request) {
 		typeId     int32
 		datasource string
 		language   string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -152,14 +142,6 @@ func GetUniverseTypesTypeId(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		language = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {

@@ -5,8 +5,8 @@ package esilegacy
 type GetCorporationsCorporationIdDivisionsOk struct {
 	/*
 	 hangar array */
-	Hangar []GetCorporationsCorporationIdDivisionsHangar `json:"hangar,omitempty"`
+	Hangar []GetCorporationsCorporationIdDivisionsHangarHangar `json:"hangar,omitempty"`
 	/*
 	 wallet array */
-	Wallet []GetCorporationsCorporationIdDivisionsWallet `json:"wallet,omitempty"`
+	Wallet []GetCorporationsCorporationIdDivisionsWalletWallet `json:"wallet,omitempty"`
 }

@@ -15,7 +15,7 @@ type GetCorporationsCorporationIdWalletsDivisionTransactions200Ok struct {
 	 is_buy boolean */
 	IsBuy bool `json:"is_buy,omitempty"`
 	/*
-	 journal_ref_id integer */
+	 -1 if there is no corresponding wallet journal entry */
 	JournalRefId int64 `json:"journal_ref_id,omitempty"`
 	/*
 	 location_id integer */

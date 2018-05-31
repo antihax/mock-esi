@@ -17,7 +17,6 @@ func GetUniverseFactions(w http.ResponseWriter, r *http.Request) {
 		err        error
 		datasource string
 		language   string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -54,14 +53,6 @@ func GetUniverseFactions(w http.ResponseWriter, r *http.Request) {
 		}
 		language = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -95,7 +86,6 @@ func GetUniverseStationsStationId(w http.ResponseWriter, r *http.Request) {
 		err        error
 		stationId  int32
 		datasource string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -138,13 +128,76 @@ func GetUniverseStationsStationId(w http.ResponseWriter, r *http.Request) {
 		}
 		datasource = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
+
+	if r.Form.Get("page") != "" {
+		var (
+			localPage    int32
+			localIntPage interface{}
+		)
+		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
 		if err != nil {
 			errorOut(w, r, err)
 			return
 		}
-		userAgent = localV.(string)
+		localPage = localIntPage.(int32)
+		if localPage > 1 {
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusOK)
+			w.Write([]byte("[]"))
+			return
+		}
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
+	w.Write([]byte(j))
+}
+
+func GetUniverseStructuresStructureId(w http.ResponseWriter, r *http.Request) {
+
+	var (
+		localV      interface{}
+		err         error
+		structureId int64
+		datasource  string
+		token       string
+	)
+	// shut up warnings
+	localV = localV
+	err = err
+
+	j := `{
+  "name" : "V-3YG7 VI - The Capital",
+  "owner_id" : 109299958,
+  "solar_system_id" : 30000142
+}`
+	vars := mux.Vars(r)
+	localV, err = processParameters(structureId, vars["structure_id"])
+	if err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	structureId = localV.(int64)
+	if err := r.ParseForm(); err != nil {
+		errorOut(w, r, err)
+		return
+	}
+	if r.Form.Get("datasource") != "" {
+		localV, err = processParameters(datasource, r.Form.Get("datasource"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		datasource = localV.(string)
+	}
+	if r.Form.Get("token") != "" {
+		localV, err = processParameters(token, r.Form.Get("token"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		token = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -178,7 +231,6 @@ func GetUniverseSystemKills(w http.ResponseWriter, r *http.Request) {
 		localV     interface{}
 		err        error
 		datasource string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -201,14 +253,6 @@ func GetUniverseSystemKills(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		datasource = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -244,7 +288,6 @@ func GetUniverseSystemsSystemId(w http.ResponseWriter, r *http.Request) {
 		systemId   int32
 		datasource string
 		language   string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -297,14 +340,6 @@ func GetUniverseSystemsSystemId(w http.ResponseWriter, r *http.Request) {
 		}
 		language = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -318,12 +353,15 @@ func GetUniverseSystemsSystemId(w http.ResponseWriter, r *http.Request) {
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -339,7 +377,6 @@ func GetUniverseTypesTypeId(w http.ResponseWriter, r *http.Request) {
 		typeId     int32
 		datasource string
 		language   string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -379,14 +416,6 @@ func GetUniverseTypesTypeId(w http.ResponseWriter, r *http.Request) {
 		}
 		language = localV.(string)
 	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
-	}
 
 	if r.Form.Get("page") != "" {
 		var (
@@ -400,12 +429,15 @@ func GetUniverseTypesTypeId(w http.ResponseWriter, r *http.Request) {
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -419,7 +451,6 @@ func PostUniverseNames(w http.ResponseWriter, r *http.Request) {
 		localV     interface{}
 		err        error
 		datasource string
-		userAgent  string
 	)
 	// shut up warnings
 	localV = localV
@@ -445,14 +476,6 @@ func PostUniverseNames(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		datasource = localV.(string)
-	}
-	if r.Form.Get("userAgent") != "" {
-		localV, err = processParameters(userAgent, r.Form.Get("user_agent"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		userAgent = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
