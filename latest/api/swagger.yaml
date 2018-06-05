@@ -29377,6 +29377,7 @@ definitions:
         enum:
         - "AssetSafety"
         - "AutoFit"
+        - "BoosterBay"
         - "Cargo"
         - "CorpseBay"
         - "Deliveries"
@@ -31464,6 +31465,7 @@ definitions:
         - "StructureDestroyed"
         - "StructureFuelAlert"
         - "StructureItemsDelivered"
+        - "StructureItemsMovedToSafety"
         - "StructureLostArmor"
         - "StructureLostShields"
         - "StructureOnline"

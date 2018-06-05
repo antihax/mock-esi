@@ -29622,6 +29622,7 @@ definitions:
         enum:
         - "AssetSafety"
         - "AutoFit"
+        - "BoosterBay"
         - "Cargo"
         - "CorpseBay"
         - "Deliveries"
