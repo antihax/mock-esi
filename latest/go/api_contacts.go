@@ -544,7 +544,7 @@ func PostCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request) {
 		characterId int32
 		standing    float32
 		datasource  string
-		labelId     int64
+		labelIds    []int64
 		token       string
 		watched     bool
 	)
@@ -572,13 +572,13 @@ func PostCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request) {
 		}
 		datasource = localV.(string)
 	}
-	if r.Form.Get("labelId") != "" {
-		localV, err = processParameters(labelId, r.Form.Get("label_id"))
+	if r.Form.Get("labelIds") != "" {
+		localV, err = processParameters(labelIds, r.Form.Get("label_ids"))
 		if err != nil {
 			errorOut(w, r, err)
 			return
 		}
-		labelId = localV.(int64)
+		labelIds = localV.([]int64)
 	}
 	localV, err = processParameters(standing, r.Form.Get("standing"))
 	if err != nil {
@@ -635,7 +635,7 @@ func PutCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request) {
 		characterId int32
 		standing    float32
 		datasource  string
-		labelId     int64
+		labelIds    []int64
 		token       string
 		watched     bool
 	)
@@ -663,13 +663,13 @@ func PutCharactersCharacterIdContacts(w http.ResponseWriter, r *http.Request) {
 		}
 		datasource = localV.(string)
 	}
-	if r.Form.Get("labelId") != "" {
-		localV, err = processParameters(labelId, r.Form.Get("label_id"))
+	if r.Form.Get("labelIds") != "" {
+		localV, err = processParameters(labelIds, r.Form.Get("label_ids"))
 		if err != nil {
 			errorOut(w, r, err)
 			return
 		}
-		labelId = localV.(int64)
+		labelIds = localV.([]int64)
 	}
 	localV, err = processParameters(standing, r.Form.Get("standing"))
 	if err != nil {

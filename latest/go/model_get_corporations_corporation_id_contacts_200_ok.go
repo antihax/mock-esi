@@ -13,8 +13,8 @@ type GetCorporationsCorporationIdContacts200Ok struct {
 	 Whether this contact is being watched */
 	IsWatched bool `json:"is_watched,omitempty"`
 	/*
-	 Custom label of the contact */
-	LabelId int64 `json:"label_id,omitempty"`
+	 label_ids array */
+	LabelIds []int64 `json:"label_ids,omitempty"`
 	/*
 	 Standing of the contact */
 	Standing float32 `json:"standing,omitempty"`

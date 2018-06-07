@@ -373,9 +373,9 @@ paths:
       tags:
       - "Contacts"
       summary: "Get alliance contacts"
-      description: "Return contacts of an alliance\n\n---\nAlternate route: `/latest/alliances/{alliance_id}/contacts/`\n\
-        \nAlternate route: `/v1/alliances/{alliance_id}/contacts/`\n\n---\nThis route\
-        \ is cached for up to 300 seconds\n\n---\nWarning: This is a legacy route."
+      description: "Return contacts of an alliance\n\n---\nAlternate route: `/v1/alliances/{alliance_id}/contacts/`\n\
+        \n---\nThis route is cached for up to 300 seconds\n\n---\nWarning: This route\
+        \ is deprecated.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#GET-/alliances/{alliance_id}/contacts/)"
       operationId: "get_alliances_alliance_id_contacts"
       parameters:
       - name: "alliance_id"
@@ -518,8 +518,8 @@ paths:
       security:
       - evesso:
         - "esi-alliances.read_contacts.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
       - "v1"
       x-cached-seconds: 300
   /alliances/{alliance_id}/contacts/labels/:
@@ -3105,10 +3105,9 @@ paths:
       tags:
       - "Contacts"
       summary: "Get contacts"
-      description: "Return contacts of a character\n\n---\nAlternate route: `/latest/characters/{character_id}/contacts/`\n\
-        \nAlternate route: `/v1/characters/{character_id}/contacts/`\n\n---\nThis\
-        \ route is cached for up to 300 seconds\n\n---\nWarning: This is a legacy\
-        \ route."
+      description: "Return contacts of a character\n\n---\nAlternate route: `/v1/characters/{character_id}/contacts/`\n\
+        \n---\nThis route is cached for up to 300 seconds\n\n---\nWarning: This route\
+        \ is deprecated.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#GET-/characters/{character_id}/contacts/)"
       operationId: "get_characters_character_id_contacts"
       parameters:
       - name: "character_id"
@@ -3253,8 +3252,8 @@ paths:
       security:
       - evesso:
         - "esi-characters.read_contacts.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
       - "v1"
       x-cached-seconds: 300
     post:
@@ -3262,8 +3261,8 @@ paths:
       - "Contacts"
       summary: "Add contacts"
       description: "Bulk add contacts with same settings\n\n---\nAlternate route:\
-        \ `/latest/characters/{character_id}/contacts/`\n\nAlternate route: `/v1/characters/{character_id}/contacts/`\n\
-        \n\n---\nWarning: This is a legacy route."
+        \ `/v1/characters/{character_id}/contacts/`\n\n\n---\nWarning: This route\
+        \ is deprecated.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#POST-/characters/{character_id}/contacts/)"
       operationId: "post_characters_character_id_contacts"
       parameters:
       - name: "character_id"
@@ -3398,16 +3397,16 @@ paths:
       security:
       - evesso:
         - "esi-characters.write_contacts.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
       - "v1"
     put:
       tags:
       - "Contacts"
       summary: "Edit contacts"
       description: "Bulk edit contacts with same settings\n\n---\nAlternate route:\
-        \ `/latest/characters/{character_id}/contacts/`\n\nAlternate route: `/v1/characters/{character_id}/contacts/`\n\
-        \n\n---\nWarning: This is a legacy route."
+        \ `/v1/characters/{character_id}/contacts/`\n\n\n---\nWarning: This route\
+        \ is deprecated.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#PUT-/characters/{character_id}/contacts/)"
       operationId: "put_characters_character_id_contacts"
       parameters:
       - name: "character_id"
@@ -3528,8 +3527,8 @@ paths:
       security:
       - evesso:
         - "esi-characters.write_contacts.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
       - "v1"
     delete:
       tags:
@@ -12596,10 +12595,9 @@ paths:
       tags:
       - "Contacts"
       summary: "Get corporation contacts"
-      description: "Return contacts of a corporation\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/contacts/`\n\
-        \nAlternate route: `/v1/corporations/{corporation_id}/contacts/`\n\n---\n\
-        This route is cached for up to 300 seconds\n\n---\nWarning: This is a legacy\
-        \ route."
+      description: "Return contacts of a corporation\n\n---\nAlternate route: `/v1/corporations/{corporation_id}/contacts/`\n\
+        \n---\nThis route is cached for up to 300 seconds\n\n---\nWarning: This route\
+        \ is deprecated.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#GET-/corporations/{corporation_id}/contacts/)"
       operationId: "get_corporations_corporation_id_contacts"
       parameters:
       - name: "corporation_id"
@@ -12743,8 +12741,8 @@ paths:
       security:
       - evesso:
         - "esi-corporations.read_contacts.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
       - "v1"
       x-cached-seconds: 300
       x-required-roles: []

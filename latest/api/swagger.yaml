@@ -372,10 +372,9 @@ paths:
       tags:
       - "Contacts"
       summary: "Get alliance contacts"
-      description: "Return contacts of an alliance\n\n---\nAlternate route: `/legacy/alliances/{alliance_id}/contacts/`\n\
-        \nAlternate route: `/v1/alliances/{alliance_id}/contacts/`\n\n---\nThis route\
-        \ is cached for up to 300 seconds\n\n---\nWarning: This route has an upgrade\
-        \ available.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/alliances/{alliance_id}/contacts/)"
+      description: "Return contacts of an alliance\n\n---\nAlternate route: `/dev/alliances/{alliance_id}/contacts/`\n\
+        \nAlternate route: `/v2/alliances/{alliance_id}/contacts/`\n\n---\nThis route\
+        \ is cached for up to 300 seconds"
       operationId: "get_alliances_alliance_id_contacts"
       parameters:
       - name: "alliance_id"
@@ -519,8 +518,8 @@ paths:
       - evesso:
         - "esi-alliances.read_contacts.v1"
       x-alternate-versions:
-      - "legacy"
-      - "v1"
+      - "dev"
+      - "v2"
       x-cached-seconds: 300
   /alliances/{alliance_id}/contacts/labels/:
     get:
@@ -3143,10 +3142,9 @@ paths:
       tags:
       - "Contacts"
       summary: "Get contacts"
-      description: "Return contacts of a character\n\n---\nAlternate route: `/legacy/characters/{character_id}/contacts/`\n\
-        \nAlternate route: `/v1/characters/{character_id}/contacts/`\n\n---\nThis\
-        \ route is cached for up to 300 seconds\n\n---\nWarning: This route has an\
-        \ upgrade available.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/characters/{character_id}/contacts/)"
+      description: "Return contacts of a character\n\n---\nAlternate route: `/dev/characters/{character_id}/contacts/`\n\
+        \nAlternate route: `/v2/characters/{character_id}/contacts/`\n\n---\nThis\
+        \ route is cached for up to 300 seconds"
       operationId: "get_characters_character_id_contacts"
       parameters:
       - name: "character_id"
@@ -3292,17 +3290,15 @@ paths:
       - evesso:
         - "esi-characters.read_contacts.v1"
       x-alternate-versions:
-      - "legacy"
-      - "v1"
+      - "dev"
+      - "v2"
       x-cached-seconds: 300
     post:
       tags:
       - "Contacts"
       summary: "Add contacts"
       description: "Bulk add contacts with same settings\n\n---\nAlternate route:\
-        \ `/legacy/characters/{character_id}/contacts/`\n\nAlternate route: `/v1/characters/{character_id}/contacts/`\n\
-        \n\n---\nWarning: This route has an upgrade available.\n\n---\n[Diff of the\
-        \ upcoming changes](https://esi.evetech.net/diff/latest/dev/#POST-/characters/{character_id}/contacts/)"
+        \ `/dev/characters/{character_id}/contacts/`\n\nAlternate route: `/v2/characters/{character_id}/contacts/`\n"
       operationId: "post_characters_character_id_contacts"
       parameters:
       - name: "character_id"
@@ -3337,14 +3333,16 @@ paths:
         - "tranquility"
         - "singularity"
         x-exportParamName: "Datasource"
-      - name: "label_id"
+      - name: "label_ids"
         in: "query"
-        description: "Add a custom label to the new contact"
+        description: "Add custom labels to the new contact"
         required: false
-        type: "integer"
-        default: 0
-        format: "int64"
-        x-exportParamName: "LabelId"
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+        maxItems: 63
+        x-exportParamName: "LabelIds"
       - name: "standing"
         in: "query"
         description: "Standing for the contact"
@@ -3434,20 +3432,25 @@ paths:
           examples:
             application/json:
               error: "Gateway timeout message"
+        520:
+          description: "Internal error thrown from the EVE server."
+          schema:
+            $ref: "#/definitions/post_characters_character_id_contacts_error_520"
+          examples:
+            application/json:
+              error: "Error 520 message"
       security:
       - evesso:
         - "esi-characters.write_contacts.v1"
       x-alternate-versions:
-      - "legacy"
-      - "v1"
+      - "dev"
+      - "v2"
     put:
       tags:
       - "Contacts"
       summary: "Edit contacts"
       description: "Bulk edit contacts with same settings\n\n---\nAlternate route:\
-        \ `/legacy/characters/{character_id}/contacts/`\n\nAlternate route: `/v1/characters/{character_id}/contacts/`\n\
-        \n\n---\nWarning: This route has an upgrade available.\n\n---\n[Diff of the\
-        \ upcoming changes](https://esi.evetech.net/diff/latest/dev/#PUT-/characters/{character_id}/contacts/)"
+        \ `/dev/characters/{character_id}/contacts/`\n\nAlternate route: `/v2/characters/{character_id}/contacts/`\n"
       operationId: "put_characters_character_id_contacts"
       parameters:
       - name: "character_id"
@@ -3482,14 +3485,16 @@ paths:
         - "tranquility"
         - "singularity"
         x-exportParamName: "Datasource"
-      - name: "label_id"
+      - name: "label_ids"
         in: "query"
-        description: "Add a custom label to the contact, use 0 for clearing label"
+        description: "Add custom labels to the contact"
         required: false
-        type: "integer"
-        default: 0
-        format: "int64"
-        x-exportParamName: "LabelId"
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+        maxItems: 63
+        x-exportParamName: "LabelIds"
       - name: "standing"
         in: "query"
         description: "Standing for the contact"
@@ -3569,8 +3574,8 @@ paths:
       - evesso:
         - "esi-characters.write_contacts.v1"
       x-alternate-versions:
-      - "legacy"
-      - "v1"
+      - "dev"
+      - "v2"
     delete:
       tags:
       - "Contacts"
@@ -12438,10 +12443,9 @@ paths:
       tags:
       - "Contacts"
       summary: "Get corporation contacts"
-      description: "Return contacts of a corporation\n\n---\nAlternate route: `/legacy/corporations/{corporation_id}/contacts/`\n\
-        \nAlternate route: `/v1/corporations/{corporation_id}/contacts/`\n\n---\n\
-        This route is cached for up to 300 seconds\n\n---\nWarning: This route has\
-        \ an upgrade available.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/contacts/)"
+      description: "Return contacts of a corporation\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/contacts/`\n\
+        \nAlternate route: `/v2/corporations/{corporation_id}/contacts/`\n\n---\n\
+        This route is cached for up to 300 seconds"
       operationId: "get_corporations_corporation_id_contacts"
       parameters:
       - name: "corporation_id"
@@ -12586,8 +12590,8 @@ paths:
       - evesso:
         - "esi-corporations.read_contacts.v1"
       x-alternate-versions:
-      - "legacy"
-      - "v1"
+      - "dev"
+      - "v2"
       x-cached-seconds: 300
       x-required-roles: []
   /corporations/{corporation_id}/contacts/labels/:
@@ -29146,11 +29150,16 @@ definitions:
         - "corporation"
         - "alliance"
         - "faction"
-      label_id:
-        type: "integer"
-        format: "int64"
-        description: "Custom label of the contact"
-        title: "get_alliances_alliance_id_contacts_label_id"
+      label_ids:
+        type: "array"
+        description: "label_ids array"
+        title: "get_alliances_alliance_id_contacts_label_ids"
+        items:
+          type: "integer"
+          format: "int64"
+          description: "Label IDs applied to the contact."
+          title: "get_alliances_alliance_id_contacts_label_id"
+        maxItems: 63
       standing:
         type: "number"
         format: "float"
@@ -30070,17 +30079,29 @@ definitions:
         type: "boolean"
         description: "Whether this contact is being watched"
         title: "get_characters_character_id_contacts_is_watched"
-      label_id:
-        type: "integer"
-        format: "int64"
-        description: "Custom label of the contact"
-        title: "get_characters_character_id_contacts_label_id"
+      label_ids:
+        type: "array"
+        description: "label_ids array"
+        title: "get_characters_character_id_contacts_label_ids"
+        items:
+          type: "integer"
+          format: "int64"
+          description: "Label IDs applied to the contact."
+          title: "get_characters_character_id_contacts_label_id"
+        maxItems: 63
       standing:
         type: "number"
         format: "float"
         description: "Standing of the contact"
         title: "get_characters_character_id_contacts_standing"
     description: "200 ok object"
+  post_characters_character_id_contacts_error_520:
+    properties:
+      error:
+        type: "string"
+        description: "Error 520 message"
+        title: "post_characters_character_id_contacts_520_error_520"
+    description: "Error 520"
   get_characters_character_id_contacts_labels_200_ok:
     required:
     - "label_id"
@@ -35167,11 +35188,16 @@ definitions:
         type: "boolean"
         description: "Whether this contact is being watched"
         title: "get_corporations_corporation_id_contacts_is_watched"
-      label_id:
-        type: "integer"
-        format: "int64"
-        description: "Custom label of the contact"
-        title: "get_corporations_corporation_id_contacts_label_id"
+      label_ids:
+        type: "array"
+        description: "label_ids array"
+        title: "get_corporations_corporation_id_contacts_label_ids"
+        items:
+          type: "integer"
+          format: "int64"
+          description: "Label IDs applied to the contact."
+          title: "get_corporations_corporation_id_contacts_label_id"
+        maxItems: 63
       standing:
         type: "number"
         format: "float"

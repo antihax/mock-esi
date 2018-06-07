@@ -259,7 +259,8 @@ paths:
       - "Contacts"
       summary: "Get alliance contacts"
       description: "Return contacts of an alliance\n\n---\nAlternate route: `/dev/alliances/{alliance_id}/contacts/`\n\
-        \n---\nThis route is cached for up to 300 seconds"
+        \nAlternate route: `/latest/alliances/{alliance_id}/contacts/`\n\n---\nThis\
+        \ route is cached for up to 300 seconds"
       operationId: "get_alliances_alliance_id_contacts"
       parameters:
       - name: "alliance_id"
@@ -404,6 +405,7 @@ paths:
         - "esi-alliances.read_contacts.v1"
       x-alternate-versions:
       - "dev"
+      - "latest"
       x-cached-seconds: 300
   /characters/{character_id}/assets/:
     get:
@@ -1588,7 +1590,8 @@ paths:
       - "Contacts"
       summary: "Get contacts"
       description: "Return contacts of a character\n\n---\nAlternate route: `/dev/characters/{character_id}/contacts/`\n\
-        \n---\nThis route is cached for up to 300 seconds"
+        \nAlternate route: `/latest/characters/{character_id}/contacts/`\n\n---\n\
+        This route is cached for up to 300 seconds"
       operationId: "get_characters_character_id_contacts"
       parameters:
       - name: "character_id"
@@ -1735,13 +1738,14 @@ paths:
         - "esi-characters.read_contacts.v1"
       x-alternate-versions:
       - "dev"
+      - "latest"
       x-cached-seconds: 300
     post:
       tags:
       - "Contacts"
       summary: "Add contacts"
       description: "Bulk add contacts with same settings\n\n---\nAlternate route:\
-        \ `/dev/characters/{character_id}/contacts/`\n"
+        \ `/dev/characters/{character_id}/contacts/`\n\nAlternate route: `/latest/characters/{character_id}/contacts/`\n"
       operationId: "post_characters_character_id_contacts"
       parameters:
       - name: "character_id"
@@ -1887,12 +1891,13 @@ paths:
         - "esi-characters.write_contacts.v1"
       x-alternate-versions:
       - "dev"
+      - "latest"
     put:
       tags:
       - "Contacts"
       summary: "Edit contacts"
       description: "Bulk edit contacts with same settings\n\n---\nAlternate route:\
-        \ `/dev/characters/{character_id}/contacts/`\n"
+        \ `/dev/characters/{character_id}/contacts/`\n\nAlternate route: `/latest/characters/{character_id}/contacts/`\n"
       operationId: "put_characters_character_id_contacts"
       parameters:
       - name: "character_id"
@@ -2017,6 +2022,7 @@ paths:
         - "esi-characters.write_contacts.v1"
       x-alternate-versions:
       - "dev"
+      - "latest"
     delete:
       tags:
       - "Contacts"
@@ -4447,7 +4453,8 @@ paths:
       - "Contacts"
       summary: "Get corporation contacts"
       description: "Return contacts of a corporation\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/contacts/`\n\
-        \n---\nThis route is cached for up to 300 seconds"
+        \nAlternate route: `/latest/corporations/{corporation_id}/contacts/`\n\n---\n\
+        This route is cached for up to 300 seconds"
       operationId: "get_corporations_corporation_id_contacts"
       parameters:
       - name: "corporation_id"
@@ -4593,6 +4600,7 @@ paths:
         - "esi-corporations.read_contacts.v1"
       x-alternate-versions:
       - "dev"
+      - "latest"
       x-cached-seconds: 300
       x-required-roles: []
   /corporations/{corporation_id}/containers/logs/:

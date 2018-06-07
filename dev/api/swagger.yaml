@@ -372,8 +372,9 @@ paths:
       tags:
       - "Contacts"
       summary: "Get alliance contacts"
-      description: "Return contacts of an alliance\n\n---\nAlternate route: `/v2/alliances/{alliance_id}/contacts/`\n\
-        \n---\nThis route is cached for up to 300 seconds"
+      description: "Return contacts of an alliance\n\n---\nAlternate route: `/latest/alliances/{alliance_id}/contacts/`\n\
+        \nAlternate route: `/v2/alliances/{alliance_id}/contacts/`\n\n---\nThis route\
+        \ is cached for up to 300 seconds"
       operationId: "get_alliances_alliance_id_contacts"
       parameters:
       - name: "alliance_id"
@@ -517,6 +518,7 @@ paths:
       - evesso:
         - "esi-alliances.read_contacts.v1"
       x-alternate-versions:
+      - "latest"
       - "v2"
       x-cached-seconds: 300
   /alliances/{alliance_id}/contacts/labels/:
@@ -3141,8 +3143,9 @@ paths:
       tags:
       - "Contacts"
       summary: "Get contacts"
-      description: "Return contacts of a character\n\n---\nAlternate route: `/v2/characters/{character_id}/contacts/`\n\
-        \n---\nThis route is cached for up to 300 seconds"
+      description: "Return contacts of a character\n\n---\nAlternate route: `/latest/characters/{character_id}/contacts/`\n\
+        \nAlternate route: `/v2/characters/{character_id}/contacts/`\n\n---\nThis\
+        \ route is cached for up to 300 seconds"
       operationId: "get_characters_character_id_contacts"
       parameters:
       - name: "character_id"
@@ -3288,6 +3291,7 @@ paths:
       - evesso:
         - "esi-characters.read_contacts.v1"
       x-alternate-versions:
+      - "latest"
       - "v2"
       x-cached-seconds: 300
     post:
@@ -3295,7 +3299,7 @@ paths:
       - "Contacts"
       summary: "Add contacts"
       description: "Bulk add contacts with same settings\n\n---\nAlternate route:\
-        \ `/v2/characters/{character_id}/contacts/`\n"
+        \ `/latest/characters/{character_id}/contacts/`\n\nAlternate route: `/v2/characters/{character_id}/contacts/`\n"
       operationId: "post_characters_character_id_contacts"
       parameters:
       - name: "character_id"
@@ -3440,13 +3444,14 @@ paths:
       - evesso:
         - "esi-characters.write_contacts.v1"
       x-alternate-versions:
+      - "latest"
       - "v2"
     put:
       tags:
       - "Contacts"
       summary: "Edit contacts"
       description: "Bulk edit contacts with same settings\n\n---\nAlternate route:\
-        \ `/v2/characters/{character_id}/contacts/`\n"
+        \ `/latest/characters/{character_id}/contacts/`\n\nAlternate route: `/v2/characters/{character_id}/contacts/`\n"
       operationId: "put_characters_character_id_contacts"
       parameters:
       - name: "character_id"
@@ -3570,6 +3575,7 @@ paths:
       - evesso:
         - "esi-characters.write_contacts.v1"
       x-alternate-versions:
+      - "latest"
       - "v2"
     delete:
       tags:
@@ -12438,8 +12444,9 @@ paths:
       tags:
       - "Contacts"
       summary: "Get corporation contacts"
-      description: "Return contacts of a corporation\n\n---\nAlternate route: `/v2/corporations/{corporation_id}/contacts/`\n\
-        \n---\nThis route is cached for up to 300 seconds"
+      description: "Return contacts of a corporation\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/contacts/`\n\
+        \nAlternate route: `/v2/corporations/{corporation_id}/contacts/`\n\n---\n\
+        This route is cached for up to 300 seconds"
       operationId: "get_corporations_corporation_id_contacts"
       parameters:
       - name: "corporation_id"
@@ -12584,6 +12591,7 @@ paths:
       - evesso:
         - "esi-corporations.read_contacts.v1"
       x-alternate-versions:
+      - "latest"
       - "v2"
       x-cached-seconds: 300
       x-required-roles: []
