@@ -1717,68 +1717,6 @@ func GetCorporationsCorporationIdTitles(w http.ResponseWriter, r *http.Request) 
 	w.Write([]byte(j))
 }
 
-func GetCorporationsNames(w http.ResponseWriter, r *http.Request) {
-
-	var (
-		localV         interface{}
-		err            error
-		corporationIds []int64
-		datasource     string
-	)
-	// shut up warnings
-	localV = localV
-	err = err
-
-	j := `[ {
-  "corporation_id" : 1000171,
-  "corporation_name" : "Republic University"
-} ]`
-	if err := r.ParseForm(); err != nil {
-		errorOut(w, r, err)
-		return
-	}
-	localV, err = processParameters(corporationIds, r.Form.Get("corporation_ids"))
-	if err != nil {
-		errorOut(w, r, err)
-		return
-	}
-	if r.Form.Get("datasource") != "" {
-		localV, err = processParameters(datasource, r.Form.Get("datasource"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		datasource = localV.(string)
-	}
-
-	if r.Form.Get("page") != "" {
-		var (
-			localPage    int32
-			localIntPage interface{}
-		)
-		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		localPage = localIntPage.(int32)
-		if localPage > 1 {
-			w.Header().Set("warning", "299 - This route is deprecated.")
-			w.Header().Set("Content-Type", "application/json")
-			w.WriteHeader(http.StatusOK)
-			w.Write([]byte("[]"))
-			return
-		}
-	}
-
-	w.Header().Set("warning", "299 - This route is deprecated.")
-
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
-
-	w.Write([]byte(j))
-}
-
 func GetCorporationsNpccorps(w http.ResponseWriter, r *http.Request) {
 
 	var (

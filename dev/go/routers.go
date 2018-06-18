@@ -235,13 +235,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCharactersNames",
-		"Get",
-		"/dev/characters/names/",
-		GetCharactersNames,
-	)
-
-	mockesi.NewRoute(
 		"PostCharactersAffiliation",
 		"Post",
 		"/dev/characters/affiliation/",
@@ -533,13 +526,6 @@ func init() {
 		"Get",
 		"/dev/corporations/{corporation_id}/titles/",
 		GetCorporationsCorporationIdTitles,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsNames",
-		"Get",
-		"/dev/corporations/names/",
-		GetCorporationsNames,
 	)
 
 	mockesi.NewRoute(

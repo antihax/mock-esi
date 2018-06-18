@@ -130,13 +130,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCharactersCharacterIdWalletJournal",
-		"Get",
-		"/v3/characters/{character_id}/wallet/journal/",
-		GetCharactersCharacterIdWalletJournal,
-	)
-
-	mockesi.NewRoute(
 		"GetCorporationsCorporationIdWalletsDivisionJournal",
 		"Get",
 		"/v3/corporations/{corporation_id}/wallets/{division}/journal/",

@@ -200,13 +200,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCorporationsNames",
-		"Get",
-		"/v2/corporations/names/",
-		GetCorporationsNames,
-	)
-
-	mockesi.NewRoute(
 		"GetDogmaEffectsEffectId",
 		"Get",
 		"/v2/dogma/effects/{effect_id}/",
@@ -344,13 +337,6 @@ func init() {
 		"Post",
 		"/v2/ui/autopilot/waypoint/",
 		PostUiAutopilotWaypoint,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsCorporationIdWalletsDivisionJournal",
-		"Get",
-		"/v2/corporations/{corporation_id}/wallets/{division}/journal/",
-		GetCorporationsCorporationIdWalletsDivisionJournal,
 	)
 
 }

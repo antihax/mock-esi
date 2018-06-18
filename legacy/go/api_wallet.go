@@ -84,7 +84,7 @@ func GetCharactersCharacterIdWalletJournal(w http.ResponseWriter, r *http.Reques
 		err         error
 		characterId int32
 		datasource  string
-		fromId      int64
+		page        int32
 		token       string
 	)
 	// shut up warnings
@@ -92,9 +92,16 @@ func GetCharactersCharacterIdWalletJournal(w http.ResponseWriter, r *http.Reques
 	err = err
 
 	j := `[ {
-  "date" : "2016-10-24T09:00:00Z",
-  "ref_id" : 1234567890,
-  "ref_type" : "player_trading"
+  "amount" : -100000,
+  "balance" : 500000.4316,
+  "context_id" : 4,
+  "context_id_type" : "contract_id",
+  "date" : "2018-02-23T14:31:32Z",
+  "description" : "Contract Deposit",
+  "first_party_id" : 2112625428,
+  "id" : 89,
+  "ref_type" : "contract_deposit",
+  "second_party_id" : 1000132
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -115,13 +122,13 @@ func GetCharactersCharacterIdWalletJournal(w http.ResponseWriter, r *http.Reques
 		}
 		datasource = localV.(string)
 	}
-	if r.Form.Get("fromId") != "" {
-		localV, err = processParameters(fromId, r.Form.Get("from_id"))
+	if r.Form.Get("page") != "" {
+		localV, err = processParameters(page, r.Form.Get("page"))
 		if err != nil {
 			errorOut(w, r, err)
 			return
 		}
-		fromId = localV.(int64)
+		page = localV.(int32)
 	}
 	if r.Form.Get("token") != "" {
 		localV, err = processParameters(token, r.Form.Get("token"))
@@ -144,15 +151,12 @@ func GetCharactersCharacterIdWalletJournal(w http.ResponseWriter, r *http.Reques
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
-			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
-
-	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -343,7 +347,7 @@ func GetCorporationsCorporationIdWalletsDivisionJournal(w http.ResponseWriter, r
 		corporationId int32
 		division      int32
 		datasource    string
-		fromId        int64
+		page          int32
 		token         string
 	)
 	// shut up warnings
@@ -351,9 +355,16 @@ func GetCorporationsCorporationIdWalletsDivisionJournal(w http.ResponseWriter, r
 	err = err
 
 	j := `[ {
+  "amount" : -1000,
+  "balance" : 100000.0,
+  "context_id" : 2112625428,
+  "context_id_type" : "character_id",
   "date" : "2016-10-24T09:00:00Z",
-  "ref_id" : 1234567890,
-  "ref_type" : "player_trading"
+  "description" : "CCP Zoetrope transferred cash from C C P's corporate account to CCP SnowedIn's account",
+  "first_party_id" : 109299958,
+  "id" : 1234567890,
+  "ref_type" : "corporation_account_withdrawal",
+  "second_party_id" : 95538921
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(corporationId, vars["corporation_id"])
@@ -380,13 +391,13 @@ func GetCorporationsCorporationIdWalletsDivisionJournal(w http.ResponseWriter, r
 		}
 		datasource = localV.(string)
 	}
-	if r.Form.Get("fromId") != "" {
-		localV, err = processParameters(fromId, r.Form.Get("from_id"))
+	if r.Form.Get("page") != "" {
+		localV, err = processParameters(page, r.Form.Get("page"))
 		if err != nil {
 			errorOut(w, r, err)
 			return
 		}
-		fromId = localV.(int64)
+		page = localV.(int32)
 	}
 	if r.Form.Get("token") != "" {
 		localV, err = processParameters(token, r.Form.Get("token"))
@@ -409,15 +420,12 @@ func GetCorporationsCorporationIdWalletsDivisionJournal(w http.ResponseWriter, r
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
-			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
-
-	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
