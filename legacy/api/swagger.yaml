@@ -134,8 +134,8 @@ paths:
       summary: "Get alliance names"
       description: "Resolve a set of alliance IDs to alliance names\n\n---\nAlternate\
         \ route: `/v1/alliances/names/`\n\n---\nThis route is cached for up to 3600\
-        \ seconds\n\n---\nWarning: This route is deprecated.\n\n---\n[Diff of the\
-        \ upcoming changes](https://esi.evetech.net/diff/legacy/latest/#GET-/alliances/names/)"
+        \ seconds\n\n---\nWarning: This route will be deleted on June 21st, 2018\n\
+        \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#GET-/alliances/names/)"
       operationId: "get_alliances_names"
       parameters:
       - name: "alliance_ids"
