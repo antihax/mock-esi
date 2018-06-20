@@ -932,12 +932,15 @@ func GetCorporationsCorporationIdOutposts(w http.ResponseWriter, r *http.Request
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -1026,12 +1029,15 @@ func GetCorporationsCorporationIdOutpostsOutpostId(w http.ResponseWriter, r *htt
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)

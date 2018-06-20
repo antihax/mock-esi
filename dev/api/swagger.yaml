@@ -15523,7 +15523,8 @@ paths:
         \nAlternate route: `/legacy/corporations/{corporation_id}/outposts/`\n\nAlternate\
         \ route: `/v1/corporations/{corporation_id}/outposts/`\n\n---\nThis route\
         \ is cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
-        \ corporation role(s): Director\n"
+        \ corporation role(s): Director\n\n\n---\nWarning: Outposts have been removed,\
+        \ this route will be deleted on 2018-07-08"
       operationId: "get_corporations_corporation_id_outposts"
       parameters:
       - name: "corporation_id"
@@ -15670,6 +15671,7 @@ paths:
       security:
       - evesso:
         - "esi-corporations.read_outposts.v1"
+      deprecated: true
       x-alternate-versions:
       - "latest"
       - "legacy"
@@ -15689,7 +15691,8 @@ paths:
         \nAlternate route: `/legacy/corporations/{corporation_id}/outposts/{outpost_id}/`\n\
         \nAlternate route: `/v1/corporations/{corporation_id}/outposts/{outpost_id}/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
-        \ the following EVE corporation role(s): Director\n"
+        \ the following EVE corporation role(s): Director\n\n\n---\nWarning: Outposts\
+        \ have been removed, this route will be deleted on 2018-07-08"
       operationId: "get_corporations_corporation_id_outposts_outpost_id"
       parameters:
       - name: "corporation_id"
@@ -15834,6 +15837,7 @@ paths:
       security:
       - evesso:
         - "esi-corporations.read_outposts.v1"
+      deprecated: true
       x-alternate-versions:
       - "latest"
       - "legacy"
