@@ -32,13 +32,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetAlliancesNames",
-		"Get",
-		"/v1/alliances/names/",
-		GetAlliancesNames,
-	)
-
-	mockesi.NewRoute(
 		"PostCharactersCharacterIdAssetsLocations",
 		"Post",
 		"/v1/characters/{character_id}/assets/locations/",
