@@ -4,8 +4,8 @@ package esilatest
 200 ok object */
 type GetFwSystems200Ok struct {
 	/*
-	 contested boolean */
-	Contested bool `json:"contested,omitempty"`
+	 contested string */
+	Contested string `json:"contested,omitempty"`
 	/*
 	 occupier_faction_id integer */
 	OccupierFactionId int32 `json:"occupier_faction_id,omitempty"`

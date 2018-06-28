@@ -17919,10 +17919,9 @@ paths:
       - "Faction Warfare"
       summary: "Ownership of faction warfare systems"
       description: "An overview of the current ownership of faction warfare solar\
-        \ systems\n\n---\nAlternate route: `/latest/fw/systems/`\n\nAlternate route:\
-        \ `/legacy/fw/systems/`\n\n---\nThis route is cached for up to 1800 seconds\n\
-        \n---\nWarning: This route has an upgrade available.\n\n---\n[Diff of the\
-        \ upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/fw/systems/)"
+        \ systems\n\n---\nAlternate route: `/legacy/fw/systems/`\n\n---\nThis route\
+        \ is cached for up to 1800 seconds\n\n---\nWarning: This route is deprecated.\n\
+        \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/fw/systems/)"
       operationId: "get_fw_systems"
       parameters:
       - name: "datasource"
@@ -18023,8 +18022,8 @@ paths:
           examples:
             application/json:
               error: "Gateway timeout message"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
       - "legacy"
       x-cached-seconds: 1800
   /fw/wars/:

@@ -20294,8 +20294,8 @@ paths:
       - "Faction Warfare"
       summary: "Ownership of faction warfare systems"
       description: "An overview of the current ownership of faction warfare solar\
-        \ systems\n\n---\nAlternate route: `/v2/fw/systems/`\n\n---\nThis route is\
-        \ cached for up to 1800 seconds"
+        \ systems\n\n---\nAlternate route: `/latest/fw/systems/`\n\nAlternate route:\
+        \ `/v2/fw/systems/`\n\n---\nThis route is cached for up to 1800 seconds"
       operationId: "get_fw_systems"
       parameters:
       - name: "datasource"
@@ -20397,6 +20397,7 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
+      - "latest"
       - "v2"
       x-cached-seconds: 1800
   /fw/wars/:

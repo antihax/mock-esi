@@ -20295,10 +20295,8 @@ paths:
       - "Faction Warfare"
       summary: "Ownership of faction warfare systems"
       description: "An overview of the current ownership of faction warfare solar\
-        \ systems\n\n---\nAlternate route: `/legacy/fw/systems/`\n\nAlternate route:\
-        \ `/v1/fw/systems/`\n\n---\nThis route is cached for up to 1800 seconds\n\n\
-        ---\nWarning: This route has an upgrade available.\n\n---\n[Diff of the upcoming\
-        \ changes](https://esi.evetech.net/diff/latest/dev/#GET-/fw/systems/)"
+        \ systems\n\n---\nAlternate route: `/dev/fw/systems/`\n\nAlternate route:\
+        \ `/v2/fw/systems/`\n\n---\nThis route is cached for up to 1800 seconds"
       operationId: "get_fw_systems"
       parameters:
       - name: "datasource"
@@ -20330,7 +20328,7 @@ paths:
             maxItems: 171
           examples:
             application/json:
-            - contested: true
+            - contested: "uncontested"
               occupier_faction_id: 500001
               owner_faction_id: 500001
               solar_system_id: 30002096
@@ -20400,8 +20398,8 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "legacy"
-      - "v1"
+      - "dev"
+      - "v2"
       x-cached-seconds: 1800
   /fw/wars/:
     get:
@@ -39138,9 +39136,14 @@ definitions:
     - "victory_points_threshold"
     properties:
       contested:
-        type: "boolean"
-        description: "contested boolean"
+        type: "string"
+        description: "contested string"
         title: "get_fw_systems_contested"
+        enum:
+        - "captured"
+        - "contested"
+        - "uncontested"
+        - "vulnerable"
       occupier_faction_id:
         type: "integer"
         format: "int32"
