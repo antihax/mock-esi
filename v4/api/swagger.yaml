@@ -690,7 +690,8 @@ paths:
       - "Universe"
       summary: "Get solar system information"
       description: "Get information on a solar system.\n\n---\nAlternate route: `/dev/universe/systems/{system_id}/`\n\
-        \n---\nThis route expires daily at 11:05"
+        \nAlternate route: `/latest/universe/systems/{system_id}/`\n\n---\nThis route\
+        \ expires daily at 11:05"
       operationId: "get_universe_systems_system_id"
       parameters:
       - name: "Accept-Language"
@@ -851,6 +852,7 @@ paths:
               error: "Gateway timeout message"
       x-alternate-versions:
       - "dev"
+      - "latest"
 securityDefinitions:
   evesso:
     type: "oauth2"

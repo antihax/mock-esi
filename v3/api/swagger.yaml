@@ -2040,9 +2040,10 @@ paths:
       - "Market"
       summary: "List open orders from a corporation"
       description: "List open market orders placed on behalf of a corporation\n\n\
-        ---\nAlternate route: `/dev/corporations/{corporation_id}/orders/`\n\n---\n\
-        This route is cached for up to 1200 seconds\n\n---\nRequires one of the following\
-        \ EVE corporation role(s): Accountant, Trader\n"
+        ---\nAlternate route: `/dev/corporations/{corporation_id}/orders/`\n\nAlternate\
+        \ route: `/latest/corporations/{corporation_id}/orders/`\n\n---\nThis route\
+        \ is cached for up to 1200 seconds\n\n---\nRequires one of the following EVE\
+        \ corporation role(s): Accountant, Trader\n"
       operationId: "get_corporations_corporation_id_orders"
       parameters:
       - name: "corporation_id"
@@ -2199,6 +2200,7 @@ paths:
         - "esi-markets.read_corporation_orders.v1"
       x-alternate-versions:
       - "dev"
+      - "latest"
       x-cached-seconds: 1200
       x-required-roles:
       - "Accountant"
@@ -2387,9 +2389,9 @@ paths:
       - "Universe"
       summary: "Get solar system information"
       description: "Get information on a solar system. NOTE: This route does not work\
-        \ with abyssal systems.\n\n---\nAlternate route: `/latest/universe/systems/{system_id}/`\n\
-        \n---\nThis route expires daily at 11:05\n\n---\nWarning: This route has an\
-        \ upgrade available.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v3/dev/#GET-/universe/systems/{system_id}/)"
+        \ with abyssal systems.\n\n---\nAlternate route: `/legacy/universe/systems/{system_id}/`\n\
+        \n---\nThis route expires daily at 11:05\n\n---\nWarning: This route is deprecated.\n\
+        \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v3/dev/#GET-/universe/systems/{system_id}/)"
       operationId: "get_universe_systems_system_id"
       parameters:
       - name: "Accept-Language"
@@ -2548,8 +2550,9 @@ paths:
           examples:
             application/json:
               error: "Gateway timeout message"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
+      - "legacy"
   /universe/types/{type_id}/:
     get:
       tags:

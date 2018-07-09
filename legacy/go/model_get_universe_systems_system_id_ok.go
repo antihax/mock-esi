@@ -27,6 +27,9 @@ type GetUniverseSystemsSystemIdOk struct {
 	 stargates array */
 	Stargates []int32 `json:"stargates,omitempty"`
 	/*
+	 stations array */
+	Stations []int32 `json:"stations,omitempty"`
+	/*
 	 system_id integer */
 	SystemId int32 `json:"system_id,omitempty"`
 }

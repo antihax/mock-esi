@@ -6,13 +6,13 @@ import "time"
 200 ok object */
 type GetCorporationsCorporationIdOrders200Ok struct {
 	/*
-	 Number of days the order is valid for (starting from the issued date). An order expires at time issued + duration */
+	 Number of days for which order is valid (starting from the issued date). An order expires at time issued + duration */
 	Duration int32 `json:"duration,omitempty"`
 	/*
 	 For buy orders, the amount of ISK in escrow */
 	Escrow float64 `json:"escrow,omitempty"`
 	/*
-	 True for a bid (buy) order. False for an offer (sell) order */
+	 True if the order is a bid (buy) order */
 	IsBuyOrder bool `json:"is_buy_order,omitempty"`
 	/*
 	 Date and time when this order was issued */
@@ -21,7 +21,7 @@ type GetCorporationsCorporationIdOrders200Ok struct {
 	 ID of the location where order was placed */
 	LocationId int64 `json:"location_id,omitempty"`
 	/*
-	 For bids (buy orders), the minimum quantity that will be accepted in a matching offer (sell order) */
+	 For buy orders, the minimum quantity that will be accepted in a matching sell order */
 	MinVolume int32 `json:"min_volume,omitempty"`
 	/*
 	 Unique order ID */
@@ -35,9 +35,6 @@ type GetCorporationsCorporationIdOrders200Ok struct {
 	/*
 	 ID of the region where order was placed */
 	RegionId int32 `json:"region_id,omitempty"`
-	/*
-	 Current order state */
-	State string `json:"state,omitempty"`
 	/*
 	 The type ID of the item transacted in this order */
 	TypeId int32 `json:"type_id,omitempty"`

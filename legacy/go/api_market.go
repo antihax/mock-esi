@@ -214,7 +214,6 @@ func GetCorporationsCorporationIdOrders(w http.ResponseWriter, r *http.Request) 
   "price" : 33.3,
   "range" : "station",
   "region_id" : 123,
-  "state" : "open",
   "type_id" : 456,
   "volume_remain" : 4422,
   "volume_total" : 123456,
@@ -363,12 +362,15 @@ func GetCorporationsCorporationIdOrdersHistory(w http.ResponseWriter, r *http.Re
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)

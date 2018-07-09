@@ -15055,10 +15055,10 @@ paths:
       - "Market"
       summary: "List open orders from a corporation"
       description: "List open market orders placed on behalf of a corporation\n\n\
-        ---\nAlternate route: `/v2/corporations/{corporation_id}/orders/`\n\n---\n\
-        This route is cached for up to 1200 seconds\n\n---\nRequires one of the following\
-        \ EVE corporation role(s): Accountant, Trader\n\n\n---\nWarning: This route\
-        \ has an upgrade available.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/orders/)"
+        ---\nAlternate route: `/dev/corporations/{corporation_id}/orders/`\n\nAlternate\
+        \ route: `/v3/corporations/{corporation_id}/orders/`\n\n---\nThis route is\
+        \ cached for up to 1200 seconds\n\n---\nRequires one of the following EVE\
+        \ corporation role(s): Accountant, Trader\n"
       operationId: "get_corporations_corporation_id_orders"
       parameters:
       - name: "corporation_id"
@@ -15117,6 +15117,7 @@ paths:
               escrow: 45.6
               is_buy_order: true
               issued: "2016-09-03T05:12:25Z"
+              issued_by: 2112625428
               location_id: 456
               min_volume: 1
               order_id: 123
@@ -15213,7 +15214,8 @@ paths:
       - evesso:
         - "esi-markets.read_corporation_orders.v1"
       x-alternate-versions:
-      - "v2"
+      - "dev"
+      - "v3"
       x-cached-seconds: 1200
       x-required-roles:
       - "Accountant"
@@ -15224,11 +15226,10 @@ paths:
       - "Market"
       summary: "List historical orders from a corporation"
       description: "List cancelled and expired market orders placed on behalf of a\
-        \ corporation up to 90 days in the past.\n\n---\nAlternate route: `/legacy/corporations/{corporation_id}/orders/history/`\n\
-        \nAlternate route: `/v1/corporations/{corporation_id}/orders/history/`\n\n\
+        \ corporation up to 90 days in the past.\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/orders/history/`\n\
+        \nAlternate route: `/v2/corporations/{corporation_id}/orders/history/`\n\n\
         ---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of the\
-        \ following EVE corporation role(s): Accountant, Trader\n\n\n---\nWarning:\
-        \ This route has an upgrade available.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/orders/history/)"
+        \ following EVE corporation role(s): Accountant, Trader\n"
       operationId: "get_corporations_corporation_id_orders_history"
       parameters:
       - name: "corporation_id"
@@ -15288,6 +15289,7 @@ paths:
               escrow: 45.6
               is_buy_order: true
               issued: "2016-09-03T05:12:25Z"
+              issued_by: 2112625428
               location_id: 456
               min_volume: 1
               order_id: 123
@@ -15385,346 +15387,12 @@ paths:
       - evesso:
         - "esi-markets.read_corporation_orders.v1"
       x-alternate-versions:
-      - "legacy"
-      - "v1"
+      - "dev"
+      - "v2"
       x-cached-seconds: 3600
       x-required-roles:
       - "Accountant"
       - "Trader"
-  /corporations/{corporation_id}/outposts/:
-    get:
-      tags:
-      - "Corporation"
-      summary: "Get corporation outposts"
-      description: "Get a list of corporation outpost IDs Note: This endpoint will\
-        \ be removed once outposts are migrated to Citadels as talked about in this\
-        \ blog: https://community.eveonline.com/news/dev-blogs/the-next-steps-in-structure-transition/\n\
-        \n---\nAlternate route: `/dev/corporations/{corporation_id}/outposts/`\n\n\
-        Alternate route: `/legacy/corporations/{corporation_id}/outposts/`\n\nAlternate\
-        \ route: `/v1/corporations/{corporation_id}/outposts/`\n\n---\nThis route\
-        \ is cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
-        \ corporation role(s): Director\n\n\n---\nWarning: Outposts have been removed,\
-        \ this route will be deleted on 2018-07-08"
-      operationId: "get_corporations_corporation_id_outposts"
-      parameters:
-      - name: "corporation_id"
-        in: "path"
-        description: "An EVE corporation ID"
-        required: true
-        type: "integer"
-        minimum: 1
-        format: "int32"
-        x-exportParamName: "CorporationId"
-      - name: "datasource"
-        in: "query"
-        description: "The server name you would like data from"
-        required: false
-        type: "string"
-        default: "tranquility"
-        enum:
-        - "tranquility"
-        - "singularity"
-        x-exportParamName: "Datasource"
-      - name: "If-None-Match"
-        in: "header"
-        description: "ETag from a previous request. A 304 will be returned if this\
-          \ matches the current ETag"
-        required: false
-        type: "string"
-        x-exportParamName: "IfNoneMatch"
-      - name: "page"
-        in: "query"
-        description: "Which page of results to return"
-        required: false
-        type: "integer"
-        default: 1
-        minimum: 1
-        format: "int32"
-        x-exportParamName: "Page"
-      - name: "token"
-        in: "query"
-        description: "Access token to use if unable to set a header"
-        required: false
-        type: "string"
-        x-exportParamName: "Token"
-      responses:
-        200:
-          description: "List of corporation outpost IDs"
-          schema:
-            type: "array"
-            description: "200 ok array"
-            title: "get_corporations_corporation_id_outposts_ok"
-            uniqueItems: true
-            items:
-              type: "integer"
-              format: "int32"
-              description: "200 ok integer"
-              title: "get_corporations_corporation_id_outposts_200_ok"
-            maxItems: 1000
-          examples:
-            application/json:
-            - 61001146
-            - 61001147
-            - 61001148
-          headers:
-            Cache-Control:
-              type: "string"
-              description: "The caching mechanism used"
-            ETag:
-              type: "string"
-              description: "RFC7232 compliant entity tag"
-            Expires:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-            Last-Modified:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-            X-Pages:
-              type: "integer"
-              format: "int32"
-              description: "Maximum page number"
-              default: 1
-        304:
-          description: "Not modified"
-          headers:
-            Cache-Control:
-              type: "string"
-              description: "The caching mechanism used"
-            ETag:
-              type: "string"
-              description: "RFC7232 compliant entity tag"
-            Expires:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-            Last-Modified:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-        400:
-          description: "Bad request"
-          schema:
-            $ref: "#/definitions/bad_request"
-          examples:
-            application/json:
-              error: "Bad request message"
-        401:
-          description: "Unauthorized"
-          schema:
-            $ref: "#/definitions/unauthorized"
-          examples:
-            application/json:
-              error: "Unauthorized message"
-        403:
-          description: "Forbidden"
-          schema:
-            $ref: "#/definitions/forbidden"
-          examples:
-            application/json:
-              error: "Forbidden message"
-        420:
-          description: "Error limited"
-          schema:
-            $ref: "#/definitions/error_limited"
-          examples:
-            application/json:
-              error: "Error limited message"
-        500:
-          description: "Internal server error"
-          schema:
-            $ref: "#/definitions/internal_server_error"
-          examples:
-            application/json:
-              error: "Internal server error message"
-        503:
-          description: "Service unavailable"
-          schema:
-            $ref: "#/definitions/service_unavailable"
-          examples:
-            application/json:
-              error: "Service unavailable message"
-        504:
-          description: "Gateway timeout"
-          schema:
-            $ref: "#/definitions/gateway_timeout"
-          examples:
-            application/json:
-              error: "Gateway timeout message"
-      security:
-      - evesso:
-        - "esi-corporations.read_outposts.v1"
-      deprecated: true
-      x-alternate-versions:
-      - "dev"
-      - "legacy"
-      - "v1"
-      x-cached-seconds: 3600
-      x-required-roles:
-      - "Director"
-  /corporations/{corporation_id}/outposts/{outpost_id}/:
-    get:
-      tags:
-      - "Corporation"
-      summary: "Get corporation outpost details"
-      description: "Get details about a given outpost. Note: This endpoint will be\
-        \ removed once outposts are migrated to Citadels as talked about in this blog:\
-        \ https://community.eveonline.com/news/dev-blogs/the-next-steps-in-structure-transition/\n\
-        \n---\nAlternate route: `/dev/corporations/{corporation_id}/outposts/{outpost_id}/`\n\
-        \nAlternate route: `/legacy/corporations/{corporation_id}/outposts/{outpost_id}/`\n\
-        \nAlternate route: `/v1/corporations/{corporation_id}/outposts/{outpost_id}/`\n\
-        \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
-        \ the following EVE corporation role(s): Director\n\n\n---\nWarning: Outposts\
-        \ have been removed, this route will be deleted on 2018-07-08"
-      operationId: "get_corporations_corporation_id_outposts_outpost_id"
-      parameters:
-      - name: "corporation_id"
-        in: "path"
-        description: "An EVE corporation ID"
-        required: true
-        type: "integer"
-        minimum: 1
-        format: "int32"
-        x-exportParamName: "CorporationId"
-      - name: "datasource"
-        in: "query"
-        description: "The server name you would like data from"
-        required: false
-        type: "string"
-        default: "tranquility"
-        enum:
-        - "tranquility"
-        - "singularity"
-        x-exportParamName: "Datasource"
-      - name: "If-None-Match"
-        in: "header"
-        description: "ETag from a previous request. A 304 will be returned if this\
-          \ matches the current ETag"
-        required: false
-        type: "string"
-        x-exportParamName: "IfNoneMatch"
-      - name: "outpost_id"
-        in: "path"
-        description: "A station (outpost) ID"
-        required: true
-        type: "integer"
-        format: "int32"
-        x-exportParamName: "OutpostId"
-      - name: "token"
-        in: "query"
-        description: "Access token to use if unable to set a header"
-        required: false
-        type: "string"
-        x-exportParamName: "Token"
-      responses:
-        200:
-          description: "Details about the given outpost"
-          schema:
-            $ref: "#/definitions/get_corporations_corporation_id_outposts_outpost_id_ok"
-          examples:
-            application/json:
-              coordinates:
-                x: -102478848000
-                y: -18310963200
-                z: -9660456960
-              docking_cost_per_ship_volume: 0
-              office_rental_cost: 100
-              owner_id: 98000002
-              reprocessing_efficiency: 0.5
-              reprocessing_station_take: 0.01
-              services:
-              - discount_per_good_standing: 10
-                minimum_standing: 0
-                service_name: "Reprocessing Plant"
-                surcharge_per_bad_standing: 0
-              standing_owner_id: 99003581
-              system_id: 30000657
-              type_id: 21644
-          headers:
-            Cache-Control:
-              type: "string"
-              description: "The caching mechanism used"
-            ETag:
-              type: "string"
-              description: "RFC7232 compliant entity tag"
-            Expires:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-            Last-Modified:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-        304:
-          description: "Not modified"
-          headers:
-            Cache-Control:
-              type: "string"
-              description: "The caching mechanism used"
-            ETag:
-              type: "string"
-              description: "RFC7232 compliant entity tag"
-            Expires:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-            Last-Modified:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-        400:
-          description: "Bad request"
-          schema:
-            $ref: "#/definitions/bad_request"
-          examples:
-            application/json:
-              error: "Bad request message"
-        401:
-          description: "Unauthorized"
-          schema:
-            $ref: "#/definitions/unauthorized"
-          examples:
-            application/json:
-              error: "Unauthorized message"
-        403:
-          description: "Forbidden"
-          schema:
-            $ref: "#/definitions/forbidden"
-          examples:
-            application/json:
-              error: "Forbidden message"
-        420:
-          description: "Error limited"
-          schema:
-            $ref: "#/definitions/error_limited"
-          examples:
-            application/json:
-              error: "Error limited message"
-        500:
-          description: "Internal server error"
-          schema:
-            $ref: "#/definitions/internal_server_error"
-          examples:
-            application/json:
-              error: "Internal server error message"
-        503:
-          description: "Service unavailable"
-          schema:
-            $ref: "#/definitions/service_unavailable"
-          examples:
-            application/json:
-              error: "Service unavailable message"
-        504:
-          description: "Gateway timeout"
-          schema:
-            $ref: "#/definitions/gateway_timeout"
-          examples:
-            application/json:
-              error: "Gateway timeout message"
-      security:
-      - evesso:
-        - "esi-corporations.read_outposts.v1"
-      deprecated: true
-      x-alternate-versions:
-      - "dev"
-      - "legacy"
-      - "v1"
-      x-cached-seconds: 3600
-      x-required-roles:
-      - "Director"
   /corporations/{corporation_id}/roles/:
     get:
       tags:
@@ -27247,12 +26915,10 @@ paths:
       tags:
       - "Universe"
       summary: "Get structure information"
-      description: "Returns information on requested structure, if you are on the\
-        \ ACL. Otherwise, returns \"Forbidden\" for all inputs.\n\n---\nAlternate\
-        \ route: `/legacy/universe/structures/{structure_id}/`\n\nAlternate route:\
-        \ `/v1/universe/structures/{structure_id}/`\n\n---\nThis route is cached for\
-        \ up to 3600 seconds\n\n---\nWarning: This route has an upgrade available.\n\
-        \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/universe/structures/{structure_id}/)"
+      description: "Returns information on requested structure if you are on the ACL.\
+        \ Otherwise, returns \"Forbidden\" for all inputs.\n\n---\nAlternate route:\
+        \ `/dev/universe/structures/{structure_id}/`\n\nAlternate route: `/v2/universe/structures/{structure_id}/`\n\
+        \n---\nThis route is cached for up to 3600 seconds"
       operationId: "get_universe_structures_structure_id"
       parameters:
       - name: "datasource"
@@ -27293,6 +26959,7 @@ paths:
           examples:
             application/json:
               name: "V-3YG7 VI - The Capital"
+              owner_id: 109299958
               solar_system_id: 30000142
           headers:
             Cache-Control:
@@ -27382,8 +27049,8 @@ paths:
       - evesso:
         - "esi-universe.read_structures.v1"
       x-alternate-versions:
-      - "legacy"
-      - "v1"
+      - "dev"
+      - "v2"
       x-cached-seconds: 3600
   /universe/system_jumps/:
     get:
@@ -27724,10 +27391,9 @@ paths:
       tags:
       - "Universe"
       summary: "Get solar system information"
-      description: "Get information on a solar system. NOTE: This route does not work\
-        \ with abyssal systems.\n\n---\nAlternate route: `/v3/universe/systems/{system_id}/`\n\
-        \n---\nThis route expires daily at 11:05\n\n---\nWarning: This route has an\
-        \ upgrade available.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/universe/systems/{system_id}/)"
+      description: "Get information on a solar system.\n\n---\nAlternate route: `/dev/universe/systems/{system_id}/`\n\
+        \nAlternate route: `/v4/universe/systems/{system_id}/`\n\n---\nThis route\
+        \ expires daily at 11:05"
       operationId: "get_universe_systems_system_id"
       parameters:
       - name: "Accept-Language"
@@ -27887,7 +27553,8 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "v3"
+      - "dev"
+      - "v4"
   /universe/types/:
     get:
       tags:
@@ -28600,7 +28267,6 @@ securityDefinitions:
       esi-corporations.read_facilities.v1: "EVE SSO scope esi-corporations.read_facilities.v1"
       esi-corporations.read_fw_stats.v1: "EVE SSO scope esi-corporations.read_fw_stats.v1"
       esi-corporations.read_medals.v1: "EVE SSO scope esi-corporations.read_medals.v1"
-      esi-corporations.read_outposts.v1: "EVE SSO scope esi-corporations.read_outposts.v1"
       esi-corporations.read_standings.v1: "EVE SSO scope esi-corporations.read_standings.v1"
       esi-corporations.read_starbases.v1: "EVE SSO scope esi-corporations.read_starbases.v1"
       esi-corporations.read_structures.v1: "EVE SSO scope esi-corporations.read_structures.v1"
@@ -35807,6 +35473,7 @@ definitions:
     required:
     - "duration"
     - "issued"
+    - "issued_by"
     - "location_id"
     - "order_id"
     - "price"
@@ -35837,6 +35504,11 @@ definitions:
         format: "date-time"
         description: "Date and time when this order was issued"
         title: "get_corporations_corporation_id_orders_issued"
+      issued_by:
+        type: "integer"
+        format: "int32"
+        description: "The character who issued this order"
+        title: "get_corporations_corporation_id_orders_issued_by"
       location_id:
         type: "integer"
         format: "int64"
@@ -35938,6 +35610,11 @@ definitions:
         format: "date-time"
         description: "Date and time when this order was issued"
         title: "get_corporations_corporation_id_orders_history_issued"
+      issued_by:
+        type: "integer"
+        format: "int32"
+        description: "The character who issued this order"
+        title: "get_corporations_corporation_id_orders_history_issued_by"
       location_id:
         type: "integer"
         format: "int64"
@@ -36010,148 +35687,6 @@ definitions:
         title: "get_corporations_corporation_id_orders_history_wallet_division"
         minimum: 1
         maximum: 7
-    description: "200 ok object"
-  get_corporations_corporation_id_outposts_outpost_id_coordinates:
-    required:
-    - "x"
-    - "y"
-    - "z"
-    properties:
-      x:
-        type: "number"
-        format: "double"
-        description: "x number"
-        title: "get_corporations_corporation_id_outposts_outpost_id_x"
-      y:
-        type: "number"
-        format: "double"
-        description: "y number"
-        title: "get_corporations_corporation_id_outposts_outpost_id_y"
-      z:
-        type: "number"
-        format: "double"
-        description: "z number"
-        title: "get_corporations_corporation_id_outposts_outpost_id_z"
-    description: "coordinates object"
-  get_corporations_corporation_id_outposts_outpost_id_service:
-    required:
-    - "discount_per_good_standing"
-    - "minimum_standing"
-    - "service_name"
-    - "surcharge_per_bad_standing"
-    properties:
-      discount_per_good_standing:
-        type: "number"
-        format: "double"
-        description: "discount_per_good_standing number"
-        title: "get_corporations_corporation_id_outposts_outpost_id_discount_per_good_standing"
-      minimum_standing:
-        type: "number"
-        format: "double"
-        description: "minimum_standing number"
-        title: "get_corporations_corporation_id_outposts_outpost_id_minimum_standing"
-      service_name:
-        type: "string"
-        description: "service_name string"
-        title: "get_corporations_corporation_id_outposts_outpost_id_service_name"
-        enum:
-        - "Bounty Missions"
-        - "Assassination Missions"
-        - "Courier Missions"
-        - "Interbus"
-        - "Reprocessing Plant"
-        - "Refinery"
-        - "Market"
-        - "Black Market"
-        - "Stock Exchange"
-        - "Cloning"
-        - "Surgery"
-        - "DNA Therapy"
-        - "Repair Facilities"
-        - "Factory"
-        - "Laboratory"
-        - "Gambling"
-        - "Fitting"
-        - "Paintshop"
-        - "News"
-        - "Storage"
-        - "Insurance"
-        - "Docking"
-        - "Office Rental"
-        - "Jump Clone Facility"
-        - "Loyalty Point Store"
-        - "Navy Offices"
-        - "Security Office"
-      surcharge_per_bad_standing:
-        type: "number"
-        format: "double"
-        description: "surcharge_per_bad_standing number"
-        title: "get_corporations_corporation_id_outposts_outpost_id_surcharge_per_bad_standing"
-    description: "service object"
-  get_corporations_corporation_id_outposts_outpost_id_ok:
-    required:
-    - "coordinates"
-    - "docking_cost_per_ship_volume"
-    - "office_rental_cost"
-    - "owner_id"
-    - "reprocessing_efficiency"
-    - "reprocessing_station_take"
-    - "services"
-    - "standing_owner_id"
-    - "system_id"
-    - "type_id"
-    properties:
-      coordinates:
-        $ref: "#/definitions/get_corporations_corporation_id_outposts_outpost_id_coordinates"
-      docking_cost_per_ship_volume:
-        type: "number"
-        format: "float"
-        description: "docking_cost_per_ship_volume number"
-        title: "get_corporations_corporation_id_outposts_outpost_id_docking_cost_per_ship_volume"
-      office_rental_cost:
-        type: "integer"
-        format: "int64"
-        description: "office_rental_cost integer"
-        title: "get_corporations_corporation_id_outposts_outpost_id_office_rental_cost"
-      owner_id:
-        type: "integer"
-        format: "int32"
-        description: "The entity that owns the station (e.g. the entity whose logo\
-          \ is on the station services bar)"
-        title: "get_corporations_corporation_id_outposts_outpost_id_owner_id"
-      reprocessing_efficiency:
-        type: "number"
-        format: "float"
-        description: "reprocessing_efficiency number"
-        title: "get_corporations_corporation_id_outposts_outpost_id_reprocessing_efficiency"
-      reprocessing_station_take:
-        type: "number"
-        format: "float"
-        description: "reprocessing_station_take number"
-        title: "get_corporations_corporation_id_outposts_outpost_id_reprocessing_station_take"
-      services:
-        type: "array"
-        description: "A list of services the given outpost provides"
-        title: "get_corporations_corporation_id_outposts_outpost_id_services"
-        items:
-          $ref: "#/definitions/get_corporations_corporation_id_outposts_outpost_id_service"
-        maxItems: 27
-      standing_owner_id:
-        type: "integer"
-        format: "int32"
-        description: "The owner ID that sets the ability for someone to dock based\
-          \ on standings."
-        title: "get_corporations_corporation_id_outposts_outpost_id_standing_owner_id"
-      system_id:
-        type: "integer"
-        format: "int32"
-        description: "The ID of the solar system the outpost rests in"
-        title: "get_corporations_corporation_id_outposts_outpost_id_system_id"
-      type_id:
-        type: "integer"
-        format: "int32"
-        description: "The type ID of the given outpost"
-        title: "get_corporations_corporation_id_outposts_outpost_id_type_id"
     description: "200 ok object"
   get_corporations_corporation_id_roles_200_ok:
     required:
@@ -41603,12 +41138,18 @@ definitions:
   get_universe_structures_structure_id_ok:
     required:
     - "name"
+    - "owner_id"
     - "solar_system_id"
     properties:
       name:
         type: "string"
         description: "The full name of the structure"
         title: "get_universe_structures_structure_id_name"
+      owner_id:
+        type: "integer"
+        format: "int32"
+        description: "The ID of the corporation who owns this particular structure"
+        title: "get_universe_structures_structure_id_owner_id"
       position:
         $ref: "#/definitions/get_universe_structures_structure_id_position"
       solar_system_id:
@@ -41729,10 +41270,8 @@ definitions:
     required:
     - "constellation_id"
     - "name"
-    - "planets"
     - "position"
     - "security_status"
-    - "star_id"
     - "system_id"
     properties:
       constellation_id:

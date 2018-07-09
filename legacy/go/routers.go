@@ -452,20 +452,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCorporationsCorporationIdOutposts",
-		"Get",
-		"/legacy/corporations/{corporation_id}/outposts/",
-		GetCorporationsCorporationIdOutposts,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsCorporationIdOutpostsOutpostId",
-		"Get",
-		"/legacy/corporations/{corporation_id}/outposts/{outpost_id}/",
-		GetCorporationsCorporationIdOutpostsOutpostId,
-	)
-
-	mockesi.NewRoute(
 		"GetCorporationsCorporationIdRoles",
 		"Get",
 		"/legacy/corporations/{corporation_id}/roles/",
