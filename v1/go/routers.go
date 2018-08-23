@@ -284,6 +284,27 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetContractsPublicBidsContractId",
+		"Get",
+		"/v1/contracts/public/bids/{contract_id}/",
+		GetContractsPublicBidsContractId,
+	)
+
+	mockesi.NewRoute(
+		"GetContractsPublicItemsContractId",
+		"Get",
+		"/v1/contracts/public/items/{contract_id}/",
+		GetContractsPublicItemsContractId,
+	)
+
+	mockesi.NewRoute(
+		"GetContractsPublicRegionId",
+		"Get",
+		"/v1/contracts/public/{region_id}/",
+		GetContractsPublicRegionId,
+	)
+
+	mockesi.NewRoute(
 		"GetCorporationsCorporationIdContracts",
 		"Get",
 		"/v1/corporations/{corporation_id}/contracts/",
