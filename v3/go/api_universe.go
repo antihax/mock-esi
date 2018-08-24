@@ -38,7 +38,7 @@ func GetUniverseSystemsSystemId(w http.ResponseWriter, r *http.Request) {
     "z" : -56482824383339900
   },
   "security_class" : "B",
-  "security_status" : 0.8462923765,
+  "security_status" : 0.8462923765182495,
   "star_id" : 40000040,
   "stargates" : [ 50000342 ],
   "system_id" : 30000003

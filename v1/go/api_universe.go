@@ -1183,7 +1183,7 @@ func GetUniverseStarsStarId(w http.ResponseWriter, r *http.Request) {
 
 	j := `{
   "age" : 9398686722,
-  "luminosity" : 0.0661500022,
+  "luminosity" : 0.06615000218153,
   "name" : "BKG-Q2 - Star",
   "radius" : 346600000,
   "solar_system_id" : 30004333,

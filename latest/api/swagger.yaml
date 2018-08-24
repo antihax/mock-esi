@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "An OpenAPI for EVE Online"
-  version: "0.8.5"
+  version: "0.8.6"
   title: "EVE Swagger Interface"
 host: "esi.evetech.net"
 basePath: "/latest"
@@ -798,7 +798,7 @@ paths:
       - in: "body"
         name: "characters"
         description: "The character IDs to fetch affiliations for. All characters\
-          \ must exist, or none will be returned."
+          \ must exist, or none will be returned"
         required: true
         schema:
           title: "post_characters_affiliation_characters"
@@ -843,7 +843,7 @@ paths:
             application/json:
               error: "Bad request message"
         404:
-          description: "No characters found!"
+          description: "No characters found"
           schema:
             $ref: "#/definitions/post_characters_affiliation_not_found"
           examples:
@@ -1064,7 +1064,7 @@ paths:
           examples:
             application/json:
             - agent_id: 3009358
-              points_per_day: 53.5346162147
+              points_per_day: 53.5346162146776
               remainder_points: 53604.0634303189
               skill_type_id: 11450
               started_at: "2017-03-23T14:47:00Z"
@@ -2186,7 +2186,7 @@ paths:
       description: "Get 50 event summaries from the calendar. If no from_event ID\
         \ is given, the resource will return the next 50 chronological event summaries\
         \ from now. If a from_event ID is specified, it will return the next 50 chronological\
-        \ event summaries from after that event.\n\n---\nAlternate route: `/dev/characters/{character_id}/calendar/`\n\
+        \ event summaries from after that event\n\n---\nAlternate route: `/dev/characters/{character_id}/calendar/`\n\
         \nAlternate route: `/legacy/characters/{character_id}/calendar/`\n\nAlternate\
         \ route: `/v1/characters/{character_id}/calendar/`\n\n---\nThis route is cached\
         \ for up to 5 seconds"
@@ -2529,7 +2529,7 @@ paths:
         x-exportParamName: "EventId"
       - in: "body"
         name: "response"
-        description: "The response value to set, overriding current value."
+        description: "The response value to set, overriding current value"
         required: true
         schema:
           $ref: "#/definitions/put_characters_character_id_calendar_event_id_response"
@@ -3193,7 +3193,7 @@ paths:
             application/json:
               error: "Gateway timeout message"
         520:
-          description: "Internal error thrown from the EVE server."
+          description: "Internal error thrown from the EVE server"
           schema:
             $ref: "#/definitions/post_characters_character_id_contacts_error_520"
           examples:
@@ -5271,7 +5271,7 @@ paths:
       - name: "include_completed"
         in: "query"
         description: "Whether to retrieve completed character industry jobs. Only\
-          \ includes jobs from the past 90 days."
+          \ includes jobs from the past 90 days"
         required: false
         type: "boolean"
         x-exportParamName: "IncludeCompleted"
@@ -5559,7 +5559,7 @@ paths:
       summary: "Get character location"
       description: "Information about the characters current location. Returns the\
         \ current solar system id, and also the current station or structure ID if\
-        \ applicable.\n\n---\nAlternate route: `/dev/characters/{character_id}/location/`\n\
+        \ applicable\n\n---\nAlternate route: `/dev/characters/{character_id}/location/`\n\
         \nAlternate route: `/legacy/characters/{character_id}/location/`\n\nAlternate\
         \ route: `/v1/characters/{character_id}/location/`\n\n---\nThis route is cached\
         \ for up to 5 seconds"
@@ -5600,7 +5600,7 @@ paths:
         200:
           description: "Information about the characters current location. Returns\
             \ the current solar system id, and also the current station or structure\
-            \ ID if applicable."
+            \ ID if applicable"
           schema:
             $ref: "#/definitions/get_characters_character_id_location_ok"
           examples:
@@ -5841,7 +5841,7 @@ paths:
       summary: "Return mail headers"
       description: "Return the 50 most recent mail headers belonging to the character\
         \ that match the query criteria. Queries can be filtered by label, and last_mail_id\
-        \ can be used to paginate backwards.\n\n---\nAlternate route: `/dev/characters/{character_id}/mail/`\n\
+        \ can be used to paginate backwards\n\n---\nAlternate route: `/dev/characters/{character_id}/mail/`\n\
         \nAlternate route: `/legacy/characters/{character_id}/mail/`\n\nAlternate\
         \ route: `/v1/characters/{character_id}/mail/`\n\n---\nThis route is cached\
         \ for up to 30 seconds"
@@ -6106,7 +6106,7 @@ paths:
               error: "Gateway timeout message"
         520:
           description: "Internal error thrown from the EVE server. Most of the time\
-            \ this means you have hit an EVE server rate limit."
+            \ this means you have hit an EVE server rate limit"
           schema:
             $ref: "#/definitions/post_characters_character_id_mail_error_520"
           examples:
@@ -7307,7 +7307,7 @@ paths:
       summary: "Get character notifications"
       description: "Return character notifications\n\n---\nAlternate route: `/v2/characters/{character_id}/notifications/`\n\
         \n---\nThis route is cached for up to 600 seconds\n\n---\nWarning: This route\
-        \ has an upgrade available.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/characters/{character_id}/notifications/)"
+        \ has an upgrade available\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/characters/{character_id}/notifications/)"
       operationId: "get_characters_character_id_notifications"
       parameters:
       - name: "character_id"
@@ -8403,12 +8403,12 @@ paths:
                 link_level: 0
                 source_pin_id: 1000000017021
               pins:
-              - latitude: 1.5508784497
-                longitude: 0.7171459333
+              - latitude: 1.55087844973
+                longitude: 0.717145933308
                 pin_id: 1000000017021
                 type_id: 2254
-              - latitude: 1.5336063994
-                longitude: 0.7097755844
+              - latitude: 1.53360639935
+                longitude: 0.709775584394
                 pin_id: 1000000017022
                 type_id: 2256
               routes:
@@ -11938,10 +11938,10 @@ paths:
     post:
       tags:
       - "Assets"
-      summary: "Get coporation asset names"
+      summary: "Get corporation asset names"
       description: "Return names for a set of item ids, which you can get from corporation\
         \ assets endpoint. Only valid for items that can customize names, like containers\
-        \ or ships.\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/assets/names/`\n\
+        \ or ships\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/assets/names/`\n\
         \nAlternate route: `/legacy/corporations/{corporation_id}/assets/names/`\n\
         \nAlternate route: `/v1/corporations/{corporation_id}/assets/names/`\n\n\n\
         ---\nRequires one of the following EVE corporation role(s): Director\n"
@@ -13538,7 +13538,7 @@ paths:
               error: "Gateway timeout message"
         520:
           description: "Internal error thrown from the EVE server. Most of the time\
-            \ this means you have hit an EVE server rate limit."
+            \ this means you have hit an EVE server rate limit"
           schema:
             $ref: "#/definitions/get_corporations_corporation_id_contracts_contract_id_items_error_520"
           examples:
@@ -14319,7 +14319,7 @@ paths:
       - name: "include_completed"
         in: "query"
         description: "Whether to retrieve completed corporation industry jobs. Only\
-          \ includes jobs from the past 90 days."
+          \ includes jobs from the past 90 days"
         required: false
         type: "boolean"
         default: false
@@ -19917,7 +19917,7 @@ paths:
       - "Faction Warfare"
       summary: "List of the top factions in faction warfare"
       description: "Top 4 leaderboard of factions for kills and victory points separated\
-        \ by total, last week and yesterday.\n\n---\nAlternate route: `/dev/fw/leaderboards/`\n\
+        \ by total, last week and yesterday\n\n---\nAlternate route: `/dev/fw/leaderboards/`\n\
         \nAlternate route: `/legacy/fw/leaderboards/`\n\nAlternate route: `/v1/fw/leaderboards/`\n\
         \n---\nThis route expires daily at 11:05"
       operationId: "get_fw_leaderboards"
@@ -19942,7 +19942,7 @@ paths:
       responses:
         200:
           description: "Corporation leaderboard of kills and victory points within\
-            \ faction warfare."
+            \ faction warfare"
           schema:
             $ref: "#/definitions/get_fw_leaderboards_ok"
           examples:
@@ -20052,7 +20052,7 @@ paths:
       - "Faction Warfare"
       summary: "List of the top pilots in faction warfare"
       description: "Top 100 leaderboard of pilots for kills and victory points separated\
-        \ by total, last week and yesterday.\n\n---\nAlternate route: `/dev/fw/leaderboards/characters/`\n\
+        \ by total, last week and yesterday\n\n---\nAlternate route: `/dev/fw/leaderboards/characters/`\n\
         \nAlternate route: `/legacy/fw/leaderboards/characters/`\n\nAlternate route:\
         \ `/v1/fw/leaderboards/characters/`\n\n---\nThis route expires daily at 11:05"
       operationId: "get_fw_leaderboards_characters"
@@ -20077,7 +20077,7 @@ paths:
       responses:
         200:
           description: "Character leaderboard of kills and victory points within faction\
-            \ warfare."
+            \ warfare"
           schema:
             $ref: "#/definitions/get_fw_leaderboards_characters_ok"
           examples:
@@ -20187,7 +20187,7 @@ paths:
       - "Faction Warfare"
       summary: "List of the top corporations in faction warfare"
       description: "Top 10 leaderboard of corporations for kills and victory points\
-        \ separated by total, last week and yesterday.\n\n---\nAlternate route: `/dev/fw/leaderboards/corporations/`\n\
+        \ separated by total, last week and yesterday\n\n---\nAlternate route: `/dev/fw/leaderboards/corporations/`\n\
         \nAlternate route: `/legacy/fw/leaderboards/corporations/`\n\nAlternate route:\
         \ `/v1/fw/leaderboards/corporations/`\n\n---\nThis route expires daily at\
         \ 11:05"
@@ -20213,7 +20213,7 @@ paths:
       responses:
         200:
           description: "Corporation leaderboard of kills and victory points within\
-            \ faction warfare."
+            \ faction warfare"
           schema:
             $ref: "#/definitions/get_fw_leaderboards_corporations_ok"
           examples:
@@ -22125,7 +22125,7 @@ paths:
             application/json:
               error: "Gateway timeout message"
         520:
-          description: "Internal error thrown from the EVE server."
+          description: "Internal error thrown from the EVE server"
           schema:
             $ref: "#/definitions/get_markets_region_id_history_error_520"
           examples:
@@ -22166,7 +22166,7 @@ paths:
       - name: "order_type"
         in: "query"
         description: "Filter buy/sell orders, return all orders by default. If you\
-          \ query without type_id, we always return both buy and sell orders."
+          \ query without type_id, we always return both buy and sell orders"
         required: true
         type: "string"
         default: "all"
@@ -25881,7 +25881,7 @@ paths:
       description: "Resolve a set of names to IDs in the following categories: agents,\
         \ alliances, characters, constellations, corporations factions, inventory_types,\
         \ regions, stations, and systems. Only exact matches will be returned. All\
-        \ names searched for are cached for 12 hours.\n\n---\nAlternate route: `/dev/universe/ids/`\n\
+        \ names searched for are cached for 12 hours\n\n---\nAlternate route: `/dev/universe/ids/`\n\
         \nAlternate route: `/legacy/universe/ids/`\n\nAlternate route: `/v1/universe/ids/`\n"
       operationId: "post_universe_ids"
       parameters:
@@ -25942,7 +25942,7 @@ paths:
       responses:
         200:
           description: "List of id/name associations for a set of names divided by\
-            \ category. Any name passed in that did not have a match will be ommitted."
+            \ category. Any name passed in that did not have a match will be ommitted"
           schema:
             $ref: "#/definitions/post_universe_ids_ok"
           examples:
@@ -26134,7 +26134,7 @@ paths:
       summary: "Get names and categories for a set of ID's"
       description: "Resolve a set of IDs to names and categories. Supported ID's for\
         \ resolving are: Characters, Corporations, Alliances, Stations, Solar Systems,\
-        \ Constellations, Regions, Types.\n\n---\nAlternate route: `/dev/universe/names/`\n\
+        \ Constellations, Regions, Types\n\n---\nAlternate route: `/dev/universe/names/`\n\
         \nAlternate route: `/v2/universe/names/`\n"
       operationId: "post_universe_names"
       parameters:
@@ -26166,7 +26166,7 @@ paths:
       responses:
         200:
           description: "List of id/name associations for a set of ID's. All ID's must\
-            \ resolve to a name, or nothing will be returned."
+            \ resolve to a name, or nothing will be returned"
           schema:
             type: "array"
             description: "200 ok array"
@@ -26190,7 +26190,7 @@ paths:
             application/json:
               error: "Bad request message"
         404:
-          description: "Ensure all IDs are valid before resolving."
+          description: "Ensure all IDs are valid before resolving"
           schema:
             $ref: "#/definitions/post_universe_names_not_found"
           examples:
@@ -27058,7 +27058,7 @@ paths:
           examples:
             application/json:
               age: 9398686722
-              luminosity: 0.0661500022
+              luminosity: 0.06615000218153
               name: "BKG-Q2 - Star"
               radius: 346600000
               solar_system_id: 30004333
@@ -27944,7 +27944,7 @@ paths:
                 y: 43938227486247170
                 z: -56482824383339900
               security_class: "B"
-              security_status: 0.8462923765
+              security_status: 0.8462923765182495
               star_id: 40000040
               stargates:
               - 50000342
@@ -28344,14 +28344,14 @@ paths:
         x-exportParamName: "IfNoneMatch"
       - name: "max_war_id"
         in: "query"
-        description: "Only return wars with ID smaller than this."
+        description: "Only return wars with ID smaller than this"
         required: false
         type: "integer"
         format: "int32"
         x-exportParamName: "MaxWarId"
       responses:
         200:
-          description: "A list of war IDs, in decending order by war_id."
+          description: "A list of war IDs, in descending order by war_id"
           schema:
             type: "array"
             description: "200 ok array"
@@ -28932,7 +28932,7 @@ definitions:
         items:
           type: "integer"
           format: "int64"
-          description: "Label IDs applied to the contact."
+          description: "Label IDs applied to the contact"
           title: "get_alliances_alliance_id_contacts_label_id"
         maxItems: 63
       standing:
@@ -29846,7 +29846,7 @@ definitions:
         items:
           type: "integer"
           format: "int64"
-          description: "Label IDs applied to the contact."
+          description: "Label IDs applied to the contact"
           title: "get_characters_character_id_contacts_label_id"
         maxItems: 63
       standing:
@@ -30066,7 +30066,7 @@ definitions:
       is_included:
         type: "boolean"
         description: "true if the contract issuer has submitted this item with the\
-          \ contract, false if the isser is asking for this item in the contract."
+          \ contract, false if the isser is asking for this item in the contract"
         title: "get_characters_character_id_contracts_contract_id_items_is_included"
       is_singleton:
         type: "boolean"
@@ -34249,18 +34249,18 @@ definitions:
       is_included:
         type: "boolean"
         description: "true if the contract issuer has submitted this item with the\
-          \ contract, false if the isser is asking for this item in the contract."
+          \ contract, false if the isser is asking for this item in the contract"
         title: "get_contracts_public_items_contract_id_is_included"
       item_id:
         type: "integer"
         format: "int64"
         description: "Unique ID for the item being sold. Not present if item is being\
-          \ requested by contract rather than sold with contract."
+          \ requested by contract rather than sold with contract"
         title: "get_contracts_public_items_contract_id_item_id"
       material_efficiency:
         type: "integer"
         format: "int32"
-        description: "Material Efficiency Level of the blueprint."
+        description: "Material Efficiency Level of the blueprint"
         title: "get_contracts_public_items_contract_id_material_efficiency"
         minimum: 0
         maximum: 25
@@ -34278,13 +34278,13 @@ definitions:
         type: "integer"
         format: "int32"
         description: "Number of runs remaining if the blueprint is a copy, -1 if it\
-          \ is an original."
+          \ is an original"
         title: "get_contracts_public_items_contract_id_runs"
         minimum: -1
       time_efficiency:
         type: "integer"
         format: "int32"
-        description: "Time Efficiency Level of the blueprint."
+        description: "Time Efficiency Level of the blueprint"
         title: "get_contracts_public_items_contract_id_time_efficiency"
         minimum: 0
         maximum: 20
@@ -35155,7 +35155,7 @@ definitions:
         items:
           type: "integer"
           format: "int64"
-          description: "Label IDs applied to the contact."
+          description: "Label IDs applied to the contact"
           title: "get_corporations_corporation_id_contacts_label_id"
         maxItems: 63
       standing:
@@ -35566,7 +35566,7 @@ definitions:
       is_included:
         type: "boolean"
         description: "true if the contract issuer has submitted this item with the\
-          \ contract, false if the isser is asking for this item in the contract."
+          \ contract, false if the isser is asking for this item in the contract"
         title: "get_corporations_corporation_id_contracts_contract_id_items_is_included"
       is_singleton:
         type: "boolean"
@@ -37305,13 +37305,13 @@ definitions:
         type: "string"
         format: "date-time"
         description: "The date and time when the structure's newly requested reinforcement\
-          \ times (e.g. next_reinforce_hour and next_reinforce_day) will take effect."
+          \ times (e.g. next_reinforce_hour and next_reinforce_day) will take effect"
         title: "get_corporations_corporation_id_structures_next_reinforce_apply"
       next_reinforce_hour:
         type: "integer"
         format: "int32"
         description: "The requested change to reinforce_hour that will take effect\
-          \ at the time shown by next_reinforce_apply."
+          \ at the time shown by next_reinforce_apply"
         title: "get_corporations_corporation_id_structures_next_reinforce_hour"
         minimum: 0
         maximum: 23
@@ -37319,7 +37319,7 @@ definitions:
         type: "integer"
         format: "int32"
         description: "The requested change to reinforce_weekday that will take effect\
-          \ at the time shown by next_reinforce_apply."
+          \ at the time shown by next_reinforce_apply"
         title: "get_corporations_corporation_id_structures_next_reinforce_weekday"
         minimum: 0
         maximum: 6
@@ -37334,7 +37334,7 @@ definitions:
         description: "The hour of day that determines the four hour window when the\
           \ structure will randomly exit its reinforcement periods and become vulnerable\
           \ to attack against its armor and/or hull. The structure will become vulnerable\
-          \ at a random time that is +/- 2 hours centered on the value of this property."
+          \ at a random time that is +/- 2 hours centered on the value of this property"
         title: "get_corporations_corporation_id_structures_reinforce_hour"
         minimum: 0
         maximum: 23
@@ -37343,7 +37343,7 @@ definitions:
         format: "int32"
         description: "The day of the week when the structure exits its final reinforcement\
           \ period and becomes vulnerable to attack against its hull. Monday is 0\
-          \ and Sunday is 6."
+          \ and Sunday is 6"
         title: "get_corporations_corporation_id_structures_reinforce_weekday"
         minimum: 0
         maximum: 6
@@ -38877,7 +38877,7 @@ definitions:
         type: "array"
         description: "Top 4 ranking of factions active in faction warfare by total\
           \ kills. A faction is considered \"active\" if they have participated in\
-          \ faction warfare in the past 14 days."
+          \ faction warfare in the past 14 days"
         title: "get_fw_leaderboards_active_total"
         items:
           $ref: "#/definitions/get_fw_leaderboards_active_total_active_total"
@@ -38897,7 +38897,7 @@ definitions:
           $ref: "#/definitions/get_fw_leaderboards_yesterday_yesterday"
         maxItems: 4
     description: "Top 4 rankings of factions by number of kills from yesterday, last\
-      \ week and in total."
+      \ week and in total"
   get_fw_leaderboards_active_total_active_total_1:
     properties:
       amount:
@@ -38947,7 +38947,7 @@ definitions:
         type: "array"
         description: "Top 4 ranking of factions active in faction warfare by total\
           \ victory points. A faction is considered \"active\" if they have participated\
-          \ in faction warfare in the past 14 days."
+          \ in faction warfare in the past 14 days"
         title: "get_fw_leaderboards_victory_points_active_total"
         items:
           $ref: "#/definitions/get_fw_leaderboards_active_total_active_total_1"
@@ -39027,7 +39027,7 @@ definitions:
         type: "array"
         description: "Top 100 ranking of pilots active in faction warfare by total\
           \ kills. A pilot is considered \"active\" if they have participated in faction\
-          \ warfare in the past 14 days."
+          \ warfare in the past 14 days"
         title: "get_fw_leaderboards_characters_active_total"
         items:
           $ref: "#/definitions/get_fw_leaderboards_characters_active_total_active_total"
@@ -39047,7 +39047,7 @@ definitions:
           $ref: "#/definitions/get_fw_leaderboards_characters_yesterday_yesterday"
         maxItems: 100
     description: "Top 100 rankings of pilots by number of kills from yesterday, last\
-      \ week and in total."
+      \ week and in total"
   get_fw_leaderboards_characters_active_total_active_total_1:
     properties:
       amount:
@@ -39097,7 +39097,7 @@ definitions:
         type: "array"
         description: "Top 100 ranking of pilots active in faction warfare by total\
           \ victory points. A pilot is considered \"active\" if they have participated\
-          \ in faction warfare in the past 14 days."
+          \ in faction warfare in the past 14 days"
         title: "get_fw_leaderboards_characters_victory_points_active_total"
         items:
           $ref: "#/definitions/get_fw_leaderboards_characters_active_total_active_total_1"
@@ -39177,7 +39177,7 @@ definitions:
         type: "array"
         description: "Top 10 ranking of corporations active in faction warfare by\
           \ total kills. A corporation is considered \"active\" if they have participated\
-          \ in faction warfare in the past 14 days."
+          \ in faction warfare in the past 14 days"
         title: "get_fw_leaderboards_corporations_active_total"
         items:
           $ref: "#/definitions/get_fw_leaderboards_corporations_active_total_active_total"
@@ -39197,7 +39197,7 @@ definitions:
           $ref: "#/definitions/get_fw_leaderboards_corporations_yesterday_yesterday"
         maxItems: 10
     description: "Top 10 rankings of corporations by number of kills from yesterday,\
-      \ last week and in total."
+      \ last week and in total"
   get_fw_leaderboards_corporations_active_total_active_total_1:
     properties:
       amount:
@@ -39247,7 +39247,7 @@ definitions:
         type: "array"
         description: "Top 10 ranking of corporations active in faction warfare by\
           \ total victory points. A corporation is considered \"active\" if they have\
-          \ participated in faction warfare in the past 14 days."
+          \ participated in faction warfare in the past 14 days"
         title: "get_fw_leaderboards_corporations_victory_points_active_total"
         items:
           $ref: "#/definitions/get_fw_leaderboards_corporations_active_total_active_total_1"

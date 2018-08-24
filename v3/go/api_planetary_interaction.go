@@ -31,13 +31,13 @@ func GetCharactersCharacterIdPlanetsPlanetId(w http.ResponseWriter, r *http.Requ
     "source_pin_id" : 1000000017021
   } ],
   "pins" : [ {
-    "latitude" : 1.5508784497,
-    "longitude" : 0.7171459333,
+    "latitude" : 1.55087844973,
+    "longitude" : 0.717145933308,
     "pin_id" : 1000000017021,
     "type_id" : 2254
   }, {
-    "latitude" : 1.5336063994,
-    "longitude" : 0.7097755844,
+    "latitude" : 1.53360639935,
+    "longitude" : 0.709775584394,
     "pin_id" : 1000000017022,
     "type_id" : 2256
   } ],

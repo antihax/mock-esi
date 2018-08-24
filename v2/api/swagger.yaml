@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "An OpenAPI for EVE Online"
-  version: "0.8.5"
+  version: "0.8.6"
   title: "EVE Swagger Interface"
 host: "esi.evetech.net"
 basePath: "/v2"
@@ -20,7 +20,7 @@ paths:
       summary: "Get alliance information"
       description: "Public information about an alliance\n\n---\nAlternate route:\
         \ `/legacy/alliances/{alliance_id}/`\n\n---\nThis route is cached for up to\
-        \ 3600 seconds\n\n---\nWarning: This route is deprecated.\n\n---\n[Diff of\
+        \ 3600 seconds\n\n---\nWarning: This route is deprecated\n\n---\n[Diff of\
         \ the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/alliances/{alliance_id}/)"
       operationId: "get_alliances_alliance_id"
       parameters:
@@ -295,7 +295,7 @@ paths:
       summary: "Get character assets"
       description: "Return a list of the characters assets\n\n---\nAlternate route:\
         \ `/legacy/characters/{character_id}/assets/`\n\n---\nThis route is cached\
-        \ for up to 3600 seconds\n\n---\nWarning: This route is deprecated.\n\n---\n\
+        \ for up to 3600 seconds\n\n---\nWarning: This route is deprecated\n\n---\n\
         [Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/characters/{character_id}/assets/)"
       operationId: "get_characters_character_id_assets"
       parameters:
@@ -1060,7 +1060,7 @@ paths:
       summary: "Get an event"
       description: "Get all the information for a specific event\n\n---\nAlternate\
         \ route: `/legacy/characters/{character_id}/calendar/{event_id}/`\n\n---\n\
-        This route is cached for up to 5 seconds\n\n---\nWarning: This route is deprecated.\n\
+        This route is cached for up to 5 seconds\n\n---\nWarning: This route is deprecated\n\
         \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/characters/{character_id}/calendar/{event_id}/)"
       operationId: "get_characters_character_id_calendar_event_id"
       parameters:
@@ -1220,7 +1220,7 @@ paths:
       summary: "Respond to an event"
       description: "Set your response status to an event\n\n---\nAlternate route:\
         \ `/legacy/characters/{character_id}/calendar/{event_id}/`\n\n\n---\nWarning:\
-        \ This route is deprecated.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#PUT-/characters/{character_id}/calendar/{event_id}/)"
+        \ This route is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#PUT-/characters/{character_id}/calendar/{event_id}/)"
       operationId: "put_characters_character_id_calendar_event_id"
       parameters:
       - name: "character_id"
@@ -1250,7 +1250,7 @@ paths:
         x-exportParamName: "EventId"
       - name: "response"
         in: "query"
-        description: "The response value to set, overriding current value."
+        description: "The response value to set, overriding current value"
         required: true
         type: "string"
         enum:
@@ -1329,7 +1329,7 @@ paths:
       summary: "Get clones"
       description: "A list of the character's clones\n\n---\nAlternate route: `/legacy/characters/{character_id}/clones/`\n\
         \n---\nThis route is cached for up to 120 seconds\n\n---\nWarning: This route\
-        \ is deprecated.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/characters/{character_id}/clones/)"
+        \ is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/characters/{character_id}/clones/)"
       operationId: "get_characters_character_id_clones"
       parameters:
       - name: "character_id"
@@ -1761,7 +1761,7 @@ paths:
             application/json:
               error: "Gateway timeout message"
         520:
-          description: "Internal error thrown from the EVE server."
+          description: "Internal error thrown from the EVE server"
           schema:
             $ref: "#/definitions/post_characters_character_id_contacts_error_520"
           examples:
@@ -2012,7 +2012,7 @@ paths:
       summary: "Get mail labels"
       description: "Return a list of the users mail labels\n\n---\nAlternate route:\
         \ `/legacy/characters/{character_id}/mail/labels/`\n\n---\nThis route is cached\
-        \ for up to 30 seconds\n\n---\nWarning: This route is deprecated.\n\n---\n\
+        \ for up to 30 seconds\n\n---\nWarning: This route is deprecated\n\n---\n\
         [Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/characters/{character_id}/mail/labels/)"
       operationId: "get_characters_character_id_mail_labels"
       parameters:
@@ -2259,7 +2259,7 @@ paths:
       summary: "Get character notifications"
       description: "Return character notifications\n\n---\nAlternate route: `/latest/characters/{character_id}/notifications/`\n\
         \n---\nThis route is cached for up to 600 seconds\n\n---\nWarning: This route\
-        \ has an upgrade available.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/characters/{character_id}/notifications/)"
+        \ has an upgrade available\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/characters/{character_id}/notifications/)"
       operationId: "get_characters_character_id_notifications"
       parameters:
       - name: "character_id"
@@ -2693,7 +2693,7 @@ paths:
         \ when the colony is viewed through the client. Information will not update\
         \ until this criteria is met.\n\n---\nAlternate route: `/legacy/characters/{character_id}/planets/{planet_id}/`\n\
         \n---\nThis route is cached for up to 600 seconds\n\n---\nWarning: This route\
-        \ is deprecated.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/characters/{character_id}/planets/{planet_id}/)"
+        \ is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/characters/{character_id}/planets/{planet_id}/)"
       operationId: "get_characters_character_id_planets_planet_id"
       parameters:
       - name: "character_id"
@@ -2746,12 +2746,12 @@ paths:
                 link_level: 0
                 source_pin_id: 1000000017021
               pins:
-              - latitude: 1.5508784497
-                longitude: 0.7171459333
+              - latitude: 1.55087844973
+                longitude: 0.717145933308
                 pin_id: 1000000017021
                 type_id: 2254
-              - latitude: 1.5336063994
-                longitude: 0.7097755844
+              - latitude: 1.53360639935
+                longitude: 0.709775584394
                 pin_id: 1000000017022
                 type_id: 2256
               routes:
@@ -3113,7 +3113,7 @@ paths:
       summary: "Search on a string"
       description: "Search for entities that match a given sub-string.\n\n---\nAlternate\
         \ route: `/legacy/characters/{character_id}/search/`\n\n---\nThis route is\
-        \ cached for up to 3600 seconds\n\n---\nWarning: This route is deprecated.\n\
+        \ cached for up to 3600 seconds\n\n---\nWarning: This route is deprecated\n\
         \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/characters/{character_id}/search/)"
       operationId: "get_characters_character_id_search"
       parameters:
@@ -3760,8 +3760,8 @@ paths:
       description: "Return a list of the corporation assets\n\n---\nAlternate route:\
         \ `/legacy/corporations/{corporation_id}/assets/`\n\n---\nThis route is cached\
         \ for up to 3600 seconds\n\n---\nRequires one of the following EVE corporation\
-        \ role(s): Director\n\n\n---\nWarning: This route is deprecated.\n\n---\n\
-        [Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/assets/)"
+        \ role(s): Director\n\n\n---\nWarning: This route is deprecated\n\n---\n[Diff\
+        \ of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/assets/)"
       operationId: "get_corporations_corporation_id_assets"
       parameters:
       - name: "corporation_id"
@@ -4554,7 +4554,7 @@ paths:
       description: "Read the current list of members if the calling character is a\
         \ member.\n\n---\nAlternate route: `/legacy/corporations/{corporation_id}/members/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nWarning: This route\
-        \ is deprecated.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/members/)"
+        \ is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/members/)"
       operationId: "get_corporations_corporation_id_members"
       parameters:
       - name: "corporation_id"
@@ -4695,7 +4695,7 @@ paths:
         ---\nAlternate route: `/legacy/corporations/{corporation_id}/orders/`\n\n\
         ---\nThis route is cached for up to 1200 seconds\n\n---\nRequires one of the\
         \ following EVE corporation role(s): Accountant, Trader\n\n\n---\nWarning:\
-        \ This route is deprecated.\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/orders/)"
+        \ This route is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/orders/)"
       operationId: "get_corporations_corporation_id_orders"
       parameters:
       - name: "corporation_id"
@@ -5916,7 +5916,7 @@ paths:
       summary: "Get names and categories for a set of ID's"
       description: "Resolve a set of IDs to names and categories. Supported ID's for\
         \ resolving are: Characters, Corporations, Alliances, Stations, Solar Systems,\
-        \ Constellations, Regions, Types.\n\n---\nAlternate route: `/dev/universe/names/`\n\
+        \ Constellations, Regions, Types\n\n---\nAlternate route: `/dev/universe/names/`\n\
         \nAlternate route: `/latest/universe/names/`\n"
       operationId: "post_universe_names"
       parameters:
@@ -5948,7 +5948,7 @@ paths:
       responses:
         200:
           description: "List of id/name associations for a set of ID's. All ID's must\
-            \ resolve to a name, or nothing will be returned."
+            \ resolve to a name, or nothing will be returned"
           schema:
             type: "array"
             description: "200 ok array"
@@ -5972,7 +5972,7 @@ paths:
             application/json:
               error: "Bad request message"
         404:
-          description: "Ensure all IDs are valid before resolving."
+          description: "Ensure all IDs are valid before resolving"
           schema:
             $ref: "#/definitions/post_universe_names_not_found"
           examples:
@@ -6410,7 +6410,7 @@ paths:
       - "Universe"
       summary: "Get type information"
       description: "Get information on a type\n\n---\nAlternate route: `/legacy/universe/types/{type_id}/`\n\
-        \n---\nThis route expires daily at 11:05\n\n---\nWarning: This route is deprecated.\n\
+        \n---\nThis route expires daily at 11:05\n\n---\nWarning: This route is deprecated\n\
         \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/universe/types/{type_id}/)"
       operationId: "get_universe_types_type_id"
       parameters:
@@ -6731,7 +6731,7 @@ definitions:
         items:
           type: "integer"
           format: "int64"
-          description: "Label IDs applied to the contact."
+          description: "Label IDs applied to the contact"
           title: "get_alliances_alliance_id_contacts_label_id"
         maxItems: 63
       standing:
@@ -7295,7 +7295,7 @@ definitions:
         items:
           type: "integer"
           format: "int64"
-          description: "Label IDs applied to the contact."
+          description: "Label IDs applied to the contact"
           title: "get_characters_character_id_contacts_label_id"
         maxItems: 63
       standing:
@@ -10378,7 +10378,7 @@ definitions:
         items:
           type: "integer"
           format: "int64"
-          description: "Label IDs applied to the contact."
+          description: "Label IDs applied to the contact"
           title: "get_corporations_corporation_id_contacts_label_id"
         maxItems: 63
       standing:
@@ -10851,13 +10851,13 @@ definitions:
         type: "string"
         format: "date-time"
         description: "The date and time when the structure's newly requested reinforcement\
-          \ times (e.g. next_reinforce_hour and next_reinforce_day) will take effect."
+          \ times (e.g. next_reinforce_hour and next_reinforce_day) will take effect"
         title: "get_corporations_corporation_id_structures_next_reinforce_apply"
       next_reinforce_hour:
         type: "integer"
         format: "int32"
         description: "The requested change to reinforce_hour that will take effect\
-          \ at the time shown by next_reinforce_apply."
+          \ at the time shown by next_reinforce_apply"
         title: "get_corporations_corporation_id_structures_next_reinforce_hour"
         minimum: 0
         maximum: 23
@@ -10865,7 +10865,7 @@ definitions:
         type: "integer"
         format: "int32"
         description: "The requested change to reinforce_weekday that will take effect\
-          \ at the time shown by next_reinforce_apply."
+          \ at the time shown by next_reinforce_apply"
         title: "get_corporations_corporation_id_structures_next_reinforce_weekday"
         minimum: 0
         maximum: 6
@@ -10880,7 +10880,7 @@ definitions:
         description: "The hour of day that determines the four hour window when the\
           \ structure will randomly exit its reinforcement periods and become vulnerable\
           \ to attack against its armor and/or hull. The structure will become vulnerable\
-          \ at a random time that is +/- 2 hours centered on the value of this property."
+          \ at a random time that is +/- 2 hours centered on the value of this property"
         title: "get_corporations_corporation_id_structures_reinforce_hour"
         minimum: 0
         maximum: 23
@@ -10889,7 +10889,7 @@ definitions:
         format: "int32"
         description: "The day of the week when the structure exits its final reinforcement\
           \ period and becomes vulnerable to attack against its hull. Monday is 0\
-          \ and Sunday is 6."
+          \ and Sunday is 6"
         title: "get_corporations_corporation_id_structures_reinforce_weekday"
         minimum: 0
         maximum: 6

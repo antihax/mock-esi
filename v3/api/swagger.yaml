@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "An OpenAPI for EVE Online"
-  version: "0.8.5"
+  version: "0.8.6"
   title: "EVE Swagger Interface"
 host: "esi.evetech.net"
 basePath: "/v3"
@@ -142,7 +142,7 @@ paths:
       summary: "Get character's public information"
       description: "Public information about a character\n\n---\nAlternate route:\
         \ `/legacy/characters/{character_id}/`\n\n---\nThis route is cached for up\
-        \ to 3600 seconds\n\n---\nWarning: This route is deprecated.\n\n---\n[Diff\
+        \ to 3600 seconds\n\n---\nWarning: This route is deprecated\n\n---\n[Diff\
         \ of the upcoming changes](https://esi.evetech.net/diff/v3/dev/#GET-/characters/{character_id}/)"
       operationId: "get_characters_character_id"
       parameters:
@@ -616,7 +616,7 @@ paths:
         x-exportParamName: "EventId"
       - in: "body"
         name: "response"
-        description: "The response value to set, overriding current value."
+        description: "The response value to set, overriding current value"
         required: true
         schema:
           $ref: "#/definitions/put_characters_character_id_calendar_event_id_response"
@@ -833,8 +833,7 @@ paths:
       summary: "Calculate a CSPA charge cost"
       description: "Takes a source character ID in the url and a set of target character\
         \ ID's in the body, returns a CSPA charge cost\n\n---\nAlternate route: `/legacy/characters/{character_id}/cspa/`\n\
-        \n\n---\nWarning: This route is deprecated.\n\n---\n[Diff of the upcoming\
-        \ changes](https://esi.evetech.net/diff/v3/dev/#POST-/characters/{character_id}/cspa/)"
+        \n\n---\nWarning: This route is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v3/dev/#POST-/characters/{character_id}/cspa/)"
       operationId: "post_characters_character_id_cspa"
       parameters:
       - name: "character_id"
@@ -1281,12 +1280,12 @@ paths:
                 link_level: 0
                 source_pin_id: 1000000017021
               pins:
-              - latitude: 1.5508784497
-                longitude: 0.7171459333
+              - latitude: 1.55087844973
+                longitude: 0.717145933308
                 pin_id: 1000000017021
                 type_id: 2254
-              - latitude: 1.5336063994
-                longitude: 0.7097755844
+              - latitude: 1.53360639935
+                longitude: 0.709775584394
                 pin_id: 1000000017022
                 type_id: 2256
               routes:
@@ -1610,7 +1609,7 @@ paths:
       summary: "Get character skills"
       description: "List all trained skills for the given character\n\n---\nAlternate\
         \ route: `/legacy/characters/{character_id}/skills/`\n\n---\nThis route is\
-        \ cached for up to 120 seconds\n\n---\nWarning: This route is deprecated.\n\
+        \ cached for up to 120 seconds\n\n---\nWarning: This route is deprecated\n\
         \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v3/dev/#GET-/characters/{character_id}/skills/)"
       operationId: "get_characters_character_id_skills"
       parameters:
@@ -1751,7 +1750,7 @@ paths:
       summary: "Get corporation information"
       description: "Public information about a corporation\n\n---\nAlternate route:\
         \ `/legacy/corporations/{corporation_id}/`\n\n---\nThis route is cached for\
-        \ up to 3600 seconds\n\n---\nWarning: This route is deprecated.\n\n---\n[Diff\
+        \ up to 3600 seconds\n\n---\nWarning: This route is deprecated\n\n---\n[Diff\
         \ of the upcoming changes](https://esi.evetech.net/diff/v3/dev/#GET-/corporations/{corporation_id}/)"
       operationId: "get_corporations_corporation_id"
       parameters:
@@ -2533,7 +2532,7 @@ paths:
       summary: "Get solar system information"
       description: "Get information on a solar system. NOTE: This route does not work\
         \ with abyssal systems.\n\n---\nAlternate route: `/legacy/universe/systems/{system_id}/`\n\
-        \n---\nThis route expires daily at 11:05\n\n---\nWarning: This route is deprecated.\n\
+        \n---\nThis route expires daily at 11:05\n\n---\nWarning: This route is deprecated\n\
         \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v3/dev/#GET-/universe/systems/{system_id}/)"
       operationId: "get_universe_systems_system_id"
       parameters:
@@ -2608,7 +2607,7 @@ paths:
                 y: 43938227486247170
                 z: -56482824383339900
               security_class: "B"
-              security_status: 0.8462923765
+              security_status: 0.8462923765182495
               star_id: 40000040
               stargates:
               - 50000342

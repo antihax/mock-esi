@@ -4,7 +4,7 @@ package esidev
 200 ok object */
 type GetCharactersCharacterIdContractsContractIdItems200Ok struct {
 	/*
-	 true if the contract issuer has submitted this item with the contract, false if the isser is asking for this item in the contract. */
+	 true if the contract issuer has submitted this item with the contract, false if the isser is asking for this item in the contract */
 	IsIncluded bool `json:"is_included,omitempty"`
 	/*
 	 is_singleton boolean */
