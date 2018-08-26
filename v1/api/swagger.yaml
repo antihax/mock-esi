@@ -8913,7 +8913,7 @@ paths:
         \nAlternate route: `/latest/corporation/{corporation_id}/mining/extractions/`\n\
         \nAlternate route: `/legacy/corporation/{corporation_id}/mining/extractions/`\n\
         \n---\nThis route is cached for up to 1800 seconds\n\n---\nRequires one of\
-        \ the following EVE corporation role(s): Structure_manager\n"
+        \ the following EVE corporation role(s): Station_Manager\n"
       operationId: "get_corporation_corporation_id_mining_extractions"
       parameters:
       - name: "corporation_id"
@@ -9064,7 +9064,7 @@ paths:
       - "legacy"
       x-cached-seconds: 1800
       x-required-roles:
-      - "Structure_manager"
+      - "Station_Manager"
   /corporation/{corporation_id}/mining/observers/:
     get:
       tags:
@@ -12112,7 +12112,7 @@ paths:
         \ `/latest/corporations/{corporation_id}/industry/jobs/`\n\nAlternate route:\
         \ `/legacy/corporations/{corporation_id}/industry/jobs/`\n\n---\nThis route\
         \ is cached for up to 300 seconds\n\n---\nRequires one of the following EVE\
-        \ corporation role(s): FactoryManager\n"
+        \ corporation role(s): Factory_Manager\n"
       operationId: "get_corporations_corporation_id_industry_jobs"
       parameters:
       - name: "corporation_id"
@@ -12282,7 +12282,7 @@ paths:
       - "legacy"
       x-cached-seconds: 300
       x-required-roles:
-      - "FactoryManager"
+      - "Factory_Manager"
   /corporations/{corporation_id}/killmails/recent/:
     get:
       tags:
@@ -14351,7 +14351,7 @@ paths:
       description: "Get a list of corporation structures\n\n---\nAlternate route:\
         \ `/legacy/corporations/{corporation_id}/structures/`\n\n---\nThis route is\
         \ cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
-        \ corporation role(s): StationManager\n\n\n---\nWarning: This route is deprecated\n\
+        \ corporation role(s): Station_Manager\n\n\n---\nWarning: This route is deprecated\n\
         \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/corporations/{corporation_id}/structures/)"
       operationId: "get_corporations_corporation_id_structures"
       parameters:
@@ -14546,7 +14546,7 @@ paths:
       - "legacy"
       x-cached-seconds: 3600
       x-required-roles:
-      - "StationManager"
+      - "Station_Manager"
   /corporations/{corporation_id}/titles/:
     get:
       tags:
