@@ -282,7 +282,6 @@ func GetContractsPublicBidsContractId(w http.ResponseWriter, r *http.Request) {
 	j := `[ {
   "amount" : 1.23,
   "bid_id" : 1,
-  "bidder_id" : 123,
   "date_bid" : "2017-01-01T10:10:10Z"
 } ]`
 	vars := mux.Vars(r)
