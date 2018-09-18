@@ -7401,7 +7401,7 @@ paths:
       tags:
       - "Character"
       summary: "Get character notifications"
-      description: "Return character notifications\n\n---\nAlternate route: `/v1/characters/{character_id}/notifications/`\n\
+      description: "Return character notifications\n\n---\nAlternate route: `/v2/characters/{character_id}/notifications/`\n\
         \n---\nThis route is cached for up to 600 seconds\n\n---\nWarning: This route\
         \ is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#GET-/characters/{character_id}/notifications/)"
       operationId: "get_characters_character_id_notifications"
@@ -7539,7 +7539,7 @@ paths:
         - "esi-characters.read_notifications.v1"
       deprecated: true
       x-alternate-versions:
-      - "v1"
+      - "v2"
       x-cached-seconds: 600
   /characters/{character_id}/notifications/contacts/:
     get:
@@ -31298,6 +31298,7 @@ definitions:
         - "MoonminingAutomaticFracture"
         - "MoonminingExtractionCancelled"
         - "MoonminingExtractionFinished"
+        - "MoonminingExtractionStarted"
         - "MoonminingLaserFired"
         - "NPCStandingsGained"
         - "NPCStandingsLost"
@@ -31339,12 +31340,16 @@ definitions:
         - "StructureDestroyed"
         - "StructureFuelAlert"
         - "StructureItemsDelivered"
+        - "StructureItemsMovedToSafety"
         - "StructureLostArmor"
         - "StructureLostShields"
         - "StructureOnline"
         - "StructureServicesOffline"
         - "StructureUnanchoring"
         - "StructureUnderAttack"
+        - "StructureWentHighPower"
+        - "StructureWentLowPower"
+        - "StructuresReinforcementChanged"
         - "TowerAlertMsg"
         - "TowerResourceAlertMsg"
         - "TransactionReversalMsg"
@@ -31352,7 +31357,6 @@ definitions:
         - "WarAllyOfferDeclinedMsg"
         - "WarSurrenderDeclinedMsg"
         - "WarSurrenderOfferMsg"
-        - "notificationTypeMoonminingExtractionStarted"
     description: "200 ok object"
   get_characters_character_id_notifications_contacts_200_ok:
     required:

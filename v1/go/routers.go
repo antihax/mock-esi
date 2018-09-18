@@ -137,13 +137,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCharactersCharacterIdNotifications",
-		"Get",
-		"/v1/characters/{character_id}/notifications/",
-		GetCharactersCharacterIdNotifications,
-	)
-
-	mockesi.NewRoute(
 		"GetCharactersCharacterIdNotificationsContacts",
 		"Get",
 		"/v1/characters/{character_id}/notifications/contacts/",

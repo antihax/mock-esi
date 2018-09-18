@@ -7306,8 +7306,9 @@ paths:
       tags:
       - "Character"
       summary: "Get character notifications"
-      description: "Return character notifications\n\n---\nAlternate route: `/v3/characters/{character_id}/notifications/`\n\
-        \n---\nThis route is cached for up to 600 seconds"
+      description: "Return character notifications\n\n---\nAlternate route: `/latest/characters/{character_id}/notifications/`\n\
+        \nAlternate route: `/v3/characters/{character_id}/notifications/`\n\n---\n\
+        This route is cached for up to 600 seconds"
       operationId: "get_characters_character_id_notifications"
       parameters:
       - name: "character_id"
@@ -7442,6 +7443,7 @@ paths:
       - evesso:
         - "esi-characters.read_notifications.v1"
       x-alternate-versions:
+      - "latest"
       - "v3"
       x-cached-seconds: 600
   /characters/{character_id}/notifications/contacts/:
