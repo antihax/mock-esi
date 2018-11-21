@@ -11,6 +11,7 @@ import (
 	_ "github.com/antihax/mock-esi/v2/go"
 	_ "github.com/antihax/mock-esi/v3/go"
 	_ "github.com/antihax/mock-esi/v4/go"
+	_ "github.com/antihax/mock-esi/v5/go"
 
 	"github.com/antihax/mock-esi/mockesi"
 )

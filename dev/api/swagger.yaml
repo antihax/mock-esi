@@ -9998,10 +9998,8 @@ paths:
       - "Wallet"
       summary: "Get character wallet journal"
       description: "Retrieve the given character's wallet journal going 30 days back\n\
-        \n---\nAlternate route: `/latest/characters/{character_id}/wallet/journal/`\n\
-        \nAlternate route: `/legacy/characters/{character_id}/wallet/journal/`\n\n\
-        Alternate route: `/v4/characters/{character_id}/wallet/journal/`\n\n---\n\
-        This route is cached for up to 3600 seconds"
+        \n---\nAlternate route: `/v5/characters/{character_id}/wallet/journal/`\n\n\
+        ---\nThis route is cached for up to 3600 seconds"
       operationId: "get_characters_character_id_wallet_journal"
       parameters:
       - name: "character_id"
@@ -10152,9 +10150,7 @@ paths:
       - evesso:
         - "esi-wallet.read_character_wallet.v1"
       x-alternate-versions:
-      - "latest"
-      - "legacy"
-      - "v4"
+      - "v5"
       x-cached-seconds: 3600
   /characters/{character_id}/wallet/transactions/:
     get:
@@ -33989,11 +33985,11 @@ definitions:
         title: "get_characters_character_id_wallet_journal_reason"
       ref_type:
         type: "string"
-        description: "The transaction type for the given transaction. Different transaction\
-          \ types will populate different attributes. Note: If you have an existing\
-          \ XML API application that is using ref_types, you will need to know which\
-          \ string ESI ref_type maps to which integer. You can look at the following\
-          \ file to see string->int mappings: https://github.com/ccpgames/eve-glue/blob/master/eve_glue/wallet_journal_ref.py"
+        description: "\"The transaction type for the given. transaction. Different\
+          \ transaction types will populate different attributes. Note: If you have\
+          \ an existing XML API application that is using ref_types, you will need\
+          \ to know which string ESI ref_type maps to which integer. You can look\
+          \ at the following file to see string->int mappings: https://github.com/ccpgames/eve-glue/blob/master/eve_glue/wallet_journal_ref.py\""
         title: "get_characters_character_id_wallet_journal_ref_type"
         enum:
         - "acceleration_gate_fee"
@@ -34108,6 +34104,7 @@ definitions:
         - "sovereignity_bill"
         - "store_purchase"
         - "store_purchase_refund"
+        - "structure_gate_jump"
         - "transaction_tax"
         - "upkeep_adjustment_fee"
         - "war_ally_contract"
@@ -37983,11 +37980,11 @@ definitions:
         title: "get_corporations_corporation_id_wallets_division_journal_reason"
       ref_type:
         type: "string"
-        description: "The transaction type for the given transaction. Different transaction\
-          \ types will populate different attributes. Note: If you have an existing\
-          \ XML API application that is using ref_types, you will need to know which\
-          \ string ESI ref_type maps to which integer. You can look at the following\
-          \ file to see string->int mappings: https://github.com/ccpgames/eve-glue/blob/master/eve_glue/wallet_journal_ref.py"
+        description: "\"The transaction type for the given. transaction. Different\
+          \ transaction types will populate different attributes. Note: If you have\
+          \ an existing XML API application that is using ref_types, you will need\
+          \ to know which string ESI ref_type maps to which integer. You can look\
+          \ at the following file to see string->int mappings: https://github.com/ccpgames/eve-glue/blob/master/eve_glue/wallet_journal_ref.py\""
         title: "get_corporations_corporation_id_wallets_division_journal_ref_type"
         enum:
         - "acceleration_gate_fee"
