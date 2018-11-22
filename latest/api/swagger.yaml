@@ -671,8 +671,8 @@ paths:
       summary: "Get alliance icon"
       description: "Get the icon urls for a alliance\n\n---\nAlternate route: `/dev/alliances/{alliance_id}/icons/`\n\
         \nAlternate route: `/legacy/alliances/{alliance_id}/icons/`\n\nAlternate route:\
-        \ `/v1/alliances/{alliance_id}/icons/`\n\n---\nThis route is cached for up\
-        \ to 3600 seconds"
+        \ `/v1/alliances/{alliance_id}/icons/`\n\n---\nThis route expires daily at\
+        \ 11:05"
       operationId: "get_alliances_alliance_id_icons"
       parameters:
       - name: "alliance_id"
@@ -783,7 +783,6 @@ paths:
       - "dev"
       - "legacy"
       - "v1"
-      x-cached-seconds: 3600
   /characters/affiliation/:
     post:
       tags:
@@ -8515,7 +8514,7 @@ paths:
       summary: "Get character portraits"
       description: "Get portrait urls for a character\n\n---\nAlternate route: `/dev/characters/{character_id}/portrait/`\n\
         \nAlternate route: `/v2/characters/{character_id}/portrait/`\n\n---\nThis\
-        \ route is cached for up to 3600 seconds"
+        \ route expires daily at 11:05"
       operationId: "get_characters_character_id_portrait"
       parameters:
       - name: "character_id"
@@ -8627,7 +8626,6 @@ paths:
       x-alternate-versions:
       - "dev"
       - "v2"
-      x-cached-seconds: 3600
   /characters/{character_id}/roles/:
     get:
       tags:
@@ -17344,11 +17342,12 @@ paths:
       - "Wallet"
       summary: "Get corporation wallet journal"
       description: "Retrieve the given corporation's wallet journal for the given\
-        \ division going 30 days back\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/wallets/{division}/journal/`\n\
-        \nAlternate route: `/legacy/corporations/{corporation_id}/wallets/{division}/journal/`\n\
+        \ division going 30 days back\n\n---\nAlternate route: `/legacy/corporations/{corporation_id}/wallets/{division}/journal/`\n\
         \nAlternate route: `/v3/corporations/{corporation_id}/wallets/{division}/journal/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
-        \ the following EVE corporation role(s): Accountant, Junior_Accountant\n"
+        \ the following EVE corporation role(s): Accountant, Junior_Accountant\n\n\
+        \n---\nWarning: This route has an upgrade available\n\n---\n[Diff of the upcoming\
+        \ changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/wallets/{division}/journal/)"
       operationId: "get_corporations_corporation_id_wallets_division_journal"
       parameters:
       - name: "corporation_id"
@@ -17509,7 +17508,6 @@ paths:
       - evesso:
         - "esi-wallet.read_corporation_wallets.v1"
       x-alternate-versions:
-      - "dev"
       - "legacy"
       - "v3"
       x-cached-seconds: 3600

@@ -673,8 +673,8 @@ paths:
       summary: "Get alliance icon"
       description: "Get the icon urls for a alliance\n\n---\nAlternate route: `/dev/alliances/{alliance_id}/icons/`\n\
         \nAlternate route: `/latest/alliances/{alliance_id}/icons/`\n\nAlternate route:\
-        \ `/v1/alliances/{alliance_id}/icons/`\n\n---\nThis route is cached for up\
-        \ to 3600 seconds\n\n---\nWarning: This is a legacy route"
+        \ `/v1/alliances/{alliance_id}/icons/`\n\n---\nThis route expires daily at\
+        \ 11:05\n\n---\nWarning: This is a legacy route"
       operationId: "get_alliances_alliance_id_icons"
       parameters:
       - name: "alliance_id"
@@ -785,7 +785,6 @@ paths:
       - "dev"
       - "latest"
       - "v1"
-      x-cached-seconds: 3600
   /characters/affiliation/:
     post:
       tags:
@@ -17516,8 +17515,7 @@ paths:
       - "Wallet"
       summary: "Get corporation wallet journal"
       description: "Retrieve the given corporation's wallet journal for the given\
-        \ division going 30 days back\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/wallets/{division}/journal/`\n\
-        \nAlternate route: `/latest/corporations/{corporation_id}/wallets/{division}/journal/`\n\
+        \ division going 30 days back\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/wallets/{division}/journal/`\n\
         \nAlternate route: `/v3/corporations/{corporation_id}/wallets/{division}/journal/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
         \ the following EVE corporation role(s): Accountant, Junior_Accountant\n\n\
@@ -17682,7 +17680,6 @@ paths:
       - evesso:
         - "esi-wallet.read_corporation_wallets.v1"
       x-alternate-versions:
-      - "dev"
       - "latest"
       - "v3"
       x-cached-seconds: 3600

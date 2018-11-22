@@ -2859,7 +2859,7 @@ paths:
       summary: "Get character portraits"
       description: "Get portrait urls for a character\n\n---\nAlternate route: `/dev/characters/{character_id}/portrait/`\n\
         \nAlternate route: `/latest/characters/{character_id}/portrait/`\n\n---\n\
-        This route is cached for up to 3600 seconds"
+        This route expires daily at 11:05"
       operationId: "get_characters_character_id_portrait"
       parameters:
       - name: "character_id"
@@ -2971,7 +2971,6 @@ paths:
       x-alternate-versions:
       - "dev"
       - "latest"
-      x-cached-seconds: 3600
   /characters/{character_id}/roles/:
     get:
       tags:

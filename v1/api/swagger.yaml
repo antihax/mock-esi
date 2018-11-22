@@ -549,8 +549,8 @@ paths:
       summary: "Get alliance icon"
       description: "Get the icon urls for a alliance\n\n---\nAlternate route: `/dev/alliances/{alliance_id}/icons/`\n\
         \nAlternate route: `/latest/alliances/{alliance_id}/icons/`\n\nAlternate route:\
-        \ `/legacy/alliances/{alliance_id}/icons/`\n\n---\nThis route is cached for\
-        \ up to 3600 seconds"
+        \ `/legacy/alliances/{alliance_id}/icons/`\n\n---\nThis route expires daily\
+        \ at 11:05"
       operationId: "get_alliances_alliance_id_icons"
       parameters:
       - name: "alliance_id"
@@ -661,7 +661,6 @@ paths:
       - "dev"
       - "latest"
       - "legacy"
-      x-cached-seconds: 3600
   /characters/affiliation/:
     post:
       tags:
