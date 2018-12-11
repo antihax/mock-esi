@@ -24448,6 +24448,15 @@ paths:
         - "tranquility"
         - "singularity"
         x-exportParamName: "Datasource"
+      - name: "filter"
+        in: "query"
+        description: "Only list public structures that have this service online"
+        required: false
+        type: "string"
+        enum:
+        - "market"
+        - "manufacturing_basic"
+        x-exportParamName: "Filter"
       - name: "If-None-Match"
         in: "header"
         description: "ETag from a previous request. A 304 will be returned if this\

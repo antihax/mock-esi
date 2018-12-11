@@ -1079,9 +1079,9 @@ paths:
       tags:
       - "Character"
       summary: "Get character notifications"
-      description: "Return character notifications\n\n---\nAlternate route: `/latest/characters/{character_id}/notifications/`\n\
+      description: "Return character notifications\n\n---\nAlternate route: `/legacy/characters/{character_id}/notifications/`\n\
         \n---\nThis route is cached for up to 600 seconds\n\n---\nWarning: This route\
-        \ has an upgrade available\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v3/dev/#GET-/characters/{character_id}/notifications/)"
+        \ is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v3/dev/#GET-/characters/{character_id}/notifications/)"
       operationId: "get_characters_character_id_notifications"
       parameters:
       - name: "character_id"
@@ -1215,8 +1215,9 @@ paths:
       security:
       - evesso:
         - "esi-characters.read_notifications.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
+      - "legacy"
       x-cached-seconds: 600
   /characters/{character_id}/planets/{planet_id}/:
     get:

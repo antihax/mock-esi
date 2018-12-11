@@ -7304,9 +7304,9 @@ paths:
       tags:
       - "Character"
       summary: "Get character notifications"
-      description: "Return character notifications\n\n---\nAlternate route: `/v3/characters/{character_id}/notifications/`\n\
-        \n---\nThis route is cached for up to 600 seconds\n\n---\nWarning: This route\
-        \ has an upgrade available\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/characters/{character_id}/notifications/)"
+      description: "Return character notifications\n\n---\nAlternate route: `/dev/characters/{character_id}/notifications/`\n\
+        \nAlternate route: `/v4/characters/{character_id}/notifications/`\n\n---\n\
+        This route is cached for up to 600 seconds"
       operationId: "get_characters_character_id_notifications"
       parameters:
       - name: "character_id"
@@ -7441,7 +7441,8 @@ paths:
       - evesso:
         - "esi-characters.read_notifications.v1"
       x-alternate-versions:
-      - "v3"
+      - "dev"
+      - "v4"
       x-cached-seconds: 600
   /characters/{character_id}/notifications/contacts/:
     get:
@@ -27294,6 +27295,15 @@ paths:
         - "tranquility"
         - "singularity"
         x-exportParamName: "Datasource"
+      - name: "filter"
+        in: "query"
+        description: "Only list public structures that have this service online"
+        required: false
+        type: "string"
+        enum:
+        - "market"
+        - "manufacturing_basic"
+        x-exportParamName: "Filter"
       - name: "If-None-Match"
         in: "header"
         description: "ETag from a previous request. A 304 will be returned if this\
@@ -31122,6 +31132,7 @@ definitions:
         - "CloneMovedMsg"
         - "CloneRevokedMsg1"
         - "CloneRevokedMsg2"
+        - "CombatOperationFinished"
         - "ContactAdd"
         - "ContactEdit"
         - "ContainerPasswordMsg"
@@ -31179,6 +31190,7 @@ definitions:
         - "GiftReceived"
         - "IHubDestroyedByBillFailure"
         - "IncursionCompletedMsg"
+        - "IndustryOperationFinished"
         - "IndustryTeamAuctionLost"
         - "IndustryTeamAuctionWon"
         - "InfrastructureHubBillAboutToExpire"
@@ -34571,6 +34583,10 @@ definitions:
         type: "string"
         description: "url string"
         title: "get_corporations_corporation_id_url"
+      war_eligible:
+        type: "boolean"
+        description: "war_eligible boolean"
+        title: "get_corporations_corporation_id_war_eligible"
     description: "200 ok object"
   get_corporations_corporation_id_not_found:
     properties:

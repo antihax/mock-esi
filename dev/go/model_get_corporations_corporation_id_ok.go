@@ -44,4 +44,7 @@ type GetCorporationsCorporationIdOk struct {
 	/*
 	 url string */
 	Url string `json:"url,omitempty"`
+	/*
+	 war_eligible boolean */
+	WarEligible bool `json:"war_eligible,omitempty"`
 }

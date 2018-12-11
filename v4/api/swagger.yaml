@@ -257,7 +257,8 @@ paths:
       - "Character"
       summary: "Get character notifications"
       description: "Return character notifications\n\n---\nAlternate route: `/dev/characters/{character_id}/notifications/`\n\
-        \n---\nThis route is cached for up to 600 seconds"
+        \nAlternate route: `/latest/characters/{character_id}/notifications/`\n\n\
+        ---\nThis route is cached for up to 600 seconds"
       operationId: "get_characters_character_id_notifications"
       parameters:
       - name: "character_id"
@@ -393,6 +394,7 @@ paths:
         - "esi-characters.read_notifications.v1"
       x-alternate-versions:
       - "dev"
+      - "latest"
       x-cached-seconds: 600
   /characters/{character_id}/skills/:
     get:
@@ -1905,6 +1907,10 @@ definitions:
         type: "string"
         description: "url string"
         title: "get_corporations_corporation_id_url"
+      war_eligible:
+        type: "boolean"
+        description: "war_eligible boolean"
+        title: "get_corporations_corporation_id_war_eligible"
     description: "200 ok object"
   get_corporations_corporation_id_not_found:
     properties:

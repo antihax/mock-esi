@@ -1314,6 +1314,7 @@ func GetUniverseStructures(w http.ResponseWriter, r *http.Request) {
 		localV     interface{}
 		err        error
 		datasource string
+		filter     string
 	)
 	// shut up warnings
 	localV = localV
@@ -1331,6 +1332,14 @@ func GetUniverseStructures(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		datasource = localV.(string)
+	}
+	if r.Form.Get("filter") != "" {
+		localV, err = processParameters(filter, r.Form.Get("filter"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		filter = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
