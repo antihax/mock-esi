@@ -9997,10 +9997,9 @@ paths:
       - "Wallet"
       summary: "Get character wallet journal"
       description: "Retrieve the given character's wallet journal going 30 days back\n\
-        \n---\nAlternate route: `/legacy/characters/{character_id}/wallet/journal/`\n\
-        \nAlternate route: `/v4/characters/{character_id}/wallet/journal/`\n\n---\n\
-        This route is cached for up to 3600 seconds\n\n---\nWarning: This route has\
-        \ an upgrade available\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/characters/{character_id}/wallet/journal/)"
+        \n---\nAlternate route: `/dev/characters/{character_id}/wallet/journal/`\n\
+        \nAlternate route: `/v5/characters/{character_id}/wallet/journal/`\n\n---\n\
+        This route is cached for up to 3600 seconds"
       operationId: "get_characters_character_id_wallet_journal"
       parameters:
       - name: "character_id"
@@ -10151,8 +10150,8 @@ paths:
       - evesso:
         - "esi-wallet.read_character_wallet.v1"
       x-alternate-versions:
-      - "legacy"
-      - "v4"
+      - "dev"
+      - "v5"
       x-cached-seconds: 3600
   /characters/{character_id}/wallet/transactions/:
     get:
@@ -16837,14 +16836,11 @@ paths:
       - "Corporation"
       summary: "Get corporation structures"
       description: "Get a list of corporation structures. This route's version includes\
-        \ the changes to structures detailed in this blog: https://www.eveonline.com/article/upwell-2.0-structures-changes-coming-on-february-13th\
-        \ Note: this route will not return any flex structures owned by a corporation,\
-        \ use the v3 route to have those included in the response. A list of FLEX\
-        \ structures can be found here: https://support.eveonline.com/hc/en-us/articles/213021829-Upwell-Structures\n\
-        \n---\nAlternate route: `/v2/corporations/{corporation_id}/structures/`\n\n\
-        ---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of the\
-        \ following EVE corporation role(s): Station_Manager\n\n\n---\nWarning: This\
-        \ route has an upgrade available\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/structures/)"
+        \ the changes to structures detailed in this blog: https://www.eveonline.com/article/upwell-2.0-structures-changes-coming-on-february-13th\n\
+        \n---\nAlternate route: `/dev/corporations/{corporation_id}/structures/`\n\
+        \nAlternate route: `/v3/corporations/{corporation_id}/structures/`\n\n---\n\
+        This route is cached for up to 3600 seconds\n\n---\nRequires one of the following\
+        \ EVE corporation role(s): Station_Manager\n"
       operationId: "get_corporations_corporation_id_structures"
       parameters:
       - name: "Accept-Language"
@@ -17031,7 +17027,8 @@ paths:
       - evesso:
         - "esi-corporations.read_structures.v1"
       x-alternate-versions:
-      - "v2"
+      - "dev"
+      - "v3"
       x-cached-seconds: 3600
       x-required-roles:
       - "Station_Manager"
@@ -17345,15 +17342,10 @@ paths:
       - "Wallet"
       summary: "Get corporation wallet journal"
       description: "Retrieve the given corporation's wallet journal for the given\
-        \ division going 30 days back. Note: any journal records having to do with\
-        \ the new navigation structures from the release of Onslaught will not show\
-        \ up in this version. To see those, use the v4 version of this route.\n\n\
-        ---\nAlternate route: `/legacy/corporations/{corporation_id}/wallets/{division}/journal/`\n\
-        \nAlternate route: `/v3/corporations/{corporation_id}/wallets/{division}/journal/`\n\
+        \ division going 30 days back\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/wallets/{division}/journal/`\n\
+        \nAlternate route: `/v4/corporations/{corporation_id}/wallets/{division}/journal/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
-        \ the following EVE corporation role(s): Accountant, Junior_Accountant\n\n\
-        \n---\nWarning: This route has an upgrade available\n\n---\n[Diff of the upcoming\
-        \ changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/wallets/{division}/journal/)"
+        \ the following EVE corporation role(s): Accountant, Junior_Accountant\n"
       operationId: "get_corporations_corporation_id_wallets_division_journal"
       parameters:
       - name: "corporation_id"
@@ -17514,8 +17506,8 @@ paths:
       - evesso:
         - "esi-wallet.read_corporation_wallets.v1"
       x-alternate-versions:
-      - "legacy"
-      - "v3"
+      - "dev"
+      - "v4"
       x-cached-seconds: 3600
       x-required-roles:
       - "Accountant"
@@ -34120,6 +34112,7 @@ definitions:
         - "sovereignity_bill"
         - "store_purchase"
         - "store_purchase_refund"
+        - "structure_gate_jump"
         - "transaction_tax"
         - "upkeep_adjustment_fee"
         - "war_ally_contract"
@@ -37298,7 +37291,6 @@ definitions:
     - "corporation_id"
     - "profile_id"
     - "reinforce_hour"
-    - "reinforce_weekday"
     - "state"
     - "structure_id"
     - "system_id"
@@ -37376,6 +37368,7 @@ definitions:
         - "anchoring"
         - "armor_reinforce"
         - "armor_vulnerable"
+        - "deploy_vulnerable"
         - "fitting_invulnerable"
         - "hull_reinforce"
         - "hull_vulnerable"
@@ -38118,6 +38111,7 @@ definitions:
         - "sovereignity_bill"
         - "store_purchase"
         - "store_purchase_refund"
+        - "structure_gate_jump"
         - "transaction_tax"
         - "upkeep_adjustment_fee"
         - "war_ally_contract"

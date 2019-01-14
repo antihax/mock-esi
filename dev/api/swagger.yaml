@@ -9998,8 +9998,9 @@ paths:
       - "Wallet"
       summary: "Get character wallet journal"
       description: "Retrieve the given character's wallet journal going 30 days back\n\
-        \n---\nAlternate route: `/v5/characters/{character_id}/wallet/journal/`\n\n\
-        ---\nThis route is cached for up to 3600 seconds"
+        \n---\nAlternate route: `/latest/characters/{character_id}/wallet/journal/`\n\
+        \nAlternate route: `/v5/characters/{character_id}/wallet/journal/`\n\n---\n\
+        This route is cached for up to 3600 seconds"
       operationId: "get_characters_character_id_wallet_journal"
       parameters:
       - name: "character_id"
@@ -10150,6 +10151,7 @@ paths:
       - evesso:
         - "esi-wallet.read_character_wallet.v1"
       x-alternate-versions:
+      - "latest"
       - "v5"
       x-cached-seconds: 3600
   /characters/{character_id}/wallet/transactions/:
@@ -16836,9 +16838,10 @@ paths:
       summary: "Get corporation structures"
       description: "Get a list of corporation structures. This route's version includes\
         \ the changes to structures detailed in this blog: https://www.eveonline.com/article/upwell-2.0-structures-changes-coming-on-february-13th\n\
-        \n---\nAlternate route: `/v3/corporations/{corporation_id}/structures/`\n\n\
-        ---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of the\
-        \ following EVE corporation role(s): Station_Manager\n"
+        \n---\nAlternate route: `/latest/corporations/{corporation_id}/structures/`\n\
+        \nAlternate route: `/v3/corporations/{corporation_id}/structures/`\n\n---\n\
+        This route is cached for up to 3600 seconds\n\n---\nRequires one of the following\
+        \ EVE corporation role(s): Station_Manager\n"
       operationId: "get_corporations_corporation_id_structures"
       parameters:
       - name: "Accept-Language"
@@ -17025,6 +17028,7 @@ paths:
       - evesso:
         - "esi-corporations.read_structures.v1"
       x-alternate-versions:
+      - "latest"
       - "v3"
       x-cached-seconds: 3600
       x-required-roles:
@@ -17339,7 +17343,8 @@ paths:
       - "Wallet"
       summary: "Get corporation wallet journal"
       description: "Retrieve the given corporation's wallet journal for the given\
-        \ division going 30 days back\n\n---\nAlternate route: `/v4/corporations/{corporation_id}/wallets/{division}/journal/`\n\
+        \ division going 30 days back\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/wallets/{division}/journal/`\n\
+        \nAlternate route: `/v4/corporations/{corporation_id}/wallets/{division}/journal/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
         \ the following EVE corporation role(s): Accountant, Junior_Accountant\n"
       operationId: "get_corporations_corporation_id_wallets_division_journal"
@@ -17502,6 +17507,7 @@ paths:
       - evesso:
         - "esi-wallet.read_corporation_wallets.v1"
       x-alternate-versions:
+      - "latest"
       - "v4"
       x-cached-seconds: 3600
       x-required-roles:

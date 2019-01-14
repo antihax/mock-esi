@@ -2357,8 +2357,9 @@ paths:
       description: "Get a list of corporation structures. This route's version includes\
         \ the changes to structures detailed in this blog: https://www.eveonline.com/article/upwell-2.0-structures-changes-coming-on-february-13th\n\
         \n---\nAlternate route: `/dev/corporations/{corporation_id}/structures/`\n\
-        \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
-        \ the following EVE corporation role(s): Station_Manager\n"
+        \nAlternate route: `/latest/corporations/{corporation_id}/structures/`\n\n\
+        ---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of the\
+        \ following EVE corporation role(s): Station_Manager\n"
       operationId: "get_corporations_corporation_id_structures"
       parameters:
       - name: "Accept-Language"
@@ -2546,6 +2547,7 @@ paths:
         - "esi-corporations.read_structures.v1"
       x-alternate-versions:
       - "dev"
+      - "latest"
       x-cached-seconds: 3600
       x-required-roles:
       - "Station_Manager"
@@ -2558,12 +2560,10 @@ paths:
         \ division going 30 days back. Note: any journal records having to do with\
         \ the new navigation structures from the release of Onslaught will not show\
         \ up in this version. To see those, use the v4 version of this route.\n\n\
-        ---\nAlternate route: `/latest/corporations/{corporation_id}/wallets/{division}/journal/`\n\
-        \nAlternate route: `/legacy/corporations/{corporation_id}/wallets/{division}/journal/`\n\
+        ---\nAlternate route: `/legacy/corporations/{corporation_id}/wallets/{division}/journal/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
         \ the following EVE corporation role(s): Accountant, Junior_Accountant\n\n\
-        \n---\nWarning: This route has an upgrade available\n\n---\n[Diff of the upcoming\
-        \ changes](https://esi.evetech.net/diff/v3/dev/#GET-/corporations/{corporation_id}/wallets/{division}/journal/)"
+        \n---\nWarning: This route is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v3/dev/#GET-/corporations/{corporation_id}/wallets/{division}/journal/)"
       operationId: "get_corporations_corporation_id_wallets_division_journal"
       parameters:
       - name: "corporation_id"
@@ -2723,8 +2723,8 @@ paths:
       security:
       - evesso:
         - "esi-wallet.read_corporation_wallets.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
       - "legacy"
       x-cached-seconds: 3600
       x-required-roles:
