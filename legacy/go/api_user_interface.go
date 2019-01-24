@@ -17,7 +17,7 @@ func PostUiAutopilotWaypoint(w http.ResponseWriter, r *http.Request) {
 		err                 error
 		addToBeginning      bool
 		clearOtherWaypoints bool
-		solarSystemId       int32
+		destinationId       int64
 		datasource          string
 		token               string
 	)
@@ -48,7 +48,7 @@ func PostUiAutopilotWaypoint(w http.ResponseWriter, r *http.Request) {
 		}
 		datasource = localV.(string)
 	}
-	localV, err = processParameters(solarSystemId, r.Form.Get("solar_system_id"))
+	localV, err = processParameters(destinationId, r.Form.Get("destination_id"))
 	if err != nil {
 		errorOut(w, r, err)
 		return
@@ -74,15 +74,12 @@ func PostUiAutopilotWaypoint(w http.ResponseWriter, r *http.Request) {
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
-			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
-
-	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "")
 	w.WriteHeader(http.StatusOK)

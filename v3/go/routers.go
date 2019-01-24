@@ -144,6 +144,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"PostUniverseNames",
+		"Post",
+		"/v3/universe/names/",
+		PostUniverseNames,
+	)
+
+	mockesi.NewRoute(
 		"GetCorporationsCorporationIdWalletsDivisionJournal",
 		"Get",
 		"/v3/corporations/{corporation_id}/wallets/{division}/journal/",

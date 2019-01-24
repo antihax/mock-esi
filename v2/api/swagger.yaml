@@ -5515,7 +5515,8 @@ paths:
       - "User Interface"
       summary: "Set Autopilot Waypoint"
       description: "Set a solar system as autopilot waypoint\n\n---\nAlternate route:\
-        \ `/dev/ui/autopilot/waypoint/`\n\nAlternate route: `/latest/ui/autopilot/waypoint/`\n"
+        \ `/dev/ui/autopilot/waypoint/`\n\nAlternate route: `/latest/ui/autopilot/waypoint/`\n\
+        \nAlternate route: `/legacy/ui/autopilot/waypoint/`\n"
       operationId: "post_ui_autopilot_waypoint"
       parameters:
       - name: "add_to_beginning"
@@ -5615,6 +5616,7 @@ paths:
       x-alternate-versions:
       - "dev"
       - "latest"
+      - "legacy"
   /universe/factions/:
     get:
       tags:
@@ -5771,11 +5773,12 @@ paths:
     post:
       tags:
       - "Universe"
-      summary: "Get names and categories for a set of ID's"
+      summary: "Get names and categories for a set of IDs"
       description: "Resolve a set of IDs to names and categories. Supported ID's for\
         \ resolving are: Characters, Corporations, Alliances, Stations, Solar Systems,\
-        \ Constellations, Regions, Types\n\n---\nAlternate route: `/dev/universe/names/`\n\
-        \nAlternate route: `/latest/universe/names/`\n"
+        \ Constellations, Regions, Types\n\n---\nAlternate route: `/latest/universe/names/`\n\
+        \n\n---\nWarning: This route has an upgrade available\n\n---\n[Diff of the\
+        \ upcoming changes](https://esi.evetech.net/diff/v2/dev/#POST-/universe/names/)"
       operationId: "post_universe_names"
       parameters:
       - name: "datasource"
@@ -5805,7 +5808,7 @@ paths:
         x-exportParamName: "Ids"
       responses:
         200:
-          description: "List of id/name associations for a set of ID's. All ID's must\
+          description: "List of id/name associations for a set of IDs. All IDs must\
             \ resolve to a name, or nothing will be returned"
           schema:
             type: "array"
@@ -5865,7 +5868,6 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "latest"
   /universe/stations/{station_id}/:
     get:

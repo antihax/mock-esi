@@ -23949,8 +23949,9 @@ paths:
       - "User Interface"
       summary: "Set Autopilot Waypoint"
       description: "Set a solar system as autopilot waypoint\n\n---\nAlternate route:\
-        \ `/v1/ui/autopilot/waypoint/`\n\n\n---\nWarning: This route is deprecated\
-        \ as of 2016-12-23\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#POST-/ui/autopilot/waypoint/)"
+        \ `/dev/ui/autopilot/waypoint/`\n\nAlternate route: `/latest/ui/autopilot/waypoint/`\n\
+        \nAlternate route: `/v2/ui/autopilot/waypoint/`\n\n\n---\nWarning: This is\
+        \ a legacy route"
       operationId: "post_ui_autopilot_waypoint"
       parameters:
       - name: "add_to_beginning"
@@ -23978,13 +23979,14 @@ paths:
         - "tranquility"
         - "singularity"
         x-exportParamName: "Datasource"
-      - name: "solar_system_id"
+      - name: "destination_id"
         in: "query"
-        description: "The solar system to set as autopilot waypoint"
+        description: "The destination to travel to, can be solar system, station or\
+          \ structure's id"
         required: true
         type: "integer"
-        format: "int32"
-        x-exportParamName: "SolarSystemId"
+        format: "int64"
+        x-exportParamName: "DestinationId"
       - name: "token"
         in: "query"
         description: "Access token to use if unable to set a header"
@@ -24046,9 +24048,10 @@ paths:
       security:
       - evesso:
         - "esi-ui.write_waypoint.v1"
-      deprecated: true
       x-alternate-versions:
-      - "v1"
+      - "dev"
+      - "latest"
+      - "v2"
   /ui/openwindow/contract/:
     post:
       tags:
@@ -26337,7 +26340,7 @@ paths:
     post:
       tags:
       - "Universe"
-      summary: "Get names and categories for a set of ID's"
+      summary: "Get names and categories for a set of IDs"
       description: "Resolve a set of IDs to names and categories. Supported ID's for\
         \ resolving are: Characters, Corporations, Alliances, Stations, Solar Systems,\
         \ Constellations, Regions, Types\n\n---\nAlternate route: `/v1/universe/names/`\n\
@@ -26363,7 +26366,7 @@ paths:
         x-exportParamName: "Ids"
       responses:
         200:
-          description: "List of id/name associations for a set of ID's. All ID's must\
+          description: "List of id/name associations for a set of IDs. All IDs must\
             \ resolve to a name, or nothing will be returned"
           schema:
             type: "array"

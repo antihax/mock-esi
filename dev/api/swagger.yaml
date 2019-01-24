@@ -23749,7 +23749,8 @@ paths:
       - "User Interface"
       summary: "Set Autopilot Waypoint"
       description: "Set a solar system as autopilot waypoint\n\n---\nAlternate route:\
-        \ `/latest/ui/autopilot/waypoint/`\n\nAlternate route: `/v2/ui/autopilot/waypoint/`\n"
+        \ `/latest/ui/autopilot/waypoint/`\n\nAlternate route: `/legacy/ui/autopilot/waypoint/`\n\
+        \nAlternate route: `/v2/ui/autopilot/waypoint/`\n"
       operationId: "post_ui_autopilot_waypoint"
       parameters:
       - name: "add_to_beginning"
@@ -23848,6 +23849,7 @@ paths:
         - "esi-ui.write_waypoint.v1"
       x-alternate-versions:
       - "latest"
+      - "legacy"
       - "v2"
   /ui/openwindow/contract/:
     post:
@@ -26126,11 +26128,10 @@ paths:
     post:
       tags:
       - "Universe"
-      summary: "Get names and categories for a set of ID's"
+      summary: "Get names and categories for a set of IDs"
       description: "Resolve a set of IDs to names and categories. Supported ID's for\
         \ resolving are: Characters, Corporations, Alliances, Stations, Solar Systems,\
-        \ Constellations, Regions, Types\n\n---\nAlternate route: `/latest/universe/names/`\n\
-        \nAlternate route: `/v2/universe/names/`\n"
+        \ Constellations, Regions, Types, Factions\n\n---\nAlternate route: `/v3/universe/names/`\n"
       operationId: "post_universe_names"
       parameters:
       - name: "datasource"
@@ -26160,7 +26161,7 @@ paths:
         x-exportParamName: "Ids"
       responses:
         200:
-          description: "List of id/name associations for a set of ID's. All ID's must\
+          description: "List of id/name associations for a set of IDs. All IDs must\
             \ resolve to a name, or nothing will be returned"
           schema:
             type: "array"
@@ -26220,8 +26221,7 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "latest"
-      - "v2"
+      - "v3"
   /universe/planets/{planet_id}/:
     get:
       tags:
@@ -41302,6 +41302,7 @@ definitions:
         - "region"
         - "solar_system"
         - "station"
+        - "faction"
       id:
         type: "integer"
         format: "int32"

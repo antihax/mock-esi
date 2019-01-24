@@ -1215,13 +1215,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"PostUiAutopilotWaypoint",
-		"Post",
-		"/v1/ui/autopilot/waypoint/",
-		PostUiAutopilotWaypoint,
-	)
-
-	mockesi.NewRoute(
 		"PostUiOpenwindowContract",
 		"Post",
 		"/v1/ui/openwindow/contract/",
