@@ -4452,10 +4452,8 @@ paths:
       tags:
       - "Fittings"
       summary: "Get fittings"
-      description: "Return fittings of a character\n\n---\nAlternate route: `/latest/characters/{character_id}/fittings/`\n\
-        \nAlternate route: `/legacy/characters/{character_id}/fittings/`\n\nAlternate\
-        \ route: `/v1/characters/{character_id}/fittings/`\n\n---\nThis route is cached\
-        \ for up to 300 seconds"
+      description: "Return fittings of a character\n\n---\nAlternate route: `/v2/characters/{character_id}/fittings/`\n\
+        \n---\nThis route is cached for up to 300 seconds"
       operationId: "get_characters_character_id_fittings"
       parameters:
       - name: "character_id"
@@ -4504,7 +4502,7 @@ paths:
             - description: "Awesome Vindi fitting"
               fitting_id: 1
               items:
-              - flag: 12
+              - flag: "Cargo"
                 quantity: 1
                 type_id: 1234
               name: "Best Vindicator"
@@ -4590,17 +4588,13 @@ paths:
       - evesso:
         - "esi-fittings.read_fittings.v1"
       x-alternate-versions:
-      - "latest"
-      - "legacy"
-      - "v1"
+      - "v2"
       x-cached-seconds: 300
     post:
       tags:
       - "Fittings"
       summary: "Create fitting"
-      description: "Save a new fitting for a character\n\n---\nAlternate route: `/latest/characters/{character_id}/fittings/`\n\
-        \nAlternate route: `/legacy/characters/{character_id}/fittings/`\n\nAlternate\
-        \ route: `/v1/characters/{character_id}/fittings/`\n"
+      description: "Save a new fitting for a character\n\n---\nAlternate route: `/v2/characters/{character_id}/fittings/`\n"
       operationId: "post_characters_character_id_fittings"
       parameters:
       - name: "character_id"
@@ -4695,9 +4689,7 @@ paths:
       - evesso:
         - "esi-fittings.write_fittings.v1"
       x-alternate-versions:
-      - "latest"
-      - "legacy"
-      - "v1"
+      - "v2"
   /characters/{character_id}/fittings/{fitting_id}/:
     delete:
       tags:
@@ -30158,10 +30150,53 @@ definitions:
     - "type_id"
     properties:
       flag:
-        type: "integer"
-        format: "int32"
-        description: "flag integer"
+        type: "string"
+        description: "flag string"
         title: "get_characters_character_id_fittings_flag"
+        enum:
+        - "Cargo"
+        - "DroneBay"
+        - "FighterBay"
+        - "HiSlot0"
+        - "HiSlot1"
+        - "HiSlot2"
+        - "HiSlot3"
+        - "HiSlot4"
+        - "HiSlot5"
+        - "HiSlot6"
+        - "HiSlot7"
+        - "Invalid"
+        - "LoSlot0"
+        - "LoSlot1"
+        - "LoSlot2"
+        - "LoSlot3"
+        - "LoSlot4"
+        - "LoSlot5"
+        - "LoSlot6"
+        - "LoSlot7"
+        - "MedSlot0"
+        - "MedSlot1"
+        - "MedSlot2"
+        - "MedSlot3"
+        - "MedSlot4"
+        - "MedSlot5"
+        - "MedSlot6"
+        - "MedSlot7"
+        - "RigSlot0"
+        - "RigSlot1"
+        - "RigSlot2"
+        - "ServiceSlot0"
+        - "ServiceSlot1"
+        - "ServiceSlot2"
+        - "ServiceSlot3"
+        - "ServiceSlot4"
+        - "ServiceSlot5"
+        - "ServiceSlot6"
+        - "ServiceSlot7"
+        - "SubSystemSlot0"
+        - "SubSystemSlot1"
+        - "SubSystemSlot2"
+        - "SubSystemSlot3"
       quantity:
         type: "integer"
         format: "int32"
@@ -30214,10 +30249,55 @@ definitions:
     - "type_id"
     properties:
       flag:
-        type: "integer"
-        format: "int32"
-        description: "flag integer"
+        type: "string"
+        description: "Fitting location for the item. Entries placed in 'Invalid' will\
+          \ be discarded. If this leaves the fitting with nothing, it will cause an\
+          \ error."
         title: "post_characters_character_id_fittings_flag"
+        enum:
+        - "Cargo"
+        - "DroneBay"
+        - "FighterBay"
+        - "HiSlot0"
+        - "HiSlot1"
+        - "HiSlot2"
+        - "HiSlot3"
+        - "HiSlot4"
+        - "HiSlot5"
+        - "HiSlot6"
+        - "HiSlot7"
+        - "Invalid"
+        - "LoSlot0"
+        - "LoSlot1"
+        - "LoSlot2"
+        - "LoSlot3"
+        - "LoSlot4"
+        - "LoSlot5"
+        - "LoSlot6"
+        - "LoSlot7"
+        - "MedSlot0"
+        - "MedSlot1"
+        - "MedSlot2"
+        - "MedSlot3"
+        - "MedSlot4"
+        - "MedSlot5"
+        - "MedSlot6"
+        - "MedSlot7"
+        - "RigSlot0"
+        - "RigSlot1"
+        - "RigSlot2"
+        - "ServiceSlot0"
+        - "ServiceSlot1"
+        - "ServiceSlot2"
+        - "ServiceSlot3"
+        - "ServiceSlot4"
+        - "ServiceSlot5"
+        - "ServiceSlot6"
+        - "ServiceSlot7"
+        - "SubSystemSlot0"
+        - "SubSystemSlot1"
+        - "SubSystemSlot2"
+        - "SubSystemSlot3"
       quantity:
         type: "integer"
         format: "int32"

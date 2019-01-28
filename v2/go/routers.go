@@ -200,6 +200,20 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdFittings",
+		"Get",
+		"/v2/characters/{character_id}/fittings/",
+		GetCharactersCharacterIdFittings,
+	)
+
+	mockesi.NewRoute(
+		"PostCharactersCharacterIdFittings",
+		"Post",
+		"/v2/characters/{character_id}/fittings/",
+		PostCharactersCharacterIdFittings,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdOnline",
 		"Get",
 		"/v2/characters/{character_id}/online/",

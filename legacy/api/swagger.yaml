@@ -4400,10 +4400,10 @@ paths:
       tags:
       - "Fittings"
       summary: "Get fittings"
-      description: "Return fittings of a character\n\n---\nAlternate route: `/dev/characters/{character_id}/fittings/`\n\
-        \nAlternate route: `/latest/characters/{character_id}/fittings/`\n\nAlternate\
-        \ route: `/v1/characters/{character_id}/fittings/`\n\n---\nThis route is cached\
-        \ for up to 300 seconds\n\n---\nWarning: This is a legacy route"
+      description: "Return fittings of a character\n\n---\nAlternate route: `/latest/characters/{character_id}/fittings/`\n\
+        \nAlternate route: `/v1/characters/{character_id}/fittings/`\n\n---\nThis\
+        \ route is cached for up to 300 seconds\n\n---\nWarning: This is a legacy\
+        \ route"
       operationId: "get_characters_character_id_fittings"
       parameters:
       - name: "character_id"
@@ -4538,7 +4538,6 @@ paths:
       - evesso:
         - "esi-fittings.read_fittings.v1"
       x-alternate-versions:
-      - "dev"
       - "latest"
       - "v1"
       x-cached-seconds: 300
@@ -4546,10 +4545,9 @@ paths:
       tags:
       - "Fittings"
       summary: "Create fitting"
-      description: "Save a new fitting for a character\n\n---\nAlternate route: `/dev/characters/{character_id}/fittings/`\n\
-        \nAlternate route: `/latest/characters/{character_id}/fittings/`\n\nAlternate\
-        \ route: `/v1/characters/{character_id}/fittings/`\n\n\n---\nWarning: This\
-        \ is a legacy route"
+      description: "Save a new fitting for a character\n\n---\nAlternate route: `/latest/characters/{character_id}/fittings/`\n\
+        \nAlternate route: `/v1/characters/{character_id}/fittings/`\n\n\n---\nWarning:\
+        \ This is a legacy route"
       operationId: "post_characters_character_id_fittings"
       parameters:
       - name: "character_id"
@@ -4644,7 +4642,6 @@ paths:
       - evesso:
         - "esi-fittings.write_fittings.v1"
       x-alternate-versions:
-      - "dev"
       - "latest"
       - "v1"
   /characters/{character_id}/fittings/{fitting_id}/:
