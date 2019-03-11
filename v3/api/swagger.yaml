@@ -2737,7 +2737,8 @@ paths:
       summary: "Get names and categories for a set of IDs"
       description: "Resolve a set of IDs to names and categories. Supported ID's for\
         \ resolving are: Characters, Corporations, Alliances, Stations, Solar Systems,\
-        \ Constellations, Regions, Types, Factions\n\n---\nAlternate route: `/dev/universe/names/`\n"
+        \ Constellations, Regions, Types, Factions\n\n---\nAlternate route: `/dev/universe/names/`\n\
+        \nAlternate route: `/latest/universe/names/`\n"
       operationId: "post_universe_names"
       parameters:
       - name: "datasource"
@@ -2828,6 +2829,7 @@ paths:
               error: "Gateway timeout message"
       x-alternate-versions:
       - "dev"
+      - "latest"
   /universe/systems/{system_id}/:
     get:
       tags:

@@ -6019,9 +6019,8 @@ paths:
       summary: "Get names and categories for a set of IDs"
       description: "Resolve a set of IDs to names and categories. Supported ID's for\
         \ resolving are: Characters, Corporations, Alliances, Stations, Solar Systems,\
-        \ Constellations, Regions, Types\n\n---\nAlternate route: `/latest/universe/names/`\n\
-        \n\n---\nWarning: This route has an upgrade available\n\n---\n[Diff of the\
-        \ upcoming changes](https://esi.evetech.net/diff/v2/dev/#POST-/universe/names/)"
+        \ Constellations, Regions, Types\n\n---\nAlternate route: `/legacy/universe/names/`\n\
+        \n\n---\nWarning: This route is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#POST-/universe/names/)"
       operationId: "post_universe_names"
       parameters:
       - name: "datasource"
@@ -6110,8 +6109,9 @@ paths:
           examples:
             application/json:
               error: "Gateway timeout message"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
+      - "legacy"
   /universe/stations/{station_id}/:
     get:
       tags:

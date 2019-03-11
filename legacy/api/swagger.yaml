@@ -26340,7 +26340,7 @@ paths:
       summary: "Get names and categories for a set of IDs"
       description: "Resolve a set of IDs to names and categories. Supported ID's for\
         \ resolving are: Characters, Corporations, Alliances, Stations, Solar Systems,\
-        \ Constellations, Regions, Types\n\n---\nAlternate route: `/v1/universe/names/`\n\
+        \ Constellations, Regions, Types\n\n---\nAlternate route: `/v2/universe/names/`\n\
         \n\n---\nWarning: This route is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#POST-/universe/names/)"
       operationId: "post_universe_names"
       parameters:
@@ -26359,7 +26359,15 @@ paths:
         description: "The ids to resolve"
         required: true
         schema:
-          $ref: "#/definitions/post_universe_names_ids"
+          title: "post_universe_names_ids"
+          type: "array"
+          description: "ids array"
+          items:
+            type: "integer"
+            format: "int32"
+            description: "id integer"
+            title: "post_universe_names_id"
+          example: "[95465499,30000142]"
         x-exportParamName: "Ids"
       responses:
         200:
@@ -26424,7 +26432,7 @@ paths:
               error: "Gateway timeout message"
       deprecated: true
       x-alternate-versions:
-      - "v1"
+      - "v2"
   /universe/planets/{planet_id}/:
     get:
       tags:
@@ -41042,25 +41050,6 @@ definitions:
         description: "Not found message"
         title: "get_universe_moons_moon_id_404_not_found"
     description: "Not found"
-  post_universe_names_ids:
-    type: "object"
-    required:
-    - "ids"
-    properties:
-      ids:
-        type: "array"
-        description: "ids array"
-        title: "post_universe_names_ids_ids"
-        uniqueItems: true
-        items:
-          type: "integer"
-          format: "int32"
-          description: "id integer"
-          title: "post_universe_names_id"
-        maxItems: 1000
-        minItems: 1
-    title: "post_universe_names_ids"
-    description: "ids object"
   post_universe_names_200_ok:
     required:
     - "category"
