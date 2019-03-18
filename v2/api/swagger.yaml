@@ -2011,7 +2011,8 @@ paths:
       - "Fittings"
       summary: "Get fittings"
       description: "Return fittings of a character\n\n---\nAlternate route: `/dev/characters/{character_id}/fittings/`\n\
-        \n---\nThis route is cached for up to 300 seconds"
+        \nAlternate route: `/latest/characters/{character_id}/fittings/`\n\n---\n\
+        This route is cached for up to 300 seconds"
       operationId: "get_characters_character_id_fittings"
       parameters:
       - name: "character_id"
@@ -2147,12 +2148,14 @@ paths:
         - "esi-fittings.read_fittings.v1"
       x-alternate-versions:
       - "dev"
+      - "latest"
       x-cached-seconds: 300
     post:
       tags:
       - "Fittings"
       summary: "Create fitting"
-      description: "Save a new fitting for a character\n\n---\nAlternate route: `/dev/characters/{character_id}/fittings/`\n"
+      description: "Save a new fitting for a character\n\n---\nAlternate route: `/dev/characters/{character_id}/fittings/`\n\
+        \nAlternate route: `/latest/characters/{character_id}/fittings/`\n"
       operationId: "post_characters_character_id_fittings"
       parameters:
       - name: "character_id"
@@ -2248,6 +2251,7 @@ paths:
         - "esi-fittings.write_fittings.v1"
       x-alternate-versions:
       - "dev"
+      - "latest"
   /characters/{character_id}/mail/labels/:
     get:
       tags:

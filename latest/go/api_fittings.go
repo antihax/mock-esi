@@ -101,7 +101,7 @@ func GetCharactersCharacterIdFittings(w http.ResponseWriter, r *http.Request) {
   "description" : "Awesome Vindi fitting",
   "fitting_id" : 1,
   "items" : [ {
-    "flag" : 12,
+    "flag" : "Cargo",
     "quantity" : 1,
     "type_id" : 1234
   } ],

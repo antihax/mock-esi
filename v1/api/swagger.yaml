@@ -3469,10 +3469,9 @@ paths:
       tags:
       - "Fittings"
       summary: "Get fittings"
-      description: "Return fittings of a character\n\n---\nAlternate route: `/latest/characters/{character_id}/fittings/`\n\
-        \nAlternate route: `/legacy/characters/{character_id}/fittings/`\n\n---\n\
-        This route is cached for up to 300 seconds\n\n---\nWarning: This route has\
-        \ an upgrade available\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/fittings/)"
+      description: "Return fittings of a character\n\n---\nAlternate route: `/legacy/characters/{character_id}/fittings/`\n\
+        \n---\nThis route is cached for up to 300 seconds\n\n---\nWarning: This route\
+        \ is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/fittings/)"
       operationId: "get_characters_character_id_fittings"
       parameters:
       - name: "character_id"
@@ -3606,18 +3605,16 @@ paths:
       security:
       - evesso:
         - "esi-fittings.read_fittings.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
       - "legacy"
       x-cached-seconds: 300
     post:
       tags:
       - "Fittings"
       summary: "Create fitting"
-      description: "Save a new fitting for a character\n\n---\nAlternate route: `/latest/characters/{character_id}/fittings/`\n\
-        \nAlternate route: `/legacy/characters/{character_id}/fittings/`\n\n\n---\n\
-        Warning: This route has an upgrade available\n\n---\n[Diff of the upcoming\
-        \ changes](https://esi.evetech.net/diff/v1/dev/#POST-/characters/{character_id}/fittings/)"
+      description: "Save a new fitting for a character\n\n---\nAlternate route: `/legacy/characters/{character_id}/fittings/`\n\
+        \n\n---\nWarning: This route is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#POST-/characters/{character_id}/fittings/)"
       operationId: "post_characters_character_id_fittings"
       parameters:
       - name: "character_id"
@@ -3711,8 +3708,8 @@ paths:
       security:
       - evesso:
         - "esi-fittings.write_fittings.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
       - "legacy"
   /characters/{character_id}/fittings/{fitting_id}/:
     delete:

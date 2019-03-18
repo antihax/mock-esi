@@ -4,8 +4,8 @@ package esilatest
 item object */
 type GetCharactersCharacterIdFittingsItem struct {
 	/*
-	 flag integer */
-	Flag int32 `json:"flag,omitempty"`
+	 flag string */
+	Flag string `json:"flag,omitempty"`
 	/*
 	 quantity integer */
 	Quantity int32 `json:"quantity,omitempty"`

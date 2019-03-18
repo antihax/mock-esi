@@ -4452,8 +4452,9 @@ paths:
       tags:
       - "Fittings"
       summary: "Get fittings"
-      description: "Return fittings of a character\n\n---\nAlternate route: `/v2/characters/{character_id}/fittings/`\n\
-        \n---\nThis route is cached for up to 300 seconds"
+      description: "Return fittings of a character\n\n---\nAlternate route: `/latest/characters/{character_id}/fittings/`\n\
+        \nAlternate route: `/v2/characters/{character_id}/fittings/`\n\n---\nThis\
+        \ route is cached for up to 300 seconds"
       operationId: "get_characters_character_id_fittings"
       parameters:
       - name: "character_id"
@@ -4588,13 +4589,15 @@ paths:
       - evesso:
         - "esi-fittings.read_fittings.v1"
       x-alternate-versions:
+      - "latest"
       - "v2"
       x-cached-seconds: 300
     post:
       tags:
       - "Fittings"
       summary: "Create fitting"
-      description: "Save a new fitting for a character\n\n---\nAlternate route: `/v2/characters/{character_id}/fittings/`\n"
+      description: "Save a new fitting for a character\n\n---\nAlternate route: `/latest/characters/{character_id}/fittings/`\n\
+        \nAlternate route: `/v2/characters/{character_id}/fittings/`\n"
       operationId: "post_characters_character_id_fittings"
       parameters:
       - name: "character_id"
@@ -4689,6 +4692,7 @@ paths:
       - evesso:
         - "esi-fittings.write_fittings.v1"
       x-alternate-versions:
+      - "latest"
       - "v2"
   /characters/{character_id}/fittings/{fitting_id}/:
     delete:
