@@ -1,4 +1,4 @@
-# Go API Server for esiv2
+# Go API Server for esiv6
 
 An OpenAPI for EVE Online
 
@@ -13,7 +13,7 @@ To see how to make this your own, look here:
 [README](https://github.com/swagger-api/swagger-codegen/blob/master/README.md)
 
 - API version: 0.8.6
-- Build date: 2019-03-20T20:08:05.954Z
+- Build date: 2019-03-20T20:08:19.822Z
 
 
 ### Running the server

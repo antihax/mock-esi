@@ -5,7 +5,7 @@ info:
   version: "0.8.6"
   title: "EVE Swagger Interface"
 host: "esi.evetech.net"
-basePath: "/v5"
+basePath: "/v6"
 schemes:
 - "https"
 consumes:
@@ -19,9 +19,8 @@ paths:
       - "Wallet"
       summary: "Get character wallet journal"
       description: "Retrieve the given character's wallet journal going 30 days back\n\
-        \n---\nAlternate route: `/latest/characters/{character_id}/wallet/journal/`\n\
-        \n---\nThis route is cached for up to 3600 seconds\n\n---\nWarning: This route\
-        \ has an upgrade available\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v5/dev/#GET-/characters/{character_id}/wallet/journal/)"
+        \n---\nAlternate route: `/dev/characters/{character_id}/wallet/journal/`\n\
+        \n---\nThis route is cached for up to 3600 seconds"
       operationId: "get_characters_character_id_wallet_journal"
       parameters:
       - name: "character_id"
@@ -172,7 +171,7 @@ paths:
       - evesso:
         - "esi-wallet.read_character_wallet.v1"
       x-alternate-versions:
-      - "latest"
+      - "dev"
       x-cached-seconds: 3600
 securityDefinitions:
   evesso:
@@ -410,6 +409,7 @@ definitions:
         - "infrastructure_hub_maintenance"
         - "inheritance"
         - "insurance"
+        - "item_trader_payment"
         - "jump_clone_activation_fee"
         - "jump_clone_installation_fee"
         - "kill_right_fee"
@@ -445,6 +445,7 @@ definitions:
         - "reverse_engineering"
         - "security_processing_fee"
         - "shares"
+        - "skill_purchase"
         - "sovereignity_bill"
         - "store_purchase"
         - "store_purchase_refund"
