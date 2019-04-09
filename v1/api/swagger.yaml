@@ -3817,9 +3817,9 @@ paths:
       - "Fleets"
       summary: "Get character fleet info"
       description: "Return the fleet ID the character is in, if any.\n\n---\nAlternate\
-        \ route: `/dev/characters/{character_id}/fleet/`\n\nAlternate route: `/latest/characters/{character_id}/fleet/`\n\
-        \nAlternate route: `/legacy/characters/{character_id}/fleet/`\n\n---\nThis\
-        \ route is cached for up to 60 seconds"
+        \ route: `/latest/characters/{character_id}/fleet/`\n\nAlternate route: `/legacy/characters/{character_id}/fleet/`\n\
+        \n---\nThis route is cached for up to 60 seconds\n\n---\nWarning: This route\
+        \ has an upgrade available\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/fleet/)"
       operationId: "get_characters_character_id_fleet"
       parameters:
       - name: "character_id"
@@ -3952,7 +3952,6 @@ paths:
       - evesso:
         - "esi-fleets.read_fleet.v1"
       x-alternate-versions:
-      - "dev"
       - "latest"
       - "legacy"
       x-cached-seconds: 60

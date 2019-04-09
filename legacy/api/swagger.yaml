@@ -4749,9 +4749,9 @@ paths:
       - "Fleets"
       summary: "Get character fleet info"
       description: "Return the fleet ID the character is in, if any.\n\n---\nAlternate\
-        \ route: `/dev/characters/{character_id}/fleet/`\n\nAlternate route: `/latest/characters/{character_id}/fleet/`\n\
-        \nAlternate route: `/v1/characters/{character_id}/fleet/`\n\n---\nThis route\
-        \ is cached for up to 60 seconds\n\n---\nWarning: This is a legacy route"
+        \ route: `/latest/characters/{character_id}/fleet/`\n\nAlternate route: `/v1/characters/{character_id}/fleet/`\n\
+        \n---\nThis route is cached for up to 60 seconds\n\n---\nWarning: This is\
+        \ a legacy route"
       operationId: "get_characters_character_id_fleet"
       parameters:
       - name: "character_id"
@@ -4884,7 +4884,6 @@ paths:
       - evesso:
         - "esi-fleets.read_fleet.v1"
       x-alternate-versions:
-      - "dev"
       - "latest"
       - "v1"
       x-cached-seconds: 60

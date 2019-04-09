@@ -4800,9 +4800,8 @@ paths:
       - "Fleets"
       summary: "Get character fleet info"
       description: "Return the fleet ID the character is in, if any.\n\n---\nAlternate\
-        \ route: `/latest/characters/{character_id}/fleet/`\n\nAlternate route: `/legacy/characters/{character_id}/fleet/`\n\
-        \nAlternate route: `/v1/characters/{character_id}/fleet/`\n\n---\nThis route\
-        \ is cached for up to 60 seconds"
+        \ route: `/v2/characters/{character_id}/fleet/`\n\n---\nThis route is cached\
+        \ for up to 60 seconds"
       operationId: "get_characters_character_id_fleet"
       parameters:
       - name: "character_id"
@@ -4843,6 +4842,7 @@ paths:
             $ref: "#/definitions/get_characters_character_id_fleet_ok"
           examples:
             application/json:
+              fleet_boss_id: 2112000001
               fleet_id: 1234567890
               role: "fleet_commander"
               squad_id: -1
@@ -4935,9 +4935,7 @@ paths:
       - evesso:
         - "esi-fleets.read_fleet.v1"
       x-alternate-versions:
-      - "latest"
-      - "legacy"
-      - "v1"
+      - "v2"
       x-cached-seconds: 60
   /characters/{character_id}/fw/stats/:
     get:
@@ -30360,11 +30358,17 @@ definitions:
     description: "201 created object"
   get_characters_character_id_fleet_ok:
     required:
+    - "fleet_boss_id"
     - "fleet_id"
     - "role"
     - "squad_id"
     - "wing_id"
     properties:
+      fleet_boss_id:
+        type: "integer"
+        format: "int64"
+        description: "Character ID of the current fleet boss"
+        title: "get_characters_character_id_fleet_fleet_boss_id"
       fleet_id:
         type: "integer"
         format: "int64"
