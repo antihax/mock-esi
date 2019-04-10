@@ -30,7 +30,8 @@ func GetCharactersCharacterId(w http.ResponseWriter, r *http.Request) {
   "description" : "",
   "gender" : "male",
   "name" : "CCP Bartender",
-  "race_id" : 2
+  "race_id" : 2,
+  "title" : "All round pretty awesome guy"
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])

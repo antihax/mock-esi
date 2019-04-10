@@ -38,4 +38,7 @@ type GetCharactersCharacterIdOk struct {
 	/*
 	 security_status number */
 	SecurityStatus float32 `json:"security_status,omitempty"`
+	/*
+	 The individual title of the character */
+	Title string `json:"title,omitempty"`
 }
