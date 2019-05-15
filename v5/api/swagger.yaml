@@ -19,9 +19,9 @@ paths:
       - "Wallet"
       summary: "Get character wallet journal"
       description: "Retrieve the given character's wallet journal going 30 days back\n\
-        \n---\nAlternate route: `/latest/characters/{character_id}/wallet/journal/`\n\
+        \n---\nAlternate route: `/legacy/characters/{character_id}/wallet/journal/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nWarning: This route\
-        \ has an upgrade available\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v5/dev/#GET-/characters/{character_id}/wallet/journal/)"
+        \ is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v5/dev/#GET-/characters/{character_id}/wallet/journal/)"
       operationId: "get_characters_character_id_wallet_journal"
       parameters:
       - name: "character_id"
@@ -171,8 +171,9 @@ paths:
       security:
       - evesso:
         - "esi-wallet.read_character_wallet.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
+      - "legacy"
       x-cached-seconds: 3600
 securityDefinitions:
   evesso:

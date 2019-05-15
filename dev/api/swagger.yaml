@@ -9993,8 +9993,9 @@ paths:
       - "Wallet"
       summary: "Get character wallet journal"
       description: "Retrieve the given character's wallet journal going 30 days back\n\
-        \n---\nAlternate route: `/v6/characters/{character_id}/wallet/journal/`\n\n\
-        ---\nThis route is cached for up to 3600 seconds"
+        \n---\nAlternate route: `/latest/characters/{character_id}/wallet/journal/`\n\
+        \nAlternate route: `/v6/characters/{character_id}/wallet/journal/`\n\n---\n\
+        This route is cached for up to 3600 seconds"
       operationId: "get_characters_character_id_wallet_journal"
       parameters:
       - name: "character_id"
@@ -10145,6 +10146,7 @@ paths:
       - evesso:
         - "esi-wallet.read_character_wallet.v1"
       x-alternate-versions:
+      - "latest"
       - "v6"
       x-cached-seconds: 3600
   /characters/{character_id}/wallet/transactions/:

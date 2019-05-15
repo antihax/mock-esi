@@ -10144,7 +10144,7 @@ paths:
       - "Wallet"
       summary: "Get character wallet journal"
       description: "Retrieve the given character's wallet journal going 30 days back\n\
-        \n---\nAlternate route: `/v4/characters/{character_id}/wallet/journal/`\n\n\
+        \n---\nAlternate route: `/v5/characters/{character_id}/wallet/journal/`\n\n\
         ---\nThis route is cached for up to 3600 seconds\n\n---\nWarning: This route\
         \ is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#GET-/characters/{character_id}/wallet/journal/)"
       operationId: "get_characters_character_id_wallet_journal"
@@ -10298,7 +10298,7 @@ paths:
         - "esi-wallet.read_character_wallet.v1"
       deprecated: true
       x-alternate-versions:
-      - "v4"
+      - "v5"
       x-cached-seconds: 3600
   /characters/{character_id}/wallet/transactions/:
     get:
@@ -33887,6 +33887,7 @@ definitions:
         - "sovereignity_bill"
         - "store_purchase"
         - "store_purchase_refund"
+        - "structure_gate_jump"
         - "transaction_tax"
         - "upkeep_adjustment_fee"
         - "war_ally_contract"

@@ -84,12 +84,15 @@ func GetCharactersCharacterIdWalletJournal(w http.ResponseWriter, r *http.Reques
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
