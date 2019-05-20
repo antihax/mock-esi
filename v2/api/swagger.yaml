@@ -8655,7 +8655,8 @@ definitions:
       finish_date:
         type: "string"
         format: "date-time"
-        description: "finish_date string"
+        description: "Date on which training of the skill will complete. Omitted if\
+          \ the skill queue is paused."
         title: "get_characters_character_id_skillqueue_finish_date"
       finished_level:
         type: "integer"

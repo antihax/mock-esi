@@ -6,7 +6,7 @@ import "time"
 200 ok object */
 type GetCharactersCharacterIdSkillqueue200Ok struct {
 	/*
-	 finish_date string */
+	 Date on which training of the skill will complete. Omitted if the skill queue is paused. */
 	FinishDate time.Time `json:"finish_date,omitempty"`
 	/*
 	 finished_level integer */
