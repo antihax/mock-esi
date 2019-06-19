@@ -8825,8 +8825,6 @@ paths:
               - "Starbase_Defense_Operator"
               - "Starbase_Fuel_Technician"
               - "Station_Manager"
-              - "Terrestrial_Combat_Officer"
-              - "Terrestrial_Logistics_Officer"
               - "Trader"
             maxItems: 50
           examples:

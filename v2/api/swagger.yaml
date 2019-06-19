@@ -8338,8 +8338,6 @@ definitions:
           - "Starbase_Defense_Operator"
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
-          - "Terrestrial_Combat_Officer"
-          - "Terrestrial_Logistics_Officer"
           - "Trader"
         maxItems: 50
       roles_at_base:
@@ -8398,8 +8396,6 @@ definitions:
           - "Starbase_Defense_Operator"
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
-          - "Terrestrial_Combat_Officer"
-          - "Terrestrial_Logistics_Officer"
           - "Trader"
         maxItems: 50
       roles_at_hq:
@@ -8458,8 +8454,6 @@ definitions:
           - "Starbase_Defense_Operator"
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
-          - "Terrestrial_Combat_Officer"
-          - "Terrestrial_Logistics_Officer"
           - "Trader"
         maxItems: 50
       roles_at_other:
@@ -8518,8 +8512,6 @@ definitions:
           - "Starbase_Defense_Operator"
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
-          - "Terrestrial_Combat_Officer"
-          - "Terrestrial_Logistics_Officer"
           - "Trader"
         maxItems: 50
     description: "200 ok object"
