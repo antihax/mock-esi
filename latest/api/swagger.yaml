@@ -7300,9 +7300,9 @@ paths:
       tags:
       - "Character"
       summary: "Get character notifications"
-      description: "Return character notifications\n\n---\nAlternate route: `/v4/characters/{character_id}/notifications/`\n\
-        \n---\nThis route is cached for up to 600 seconds\n\n---\nWarning: This route\
-        \ has an upgrade available\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/characters/{character_id}/notifications/)"
+      description: "Return character notifications\n\n---\nAlternate route: `/dev/characters/{character_id}/notifications/`\n\
+        \nAlternate route: `/v5/characters/{character_id}/notifications/`\n\n---\n\
+        This route is cached for up to 600 seconds"
       operationId: "get_characters_character_id_notifications"
       parameters:
       - name: "character_id"
@@ -7437,7 +7437,8 @@ paths:
       - evesso:
         - "esi-characters.read_notifications.v1"
       x-alternate-versions:
-      - "v4"
+      - "dev"
+      - "v5"
       x-cached-seconds: 600
   /characters/{character_id}/notifications/contacts/:
     get:
@@ -31187,6 +31188,7 @@ definitions:
         - "AllWarRetractedMsg"
         - "AllWarSurrenderMsg"
         - "AllianceCapitalChanged"
+        - "AllianceWarDeclaredV2"
         - "AllyContractCancelled"
         - "AllyJoinedWarAggressorMsg"
         - "AllyJoinedWarAllyMsg"
@@ -31223,6 +31225,7 @@ definitions:
         - "CorpAppNewMsg"
         - "CorpAppRejectCustomMsg"
         - "CorpAppRejectMsg"
+        - "CorpBecameWarEligible"
         - "CorpDividendMsg"
         - "CorpFriendlyFireDisableTimerCompleted"
         - "CorpFriendlyFireDisableTimerStarted"
@@ -31232,12 +31235,14 @@ definitions:
         - "CorpLiquidationMsg"
         - "CorpNewCEOMsg"
         - "CorpNewsMsg"
+        - "CorpNoLongerWarEligible"
         - "CorpOfficeExpirationMsg"
         - "CorpStructLostMsg"
         - "CorpTaxChangeMsg"
         - "CorpVoteCEORevokedMsg"
         - "CorpVoteMsg"
         - "CorpWarDeclaredMsg"
+        - "CorpWarDeclaredV2"
         - "CorpWarFightingLegalMsg"
         - "CorpWarInvalidatedMsg"
         - "CorpWarRetractedMsg"
@@ -31280,6 +31285,7 @@ definitions:
         - "InsuranceInvalidatedMsg"
         - "InsuranceIssuedMsg"
         - "InsurancePayoutMsg"
+        - "InvasionSystemLogin"
         - "JumpCloneDeletedMsg1"
         - "JumpCloneDeletedMsg2"
         - "KillReportFinalBlow"
@@ -31300,6 +31306,10 @@ definitions:
         - "MoonminingExtractionFinished"
         - "MoonminingExtractionStarted"
         - "MoonminingLaserFired"
+        - "MutualWarExpired"
+        - "MutualWarInviteAccepted"
+        - "MutualWarInviteRejected"
+        - "MutualWarInviteSent"
         - "NPCStandingsGained"
         - "NPCStandingsLost"
         - "OfferedSurrender"
@@ -31356,7 +31366,16 @@ definitions:
         - "TowerResourceAlertMsg"
         - "TransactionReversalMsg"
         - "TutorialMsg"
+        - "WarAdopted "
+        - "WarAllyInherited"
         - "WarAllyOfferDeclinedMsg"
+        - "WarConcordInvalidates"
+        - "WarDeclared"
+        - "WarHQRemovedFromSpace"
+        - "WarInherited"
+        - "WarInvalid"
+        - "WarRetracted"
+        - "WarRetractedByConcord"
         - "WarSurrenderDeclinedMsg"
         - "WarSurrenderOfferMsg"
     description: "200 ok object"
