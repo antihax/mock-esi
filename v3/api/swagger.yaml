@@ -1249,7 +1249,8 @@ paths:
       summary: "Search on a string"
       description: "Search for entities that match a given sub-string.\n\n---\nAlternate\
         \ route: `/dev/characters/{character_id}/search/`\n\nAlternate route: `/latest/characters/{character_id}/search/`\n\
-        \n---\nThis route is cached for up to 3600 seconds"
+        \nAlternate route: `/legacy/characters/{character_id}/search/`\n\n---\nThis\
+        \ route is cached for up to 3600 seconds"
       operationId: "get_characters_character_id_search"
       parameters:
       - name: "Accept-Language"
@@ -1458,6 +1459,7 @@ paths:
       x-alternate-versions:
       - "dev"
       - "latest"
+      - "legacy"
       x-cached-seconds: 3600
   /characters/{character_id}/skills/:
     get:

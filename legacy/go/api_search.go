@@ -28,7 +28,7 @@ func GetCharactersCharacterIdSearch(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "solarsystem" : [ 30002510 ],
+  "solar_system" : [ 30002510 ],
   "station" : [ 60004588, 60004594, 60005725, 60009106, 60012721, 60012724, 60012727 ]
 }`
 	vars := mux.Vars(r)
@@ -97,15 +97,12 @@ func GetCharactersCharacterIdSearch(w http.ResponseWriter, r *http.Request) {
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
-			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
-
-	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -129,7 +126,7 @@ func GetSearch(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "solarsystem" : [ 30002510 ],
+  "solar_system" : [ 30002510 ],
   "station" : [ 60004588, 60004594, 60005725, 60009106, 60012721, 60012724, 60012727 ]
 }`
 	if err := r.ParseForm(); err != nil {
@@ -183,15 +180,12 @@ func GetSearch(w http.ResponseWriter, r *http.Request) {
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
-			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
-
-	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)

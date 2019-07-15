@@ -22,21 +22,18 @@ type GetCharactersCharacterIdSearchOk struct {
 	 faction array */
 	Faction []int32 `json:"faction,omitempty"`
 	/*
-	 inventorytype array */
-	Inventorytype []int32 `json:"inventorytype,omitempty"`
+	 inventory_type array */
+	InventoryType []int32 `json:"inventory_type,omitempty"`
 	/*
 	 region array */
 	Region []int32 `json:"region,omitempty"`
 	/*
-	 solarsystem array */
-	Solarsystem []int32 `json:"solarsystem,omitempty"`
+	 solar_system array */
+	SolarSystem []int32 `json:"solar_system,omitempty"`
 	/*
 	 station array */
 	Station []int32 `json:"station,omitempty"`
 	/*
 	 structure array */
 	Structure []int64 `json:"structure,omitempty"`
-	/*
-	 wormhole array */
-	Wormhole []int32 `json:"wormhole,omitempty"`
 }

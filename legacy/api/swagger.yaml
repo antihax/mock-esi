@@ -8921,9 +8921,9 @@ paths:
       - "Search"
       summary: "Search on a string"
       description: "Search for entities that match a given sub-string.\n\n---\nAlternate\
-        \ route: `/v2/characters/{character_id}/search/`\n\n---\nThis route is cached\
-        \ for up to 3600 seconds\n\n---\nWarning: This route is deprecated\n\n---\n\
-        [Diff of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#GET-/characters/{character_id}/search/)"
+        \ route: `/dev/characters/{character_id}/search/`\n\nAlternate route: `/latest/characters/{character_id}/search/`\n\
+        \nAlternate route: `/v3/characters/{character_id}/search/`\n\n---\nThis route\
+        \ is cached for up to 3600 seconds\n\n---\nWarning: This is a legacy route"
       operationId: "get_characters_character_id_search"
       parameters:
       - name: "Accept-Language"
@@ -8954,13 +8954,12 @@ paths:
           - "constellation"
           - "corporation"
           - "faction"
-          - "inventorytype"
+          - "inventory_type"
           - "region"
-          - "solarsystem"
+          - "solar_system"
           - "station"
           - "structure"
-          - "wormhole"
-        maxItems: 12
+        maxItems: 11
         minItems: 1
         uniqueItems: true
         x-exportParamName: "Categories"
@@ -9030,7 +9029,7 @@ paths:
             $ref: "#/definitions/get_characters_character_id_search_ok"
           examples:
             application/json:
-              solarsystem:
+              solar_system:
               - 30002510
               station:
               - 60004588
@@ -9130,9 +9129,10 @@ paths:
       security:
       - evesso:
         - "esi-search.search_structures.v1"
-      deprecated: true
       x-alternate-versions:
-      - "v2"
+      - "dev"
+      - "latest"
+      - "v3"
       x-cached-seconds: 3600
   /characters/{character_id}/ship/:
     get:
@@ -23306,8 +23306,9 @@ paths:
       - "Search"
       summary: "Search on a string"
       description: "Search for entities that match a given sub-string.\n\n---\nAlternate\
-        \ route: `/v1/search/`\n\n---\nThis route is cached for up to 3600 seconds\n\
-        \n---\nWarning: This route is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#GET-/search/)"
+        \ route: `/dev/search/`\n\nAlternate route: `/latest/search/`\n\nAlternate\
+        \ route: `/v2/search/`\n\n---\nThis route is cached for up to 3600 seconds\n\
+        \n---\nWarning: This is a legacy route"
       operationId: "get_search"
       parameters:
       - name: "Accept-Language"
@@ -23338,11 +23339,10 @@ paths:
           - "constellation"
           - "corporation"
           - "faction"
-          - "inventorytype"
+          - "inventory_type"
           - "region"
-          - "solarsystem"
+          - "solar_system"
           - "station"
-          - "wormhole"
         maxItems: 10
         minItems: 1
         uniqueItems: true
@@ -23399,7 +23399,7 @@ paths:
             $ref: "#/definitions/get_search_ok"
           examples:
             application/json:
-              solarsystem:
+              solar_system:
               - 30002510
               station:
               - 60004588
@@ -23482,9 +23482,10 @@ paths:
           examples:
             application/json:
               error: "Gateway timeout message"
-      deprecated: true
       x-alternate-versions:
-      - "v1"
+      - "dev"
+      - "latest"
+      - "v2"
       x-cached-seconds: 3600
   /sovereignty/campaigns/:
     get:
@@ -32028,15 +32029,15 @@ definitions:
           description: "faction integer"
           title: "get_characters_character_id_search_faction_faction"
         maxItems: 500
-      inventorytype:
+      inventory_type:
         type: "array"
-        description: "inventorytype array"
-        title: "get_characters_character_id_search_inventorytype"
+        description: "inventory_type array"
+        title: "get_characters_character_id_search_inventory_type"
         items:
           type: "integer"
           format: "int32"
-          description: "inventorytype integer"
-          title: "get_characters_character_id_search_inventorytype_inventorytype"
+          description: "inventory_type integer"
+          title: "get_characters_character_id_search_inventory_type_inventory_type"
         maxItems: 500
       region:
         type: "array"
@@ -32048,15 +32049,15 @@ definitions:
           description: "region integer"
           title: "get_characters_character_id_search_region_region"
         maxItems: 500
-      solarsystem:
+      solar_system:
         type: "array"
-        description: "solarsystem array"
-        title: "get_characters_character_id_search_solarsystem"
+        description: "solar_system array"
+        title: "get_characters_character_id_search_solar_system"
         items:
           type: "integer"
           format: "int32"
-          description: "solarsystem integer"
-          title: "get_characters_character_id_search_solarsystem_solarsystem"
+          description: "solar_system integer"
+          title: "get_characters_character_id_search_solar_system_solar_system"
         maxItems: 500
       station:
         type: "array"
@@ -32077,16 +32078,6 @@ definitions:
           format: "int64"
           description: "structure integer"
           title: "get_characters_character_id_search_structure_structure"
-        maxItems: 500
-      wormhole:
-        type: "array"
-        description: "wormhole array"
-        title: "get_characters_character_id_search_wormhole"
-        items:
-          type: "integer"
-          format: "int32"
-          description: "wormhole integer"
-          title: "get_characters_character_id_search_wormhole_wormhole"
         maxItems: 500
     description: "200 ok object"
   get_characters_character_id_ship_ok:
@@ -40111,15 +40102,15 @@ definitions:
           description: "faction integer"
           title: "get_search_faction_faction"
         maxItems: 500
-      inventorytype:
+      inventory_type:
         type: "array"
-        description: "inventorytype array"
-        title: "get_search_inventorytype"
+        description: "inventory_type array"
+        title: "get_search_inventory_type"
         items:
           type: "integer"
           format: "int32"
-          description: "inventorytype integer"
-          title: "get_search_inventorytype_inventorytype"
+          description: "inventory_type integer"
+          title: "get_search_inventory_type_inventory_type"
         maxItems: 500
       region:
         type: "array"
@@ -40131,15 +40122,15 @@ definitions:
           description: "region integer"
           title: "get_search_region_region"
         maxItems: 500
-      solarsystem:
+      solar_system:
         type: "array"
-        description: "solarsystem array"
-        title: "get_search_solarsystem"
+        description: "solar_system array"
+        title: "get_search_solar_system"
         items:
           type: "integer"
           format: "int32"
-          description: "solarsystem integer"
-          title: "get_search_solarsystem_solarsystem"
+          description: "solar_system integer"
+          title: "get_search_solar_system_solar_system"
         maxItems: 500
       station:
         type: "array"
@@ -40150,16 +40141,6 @@ definitions:
           format: "int32"
           description: "station integer"
           title: "get_search_station_station"
-        maxItems: 500
-      wormhole:
-        type: "array"
-        description: "wormhole array"
-        title: "get_search_wormhole"
-        items:
-          type: "integer"
-          format: "int32"
-          description: "wormhole integer"
-          title: "get_search_wormhole_wormhole"
         maxItems: 500
     description: "200 ok object"
   get_sovereignty_campaigns_participant:

@@ -8764,8 +8764,9 @@ paths:
       - "Search"
       summary: "Search on a string"
       description: "Search for entities that match a given sub-string.\n\n---\nAlternate\
-        \ route: `/dev/characters/{character_id}/search/`\n\nAlternate route: `/v3/characters/{character_id}/search/`\n\
-        \n---\nThis route is cached for up to 3600 seconds"
+        \ route: `/dev/characters/{character_id}/search/`\n\nAlternate route: `/legacy/characters/{character_id}/search/`\n\
+        \nAlternate route: `/v3/characters/{character_id}/search/`\n\n---\nThis route\
+        \ is cached for up to 3600 seconds"
       operationId: "get_characters_character_id_search"
       parameters:
       - name: "Accept-Language"
@@ -8973,6 +8974,7 @@ paths:
         - "esi-search.search_structures.v1"
       x-alternate-versions:
       - "dev"
+      - "legacy"
       - "v3"
       x-cached-seconds: 3600
   /characters/{character_id}/ship/:
@@ -23111,8 +23113,8 @@ paths:
       - "Search"
       summary: "Search on a string"
       description: "Search for entities that match a given sub-string.\n\n---\nAlternate\
-        \ route: `/dev/search/`\n\nAlternate route: `/v2/search/`\n\n---\nThis route\
-        \ is cached for up to 3600 seconds"
+        \ route: `/dev/search/`\n\nAlternate route: `/legacy/search/`\n\nAlternate\
+        \ route: `/v2/search/`\n\n---\nThis route is cached for up to 3600 seconds"
       operationId: "get_search"
       parameters:
       - name: "Accept-Language"
@@ -23288,6 +23290,7 @@ paths:
               error: "Gateway timeout message"
       x-alternate-versions:
       - "dev"
+      - "legacy"
       - "v2"
       x-cached-seconds: 3600
   /sovereignty/campaigns/:
