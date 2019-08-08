@@ -168,7 +168,7 @@ func GetCharactersCharacterIdShip(w http.ResponseWriter, r *http.Request) {
 	j := `{
   "ship_item_id" : 1000000016991,
   "ship_name" : "SPACESHIPS!!!",
-  "ship_type_id" : 1233
+  "ship_type_id" : "1233esi"
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
