@@ -36198,8 +36198,6 @@ definitions:
           - "Starbase_Defense_Operator"
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
-          - "Terrestrial_Combat_Officer"
-          - "Terrestrial_Logistics_Officer"
           - "Trader"
         maxItems: 50
       grantable_roles_at_base:
@@ -36258,8 +36256,6 @@ definitions:
           - "Starbase_Defense_Operator"
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
-          - "Terrestrial_Combat_Officer"
-          - "Terrestrial_Logistics_Officer"
           - "Trader"
         maxItems: 50
       grantable_roles_at_hq:
@@ -36318,8 +36314,6 @@ definitions:
           - "Starbase_Defense_Operator"
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
-          - "Terrestrial_Combat_Officer"
-          - "Terrestrial_Logistics_Officer"
           - "Trader"
         maxItems: 50
       grantable_roles_at_other:
@@ -36378,8 +36372,6 @@ definitions:
           - "Starbase_Defense_Operator"
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
-          - "Terrestrial_Combat_Officer"
-          - "Terrestrial_Logistics_Officer"
           - "Trader"
         maxItems: 50
       roles:
@@ -36438,8 +36430,6 @@ definitions:
           - "Starbase_Defense_Operator"
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
-          - "Terrestrial_Combat_Officer"
-          - "Terrestrial_Logistics_Officer"
           - "Trader"
         maxItems: 50
       roles_at_base:
@@ -36498,8 +36488,6 @@ definitions:
           - "Starbase_Defense_Operator"
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
-          - "Terrestrial_Combat_Officer"
-          - "Terrestrial_Logistics_Officer"
           - "Trader"
         maxItems: 50
       roles_at_hq:
@@ -36558,8 +36546,6 @@ definitions:
           - "Starbase_Defense_Operator"
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
-          - "Terrestrial_Combat_Officer"
-          - "Terrestrial_Logistics_Officer"
           - "Trader"
         maxItems: 50
       roles_at_other:
@@ -36618,8 +36604,6 @@ definitions:
           - "Starbase_Defense_Operator"
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
-          - "Terrestrial_Combat_Officer"
-          - "Terrestrial_Logistics_Officer"
           - "Trader"
         maxItems: 50
     description: "200 ok object"
@@ -36703,8 +36687,6 @@ definitions:
           - "Starbase_Defense_Operator"
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
-          - "Terrestrial_Combat_Officer"
-          - "Terrestrial_Logistics_Officer"
           - "Trader"
         maxItems: 50
       old_roles:
@@ -36763,8 +36745,6 @@ definitions:
           - "Starbase_Defense_Operator"
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
-          - "Terrestrial_Combat_Officer"
-          - "Terrestrial_Logistics_Officer"
           - "Trader"
         maxItems: 50
       role_type:
@@ -37213,8 +37193,6 @@ definitions:
           - "Starbase_Defense_Operator"
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
-          - "Terrestrial_Combat_Officer"
-          - "Terrestrial_Logistics_Officer"
           - "Trader"
         maxItems: 50
       grantable_roles_at_base:
@@ -37273,8 +37251,6 @@ definitions:
           - "Starbase_Defense_Operator"
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
-          - "Terrestrial_Combat_Officer"
-          - "Terrestrial_Logistics_Officer"
           - "Trader"
         maxItems: 50
       grantable_roles_at_hq:
@@ -37333,8 +37309,6 @@ definitions:
           - "Starbase_Defense_Operator"
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
-          - "Terrestrial_Combat_Officer"
-          - "Terrestrial_Logistics_Officer"
           - "Trader"
         maxItems: 50
       grantable_roles_at_other:
@@ -37393,8 +37367,6 @@ definitions:
           - "Starbase_Defense_Operator"
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
-          - "Terrestrial_Combat_Officer"
-          - "Terrestrial_Logistics_Officer"
           - "Trader"
         maxItems: 50
       name:
@@ -37457,8 +37429,6 @@ definitions:
           - "Starbase_Defense_Operator"
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
-          - "Terrestrial_Combat_Officer"
-          - "Terrestrial_Logistics_Officer"
           - "Trader"
         maxItems: 50
       roles_at_base:
@@ -37517,8 +37487,6 @@ definitions:
           - "Starbase_Defense_Operator"
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
-          - "Terrestrial_Combat_Officer"
-          - "Terrestrial_Logistics_Officer"
           - "Trader"
         maxItems: 50
       roles_at_hq:
@@ -37577,8 +37545,6 @@ definitions:
           - "Starbase_Defense_Operator"
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
-          - "Terrestrial_Combat_Officer"
-          - "Terrestrial_Logistics_Officer"
           - "Trader"
         maxItems: 50
       roles_at_other:
@@ -37637,8 +37603,6 @@ definitions:
           - "Starbase_Defense_Operator"
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
-          - "Terrestrial_Combat_Officer"
-          - "Terrestrial_Logistics_Officer"
           - "Trader"
         maxItems: 50
       title_id:
