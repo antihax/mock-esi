@@ -2784,8 +2784,8 @@ paths:
       - "Location"
       summary: "Get character online"
       description: "Checks if the character is currently online\n\n---\nAlternate\
-        \ route: `/latest/characters/{character_id}/online/`\n\n---\nThis route is\
-        \ cached for up to 60 seconds"
+        \ route: `/dev/characters/{character_id}/online/`\n\nAlternate route: `/latest/characters/{character_id}/online/`\n\
+        \n---\nThis route is cached for up to 60 seconds"
       operationId: "get_characters_character_id_online"
       parameters:
       - name: "character_id"
@@ -2911,6 +2911,7 @@ paths:
       - evesso:
         - "esi-location.read_online.v1"
       x-alternate-versions:
+      - "dev"
       - "latest"
       x-cached-seconds: 60
   /characters/{character_id}/orders/:
@@ -3493,7 +3494,7 @@ paths:
       summary: "Get current ship"
       description: "Get the current ship type, name and id\n\n---\nAlternate route:\
         \ `/dev/characters/{character_id}/ship/`\n\n---\nThis route is cached for\
-        \ up to 5 seconds"
+        \ up to 5 seconds\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/characters/{character_id}/ship/)"
       operationId: "get_characters_character_id_ship"
       parameters:
       - name: "character_id"

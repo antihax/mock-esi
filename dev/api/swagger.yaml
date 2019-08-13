@@ -5554,8 +5554,10 @@ paths:
       summary: "Get character location"
       description: "Information about the characters current location. Returns the\
         \ current solar system id, and also the current station or structure ID if\
-        \ applicable\n\n---\nAlternate route: `/v2/characters/{character_id}/location/`\n\
-        \n---\nThis route is cached for up to 5 seconds"
+        \ applicable\n\n---\nAlternate route: `/latest/characters/{character_id}/location/`\n\
+        \nAlternate route: `/legacy/characters/{character_id}/location/`\n\nAlternate\
+        \ route: `/v1/characters/{character_id}/location/`\n\n---\nThis route is cached\
+        \ for up to 5 seconds"
       operationId: "get_characters_character_id_location"
       parameters:
       - name: "character_id"
@@ -5681,7 +5683,9 @@ paths:
       - evesso:
         - "esi-location.read_location.v1"
       x-alternate-versions:
-      - "v2"
+      - "latest"
+      - "legacy"
+      - "v1"
       x-cached-seconds: 5
   /characters/{character_id}/loyalty/points/:
     get:
@@ -7587,8 +7591,8 @@ paths:
       - "Location"
       summary: "Get character online"
       description: "Checks if the character is currently online\n\n---\nAlternate\
-        \ route: `/v3/characters/{character_id}/online/`\n\n---\nThis route is cached\
-        \ for up to 60 seconds"
+        \ route: `/latest/characters/{character_id}/online/`\n\nAlternate route: `/v2/characters/{character_id}/online/`\n\
+        \n---\nThis route is cached for up to 60 seconds"
       operationId: "get_characters_character_id_online"
       parameters:
       - name: "character_id"
@@ -7714,7 +7718,8 @@ paths:
       - evesso:
         - "esi-location.read_online.v1"
       x-alternate-versions:
-      - "v3"
+      - "latest"
+      - "v2"
       x-cached-seconds: 60
   /characters/{character_id}/opportunities/:
     get:
@@ -8978,8 +8983,9 @@ paths:
       - "Location"
       summary: "Get current ship"
       description: "Get the current ship type, name and id\n\n---\nAlternate route:\
-        \ `/v2/characters/{character_id}/ship/`\n\n---\nThis route is cached for up\
-        \ to 5 seconds"
+        \ `/latest/characters/{character_id}/ship/`\n\nAlternate route: `/legacy/characters/{character_id}/ship/`\n\
+        \nAlternate route: `/v1/characters/{character_id}/ship/`\n\n---\nThis route\
+        \ is cached for up to 5 seconds"
       operationId: "get_characters_character_id_ship"
       parameters:
       - name: "character_id"
@@ -9022,7 +9028,7 @@ paths:
             application/json:
               ship_item_id: 1000000016991
               ship_name: "SPACESHIPS!!!"
-              ship_type_id: "1233esi"
+              ship_type_id: 1233
           headers:
             Cache-Control:
               type: "string"
@@ -9104,7 +9110,9 @@ paths:
       - evesso:
         - "esi-location.read_ship_type.v1"
       x-alternate-versions:
-      - "v2"
+      - "latest"
+      - "legacy"
+      - "v1"
       x-cached-seconds: 5
   /characters/{character_id}/skillqueue/:
     get:
@@ -31299,6 +31307,7 @@ definitions:
         - "KillRightUsed"
         - "LocateCharMsg"
         - "MadeWarMutual"
+        - "MercOfferRetractedMsg"
         - "MercOfferedNegotiationMsg"
         - "MissionOfferExpirationMsg"
         - "MissionTimeoutMsg"
@@ -31313,6 +31322,7 @@ definitions:
         - "MutualWarInviteSent"
         - "NPCStandingsGained"
         - "NPCStandingsLost"
+        - "OfferToAllyRetracted"
         - "OfferedSurrender"
         - "OfferedToAlly"
         - "OldLscMessages"
