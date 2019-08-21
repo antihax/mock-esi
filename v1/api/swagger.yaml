@@ -4571,10 +4571,9 @@ paths:
       summary: "Get character location"
       description: "Information about the characters current location. Returns the\
         \ current solar system id, and also the current station or structure ID if\
-        \ applicable\n\n---\nAlternate route: `/dev/characters/{character_id}/location/`\n\
-        \nAlternate route: `/latest/characters/{character_id}/location/`\n\nAlternate\
-        \ route: `/legacy/characters/{character_id}/location/`\n\n---\nThis route\
-        \ is cached for up to 5 seconds"
+        \ applicable\n\n---\nAlternate route: `/latest/characters/{character_id}/location/`\n\
+        \nAlternate route: `/legacy/characters/{character_id}/location/`\n\n---\n\
+        This route is cached for up to 5 seconds"
       operationId: "get_characters_character_id_location"
       parameters:
       - name: "character_id"
@@ -4700,7 +4699,6 @@ paths:
       - evesso:
         - "esi-location.read_location.v1"
       x-alternate-versions:
-      - "dev"
       - "latest"
       - "legacy"
       x-cached-seconds: 5
@@ -7416,9 +7414,9 @@ paths:
       - "Location"
       summary: "Get current ship"
       description: "Get the current ship type, name and id\n\n---\nAlternate route:\
-        \ `/dev/characters/{character_id}/ship/`\n\nAlternate route: `/latest/characters/{character_id}/ship/`\n\
-        \nAlternate route: `/legacy/characters/{character_id}/ship/`\n\n---\nThis\
-        \ route is cached for up to 5 seconds"
+        \ `/latest/characters/{character_id}/ship/`\n\nAlternate route: `/legacy/characters/{character_id}/ship/`\n\
+        \n---\nThis route is cached for up to 5 seconds\n\n---\n[Diff of the upcoming\
+        \ changes](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/ship/)"
       operationId: "get_characters_character_id_ship"
       parameters:
       - name: "character_id"
@@ -7543,7 +7541,6 @@ paths:
       - evesso:
         - "esi-location.read_ship_type.v1"
       x-alternate-versions:
-      - "dev"
       - "latest"
       - "legacy"
       x-cached-seconds: 5
