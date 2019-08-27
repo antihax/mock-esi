@@ -3961,10 +3961,9 @@ paths:
       - "Faction Warfare"
       summary: "Overview of a character involved in faction warfare"
       description: "Statistical overview of a character involved in faction warfare\n\
-        \n---\nAlternate route: `/dev/characters/{character_id}/fw/stats/`\n\nAlternate\
-        \ route: `/latest/characters/{character_id}/fw/stats/`\n\nAlternate route:\
-        \ `/legacy/characters/{character_id}/fw/stats/`\n\n---\nThis route expires\
-        \ daily at 11:05"
+        \n---\nAlternate route: `/latest/characters/{character_id}/fw/stats/`\n\n\
+        Alternate route: `/legacy/characters/{character_id}/fw/stats/`\n\n---\nThis\
+        \ route expires daily at 11:05"
       operationId: "get_characters_character_id_fw_stats"
       parameters:
       - name: "character_id"
@@ -4096,7 +4095,6 @@ paths:
       - evesso:
         - "esi-characters.read_fw_stats.v1"
       x-alternate-versions:
-      - "dev"
       - "latest"
       - "legacy"
   /characters/{character_id}/implants/:
@@ -11684,10 +11682,9 @@ paths:
       - "Faction Warfare"
       summary: "Overview of a corporation involved in faction warfare"
       description: "Statistics about a corporation involved in faction warfare\n\n\
-        ---\nAlternate route: `/dev/corporations/{corporation_id}/fw/stats/`\n\nAlternate\
-        \ route: `/latest/corporations/{corporation_id}/fw/stats/`\n\nAlternate route:\
-        \ `/legacy/corporations/{corporation_id}/fw/stats/`\n\n---\nThis route expires\
-        \ daily at 11:05"
+        ---\nAlternate route: `/latest/corporations/{corporation_id}/fw/stats/`\n\n\
+        Alternate route: `/legacy/corporations/{corporation_id}/fw/stats/`\n\n---\n\
+        This route expires daily at 11:05\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/corporations/{corporation_id}/fw/stats/)"
       operationId: "get_corporations_corporation_id_fw_stats"
       parameters:
       - name: "corporation_id"
@@ -11820,7 +11817,6 @@ paths:
       - evesso:
         - "esi-corporations.read_fw_stats.v1"
       x-alternate-versions:
-      - "dev"
       - "latest"
       - "legacy"
       x-required-roles: []
@@ -16889,9 +16885,9 @@ paths:
       - "Faction Warfare"
       summary: "List of the top factions in faction warfare"
       description: "Top 4 leaderboard of factions for kills and victory points separated\
-        \ by total, last week and yesterday\n\n---\nAlternate route: `/dev/fw/leaderboards/`\n\
-        \nAlternate route: `/latest/fw/leaderboards/`\n\nAlternate route: `/legacy/fw/leaderboards/`\n\
-        \n---\nThis route expires daily at 11:05"
+        \ by total, last week and yesterday\n\n---\nAlternate route: `/latest/fw/leaderboards/`\n\
+        \nAlternate route: `/legacy/fw/leaderboards/`\n\n---\nThis route expires daily\
+        \ at 11:05"
       operationId: "get_fw_leaderboards"
       parameters:
       - name: "datasource"
@@ -17015,7 +17011,6 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "latest"
       - "legacy"
   /fw/leaderboards/characters/:
@@ -17024,10 +17019,9 @@ paths:
       - "Faction Warfare"
       summary: "List of the top pilots in faction warfare"
       description: "Top 100 leaderboard of pilots for kills and victory points separated\
-        \ by total, last week and yesterday\n\n---\nAlternate route: `/dev/fw/leaderboards/characters/`\n\
-        \nAlternate route: `/latest/fw/leaderboards/characters/`\n\nAlternate route:\
-        \ `/legacy/fw/leaderboards/characters/`\n\n---\nThis route expires daily at\
-        \ 11:05"
+        \ by total, last week and yesterday\n\n---\nAlternate route: `/latest/fw/leaderboards/characters/`\n\
+        \nAlternate route: `/legacy/fw/leaderboards/characters/`\n\n---\nThis route\
+        \ expires daily at 11:05"
       operationId: "get_fw_leaderboards_characters"
       parameters:
       - name: "datasource"
@@ -17151,7 +17145,6 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "latest"
       - "legacy"
   /fw/leaderboards/corporations/:
@@ -17160,10 +17153,9 @@ paths:
       - "Faction Warfare"
       summary: "List of the top corporations in faction warfare"
       description: "Top 10 leaderboard of corporations for kills and victory points\
-        \ separated by total, last week and yesterday\n\n---\nAlternate route: `/dev/fw/leaderboards/corporations/`\n\
-        \nAlternate route: `/latest/fw/leaderboards/corporations/`\n\nAlternate route:\
-        \ `/legacy/fw/leaderboards/corporations/`\n\n---\nThis route expires daily\
-        \ at 11:05"
+        \ separated by total, last week and yesterday\n\n---\nAlternate route: `/latest/fw/leaderboards/corporations/`\n\
+        \nAlternate route: `/legacy/fw/leaderboards/corporations/`\n\n---\nThis route\
+        \ expires daily at 11:05"
       operationId: "get_fw_leaderboards_corporations"
       parameters:
       - name: "datasource"
@@ -17287,7 +17279,6 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "latest"
       - "legacy"
   /fw/stats/:
@@ -17296,9 +17287,8 @@ paths:
       - "Faction Warfare"
       summary: "An overview of statistics about factions involved in faction warfare"
       description: "Statistical overviews of factions involved in faction warfare\n\
-        \n---\nAlternate route: `/dev/fw/stats/`\n\nAlternate route: `/latest/fw/stats/`\n\
-        \nAlternate route: `/legacy/fw/stats/`\n\n---\nThis route expires daily at\
-        \ 11:05"
+        \n---\nAlternate route: `/latest/fw/stats/`\n\nAlternate route: `/legacy/fw/stats/`\n\
+        \n---\nThis route expires daily at 11:05"
       operationId: "get_fw_stats"
       parameters:
       - name: "datasource"
@@ -17405,7 +17395,6 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "latest"
       - "legacy"
   /fw/systems/:
@@ -17527,8 +17516,8 @@ paths:
       - "Faction Warfare"
       summary: "Data about which NPC factions are at war"
       description: "Data about which NPC factions are at war\n\n---\nAlternate route:\
-        \ `/dev/fw/wars/`\n\nAlternate route: `/latest/fw/wars/`\n\nAlternate route:\
-        \ `/legacy/fw/wars/`\n\n---\nThis route expires daily at 11:05"
+        \ `/latest/fw/wars/`\n\nAlternate route: `/legacy/fw/wars/`\n\n---\nThis route\
+        \ expires daily at 11:05"
       operationId: "get_fw_wars"
       parameters:
       - name: "datasource"
@@ -17626,7 +17615,6 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "latest"
       - "legacy"
   /incursions/:

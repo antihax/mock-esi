@@ -88,6 +88,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetFwSystems",
+		"Get",
+		"/v3/fw/systems/",
+		GetFwSystems,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdOnline",
 		"Get",
 		"/v3/characters/{character_id}/online/",

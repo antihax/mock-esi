@@ -193,10 +193,59 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdFwStats",
+		"Get",
+		"/v2/characters/{character_id}/fw/stats/",
+		GetCharactersCharacterIdFwStats,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdFwStats",
+		"Get",
+		"/v2/corporations/{corporation_id}/fw/stats/",
+		GetCorporationsCorporationIdFwStats,
+	)
+
+	mockesi.NewRoute(
+		"GetFwLeaderboards",
+		"Get",
+		"/v2/fw/leaderboards/",
+		GetFwLeaderboards,
+	)
+
+	mockesi.NewRoute(
+		"GetFwLeaderboardsCharacters",
+		"Get",
+		"/v2/fw/leaderboards/characters/",
+		GetFwLeaderboardsCharacters,
+	)
+
+	mockesi.NewRoute(
+		"GetFwLeaderboardsCorporations",
+		"Get",
+		"/v2/fw/leaderboards/corporations/",
+		GetFwLeaderboardsCorporations,
+	)
+
+	mockesi.NewRoute(
+		"GetFwStats",
+		"Get",
+		"/v2/fw/stats/",
+		GetFwStats,
+	)
+
+	mockesi.NewRoute(
 		"GetFwSystems",
 		"Get",
 		"/v2/fw/systems/",
 		GetFwSystems,
+	)
+
+	mockesi.NewRoute(
+		"GetFwWars",
+		"Get",
+		"/v2/fw/wars/",
+		GetFwWars,
 	)
 
 	mockesi.NewRoute(

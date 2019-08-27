@@ -2395,6 +2395,146 @@ paths:
       x-alternate-versions:
       - "dev"
       x-cached-seconds: 60
+  /characters/{character_id}/fw/stats/:
+    get:
+      tags:
+      - "Faction Warfare"
+      summary: "Overview of a character involved in faction warfare"
+      description: "Statistical overview of a character involved in faction warfare\n\
+        \n---\nAlternate route: `/dev/characters/{character_id}/fw/stats/`\n\n---\n\
+        This route expires daily at 11:05"
+      operationId: "get_characters_character_id_fw_stats"
+      parameters:
+      - name: "character_id"
+        in: "path"
+        description: "An EVE character ID"
+        required: true
+        type: "integer"
+        minimum: 1
+        format: "int32"
+        x-exportParamName: "CharacterId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "If-None-Match"
+        in: "header"
+        description: "ETag from a previous request. A 304 will be returned if this\
+          \ matches the current ETag"
+        required: false
+        type: "string"
+        x-exportParamName: "IfNoneMatch"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      responses:
+        200:
+          description: "Faction warfare statistics for a given character"
+          schema:
+            $ref: "#/definitions/get_characters_character_id_fw_stats_ok"
+          examples:
+            application/json:
+              enlisted_on: "2017-10-17T00:00:00Z"
+              faction_id: 500001
+              kills:
+                last_week: 893
+                total: 684350
+                yesterday: 136
+              victory_points:
+                last_week: 102640
+                total: 52658260
+                yesterday: 15980
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        304:
+          description: "Not modified"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
+      security:
+      - evesso:
+        - "esi-characters.read_fw_stats.v1"
+      x-alternate-versions:
+      - "dev"
   /characters/{character_id}/location/:
     get:
       tags:
@@ -4841,6 +4981,147 @@ paths:
       x-cached-seconds: 600
       x-required-roles:
       - "Director"
+  /corporations/{corporation_id}/fw/stats/:
+    get:
+      tags:
+      - "Faction Warfare"
+      summary: "Overview of a corporation involved in faction warfare"
+      description: "Statistics about a corporation involved in faction warfare\n\n\
+        ---\nAlternate route: `/dev/corporations/{corporation_id}/fw/stats/`\n\n---\n\
+        This route expires daily at 11:05"
+      operationId: "get_corporations_corporation_id_fw_stats"
+      parameters:
+      - name: "corporation_id"
+        in: "path"
+        description: "An EVE corporation ID"
+        required: true
+        type: "integer"
+        minimum: 1
+        format: "int32"
+        x-exportParamName: "CorporationId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "If-None-Match"
+        in: "header"
+        description: "ETag from a previous request. A 304 will be returned if this\
+          \ matches the current ETag"
+        required: false
+        type: "string"
+        x-exportParamName: "IfNoneMatch"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      responses:
+        200:
+          description: "Faction warfare statistics for a given corporation"
+          schema:
+            $ref: "#/definitions/get_corporations_corporation_id_fw_stats_ok"
+          examples:
+            application/json:
+              enlisted_on: "2017-10-17T00:00:00Z"
+              faction_id: 500001
+              kills:
+                last_week: 893
+                total: 684350
+                yesterday: 136
+              pilots: 28863
+              victory_points:
+                last_week: 102640
+                total: 52658260
+                yesterday: 15980
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        304:
+          description: "Not modified"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
+      security:
+      - evesso:
+        - "esi-corporations.read_fw_stats.v1"
+      x-alternate-versions:
+      - "dev"
   /corporations/{corporation_id}/members/:
     get:
       tags:
@@ -5652,14 +5933,525 @@ paths:
       x-alternate-versions:
       - "dev"
       - "latest"
+  /fw/leaderboards/:
+    get:
+      tags:
+      - "Faction Warfare"
+      summary: "List of the top factions in faction warfare"
+      description: "Top 4 leaderboard of factions for kills and victory points separated\
+        \ by total, last week and yesterday\n\n---\nAlternate route: `/dev/fw/leaderboards/`\n\
+        \n---\nThis route expires daily at 11:05"
+      operationId: "get_fw_leaderboards"
+      parameters:
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "If-None-Match"
+        in: "header"
+        description: "ETag from a previous request. A 304 will be returned if this\
+          \ matches the current ETag"
+        required: false
+        type: "string"
+        x-exportParamName: "IfNoneMatch"
+      responses:
+        200:
+          description: "Corporation leaderboard of kills and victory points within\
+            \ faction warfare"
+          schema:
+            $ref: "#/definitions/get_fw_leaderboards_ok"
+          examples:
+            application/json:
+              kills:
+                active_total:
+                - amount: 832273
+                  faction_id: 500004
+                - amount: 687915
+                  faction_id: 500001
+                last_week:
+                - amount: 730
+                  faction_id: 500001
+                - amount: 671
+                  faction_id: 500004
+                yesterday:
+                - amount: 100
+                  faction_id: 500001
+                - amount: 50
+                  faction_id: 500004
+              victory_points:
+                active_total:
+                - amount: 53130500
+                  faction_id: 500001
+                - amount: 50964263
+                  faction_id: 500004
+                last_week:
+                - amount: 97360
+                  faction_id: 500001
+                - amount: 84980
+                  faction_id: 500004
+                yesterday:
+                - amount: 5000
+                  faction_id: 500002
+                - amount: 3500
+                  faction_id: 500003
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        304:
+          description: "Not modified"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
+      x-alternate-versions:
+      - "dev"
+  /fw/leaderboards/characters/:
+    get:
+      tags:
+      - "Faction Warfare"
+      summary: "List of the top pilots in faction warfare"
+      description: "Top 100 leaderboard of pilots for kills and victory points separated\
+        \ by total, last week and yesterday\n\n---\nAlternate route: `/dev/fw/leaderboards/characters/`\n\
+        \n---\nThis route expires daily at 11:05"
+      operationId: "get_fw_leaderboards_characters"
+      parameters:
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "If-None-Match"
+        in: "header"
+        description: "ETag from a previous request. A 304 will be returned if this\
+          \ matches the current ETag"
+        required: false
+        type: "string"
+        x-exportParamName: "IfNoneMatch"
+      responses:
+        200:
+          description: "Character leaderboard of kills and victory points within faction\
+            \ warfare"
+          schema:
+            $ref: "#/definitions/get_fw_leaderboards_characters_ok"
+          examples:
+            application/json:
+              kills:
+                active_total:
+                - amount: 10000
+                  character_id: 2112625428
+                - amount: 8500
+                  character_id: 95465499
+                last_week:
+                - amount: 100
+                  character_id: 2112625428
+                - amount: 70
+                  character_id: 95465499
+                yesterday:
+                - amount: 34
+                  character_id: 2112625428
+                - amount: 20
+                  character_id: 95465499
+              victory_points:
+                active_total:
+                - amount: 1239158
+                  character_id: 2112625428
+                - amount: 1139029
+                  character_id: 95465499
+                last_week:
+                - amount: 2660
+                  character_id: 2112625428
+                - amount: 2000
+                  character_id: 95465499
+                yesterday:
+                - amount: 620
+                  character_id: 2112625428
+                - amount: 550
+                  character_id: 95465499
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        304:
+          description: "Not modified"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
+      x-alternate-versions:
+      - "dev"
+  /fw/leaderboards/corporations/:
+    get:
+      tags:
+      - "Faction Warfare"
+      summary: "List of the top corporations in faction warfare"
+      description: "Top 10 leaderboard of corporations for kills and victory points\
+        \ separated by total, last week and yesterday\n\n---\nAlternate route: `/dev/fw/leaderboards/corporations/`\n\
+        \n---\nThis route expires daily at 11:05"
+      operationId: "get_fw_leaderboards_corporations"
+      parameters:
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "If-None-Match"
+        in: "header"
+        description: "ETag from a previous request. A 304 will be returned if this\
+          \ matches the current ETag"
+        required: false
+        type: "string"
+        x-exportParamName: "IfNoneMatch"
+      responses:
+        200:
+          description: "Corporation leaderboard of kills and victory points within\
+            \ faction warfare"
+          schema:
+            $ref: "#/definitions/get_fw_leaderboards_corporations_ok"
+          examples:
+            application/json:
+              kills:
+                active_total:
+                - amount: 81692
+                  corporation_id: 1000180
+                - amount: 76793
+                  corporation_id: 1000182
+                last_week:
+                - amount: 290
+                  corporation_id: 1000180
+                - amount: 169
+                  corporation_id: 1000182
+                yesterday:
+                - amount: 51
+                  corporation_id: 1000180
+                - amount: 39
+                  corporation_id: 1000182
+              victory_points:
+                active_total:
+                - amount: 18640927
+                  corporation_id: 1000180
+                - amount: 18078265
+                  corporation_id: 1000181
+                last_week:
+                - amount: 91980
+                  corporation_id: 1000180
+                - amount: 58920
+                  corporation_id: 1000181
+                yesterday:
+                - amount: 12600
+                  corporation_id: 1000180
+                - amount: 8240
+                  corporation_id: 1000181
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        304:
+          description: "Not modified"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
+      x-alternate-versions:
+      - "dev"
+  /fw/stats/:
+    get:
+      tags:
+      - "Faction Warfare"
+      summary: "An overview of statistics about factions involved in faction warfare"
+      description: "Statistical overviews of factions involved in faction warfare\n\
+        \n---\nAlternate route: `/dev/fw/stats/`\n\n---\nThis route expires daily\
+        \ at 11:05"
+      operationId: "get_fw_stats"
+      parameters:
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "If-None-Match"
+        in: "header"
+        description: "ETag from a previous request. A 304 will be returned if this\
+          \ matches the current ETag"
+        required: false
+        type: "string"
+        x-exportParamName: "IfNoneMatch"
+      responses:
+        200:
+          description: "Per faction breakdown of faction warfare statistics"
+          schema:
+            type: "array"
+            description: "200 ok array"
+            title: "get_fw_stats_ok"
+            items:
+              $ref: "#/definitions/get_fw_stats_200_ok"
+            maxItems: 4
+          examples:
+            application/json:
+            - faction_id: 500001
+              kills:
+                last_week: 893
+                total: 684350
+                yesterday: 136
+              pilots: 28863
+              systems_controlled: 20
+              victory_points:
+                last_week: 102640
+                total: 52658260
+                yesterday: 15980
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        304:
+          description: "Not modified"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
+      x-alternate-versions:
+      - "dev"
   /fw/systems/:
     get:
       tags:
       - "Faction Warfare"
       summary: "Ownership of faction warfare systems"
       description: "An overview of the current ownership of faction warfare solar\
-        \ systems\n\n---\nAlternate route: `/dev/fw/systems/`\n\nAlternate route:\
-        \ `/latest/fw/systems/`\n\n---\nThis route is cached for up to 1800 seconds"
+        \ systems\n\n---\nAlternate route: `/latest/fw/systems/`\n\n---\nThis route\
+        \ is cached for up to 1800 seconds"
       operationId: "get_fw_systems"
       parameters:
       - name: "datasource"
@@ -5761,9 +6553,113 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "latest"
       x-cached-seconds: 1800
+  /fw/wars/:
+    get:
+      tags:
+      - "Faction Warfare"
+      summary: "Data about which NPC factions are at war"
+      description: "Data about which NPC factions are at war\n\n---\nAlternate route:\
+        \ `/dev/fw/wars/`\n\n---\nThis route expires daily at 11:05"
+      operationId: "get_fw_wars"
+      parameters:
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "If-None-Match"
+        in: "header"
+        description: "ETag from a previous request. A 304 will be returned if this\
+          \ matches the current ETag"
+        required: false
+        type: "string"
+        x-exportParamName: "IfNoneMatch"
+      responses:
+        200:
+          description: "A list of NPC factions at war"
+          schema:
+            type: "array"
+            description: "List of factions at war"
+            title: "get_fw_wars_ok"
+            items:
+              $ref: "#/definitions/get_fw_wars_200_ok"
+            maxItems: 8
+          examples:
+            application/json:
+            - against_id: 500002
+              faction_id: 500001
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        304:
+          description: "Not modified"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
+      x-alternate-versions:
+      - "dev"
   /search/:
     get:
       tags:
@@ -6877,6 +7773,7 @@ securityDefinitions:
       esi-characters.read_blueprints.v1: "EVE SSO scope esi-characters.read_blueprints.v1"
       esi-characters.read_contacts.v1: "EVE SSO scope esi-characters.read_contacts.v1"
       esi-characters.read_corporation_roles.v1: "EVE SSO scope esi-characters.read_corporation_roles.v1"
+      esi-characters.read_fw_stats.v1: "EVE SSO scope esi-characters.read_fw_stats.v1"
       esi-characters.write_contacts.v1: "EVE SSO scope esi-characters.write_contacts.v1"
       esi-characterstats.read.v1: "EVE SSO scope esi-characterstats.read.v1"
       esi-clones.read_clones.v1: "EVE SSO scope esi-clones.read_clones.v1"
@@ -6884,6 +7781,7 @@ securityDefinitions:
       esi-corporations.read_contacts.v1: "EVE SSO scope esi-corporations.read_contacts.v1"
       esi-corporations.read_container_logs.v1: "EVE SSO scope esi-corporations.read_container_logs.v1"
       esi-corporations.read_corporation_membership.v1: "EVE SSO scope esi-corporations.read_corporation_membership.v1"
+      esi-corporations.read_fw_stats.v1: "EVE SSO scope esi-corporations.read_fw_stats.v1"
       esi-corporations.read_structures.v1: "EVE SSO scope esi-corporations.read_structures.v1"
       esi-fittings.read_fittings.v1: "EVE SSO scope esi-fittings.read_fittings.v1"
       esi-fittings.write_fittings.v1: "EVE SSO scope esi-fittings.write_fittings.v1"
@@ -7873,6 +8771,90 @@ definitions:
         description: "Not found message"
         title: "get_characters_character_id_fleet_404_not_found"
     description: "Not found"
+  get_characters_character_id_fw_stats_kills:
+    required:
+    - "last_week"
+    - "total"
+    - "yesterday"
+    properties:
+      last_week:
+        type: "integer"
+        format: "int32"
+        description: "Last week's total number of kills by a given character against\
+          \ enemy factions"
+        title: "get_characters_character_id_fw_stats_last_week"
+      total:
+        type: "integer"
+        format: "int32"
+        description: "Total number of kills by a given character against enemy factions\
+          \ since the character enlisted"
+        title: "get_characters_character_id_fw_stats_total"
+      yesterday:
+        type: "integer"
+        format: "int32"
+        description: "Yesterday's total number of kills by a given character against\
+          \ enemy factions"
+        title: "get_characters_character_id_fw_stats_yesterday"
+    description: "Summary of kills done by the given character against enemy factions"
+  get_characters_character_id_fw_stats_victory_points:
+    required:
+    - "last_week"
+    - "total"
+    - "yesterday"
+    properties:
+      last_week:
+        type: "integer"
+        format: "int32"
+        description: "Last week's victory points gained by the given character"
+        title: "get_characters_character_id_fw_stats_victory_points_last_week"
+      total:
+        type: "integer"
+        format: "int32"
+        description: "Total victory points gained since the given character enlisted"
+        title: "get_characters_character_id_fw_stats_victory_points_total"
+      yesterday:
+        type: "integer"
+        format: "int32"
+        description: "Yesterday's victory points gained by the given character"
+        title: "get_characters_character_id_fw_stats_victory_points_yesterday"
+    description: "Summary of victory points gained by the given character for the\
+      \ enlisted faction"
+  get_characters_character_id_fw_stats_ok:
+    required:
+    - "kills"
+    - "victory_points"
+    properties:
+      current_rank:
+        type: "integer"
+        format: "int32"
+        description: "The given character's current faction rank"
+        title: "get_characters_character_id_fw_stats_current_rank"
+        minimum: 0
+        maximum: 9
+      enlisted_on:
+        type: "string"
+        format: "date-time"
+        description: "The enlistment date of the given character into faction warfare.\
+          \ Will not be included if character is not enlisted in faction warfare"
+        title: "get_characters_character_id_fw_stats_enlisted_on"
+      faction_id:
+        type: "integer"
+        format: "int32"
+        description: "The faction the given character is enlisted to fight for. Will\
+          \ not be included if character is not enlisted in faction warfare"
+        title: "get_characters_character_id_fw_stats_faction_id"
+      highest_rank:
+        type: "integer"
+        format: "int32"
+        description: "The given character's highest faction rank achieved"
+        title: "get_characters_character_id_fw_stats_highest_rank"
+        minimum: 0
+        maximum: 9
+      kills:
+        $ref: "#/definitions/get_characters_character_id_fw_stats_kills"
+      victory_points:
+        $ref: "#/definitions/get_characters_character_id_fw_stats_victory_points"
+    description: "200 ok object"
   get_characters_character_id_location_ok:
     required:
     - "solar_system_id"
@@ -10833,6 +11815,82 @@ definitions:
         description: "Type ID of the item being acted upon"
         title: "get_corporations_corporation_id_containers_logs_type_id"
     description: "200 ok object"
+  get_corporations_corporation_id_fw_stats_kills:
+    required:
+    - "last_week"
+    - "total"
+    - "yesterday"
+    properties:
+      last_week:
+        type: "integer"
+        format: "int32"
+        description: "Last week's total number of kills by members of the given corporation\
+          \ against enemy factions"
+        title: "get_corporations_corporation_id_fw_stats_last_week"
+      total:
+        type: "integer"
+        format: "int32"
+        description: "Total number of kills by members of the given corporation against\
+          \ enemy factions since the corporation enlisted"
+        title: "get_corporations_corporation_id_fw_stats_total"
+      yesterday:
+        type: "integer"
+        format: "int32"
+        description: "Yesterday's total number of kills by members of the given corporation\
+          \ against enemy factions"
+        title: "get_corporations_corporation_id_fw_stats_yesterday"
+    description: "Summary of kills done by the given corporation against enemy factions"
+  get_corporations_corporation_id_fw_stats_victory_points:
+    required:
+    - "last_week"
+    - "total"
+    - "yesterday"
+    properties:
+      last_week:
+        type: "integer"
+        format: "int32"
+        description: "Last week's victory points gained by members of the given corporation"
+        title: "get_corporations_corporation_id_fw_stats_victory_points_last_week"
+      total:
+        type: "integer"
+        format: "int32"
+        description: "Total victory points gained since the given corporation enlisted"
+        title: "get_corporations_corporation_id_fw_stats_victory_points_total"
+      yesterday:
+        type: "integer"
+        format: "int32"
+        description: "Yesterday's victory points gained by members of the given corporation"
+        title: "get_corporations_corporation_id_fw_stats_victory_points_yesterday"
+    description: "Summary of victory points gained by the given corporation for the\
+      \ enlisted faction"
+  get_corporations_corporation_id_fw_stats_ok:
+    required:
+    - "kills"
+    - "victory_points"
+    properties:
+      enlisted_on:
+        type: "string"
+        format: "date-time"
+        description: "The enlistment date of the given corporation into faction warfare.\
+          \ Will not be included if corporation is not enlisted in faction warfare"
+        title: "get_corporations_corporation_id_fw_stats_enlisted_on"
+      faction_id:
+        type: "integer"
+        format: "int32"
+        description: "The faction the given corporation is enlisted to fight for.\
+          \ Will not be included if corporation is not enlisted in faction warfare"
+        title: "get_corporations_corporation_id_fw_stats_faction_id"
+      kills:
+        $ref: "#/definitions/get_corporations_corporation_id_fw_stats_kills"
+      pilots:
+        type: "integer"
+        format: "int32"
+        description: "How many pilots the enlisted corporation has. Will not be included\
+          \ if corporation is not enlisted in faction warfare"
+        title: "get_corporations_corporation_id_fw_stats_pilots"
+      victory_points:
+        $ref: "#/definitions/get_corporations_corporation_id_fw_stats_victory_points"
+    description: "200 ok object"
   get_corporations_corporation_id_members_200_ok:
     required:
     - "character_id"
@@ -11338,6 +12396,531 @@ definitions:
         description: "Not found message"
         title: "get_dogma_effects_effect_id_404_not_found"
     description: "Not found"
+  get_fw_leaderboards_active_total_active_total:
+    properties:
+      amount:
+        type: "integer"
+        format: "int32"
+        description: "Amount of kills"
+        title: "get_fw_leaderboards_amount"
+      faction_id:
+        type: "integer"
+        format: "int32"
+        description: "faction_id integer"
+        title: "get_fw_leaderboards_faction_id"
+    description: "active_total object"
+  get_fw_leaderboards_last_week_last_week:
+    properties:
+      amount:
+        type: "integer"
+        format: "int32"
+        description: "Amount of kills"
+        title: "get_fw_leaderboards_last_week_amount"
+      faction_id:
+        type: "integer"
+        format: "int32"
+        description: "faction_id integer"
+        title: "get_fw_leaderboards_last_week_faction_id"
+    description: "last_week object"
+  get_fw_leaderboards_yesterday_yesterday:
+    properties:
+      amount:
+        type: "integer"
+        format: "int32"
+        description: "Amount of kills"
+        title: "get_fw_leaderboards_yesterday_amount"
+      faction_id:
+        type: "integer"
+        format: "int32"
+        description: "faction_id integer"
+        title: "get_fw_leaderboards_yesterday_faction_id"
+    description: "yesterday object"
+  get_fw_leaderboards_kills:
+    required:
+    - "active_total"
+    - "last_week"
+    - "yesterday"
+    properties:
+      active_total:
+        type: "array"
+        description: "Top 4 ranking of factions active in faction warfare by total\
+          \ kills. A faction is considered \"active\" if they have participated in\
+          \ faction warfare in the past 14 days"
+        title: "get_fw_leaderboards_active_total"
+        items:
+          $ref: "#/definitions/get_fw_leaderboards_active_total_active_total"
+        maxItems: 4
+      last_week:
+        type: "array"
+        description: "Top 4 ranking of factions by kills in the past week"
+        title: "get_fw_leaderboards_last_week"
+        items:
+          $ref: "#/definitions/get_fw_leaderboards_last_week_last_week"
+        maxItems: 4
+      yesterday:
+        type: "array"
+        description: "Top 4 ranking of factions by kills in the past day"
+        title: "get_fw_leaderboards_yesterday"
+        items:
+          $ref: "#/definitions/get_fw_leaderboards_yesterday_yesterday"
+        maxItems: 4
+    description: "Top 4 rankings of factions by number of kills from yesterday, last\
+      \ week and in total"
+  get_fw_leaderboards_active_total_active_total_1:
+    properties:
+      amount:
+        type: "integer"
+        format: "int32"
+        description: "Amount of victory points"
+        title: "get_fw_leaderboards_active_total_amount"
+      faction_id:
+        type: "integer"
+        format: "int32"
+        description: "faction_id integer"
+        title: "get_fw_leaderboards_active_total_faction_id"
+    description: "active_total object"
+  get_fw_leaderboards_last_week_last_week_1:
+    properties:
+      amount:
+        type: "integer"
+        format: "int32"
+        description: "Amount of victory points"
+        title: "get_fw_leaderboards_last_week_amount_1"
+      faction_id:
+        type: "integer"
+        format: "int32"
+        description: "faction_id integer"
+        title: "get_fw_leaderboards_last_week_faction_id_1"
+    description: "last_week object"
+  get_fw_leaderboards_yesterday_yesterday_1:
+    properties:
+      amount:
+        type: "integer"
+        format: "int32"
+        description: "Amount of victory points"
+        title: "get_fw_leaderboards_yesterday_amount_1"
+      faction_id:
+        type: "integer"
+        format: "int32"
+        description: "faction_id integer"
+        title: "get_fw_leaderboards_yesterday_faction_id_1"
+    description: "yesterday object"
+  get_fw_leaderboards_victory_points:
+    required:
+    - "active_total"
+    - "last_week"
+    - "yesterday"
+    properties:
+      active_total:
+        type: "array"
+        description: "Top 4 ranking of factions active in faction warfare by total\
+          \ victory points. A faction is considered \"active\" if they have participated\
+          \ in faction warfare in the past 14 days"
+        title: "get_fw_leaderboards_victory_points_active_total"
+        items:
+          $ref: "#/definitions/get_fw_leaderboards_active_total_active_total_1"
+        maxItems: 4
+      last_week:
+        type: "array"
+        description: "Top 4 ranking of factions by victory points in the past week"
+        title: "get_fw_leaderboards_victory_points_last_week"
+        items:
+          $ref: "#/definitions/get_fw_leaderboards_last_week_last_week_1"
+        maxItems: 4
+      yesterday:
+        type: "array"
+        description: "Top 4 ranking of factions by victory points in the past day"
+        title: "get_fw_leaderboards_victory_points_yesterday"
+        items:
+          $ref: "#/definitions/get_fw_leaderboards_yesterday_yesterday_1"
+        maxItems: 4
+    description: "Top 4 rankings of factions by victory points from yesterday, last\
+      \ week and in total"
+  get_fw_leaderboards_ok:
+    required:
+    - "kills"
+    - "victory_points"
+    properties:
+      kills:
+        $ref: "#/definitions/get_fw_leaderboards_kills"
+      victory_points:
+        $ref: "#/definitions/get_fw_leaderboards_victory_points"
+    description: "200 ok object"
+  get_fw_leaderboards_characters_active_total_active_total:
+    properties:
+      amount:
+        type: "integer"
+        format: "int32"
+        description: "Amount of kills"
+        title: "get_fw_leaderboards_characters_amount"
+      character_id:
+        type: "integer"
+        format: "int32"
+        description: "character_id integer"
+        title: "get_fw_leaderboards_characters_character_id"
+    description: "active_total object"
+  get_fw_leaderboards_characters_last_week_last_week:
+    properties:
+      amount:
+        type: "integer"
+        format: "int32"
+        description: "Amount of kills"
+        title: "get_fw_leaderboards_characters_last_week_amount"
+      character_id:
+        type: "integer"
+        format: "int32"
+        description: "character_id integer"
+        title: "get_fw_leaderboards_characters_last_week_character_id"
+    description: "last_week object"
+  get_fw_leaderboards_characters_yesterday_yesterday:
+    properties:
+      amount:
+        type: "integer"
+        format: "int32"
+        description: "Amount of kills"
+        title: "get_fw_leaderboards_characters_yesterday_amount"
+      character_id:
+        type: "integer"
+        format: "int32"
+        description: "character_id integer"
+        title: "get_fw_leaderboards_characters_yesterday_character_id"
+    description: "yesterday object"
+  get_fw_leaderboards_characters_kills:
+    required:
+    - "active_total"
+    - "last_week"
+    - "yesterday"
+    properties:
+      active_total:
+        type: "array"
+        description: "Top 100 ranking of pilots active in faction warfare by total\
+          \ kills. A pilot is considered \"active\" if they have participated in faction\
+          \ warfare in the past 14 days"
+        title: "get_fw_leaderboards_characters_active_total"
+        items:
+          $ref: "#/definitions/get_fw_leaderboards_characters_active_total_active_total"
+        maxItems: 100
+      last_week:
+        type: "array"
+        description: "Top 100 ranking of pilots by kills in the past week"
+        title: "get_fw_leaderboards_characters_last_week"
+        items:
+          $ref: "#/definitions/get_fw_leaderboards_characters_last_week_last_week"
+        maxItems: 100
+      yesterday:
+        type: "array"
+        description: "Top 100 ranking of pilots by kills in the past day"
+        title: "get_fw_leaderboards_characters_yesterday"
+        items:
+          $ref: "#/definitions/get_fw_leaderboards_characters_yesterday_yesterday"
+        maxItems: 100
+    description: "Top 100 rankings of pilots by number of kills from yesterday, last\
+      \ week and in total"
+  get_fw_leaderboards_characters_active_total_active_total_1:
+    properties:
+      amount:
+        type: "integer"
+        format: "int32"
+        description: "Amount of victory points"
+        title: "get_fw_leaderboards_characters_active_total_amount"
+      character_id:
+        type: "integer"
+        format: "int32"
+        description: "character_id integer"
+        title: "get_fw_leaderboards_characters_active_total_character_id"
+    description: "active_total object"
+  get_fw_leaderboards_characters_last_week_last_week_1:
+    properties:
+      amount:
+        type: "integer"
+        format: "int32"
+        description: "Amount of victory points"
+        title: "get_fw_leaderboards_characters_last_week_amount_1"
+      character_id:
+        type: "integer"
+        format: "int32"
+        description: "character_id integer"
+        title: "get_fw_leaderboards_characters_last_week_character_id_1"
+    description: "last_week object"
+  get_fw_leaderboards_characters_yesterday_yesterday_1:
+    properties:
+      amount:
+        type: "integer"
+        format: "int32"
+        description: "Amount of victory points"
+        title: "get_fw_leaderboards_characters_yesterday_amount_1"
+      character_id:
+        type: "integer"
+        format: "int32"
+        description: "character_id integer"
+        title: "get_fw_leaderboards_characters_yesterday_character_id_1"
+    description: "yesterday object"
+  get_fw_leaderboards_characters_victory_points:
+    required:
+    - "active_total"
+    - "last_week"
+    - "yesterday"
+    properties:
+      active_total:
+        type: "array"
+        description: "Top 100 ranking of pilots active in faction warfare by total\
+          \ victory points. A pilot is considered \"active\" if they have participated\
+          \ in faction warfare in the past 14 days"
+        title: "get_fw_leaderboards_characters_victory_points_active_total"
+        items:
+          $ref: "#/definitions/get_fw_leaderboards_characters_active_total_active_total_1"
+        maxItems: 100
+      last_week:
+        type: "array"
+        description: "Top 100 ranking of pilots by victory points in the past week"
+        title: "get_fw_leaderboards_characters_victory_points_last_week"
+        items:
+          $ref: "#/definitions/get_fw_leaderboards_characters_last_week_last_week_1"
+        maxItems: 100
+      yesterday:
+        type: "array"
+        description: "Top 100 ranking of pilots by victory points in the past day"
+        title: "get_fw_leaderboards_characters_victory_points_yesterday"
+        items:
+          $ref: "#/definitions/get_fw_leaderboards_characters_yesterday_yesterday_1"
+        maxItems: 100
+    description: "Top 100 rankings of pilots by victory points from yesterday, last\
+      \ week and in total"
+  get_fw_leaderboards_characters_ok:
+    required:
+    - "kills"
+    - "victory_points"
+    properties:
+      kills:
+        $ref: "#/definitions/get_fw_leaderboards_characters_kills"
+      victory_points:
+        $ref: "#/definitions/get_fw_leaderboards_characters_victory_points"
+    description: "200 ok object"
+  get_fw_leaderboards_corporations_active_total_active_total:
+    properties:
+      amount:
+        type: "integer"
+        format: "int32"
+        description: "Amount of kills"
+        title: "get_fw_leaderboards_corporations_amount"
+      corporation_id:
+        type: "integer"
+        format: "int32"
+        description: "corporation_id integer"
+        title: "get_fw_leaderboards_corporations_corporation_id"
+    description: "active_total object"
+  get_fw_leaderboards_corporations_last_week_last_week:
+    properties:
+      amount:
+        type: "integer"
+        format: "int32"
+        description: "Amount of kills"
+        title: "get_fw_leaderboards_corporations_last_week_amount"
+      corporation_id:
+        type: "integer"
+        format: "int32"
+        description: "corporation_id integer"
+        title: "get_fw_leaderboards_corporations_last_week_corporation_id"
+    description: "last_week object"
+  get_fw_leaderboards_corporations_yesterday_yesterday:
+    properties:
+      amount:
+        type: "integer"
+        format: "int32"
+        description: "Amount of kills"
+        title: "get_fw_leaderboards_corporations_yesterday_amount"
+      corporation_id:
+        type: "integer"
+        format: "int32"
+        description: "corporation_id integer"
+        title: "get_fw_leaderboards_corporations_yesterday_corporation_id"
+    description: "yesterday object"
+  get_fw_leaderboards_corporations_kills:
+    required:
+    - "active_total"
+    - "last_week"
+    - "yesterday"
+    properties:
+      active_total:
+        type: "array"
+        description: "Top 10 ranking of corporations active in faction warfare by\
+          \ total kills. A corporation is considered \"active\" if they have participated\
+          \ in faction warfare in the past 14 days"
+        title: "get_fw_leaderboards_corporations_active_total"
+        items:
+          $ref: "#/definitions/get_fw_leaderboards_corporations_active_total_active_total"
+        maxItems: 10
+      last_week:
+        type: "array"
+        description: "Top 10 ranking of corporations by kills in the past week"
+        title: "get_fw_leaderboards_corporations_last_week"
+        items:
+          $ref: "#/definitions/get_fw_leaderboards_corporations_last_week_last_week"
+        maxItems: 10
+      yesterday:
+        type: "array"
+        description: "Top 10 ranking of corporations by kills in the past day"
+        title: "get_fw_leaderboards_corporations_yesterday"
+        items:
+          $ref: "#/definitions/get_fw_leaderboards_corporations_yesterday_yesterday"
+        maxItems: 10
+    description: "Top 10 rankings of corporations by number of kills from yesterday,\
+      \ last week and in total"
+  get_fw_leaderboards_corporations_active_total_active_total_1:
+    properties:
+      amount:
+        type: "integer"
+        format: "int32"
+        description: "Amount of victory points"
+        title: "get_fw_leaderboards_corporations_active_total_amount"
+      corporation_id:
+        type: "integer"
+        format: "int32"
+        description: "corporation_id integer"
+        title: "get_fw_leaderboards_corporations_active_total_corporation_id"
+    description: "active_total object"
+  get_fw_leaderboards_corporations_last_week_last_week_1:
+    properties:
+      amount:
+        type: "integer"
+        format: "int32"
+        description: "Amount of victory points"
+        title: "get_fw_leaderboards_corporations_last_week_amount_1"
+      corporation_id:
+        type: "integer"
+        format: "int32"
+        description: "corporation_id integer"
+        title: "get_fw_leaderboards_corporations_last_week_corporation_id_1"
+    description: "last_week object"
+  get_fw_leaderboards_corporations_yesterday_yesterday_1:
+    properties:
+      amount:
+        type: "integer"
+        format: "int32"
+        description: "Amount of victory points"
+        title: "get_fw_leaderboards_corporations_yesterday_amount_1"
+      corporation_id:
+        type: "integer"
+        format: "int32"
+        description: "corporation_id integer"
+        title: "get_fw_leaderboards_corporations_yesterday_corporation_id_1"
+    description: "yesterday object"
+  get_fw_leaderboards_corporations_victory_points:
+    required:
+    - "active_total"
+    - "last_week"
+    - "yesterday"
+    properties:
+      active_total:
+        type: "array"
+        description: "Top 10 ranking of corporations active in faction warfare by\
+          \ total victory points. A corporation is considered \"active\" if they have\
+          \ participated in faction warfare in the past 14 days"
+        title: "get_fw_leaderboards_corporations_victory_points_active_total"
+        items:
+          $ref: "#/definitions/get_fw_leaderboards_corporations_active_total_active_total_1"
+        maxItems: 10
+      last_week:
+        type: "array"
+        description: "Top 10 ranking of corporations by victory points in the past\
+          \ week"
+        title: "get_fw_leaderboards_corporations_victory_points_last_week"
+        items:
+          $ref: "#/definitions/get_fw_leaderboards_corporations_last_week_last_week_1"
+        maxItems: 10
+      yesterday:
+        type: "array"
+        description: "Top 10 ranking of corporations by victory points in the past\
+          \ day"
+        title: "get_fw_leaderboards_corporations_victory_points_yesterday"
+        items:
+          $ref: "#/definitions/get_fw_leaderboards_corporations_yesterday_yesterday_1"
+        maxItems: 10
+    description: "Top 10 rankings of corporations by victory points from yesterday,\
+      \ last week and in total"
+  get_fw_leaderboards_corporations_ok:
+    required:
+    - "kills"
+    - "victory_points"
+    properties:
+      kills:
+        $ref: "#/definitions/get_fw_leaderboards_corporations_kills"
+      victory_points:
+        $ref: "#/definitions/get_fw_leaderboards_corporations_victory_points"
+    description: "200 ok object"
+  get_fw_stats_kills:
+    required:
+    - "last_week"
+    - "total"
+    - "yesterday"
+    properties:
+      last_week:
+        type: "integer"
+        format: "int32"
+        description: "Last week's total number of kills against enemy factions"
+        title: "get_fw_stats_last_week"
+      total:
+        type: "integer"
+        format: "int32"
+        description: "Total number of kills against enemy factions since faction warfare\
+          \ began"
+        title: "get_fw_stats_total"
+      yesterday:
+        type: "integer"
+        format: "int32"
+        description: "Yesterday's total number of kills against enemy factions"
+        title: "get_fw_stats_yesterday"
+    description: "Summary of kills against an enemy faction for the given faction"
+  get_fw_stats_victory_points:
+    required:
+    - "last_week"
+    - "total"
+    - "yesterday"
+    properties:
+      last_week:
+        type: "integer"
+        format: "int32"
+        description: "Last week's victory points gained"
+        title: "get_fw_stats_victory_points_last_week"
+      total:
+        type: "integer"
+        format: "int32"
+        description: "Total victory points gained since faction warfare began"
+        title: "get_fw_stats_victory_points_total"
+      yesterday:
+        type: "integer"
+        format: "int32"
+        description: "Yesterday's victory points gained"
+        title: "get_fw_stats_victory_points_yesterday"
+    description: "Summary of victory points gained for the given faction"
+  get_fw_stats_200_ok:
+    required:
+    - "faction_id"
+    - "kills"
+    - "pilots"
+    - "systems_controlled"
+    - "victory_points"
+    properties:
+      faction_id:
+        type: "integer"
+        format: "int32"
+        description: "faction_id integer"
+        title: "get_fw_stats_faction_id"
+      kills:
+        $ref: "#/definitions/get_fw_stats_kills"
+      pilots:
+        type: "integer"
+        format: "int32"
+        description: "How many pilots fight for the given faction"
+        title: "get_fw_stats_pilots"
+      systems_controlled:
+        type: "integer"
+        format: "int32"
+        description: "The number of solar systems controlled by the given faction"
+        title: "get_fw_stats_systems_controlled"
+      victory_points:
+        $ref: "#/definitions/get_fw_stats_victory_points"
+    description: "200 ok object"
   get_fw_systems_200_ok:
     required:
     - "contested"
@@ -11381,6 +12964,22 @@ definitions:
         format: "int32"
         description: "victory_points_threshold integer"
         title: "get_fw_systems_victory_points_threshold"
+    description: "200 ok object"
+  get_fw_wars_200_ok:
+    required:
+    - "against_id"
+    - "faction_id"
+    properties:
+      against_id:
+        type: "integer"
+        format: "int32"
+        description: "The faction ID of the enemy faction."
+        title: "get_fw_wars_against_id"
+      faction_id:
+        type: "integer"
+        format: "int32"
+        description: "faction_id integer"
+        title: "get_fw_wars_faction_id"
     description: "200 ok object"
   get_search_ok:
     properties:
