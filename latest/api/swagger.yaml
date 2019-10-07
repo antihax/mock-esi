@@ -30799,6 +30799,7 @@ definitions:
         type: "string"
         description: "color string"
         title: "get_characters_character_id_mail_labels_color"
+        default: "#ffffff"
         enum:
         - "#0000fe"
         - "#006634"
@@ -30818,7 +30819,6 @@ definitions:
         - "#ffff01"
         - "#ffffcd"
         - "#ffffff"
-        default: "#ffffff"
       label_id:
         type: "integer"
         format: "int32"
@@ -30862,6 +30862,7 @@ definitions:
         type: "string"
         description: "Hexadecimal string representing label color, in RGB format"
         title: "post_characters_character_id_mail_labels_color"
+        default: "#ffffff"
         enum:
         - "#0000fe"
         - "#006634"
@@ -30881,7 +30882,6 @@ definitions:
         - "#ffff01"
         - "#ffffcd"
         - "#ffffff"
-        default: "#ffffff"
       name:
         type: "string"
         description: "name string"
