@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "An OpenAPI for EVE Online"
-  version: "0.8.9"
+  version: "1.2.3"
   title: "EVE Swagger Interface"
 host: "esi.evetech.net"
 basePath: "/latest"
@@ -4080,7 +4080,7 @@ paths:
         \ of\n\n---\nAlternate route: `/dev/characters/{character_id}/corporationhistory/`\n\
         \nAlternate route: `/legacy/characters/{character_id}/corporationhistory/`\n\
         \nAlternate route: `/v1/characters/{character_id}/corporationhistory/`\n\n\
-        ---\nThis route is cached for up to 3600 seconds"
+        ---\nThis route is cached for up to 86400 seconds"
       operationId: "get_characters_character_id_corporationhistory"
       parameters:
       - name: "character_id"
@@ -4194,7 +4194,7 @@ paths:
       - "dev"
       - "legacy"
       - "v1"
-      x-cached-seconds: 3600
+      x-cached-seconds: 86400
   /characters/{character_id}/cspa/:
     post:
       tags:
