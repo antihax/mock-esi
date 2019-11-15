@@ -4036,7 +4036,7 @@ paths:
         \ of\n\n---\nAlternate route: `/dev/characters/{character_id}/corporationhistory/`\n\
         \nAlternate route: `/latest/characters/{character_id}/corporationhistory/`\n\
         \nAlternate route: `/v1/characters/{character_id}/corporationhistory/`\n\n\
-        ---\nThis route is cached for up to 3600 seconds\n\n---\nWarning: This is\
+        ---\nThis route is cached for up to 86400 seconds\n\n---\nWarning: This is\
         \ a legacy route"
       operationId: "get_characters_character_id_corporationhistory"
       parameters:
@@ -4151,7 +4151,7 @@ paths:
       - "dev"
       - "latest"
       - "v1"
-      x-cached-seconds: 3600
+      x-cached-seconds: 86400
   /characters/{character_id}/cspa/:
     post:
       tags:
