@@ -132,8 +132,9 @@ paths:
       - "Alliance"
       summary: "Get alliance information"
       description: "Public information about an alliance\n\n---\nAlternate route:\
-        \ `/dev/alliances/{alliance_id}/`\n\nAlternate route: `/v3/alliances/{alliance_id}/`\n\
-        \n---\nThis route is cached for up to 3600 seconds"
+        \ `/v3/alliances/{alliance_id}/`\n\n---\nThis route is cached for up to 3600\
+        \ seconds\n\n---\nWarning: This route has an upgrade available\n\n---\n[Diff\
+        \ of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/alliances/{alliance_id}/)"
       operationId: "get_alliances_alliance_id"
       parameters:
       - name: "alliance_id"
@@ -245,7 +246,6 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "v3"
       x-cached-seconds: 3600
   /alliances/{alliance_id}/contacts/:
@@ -888,7 +888,7 @@ paths:
       summary: "Get character's public information"
       description: "Public information about a character\n\n---\nAlternate route:\
         \ `/dev/characters/{character_id}/`\n\nAlternate route: `/v4/characters/{character_id}/`\n\
-        \n---\nThis route is cached for up to 3600 seconds"
+        \n---\nThis route is cached for up to 86400 seconds"
       operationId: "get_characters_character_id"
       parameters:
       - name: "character_id"
@@ -1005,7 +1005,7 @@ paths:
       x-alternate-versions:
       - "dev"
       - "v4"
-      x-cached-seconds: 3600
+      x-cached-seconds: 86400
   /characters/{character_id}/agents_research/:
     get:
       tags:
@@ -4201,8 +4201,8 @@ paths:
       - "Character"
       summary: "Calculate a CSPA charge cost"
       description: "Takes a source character ID in the url and a set of target character\
-        \ ID's in the body, returns a CSPA charge cost\n\n---\nAlternate route: `/dev/characters/{character_id}/cspa/`\n\
-        \nAlternate route: `/v4/characters/{character_id}/cspa/`\n"
+        \ ID's in the body, returns a CSPA charge cost\n\n---\nAlternate route: `/v4/characters/{character_id}/cspa/`\n\
+        \n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#POST-/characters/{character_id}/cspa/)"
       operationId: "post_characters_character_id_cspa"
       parameters:
       - name: "character_id"
@@ -4307,7 +4307,6 @@ paths:
       - evesso:
         - "esi-characters.read_contacts.v1"
       x-alternate-versions:
-      - "dev"
       - "v4"
   /characters/{character_id}/fatigue/:
     get:
@@ -8982,8 +8981,7 @@ paths:
       summary: "Get current ship"
       description: "Get the current ship type, name and id\n\n---\nAlternate route:\
         \ `/legacy/characters/{character_id}/ship/`\n\nAlternate route: `/v1/characters/{character_id}/ship/`\n\
-        \n---\nThis route is cached for up to 5 seconds\n\n---\n[Diff of the upcoming\
-        \ changes](https://esi.evetech.net/diff/latest/dev/#GET-/characters/{character_id}/ship/)"
+        \n---\nThis route is cached for up to 5 seconds"
       operationId: "get_characters_character_id_ship"
       parameters:
       - name: "character_id"

@@ -1,9 +1,9 @@
 package esidev
 
 /*
-Not found */
+Alliance not found */
 type GetAlliancesAllianceIdNotFound struct {
 	/*
-	 Not found message */
+	 error message */
 	Error_ string `json:"error,omitempty"`
 }

@@ -132,7 +132,7 @@ paths:
       - "Alliance"
       summary: "Get alliance information"
       description: "Public information about an alliance\n\n---\nAlternate route:\
-        \ `/latest/alliances/{alliance_id}/`\n\nAlternate route: `/v3/alliances/{alliance_id}/`\n\
+        \ `/legacy/alliances/{alliance_id}/`\n\nAlternate route: `/v2/alliances/{alliance_id}/`\n\
         \n---\nThis route is cached for up to 3600 seconds"
       operationId: "get_alliances_alliance_id"
       parameters:
@@ -168,11 +168,9 @@ paths:
             $ref: "#/definitions/get_alliances_alliance_id_ok"
           examples:
             application/json:
-              creator_corporation_id: 45678
-              creator_id: 12345
+              alliance_name: "C C P Alliance"
               date_founded: "2016-06-26T21:00:00Z"
-              executor_corporation_id: 98356193
-              name: "C C P Alliance"
+              executor_corp: 98356193
               ticker: "<C C P>"
           headers:
             Cache-Control:
@@ -215,7 +213,7 @@ paths:
             $ref: "#/definitions/get_alliances_alliance_id_not_found"
           examples:
             application/json:
-              error: "Not found message"
+              error: "Alliance not found"
         420:
           description: "Error limited"
           schema:
@@ -245,8 +243,8 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "latest"
-      - "v3"
+      - "legacy"
+      - "v2"
       x-cached-seconds: 3600
   /alliances/{alliance_id}/contacts/:
     get:
@@ -888,7 +886,7 @@ paths:
       summary: "Get character's public information"
       description: "Public information about a character\n\n---\nAlternate route:\
         \ `/latest/characters/{character_id}/`\n\nAlternate route: `/v4/characters/{character_id}/`\n\
-        \n---\nThis route is cached for up to 3600 seconds"
+        \n---\nThis route is cached for up to 86400 seconds"
       operationId: "get_characters_character_id"
       parameters:
       - name: "character_id"
@@ -1005,7 +1003,7 @@ paths:
       x-alternate-versions:
       - "latest"
       - "v4"
-      x-cached-seconds: 3600
+      x-cached-seconds: 86400
   /characters/{character_id}/agents_research/:
     get:
       tags:
@@ -4196,120 +4194,6 @@ paths:
       - "legacy"
       - "v1"
       x-cached-seconds: 86400
-  /characters/{character_id}/cspa/:
-    post:
-      tags:
-      - "Character"
-      summary: "Calculate a CSPA charge cost"
-      description: "Takes a source character ID in the url and a set of target character\
-        \ ID's in the body, returns a CSPA charge cost\n\n---\nAlternate route: `/latest/characters/{character_id}/cspa/`\n\
-        \nAlternate route: `/v4/characters/{character_id}/cspa/`\n"
-      operationId: "post_characters_character_id_cspa"
-      parameters:
-      - name: "character_id"
-        in: "path"
-        description: "An EVE character ID"
-        required: true
-        type: "integer"
-        minimum: 1
-        format: "int32"
-        x-exportParamName: "CharacterId"
-      - in: "body"
-        name: "characters"
-        description: "The target characters to calculate the charge for"
-        required: true
-        schema:
-          title: "post_characters_character_id_cspa_characters"
-          type: "array"
-          description: "characters array"
-          items:
-            type: "integer"
-            format: "int32"
-            description: "character integer"
-            title: "post_characters_character_id_cspa_character"
-        x-exportParamName: "Characters"
-      - name: "datasource"
-        in: "query"
-        description: "The server name you would like data from"
-        required: false
-        type: "string"
-        default: "tranquility"
-        enum:
-        - "tranquility"
-        - "singularity"
-        x-exportParamName: "Datasource"
-      - name: "token"
-        in: "query"
-        description: "Access token to use if unable to set a header"
-        required: false
-        type: "string"
-        x-exportParamName: "Token"
-      responses:
-        201:
-          description: "Aggregate cost of sending a mail from the source character\
-            \ to the target characters, in ISK"
-          schema:
-            type: "number"
-            format: "float"
-            description: "201 created number"
-            title: "post_characters_character_id_cspa_created"
-          examples:
-            application/json: 2950.0
-        400:
-          description: "Bad request"
-          schema:
-            $ref: "#/definitions/bad_request"
-          examples:
-            application/json:
-              error: "Bad request message"
-        401:
-          description: "Unauthorized"
-          schema:
-            $ref: "#/definitions/unauthorized"
-          examples:
-            application/json:
-              error: "Unauthorized message"
-        403:
-          description: "Forbidden"
-          schema:
-            $ref: "#/definitions/forbidden"
-          examples:
-            application/json:
-              error: "Forbidden message"
-        420:
-          description: "Error limited"
-          schema:
-            $ref: "#/definitions/error_limited"
-          examples:
-            application/json:
-              error: "Error limited message"
-        500:
-          description: "Internal server error"
-          schema:
-            $ref: "#/definitions/internal_server_error"
-          examples:
-            application/json:
-              error: "Internal server error message"
-        503:
-          description: "Service unavailable"
-          schema:
-            $ref: "#/definitions/service_unavailable"
-          examples:
-            application/json:
-              error: "Service unavailable message"
-        504:
-          description: "Gateway timeout"
-          schema:
-            $ref: "#/definitions/gateway_timeout"
-          examples:
-            application/json:
-              error: "Gateway timeout message"
-      security:
-      - evesso:
-        - "esi-characters.read_contacts.v1"
-      x-alternate-versions:
-      - "latest"
-      - "v4"
   /characters/{character_id}/fatigue/:
     get:
       tags:
@@ -9021,7 +8905,7 @@ paths:
             application/json:
               ship_item_id: 1000000016991
               ship_name: "SPACESHIPS!!!"
-              ship_type_id: "1233esi"
+              ship_type_id: 1233
           headers:
             Cache-Control:
               type: "string"
@@ -28885,42 +28769,24 @@ definitions:
     description: "Unauthorized model"
   get_alliances_alliance_id_ok:
     required:
-    - "creator_corporation_id"
-    - "creator_id"
+    - "alliance_name"
     - "date_founded"
-    - "name"
     - "ticker"
     properties:
-      creator_corporation_id:
-        type: "integer"
-        format: "int32"
-        description: "ID of the corporation that created the alliance"
-        title: "get_alliances_alliance_id_creator_corporation_id"
-      creator_id:
-        type: "integer"
-        format: "int32"
-        description: "ID of the character that created the alliance"
-        title: "get_alliances_alliance_id_creator_id"
+      alliance_name:
+        type: "string"
+        description: "the full name of the alliance"
+        title: "get_alliances_alliance_id_alliance_name"
       date_founded:
         type: "string"
         format: "date-time"
         description: "date_founded string"
         title: "get_alliances_alliance_id_date_founded"
-      executor_corporation_id:
+      executor_corp:
         type: "integer"
         format: "int32"
         description: "the executor corporation ID, if this alliance is not closed"
-        title: "get_alliances_alliance_id_executor_corporation_id"
-      faction_id:
-        type: "integer"
-        format: "int32"
-        description: "Faction ID this alliance is fighting for, if this alliance is\
-          \ enlisted in factional warfare"
-        title: "get_alliances_alliance_id_faction_id"
-      name:
-        type: "string"
-        description: "the full name of the alliance"
-        title: "get_alliances_alliance_id_name"
+        title: "get_alliances_alliance_id_executor_corp"
       ticker:
         type: "string"
         description: "the short name of the alliance"
@@ -28930,9 +28796,9 @@ definitions:
     properties:
       error:
         type: "string"
-        description: "Not found message"
-        title: "get_alliances_alliance_id_404_not_found"
-    description: "Not found"
+        description: "error message"
+        title: "get_alliances_alliance_id_error"
+    description: "Alliance not found"
   get_alliances_alliance_id_contacts_200_ok:
     required:
     - "contact_id"

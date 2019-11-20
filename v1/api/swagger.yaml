@@ -7413,8 +7413,7 @@ paths:
       summary: "Get current ship"
       description: "Get the current ship type, name and id\n\n---\nAlternate route:\
         \ `/latest/characters/{character_id}/ship/`\n\nAlternate route: `/legacy/characters/{character_id}/ship/`\n\
-        \n---\nThis route is cached for up to 5 seconds\n\n---\n[Diff of the upcoming\
-        \ changes](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/ship/)"
+        \n---\nThis route is cached for up to 5 seconds"
       operationId: "get_characters_character_id_ship"
       parameters:
       - name: "character_id"
