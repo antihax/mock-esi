@@ -132,7 +132,7 @@ paths:
       - "Alliance"
       summary: "Get alliance information"
       description: "Public information about an alliance\n\n---\nAlternate route:\
-        \ `/legacy/alliances/{alliance_id}/`\n\nAlternate route: `/v2/alliances/{alliance_id}/`\n\
+        \ `/latest/alliances/{alliance_id}/`\n\nAlternate route: `/v3/alliances/{alliance_id}/`\n\
         \n---\nThis route is cached for up to 3600 seconds"
       operationId: "get_alliances_alliance_id"
       parameters:
@@ -168,9 +168,11 @@ paths:
             $ref: "#/definitions/get_alliances_alliance_id_ok"
           examples:
             application/json:
-              alliance_name: "C C P Alliance"
+              creator_corporation_id: 45678
+              creator_id: 12345
               date_founded: "2016-06-26T21:00:00Z"
-              executor_corp: 98356193
+              executor_corporation_id: 98356193
+              name: "C C P Alliance"
               ticker: "<C C P>"
           headers:
             Cache-Control:
@@ -213,7 +215,7 @@ paths:
             $ref: "#/definitions/get_alliances_alliance_id_not_found"
           examples:
             application/json:
-              error: "Alliance not found"
+              error: "Not found message"
         420:
           description: "Error limited"
           schema:
@@ -243,8 +245,8 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "legacy"
-      - "v2"
+      - "latest"
+      - "v3"
       x-cached-seconds: 3600
   /alliances/{alliance_id}/contacts/:
     get:
@@ -28883,24 +28885,42 @@ definitions:
     description: "Unauthorized model"
   get_alliances_alliance_id_ok:
     required:
-    - "alliance_name"
+    - "creator_corporation_id"
+    - "creator_id"
     - "date_founded"
+    - "name"
     - "ticker"
     properties:
-      alliance_name:
-        type: "string"
-        description: "the full name of the alliance"
-        title: "get_alliances_alliance_id_alliance_name"
+      creator_corporation_id:
+        type: "integer"
+        format: "int32"
+        description: "ID of the corporation that created the alliance"
+        title: "get_alliances_alliance_id_creator_corporation_id"
+      creator_id:
+        type: "integer"
+        format: "int32"
+        description: "ID of the character that created the alliance"
+        title: "get_alliances_alliance_id_creator_id"
       date_founded:
         type: "string"
         format: "date-time"
         description: "date_founded string"
         title: "get_alliances_alliance_id_date_founded"
-      executor_corp:
+      executor_corporation_id:
         type: "integer"
         format: "int32"
         description: "the executor corporation ID, if this alliance is not closed"
-        title: "get_alliances_alliance_id_executor_corp"
+        title: "get_alliances_alliance_id_executor_corporation_id"
+      faction_id:
+        type: "integer"
+        format: "int32"
+        description: "Faction ID this alliance is fighting for, if this alliance is\
+          \ enlisted in factional warfare"
+        title: "get_alliances_alliance_id_faction_id"
+      name:
+        type: "string"
+        description: "the full name of the alliance"
+        title: "get_alliances_alliance_id_name"
       ticker:
         type: "string"
         description: "the short name of the alliance"
@@ -28910,9 +28930,9 @@ definitions:
     properties:
       error:
         type: "string"
-        description: "error message"
-        title: "get_alliances_alliance_id_error"
-    description: "Alliance not found"
+        description: "Not found message"
+        title: "get_alliances_alliance_id_404_not_found"
+    description: "Not found"
   get_alliances_alliance_id_contacts_200_ok:
     required:
     - "contact_id"
