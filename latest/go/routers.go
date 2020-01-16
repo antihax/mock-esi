@@ -417,13 +417,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCorporationsCorporationIdFacilities",
-		"Get",
-		"/latest/corporations/{corporation_id}/facilities/",
-		GetCorporationsCorporationIdFacilities,
-	)
-
-	mockesi.NewRoute(
 		"GetCorporationsCorporationIdIcons",
 		"Get",
 		"/latest/corporations/{corporation_id}/icons/",
@@ -533,41 +526,6 @@ func init() {
 		"Get",
 		"/latest/corporations/npccorps/",
 		GetCorporationsNpccorps,
-	)
-
-	mockesi.NewRoute(
-		"GetDogmaAttributes",
-		"Get",
-		"/latest/dogma/attributes/",
-		GetDogmaAttributes,
-	)
-
-	mockesi.NewRoute(
-		"GetDogmaAttributesAttributeId",
-		"Get",
-		"/latest/dogma/attributes/{attribute_id}/",
-		GetDogmaAttributesAttributeId,
-	)
-
-	mockesi.NewRoute(
-		"GetDogmaDynamicItemsTypeIdItemId",
-		"Get",
-		"/latest/dogma/dynamic/items/{type_id}/{item_id}/",
-		GetDogmaDynamicItemsTypeIdItemId,
-	)
-
-	mockesi.NewRoute(
-		"GetDogmaEffects",
-		"Get",
-		"/latest/dogma/effects/",
-		GetDogmaEffects,
-	)
-
-	mockesi.NewRoute(
-		"GetDogmaEffectsEffectId",
-		"Get",
-		"/latest/dogma/effects/{effect_id}/",
-		GetDogmaEffectsEffectId,
 	)
 
 	mockesi.NewRoute(
