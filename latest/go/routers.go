@@ -529,6 +529,41 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetDogmaAttributes",
+		"Get",
+		"/latest/dogma/attributes/",
+		GetDogmaAttributes,
+	)
+
+	mockesi.NewRoute(
+		"GetDogmaAttributesAttributeId",
+		"Get",
+		"/latest/dogma/attributes/{attribute_id}/",
+		GetDogmaAttributesAttributeId,
+	)
+
+	mockesi.NewRoute(
+		"GetDogmaDynamicItemsTypeIdItemId",
+		"Get",
+		"/latest/dogma/dynamic/items/{type_id}/{item_id}/",
+		GetDogmaDynamicItemsTypeIdItemId,
+	)
+
+	mockesi.NewRoute(
+		"GetDogmaEffects",
+		"Get",
+		"/latest/dogma/effects/",
+		GetDogmaEffects,
+	)
+
+	mockesi.NewRoute(
+		"GetDogmaEffectsEffectId",
+		"Get",
+		"/latest/dogma/effects/{effect_id}/",
+		GetDogmaEffectsEffectId,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdFwStats",
 		"Get",
 		"/latest/characters/{character_id}/fw/stats/",
