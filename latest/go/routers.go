@@ -417,6 +417,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCorporationsCorporationIdFacilities",
+		"Get",
+		"/latest/corporations/{corporation_id}/facilities/",
+		GetCorporationsCorporationIdFacilities,
+	)
+
+	mockesi.NewRoute(
 		"GetCorporationsCorporationIdIcons",
 		"Get",
 		"/latest/corporations/{corporation_id}/icons/",
