@@ -1150,8 +1150,8 @@ paths:
       - "Assets"
       summary: "Get character assets"
       description: "Return a list of the characters assets\n\n---\nAlternate route:\
-        \ `/latest/characters/{character_id}/assets/`\n\nAlternate route: `/v3/characters/{character_id}/assets/`\n\
-        \n---\nThis route is cached for up to 3600 seconds"
+        \ `/v4/characters/{character_id}/assets/`\n\n---\nThis route is cached for\
+        \ up to 3600 seconds"
       operationId: "get_characters_character_id_assets"
       parameters:
       - name: "character_id"
@@ -1299,8 +1299,7 @@ paths:
       - evesso:
         - "esi-assets.read_assets.v1"
       x-alternate-versions:
-      - "latest"
-      - "v3"
+      - "v4"
       x-cached-seconds: 3600
   /characters/{character_id}/assets/locations/:
     post:
@@ -11550,9 +11549,9 @@ paths:
       - "Assets"
       summary: "Get corporation assets"
       description: "Return a list of the corporation assets\n\n---\nAlternate route:\
-        \ `/latest/corporations/{corporation_id}/assets/`\n\nAlternate route: `/v3/corporations/{corporation_id}/assets/`\n\
-        \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
-        \ the following EVE corporation role(s): Director\n"
+        \ `/v4/corporations/{corporation_id}/assets/`\n\n---\nThis route is cached\
+        \ for up to 3600 seconds\n\n---\nRequires one of the following EVE corporation\
+        \ role(s): Director\n"
       operationId: "get_corporations_corporation_id_assets"
       parameters:
       - name: "corporation_id"
@@ -11700,8 +11699,7 @@ paths:
       - evesso:
         - "esi-assets.read_corporation_assets.v1"
       x-alternate-versions:
-      - "latest"
-      - "v3"
+      - "v4"
       x-cached-seconds: 3600
       x-required-roles:
       - "Director"
@@ -29061,6 +29059,7 @@ definitions:
         enum:
         - "station"
         - "solar_system"
+        - "item"
         - "other"
       quantity:
         type: "integer"
@@ -34701,6 +34700,7 @@ definitions:
         enum:
         - "station"
         - "solar_system"
+        - "item"
         - "other"
       quantity:
         type: "integer"
