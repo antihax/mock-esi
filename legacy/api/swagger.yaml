@@ -21192,7 +21192,7 @@ paths:
       description: "Return a single killmail from its ID and hash\n\n---\nAlternate\
         \ route: `/dev/killmails/{killmail_id}/{killmail_hash}/`\n\nAlternate route:\
         \ `/latest/killmails/{killmail_id}/{killmail_hash}/`\n\nAlternate route: `/v1/killmails/{killmail_id}/{killmail_hash}/`\n\
-        \n---\nThis route is cached for up to 1209600 seconds\n\n---\nWarning: This\
+        \n---\nThis route is cached for up to 30758400 seconds\n\n---\nWarning: This\
         \ is a legacy route"
       operationId: "get_killmails_killmail_id_killmail_hash"
       parameters:
@@ -21333,7 +21333,7 @@ paths:
       - "dev"
       - "latest"
       - "v1"
-      x-cached-seconds: 1209600
+      x-cached-seconds: 30758400
   /loyalty/stores/{corporation_id}/offers/:
     get:
       tags:
