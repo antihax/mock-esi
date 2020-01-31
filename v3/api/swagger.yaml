@@ -422,7 +422,6 @@ paths:
       - "Calendar"
       summary: "Get an event"
       description: "Get all the information for a specific event\n\n---\nAlternate\
-        \ route: `/dev/characters/{character_id}/calendar/{event_id}/`\n\nAlternate\
         \ route: `/latest/characters/{character_id}/calendar/{event_id}/`\n\n---\n\
         This route is cached for up to 5 seconds"
       operationId: "get_characters_character_id_calendar_event_id"
@@ -573,7 +572,6 @@ paths:
       - evesso:
         - "esi-calendar.read_calendar_events.v1"
       x-alternate-versions:
-      - "dev"
       - "latest"
       x-cached-seconds: 5
     put:
@@ -581,8 +579,8 @@ paths:
       - "Calendar"
       summary: "Respond to an event"
       description: "Set your response status to an event\n\n---\nAlternate route:\
-        \ `/dev/characters/{character_id}/calendar/{event_id}/`\n\nAlternate route:\
-        \ `/latest/characters/{character_id}/calendar/{event_id}/`\n"
+        \ `/latest/characters/{character_id}/calendar/{event_id}/`\n\n\n---\n[Diff\
+        \ of the upcoming changes](https://esi.evetech.net/diff/v3/dev/#PUT-/characters/{character_id}/calendar/{event_id}/)"
       operationId: "put_characters_character_id_calendar_event_id"
       parameters:
       - name: "character_id"
@@ -678,7 +676,6 @@ paths:
       - evesso:
         - "esi-calendar.respond_calendar_events.v1"
       x-alternate-versions:
-      - "dev"
       - "latest"
   /characters/{character_id}/clones/:
     get:

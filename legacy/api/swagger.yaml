@@ -2124,10 +2124,9 @@ paths:
       description: "Get 50 event summaries from the calendar. If no from_event ID\
         \ is given, the resource will return the next 50 chronological event summaries\
         \ from now. If a from_event ID is specified, it will return the next 50 chronological\
-        \ event summaries from after that event\n\n---\nAlternate route: `/dev/characters/{character_id}/calendar/`\n\
-        \nAlternate route: `/latest/characters/{character_id}/calendar/`\n\nAlternate\
-        \ route: `/v1/characters/{character_id}/calendar/`\n\n---\nThis route is cached\
-        \ for up to 5 seconds\n\n---\nWarning: This is a legacy route"
+        \ event summaries from after that event\n\n---\nAlternate route: `/latest/characters/{character_id}/calendar/`\n\
+        \nAlternate route: `/v1/characters/{character_id}/calendar/`\n\n---\nThis\
+        \ route is cached for up to 5 seconds\n\n---\nWarning: This is a legacy route"
       operationId: "get_characters_character_id_calendar"
       parameters:
       - name: "character_id"
@@ -2265,7 +2264,6 @@ paths:
       - evesso:
         - "esi-calendar.read_calendar_events.v1"
       x-alternate-versions:
-      - "dev"
       - "latest"
       - "v1"
       x-cached-seconds: 5
@@ -2542,8 +2540,7 @@ paths:
       - "Calendar"
       summary: "Get attendees"
       description: "Get all invited attendees for a given event\n\n---\nAlternate\
-        \ route: `/dev/characters/{character_id}/calendar/{event_id}/attendees/`\n\
-        \nAlternate route: `/latest/characters/{character_id}/calendar/{event_id}/attendees/`\n\
+        \ route: `/latest/characters/{character_id}/calendar/{event_id}/attendees/`\n\
         \nAlternate route: `/v1/characters/{character_id}/calendar/{event_id}/attendees/`\n\
         \n---\nThis route is cached for up to 600 seconds\n\n---\nWarning: This is\
         \ a legacy route"
@@ -2690,7 +2687,6 @@ paths:
       - evesso:
         - "esi-calendar.read_calendar_events.v1"
       x-alternate-versions:
-      - "dev"
       - "latest"
       - "v1"
       x-cached-seconds: 600
@@ -9932,9 +9928,9 @@ paths:
       - "Wallet"
       summary: "Get a character's wallet balance"
       description: "Returns a character's wallet balance\n\n---\nAlternate route:\
-        \ `/dev/characters/{character_id}/wallet/`\n\nAlternate route: `/latest/characters/{character_id}/wallet/`\n\
-        \nAlternate route: `/v1/characters/{character_id}/wallet/`\n\n---\nThis route\
-        \ is cached for up to 120 seconds\n\n---\nWarning: This is a legacy route"
+        \ `/latest/characters/{character_id}/wallet/`\n\nAlternate route: `/v1/characters/{character_id}/wallet/`\n\
+        \n---\nThis route is cached for up to 120 seconds\n\n---\nWarning: This is\
+        \ a legacy route"
       operationId: "get_characters_character_id_wallet"
       parameters:
       - name: "character_id"
@@ -10058,7 +10054,6 @@ paths:
       - evesso:
         - "esi-wallet.read_character_wallet.v1"
       x-alternate-versions:
-      - "dev"
       - "latest"
       - "v1"
       x-cached-seconds: 120

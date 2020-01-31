@@ -60,10 +60,24 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdCalendar",
+		"Get",
+		"/v2/characters/{character_id}/calendar/",
+		GetCharactersCharacterIdCalendar,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdCalendarEventId",
 		"Get",
 		"/v2/characters/{character_id}/calendar/{event_id}/",
 		GetCharactersCharacterIdCalendarEventId,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdCalendarEventIdAttendees",
+		"Get",
+		"/v2/characters/{character_id}/calendar/{event_id}/attendees/",
+		GetCharactersCharacterIdCalendarEventIdAttendees,
 	)
 
 	mockesi.NewRoute(
@@ -393,6 +407,13 @@ func init() {
 		"Post",
 		"/v2/ui/autopilot/waypoint/",
 		PostUiAutopilotWaypoint,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdWallet",
+		"Get",
+		"/v2/characters/{character_id}/wallet/",
+		GetCharactersCharacterIdWallet,
 	)
 
 }
