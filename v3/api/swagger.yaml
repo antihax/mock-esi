@@ -19,8 +19,8 @@ paths:
       - "Alliance"
       summary: "Get alliance information"
       description: "Public information about an alliance\n\n---\nAlternate route:\
-        \ `/dev/alliances/{alliance_id}/`\n\nAlternate route: `/latest/alliances/{alliance_id}/`\n\
-        \n---\nThis route is cached for up to 3600 seconds"
+        \ `/latest/alliances/{alliance_id}/`\n\n---\nThis route is cached for up to\
+        \ 3600 seconds"
       operationId: "get_alliances_alliance_id"
       parameters:
       - name: "alliance_id"
@@ -131,7 +131,6 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "latest"
       x-cached-seconds: 3600
   /characters/{character_id}/:
