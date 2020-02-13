@@ -627,10 +627,10 @@ func GetCharactersCharacterIdPortrait(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "px128x128" : "https://imageserver.eveonline.com/Character/95465499_128.jpg",
-  "px256x256" : "https://imageserver.eveonline.com/Character/95465499_256.jpg",
-  "px512x512" : "https://imageserver.eveonline.com/Character/95465499_512.jpg",
-  "px64x64" : "https://imageserver.eveonline.com/Character/95465499_64.jpg"
+  "px128x128" : "https://images.evetech.net/Character/95465499_128.jpg",
+  "px256x256" : "https://images.evetech.net/Character/95465499_256.jpg",
+  "px512x512" : "https://images.evetech.net/Character/95465499_512.jpg",
+  "px64x64" : "https://images.evetech.net/Character/95465499_64.jpg"
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])

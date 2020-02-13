@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "An OpenAPI for EVE Online"
-  version: "1.2.9"
+  version: "1.3.8"
   title: "EVE Swagger Interface"
 host: "esi.evetech.net"
 basePath: "/dev"
@@ -2720,9 +2720,8 @@ paths:
       tags:
       - "Clones"
       summary: "Get clones"
-      description: "A list of the character's clones\n\n---\nAlternate route: `/latest/characters/{character_id}/clones/`\n\
-        \nAlternate route: `/v3/characters/{character_id}/clones/`\n\n---\nThis route\
-        \ is cached for up to 120 seconds"
+      description: "A list of the character's clones\n\n---\nAlternate route: `/v4/characters/{character_id}/clones/`\n\
+        \n---\nThis route is cached for up to 120 seconds"
       operationId: "get_characters_character_id_clones"
       parameters:
       - name: "character_id"
@@ -2852,8 +2851,7 @@ paths:
       - evesso:
         - "esi-clones.read_clones.v1"
       x-alternate-versions:
-      - "latest"
-      - "v3"
+      - "v4"
       x-cached-seconds: 120
   /characters/{character_id}/contacts/:
     get:
@@ -5025,9 +5023,8 @@ paths:
       - "Clones"
       summary: "Get active implants"
       description: "Return implants on the active clone of a character\n\n---\nAlternate\
-        \ route: `/latest/characters/{character_id}/implants/`\n\nAlternate route:\
-        \ `/legacy/characters/{character_id}/implants/`\n\nAlternate route: `/v1/characters/{character_id}/implants/`\n\
-        \n---\nThis route is cached for up to 120 seconds"
+        \ route: `/v2/characters/{character_id}/implants/`\n\n---\nThis route is cached\
+        \ for up to 120 seconds"
       operationId: "get_characters_character_id_implants"
       parameters:
       - name: "character_id"
@@ -5159,9 +5156,7 @@ paths:
       - evesso:
         - "esi-clones.read_implants.v1"
       x-alternate-versions:
-      - "latest"
-      - "legacy"
-      - "v1"
+      - "v2"
       x-cached-seconds: 120
   /characters/{character_id}/industry/jobs/:
     get:
@@ -8453,10 +8448,10 @@ paths:
             $ref: "#/definitions/get_characters_character_id_portrait_ok"
           examples:
             application/json:
-              px128x128: "https://imageserver.eveonline.com/Character/95465499_128.jpg"
-              px256x256: "https://imageserver.eveonline.com/Character/95465499_256.jpg"
-              px512x512: "https://imageserver.eveonline.com/Character/95465499_512.jpg"
-              px64x64: "https://imageserver.eveonline.com/Character/95465499_64.jpg"
+              px128x128: "https://images.evetech.net/Character/95465499_128.jpg"
+              px256x256: "https://images.evetech.net/Character/95465499_256.jpg"
+              px512x512: "https://images.evetech.net/Character/95465499_512.jpg"
+              px64x64: "https://images.evetech.net/Character/95465499_64.jpg"
           headers:
             Cache-Control:
               type: "string"

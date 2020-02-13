@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "An OpenAPI for EVE Online"
-  version: "1.2.9"
+  version: "1.3.8"
   title: "EVE Swagger Interface"
 host: "esi.evetech.net"
 basePath: "/legacy"
@@ -4988,10 +4988,9 @@ paths:
       - "Clones"
       summary: "Get active implants"
       description: "Return implants on the active clone of a character\n\n---\nAlternate\
-        \ route: `/dev/characters/{character_id}/implants/`\n\nAlternate route: `/latest/characters/{character_id}/implants/`\n\
-        \nAlternate route: `/v1/characters/{character_id}/implants/`\n\n---\nThis\
-        \ route is cached for up to 120 seconds\n\n---\nWarning: This is a legacy\
-        \ route"
+        \ route: `/latest/characters/{character_id}/implants/`\n\nAlternate route:\
+        \ `/v1/characters/{character_id}/implants/`\n\n---\nThis route is cached for\
+        \ up to 120 seconds\n\n---\nWarning: This is a legacy route"
       operationId: "get_characters_character_id_implants"
       parameters:
       - name: "character_id"
@@ -5123,7 +5122,6 @@ paths:
       - evesso:
         - "esi-clones.read_implants.v1"
       x-alternate-versions:
-      - "dev"
       - "latest"
       - "v1"
       x-cached-seconds: 120
@@ -8568,10 +8566,10 @@ paths:
             $ref: "#/definitions/get_characters_character_id_portrait_ok"
           examples:
             application/json:
-              128x128: "https://imageserver.eveonline.com/Character/95465499_128.jpg"
-              256x256: "https://imageserver.eveonline.com/Character/95465499_256.jpg"
-              512x512: "https://imageserver.eveonline.com/Character/95465499_512.jpg"
-              64x64: "https://imageserver.eveonline.com/Character/95465499_64.jpg"
+              128x128: "https://images.evetech.net/Character/95465499_128.jpg"
+              256x256: "https://images.evetech.net/Character/95465499_256.jpg"
+              512x512: "https://images.evetech.net/Character/95465499_512.jpg"
+              64x64: "https://images.evetech.net/Character/95465499_64.jpg"
           headers:
             Cache-Control:
               type: "string"
