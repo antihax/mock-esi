@@ -4,6 +4,9 @@ package esilegacy
 200 ok object */
 type GetCorporationsCorporationIdAssets200Ok struct {
 	/*
+	 is_blueprint_copy boolean */
+	IsBlueprintCopy bool `json:"is_blueprint_copy,omitempty"`
+	/*
 	 is_singleton boolean */
 	IsSingleton bool `json:"is_singleton,omitempty"`
 	/*

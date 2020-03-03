@@ -263,9 +263,9 @@ paths:
       - "Assets"
       summary: "Get character assets"
       description: "Return a list of the characters assets\n\n---\nAlternate route:\
-        \ `/latest/characters/{character_id}/assets/`\n\n---\nThis route is cached\
-        \ for up to 3600 seconds\n\n---\nWarning: This route has an upgrade available\n\
-        \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v3/dev/#GET-/characters/{character_id}/assets/)"
+        \ `/legacy/characters/{character_id}/assets/`\n\n---\nThis route is cached\
+        \ for up to 3600 seconds\n\n---\nWarning: This route is deprecated\n\n---\n\
+        [Diff of the upcoming changes](https://esi.evetech.net/diff/v3/dev/#GET-/characters/{character_id}/assets/)"
       operationId: "get_characters_character_id_assets"
       parameters:
       - name: "character_id"
@@ -412,8 +412,9 @@ paths:
       security:
       - evesso:
         - "esi-assets.read_assets.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
+      - "legacy"
       x-cached-seconds: 3600
   /characters/{character_id}/calendar/{event_id}/:
     get:
@@ -1855,10 +1856,10 @@ paths:
       - "Assets"
       summary: "Get corporation assets"
       description: "Return a list of the corporation assets\n\n---\nAlternate route:\
-        \ `/latest/corporations/{corporation_id}/assets/`\n\n---\nThis route is cached\
+        \ `/legacy/corporations/{corporation_id}/assets/`\n\n---\nThis route is cached\
         \ for up to 3600 seconds\n\n---\nRequires one of the following EVE corporation\
-        \ role(s): Director\n\n\n---\nWarning: This route has an upgrade available\n\
-        \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v3/dev/#GET-/corporations/{corporation_id}/assets/)"
+        \ role(s): Director\n\n\n---\nWarning: This route is deprecated\n\n---\n[Diff\
+        \ of the upcoming changes](https://esi.evetech.net/diff/v3/dev/#GET-/corporations/{corporation_id}/assets/)"
       operationId: "get_corporations_corporation_id_assets"
       parameters:
       - name: "corporation_id"
@@ -2005,8 +2006,9 @@ paths:
       security:
       - evesso:
         - "esi-assets.read_corporation_assets.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
+      - "legacy"
       x-cached-seconds: 3600
       x-required-roles:
       - "Director"
