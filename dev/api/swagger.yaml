@@ -692,8 +692,8 @@ paths:
             $ref: "#/definitions/get_alliances_alliance_id_icons_ok"
           examples:
             application/json:
-              px128x128: "https://images.evetech.net/Alliance/503818424_128.png"
-              px64x64: "https://images.evetech.net/Alliance/503818424_64.png"
+              px128x128: "https://images.evetech.net/alliances/503818424/logo?tenant=tranquility&size=128"
+              px64x64: "https://images.evetech.net/alliances/503818424/logo?tenant=tranquility&size=64"
           headers:
             Cache-Control:
               type: "string"
@@ -8413,9 +8413,8 @@ paths:
       tags:
       - "Character"
       summary: "Get character portraits"
-      description: "Get portrait urls for a character\n\n---\nAlternate route: `/latest/characters/{character_id}/portrait/`\n\
-        \nAlternate route: `/v2/characters/{character_id}/portrait/`\n\n---\nThis\
-        \ route expires daily at 11:05"
+      description: "Get portrait urls for a character\n\n---\nAlternate route: `/v3/characters/{character_id}/portrait/`\n\
+        \n---\nThis route expires daily at 11:05"
       operationId: "get_characters_character_id_portrait"
       parameters:
       - name: "character_id"
@@ -8449,10 +8448,10 @@ paths:
             $ref: "#/definitions/get_characters_character_id_portrait_ok"
           examples:
             application/json:
-              px128x128: "https://images.evetech.net/Character/95465499_128.jpg"
-              px256x256: "https://images.evetech.net/Character/95465499_256.jpg"
-              px512x512: "https://images.evetech.net/Character/95465499_512.jpg"
-              px64x64: "https://images.evetech.net/Character/95465499_64.jpg"
+              px128x128: "https://images.evetech.net/characters/95465499/portrait?tenant=tranquility&size=128"
+              px256x256: "https://images.evetech.net/characters/95465499/portrait?tenant=tranquility&size=256"
+              px512x512: "https://images.evetech.net/characters/95465499/portrait?tenant=tranquility&size=512"
+              px64x64: "https://images.evetech.net/characters/95465499/portrait?tenant=tranquility&size=64"
           headers:
             Cache-Control:
               type: "string"
@@ -8524,8 +8523,7 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "latest"
-      - "v2"
+      - "v3"
   /characters/{character_id}/roles/:
     get:
       tags:
@@ -14015,10 +14013,8 @@ paths:
       tags:
       - "Corporation"
       summary: "Get corporation icon"
-      description: "Get the icon urls for a corporation\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/icons/`\n\
-        \nAlternate route: `/legacy/corporations/{corporation_id}/icons/`\n\nAlternate\
-        \ route: `/v1/corporations/{corporation_id}/icons/`\n\n---\nThis route is\
-        \ cached for up to 3600 seconds"
+      description: "Get the icon urls for a corporation\n\n---\nAlternate route: `/v2/corporations/{corporation_id}/icons/`\n\
+        \n---\nThis route is cached for up to 3600 seconds"
       operationId: "get_corporations_corporation_id_icons"
       parameters:
       - name: "corporation_id"
@@ -14052,9 +14048,9 @@ paths:
             $ref: "#/definitions/get_corporations_corporation_id_icons_ok"
           examples:
             application/json:
-              px128x128: "https://imageserver.eveonline.com/Corporation/1000010_128.png"
-              px256x256: "https://imageserver.eveonline.com/Corporation/1000010_256.png"
-              px64x64: "https://imageserver.eveonline.com/Corporation/1000010_64.png"
+              px128x128: "https://images.evetech.net/corporations/1000010/logo?tenant=tranquility&size=128"
+              px256x256: "https://images.evetech.net/corporations/1000010/logo?tenant=tranquility&size=256"
+              px64x64: "https://images.evetech.net/corporations/1000010/logo?tenant=tranquility&size=64"
           headers:
             Cache-Control:
               type: "string"
@@ -14126,9 +14122,7 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "latest"
-      - "legacy"
-      - "v1"
+      - "v2"
       x-cached-seconds: 3600
   /corporations/{corporation_id}/industry/jobs/:
     get:
@@ -29245,7 +29239,7 @@ definitions:
       location_id:
         type: "integer"
         format: "int64"
-        description: "References a solar system, station or item_id if this blueprint\
+        description: "References a station, a ship or an item_id if this blueprint\
           \ is located within a container. If the return value is an item_id, then\
           \ the Character AssetList API must be queried to find the container using\
           \ the given item_id to determine the correct location of the Blueprint."
@@ -34889,7 +34883,7 @@ definitions:
       location_id:
         type: "integer"
         format: "int64"
-        description: "References a solar system, station or item_id if this blueprint\
+        description: "References a station, a ship or an item_id if this blueprint\
           \ is located within a container."
         title: "get_corporations_corporation_id_blueprints_location_id"
       material_efficiency:

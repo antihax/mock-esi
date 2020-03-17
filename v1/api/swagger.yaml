@@ -543,7 +543,7 @@ paths:
       summary: "Get alliance icon"
       description: "Get the icon urls for a alliance\n\n---\nAlternate route: `/latest/alliances/{alliance_id}/icons/`\n\
         \nAlternate route: `/legacy/alliances/{alliance_id}/icons/`\n\n---\nThis route\
-        \ expires daily at 11:05"
+        \ expires daily at 11:05\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/alliances/{alliance_id}/icons/)"
       operationId: "get_alliances_alliance_id_icons"
       parameters:
       - name: "alliance_id"
@@ -11731,10 +11731,10 @@ paths:
       tags:
       - "Corporation"
       summary: "Get corporation icon"
-      description: "Get the icon urls for a corporation\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/icons/`\n\
-        \nAlternate route: `/latest/corporations/{corporation_id}/icons/`\n\nAlternate\
-        \ route: `/legacy/corporations/{corporation_id}/icons/`\n\n---\nThis route\
-        \ is cached for up to 3600 seconds"
+      description: "Get the icon urls for a corporation\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/icons/`\n\
+        \nAlternate route: `/legacy/corporations/{corporation_id}/icons/`\n\n---\n\
+        This route is cached for up to 3600 seconds\n\n---\n[Diff of the upcoming\
+        \ changes](https://esi.evetech.net/diff/v1/dev/#GET-/corporations/{corporation_id}/icons/)"
       operationId: "get_corporations_corporation_id_icons"
       parameters:
       - name: "corporation_id"
@@ -11842,7 +11842,6 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "latest"
       - "legacy"
       x-cached-seconds: 3600
@@ -25256,7 +25255,7 @@ definitions:
       location_id:
         type: "integer"
         format: "int64"
-        description: "References a solar system, station or item_id if this blueprint\
+        description: "References a station, a ship or an item_id if this blueprint\
           \ is located within a container. If an item_id the Character - AssetList\
           \ API must be queried to find the container using the item_id, from which\
           \ the correct location of the Blueprint can be derived."
@@ -29060,7 +29059,7 @@ definitions:
       location_id:
         type: "integer"
         format: "int64"
-        description: "References a solar system, station or item_id if this blueprint\
+        description: "References a station, a ship or an item_id if this blueprint\
           \ is located within a container."
         title: "get_corporations_corporation_id_blueprints_location_id"
       material_efficiency:

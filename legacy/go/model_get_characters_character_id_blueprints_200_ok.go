@@ -10,7 +10,7 @@ type GetCharactersCharacterIdBlueprints200Ok struct {
 	 Indicates something about this item's storage location. The flag is used to differentiate between hangar divisions, drone bay, fitting location, and similar. */
 	LocationFlag string `json:"location_flag,omitempty"`
 	/*
-	 References a solar system, station or item_id if this blueprint is located within a container. If an item_id the Character - AssetList API must be queried to find the container using the item_id, from which the correct location of the Blueprint can be derived. */
+	 References a station, a ship or an item_id if this blueprint is located within a container. If an item_id the Character - AssetList API must be queried to find the container using the item_id, from which the correct location of the Blueprint can be derived. */
 	LocationId int64 `json:"location_id,omitempty"`
 	/*
 	 Material Efficiency Level of the blueprint, can be any integer between 0 and 10. */

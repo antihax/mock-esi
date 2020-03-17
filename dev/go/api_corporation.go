@@ -495,9 +495,9 @@ func GetCorporationsCorporationIdIcons(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "px128x128" : "https://imageserver.eveonline.com/Corporation/1000010_128.png",
-  "px256x256" : "https://imageserver.eveonline.com/Corporation/1000010_256.png",
-  "px64x64" : "https://imageserver.eveonline.com/Corporation/1000010_64.png"
+  "px128x128" : "https://images.evetech.net/corporations/1000010/logo?tenant=tranquility&size=128",
+  "px256x256" : "https://images.evetech.net/corporations/1000010/logo?tenant=tranquility&size=256",
+  "px64x64" : "https://images.evetech.net/corporations/1000010/logo?tenant=tranquility&size=64"
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(corporationId, vars["corporation_id"])

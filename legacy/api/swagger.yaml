@@ -14204,10 +14204,10 @@ paths:
       tags:
       - "Corporation"
       summary: "Get corporation icon"
-      description: "Get the icon urls for a corporation\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/icons/`\n\
-        \nAlternate route: `/latest/corporations/{corporation_id}/icons/`\n\nAlternate\
-        \ route: `/v1/corporations/{corporation_id}/icons/`\n\n---\nThis route is\
-        \ cached for up to 3600 seconds\n\n---\nWarning: This is a legacy route"
+      description: "Get the icon urls for a corporation\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/icons/`\n\
+        \nAlternate route: `/v1/corporations/{corporation_id}/icons/`\n\n---\nThis\
+        \ route is cached for up to 3600 seconds\n\n---\nWarning: This is a legacy\
+        \ route"
       operationId: "get_corporations_corporation_id_icons"
       parameters:
       - name: "corporation_id"
@@ -14315,7 +14315,6 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "latest"
       - "v1"
       x-cached-seconds: 3600
@@ -29428,7 +29427,7 @@ definitions:
       location_id:
         type: "integer"
         format: "int64"
-        description: "References a solar system, station or item_id if this blueprint\
+        description: "References a station, a ship or an item_id if this blueprint\
           \ is located within a container. If an item_id the Character - AssetList\
           \ API must be queried to find the container using the item_id, from which\
           \ the correct location of the Blueprint can be derived."
@@ -34573,7 +34572,7 @@ definitions:
       location_id:
         type: "integer"
         format: "int64"
-        description: "References a solar system, station or item_id if this blueprint\
+        description: "References a station, a ship or an item_id if this blueprint\
           \ is located within a container."
         title: "get_corporations_corporation_id_blueprints_location_id"
       material_efficiency:

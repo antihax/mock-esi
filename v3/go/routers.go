@@ -53,6 +53,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdPortrait",
+		"Get",
+		"/v3/characters/{character_id}/portrait/",
+		GetCharactersCharacterIdPortrait,
+	)
+
+	mockesi.NewRoute(
 		"PostCharactersCharacterIdCspa",
 		"Post",
 		"/v3/characters/{character_id}/cspa/",

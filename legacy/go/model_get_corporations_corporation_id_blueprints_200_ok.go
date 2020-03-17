@@ -10,7 +10,7 @@ type GetCorporationsCorporationIdBlueprints200Ok struct {
 	 Type of the location_id */
 	LocationFlag string `json:"location_flag,omitempty"`
 	/*
-	 References a solar system, station or item_id if this blueprint is located within a container. */
+	 References a station, a ship or an item_id if this blueprint is located within a container. */
 	LocationId int64 `json:"location_id,omitempty"`
 	/*
 	 Material Efficiency Level of the blueprint. */

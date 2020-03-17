@@ -197,8 +197,8 @@ func GetAlliancesAllianceIdIcons(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "px128x128" : "https://images.evetech.net/Alliance/503818424_128.png",
-  "px64x64" : "https://images.evetech.net/Alliance/503818424_64.png"
+  "px128x128" : "https://images.evetech.net/alliances/503818424/logo?tenant=tranquility&size=128",
+  "px64x64" : "https://images.evetech.net/alliances/503818424/logo?tenant=tranquility&size=64"
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(allianceId, vars["alliance_id"])
