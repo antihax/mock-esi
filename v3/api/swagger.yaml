@@ -19,8 +19,8 @@ paths:
       - "Alliance"
       summary: "Get alliance information"
       description: "Public information about an alliance\n\n---\nAlternate route:\
-        \ `/latest/alliances/{alliance_id}/`\n\n---\nThis route is cached for up to\
-        \ 3600 seconds"
+        \ `/dev/alliances/{alliance_id}/`\n\nAlternate route: `/latest/alliances/{alliance_id}/`\n\
+        \n---\nThis route is cached for up to 3600 seconds"
       operationId: "get_alliances_alliance_id"
       parameters:
       - name: "alliance_id"
@@ -131,6 +131,7 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
+      - "dev"
       - "latest"
       x-cached-seconds: 3600
   /characters/{character_id}/:
@@ -422,8 +423,10 @@ paths:
       - "Calendar"
       summary: "Get an event"
       description: "Get all the information for a specific event\n\n---\nAlternate\
-        \ route: `/latest/characters/{character_id}/calendar/{event_id}/`\n\n---\n\
-        This route is cached for up to 5 seconds"
+        \ route: `/dev/characters/{character_id}/calendar/{event_id}/`\n\nAlternate\
+        \ route: `/latest/characters/{character_id}/calendar/{event_id}/`\n\nAlternate\
+        \ route: `/v4/characters/{character_id}/calendar/{event_id}/`\n\n---\nThis\
+        \ route is cached for up to 5 seconds"
       operationId: "get_characters_character_id_calendar_event_id"
       parameters:
       - name: "character_id"
@@ -572,15 +575,19 @@ paths:
       - evesso:
         - "esi-calendar.read_calendar_events.v1"
       x-alternate-versions:
+      - "dev"
       - "latest"
+      - "v4"
       x-cached-seconds: 5
     put:
       tags:
       - "Calendar"
       summary: "Respond to an event"
       description: "Set your response status to an event\n\n---\nAlternate route:\
-        \ `/latest/characters/{character_id}/calendar/{event_id}/`\n\n\n---\n[Diff\
-        \ of the upcoming changes](https://esi.evetech.net/diff/v3/dev/#PUT-/characters/{character_id}/calendar/{event_id}/)"
+        \ `/dev/characters/{character_id}/calendar/{event_id}/`\n\nAlternate route:\
+        \ `/latest/characters/{character_id}/calendar/{event_id}/`\n\nAlternate route:\
+        \ `/v4/characters/{character_id}/calendar/{event_id}/`\n\n---\nThis route\
+        \ is cached for up to 5 seconds"
       operationId: "put_characters_character_id_calendar_event_id"
       parameters:
       - name: "character_id"
@@ -676,14 +683,19 @@ paths:
       - evesso:
         - "esi-calendar.respond_calendar_events.v1"
       x-alternate-versions:
+      - "dev"
       - "latest"
+      - "v4"
+      x-cached-seconds: 5
   /characters/{character_id}/clones/:
     get:
       tags:
       - "Clones"
       summary: "Get clones"
-      description: "A list of the character's clones\n\n---\nAlternate route: `/latest/characters/{character_id}/clones/`\n\
-        \n---\nThis route is cached for up to 120 seconds"
+      description: "A list of the character's clones\n\n---\nAlternate route: `/dev/characters/{character_id}/clones/`\n\
+        \nAlternate route: `/latest/characters/{character_id}/clones/`\n\nAlternate\
+        \ route: `/v4/characters/{character_id}/clones/`\n\n---\nThis route is cached\
+        \ for up to 120 seconds"
       operationId: "get_characters_character_id_clones"
       parameters:
       - name: "character_id"
@@ -813,7 +825,9 @@ paths:
       - evesso:
         - "esi-clones.read_clones.v1"
       x-alternate-versions:
+      - "dev"
       - "latest"
+      - "v4"
       x-cached-seconds: 120
   /characters/{character_id}/cspa/:
     post:
@@ -1067,8 +1081,9 @@ paths:
       - "Location"
       summary: "Get character online"
       description: "Checks if the character is currently online\n\n---\nAlternate\
-        \ route: `/dev/characters/{character_id}/online/`\n\n---\nThis route is cached\
-        \ for up to 60 seconds"
+        \ route: `/dev/characters/{character_id}/online/`\n\nAlternate route: `/latest/characters/{character_id}/online/`\n\
+        \nAlternate route: `/v2/characters/{character_id}/online/`\n\n---\nThis route\
+        \ is cached for up to 60 seconds"
       operationId: "get_characters_character_id_online"
       parameters:
       - name: "character_id"
@@ -1194,6 +1209,8 @@ paths:
         - "esi-location.read_online.v1"
       x-alternate-versions:
       - "dev"
+      - "latest"
+      - "v2"
       x-cached-seconds: 60
   /characters/{character_id}/planets/{planet_id}/:
     get:

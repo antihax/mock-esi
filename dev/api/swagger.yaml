@@ -18,8 +18,10 @@ paths:
       tags:
       - "Alliance"
       summary: "List all alliances"
-      description: "List all active player alliances\n\n---\nAlternate route: `/v2/alliances/`\n\
-        \n---\nThis route is cached for up to 3600 seconds"
+      description: "List all active player alliances\n\n---\nAlternate route: `/latest/alliances/`\n\
+        \nAlternate route: `/legacy/alliances/`\n\nAlternate route: `/v1/alliances/`\n\
+        \nAlternate route: `/v2/alliances/`\n\n---\nThis route is cached for up to\
+        \ 3600 seconds"
       operationId: "get_alliances"
       parameters:
       - name: "datasource"
@@ -120,6 +122,9 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
+      - "latest"
+      - "legacy"
+      - "v1"
       - "v2"
       x-cached-seconds: 3600
   /alliances/{alliance_id}/:
@@ -128,8 +133,8 @@ paths:
       - "Alliance"
       summary: "Get alliance information"
       description: "Public information about an alliance\n\n---\nAlternate route:\
-        \ `/v4/alliances/{alliance_id}/`\n\n---\nThis route is cached for up to 3600\
-        \ seconds"
+        \ `/latest/alliances/{alliance_id}/`\n\nAlternate route: `/v3/alliances/{alliance_id}/`\n\
+        \n---\nThis route is cached for up to 3600 seconds"
       operationId: "get_alliances_alliance_id"
       parameters:
       - name: "alliance_id"
@@ -240,7 +245,8 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "v4"
+      - "latest"
+      - "v3"
       x-cached-seconds: 3600
   /alliances/{alliance_id}/contacts/:
     get:
@@ -541,8 +547,9 @@ paths:
       - "Alliance"
       summary: "List alliance's corporations"
       description: "List all current member corporations of an alliance\n\n---\nAlternate\
-        \ route: `/v2/alliances/{alliance_id}/corporations/`\n\n---\nThis route is\
-        \ cached for up to 3600 seconds"
+        \ route: `/latest/alliances/{alliance_id}/corporations/`\n\nAlternate route:\
+        \ `/v1/alliances/{alliance_id}/corporations/`\n\nAlternate route: `/v2/alliances/{alliance_id}/corporations/`\n\
+        \n---\nThis route is cached for up to 3600 seconds"
       operationId: "get_alliances_alliance_id_corporations"
       parameters:
       - name: "alliance_id"
@@ -650,6 +657,8 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
+      - "latest"
+      - "v1"
       - "v2"
       x-cached-seconds: 3600
   /alliances/{alliance_id}/icons/:
@@ -2160,7 +2169,9 @@ paths:
       description: "Get 50 event summaries from the calendar. If no from_event ID\
         \ is given, the resource will return the next 50 chronological event summaries\
         \ from now. If a from_event ID is specified, it will return the next 50 chronological\
-        \ event summaries from after that event\n\n---\nAlternate route: `/v2/characters/{character_id}/calendar/`\n\
+        \ event summaries from after that event\n\n---\nAlternate route: `/latest/characters/{character_id}/calendar/`\n\
+        \nAlternate route: `/legacy/characters/{character_id}/calendar/`\n\nAlternate\
+        \ route: `/v1/characters/{character_id}/calendar/`\n\nAlternate route: `/v2/characters/{character_id}/calendar/`\n\
         \n---\nThis route is cached for up to 5 seconds"
       operationId: "get_characters_character_id_calendar"
       parameters:
@@ -2299,6 +2310,9 @@ paths:
       - evesso:
         - "esi-calendar.read_calendar_events.v1"
       x-alternate-versions:
+      - "latest"
+      - "legacy"
+      - "v1"
       - "v2"
       x-cached-seconds: 5
   /characters/{character_id}/calendar/{event_id}/:
@@ -2307,6 +2321,8 @@ paths:
       - "Calendar"
       summary: "Get an event"
       description: "Get all the information for a specific event\n\n---\nAlternate\
+        \ route: `/latest/characters/{character_id}/calendar/{event_id}/`\n\nAlternate\
+        \ route: `/v3/characters/{character_id}/calendar/{event_id}/`\n\nAlternate\
         \ route: `/v4/characters/{character_id}/calendar/{event_id}/`\n\n---\nThis\
         \ route is cached for up to 5 seconds"
       operationId: "get_characters_character_id_calendar_event_id"
@@ -2457,6 +2473,8 @@ paths:
       - evesso:
         - "esi-calendar.read_calendar_events.v1"
       x-alternate-versions:
+      - "latest"
+      - "v3"
       - "v4"
       x-cached-seconds: 5
     put:
@@ -2464,6 +2482,8 @@ paths:
       - "Calendar"
       summary: "Respond to an event"
       description: "Set your response status to an event\n\n---\nAlternate route:\
+        \ `/latest/characters/{character_id}/calendar/{event_id}/`\n\nAlternate route:\
+        \ `/v3/characters/{character_id}/calendar/{event_id}/`\n\nAlternate route:\
         \ `/v4/characters/{character_id}/calendar/{event_id}/`\n\n---\nThis route\
         \ is cached for up to 5 seconds"
       operationId: "put_characters_character_id_calendar_event_id"
@@ -2561,6 +2581,8 @@ paths:
       - evesso:
         - "esi-calendar.respond_calendar_events.v1"
       x-alternate-versions:
+      - "latest"
+      - "v3"
       - "v4"
       x-cached-seconds: 5
   /characters/{character_id}/calendar/{event_id}/attendees/:
@@ -2569,8 +2591,11 @@ paths:
       - "Calendar"
       summary: "Get attendees"
       description: "Get all invited attendees for a given event\n\n---\nAlternate\
-        \ route: `/v2/characters/{character_id}/calendar/{event_id}/attendees/`\n\n\
-        ---\nThis route is cached for up to 600 seconds"
+        \ route: `/latest/characters/{character_id}/calendar/{event_id}/attendees/`\n\
+        \nAlternate route: `/legacy/characters/{character_id}/calendar/{event_id}/attendees/`\n\
+        \nAlternate route: `/v1/characters/{character_id}/calendar/{event_id}/attendees/`\n\
+        \nAlternate route: `/v2/characters/{character_id}/calendar/{event_id}/attendees/`\n\
+        \n---\nThis route is cached for up to 600 seconds"
       operationId: "get_characters_character_id_calendar_event_id_attendees"
       parameters:
       - name: "character_id"
@@ -2714,6 +2739,9 @@ paths:
       - evesso:
         - "esi-calendar.read_calendar_events.v1"
       x-alternate-versions:
+      - "latest"
+      - "legacy"
+      - "v1"
       - "v2"
       x-cached-seconds: 600
   /characters/{character_id}/clones/:
@@ -2721,8 +2749,10 @@ paths:
       tags:
       - "Clones"
       summary: "Get clones"
-      description: "A list of the character's clones\n\n---\nAlternate route: `/v4/characters/{character_id}/clones/`\n\
-        \n---\nThis route is cached for up to 120 seconds"
+      description: "A list of the character's clones\n\n---\nAlternate route: `/latest/characters/{character_id}/clones/`\n\
+        \nAlternate route: `/v3/characters/{character_id}/clones/`\n\nAlternate route:\
+        \ `/v4/characters/{character_id}/clones/`\n\n---\nThis route is cached for\
+        \ up to 120 seconds"
       operationId: "get_characters_character_id_clones"
       parameters:
       - name: "character_id"
@@ -2852,6 +2882,8 @@ paths:
       - evesso:
         - "esi-clones.read_clones.v1"
       x-alternate-versions:
+      - "latest"
+      - "v3"
       - "v4"
       x-cached-seconds: 120
   /characters/{character_id}/contacts/:
@@ -4885,8 +4917,10 @@ paths:
       - "Faction Warfare"
       summary: "Overview of a character involved in faction warfare"
       description: "Statistical overview of a character involved in faction warfare\n\
-        \n---\nAlternate route: `/v2/characters/{character_id}/fw/stats/`\n\n---\n\
-        This route expires daily at 11:05"
+        \n---\nAlternate route: `/latest/characters/{character_id}/fw/stats/`\n\n\
+        Alternate route: `/legacy/characters/{character_id}/fw/stats/`\n\nAlternate\
+        \ route: `/v1/characters/{character_id}/fw/stats/`\n\nAlternate route: `/v2/characters/{character_id}/fw/stats/`\n\
+        \n---\nThis route expires daily at 11:05"
       operationId: "get_characters_character_id_fw_stats"
       parameters:
       - name: "character_id"
@@ -5017,6 +5051,9 @@ paths:
       - evesso:
         - "esi-characters.read_fw_stats.v1"
       x-alternate-versions:
+      - "latest"
+      - "legacy"
+      - "v1"
       - "v2"
   /characters/{character_id}/implants/:
     get:
@@ -5024,8 +5061,10 @@ paths:
       - "Clones"
       summary: "Get active implants"
       description: "Return implants on the active clone of a character\n\n---\nAlternate\
-        \ route: `/v2/characters/{character_id}/implants/`\n\n---\nThis route is cached\
-        \ for up to 120 seconds"
+        \ route: `/latest/characters/{character_id}/implants/`\n\nAlternate route:\
+        \ `/legacy/characters/{character_id}/implants/`\n\nAlternate route: `/v1/characters/{character_id}/implants/`\n\
+        \nAlternate route: `/v2/characters/{character_id}/implants/`\n\n---\nThis\
+        \ route is cached for up to 120 seconds"
       operationId: "get_characters_character_id_implants"
       parameters:
       - name: "character_id"
@@ -5157,6 +5196,9 @@ paths:
       - evesso:
         - "esi-clones.read_implants.v1"
       x-alternate-versions:
+      - "latest"
+      - "legacy"
+      - "v1"
       - "v2"
       x-cached-seconds: 120
   /characters/{character_id}/industry/jobs/:
@@ -5484,7 +5526,9 @@ paths:
       summary: "Get character location"
       description: "Information about the characters current location. Returns the\
         \ current solar system id, and also the current station or structure ID if\
-        \ applicable\n\n---\nAlternate route: `/v2/characters/{character_id}/location/`\n\
+        \ applicable\n\n---\nAlternate route: `/latest/characters/{character_id}/location/`\n\
+        \nAlternate route: `/legacy/characters/{character_id}/location/`\n\nAlternate\
+        \ route: `/v1/characters/{character_id}/location/`\n\nAlternate route: `/v2/characters/{character_id}/location/`\n\
         \n---\nThis route is cached for up to 5 seconds"
       operationId: "get_characters_character_id_location"
       parameters:
@@ -5610,6 +5654,9 @@ paths:
       - evesso:
         - "esi-location.read_location.v1"
       x-alternate-versions:
+      - "latest"
+      - "legacy"
+      - "v1"
       - "v2"
       x-cached-seconds: 5
   /characters/{character_id}/loyalty/points/:
@@ -7502,8 +7549,9 @@ paths:
       - "Location"
       summary: "Get character online"
       description: "Checks if the character is currently online\n\n---\nAlternate\
-        \ route: `/v3/characters/{character_id}/online/`\n\n---\nThis route is cached\
-        \ for up to 60 seconds"
+        \ route: `/latest/characters/{character_id}/online/`\n\nAlternate route: `/v2/characters/{character_id}/online/`\n\
+        \nAlternate route: `/v3/characters/{character_id}/online/`\n\n---\nThis route\
+        \ is cached for up to 60 seconds"
       operationId: "get_characters_character_id_online"
       parameters:
       - name: "character_id"
@@ -7628,6 +7676,8 @@ paths:
       - evesso:
         - "esi-location.read_online.v1"
       x-alternate-versions:
+      - "latest"
+      - "v2"
       - "v3"
       x-cached-seconds: 60
   /characters/{character_id}/opportunities/:
@@ -8885,6 +8935,8 @@ paths:
       - "Location"
       summary: "Get current ship"
       description: "Get the current ship type, name and id\n\n---\nAlternate route:\
+        \ `/latest/characters/{character_id}/ship/`\n\nAlternate route: `/legacy/characters/{character_id}/ship/`\n\
+        \nAlternate route: `/v1/characters/{character_id}/ship/`\n\nAlternate route:\
         \ `/v2/characters/{character_id}/ship/`\n\n---\nThis route is cached for up\
         \ to 5 seconds"
       operationId: "get_characters_character_id_ship"
@@ -9010,6 +9062,9 @@ paths:
       - evesso:
         - "esi-location.read_ship_type.v1"
       x-alternate-versions:
+      - "latest"
+      - "legacy"
+      - "v1"
       - "v2"
       x-cached-seconds: 5
   /characters/{character_id}/skillqueue/:
@@ -13874,8 +13929,11 @@ paths:
       - "Faction Warfare"
       summary: "Overview of a corporation involved in faction warfare"
       description: "Statistics about a corporation involved in faction warfare\n\n\
-        ---\nAlternate route: `/v2/corporations/{corporation_id}/fw/stats/`\n\n---\n\
-        This route expires daily at 11:05"
+        ---\nAlternate route: `/latest/corporations/{corporation_id}/fw/stats/`\n\n\
+        Alternate route: `/legacy/corporations/{corporation_id}/fw/stats/`\n\nAlternate\
+        \ route: `/v1/corporations/{corporation_id}/fw/stats/`\n\nAlternate route:\
+        \ `/v2/corporations/{corporation_id}/fw/stats/`\n\n---\nThis route expires\
+        \ daily at 11:05"
       operationId: "get_corporations_corporation_id_fw_stats"
       parameters:
       - name: "corporation_id"
@@ -14007,6 +14065,9 @@ paths:
       - evesso:
         - "esi-corporations.read_fw_stats.v1"
       x-alternate-versions:
+      - "latest"
+      - "legacy"
+      - "v1"
       - "v2"
   /corporations/{corporation_id}/icons/:
     get:
@@ -19731,8 +19792,10 @@ paths:
       - "Faction Warfare"
       summary: "List of the top factions in faction warfare"
       description: "Top 4 leaderboard of factions for kills and victory points separated\
-        \ by total, last week and yesterday\n\n---\nAlternate route: `/v2/fw/leaderboards/`\n\
-        \n---\nThis route expires daily at 11:05"
+        \ by total, last week and yesterday\n\n---\nAlternate route: `/latest/fw/leaderboards/`\n\
+        \nAlternate route: `/legacy/fw/leaderboards/`\n\nAlternate route: `/v1/fw/leaderboards/`\n\
+        \nAlternate route: `/v2/fw/leaderboards/`\n\n---\nThis route expires daily\
+        \ at 11:05"
       operationId: "get_fw_leaderboards"
       parameters:
       - name: "datasource"
@@ -19855,6 +19918,9 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
+      - "latest"
+      - "legacy"
+      - "v1"
       - "v2"
   /fw/leaderboards/characters/:
     get:
@@ -19862,7 +19928,9 @@ paths:
       - "Faction Warfare"
       summary: "List of the top pilots in faction warfare"
       description: "Top 100 leaderboard of pilots for kills and victory points separated\
-        \ by total, last week and yesterday\n\n---\nAlternate route: `/v2/fw/leaderboards/characters/`\n\
+        \ by total, last week and yesterday\n\n---\nAlternate route: `/latest/fw/leaderboards/characters/`\n\
+        \nAlternate route: `/legacy/fw/leaderboards/characters/`\n\nAlternate route:\
+        \ `/v1/fw/leaderboards/characters/`\n\nAlternate route: `/v2/fw/leaderboards/characters/`\n\
         \n---\nThis route expires daily at 11:05"
       operationId: "get_fw_leaderboards_characters"
       parameters:
@@ -19986,6 +20054,9 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
+      - "latest"
+      - "legacy"
+      - "v1"
       - "v2"
   /fw/leaderboards/corporations/:
     get:
@@ -19993,7 +20064,9 @@ paths:
       - "Faction Warfare"
       summary: "List of the top corporations in faction warfare"
       description: "Top 10 leaderboard of corporations for kills and victory points\
-        \ separated by total, last week and yesterday\n\n---\nAlternate route: `/v2/fw/leaderboards/corporations/`\n\
+        \ separated by total, last week and yesterday\n\n---\nAlternate route: `/latest/fw/leaderboards/corporations/`\n\
+        \nAlternate route: `/legacy/fw/leaderboards/corporations/`\n\nAlternate route:\
+        \ `/v1/fw/leaderboards/corporations/`\n\nAlternate route: `/v2/fw/leaderboards/corporations/`\n\
         \n---\nThis route expires daily at 11:05"
       operationId: "get_fw_leaderboards_corporations"
       parameters:
@@ -20117,6 +20190,9 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
+      - "latest"
+      - "legacy"
+      - "v1"
       - "v2"
   /fw/stats/:
     get:
@@ -20124,8 +20200,9 @@ paths:
       - "Faction Warfare"
       summary: "An overview of statistics about factions involved in faction warfare"
       description: "Statistical overviews of factions involved in faction warfare\n\
-        \n---\nAlternate route: `/v2/fw/stats/`\n\n---\nThis route expires daily at\
-        \ 11:05"
+        \n---\nAlternate route: `/latest/fw/stats/`\n\nAlternate route: `/legacy/fw/stats/`\n\
+        \nAlternate route: `/v1/fw/stats/`\n\nAlternate route: `/v2/fw/stats/`\n\n\
+        ---\nThis route expires daily at 11:05"
       operationId: "get_fw_stats"
       parameters:
       - name: "datasource"
@@ -20231,6 +20308,9 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
+      - "latest"
+      - "legacy"
+      - "v1"
       - "v2"
   /fw/systems/:
     get:
@@ -20348,7 +20428,9 @@ paths:
       - "Faction Warfare"
       summary: "Data about which NPC factions are at war"
       description: "Data about which NPC factions are at war\n\n---\nAlternate route:\
-        \ `/v2/fw/wars/`\n\n---\nThis route expires daily at 11:05"
+        \ `/latest/fw/wars/`\n\nAlternate route: `/legacy/fw/wars/`\n\nAlternate route:\
+        \ `/v1/fw/wars/`\n\nAlternate route: `/v2/fw/wars/`\n\n---\nThis route expires\
+        \ daily at 11:05"
       operationId: "get_fw_wars"
       parameters:
       - name: "datasource"
@@ -20445,6 +20527,9 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
+      - "latest"
+      - "legacy"
+      - "v1"
       - "v2"
   /incursions/:
     get:
