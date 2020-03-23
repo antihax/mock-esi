@@ -613,6 +613,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetFwSystems",
+		"Get",
+		"/latest/fw/systems/",
+		GetFwSystems,
+	)
+
+	mockesi.NewRoute(
 		"GetFwWars",
 		"Get",
 		"/latest/fw/wars/",

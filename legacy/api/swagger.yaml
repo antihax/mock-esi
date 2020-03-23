@@ -4887,9 +4887,9 @@ paths:
       summary: "Get active implants"
       description: "Return implants on the active clone of a character\n\n---\nAlternate\
         \ route: `/dev/characters/{character_id}/implants/`\n\nAlternate route: `/latest/characters/{character_id}/implants/`\n\
-        \nAlternate route: `/v1/characters/{character_id}/implants/`\n\nAlternate\
-        \ route: `/v2/characters/{character_id}/implants/`\n\n---\nThis route is cached\
-        \ for up to 120 seconds\n\n---\nWarning: This is a legacy route"
+        \nAlternate route: `/v1/characters/{character_id}/implants/`\n\n---\nThis\
+        \ route is cached for up to 120 seconds\n\n---\nWarning: This is a legacy\
+        \ route"
       operationId: "get_characters_character_id_implants"
       parameters:
       - name: "character_id"
@@ -5024,7 +5024,6 @@ paths:
       - "dev"
       - "latest"
       - "v1"
-      - "v2"
       x-cached-seconds: 120
   /characters/{character_id}/industry/jobs/:
     get:

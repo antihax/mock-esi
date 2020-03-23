@@ -693,9 +693,8 @@ paths:
       - "Clones"
       summary: "Get clones"
       description: "A list of the character's clones\n\n---\nAlternate route: `/dev/characters/{character_id}/clones/`\n\
-        \nAlternate route: `/latest/characters/{character_id}/clones/`\n\nAlternate\
-        \ route: `/v4/characters/{character_id}/clones/`\n\n---\nThis route is cached\
-        \ for up to 120 seconds"
+        \nAlternate route: `/latest/characters/{character_id}/clones/`\n\n---\nThis\
+        \ route is cached for up to 120 seconds"
       operationId: "get_characters_character_id_clones"
       parameters:
       - name: "character_id"
@@ -827,7 +826,6 @@ paths:
       x-alternate-versions:
       - "dev"
       - "latest"
-      - "v4"
       x-cached-seconds: 120
   /characters/{character_id}/cspa/:
     post:
@@ -2845,8 +2843,9 @@ paths:
       - "Faction Warfare"
       summary: "Ownership of faction warfare systems"
       description: "An overview of the current ownership of faction warfare solar\
-        \ systems\n\n---\nAlternate route: `/dev/fw/systems/`\n\n---\nThis route is\
-        \ cached for up to 1800 seconds"
+        \ systems\n\n---\nAlternate route: `/dev/fw/systems/`\n\nAlternate route:\
+        \ `/latest/fw/systems/`\n\nAlternate route: `/v2/fw/systems/`\n\n---\nThis\
+        \ route is cached for up to 1800 seconds"
       operationId: "get_fw_systems"
       parameters:
       - name: "datasource"
@@ -2948,6 +2947,8 @@ paths:
               error: "Gateway timeout message"
       x-alternate-versions:
       - "dev"
+      - "latest"
+      - "v2"
       x-cached-seconds: 1800
   /universe/names/:
     post:

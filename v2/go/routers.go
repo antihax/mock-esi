@@ -130,13 +130,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCharactersCharacterIdImplants",
-		"Get",
-		"/v2/characters/{character_id}/implants/",
-		GetCharactersCharacterIdImplants,
-	)
-
-	mockesi.NewRoute(
 		"DeleteCharactersCharacterIdContacts",
 		"Delete",
 		"/v2/characters/{character_id}/contacts/",
@@ -267,6 +260,13 @@ func init() {
 		"Get",
 		"/v2/fw/stats/",
 		GetFwStats,
+	)
+
+	mockesi.NewRoute(
+		"GetFwSystems",
+		"Get",
+		"/v2/fw/systems/",
+		GetFwSystems,
 	)
 
 	mockesi.NewRoute(
