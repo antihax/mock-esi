@@ -25,6 +25,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetAlliancesAllianceIdCorporations",
+		"Get",
+		"/legacy/alliances/{alliance_id}/corporations/",
+		GetAlliancesAllianceIdCorporations,
+	)
+
+	mockesi.NewRoute(
 		"GetAlliancesAllianceIdIcons",
 		"Get",
 		"/legacy/alliances/{alliance_id}/icons/",

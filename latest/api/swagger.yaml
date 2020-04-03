@@ -548,8 +548,9 @@ paths:
       summary: "List alliance's corporations"
       description: "List all current member corporations of an alliance\n\n---\nAlternate\
         \ route: `/dev/alliances/{alliance_id}/corporations/`\n\nAlternate route:\
-        \ `/v1/alliances/{alliance_id}/corporations/`\n\nAlternate route: `/v2/alliances/{alliance_id}/corporations/`\n\
-        \n---\nThis route is cached for up to 3600 seconds"
+        \ `/legacy/alliances/{alliance_id}/corporations/`\n\nAlternate route: `/v1/alliances/{alliance_id}/corporations/`\n\
+        \nAlternate route: `/v2/alliances/{alliance_id}/corporations/`\n\n---\nThis\
+        \ route is cached for up to 3600 seconds"
       operationId: "get_alliances_alliance_id_corporations"
       parameters:
       - name: "alliance_id"
@@ -658,6 +659,7 @@ paths:
               error: "Gateway timeout message"
       x-alternate-versions:
       - "dev"
+      - "legacy"
       - "v1"
       - "v2"
       x-cached-seconds: 3600
@@ -34874,6 +34876,7 @@ definitions:
         - "FighterTube3"
         - "FighterTube4"
         - "FleetHangar"
+        - "FrigateEscapeBay"
         - "Hangar"
         - "HangarAll"
         - "HiSlot0"
@@ -35238,6 +35241,7 @@ definitions:
         - "FighterTube3"
         - "FighterTube4"
         - "FleetHangar"
+        - "FrigateEscapeBay"
         - "Hangar"
         - "HangarAll"
         - "HiSlot0"
