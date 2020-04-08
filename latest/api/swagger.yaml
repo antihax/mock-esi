@@ -1152,8 +1152,8 @@ paths:
       - "Assets"
       summary: "Get character assets"
       description: "Return a list of the characters assets\n\n---\nAlternate route:\
-        \ `/v4/characters/{character_id}/assets/`\n\n---\nThis route is cached for\
-        \ up to 3600 seconds\n\n---\nWarning: This route has an upgrade available"
+        \ `/dev/characters/{character_id}/assets/`\n\nAlternate route: `/v5/characters/{character_id}/assets/`\n\
+        \n---\nThis route is cached for up to 3600 seconds"
       operationId: "get_characters_character_id_assets"
       parameters:
       - name: "character_id"
@@ -1301,7 +1301,8 @@ paths:
       - evesso:
         - "esi-assets.read_assets.v1"
       x-alternate-versions:
-      - "v4"
+      - "dev"
+      - "v5"
       x-cached-seconds: 3600
   /characters/{character_id}/assets/locations/:
     post:
@@ -11574,9 +11575,9 @@ paths:
       - "Assets"
       summary: "Get corporation assets"
       description: "Return a list of the corporation assets\n\n---\nAlternate route:\
-        \ `/v4/corporations/{corporation_id}/assets/`\n\n---\nThis route is cached\
-        \ for up to 3600 seconds\n\n---\nRequires one of the following EVE corporation\
-        \ role(s): Director\n\n\n---\nWarning: This route has an upgrade available"
+        \ `/dev/corporations/{corporation_id}/assets/`\n\nAlternate route: `/v5/corporations/{corporation_id}/assets/`\n\
+        \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
+        \ the following EVE corporation role(s): Director\n"
       operationId: "get_corporations_corporation_id_assets"
       parameters:
       - name: "corporation_id"
@@ -11724,7 +11725,8 @@ paths:
       - evesso:
         - "esi-assets.read_corporation_assets.v1"
       x-alternate-versions:
-      - "v4"
+      - "dev"
+      - "v5"
       x-cached-seconds: 3600
       x-required-roles:
       - "Director"
