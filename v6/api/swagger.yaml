@@ -40,6 +40,7 @@ paths:
         default: "tranquility"
         enum:
         - "tranquility"
+        - "singularity"
         x-exportParamName: "Datasource"
       - name: "If-None-Match"
         in: "header"
@@ -512,6 +513,7 @@ parameters:
     default: "tranquility"
     enum:
     - "tranquility"
+    - "singularity"
     x-exportParamName: "Datasource"
   page:
     name: "page"
