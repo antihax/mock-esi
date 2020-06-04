@@ -172,14 +172,125 @@ paths:
       - "dev"
       - "latest"
       x-cached-seconds: 3600
+  /characters/{character_id}/cspa/:
+    post:
+      tags:
+      - "Character"
+      summary: "Calculate a CSPA charge cost"
+      description: "Takes a source character ID in the url and a set of target character\
+        \ ID's in the body, returns a CSPA charge cost\n\n---\nAlternate route: `/dev/characters/{character_id}/cspa/`\n"
+      operationId: "post_characters_character_id_cspa"
+      parameters:
+      - name: "character_id"
+        in: "path"
+        description: "An EVE character ID"
+        required: true
+        type: "integer"
+        minimum: 1
+        format: "int32"
+        x-exportParamName: "CharacterId"
+      - in: "body"
+        name: "characters"
+        description: "The target characters to calculate the charge for"
+        required: true
+        schema:
+          title: "post_characters_character_id_cspa_characters"
+          type: "array"
+          description: "characters array"
+          items:
+            type: "integer"
+            format: "int32"
+            description: "character integer"
+            title: "post_characters_character_id_cspa_character"
+        x-exportParamName: "Characters"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      responses:
+        201:
+          description: "Aggregate cost of sending a mail from the source character\
+            \ to the target characters, in ISK"
+          schema:
+            type: "number"
+            format: "float"
+            description: "201 created number"
+            title: "post_characters_character_id_cspa_created"
+          examples:
+            application/json: 2950.0
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
+      security:
+      - evesso:
+        - "esi-characters.read_contacts.v1"
+      x-alternate-versions:
+      - "dev"
   /characters/{character_id}/notifications/:
     get:
       tags:
       - "Character"
       summary: "Get character notifications"
-      description: "Return character notifications\n\n---\nAlternate route: `/dev/characters/{character_id}/notifications/`\n\
-        \nAlternate route: `/latest/characters/{character_id}/notifications/`\n\n\
-        ---\nThis route is cached for up to 600 seconds"
+      description: "Return character notifications\n\n---\nAlternate route: `/latest/characters/{character_id}/notifications/`\n\
+        \n---\nThis route is cached for up to 600 seconds"
       operationId: "get_characters_character_id_notifications"
       parameters:
       - name: "character_id"
@@ -314,7 +425,6 @@ paths:
       - evesso:
         - "esi-characters.read_notifications.v1"
       x-alternate-versions:
-      - "dev"
       - "latest"
       x-cached-seconds: 600
   /characters/{character_id}/wallet/journal/:
@@ -649,6 +759,7 @@ securityDefinitions:
     scopes:
       esi-assets.read_assets.v1: "EVE SSO scope esi-assets.read_assets.v1"
       esi-assets.read_corporation_assets.v1: "EVE SSO scope esi-assets.read_corporation_assets.v1"
+      esi-characters.read_contacts.v1: "EVE SSO scope esi-characters.read_contacts.v1"
       esi-characters.read_notifications.v1: "EVE SSO scope esi-characters.read_notifications.v1"
       esi-wallet.read_character_wallet.v1: "EVE SSO scope esi-wallet.read_character_wallet.v1"
 definitions:
@@ -1085,6 +1196,7 @@ definitions:
         - "StructureCourierContractChanged"
         - "StructureDestroyed"
         - "StructureFuelAlert"
+        - "StructureImpendingAbandonmentAssetsAtRisk"
         - "StructureItemsDelivered"
         - "StructureItemsMovedToSafety"
         - "StructureLostArmor"

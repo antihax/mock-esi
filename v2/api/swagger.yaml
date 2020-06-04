@@ -641,6 +641,237 @@ paths:
               error: "Gateway timeout message"
       x-alternate-versions:
       - "dev"
+  /characters/affiliation/:
+    post:
+      tags:
+      - "Character"
+      summary: "Character affiliation"
+      description: "Bulk lookup of character IDs to corporation, alliance and faction\n\
+        \n---\nAlternate route: `/dev/characters/affiliation/`\n\n---\nThis route\
+        \ is cached for up to 3600 seconds"
+      operationId: "post_characters_affiliation"
+      parameters:
+      - in: "body"
+        name: "characters"
+        description: "The character IDs to fetch affiliations for. All characters\
+          \ must exist, or none will be returned"
+        required: true
+        schema:
+          title: "post_characters_affiliation_characters"
+          type: "array"
+          description: "characters array"
+          items:
+            type: "integer"
+            format: "int32"
+            description: "character integer"
+            title: "post_characters_affiliation_character"
+        x-exportParamName: "Characters"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      responses:
+        200:
+          description: "Character corporation, alliance and faction IDs"
+          schema:
+            type: "array"
+            description: "200 ok array"
+            title: "post_characters_affiliation_ok"
+            items:
+              $ref: "#/definitions/post_characters_affiliation_200_ok"
+            maxItems: 1000
+          examples:
+            application/json:
+            - alliance_id: 434243723
+              character_id: 95538921
+              corporation_id: 109299958
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
+      x-alternate-versions:
+      - "dev"
+      x-cached-seconds: 3600
+  /characters/{character_id}/agents_research/:
+    get:
+      tags:
+      - "Character"
+      summary: "Get agents research"
+      description: "Return a list of agents research information for a character.\
+        \ The formula for finding the current research points with an agent is: currentPoints\
+        \ = remainderPoints + pointsPerDay * days(currentTime - researchStartDate)\n\
+        \n---\nAlternate route: `/dev/characters/{character_id}/agents_research/`\n\
+        \n---\nThis route is cached for up to 3600 seconds"
+      operationId: "get_characters_character_id_agents_research"
+      parameters:
+      - name: "character_id"
+        in: "path"
+        description: "An EVE character ID"
+        required: true
+        type: "integer"
+        minimum: 1
+        format: "int32"
+        x-exportParamName: "CharacterId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "If-None-Match"
+        in: "header"
+        description: "ETag from a previous request. A 304 will be returned if this\
+          \ matches the current ETag"
+        required: false
+        type: "string"
+        x-exportParamName: "IfNoneMatch"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      responses:
+        200:
+          description: "A list of agents research information"
+          schema:
+            type: "array"
+            description: "200 ok array"
+            title: "get_characters_character_id_agents_research_ok"
+            items:
+              $ref: "#/definitions/get_characters_character_id_agents_research_200_ok"
+            maxItems: 1000
+          examples:
+            application/json:
+            - agent_id: 3009358
+              points_per_day: 53.5346162146776
+              remainder_points: 53604.0634303189
+              skill_type_id: 11450
+              started_at: "2017-03-23T14:47:00Z"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        304:
+          description: "Not modified"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
+      security:
+      - evesso:
+        - "esi-characters.read_agents_research.v1"
+      x-alternate-versions:
+      - "dev"
+      x-cached-seconds: 3600
   /characters/{character_id}/assets/locations/:
     post:
       tags:
@@ -768,9 +999,8 @@ paths:
       - "Character"
       summary: "Get blueprints"
       description: "Return a list of blueprints the character owns\n\n---\nAlternate\
-        \ route: `/dev/characters/{character_id}/blueprints/`\n\nAlternate route:\
-        \ `/latest/characters/{character_id}/blueprints/`\n\n---\nThis route is cached\
-        \ for up to 3600 seconds"
+        \ route: `/latest/characters/{character_id}/blueprints/`\n\n---\nThis route\
+        \ is cached for up to 3600 seconds"
       operationId: "get_characters_character_id_blueprints"
       parameters:
       - name: "character_id"
@@ -919,7 +1149,6 @@ paths:
       - evesso:
         - "esi-characters.read_blueprints.v1"
       x-alternate-versions:
-      - "dev"
       - "latest"
       x-cached-seconds: 3600
   /characters/{character_id}/bookmarks/:
@@ -2516,6 +2745,260 @@ paths:
       x-alternate-versions:
       - "dev"
       - "latest"
+  /characters/{character_id}/corporationhistory/:
+    get:
+      tags:
+      - "Character"
+      summary: "Get corporation history"
+      description: "Get a list of all the corporations a character has been a member\
+        \ of\n\n---\nAlternate route: `/dev/characters/{character_id}/corporationhistory/`\n\
+        \n---\nThis route is cached for up to 86400 seconds"
+      operationId: "get_characters_character_id_corporationhistory"
+      parameters:
+      - name: "character_id"
+        in: "path"
+        description: "An EVE character ID"
+        required: true
+        type: "integer"
+        minimum: 1
+        format: "int32"
+        x-exportParamName: "CharacterId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "If-None-Match"
+        in: "header"
+        description: "ETag from a previous request. A 304 will be returned if this\
+          \ matches the current ETag"
+        required: false
+        type: "string"
+        x-exportParamName: "IfNoneMatch"
+      responses:
+        200:
+          description: "Corporation history for the given character"
+          schema:
+            type: "array"
+            description: "200 ok array"
+            title: "get_characters_character_id_corporationhistory_ok"
+            items:
+              $ref: "#/definitions/get_characters_character_id_corporationhistory_200_ok"
+            maxItems: 10000
+          examples:
+            application/json:
+            - corporation_id: 90000001
+              is_deleted: true
+              record_id: 500
+              start_date: "2016-06-26T20:00:00Z"
+            - corporation_id: 90000002
+              record_id: 501
+              start_date: "2016-07-26T20:00:00Z"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        304:
+          description: "Not modified"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
+      x-alternate-versions:
+      - "dev"
+      x-cached-seconds: 86400
+  /characters/{character_id}/fatigue/:
+    get:
+      tags:
+      - "Character"
+      summary: "Get jump fatigue"
+      description: "Return a character's jump activation and fatigue information\n\
+        \n---\nAlternate route: `/dev/characters/{character_id}/fatigue/`\n\n---\n\
+        This route is cached for up to 300 seconds"
+      operationId: "get_characters_character_id_fatigue"
+      parameters:
+      - name: "character_id"
+        in: "path"
+        description: "An EVE character ID"
+        required: true
+        type: "integer"
+        minimum: 1
+        format: "int32"
+        x-exportParamName: "CharacterId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "If-None-Match"
+        in: "header"
+        description: "ETag from a previous request. A 304 will be returned if this\
+          \ matches the current ETag"
+        required: false
+        type: "string"
+        x-exportParamName: "IfNoneMatch"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      responses:
+        200:
+          description: "Jump activation and fatigue information"
+          schema:
+            $ref: "#/definitions/get_characters_character_id_fatigue_ok"
+          examples:
+            application/json:
+              jump_fatigue_expire_date: "2017-07-06T15:47:00Z"
+              last_jump_date: "2017-07-05T15:47:00Z"
+              last_update_date: "2017-07-05T15:42:00Z"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        304:
+          description: "Not modified"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
+      security:
+      - evesso:
+        - "esi-characters.read_fatigue.v1"
+      x-alternate-versions:
+      - "dev"
+      x-cached-seconds: 300
   /characters/{character_id}/fittings/:
     get:
       tags:
@@ -3440,6 +3923,304 @@ paths:
       - "dev"
       - "latest"
       - "legacy"
+  /characters/{character_id}/medals/:
+    get:
+      tags:
+      - "Character"
+      summary: "Get medals"
+      description: "Return a list of medals the character has\n\n---\nAlternate route:\
+        \ `/dev/characters/{character_id}/medals/`\n\n---\nThis route is cached for\
+        \ up to 3600 seconds"
+      operationId: "get_characters_character_id_medals"
+      parameters:
+      - name: "character_id"
+        in: "path"
+        description: "An EVE character ID"
+        required: true
+        type: "integer"
+        minimum: 1
+        format: "int32"
+        x-exportParamName: "CharacterId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "If-None-Match"
+        in: "header"
+        description: "ETag from a previous request. A 304 will be returned if this\
+          \ matches the current ETag"
+        required: false
+        type: "string"
+        x-exportParamName: "IfNoneMatch"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      responses:
+        200:
+          description: "A list of medals"
+          schema:
+            type: "array"
+            description: "200 ok array"
+            title: "get_characters_character_id_medals_ok"
+            items:
+              $ref: "#/definitions/get_characters_character_id_medals_200_ok"
+            maxItems: 1000
+          examples:
+            application/json:
+            - corporation_id: 98000001
+              date: "2017-03-16T15:01:45Z"
+              description: "For 33 corp!"
+              graphics:
+              - color: -1
+                graphic: "caldari.1_1"
+                layer: 0
+                part: 1
+              - color: -330271
+                graphic: "caldari.1_2"
+                layer: 1
+                part: 1
+              - color: -1
+                graphic: "compass.1_2"
+                layer: 0
+                part: 2
+              issuer_id: 2112000002
+              medal_id: 3
+              reason: "Thanks!"
+              status: "private"
+              title: "33 tester medal"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        304:
+          description: "Not modified"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
+      security:
+      - evesso:
+        - "esi-characters.read_medals.v1"
+      x-alternate-versions:
+      - "dev"
+      x-cached-seconds: 3600
+  /characters/{character_id}/notifications/contacts/:
+    get:
+      tags:
+      - "Character"
+      summary: "Get new contact notifications"
+      description: "Return notifications about having been added to someone's contact\
+        \ list\n\n---\nAlternate route: `/dev/characters/{character_id}/notifications/contacts/`\n\
+        \n---\nThis route is cached for up to 600 seconds"
+      operationId: "get_characters_character_id_notifications_contacts"
+      parameters:
+      - name: "character_id"
+        in: "path"
+        description: "An EVE character ID"
+        required: true
+        type: "integer"
+        minimum: 1
+        format: "int32"
+        x-exportParamName: "CharacterId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "If-None-Match"
+        in: "header"
+        description: "ETag from a previous request. A 304 will be returned if this\
+          \ matches the current ETag"
+        required: false
+        type: "string"
+        x-exportParamName: "IfNoneMatch"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      responses:
+        200:
+          description: "A list of contact notifications"
+          schema:
+            type: "array"
+            description: "200 ok array"
+            title: "get_characters_character_id_notifications_contacts_ok"
+            items:
+              $ref: "#/definitions/get_characters_character_id_notifications_contacts_200_ok"
+            maxItems: 50
+          examples:
+            application/json:
+            - message: "hello friend :3"
+              notification_id: 1
+              send_date: "2017-08-16T10:08:00Z"
+              sender_character_id: 95465499
+              standing_level: 1.5
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        304:
+          description: "Not modified"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
+      security:
+      - evesso:
+        - "esi-characters.read_notifications.v1"
+      x-alternate-versions:
+      - "dev"
+      x-cached-seconds: 600
   /characters/{character_id}/online/:
     get:
       tags:
@@ -3852,8 +4633,8 @@ paths:
       - "Character"
       summary: "Get character corporation roles"
       description: "Returns a character's corporation roles\n\n---\nAlternate route:\
-        \ `/dev/characters/{character_id}/roles/`\n\nAlternate route: `/latest/characters/{character_id}/roles/`\n\
-        \n---\nThis route is cached for up to 3600 seconds"
+        \ `/latest/characters/{character_id}/roles/`\n\n---\nThis route is cached\
+        \ for up to 3600 seconds"
       operationId: "get_characters_character_id_roles"
       parameters:
       - name: "character_id"
@@ -3978,7 +4759,6 @@ paths:
       - evesso:
         - "esi-characters.read_corporation_roles.v1"
       x-alternate-versions:
-      - "dev"
       - "latest"
       x-cached-seconds: 3600
   /characters/{character_id}/ship/:
@@ -4275,6 +5055,151 @@ paths:
       - "latest"
       - "legacy"
       x-cached-seconds: 120
+  /characters/{character_id}/standings/:
+    get:
+      tags:
+      - "Character"
+      summary: "Get standings"
+      description: "Return character standings from agents, NPC corporations, and\
+        \ factions\n\n---\nAlternate route: `/dev/characters/{character_id}/standings/`\n\
+        \n---\nThis route is cached for up to 3600 seconds"
+      operationId: "get_characters_character_id_standings"
+      parameters:
+      - name: "character_id"
+        in: "path"
+        description: "An EVE character ID"
+        required: true
+        type: "integer"
+        minimum: 1
+        format: "int32"
+        x-exportParamName: "CharacterId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "If-None-Match"
+        in: "header"
+        description: "ETag from a previous request. A 304 will be returned if this\
+          \ matches the current ETag"
+        required: false
+        type: "string"
+        x-exportParamName: "IfNoneMatch"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      responses:
+        200:
+          description: "A list of standings"
+          schema:
+            type: "array"
+            description: "200 ok array"
+            title: "get_characters_character_id_standings_ok"
+            items:
+              $ref: "#/definitions/get_characters_character_id_standings_200_ok"
+            maxItems: 10000
+          examples:
+            application/json:
+            - from_id: 3009841
+              from_type: "agent"
+              standing: 0.1
+            - from_id: 1000061
+              from_type: "npc_corp"
+              standing: 0
+            - from_id: 500003
+              from_type: "faction"
+              standing: -1
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        304:
+          description: "Not modified"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
+      security:
+      - evesso:
+        - "esi-characters.read_standings.v1"
+      x-alternate-versions:
+      - "dev"
+      x-cached-seconds: 3600
   /characters/{character_id}/stats/:
     get:
       tags:
@@ -4426,6 +5351,143 @@ paths:
       - "dev"
       - "latest"
       x-cached-seconds: 86400
+  /characters/{character_id}/titles/:
+    get:
+      tags:
+      - "Character"
+      summary: "Get character corporation titles"
+      description: "Returns a character's titles\n\n---\nAlternate route: `/dev/characters/{character_id}/titles/`\n\
+        \n---\nThis route is cached for up to 3600 seconds"
+      operationId: "get_characters_character_id_titles"
+      parameters:
+      - name: "character_id"
+        in: "path"
+        description: "An EVE character ID"
+        required: true
+        type: "integer"
+        minimum: 1
+        format: "int32"
+        x-exportParamName: "CharacterId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        - "singularity"
+        x-exportParamName: "Datasource"
+      - name: "If-None-Match"
+        in: "header"
+        description: "ETag from a previous request. A 304 will be returned if this\
+          \ matches the current ETag"
+        required: false
+        type: "string"
+        x-exportParamName: "IfNoneMatch"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      responses:
+        200:
+          description: "A list of titles"
+          schema:
+            type: "array"
+            description: "200 ok array"
+            title: "get_characters_character_id_titles_ok"
+            items:
+              $ref: "#/definitions/get_characters_character_id_titles_200_ok"
+            maxItems: 16
+          examples:
+            application/json:
+            - name: "Awesome Title"
+              title_id: 1
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        304:
+          description: "Not modified"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
+      security:
+      - evesso:
+        - "esi-characters.read_titles.v1"
+      x-alternate-versions:
+      - "dev"
+      x-cached-seconds: 3600
   /characters/{character_id}/wallet/:
     get:
       tags:
@@ -8264,10 +9326,16 @@ securityDefinitions:
       esi-bookmarks.read_character_bookmarks.v1: "EVE SSO scope esi-bookmarks.read_character_bookmarks.v1"
       esi-calendar.read_calendar_events.v1: "EVE SSO scope esi-calendar.read_calendar_events.v1"
       esi-calendar.respond_calendar_events.v1: "EVE SSO scope esi-calendar.respond_calendar_events.v1"
+      esi-characters.read_agents_research.v1: "EVE SSO scope esi-characters.read_agents_research.v1"
       esi-characters.read_blueprints.v1: "EVE SSO scope esi-characters.read_blueprints.v1"
       esi-characters.read_contacts.v1: "EVE SSO scope esi-characters.read_contacts.v1"
       esi-characters.read_corporation_roles.v1: "EVE SSO scope esi-characters.read_corporation_roles.v1"
+      esi-characters.read_fatigue.v1: "EVE SSO scope esi-characters.read_fatigue.v1"
       esi-characters.read_fw_stats.v1: "EVE SSO scope esi-characters.read_fw_stats.v1"
+      esi-characters.read_medals.v1: "EVE SSO scope esi-characters.read_medals.v1"
+      esi-characters.read_notifications.v1: "EVE SSO scope esi-characters.read_notifications.v1"
+      esi-characters.read_standings.v1: "EVE SSO scope esi-characters.read_standings.v1"
+      esi-characters.read_titles.v1: "EVE SSO scope esi-characters.read_titles.v1"
       esi-characters.write_contacts.v1: "EVE SSO scope esi-characters.write_contacts.v1"
       esi-characterstats.read.v1: "EVE SSO scope esi-characterstats.read.v1"
       esi-clones.read_clones.v1: "EVE SSO scope esi-clones.read_clones.v1"
@@ -8454,6 +9522,66 @@ definitions:
         description: "error message"
         title: "get_alliances_alliance_id_icons_error"
     description: "No image server for this datasource"
+  post_characters_affiliation_200_ok:
+    required:
+    - "character_id"
+    - "corporation_id"
+    properties:
+      alliance_id:
+        type: "integer"
+        format: "int32"
+        description: "The character's alliance ID, if their corporation is in an alliance"
+        title: "post_characters_affiliation_alliance_id"
+      character_id:
+        type: "integer"
+        format: "int32"
+        description: "The character's ID"
+        title: "post_characters_affiliation_character_id"
+      corporation_id:
+        type: "integer"
+        format: "int32"
+        description: "The character's corporation ID"
+        title: "post_characters_affiliation_corporation_id"
+      faction_id:
+        type: "integer"
+        format: "int32"
+        description: "The character's faction ID, if their corporation is in a faction"
+        title: "post_characters_affiliation_faction_id"
+    description: "200 ok object"
+  get_characters_character_id_agents_research_200_ok:
+    required:
+    - "agent_id"
+    - "points_per_day"
+    - "remainder_points"
+    - "skill_type_id"
+    - "started_at"
+    properties:
+      agent_id:
+        type: "integer"
+        format: "int32"
+        description: "agent_id integer"
+        title: "get_characters_character_id_agents_research_agent_id"
+      points_per_day:
+        type: "number"
+        format: "float"
+        description: "points_per_day number"
+        title: "get_characters_character_id_agents_research_points_per_day"
+      remainder_points:
+        type: "number"
+        format: "float"
+        description: "remainder_points number"
+        title: "get_characters_character_id_agents_research_remainder_points"
+      skill_type_id:
+        type: "integer"
+        format: "int32"
+        description: "skill_type_id integer"
+        title: "get_characters_character_id_agents_research_skill_type_id"
+      started_at:
+        type: "string"
+        format: "date-time"
+        description: "started_at string"
+        title: "get_characters_character_id_agents_research_started_at"
+    description: "200 ok object"
   post_characters_character_id_assets_locations_position:
     required:
     - "x"
@@ -8954,6 +10082,51 @@ definitions:
         description: "Error 520 message"
         title: "post_characters_character_id_contacts_520_error_520"
     description: "Error 520"
+  get_characters_character_id_corporationhistory_200_ok:
+    required:
+    - "corporation_id"
+    - "record_id"
+    - "start_date"
+    properties:
+      corporation_id:
+        type: "integer"
+        format: "int32"
+        description: "corporation_id integer"
+        title: "get_characters_character_id_corporationhistory_corporation_id"
+      is_deleted:
+        type: "boolean"
+        description: "True if the corporation has been deleted"
+        title: "get_characters_character_id_corporationhistory_is_deleted"
+      record_id:
+        type: "integer"
+        format: "int32"
+        description: "An incrementing ID that can be used to canonically establish\
+          \ order of records in cases where dates may be ambiguous"
+        title: "get_characters_character_id_corporationhistory_record_id"
+      start_date:
+        type: "string"
+        format: "date-time"
+        description: "start_date string"
+        title: "get_characters_character_id_corporationhistory_start_date"
+    description: "200 ok object"
+  get_characters_character_id_fatigue_ok:
+    properties:
+      jump_fatigue_expire_date:
+        type: "string"
+        format: "date-time"
+        description: "Character's jump fatigue expiry"
+        title: "get_characters_character_id_fatigue_jump_fatigue_expire_date"
+      last_jump_date:
+        type: "string"
+        format: "date-time"
+        description: "Character's last jump activation"
+        title: "get_characters_character_id_fatigue_last_jump_date"
+      last_update_date:
+        type: "string"
+        format: "date-time"
+        description: "Character's last jump update"
+        title: "get_characters_character_id_fatigue_last_update_date"
+    description: "200 ok object"
   get_characters_character_id_fittings_item:
     required:
     - "flag"
@@ -9391,6 +10564,127 @@ definitions:
         maxLength: 40
     title: "post_characters_character_id_mail_labels_label"
     description: "label object"
+  get_characters_character_id_medals_graphic:
+    required:
+    - "graphic"
+    - "layer"
+    - "part"
+    properties:
+      color:
+        type: "integer"
+        format: "int32"
+        description: "color integer"
+        title: "get_characters_character_id_medals_color"
+      graphic:
+        type: "string"
+        description: "graphic string"
+        title: "get_characters_character_id_medals_graphic_graphic"
+      layer:
+        type: "integer"
+        format: "int32"
+        description: "layer integer"
+        title: "get_characters_character_id_medals_layer"
+      part:
+        type: "integer"
+        format: "int32"
+        description: "part integer"
+        title: "get_characters_character_id_medals_part"
+    description: "graphic object"
+  get_characters_character_id_medals_200_ok:
+    required:
+    - "corporation_id"
+    - "date"
+    - "description"
+    - "graphics"
+    - "issuer_id"
+    - "medal_id"
+    - "reason"
+    - "status"
+    - "title"
+    properties:
+      corporation_id:
+        type: "integer"
+        format: "int32"
+        description: "corporation_id integer"
+        title: "get_characters_character_id_medals_corporation_id"
+      date:
+        type: "string"
+        format: "date-time"
+        description: "date string"
+        title: "get_characters_character_id_medals_date"
+      description:
+        type: "string"
+        description: "description string"
+        title: "get_characters_character_id_medals_description"
+      graphics:
+        type: "array"
+        description: "graphics array"
+        title: "get_characters_character_id_medals_graphics"
+        items:
+          $ref: "#/definitions/get_characters_character_id_medals_graphic"
+        maxItems: 9
+        minItems: 3
+      issuer_id:
+        type: "integer"
+        format: "int32"
+        description: "issuer_id integer"
+        title: "get_characters_character_id_medals_issuer_id"
+      medal_id:
+        type: "integer"
+        format: "int32"
+        description: "medal_id integer"
+        title: "get_characters_character_id_medals_medal_id"
+      reason:
+        type: "string"
+        description: "reason string"
+        title: "get_characters_character_id_medals_reason"
+      status:
+        type: "string"
+        description: "status string"
+        title: "get_characters_character_id_medals_status"
+        enum:
+        - "public"
+        - "private"
+      title:
+        type: "string"
+        description: "title string"
+        title: "get_characters_character_id_medals_title"
+    description: "200 ok object"
+  get_characters_character_id_notifications_contacts_200_ok:
+    required:
+    - "message"
+    - "notification_id"
+    - "send_date"
+    - "sender_character_id"
+    - "standing_level"
+    properties:
+      message:
+        type: "string"
+        description: "message string"
+        title: "get_characters_character_id_notifications_contacts_message"
+      notification_id:
+        type: "integer"
+        format: "int32"
+        description: "notification_id integer"
+        title: "get_characters_character_id_notifications_contacts_notification_id"
+      send_date:
+        type: "string"
+        format: "date-time"
+        description: "send_date string"
+        title: "get_characters_character_id_notifications_contacts_send_date"
+      sender_character_id:
+        type: "integer"
+        format: "int32"
+        description: "sender_character_id integer"
+        title: "get_characters_character_id_notifications_contacts_sender_character_id"
+      standing_level:
+        type: "number"
+        format: "float"
+        description: "A number representing the standing level the receiver has been\
+          \ added at by the sender. The standing levels are as follows: -10 -> Terrible\
+          \ | -5 -> Bad |  0 -> Neutral |  5 -> Good |  10 -> Excellent"
+        title: "get_characters_character_id_notifications_contacts_standing_level"
+    description: "200 ok object"
   get_characters_character_id_online_ok:
     required:
     - "online"
@@ -9847,6 +11141,31 @@ definitions:
         format: "int32"
         description: "training_start_sp integer"
         title: "get_characters_character_id_skillqueue_training_start_sp"
+    description: "200 ok object"
+  get_characters_character_id_standings_200_ok:
+    required:
+    - "from_id"
+    - "from_type"
+    - "standing"
+    properties:
+      from_id:
+        type: "integer"
+        format: "int32"
+        description: "from_id integer"
+        title: "get_characters_character_id_standings_from_id"
+      from_type:
+        type: "string"
+        description: "from_type string"
+        title: "get_characters_character_id_standings_from_type"
+        enum:
+        - "agent"
+        - "npc_corp"
+        - "faction"
+      standing:
+        type: "number"
+        format: "float"
+        description: "standing number"
+        title: "get_characters_character_id_standings_standing"
     description: "200 ok object"
   get_characters_character_id_stats_character:
     properties:
@@ -11373,6 +12692,18 @@ definitions:
         description: "Gregorian year for this set of aggregates"
         title: "get_characters_character_id_stats_year"
     description: "Aggregate stats for a year"
+  get_characters_character_id_titles_200_ok:
+    properties:
+      name:
+        type: "string"
+        description: "name string"
+        title: "get_characters_character_id_titles_name"
+      title_id:
+        type: "integer"
+        format: "int32"
+        description: "title_id integer"
+        title: "get_characters_character_id_titles_title_id"
+    description: "200 ok object"
   get_corporations_corporation_id_alliancehistory_200_ok:
     required:
     - "record_id"

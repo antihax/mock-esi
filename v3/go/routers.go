@@ -39,10 +39,24 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdBlueprints",
+		"Get",
+		"/v3/characters/{character_id}/blueprints/",
+		GetCharactersCharacterIdBlueprints,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdPortrait",
 		"Get",
 		"/v3/characters/{character_id}/portrait/",
 		GetCharactersCharacterIdPortrait,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdRoles",
+		"Get",
+		"/v3/characters/{character_id}/roles/",
+		GetCharactersCharacterIdRoles,
 	)
 
 	mockesi.NewRoute(

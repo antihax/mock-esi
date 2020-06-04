@@ -792,10 +792,9 @@ paths:
       - "Character"
       summary: "Character affiliation"
       description: "Bulk lookup of character IDs to corporation, alliance and faction\n\
-        \n---\nAlternate route: `/dev/characters/affiliation/`\n\nAlternate route:\
-        \ `/latest/characters/affiliation/`\n\nAlternate route: `/v1/characters/affiliation/`\n\
-        \n---\nThis route is cached for up to 3600 seconds\n\n---\nWarning: This is\
-        \ a legacy route"
+        \n---\nAlternate route: `/latest/characters/affiliation/`\n\nAlternate route:\
+        \ `/v1/characters/affiliation/`\n\n---\nThis route is cached for up to 3600\
+        \ seconds\n\n---\nWarning: This is a legacy route"
       operationId: "post_characters_affiliation"
       parameters:
       - in: "body"
@@ -881,7 +880,6 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "latest"
       - "v1"
       x-cached-seconds: 3600
@@ -1018,9 +1016,8 @@ paths:
       description: "Return a list of agents research information for a character.\
         \ The formula for finding the current research points with an agent is: currentPoints\
         \ = remainderPoints + pointsPerDay * days(currentTime - researchStartDate)\n\
-        \n---\nAlternate route: `/dev/characters/{character_id}/agents_research/`\n\
-        \nAlternate route: `/latest/characters/{character_id}/agents_research/`\n\n\
-        Alternate route: `/v1/characters/{character_id}/agents_research/`\n\n---\n\
+        \n---\nAlternate route: `/latest/characters/{character_id}/agents_research/`\n\
+        \nAlternate route: `/v1/characters/{character_id}/agents_research/`\n\n---\n\
         This route is cached for up to 3600 seconds\n\n---\nWarning: This is a legacy\
         \ route"
       operationId: "get_characters_character_id_agents_research"
@@ -1154,7 +1151,6 @@ paths:
       - evesso:
         - "esi-characters.read_agents_research.v1"
       x-alternate-versions:
-      - "dev"
       - "latest"
       - "v1"
       x-cached-seconds: 3600
@@ -4040,8 +4036,7 @@ paths:
       - "Character"
       summary: "Get corporation history"
       description: "Get a list of all the corporations a character has been a member\
-        \ of\n\n---\nAlternate route: `/dev/characters/{character_id}/corporationhistory/`\n\
-        \nAlternate route: `/latest/characters/{character_id}/corporationhistory/`\n\
+        \ of\n\n---\nAlternate route: `/latest/characters/{character_id}/corporationhistory/`\n\
         \nAlternate route: `/v1/characters/{character_id}/corporationhistory/`\n\n\
         ---\nThis route is cached for up to 86400 seconds\n\n---\nWarning: This is\
         \ a legacy route"
@@ -4155,7 +4150,6 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "latest"
       - "v1"
       x-cached-seconds: 86400
@@ -4270,10 +4264,9 @@ paths:
       - "Character"
       summary: "Get jump fatigue"
       description: "Return a character's jump activation and fatigue information\n\
-        \n---\nAlternate route: `/dev/characters/{character_id}/fatigue/`\n\nAlternate\
-        \ route: `/latest/characters/{character_id}/fatigue/`\n\nAlternate route:\
-        \ `/v1/characters/{character_id}/fatigue/`\n\n---\nThis route is cached for\
-        \ up to 300 seconds\n\n---\nWarning: This is a legacy route"
+        \n---\nAlternate route: `/latest/characters/{character_id}/fatigue/`\n\nAlternate\
+        \ route: `/v1/characters/{character_id}/fatigue/`\n\n---\nThis route is cached\
+        \ for up to 300 seconds\n\n---\nWarning: This is a legacy route"
       operationId: "get_characters_character_id_fatigue"
       parameters:
       - name: "character_id"
@@ -4398,7 +4391,6 @@ paths:
       - evesso:
         - "esi-characters.read_fatigue.v1"
       x-alternate-versions:
-      - "dev"
       - "latest"
       - "v1"
       x-cached-seconds: 300
@@ -7084,9 +7076,9 @@ paths:
       - "Character"
       summary: "Get medals"
       description: "Return a list of medals the character has\n\n---\nAlternate route:\
-        \ `/dev/characters/{character_id}/medals/`\n\nAlternate route: `/latest/characters/{character_id}/medals/`\n\
-        \nAlternate route: `/v1/characters/{character_id}/medals/`\n\n---\nThis route\
-        \ is cached for up to 3600 seconds\n\n---\nWarning: This is a legacy route"
+        \ `/latest/characters/{character_id}/medals/`\n\nAlternate route: `/v1/characters/{character_id}/medals/`\n\
+        \n---\nThis route is cached for up to 3600 seconds\n\n---\nWarning: This is\
+        \ a legacy route"
       operationId: "get_characters_character_id_medals"
       parameters:
       - name: "character_id"
@@ -7234,7 +7226,6 @@ paths:
       - evesso:
         - "esi-characters.read_medals.v1"
       x-alternate-versions:
-      - "dev"
       - "latest"
       - "v1"
       x-cached-seconds: 3600
@@ -7551,8 +7542,7 @@ paths:
       - "Character"
       summary: "Get new contact notifications"
       description: "Return notifications about having been added to someone's contact\
-        \ list\n\n---\nAlternate route: `/dev/characters/{character_id}/notifications/contacts/`\n\
-        \nAlternate route: `/latest/characters/{character_id}/notifications/contacts/`\n\
+        \ list\n\n---\nAlternate route: `/latest/characters/{character_id}/notifications/contacts/`\n\
         \nAlternate route: `/v1/characters/{character_id}/notifications/contacts/`\n\
         \n---\nThis route is cached for up to 600 seconds\n\n---\nWarning: This is\
         \ a legacy route"
@@ -7687,7 +7677,6 @@ paths:
       - evesso:
         - "esi-characters.read_notifications.v1"
       x-alternate-versions:
-      - "dev"
       - "latest"
       - "v1"
       x-cached-seconds: 600
@@ -9421,10 +9410,10 @@ paths:
       - "Character"
       summary: "Get standings"
       description: "Return character standings from agents, NPC corporations, and\
-        \ factions\n\n---\nAlternate route: `/dev/characters/{character_id}/standings/`\n\
-        \nAlternate route: `/latest/characters/{character_id}/standings/`\n\nAlternate\
-        \ route: `/v1/characters/{character_id}/standings/`\n\n---\nThis route is\
-        \ cached for up to 3600 seconds\n\n---\nWarning: This is a legacy route"
+        \ factions\n\n---\nAlternate route: `/latest/characters/{character_id}/standings/`\n\
+        \nAlternate route: `/v1/characters/{character_id}/standings/`\n\n---\nThis\
+        \ route is cached for up to 3600 seconds\n\n---\nWarning: This is a legacy\
+        \ route"
       operationId: "get_characters_character_id_standings"
       parameters:
       - name: "character_id"
@@ -9560,7 +9549,6 @@ paths:
       - evesso:
         - "esi-characters.read_standings.v1"
       x-alternate-versions:
-      - "dev"
       - "latest"
       - "v1"
       x-cached-seconds: 3600
@@ -9711,10 +9699,9 @@ paths:
       tags:
       - "Character"
       summary: "Get character corporation titles"
-      description: "Returns a character's titles\n\n---\nAlternate route: `/dev/characters/{character_id}/titles/`\n\
-        \nAlternate route: `/latest/characters/{character_id}/titles/`\n\nAlternate\
-        \ route: `/v1/characters/{character_id}/titles/`\n\n---\nThis route is cached\
-        \ for up to 3600 seconds\n\n---\nWarning: This is a legacy route"
+      description: "Returns a character's titles\n\n---\nAlternate route: `/latest/characters/{character_id}/titles/`\n\
+        \nAlternate route: `/v1/characters/{character_id}/titles/`\n\n---\nThis route\
+        \ is cached for up to 3600 seconds\n\n---\nWarning: This is a legacy route"
       operationId: "get_characters_character_id_titles"
       parameters:
       - name: "character_id"
@@ -9843,7 +9830,6 @@ paths:
       - evesso:
         - "esi-characters.read_titles.v1"
       x-alternate-versions:
-      - "dev"
       - "latest"
       - "v1"
       x-cached-seconds: 3600

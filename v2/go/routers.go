@@ -95,10 +95,45 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdAgentsResearch",
+		"Get",
+		"/v2/characters/{character_id}/agents_research/",
+		GetCharactersCharacterIdAgentsResearch,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdBlueprints",
 		"Get",
 		"/v2/characters/{character_id}/blueprints/",
 		GetCharactersCharacterIdBlueprints,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdCorporationhistory",
+		"Get",
+		"/v2/characters/{character_id}/corporationhistory/",
+		GetCharactersCharacterIdCorporationhistory,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdFatigue",
+		"Get",
+		"/v2/characters/{character_id}/fatigue/",
+		GetCharactersCharacterIdFatigue,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdMedals",
+		"Get",
+		"/v2/characters/{character_id}/medals/",
+		GetCharactersCharacterIdMedals,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdNotificationsContacts",
+		"Get",
+		"/v2/characters/{character_id}/notifications/contacts/",
+		GetCharactersCharacterIdNotificationsContacts,
 	)
 
 	mockesi.NewRoute(
@@ -116,10 +151,31 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdStandings",
+		"Get",
+		"/v2/characters/{character_id}/standings/",
+		GetCharactersCharacterIdStandings,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdStats",
 		"Get",
 		"/v2/characters/{character_id}/stats/",
 		GetCharactersCharacterIdStats,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdTitles",
+		"Get",
+		"/v2/characters/{character_id}/titles/",
+		GetCharactersCharacterIdTitles,
+	)
+
+	mockesi.NewRoute(
+		"PostCharactersAffiliation",
+		"Post",
+		"/v2/characters/affiliation/",
+		PostCharactersAffiliation,
 	)
 
 	mockesi.NewRoute(

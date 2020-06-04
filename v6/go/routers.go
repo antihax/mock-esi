@@ -11,6 +11,13 @@ import (
 func init() {
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdNotifications",
+		"Get",
+		"/v6/characters/{character_id}/notifications/",
+		GetCharactersCharacterIdNotifications,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdWalletJournal",
 		"Get",
 		"/v6/characters/{character_id}/wallet/journal/",
