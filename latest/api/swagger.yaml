@@ -31403,6 +31403,7 @@ definitions:
         - "WarAllyOfferDeclinedMsg"
         - "WarConcordInvalidates"
         - "WarDeclared"
+        - "WarEndedHqSecurityDrop"
         - "WarHQRemovedFromSpace"
         - "WarInherited"
         - "WarInvalid"
