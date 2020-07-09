@@ -2293,9 +2293,11 @@ paths:
       - "Calendar"
       summary: "Get an event"
       description: "Get all the information for a specific event\n\n---\nAlternate\
-        \ route: `/v2/characters/{character_id}/calendar/{event_id}/`\n\n---\nThis\
-        \ route is cached for up to 5 seconds\n\n---\nWarning: This route is deprecated\n\
-        \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#GET-/characters/{character_id}/calendar/{event_id}/)"
+        \ route: `/dev/characters/{character_id}/calendar/{event_id}/`\n\nAlternate\
+        \ route: `/latest/characters/{character_id}/calendar/{event_id}/`\n\nAlternate\
+        \ route: `/v3/characters/{character_id}/calendar/{event_id}/`\n\nAlternate\
+        \ route: `/v4/characters/{character_id}/calendar/{event_id}/`\n\n---\nThis\
+        \ route is cached for up to 5 seconds\n\n---\nWarning: This is a legacy route"
       operationId: "get_characters_character_id_calendar_event_id"
       parameters:
       - name: "character_id"
@@ -2343,19 +2345,19 @@ paths:
             $ref: "#/definitions/get_characters_character_id_calendar_event_id_ok"
           examples:
             application/json:
-              duration_in_minutes: 60
-              event_date: "2016-06-26T21:00:00Z"
+              date: "2016-06-26T21:00:00Z"
+              duration: 60
               event_id: 1386435
-              event_response: "Undecided"
-              event_text: "o7: The EVE Online Show features latest developer news,\
-                \ fast paced action, community overviews and a lot more with CCP Guard\
-                \ and CCP Mimic. Join the thrilling o7 live broadcast at 20:00 EVE\
-                \ time (=UTC) on <a href=\"http://www.twitch.tv/ccp\">EVE TV</a>.\
-                \ Don't miss it!"
               importance: 1
               owner_id: 1
               owner_name: "EVE System"
-              owner_type_id: 0
+              owner_type: "eve_server"
+              response: "Undecided"
+              text: "o7: The EVE Online Show features latest developer news, fast\
+                \ paced action, community overviews and a lot more with CCP Guard\
+                \ and CCP Mimic. Join the thrilling o7 live broadcast at 20:00 EVE\
+                \ time (=UTC) on <a href=\"http://www.twitch.tv/ccp\">EVE TV</a>.\
+                \ Don't miss it!"
               title: "o7 The EVE Online Show"
           headers:
             Cache-Control:
@@ -2444,17 +2446,22 @@ paths:
       security:
       - evesso:
         - "esi-calendar.read_calendar_events.v1"
-      deprecated: true
       x-alternate-versions:
-      - "v2"
+      - "dev"
+      - "latest"
+      - "v3"
+      - "v4"
       x-cached-seconds: 5
     put:
       tags:
       - "Calendar"
       summary: "Respond to an event"
       description: "Set your response status to an event\n\n---\nAlternate route:\
-        \ `/v2/characters/{character_id}/calendar/{event_id}/`\n\n\n---\nWarning:\
-        \ This route is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#PUT-/characters/{character_id}/calendar/{event_id}/)"
+        \ `/dev/characters/{character_id}/calendar/{event_id}/`\n\nAlternate route:\
+        \ `/latest/characters/{character_id}/calendar/{event_id}/`\n\nAlternate route:\
+        \ `/v3/characters/{character_id}/calendar/{event_id}/`\n\nAlternate route:\
+        \ `/v4/characters/{character_id}/calendar/{event_id}/`\n\n---\nThis route\
+        \ is cached for up to 5 seconds\n\n---\nWarning: This is a legacy route"
       operationId: "put_characters_character_id_calendar_event_id"
       parameters:
       - name: "character_id"
@@ -2482,15 +2489,12 @@ paths:
         type: "integer"
         format: "int32"
         x-exportParamName: "EventId"
-      - name: "response"
-        in: "query"
+      - in: "body"
+        name: "response"
         description: "The response value to set, overriding current value"
         required: true
-        type: "string"
-        enum:
-        - "accepted"
-        - "declined"
-        - "tentative"
+        schema:
+          $ref: "#/definitions/put_characters_character_id_calendar_event_id_response"
         x-exportParamName: "Response"
       - name: "token"
         in: "query"
@@ -2553,9 +2557,12 @@ paths:
       security:
       - evesso:
         - "esi-calendar.respond_calendar_events.v1"
-      deprecated: true
       x-alternate-versions:
-      - "v2"
+      - "dev"
+      - "latest"
+      - "v3"
+      - "v4"
+      x-cached-seconds: 5
   /characters/{character_id}/calendar/{event_id}/attendees/:
     get:
       tags:
@@ -29688,30 +29695,33 @@ definitions:
         title: "get_characters_character_id_calendar_title"
     description: "event"
   get_characters_character_id_calendar_event_id_ok:
+    required:
+    - "date"
+    - "duration"
+    - "event_id"
+    - "importance"
+    - "owner_id"
+    - "owner_name"
+    - "owner_type"
+    - "response"
+    - "text"
+    - "title"
     properties:
-      duration_in_minutes:
-        type: "integer"
-        format: "int32"
-        description: "duration_in_minutes integer"
-        title: "get_characters_character_id_calendar_event_id_duration_in_minutes"
-      event_date:
+      date:
         type: "string"
         format: "date-time"
-        description: "event_date string"
-        title: "get_characters_character_id_calendar_event_id_event_date"
+        description: "date string"
+        title: "get_characters_character_id_calendar_event_id_date"
+      duration:
+        type: "integer"
+        format: "int32"
+        description: "Length in minutes"
+        title: "get_characters_character_id_calendar_event_id_duration"
       event_id:
         type: "integer"
         format: "int32"
         description: "event_id integer"
         title: "get_characters_character_id_calendar_event_id_event_id"
-      event_response:
-        type: "string"
-        description: "event_response string"
-        title: "get_characters_character_id_calendar_event_id_event_response"
-      event_text:
-        type: "string"
-        description: "event_text string"
-        title: "get_characters_character_id_calendar_event_id_event_text"
       importance:
         type: "integer"
         format: "int32"
@@ -29726,11 +29736,24 @@ definitions:
         type: "string"
         description: "owner_name string"
         title: "get_characters_character_id_calendar_event_id_owner_name"
-      owner_type_id:
-        type: "integer"
-        format: "int32"
-        description: "owner_type_id integer"
-        title: "get_characters_character_id_calendar_event_id_owner_type_id"
+      owner_type:
+        type: "string"
+        description: "owner_type string"
+        title: "get_characters_character_id_calendar_event_id_owner_type"
+        enum:
+        - "eve_server"
+        - "corporation"
+        - "faction"
+        - "character"
+        - "alliance"
+      response:
+        type: "string"
+        description: "response string"
+        title: "get_characters_character_id_calendar_event_id_response"
+      text:
+        type: "string"
+        description: "text string"
+        title: "get_characters_character_id_calendar_event_id_text"
       title:
         type: "string"
         description: "title string"
@@ -29743,6 +29766,21 @@ definitions:
         description: "Not found message"
         title: "get_characters_character_id_calendar_event_id_404_not_found"
     description: "Not found"
+  put_characters_character_id_calendar_event_id_response:
+    type: "object"
+    required:
+    - "response"
+    properties:
+      response:
+        type: "string"
+        description: "response string"
+        title: "put_characters_character_id_calendar_event_id_response_response"
+        enum:
+        - "accepted"
+        - "declined"
+        - "tentative"
+    title: "put_characters_character_id_calendar_event_id_response"
+    description: "response object"
   get_characters_character_id_calendar_event_id_attendees_200_ok:
     properties:
       character_id:

@@ -135,7 +135,8 @@ paths:
       summary: "Get alliance information"
       description: "Public information about an alliance\n\n---\nAlternate route:\
         \ `/dev/alliances/{alliance_id}/`\n\nAlternate route: `/v3/alliances/{alliance_id}/`\n\
-        \n---\nThis route is cached for up to 3600 seconds"
+        \nAlternate route: `/v4/alliances/{alliance_id}/`\n\n---\nThis route is cached\
+        \ for up to 3600 seconds"
       operationId: "get_alliances_alliance_id"
       parameters:
       - name: "alliance_id"
@@ -249,6 +250,7 @@ paths:
       x-alternate-versions:
       - "dev"
       - "v3"
+      - "v4"
       x-cached-seconds: 3600
   /alliances/{alliance_id}/contacts/:
     get:
@@ -2337,6 +2339,7 @@ paths:
       summary: "Get an event"
       description: "Get all the information for a specific event\n\n---\nAlternate\
         \ route: `/dev/characters/{character_id}/calendar/{event_id}/`\n\nAlternate\
+        \ route: `/legacy/characters/{character_id}/calendar/{event_id}/`\n\nAlternate\
         \ route: `/v3/characters/{character_id}/calendar/{event_id}/`\n\nAlternate\
         \ route: `/v4/characters/{character_id}/calendar/{event_id}/`\n\n---\nThis\
         \ route is cached for up to 5 seconds"
@@ -2490,6 +2493,7 @@ paths:
         - "esi-calendar.read_calendar_events.v1"
       x-alternate-versions:
       - "dev"
+      - "legacy"
       - "v3"
       - "v4"
       x-cached-seconds: 5
@@ -2499,6 +2503,7 @@ paths:
       summary: "Respond to an event"
       description: "Set your response status to an event\n\n---\nAlternate route:\
         \ `/dev/characters/{character_id}/calendar/{event_id}/`\n\nAlternate route:\
+        \ `/legacy/characters/{character_id}/calendar/{event_id}/`\n\nAlternate route:\
         \ `/v3/characters/{character_id}/calendar/{event_id}/`\n\nAlternate route:\
         \ `/v4/characters/{character_id}/calendar/{event_id}/`\n\n---\nThis route\
         \ is cached for up to 5 seconds"
@@ -2599,6 +2604,7 @@ paths:
         - "esi-calendar.respond_calendar_events.v1"
       x-alternate-versions:
       - "dev"
+      - "legacy"
       - "v3"
       - "v4"
       x-cached-seconds: 5

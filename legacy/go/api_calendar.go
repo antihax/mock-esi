@@ -107,15 +107,15 @@ func GetCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Requ
 	err = err
 
 	j := `{
-  "duration_in_minutes" : 60,
-  "event_date" : "2016-06-26T21:00:00Z",
+  "date" : "2016-06-26T21:00:00Z",
+  "duration" : 60,
   "event_id" : 1386435,
-  "event_response" : "Undecided",
-  "event_text" : "o7: The EVE Online Show features latest developer news, fast paced action, community overviews and a lot more with CCP Guard and CCP Mimic. Join the thrilling o7 live broadcast at 20:00 EVE time (=UTC) on <a href=\"http://www.twitch.tv/ccp\">EVE TV</a>. Don't miss it!",
   "importance" : 1,
   "owner_id" : 1,
   "owner_name" : "EVE System",
-  "owner_type_id" : 0,
+  "owner_type" : "eve_server",
+  "response" : "Undecided",
+  "text" : "o7: The EVE Online Show features latest developer news, fast paced action, community overviews and a lot more with CCP Guard and CCP Mimic. Join the thrilling o7 live broadcast at 20:00 EVE time (=UTC) on <a href=\"http://www.twitch.tv/ccp\">EVE TV</a>. Don't miss it!",
   "title" : "o7 The EVE Online Show"
 }`
 	vars := mux.Vars(r)
@@ -164,15 +164,12 @@ func GetCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Requ
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
-			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
-
-	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -267,7 +264,6 @@ func PutCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Requ
 		err         error
 		characterId int32
 		eventId     int32
-		response    string
 		datasource  string
 		token       string
 	)
@@ -301,11 +297,6 @@ func PutCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Requ
 		}
 		datasource = localV.(string)
 	}
-	localV, err = processParameters(response, r.Form.Get("response"))
-	if err != nil {
-		errorOut(w, r, err)
-		return
-	}
 	if r.Form.Get("token") != "" {
 		localV, err = processParameters(token, r.Form.Get("token"))
 		if err != nil {
@@ -327,15 +318,12 @@ func PutCharactersCharacterIdCalendarEventId(w http.ResponseWriter, r *http.Requ
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
-			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
-
-	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "")
 	w.WriteHeader(http.StatusOK)

@@ -20,7 +20,8 @@ paths:
       summary: "Get alliance information"
       description: "Public information about an alliance\n\n---\nAlternate route:\
         \ `/dev/alliances/{alliance_id}/`\n\nAlternate route: `/latest/alliances/{alliance_id}/`\n\
-        \n---\nThis route is cached for up to 3600 seconds"
+        \nAlternate route: `/v4/alliances/{alliance_id}/`\n\n---\nThis route is cached\
+        \ for up to 3600 seconds"
       operationId: "get_alliances_alliance_id"
       parameters:
       - name: "alliance_id"
@@ -134,6 +135,7 @@ paths:
       x-alternate-versions:
       - "dev"
       - "latest"
+      - "v4"
       x-cached-seconds: 3600
   /characters/{character_id}/:
     get:
@@ -426,6 +428,7 @@ paths:
       description: "Get all the information for a specific event\n\n---\nAlternate\
         \ route: `/dev/characters/{character_id}/calendar/{event_id}/`\n\nAlternate\
         \ route: `/latest/characters/{character_id}/calendar/{event_id}/`\n\nAlternate\
+        \ route: `/legacy/characters/{character_id}/calendar/{event_id}/`\n\nAlternate\
         \ route: `/v4/characters/{character_id}/calendar/{event_id}/`\n\n---\nThis\
         \ route is cached for up to 5 seconds"
       operationId: "get_characters_character_id_calendar_event_id"
@@ -579,6 +582,7 @@ paths:
       x-alternate-versions:
       - "dev"
       - "latest"
+      - "legacy"
       - "v4"
       x-cached-seconds: 5
     put:
@@ -588,6 +592,7 @@ paths:
       description: "Set your response status to an event\n\n---\nAlternate route:\
         \ `/dev/characters/{character_id}/calendar/{event_id}/`\n\nAlternate route:\
         \ `/latest/characters/{character_id}/calendar/{event_id}/`\n\nAlternate route:\
+        \ `/legacy/characters/{character_id}/calendar/{event_id}/`\n\nAlternate route:\
         \ `/v4/characters/{character_id}/calendar/{event_id}/`\n\n---\nThis route\
         \ is cached for up to 5 seconds"
       operationId: "put_characters_character_id_calendar_event_id"
@@ -688,6 +693,7 @@ paths:
       x-alternate-versions:
       - "dev"
       - "latest"
+      - "legacy"
       - "v4"
       x-cached-seconds: 5
   /characters/{character_id}/clones/:
