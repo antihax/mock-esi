@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "An OpenAPI for EVE Online"
-  version: "1.3.8"
+  version: "1.7.2"
   title: "EVE Swagger Interface"
 host: "esi.evetech.net"
 basePath: "/v6"
@@ -650,6 +650,7 @@ definitions:
         - "WarAllyOfferDeclinedMsg"
         - "WarConcordInvalidates"
         - "WarDeclared"
+        - "WarEndedHqSecurityDrop"
         - "WarHQRemovedFromSpace"
         - "WarInherited"
         - "WarInvalid"

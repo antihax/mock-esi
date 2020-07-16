@@ -11,6 +11,13 @@ import (
 func init() {
 
 	mockesi.NewRoute(
+		"GetAlliancesAllianceId",
+		"Get",
+		"/v4/alliances/{alliance_id}/",
+		GetAlliancesAllianceId,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdAssets",
 		"Get",
 		"/v4/characters/{character_id}/assets/",
@@ -60,10 +67,31 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdClones",
+		"Get",
+		"/v4/characters/{character_id}/clones/",
+		GetCharactersCharacterIdClones,
+	)
+
+	mockesi.NewRoute(
 		"GetCorporationsCorporationId",
 		"Get",
 		"/v4/corporations/{corporation_id}/",
 		GetCorporationsCorporationId,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdMembers",
+		"Get",
+		"/v4/corporations/{corporation_id}/members/",
+		GetCorporationsCorporationIdMembers,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdStructures",
+		"Get",
+		"/v4/corporations/{corporation_id}/structures/",
+		GetCorporationsCorporationIdStructures,
 	)
 
 	mockesi.NewRoute(

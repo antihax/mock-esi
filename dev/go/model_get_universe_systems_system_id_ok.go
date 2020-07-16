@@ -15,9 +15,6 @@ type GetUniverseSystemsSystemIdOk struct {
 	/* */
 	Position GetUniverseSystemsSystemIdPosition `json:"position,omitempty"`
 	/*
-	 security_class string */
-	SecurityClass string `json:"security_class,omitempty"`
-	/*
 	 security_status number */
 	SecurityStatus float32 `json:"security_status,omitempty"`
 	/*

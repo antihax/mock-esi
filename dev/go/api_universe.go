@@ -707,7 +707,6 @@ func GetUniverseGroupsGroupId(w http.ResponseWriter, r *http.Request) {
 		err        error
 		groupId    int32
 		datasource string
-		language   string
 	)
 	// shut up warnings
 	localV = localV
@@ -738,14 +737,6 @@ func GetUniverseGroupsGroupId(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		datasource = localV.(string)
-	}
-	if r.Form.Get("language") != "" {
-		localV, err = processParameters(language, r.Form.Get("language"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		language = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -1623,7 +1614,6 @@ func GetUniverseSystemsSystemId(w http.ResponseWriter, r *http.Request) {
     "y" : 43938227486247170,
     "z" : -56482824383339900
   },
-  "security_class" : "B",
   "security_status" : 0.8462923765182495,
   "star_id" : 40000040,
   "stargates" : [ 50000342 ],
