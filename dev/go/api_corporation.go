@@ -1518,6 +1518,7 @@ func GetCorporationsCorporationIdStructures(w http.ResponseWriter, r *http.Reque
   "corporation_id" : 667531913,
   "profile_id" : 11237,
   "reinforce_hour" : 22,
+  "reinforce_weekday" : 2,
   "state" : "shield_vulnerable",
   "structure_id" : 1021975535893,
   "system_id" : 30004763,

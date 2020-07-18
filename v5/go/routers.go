@@ -39,31 +39,10 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCorporationsCorporationId",
-		"Get",
-		"/v5/corporations/{corporation_id}/",
-		GetCorporationsCorporationId,
-	)
-
-	mockesi.NewRoute(
-		"GetUniverseSystemsSystemId",
-		"Get",
-		"/v5/universe/systems/{system_id}/",
-		GetUniverseSystemsSystemId,
-	)
-
-	mockesi.NewRoute(
 		"GetCharactersCharacterIdWalletJournal",
 		"Get",
 		"/v5/characters/{character_id}/wallet/journal/",
 		GetCharactersCharacterIdWalletJournal,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsCorporationIdWalletsDivisionJournal",
-		"Get",
-		"/v5/corporations/{corporation_id}/wallets/{division}/journal/",
-		GetCorporationsCorporationIdWalletsDivisionJournal,
 	)
 
 }

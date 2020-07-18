@@ -81,27 +81,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCorporationsCorporationIdAlliancehistory",
-		"Get",
-		"/v3/corporations/{corporation_id}/alliancehistory/",
-		GetCorporationsCorporationIdAlliancehistory,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsCorporationIdBlueprints",
-		"Get",
-		"/v3/corporations/{corporation_id}/blueprints/",
-		GetCorporationsCorporationIdBlueprints,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsCorporationIdContainersLogs",
-		"Get",
-		"/v3/corporations/{corporation_id}/containers/logs/",
-		GetCorporationsCorporationIdContainersLogs,
-	)
-
-	mockesi.NewRoute(
 		"GetCorporationsCorporationIdMembers",
 		"Get",
 		"/v3/corporations/{corporation_id}/members/",
@@ -162,20 +141,6 @@ func init() {
 		"Get",
 		"/v3/characters/{character_id}/skills/",
 		GetCharactersCharacterIdSkills,
-	)
-
-	mockesi.NewRoute(
-		"GetUniverseStructuresStructureId",
-		"Get",
-		"/v3/universe/structures/{structure_id}/",
-		GetUniverseStructuresStructureId,
-	)
-
-	mockesi.NewRoute(
-		"GetUniverseSystemKills",
-		"Get",
-		"/v3/universe/system_kills/",
-		GetUniverseSystemKills,
 	)
 
 	mockesi.NewRoute(

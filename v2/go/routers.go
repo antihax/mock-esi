@@ -228,38 +228,10 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCorporationsCorporationIdDivisions",
-		"Get",
-		"/v2/corporations/{corporation_id}/divisions/",
-		GetCorporationsCorporationIdDivisions,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsCorporationIdFacilities",
-		"Get",
-		"/v2/corporations/{corporation_id}/facilities/",
-		GetCorporationsCorporationIdFacilities,
-	)
-
-	mockesi.NewRoute(
 		"GetCorporationsCorporationIdIcons",
 		"Get",
 		"/v2/corporations/{corporation_id}/icons/",
 		GetCorporationsCorporationIdIcons,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsCorporationIdMedals",
-		"Get",
-		"/v2/corporations/{corporation_id}/medals/",
-		GetCorporationsCorporationIdMedals,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsCorporationIdMedalsIssued",
-		"Get",
-		"/v2/corporations/{corporation_id}/medals/issued/",
-		GetCorporationsCorporationIdMedalsIssued,
 	)
 
 	mockesi.NewRoute(
@@ -270,80 +242,10 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCorporationsCorporationIdMembersLimit",
-		"Get",
-		"/v2/corporations/{corporation_id}/members/limit/",
-		GetCorporationsCorporationIdMembersLimit,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsCorporationIdMembersTitles",
-		"Get",
-		"/v2/corporations/{corporation_id}/members/titles/",
-		GetCorporationsCorporationIdMembersTitles,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsCorporationIdMembertracking",
-		"Get",
-		"/v2/corporations/{corporation_id}/membertracking/",
-		GetCorporationsCorporationIdMembertracking,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsCorporationIdRoles",
-		"Get",
-		"/v2/corporations/{corporation_id}/roles/",
-		GetCorporationsCorporationIdRoles,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsCorporationIdRolesHistory",
-		"Get",
-		"/v2/corporations/{corporation_id}/roles/history/",
-		GetCorporationsCorporationIdRolesHistory,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsCorporationIdStandings",
-		"Get",
-		"/v2/corporations/{corporation_id}/standings/",
-		GetCorporationsCorporationIdStandings,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsCorporationIdStarbases",
-		"Get",
-		"/v2/corporations/{corporation_id}/starbases/",
-		GetCorporationsCorporationIdStarbases,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsCorporationIdStarbasesStarbaseId",
-		"Get",
-		"/v2/corporations/{corporation_id}/starbases/{starbase_id}/",
-		GetCorporationsCorporationIdStarbasesStarbaseId,
-	)
-
-	mockesi.NewRoute(
 		"GetCorporationsCorporationIdStructures",
 		"Get",
 		"/v2/corporations/{corporation_id}/structures/",
 		GetCorporationsCorporationIdStructures,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsCorporationIdTitles",
-		"Get",
-		"/v2/corporations/{corporation_id}/titles/",
-		GetCorporationsCorporationIdTitles,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsNpccorps",
-		"Get",
-		"/v2/corporations/npccorps/",
-		GetCorporationsNpccorps,
 	)
 
 	mockesi.NewRoute(
@@ -508,129 +410,10 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetUniverseAncestries",
-		"Get",
-		"/v2/universe/ancestries/",
-		GetUniverseAncestries,
-	)
-
-	mockesi.NewRoute(
-		"GetUniverseAsteroidBeltsAsteroidBeltId",
-		"Get",
-		"/v2/universe/asteroid_belts/{asteroid_belt_id}/",
-		GetUniverseAsteroidBeltsAsteroidBeltId,
-	)
-
-	mockesi.NewRoute(
-		"GetUniverseBloodlines",
-		"Get",
-		"/v2/universe/bloodlines/",
-		GetUniverseBloodlines,
-	)
-
-	mockesi.NewRoute(
-		"GetUniverseCategories",
-		"Get",
-		"/v2/universe/categories/",
-		GetUniverseCategories,
-	)
-
-	mockesi.NewRoute(
-		"GetUniverseCategoriesCategoryId",
-		"Get",
-		"/v2/universe/categories/{category_id}/",
-		GetUniverseCategoriesCategoryId,
-	)
-
-	mockesi.NewRoute(
-		"GetUniverseConstellations",
-		"Get",
-		"/v2/universe/constellations/",
-		GetUniverseConstellations,
-	)
-
-	mockesi.NewRoute(
-		"GetUniverseConstellationsConstellationId",
-		"Get",
-		"/v2/universe/constellations/{constellation_id}/",
-		GetUniverseConstellationsConstellationId,
-	)
-
-	mockesi.NewRoute(
 		"GetUniverseFactions",
 		"Get",
 		"/v2/universe/factions/",
 		GetUniverseFactions,
-	)
-
-	mockesi.NewRoute(
-		"GetUniverseGraphics",
-		"Get",
-		"/v2/universe/graphics/",
-		GetUniverseGraphics,
-	)
-
-	mockesi.NewRoute(
-		"GetUniverseGroups",
-		"Get",
-		"/v2/universe/groups/",
-		GetUniverseGroups,
-	)
-
-	mockesi.NewRoute(
-		"GetUniverseGroupsGroupId",
-		"Get",
-		"/v2/universe/groups/{group_id}/",
-		GetUniverseGroupsGroupId,
-	)
-
-	mockesi.NewRoute(
-		"GetUniverseMoonsMoonId",
-		"Get",
-		"/v2/universe/moons/{moon_id}/",
-		GetUniverseMoonsMoonId,
-	)
-
-	mockesi.NewRoute(
-		"GetUniversePlanetsPlanetId",
-		"Get",
-		"/v2/universe/planets/{planet_id}/",
-		GetUniversePlanetsPlanetId,
-	)
-
-	mockesi.NewRoute(
-		"GetUniverseRaces",
-		"Get",
-		"/v2/universe/races/",
-		GetUniverseRaces,
-	)
-
-	mockesi.NewRoute(
-		"GetUniverseRegions",
-		"Get",
-		"/v2/universe/regions/",
-		GetUniverseRegions,
-	)
-
-	mockesi.NewRoute(
-		"GetUniverseRegionsRegionId",
-		"Get",
-		"/v2/universe/regions/{region_id}/",
-		GetUniverseRegionsRegionId,
-	)
-
-	mockesi.NewRoute(
-		"GetUniverseStargatesStargateId",
-		"Get",
-		"/v2/universe/stargates/{stargate_id}/",
-		GetUniverseStargatesStargateId,
-	)
-
-	mockesi.NewRoute(
-		"GetUniverseStarsStarId",
-		"Get",
-		"/v2/universe/stars/{star_id}/",
-		GetUniverseStarsStarId,
 	)
 
 	mockesi.NewRoute(
@@ -641,13 +424,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetUniverseStructures",
-		"Get",
-		"/v2/universe/structures/",
-		GetUniverseStructures,
-	)
-
-	mockesi.NewRoute(
 		"GetUniverseStructuresStructureId",
 		"Get",
 		"/v2/universe/structures/{structure_id}/",
@@ -655,31 +431,10 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetUniverseSystemJumps",
-		"Get",
-		"/v2/universe/system_jumps/",
-		GetUniverseSystemJumps,
-	)
-
-	mockesi.NewRoute(
 		"GetUniverseSystemKills",
 		"Get",
 		"/v2/universe/system_kills/",
 		GetUniverseSystemKills,
-	)
-
-	mockesi.NewRoute(
-		"GetUniverseSystems",
-		"Get",
-		"/v2/universe/systems/",
-		GetUniverseSystems,
-	)
-
-	mockesi.NewRoute(
-		"GetUniverseTypes",
-		"Get",
-		"/v2/universe/types/",
-		GetUniverseTypes,
 	)
 
 	mockesi.NewRoute(
@@ -701,27 +456,6 @@ func init() {
 		"Post",
 		"/v2/ui/autopilot/waypoint/",
 		PostUiAutopilotWaypoint,
-	)
-
-	mockesi.NewRoute(
-		"GetCharactersCharacterIdWallet",
-		"Get",
-		"/v2/characters/{character_id}/wallet/",
-		GetCharactersCharacterIdWallet,
-	)
-
-	mockesi.NewRoute(
-		"GetCharactersCharacterIdWalletTransactions",
-		"Get",
-		"/v2/characters/{character_id}/wallet/transactions/",
-		GetCharactersCharacterIdWalletTransactions,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsCorporationIdWalletsDivisionTransactions",
-		"Get",
-		"/v2/corporations/{corporation_id}/wallets/{division}/transactions/",
-		GetCorporationsCorporationIdWalletsDivisionTransactions,
 	)
 
 }
