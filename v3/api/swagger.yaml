@@ -1364,7 +1364,9 @@ paths:
       - "Character"
       summary: "Get character portraits"
       description: "Get portrait urls for a character\n\n---\nAlternate route: `/dev/characters/{character_id}/portrait/`\n\
-        \n---\nThis route expires daily at 11:05"
+        \nAlternate route: `/latest/characters/{character_id}/portrait/`\n\nAlternate\
+        \ route: `/v2/characters/{character_id}/portrait/`\n\n---\nThis route expires\
+        \ daily at 11:05"
       operationId: "get_characters_character_id_portrait"
       parameters:
       - name: "character_id"
@@ -1475,6 +1477,8 @@ paths:
               error: "Gateway timeout message"
       x-alternate-versions:
       - "dev"
+      - "latest"
+      - "v2"
   /characters/{character_id}/roles/:
     get:
       tags:
