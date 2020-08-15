@@ -7311,10 +7311,8 @@ paths:
       tags:
       - "Character"
       summary: "Get character notifications"
-      description: "Return character notifications\n\n---\nAlternate route: `/dev/characters/{character_id}/notifications/`\n\
-        \nAlternate route: `/v5/characters/{character_id}/notifications/`\n\nAlternate\
-        \ route: `/v6/characters/{character_id}/notifications/`\n\n---\nThis route\
-        \ is cached for up to 600 seconds"
+      description: "Return character notifications\n\n---\nAlternate route: `/v5/characters/{character_id}/notifications/`\n\
+        \n---\nThis route is cached for up to 600 seconds"
       operationId: "get_characters_character_id_notifications"
       parameters:
       - name: "character_id"
@@ -7449,9 +7447,7 @@ paths:
       - evesso:
         - "esi-characters.read_notifications.v1"
       x-alternate-versions:
-      - "dev"
       - "v5"
-      - "v6"
       x-cached-seconds: 600
   /characters/{character_id}/notifications/contacts/:
     get:
@@ -8485,10 +8481,8 @@ paths:
       tags:
       - "Character"
       summary: "Get character portraits"
-      description: "Get portrait urls for a character\n\n---\nAlternate route: `/dev/characters/{character_id}/portrait/`\n\
-        \nAlternate route: `/v2/characters/{character_id}/portrait/`\n\nAlternate\
-        \ route: `/v3/characters/{character_id}/portrait/`\n\n---\nThis route expires\
-        \ daily at 11:05"
+      description: "Get portrait urls for a character\n\n---\nAlternate route: `/v2/characters/{character_id}/portrait/`\n\
+        \n---\nThis route expires daily at 11:05\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/characters/{character_id}/portrait/)"
       operationId: "get_characters_character_id_portrait"
       parameters:
       - name: "character_id"
@@ -8523,10 +8517,10 @@ paths:
             $ref: "#/definitions/get_characters_character_id_portrait_ok"
           examples:
             application/json:
-              px128x128: "https://images.evetech.net/characters/95465499/portrait?tenant=tranquility&size=128"
-              px256x256: "https://images.evetech.net/characters/95465499/portrait?tenant=tranquility&size=256"
-              px512x512: "https://images.evetech.net/characters/95465499/portrait?tenant=tranquility&size=512"
-              px64x64: "https://images.evetech.net/characters/95465499/portrait?tenant=tranquility&size=64"
+              px128x128: "https://images.evetech.net/Character/95465499_128.jpg"
+              px256x256: "https://images.evetech.net/Character/95465499_256.jpg"
+              px512x512: "https://images.evetech.net/Character/95465499_512.jpg"
+              px64x64: "https://images.evetech.net/Character/95465499_64.jpg"
           headers:
             Cache-Control:
               type: "string"
@@ -8598,9 +8592,7 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "v2"
-      - "v3"
   /characters/{character_id}/roles/:
     get:
       tags:

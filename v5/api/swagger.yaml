@@ -289,10 +289,8 @@ paths:
       tags:
       - "Character"
       summary: "Get character notifications"
-      description: "Return character notifications\n\n---\nAlternate route: `/dev/characters/{character_id}/notifications/`\n\
-        \nAlternate route: `/latest/characters/{character_id}/notifications/`\n\n\
-        Alternate route: `/v6/characters/{character_id}/notifications/`\n\n---\nThis\
-        \ route is cached for up to 600 seconds"
+      description: "Return character notifications\n\n---\nAlternate route: `/latest/characters/{character_id}/notifications/`\n\
+        \n---\nThis route is cached for up to 600 seconds"
       operationId: "get_characters_character_id_notifications"
       parameters:
       - name: "character_id"
@@ -427,9 +425,7 @@ paths:
       - evesso:
         - "esi-characters.read_notifications.v1"
       x-alternate-versions:
-      - "dev"
       - "latest"
-      - "v6"
       x-cached-seconds: 600
   /characters/{character_id}/wallet/journal/:
     get:
