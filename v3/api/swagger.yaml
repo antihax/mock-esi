@@ -41,7 +41,6 @@ paths:
         default: "tranquility"
         enum:
         - "tranquility"
-        - "singularity"
         x-exportParamName: "Datasource"
       - name: "If-None-Match"
         in: "header"
@@ -166,7 +165,6 @@ paths:
         default: "tranquility"
         enum:
         - "tranquility"
-        - "singularity"
         x-exportParamName: "Datasource"
       - name: "If-None-Match"
         in: "header"
@@ -290,7 +288,6 @@ paths:
         default: "tranquility"
         enum:
         - "tranquility"
-        - "singularity"
         x-exportParamName: "Datasource"
       - name: "If-None-Match"
         in: "header"
@@ -451,7 +448,6 @@ paths:
         default: "tranquility"
         enum:
         - "tranquility"
-        - "singularity"
         x-exportParamName: "Datasource"
       - name: "event_id"
         in: "path"
@@ -615,7 +611,6 @@ paths:
         default: "tranquility"
         enum:
         - "tranquility"
-        - "singularity"
         x-exportParamName: "Datasource"
       - name: "event_id"
         in: "path"
@@ -725,7 +720,6 @@ paths:
         default: "tranquility"
         enum:
         - "tranquility"
-        - "singularity"
         x-exportParamName: "Datasource"
       - name: "If-None-Match"
         in: "header"
@@ -874,7 +868,6 @@ paths:
         default: "tranquility"
         enum:
         - "tranquility"
-        - "singularity"
         x-exportParamName: "Datasource"
       - name: "token"
         in: "query"
@@ -973,7 +966,6 @@ paths:
         default: "tranquility"
         enum:
         - "tranquility"
-        - "singularity"
         x-exportParamName: "Datasource"
       - name: "If-None-Match"
         in: "header"
@@ -1116,7 +1108,6 @@ paths:
         default: "tranquility"
         enum:
         - "tranquility"
-        - "singularity"
         x-exportParamName: "Datasource"
       - name: "If-None-Match"
         in: "header"
@@ -1255,7 +1246,6 @@ paths:
         default: "tranquility"
         enum:
         - "tranquility"
-        - "singularity"
         x-exportParamName: "Datasource"
       - name: "planet_id"
         in: "path"
@@ -1385,7 +1375,6 @@ paths:
         default: "tranquility"
         enum:
         - "tranquility"
-        - "singularity"
         x-exportParamName: "Datasource"
       - name: "If-None-Match"
         in: "header"
@@ -1505,7 +1494,6 @@ paths:
         default: "tranquility"
         enum:
         - "tranquility"
-        - "singularity"
         x-exportParamName: "Datasource"
       - name: "If-None-Match"
         in: "header"
@@ -1636,7 +1624,6 @@ paths:
         - "fr"
         - "ja"
         - "ru"
-        - "zh"
         - "ko"
         x-exportParamName: "AcceptLanguage"
       - name: "categories"
@@ -1678,7 +1665,6 @@ paths:
         default: "tranquility"
         enum:
         - "tranquility"
-        - "singularity"
         x-exportParamName: "Datasource"
       - name: "If-None-Match"
         in: "header"
@@ -1699,7 +1685,6 @@ paths:
         - "fr"
         - "ja"
         - "ru"
-        - "zh"
         - "ko"
         x-exportParamName: "Language"
       - name: "search"
@@ -1752,7 +1737,6 @@ paths:
               - "fr"
               - "ja"
               - "ru"
-              - "zh"
               - "ko"
             ETag:
               type: "string"
@@ -1862,7 +1846,6 @@ paths:
         default: "tranquility"
         enum:
         - "tranquility"
-        - "singularity"
         x-exportParamName: "Datasource"
       - name: "If-None-Match"
         in: "header"
@@ -2003,7 +1986,6 @@ paths:
         default: "tranquility"
         enum:
         - "tranquility"
-        - "singularity"
         x-exportParamName: "Datasource"
       - name: "If-None-Match"
         in: "header"
@@ -2131,7 +2113,6 @@ paths:
         default: "tranquility"
         enum:
         - "tranquility"
-        - "singularity"
         x-exportParamName: "Datasource"
       - name: "If-None-Match"
         in: "header"
@@ -2275,7 +2256,6 @@ paths:
         default: "tranquility"
         enum:
         - "tranquility"
-        - "singularity"
         x-exportParamName: "Datasource"
       - name: "If-None-Match"
         in: "header"
@@ -2443,7 +2423,6 @@ paths:
         - "fr"
         - "ja"
         - "ru"
-        - "zh"
         - "ko"
         x-exportParamName: "AcceptLanguage"
       - name: "corporation_id"
@@ -2462,7 +2441,6 @@ paths:
         default: "tranquility"
         enum:
         - "tranquility"
-        - "singularity"
         x-exportParamName: "Datasource"
       - name: "If-None-Match"
         in: "header"
@@ -2483,7 +2461,6 @@ paths:
         - "fr"
         - "ja"
         - "ru"
-        - "zh"
         - "ko"
         x-exportParamName: "Language"
       - name: "page"
@@ -2534,7 +2511,6 @@ paths:
               - "fr"
               - "ja"
               - "ru"
-              - "zh"
               - "ko"
             ETag:
               type: "string"
@@ -2654,7 +2630,6 @@ paths:
         default: "tranquility"
         enum:
         - "tranquility"
-        - "singularity"
         x-exportParamName: "Datasource"
       - name: "division"
         in: "path"
@@ -2821,7 +2796,6 @@ paths:
         default: "tranquility"
         enum:
         - "tranquility"
-        - "singularity"
         x-exportParamName: "Datasource"
       - name: "If-None-Match"
         in: "header"
@@ -2936,7 +2910,6 @@ paths:
         default: "tranquility"
         enum:
         - "tranquility"
-        - "singularity"
         x-exportParamName: "Datasource"
       - in: "body"
         name: "ids"
@@ -3040,7 +3013,6 @@ paths:
         - "fr"
         - "ja"
         - "ru"
-        - "zh"
         - "ko"
         x-exportParamName: "AcceptLanguage"
       - name: "datasource"
@@ -3051,7 +3023,6 @@ paths:
         default: "tranquility"
         enum:
         - "tranquility"
-        - "singularity"
         x-exportParamName: "Datasource"
       - name: "If-None-Match"
         in: "header"
@@ -3072,7 +3043,6 @@ paths:
         - "fr"
         - "ja"
         - "ru"
-        - "zh"
         - "ko"
         x-exportParamName: "Language"
       - name: "system_id"
@@ -3119,7 +3089,6 @@ paths:
               - "fr"
               - "ja"
               - "ru"
-              - "zh"
               - "ko"
             ETag:
               type: "string"
@@ -3212,7 +3181,6 @@ paths:
         - "fr"
         - "ja"
         - "ru"
-        - "zh"
         - "ko"
         x-exportParamName: "AcceptLanguage"
       - name: "datasource"
@@ -3223,7 +3191,6 @@ paths:
         default: "tranquility"
         enum:
         - "tranquility"
-        - "singularity"
         x-exportParamName: "Datasource"
       - name: "If-None-Match"
         in: "header"
@@ -3244,7 +3211,6 @@ paths:
         - "fr"
         - "ja"
         - "ru"
-        - "zh"
         - "ko"
         x-exportParamName: "Language"
       - name: "type_id"
@@ -3279,7 +3245,6 @@ paths:
               - "fr"
               - "ja"
               - "ru"
-              - "zh"
               - "ko"
             ETag:
               type: "string"
@@ -5522,7 +5487,6 @@ parameters:
     - "fr"
     - "ja"
     - "ru"
-    - "zh"
     - "ko"
     x-exportParamName: "AcceptLanguage"
   If-None-Match:
@@ -5569,7 +5533,6 @@ parameters:
     default: "tranquility"
     enum:
     - "tranquility"
-    - "singularity"
     x-exportParamName: "Datasource"
   language:
     name: "language"
@@ -5584,7 +5547,6 @@ parameters:
     - "fr"
     - "ja"
     - "ru"
-    - "zh"
     - "ko"
     x-exportParamName: "Language"
   page:
