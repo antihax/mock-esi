@@ -30963,6 +30963,7 @@ definitions:
         - "DeclareWar"
         - "DistrictAttacked"
         - "DustAppAcceptedMsg"
+        - "ESSMainBankLink"
         - "EntosisCaptureStarted"
         - "FWAllianceKickMsg"
         - "FWAllianceWarningMsg"
