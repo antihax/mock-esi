@@ -1390,24 +1390,10 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCharactersCharacterIdWallet",
-		"Get",
-		"/legacy/characters/{character_id}/wallet/",
-		GetCharactersCharacterIdWallet,
-	)
-
-	mockesi.NewRoute(
 		"GetCharactersCharacterIdWalletJournal",
 		"Get",
 		"/legacy/characters/{character_id}/wallet/journal/",
 		GetCharactersCharacterIdWalletJournal,
-	)
-
-	mockesi.NewRoute(
-		"GetCharactersCharacterIdWalletTransactions",
-		"Get",
-		"/legacy/characters/{character_id}/wallet/transactions/",
-		GetCharactersCharacterIdWalletTransactions,
 	)
 
 	mockesi.NewRoute(
@@ -1422,13 +1408,6 @@ func init() {
 		"Get",
 		"/legacy/corporations/{corporation_id}/wallets/{division}/journal/",
 		GetCorporationsCorporationIdWalletsDivisionJournal,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsCorporationIdWalletsDivisionTransactions",
-		"Get",
-		"/legacy/corporations/{corporation_id}/wallets/{division}/transactions/",
-		GetCorporationsCorporationIdWalletsDivisionTransactions,
 	)
 
 	mockesi.NewRoute(
