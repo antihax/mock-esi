@@ -94,6 +94,13 @@ func init() {
 		GetUniverseSystemsSystemId,
 	)
 
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdWalletsDivisionJournal",
+		"Get",
+		"/v4/corporations/{corporation_id}/wallets/{division}/journal/",
+		GetCorporationsCorporationIdWalletsDivisionJournal,
+	)
+
 }
 
 func errorOut(w http.ResponseWriter, r *http.Request, e error) {
