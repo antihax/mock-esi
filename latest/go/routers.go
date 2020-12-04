@@ -935,83 +935,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCharactersCharacterIdOrders",
-		"Get",
-		"/latest/characters/{character_id}/orders/",
-		GetCharactersCharacterIdOrders,
-	)
-
-	mockesi.NewRoute(
-		"GetCharactersCharacterIdOrdersHistory",
-		"Get",
-		"/latest/characters/{character_id}/orders/history/",
-		GetCharactersCharacterIdOrdersHistory,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsCorporationIdOrders",
-		"Get",
-		"/latest/corporations/{corporation_id}/orders/",
-		GetCorporationsCorporationIdOrders,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsCorporationIdOrdersHistory",
-		"Get",
-		"/latest/corporations/{corporation_id}/orders/history/",
-		GetCorporationsCorporationIdOrdersHistory,
-	)
-
-	mockesi.NewRoute(
-		"GetMarketsGroups",
-		"Get",
-		"/latest/markets/groups/",
-		GetMarketsGroups,
-	)
-
-	mockesi.NewRoute(
-		"GetMarketsGroupsMarketGroupId",
-		"Get",
-		"/latest/markets/groups/{market_group_id}/",
-		GetMarketsGroupsMarketGroupId,
-	)
-
-	mockesi.NewRoute(
-		"GetMarketsPrices",
-		"Get",
-		"/latest/markets/prices/",
-		GetMarketsPrices,
-	)
-
-	mockesi.NewRoute(
-		"GetMarketsRegionIdHistory",
-		"Get",
-		"/latest/markets/{region_id}/history/",
-		GetMarketsRegionIdHistory,
-	)
-
-	mockesi.NewRoute(
-		"GetMarketsRegionIdOrders",
-		"Get",
-		"/latest/markets/{region_id}/orders/",
-		GetMarketsRegionIdOrders,
-	)
-
-	mockesi.NewRoute(
-		"GetMarketsRegionIdTypes",
-		"Get",
-		"/latest/markets/{region_id}/types/",
-		GetMarketsRegionIdTypes,
-	)
-
-	mockesi.NewRoute(
-		"GetMarketsStructuresStructureId",
-		"Get",
-		"/latest/markets/structures/{structure_id}/",
-		GetMarketsStructuresStructureId,
-	)
-
-	mockesi.NewRoute(
 		"GetCharactersCharacterIdOpportunities",
 		"Get",
 		"/latest/characters/{character_id}/opportunities/",
@@ -1390,45 +1313,10 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCharactersCharacterIdWallet",
-		"Get",
-		"/latest/characters/{character_id}/wallet/",
-		GetCharactersCharacterIdWallet,
-	)
-
-	mockesi.NewRoute(
-		"GetCharactersCharacterIdWalletJournal",
-		"Get",
-		"/latest/characters/{character_id}/wallet/journal/",
-		GetCharactersCharacterIdWalletJournal,
-	)
-
-	mockesi.NewRoute(
-		"GetCharactersCharacterIdWalletTransactions",
-		"Get",
-		"/latest/characters/{character_id}/wallet/transactions/",
-		GetCharactersCharacterIdWalletTransactions,
-	)
-
-	mockesi.NewRoute(
 		"GetCorporationsCorporationIdWallets",
 		"Get",
 		"/latest/corporations/{corporation_id}/wallets/",
 		GetCorporationsCorporationIdWallets,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsCorporationIdWalletsDivisionJournal",
-		"Get",
-		"/latest/corporations/{corporation_id}/wallets/{division}/journal/",
-		GetCorporationsCorporationIdWalletsDivisionJournal,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsCorporationIdWalletsDivisionTransactions",
-		"Get",
-		"/latest/corporations/{corporation_id}/wallets/{division}/transactions/",
-		GetCorporationsCorporationIdWalletsDivisionTransactions,
 	)
 
 	mockesi.NewRoute(

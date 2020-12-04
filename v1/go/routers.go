@@ -837,76 +837,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCharactersCharacterIdOrders",
-		"Get",
-		"/v1/characters/{character_id}/orders/",
-		GetCharactersCharacterIdOrders,
-	)
-
-	mockesi.NewRoute(
-		"GetCharactersCharacterIdOrdersHistory",
-		"Get",
-		"/v1/characters/{character_id}/orders/history/",
-		GetCharactersCharacterIdOrdersHistory,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsCorporationIdOrdersHistory",
-		"Get",
-		"/v1/corporations/{corporation_id}/orders/history/",
-		GetCorporationsCorporationIdOrdersHistory,
-	)
-
-	mockesi.NewRoute(
-		"GetMarketsGroups",
-		"Get",
-		"/v1/markets/groups/",
-		GetMarketsGroups,
-	)
-
-	mockesi.NewRoute(
-		"GetMarketsGroupsMarketGroupId",
-		"Get",
-		"/v1/markets/groups/{market_group_id}/",
-		GetMarketsGroupsMarketGroupId,
-	)
-
-	mockesi.NewRoute(
-		"GetMarketsPrices",
-		"Get",
-		"/v1/markets/prices/",
-		GetMarketsPrices,
-	)
-
-	mockesi.NewRoute(
-		"GetMarketsRegionIdHistory",
-		"Get",
-		"/v1/markets/{region_id}/history/",
-		GetMarketsRegionIdHistory,
-	)
-
-	mockesi.NewRoute(
-		"GetMarketsRegionIdOrders",
-		"Get",
-		"/v1/markets/{region_id}/orders/",
-		GetMarketsRegionIdOrders,
-	)
-
-	mockesi.NewRoute(
-		"GetMarketsRegionIdTypes",
-		"Get",
-		"/v1/markets/{region_id}/types/",
-		GetMarketsRegionIdTypes,
-	)
-
-	mockesi.NewRoute(
-		"GetMarketsStructuresStructureId",
-		"Get",
-		"/v1/markets/structures/{structure_id}/",
-		GetMarketsStructuresStructureId,
-	)
-
-	mockesi.NewRoute(
 		"GetCharactersCharacterIdOpportunities",
 		"Get",
 		"/v1/characters/{character_id}/opportunities/",
@@ -1222,31 +1152,10 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCharactersCharacterIdWallet",
-		"Get",
-		"/v1/characters/{character_id}/wallet/",
-		GetCharactersCharacterIdWallet,
-	)
-
-	mockesi.NewRoute(
-		"GetCharactersCharacterIdWalletTransactions",
-		"Get",
-		"/v1/characters/{character_id}/wallet/transactions/",
-		GetCharactersCharacterIdWalletTransactions,
-	)
-
-	mockesi.NewRoute(
 		"GetCorporationsCorporationIdWallets",
 		"Get",
 		"/v1/corporations/{corporation_id}/wallets/",
 		GetCorporationsCorporationIdWallets,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsCorporationIdWalletsDivisionTransactions",
-		"Get",
-		"/v1/corporations/{corporation_id}/wallets/{division}/transactions/",
-		GetCorporationsCorporationIdWalletsDivisionTransactions,
 	)
 
 	mockesi.NewRoute(

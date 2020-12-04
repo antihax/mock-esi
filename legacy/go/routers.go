@@ -942,83 +942,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCharactersCharacterIdOrders",
-		"Get",
-		"/legacy/characters/{character_id}/orders/",
-		GetCharactersCharacterIdOrders,
-	)
-
-	mockesi.NewRoute(
-		"GetCharactersCharacterIdOrdersHistory",
-		"Get",
-		"/legacy/characters/{character_id}/orders/history/",
-		GetCharactersCharacterIdOrdersHistory,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsCorporationIdOrders",
-		"Get",
-		"/legacy/corporations/{corporation_id}/orders/",
-		GetCorporationsCorporationIdOrders,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsCorporationIdOrdersHistory",
-		"Get",
-		"/legacy/corporations/{corporation_id}/orders/history/",
-		GetCorporationsCorporationIdOrdersHistory,
-	)
-
-	mockesi.NewRoute(
-		"GetMarketsGroups",
-		"Get",
-		"/legacy/markets/groups/",
-		GetMarketsGroups,
-	)
-
-	mockesi.NewRoute(
-		"GetMarketsGroupsMarketGroupId",
-		"Get",
-		"/legacy/markets/groups/{market_group_id}/",
-		GetMarketsGroupsMarketGroupId,
-	)
-
-	mockesi.NewRoute(
-		"GetMarketsPrices",
-		"Get",
-		"/legacy/markets/prices/",
-		GetMarketsPrices,
-	)
-
-	mockesi.NewRoute(
-		"GetMarketsRegionIdHistory",
-		"Get",
-		"/legacy/markets/{region_id}/history/",
-		GetMarketsRegionIdHistory,
-	)
-
-	mockesi.NewRoute(
-		"GetMarketsRegionIdOrders",
-		"Get",
-		"/legacy/markets/{region_id}/orders/",
-		GetMarketsRegionIdOrders,
-	)
-
-	mockesi.NewRoute(
-		"GetMarketsRegionIdTypes",
-		"Get",
-		"/legacy/markets/{region_id}/types/",
-		GetMarketsRegionIdTypes,
-	)
-
-	mockesi.NewRoute(
-		"GetMarketsStructuresStructureId",
-		"Get",
-		"/legacy/markets/structures/{structure_id}/",
-		GetMarketsStructuresStructureId,
-	)
-
-	mockesi.NewRoute(
 		"GetCharactersCharacterIdOpportunities",
 		"Get",
 		"/legacy/characters/{character_id}/opportunities/",
@@ -1390,24 +1313,10 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCharactersCharacterIdWallet",
-		"Get",
-		"/legacy/characters/{character_id}/wallet/",
-		GetCharactersCharacterIdWallet,
-	)
-
-	mockesi.NewRoute(
 		"GetCharactersCharacterIdWalletJournal",
 		"Get",
 		"/legacy/characters/{character_id}/wallet/journal/",
 		GetCharactersCharacterIdWalletJournal,
-	)
-
-	mockesi.NewRoute(
-		"GetCharactersCharacterIdWalletTransactions",
-		"Get",
-		"/legacy/characters/{character_id}/wallet/transactions/",
-		GetCharactersCharacterIdWalletTransactions,
 	)
 
 	mockesi.NewRoute(
@@ -1422,13 +1331,6 @@ func init() {
 		"Get",
 		"/legacy/corporations/{corporation_id}/wallets/{division}/journal/",
 		GetCorporationsCorporationIdWalletsDivisionJournal,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsCorporationIdWalletsDivisionTransactions",
-		"Get",
-		"/legacy/corporations/{corporation_id}/wallets/{division}/transactions/",
-		GetCorporationsCorporationIdWalletsDivisionTransactions,
 	)
 
 	mockesi.NewRoute(
