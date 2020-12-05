@@ -935,6 +935,83 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdOrders",
+		"Get",
+		"/dev/characters/{character_id}/orders/",
+		GetCharactersCharacterIdOrders,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdOrdersHistory",
+		"Get",
+		"/dev/characters/{character_id}/orders/history/",
+		GetCharactersCharacterIdOrdersHistory,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdOrders",
+		"Get",
+		"/dev/corporations/{corporation_id}/orders/",
+		GetCorporationsCorporationIdOrders,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdOrdersHistory",
+		"Get",
+		"/dev/corporations/{corporation_id}/orders/history/",
+		GetCorporationsCorporationIdOrdersHistory,
+	)
+
+	mockesi.NewRoute(
+		"GetMarketsGroups",
+		"Get",
+		"/dev/markets/groups/",
+		GetMarketsGroups,
+	)
+
+	mockesi.NewRoute(
+		"GetMarketsGroupsMarketGroupId",
+		"Get",
+		"/dev/markets/groups/{market_group_id}/",
+		GetMarketsGroupsMarketGroupId,
+	)
+
+	mockesi.NewRoute(
+		"GetMarketsPrices",
+		"Get",
+		"/dev/markets/prices/",
+		GetMarketsPrices,
+	)
+
+	mockesi.NewRoute(
+		"GetMarketsRegionIdHistory",
+		"Get",
+		"/dev/markets/{region_id}/history/",
+		GetMarketsRegionIdHistory,
+	)
+
+	mockesi.NewRoute(
+		"GetMarketsRegionIdOrders",
+		"Get",
+		"/dev/markets/{region_id}/orders/",
+		GetMarketsRegionIdOrders,
+	)
+
+	mockesi.NewRoute(
+		"GetMarketsRegionIdTypes",
+		"Get",
+		"/dev/markets/{region_id}/types/",
+		GetMarketsRegionIdTypes,
+	)
+
+	mockesi.NewRoute(
+		"GetMarketsStructuresStructureId",
+		"Get",
+		"/dev/markets/structures/{structure_id}/",
+		GetMarketsStructuresStructureId,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdOpportunities",
 		"Get",
 		"/dev/characters/{character_id}/opportunities/",
@@ -1313,10 +1390,38 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdWalletJournal",
+		"Get",
+		"/dev/characters/{character_id}/wallet/journal/",
+		GetCharactersCharacterIdWalletJournal,
+	)
+
+	mockesi.NewRoute(
+		"GetCharactersCharacterIdWalletTransactions",
+		"Get",
+		"/dev/characters/{character_id}/wallet/transactions/",
+		GetCharactersCharacterIdWalletTransactions,
+	)
+
+	mockesi.NewRoute(
 		"GetCorporationsCorporationIdWallets",
 		"Get",
 		"/dev/corporations/{corporation_id}/wallets/",
 		GetCorporationsCorporationIdWallets,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdWalletsDivisionJournal",
+		"Get",
+		"/dev/corporations/{corporation_id}/wallets/{division}/journal/",
+		GetCorporationsCorporationIdWalletsDivisionJournal,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdWalletsDivisionTransactions",
+		"Get",
+		"/dev/corporations/{corporation_id}/wallets/{division}/transactions/",
+		GetCorporationsCorporationIdWalletsDivisionTransactions,
 	)
 
 	mockesi.NewRoute(

@@ -116,6 +116,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCorporationsCorporationIdOrders",
+		"Get",
+		"/v3/corporations/{corporation_id}/orders/",
+		GetCorporationsCorporationIdOrders,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdPlanetsPlanetId",
 		"Get",
 		"/v3/characters/{character_id}/planets/{planet_id}/",
