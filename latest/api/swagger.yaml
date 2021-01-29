@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "An OpenAPI for EVE Online"
-  version: "1.7.2"
+  version: "1.7.14"
   title: "EVE Swagger Interface"
 host: "esi.evetech.net"
 basePath: "/latest"
@@ -9613,9 +9613,10 @@ paths:
       - "Wallet"
       summary: "Get a character's wallet balance"
       description: "Returns a character's wallet balance\n\n---\nAlternate route:\
-        \ `/legacy/characters/{character_id}/wallet/`\n\nAlternate route: `/v1/characters/{character_id}/wallet/`\n\
-        \n---\nThis route is cached for up to 120 seconds\n\n---\n[Diff of the upcoming\
-        \ changes](https://esi.evetech.net/diff/latest/dev/#GET-/characters/{character_id}/wallet/)"
+        \ `/dev/characters/{character_id}/wallet/`\n\nAlternate route: `/legacy/characters/{character_id}/wallet/`\n\
+        \nAlternate route: `/v1/characters/{character_id}/wallet/`\n\nAlternate route:\
+        \ `/v2/characters/{character_id}/wallet/`\n\n---\nThis route is cached for\
+        \ up to 120 seconds"
       operationId: "get_characters_character_id_wallet"
       parameters:
       - name: "character_id"
@@ -9739,8 +9740,10 @@ paths:
       - evesso:
         - "esi-wallet.read_character_wallet.v1"
       x-alternate-versions:
+      - "dev"
       - "legacy"
       - "v1"
+      - "v2"
       x-cached-seconds: 120
   /characters/{character_id}/wallet/journal/:
     get:
@@ -9749,8 +9752,9 @@ paths:
       summary: "Get character wallet journal"
       description: "Retrieve the given character's wallet journal going 30 days back\n\
         \n---\nAlternate route: `/dev/characters/{character_id}/wallet/journal/`\n\
-        \nAlternate route: `/v6/characters/{character_id}/wallet/journal/`\n\n---\n\
-        This route is cached for up to 3600 seconds"
+        \nAlternate route: `/v6/characters/{character_id}/wallet/journal/`\n\nAlternate\
+        \ route: `/v7/characters/{character_id}/wallet/journal/`\n\n---\nThis route\
+        \ is cached for up to 3600 seconds"
       operationId: "get_characters_character_id_wallet_journal"
       parameters:
       - name: "character_id"
@@ -9777,15 +9781,6 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
-      - name: "page"
-        in: "query"
-        description: "Which page of results to return"
-        required: false
-        type: "integer"
-        default: 1
-        minimum: 1
-        format: "int32"
-        x-exportParamName: "Page"
       - name: "token"
         in: "query"
         description: "Access token to use if unable to set a header"
@@ -9827,11 +9822,6 @@ paths:
             Last-Modified:
               type: "string"
               description: "RFC7231 formatted datetime string"
-            X-Pages:
-              type: "integer"
-              format: "int32"
-              description: "Maximum page number"
-              default: 1
         304:
           description: "Not modified"
           headers:
@@ -9902,17 +9892,19 @@ paths:
       x-alternate-versions:
       - "dev"
       - "v6"
+      - "v7"
       x-cached-seconds: 3600
   /characters/{character_id}/wallet/transactions/:
     get:
       tags:
       - "Wallet"
       summary: "Get wallet transactions"
-      description: "Get wallet transactions of a character\n\n---\nAlternate route:\
-        \ `/dev/characters/{character_id}/wallet/transactions/`\n\nAlternate route:\
-        \ `/legacy/characters/{character_id}/wallet/transactions/`\n\nAlternate route:\
-        \ `/v1/characters/{character_id}/wallet/transactions/`\n\n---\nThis route\
-        \ is cached for up to 3600 seconds"
+      description: "Get wallet transactions of a character going 30 days back\n\n\
+        ---\nAlternate route: `/dev/characters/{character_id}/wallet/transactions/`\n\
+        \nAlternate route: `/legacy/characters/{character_id}/wallet/transactions/`\n\
+        \nAlternate route: `/v1/characters/{character_id}/wallet/transactions/`\n\n\
+        Alternate route: `/v2/characters/{character_id}/wallet/transactions/`\n\n\
+        ---\nThis route is cached for up to 3600 seconds"
       operationId: "get_characters_character_id_wallet_transactions"
       parameters:
       - name: "character_id"
@@ -10059,6 +10051,7 @@ paths:
       - "dev"
       - "legacy"
       - "v1"
+      - "v2"
       x-cached-seconds: 3600
   /contracts/public/bids/{contract_id}/:
     get:
@@ -11025,9 +11018,9 @@ paths:
       tags:
       - "Corporation"
       summary: "Get npc corporations"
-      description: "Get a list of npc corporations\n\n---\nAlternate route: `/dev/corporations/npccorps/`\n\
-        \nAlternate route: `/legacy/corporations/npccorps/`\n\nAlternate route: `/v1/corporations/npccorps/`\n\
-        \n---\nThis route expires daily at 11:05"
+      description: "Get a list of npc corporations\n\n---\nAlternate route: `/legacy/corporations/npccorps/`\n\
+        \nAlternate route: `/v1/corporations/npccorps/`\n\n---\nThis route expires\
+        \ daily at 11:05"
       operationId: "get_corporations_npccorps"
       parameters:
       - name: "datasource"
@@ -11128,7 +11121,6 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "legacy"
       - "v1"
   /corporations/{corporation_id}/:
@@ -11137,8 +11129,8 @@ paths:
       - "Corporation"
       summary: "Get corporation information"
       description: "Public information about a corporation\n\n---\nAlternate route:\
-        \ `/dev/corporations/{corporation_id}/`\n\nAlternate route: `/v4/corporations/{corporation_id}/`\n\
-        \n---\nThis route is cached for up to 3600 seconds"
+        \ `/v4/corporations/{corporation_id}/`\n\n---\nThis route is cached for up\
+        \ to 3600 seconds"
       operationId: "get_corporations_corporation_id"
       parameters:
       - name: "corporation_id"
@@ -11254,7 +11246,6 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "v4"
       x-cached-seconds: 3600
   /corporations/{corporation_id}/alliancehistory/:
@@ -11263,9 +11254,8 @@ paths:
       - "Corporation"
       summary: "Get alliance history"
       description: "Get a list of all the alliances a corporation has been a member\
-        \ of\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/alliancehistory/`\n\
-        \nAlternate route: `/v2/corporations/{corporation_id}/alliancehistory/`\n\n\
-        ---\nThis route is cached for up to 3600 seconds"
+        \ of\n\n---\nAlternate route: `/v2/corporations/{corporation_id}/alliancehistory/`\n\
+        \n---\nThis route is cached for up to 3600 seconds"
       operationId: "get_corporations_corporation_id_alliancehistory"
       parameters:
       - name: "corporation_id"
@@ -11374,7 +11364,6 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "v2"
       x-cached-seconds: 3600
   /corporations/{corporation_id}/assets/:
@@ -11803,10 +11792,9 @@ paths:
       - "Corporation"
       summary: "Get corporation blueprints"
       description: "Returns a list of blueprints the corporation owns\n\n---\nAlternate\
-        \ route: `/dev/corporations/{corporation_id}/blueprints/`\n\nAlternate route:\
-        \ `/v2/corporations/{corporation_id}/blueprints/`\n\n---\nThis route is cached\
-        \ for up to 3600 seconds\n\n---\nRequires one of the following EVE corporation\
-        \ role(s): Director\n"
+        \ route: `/v2/corporations/{corporation_id}/blueprints/`\n\n---\nThis route\
+        \ is cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
+        \ corporation role(s): Director\n"
       operationId: "get_corporations_corporation_id_blueprints"
       parameters:
       - name: "corporation_id"
@@ -11954,7 +11942,6 @@ paths:
       - evesso:
         - "esi-corporations.read_blueprints.v1"
       x-alternate-versions:
-      - "dev"
       - "v2"
       x-cached-seconds: 3600
       x-required-roles:
@@ -12591,7 +12578,6 @@ paths:
       summary: "Get all corporation ALSC logs"
       description: "Returns logs recorded in the past seven days from all audit log\
         \ secure containers (ALSC) owned by a given corporation\n\n---\nAlternate\
-        \ route: `/dev/corporations/{corporation_id}/containers/logs/`\n\nAlternate\
         \ route: `/v2/corporations/{corporation_id}/containers/logs/`\n\n---\nThis\
         \ route is cached for up to 600 seconds\n\n---\nRequires one of the following\
         \ EVE corporation role(s): Director\n"
@@ -12760,7 +12746,6 @@ paths:
       - evesso:
         - "esi-corporations.read_container_logs.v1"
       x-alternate-versions:
-      - "dev"
       - "v2"
       x-cached-seconds: 600
       x-required-roles:
@@ -13451,10 +13436,9 @@ paths:
       - "Corporation"
       summary: "Get corporation divisions"
       description: "Return corporation hangar and wallet division names, only show\
-        \ if a division is not using the default name\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/divisions/`\n\
-        \nAlternate route: `/legacy/corporations/{corporation_id}/divisions/`\n\n\
-        Alternate route: `/v1/corporations/{corporation_id}/divisions/`\n\n---\nThis\
-        \ route is cached for up to 3600 seconds\n\n---\nRequires one of the following\
+        \ if a division is not using the default name\n\n---\nAlternate route: `/legacy/corporations/{corporation_id}/divisions/`\n\
+        \nAlternate route: `/v1/corporations/{corporation_id}/divisions/`\n\n---\n\
+        This route is cached for up to 3600 seconds\n\n---\nRequires one of the following\
         \ EVE corporation role(s): Director\n"
       operationId: "get_corporations_corporation_id_divisions"
       parameters:
@@ -13582,7 +13566,6 @@ paths:
       - evesso:
         - "esi-corporations.read_divisions.v1"
       x-alternate-versions:
-      - "dev"
       - "legacy"
       - "v1"
       x-cached-seconds: 3600
@@ -13593,9 +13576,8 @@ paths:
       tags:
       - "Corporation"
       summary: "Get corporation facilities"
-      description: "Return a corporation's facilities\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/facilities/`\n\
-        \nAlternate route: `/legacy/corporations/{corporation_id}/facilities/`\n\n\
-        Alternate route: `/v1/corporations/{corporation_id}/facilities/`\n\n---\n\
+      description: "Return a corporation's facilities\n\n---\nAlternate route: `/legacy/corporations/{corporation_id}/facilities/`\n\
+        \nAlternate route: `/v1/corporations/{corporation_id}/facilities/`\n\n---\n\
         This route is cached for up to 3600 seconds\n\n---\nRequires one of the following\
         \ EVE corporation role(s): Factory_Manager\n"
       operationId: "get_corporations_corporation_id_facilities"
@@ -13726,7 +13708,6 @@ paths:
       - evesso:
         - "esi-corporations.read_facilities.v1"
       x-alternate-versions:
-      - "dev"
       - "legacy"
       - "v1"
       x-cached-seconds: 3600
@@ -14340,10 +14321,9 @@ paths:
       tags:
       - "Corporation"
       summary: "Get corporation medals"
-      description: "Returns a corporation's medals\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/medals/`\n\
-        \nAlternate route: `/legacy/corporations/{corporation_id}/medals/`\n\nAlternate\
-        \ route: `/v1/corporations/{corporation_id}/medals/`\n\n---\nThis route is\
-        \ cached for up to 3600 seconds"
+      description: "Returns a corporation's medals\n\n---\nAlternate route: `/legacy/corporations/{corporation_id}/medals/`\n\
+        \nAlternate route: `/v1/corporations/{corporation_id}/medals/`\n\n---\nThis\
+        \ route is cached for up to 3600 seconds"
       operationId: "get_corporations_corporation_id_medals"
       parameters:
       - name: "corporation_id"
@@ -14488,7 +14468,6 @@ paths:
       - evesso:
         - "esi-corporations.read_medals.v1"
       x-alternate-versions:
-      - "dev"
       - "legacy"
       - "v1"
       x-cached-seconds: 3600
@@ -14499,7 +14478,6 @@ paths:
       - "Corporation"
       summary: "Get corporation issued medals"
       description: "Returns medals issued by a corporation\n\n---\nAlternate route:\
-        \ `/dev/corporations/{corporation_id}/medals/issued/`\n\nAlternate route:\
         \ `/legacy/corporations/{corporation_id}/medals/issued/`\n\nAlternate route:\
         \ `/v1/corporations/{corporation_id}/medals/issued/`\n\n---\nThis route is\
         \ cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
@@ -14649,7 +14627,6 @@ paths:
       - evesso:
         - "esi-corporations.read_medals.v1"
       x-alternate-versions:
-      - "dev"
       - "legacy"
       - "v1"
       x-cached-seconds: 3600
@@ -14661,9 +14638,8 @@ paths:
       - "Corporation"
       summary: "Get corporation members"
       description: "Return the current member list of a corporation, the token's character\
-        \ need to be a member of the corporation.\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/members/`\n\
-        \nAlternate route: `/v3/corporations/{corporation_id}/members/`\n\n---\nThis\
-        \ route is cached for up to 3600 seconds"
+        \ need to be a member of the corporation.\n\n---\nAlternate route: `/v3/corporations/{corporation_id}/members/`\n\
+        \n---\nThis route is cached for up to 3600 seconds"
       operationId: "get_corporations_corporation_id_members"
       parameters:
       - name: "corporation_id"
@@ -14794,7 +14770,6 @@ paths:
       - evesso:
         - "esi-corporations.read_corporation_membership.v1"
       x-alternate-versions:
-      - "dev"
       - "v3"
       x-cached-seconds: 3600
   /corporations/{corporation_id}/members/limit/:
@@ -14803,8 +14778,7 @@ paths:
       - "Corporation"
       summary: "Get corporation member limit"
       description: "Return a corporation's member limit, not including CEO himself\n\
-        \n---\nAlternate route: `/dev/corporations/{corporation_id}/members/limit/`\n\
-        \nAlternate route: `/legacy/corporations/{corporation_id}/members/limit/`\n\
+        \n---\nAlternate route: `/legacy/corporations/{corporation_id}/members/limit/`\n\
         \nAlternate route: `/v1/corporations/{corporation_id}/members/limit/`\n\n\
         ---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of the\
         \ following EVE corporation role(s): Director\n"
@@ -14931,7 +14905,6 @@ paths:
       - evesso:
         - "esi-corporations.track_members.v1"
       x-alternate-versions:
-      - "dev"
       - "legacy"
       - "v1"
       x-cached-seconds: 3600
@@ -14943,7 +14916,6 @@ paths:
       - "Corporation"
       summary: "Get corporation's members' titles"
       description: "Returns a corporation's members' titles\n\n---\nAlternate route:\
-        \ `/dev/corporations/{corporation_id}/members/titles/`\n\nAlternate route:\
         \ `/legacy/corporations/{corporation_id}/members/titles/`\n\nAlternate route:\
         \ `/v1/corporations/{corporation_id}/members/titles/`\n\n---\nThis route is\
         \ cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
@@ -15075,7 +15047,6 @@ paths:
       - evesso:
         - "esi-corporations.read_titles.v1"
       x-alternate-versions:
-      - "dev"
       - "legacy"
       - "v1"
       x-cached-seconds: 3600
@@ -15087,8 +15058,7 @@ paths:
       - "Corporation"
       summary: "Track corporation members"
       description: "Returns additional information about a corporation's members which\
-        \ helps tracking their activities\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/membertracking/`\n\
-        \nAlternate route: `/legacy/corporations/{corporation_id}/membertracking/`\n\
+        \ helps tracking their activities\n\n---\nAlternate route: `/legacy/corporations/{corporation_id}/membertracking/`\n\
         \nAlternate route: `/v1/corporations/{corporation_id}/membertracking/`\n\n\
         ---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of the\
         \ following EVE corporation role(s): Director\n"
@@ -15229,7 +15199,6 @@ paths:
       - evesso:
         - "esi-corporations.track_members.v1"
       x-alternate-versions:
-      - "dev"
       - "legacy"
       - "v1"
       x-cached-seconds: 3600
@@ -15583,10 +15552,9 @@ paths:
       - "Corporation"
       summary: "Get corporation member roles"
       description: "Return the roles of all members if the character has the personnel\
-        \ manager role or any grantable role.\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/roles/`\n\
-        \nAlternate route: `/legacy/corporations/{corporation_id}/roles/`\n\nAlternate\
-        \ route: `/v1/corporations/{corporation_id}/roles/`\n\n---\nThis route is\
-        \ cached for up to 3600 seconds"
+        \ manager role or any grantable role.\n\n---\nAlternate route: `/legacy/corporations/{corporation_id}/roles/`\n\
+        \nAlternate route: `/v1/corporations/{corporation_id}/roles/`\n\n---\nThis\
+        \ route is cached for up to 3600 seconds"
       operationId: "get_corporations_corporation_id_roles"
       parameters:
       - name: "corporation_id"
@@ -15716,7 +15684,6 @@ paths:
       - evesso:
         - "esi-corporations.read_corporation_membership.v1"
       x-alternate-versions:
-      - "dev"
       - "legacy"
       - "v1"
       x-cached-seconds: 3600
@@ -15726,8 +15693,7 @@ paths:
       - "Corporation"
       summary: "Get corporation member roles history"
       description: "Return how roles have changed for a coporation's members, up to\
-        \ a month\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/roles/history/`\n\
-        \nAlternate route: `/legacy/corporations/{corporation_id}/roles/history/`\n\
+        \ a month\n\n---\nAlternate route: `/legacy/corporations/{corporation_id}/roles/history/`\n\
         \nAlternate route: `/v1/corporations/{corporation_id}/roles/history/`\n\n\
         ---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of the\
         \ following EVE corporation role(s): Director\n"
@@ -15878,7 +15844,6 @@ paths:
       - evesso:
         - "esi-corporations.read_corporation_membership.v1"
       x-alternate-versions:
-      - "dev"
       - "legacy"
       - "v1"
       x-cached-seconds: 3600
@@ -16058,10 +16023,9 @@ paths:
       - "Corporation"
       summary: "Get corporation standings"
       description: "Return corporation standings from agents, NPC corporations, and\
-        \ factions\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/standings/`\n\
-        \nAlternate route: `/legacy/corporations/{corporation_id}/standings/`\n\n\
-        Alternate route: `/v1/corporations/{corporation_id}/standings/`\n\n---\nThis\
-        \ route is cached for up to 3600 seconds"
+        \ factions\n\n---\nAlternate route: `/legacy/corporations/{corporation_id}/standings/`\n\
+        \nAlternate route: `/v1/corporations/{corporation_id}/standings/`\n\n---\n\
+        This route is cached for up to 3600 seconds"
       operationId: "get_corporations_corporation_id_standings"
       parameters:
       - name: "corporation_id"
@@ -16210,7 +16174,6 @@ paths:
       - evesso:
         - "esi-corporations.read_standings.v1"
       x-alternate-versions:
-      - "dev"
       - "legacy"
       - "v1"
       x-cached-seconds: 3600
@@ -16221,10 +16184,10 @@ paths:
       - "Corporation"
       summary: "Get corporation starbases (POSes)"
       description: "Returns list of corporation starbases (POSes)\n\n---\nAlternate\
-        \ route: `/dev/corporations/{corporation_id}/starbases/`\n\nAlternate route:\
-        \ `/legacy/corporations/{corporation_id}/starbases/`\n\nAlternate route: `/v1/corporations/{corporation_id}/starbases/`\n\
-        \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
-        \ the following EVE corporation role(s): Director\n"
+        \ route: `/legacy/corporations/{corporation_id}/starbases/`\n\nAlternate route:\
+        \ `/v1/corporations/{corporation_id}/starbases/`\n\n---\nThis route is cached\
+        \ for up to 3600 seconds\n\n---\nRequires one of the following EVE corporation\
+        \ role(s): Director\n\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/starbases/)"
       operationId: "get_corporations_corporation_id_starbases"
       parameters:
       - name: "corporation_id"
@@ -16367,7 +16330,6 @@ paths:
       - evesso:
         - "esi-corporations.read_starbases.v1"
       x-alternate-versions:
-      - "dev"
       - "legacy"
       - "v1"
       x-cached-seconds: 3600
@@ -16379,8 +16341,7 @@ paths:
       - "Corporation"
       summary: "Get starbase (POS) detail"
       description: "Returns various settings and fuels of a starbase (POS)\n\n---\n\
-        Alternate route: `/dev/corporations/{corporation_id}/starbases/{starbase_id}/`\n\
-        \nAlternate route: `/legacy/corporations/{corporation_id}/starbases/{starbase_id}/`\n\
+        Alternate route: `/legacy/corporations/{corporation_id}/starbases/{starbase_id}/`\n\
         \nAlternate route: `/v1/corporations/{corporation_id}/starbases/{starbase_id}/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
         \ the following EVE corporation role(s): Director\n"
@@ -16529,7 +16490,6 @@ paths:
       - evesso:
         - "esi-corporations.read_starbases.v1"
       x-alternate-versions:
-      - "dev"
       - "legacy"
       - "v1"
       x-cached-seconds: 3600
@@ -16542,10 +16502,10 @@ paths:
       summary: "Get corporation structures"
       description: "Get a list of corporation structures. This route's version includes\
         \ the changes to structures detailed in this blog: https://www.eveonline.com/article/upwell-2.0-structures-changes-coming-on-february-13th\n\
-        \n---\nAlternate route: `/dev/corporations/{corporation_id}/structures/`\n\
-        \nAlternate route: `/v3/corporations/{corporation_id}/structures/`\n\n---\n\
-        This route is cached for up to 3600 seconds\n\n---\nRequires one of the following\
-        \ EVE corporation role(s): Station_Manager\n"
+        \n---\nAlternate route: `/v3/corporations/{corporation_id}/structures/`\n\n\
+        ---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of the\
+        \ following EVE corporation role(s): Station_Manager\n\n\n---\n[Diff of the\
+        \ upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/corporations/{corporation_id}/structures/)"
       operationId: "get_corporations_corporation_id_structures"
       parameters:
       - name: "Accept-Language"
@@ -16731,7 +16691,6 @@ paths:
       - evesso:
         - "esi-corporations.read_structures.v1"
       x-alternate-versions:
-      - "dev"
       - "v3"
       x-cached-seconds: 3600
       x-required-roles:
@@ -16741,11 +16700,10 @@ paths:
       tags:
       - "Corporation"
       summary: "Get corporation titles"
-      description: "Returns a corporation's titles\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/titles/`\n\
-        \nAlternate route: `/legacy/corporations/{corporation_id}/titles/`\n\nAlternate\
-        \ route: `/v1/corporations/{corporation_id}/titles/`\n\n---\nThis route is\
-        \ cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
-        \ corporation role(s): Director\n"
+      description: "Returns a corporation's titles\n\n---\nAlternate route: `/legacy/corporations/{corporation_id}/titles/`\n\
+        \nAlternate route: `/v1/corporations/{corporation_id}/titles/`\n\n---\nThis\
+        \ route is cached for up to 3600 seconds\n\n---\nRequires one of the following\
+        \ EVE corporation role(s): Director\n"
       operationId: "get_corporations_corporation_id_titles"
       parameters:
       - name: "corporation_id"
@@ -16876,7 +16834,6 @@ paths:
       - evesso:
         - "esi-corporations.read_titles.v1"
       x-alternate-versions:
-      - "dev"
       - "legacy"
       - "v1"
       x-cached-seconds: 3600
@@ -17042,12 +16999,12 @@ paths:
     get:
       tags:
       - "Wallet"
-      summary: "Get corporation wallet journal"
-      description: "Retrieve the given corporation's wallet journal for the given\
-        \ division going 30 days back\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/wallets/{division}/journal/`\n\
+      summary: "Get corporations wallet journal"
+      description: "Retrieve the given character's wallet journal going 30 days back\n\
+        \n---\nAlternate route: `/dev/corporations/{corporation_id}/wallets/{division}/journal/`\n\
         \nAlternate route: `/v4/corporations/{corporation_id}/wallets/{division}/journal/`\n\
-        \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
-        \ the following EVE corporation role(s): Accountant, Junior_Accountant\n"
+        \nAlternate route: `/v5/corporations/{corporation_id}/wallets/{division}/journal/`\n\
+        \n---\nThis route is cached for up to 3600 seconds"
       operationId: "get_corporations_corporation_id_wallets_division_journal"
       parameters:
       - name: "corporation_id"
@@ -17103,24 +17060,23 @@ paths:
           description: "Journal entries"
           schema:
             type: "array"
-            description: "Journal entries"
+            description: "Wallet journal entries"
             title: "get_corporations_corporation_id_wallets_division_journal_ok"
             items:
               $ref: "#/definitions/get_corporations_corporation_id_wallets_division_journal_200_ok"
             maxItems: 2500
           examples:
             application/json:
-            - amount: -1000
-              balance: 100000.0
-              context_id: 2112625428
-              context_id_type: "character_id"
-              date: "2016-10-24T09:00:00Z"
-              description: "CCP Zoetrope transferred cash from C C P's corporate account\
-                \ to CCP SnowedIn's account"
-              first_party_id: 109299958
-              id: 1234567890
-              ref_type: "corporation_account_withdrawal"
-              second_party_id: 95538921
+            - amount: -100000
+              balance: 500000.4316
+              context_id: 4
+              context_id_type: "contract_id"
+              date: "2018-02-23T14:31:32Z"
+              description: "Contract Deposit"
+              first_party_id: 2112625428
+              id: 89
+              ref_type: "contract_deposit"
+              second_party_id: 1000132
           headers:
             Cache-Control:
               type: "string"
@@ -17209,19 +17165,18 @@ paths:
       x-alternate-versions:
       - "dev"
       - "v4"
+      - "v5"
       x-cached-seconds: 3600
-      x-required-roles:
-      - "Accountant"
-      - "Junior_Accountant"
   /corporations/{corporation_id}/wallets/{division}/transactions/:
     get:
       tags:
       - "Wallet"
       summary: "Get corporation wallet transactions"
-      description: "Get wallet transactions of a corporation\n\n---\nAlternate route:\
-        \ `/dev/corporations/{corporation_id}/wallets/{division}/transactions/`\n\n\
-        Alternate route: `/legacy/corporations/{corporation_id}/wallets/{division}/transactions/`\n\
+      description: "Get wallet transactions of a corporation going 30 days back\n\n\
+        ---\nAlternate route: `/dev/corporations/{corporation_id}/wallets/{division}/transactions/`\n\
+        \nAlternate route: `/legacy/corporations/{corporation_id}/wallets/{division}/transactions/`\n\
         \nAlternate route: `/v1/corporations/{corporation_id}/wallets/{division}/transactions/`\n\
+        \nAlternate route: `/v2/corporations/{corporation_id}/wallets/{division}/transactions/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
         \ the following EVE corporation role(s): Accountant, Junior_Accountant\n"
       operationId: "get_corporations_corporation_id_wallets_division_transactions"
@@ -17378,6 +17333,7 @@ paths:
       - "dev"
       - "legacy"
       - "v1"
+      - "v2"
       x-cached-seconds: 3600
       x-required-roles:
       - "Accountant"
@@ -23894,9 +23850,9 @@ paths:
       tags:
       - "Universe"
       summary: "Get ancestries"
-      description: "Get all character ancestries\n\n---\nAlternate route: `/dev/universe/ancestries/`\n\
-        \nAlternate route: `/legacy/universe/ancestries/`\n\nAlternate route: `/v1/universe/ancestries/`\n\
-        \n---\nThis route expires daily at 11:05"
+      description: "Get all character ancestries\n\n---\nAlternate route: `/legacy/universe/ancestries/`\n\
+        \nAlternate route: `/v1/universe/ancestries/`\n\n---\nThis route expires daily\
+        \ at 11:05"
       operationId: "get_universe_ancestries"
       parameters:
       - name: "Accept-Language"
@@ -24034,7 +23990,6 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "legacy"
       - "v1"
   /universe/asteroid_belts/{asteroid_belt_id}/:
@@ -24042,8 +23997,7 @@ paths:
       tags:
       - "Universe"
       summary: "Get asteroid belt information"
-      description: "Get information on an asteroid belt\n\n---\nAlternate route: `/dev/universe/asteroid_belts/{asteroid_belt_id}/`\n\
-        \nAlternate route: `/legacy/universe/asteroid_belts/{asteroid_belt_id}/`\n\
+      description: "Get information on an asteroid belt\n\n---\nAlternate route: `/legacy/universe/asteroid_belts/{asteroid_belt_id}/`\n\
         \nAlternate route: `/v1/universe/asteroid_belts/{asteroid_belt_id}/`\n\n---\n\
         This route expires daily at 11:05"
       operationId: "get_universe_asteroid_belts_asteroid_belt_id"
@@ -24155,7 +24109,6 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "legacy"
       - "v1"
   /universe/bloodlines/:
@@ -24163,9 +24116,9 @@ paths:
       tags:
       - "Universe"
       summary: "Get bloodlines"
-      description: "Get a list of bloodlines\n\n---\nAlternate route: `/dev/universe/bloodlines/`\n\
-        \nAlternate route: `/legacy/universe/bloodlines/`\n\nAlternate route: `/v1/universe/bloodlines/`\n\
-        \n---\nThis route expires daily at 11:05"
+      description: "Get a list of bloodlines\n\n---\nAlternate route: `/legacy/universe/bloodlines/`\n\
+        \nAlternate route: `/v1/universe/bloodlines/`\n\n---\nThis route expires daily\
+        \ at 11:05"
       operationId: "get_universe_bloodlines"
       parameters:
       - name: "Accept-Language"
@@ -24309,7 +24262,6 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "legacy"
       - "v1"
   /universe/categories/:
@@ -24317,9 +24269,9 @@ paths:
       tags:
       - "Universe"
       summary: "Get item categories"
-      description: "Get a list of item categories\n\n---\nAlternate route: `/dev/universe/categories/`\n\
-        \nAlternate route: `/legacy/universe/categories/`\n\nAlternate route: `/v1/universe/categories/`\n\
-        \n---\nThis route expires daily at 11:05"
+      description: "Get a list of item categories\n\n---\nAlternate route: `/legacy/universe/categories/`\n\
+        \nAlternate route: `/v1/universe/categories/`\n\n---\nThis route expires daily\
+        \ at 11:05"
       operationId: "get_universe_categories"
       parameters:
       - name: "datasource"
@@ -24420,7 +24372,6 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "legacy"
       - "v1"
   /universe/categories/{category_id}/:
@@ -24428,10 +24379,9 @@ paths:
       tags:
       - "Universe"
       summary: "Get item category information"
-      description: "Get information of an item category\n\n---\nAlternate route: `/dev/universe/categories/{category_id}/`\n\
-        \nAlternate route: `/legacy/universe/categories/{category_id}/`\n\nAlternate\
-        \ route: `/v1/universe/categories/{category_id}/`\n\n---\nThis route expires\
-        \ daily at 11:05"
+      description: "Get information of an item category\n\n---\nAlternate route: `/legacy/universe/categories/{category_id}/`\n\
+        \nAlternate route: `/v1/universe/categories/{category_id}/`\n\n---\nThis route\
+        \ expires daily at 11:05"
       operationId: "get_universe_categories_category_id"
       parameters:
       - name: "Accept-Language"
@@ -24580,7 +24530,6 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "legacy"
       - "v1"
   /universe/constellations/:
@@ -24588,9 +24537,9 @@ paths:
       tags:
       - "Universe"
       summary: "Get constellations"
-      description: "Get a list of constellations\n\n---\nAlternate route: `/dev/universe/constellations/`\n\
-        \nAlternate route: `/legacy/universe/constellations/`\n\nAlternate route:\
-        \ `/v1/universe/constellations/`\n\n---\nThis route expires daily at 11:05"
+      description: "Get a list of constellations\n\n---\nAlternate route: `/legacy/universe/constellations/`\n\
+        \nAlternate route: `/v1/universe/constellations/`\n\n---\nThis route expires\
+        \ daily at 11:05"
       operationId: "get_universe_constellations"
       parameters:
       - name: "datasource"
@@ -24690,7 +24639,6 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "legacy"
       - "v1"
   /universe/constellations/{constellation_id}/:
@@ -24698,8 +24646,7 @@ paths:
       tags:
       - "Universe"
       summary: "Get constellation information"
-      description: "Get information on a constellation\n\n---\nAlternate route: `/dev/universe/constellations/{constellation_id}/`\n\
-        \nAlternate route: `/legacy/universe/constellations/{constellation_id}/`\n\
+      description: "Get information on a constellation\n\n---\nAlternate route: `/legacy/universe/constellations/{constellation_id}/`\n\
         \nAlternate route: `/v1/universe/constellations/{constellation_id}/`\n\n---\n\
         This route expires daily at 11:05"
       operationId: "get_universe_constellations_constellation_id"
@@ -24853,7 +24800,6 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "legacy"
       - "v1"
   /universe/factions/:
@@ -25012,9 +24958,9 @@ paths:
       tags:
       - "Universe"
       summary: "Get graphics"
-      description: "Get a list of graphics\n\n---\nAlternate route: `/dev/universe/graphics/`\n\
-        \nAlternate route: `/legacy/universe/graphics/`\n\nAlternate route: `/v1/universe/graphics/`\n\
-        \n---\nThis route expires daily at 11:05"
+      description: "Get a list of graphics\n\n---\nAlternate route: `/legacy/universe/graphics/`\n\
+        \nAlternate route: `/v1/universe/graphics/`\n\n---\nThis route expires daily\
+        \ at 11:05"
       operationId: "get_universe_graphics"
       parameters:
       - name: "datasource"
@@ -25114,7 +25060,6 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "legacy"
       - "v1"
   /universe/graphics/{graphic_id}/:
@@ -25239,9 +25184,9 @@ paths:
       tags:
       - "Universe"
       summary: "Get item groups"
-      description: "Get a list of item groups\n\n---\nAlternate route: `/dev/universe/groups/`\n\
-        \nAlternate route: `/legacy/universe/groups/`\n\nAlternate route: `/v1/universe/groups/`\n\
-        \n---\nThis route expires daily at 11:05"
+      description: "Get a list of item groups\n\n---\nAlternate route: `/legacy/universe/groups/`\n\
+        \nAlternate route: `/v1/universe/groups/`\n\n---\nThis route expires daily\
+        \ at 11:05"
       operationId: "get_universe_groups"
       parameters:
       - name: "datasource"
@@ -25356,7 +25301,6 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "legacy"
       - "v1"
   /universe/groups/{group_id}/:
@@ -25655,9 +25599,9 @@ paths:
       tags:
       - "Universe"
       summary: "Get moon information"
-      description: "Get information on a moon\n\n---\nAlternate route: `/dev/universe/moons/{moon_id}/`\n\
-        \nAlternate route: `/legacy/universe/moons/{moon_id}/`\n\nAlternate route:\
-        \ `/v1/universe/moons/{moon_id}/`\n\n---\nThis route expires daily at 11:05"
+      description: "Get information on a moon\n\n---\nAlternate route: `/legacy/universe/moons/{moon_id}/`\n\
+        \nAlternate route: `/v1/universe/moons/{moon_id}/`\n\n---\nThis route expires\
+        \ daily at 11:05"
       operationId: "get_universe_moons_moon_id"
       parameters:
       - name: "datasource"
@@ -25768,7 +25712,6 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "legacy"
       - "v1"
   /universe/names/:
@@ -25875,10 +25818,9 @@ paths:
       tags:
       - "Universe"
       summary: "Get planet information"
-      description: "Get information on a planet\n\n---\nAlternate route: `/dev/universe/planets/{planet_id}/`\n\
-        \nAlternate route: `/legacy/universe/planets/{planet_id}/`\n\nAlternate route:\
-        \ `/v1/universe/planets/{planet_id}/`\n\n---\nThis route expires daily at\
-        \ 11:05"
+      description: "Get information on a planet\n\n---\nAlternate route: `/legacy/universe/planets/{planet_id}/`\n\
+        \nAlternate route: `/v1/universe/planets/{planet_id}/`\n\n---\nThis route\
+        \ expires daily at 11:05"
       operationId: "get_universe_planets_planet_id"
       parameters:
       - name: "datasource"
@@ -25990,7 +25932,6 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "legacy"
       - "v1"
   /universe/races/:
@@ -26145,9 +26086,9 @@ paths:
       tags:
       - "Universe"
       summary: "Get regions"
-      description: "Get a list of regions\n\n---\nAlternate route: `/dev/universe/regions/`\n\
-        \nAlternate route: `/legacy/universe/regions/`\n\nAlternate route: `/v1/universe/regions/`\n\
-        \n---\nThis route expires daily at 11:05"
+      description: "Get a list of regions\n\n---\nAlternate route: `/legacy/universe/regions/`\n\
+        \nAlternate route: `/v1/universe/regions/`\n\n---\nThis route expires daily\
+        \ at 11:05"
       operationId: "get_universe_regions"
       parameters:
       - name: "datasource"
@@ -26247,7 +26188,6 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "legacy"
       - "v1"
   /universe/regions/{region_id}/:
@@ -26255,10 +26195,9 @@ paths:
       tags:
       - "Universe"
       summary: "Get region information"
-      description: "Get information on a region\n\n---\nAlternate route: `/dev/universe/regions/{region_id}/`\n\
-        \nAlternate route: `/legacy/universe/regions/{region_id}/`\n\nAlternate route:\
-        \ `/v1/universe/regions/{region_id}/`\n\n---\nThis route expires daily at\
-        \ 11:05"
+      description: "Get information on a region\n\n---\nAlternate route: `/legacy/universe/regions/{region_id}/`\n\
+        \nAlternate route: `/v1/universe/regions/{region_id}/`\n\n---\nThis route\
+        \ expires daily at 11:05"
       operationId: "get_universe_regions_region_id"
       parameters:
       - name: "Accept-Language"
@@ -26406,7 +26345,6 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "legacy"
       - "v1"
   /universe/schematics/{schematic_id}/:
@@ -26532,10 +26470,9 @@ paths:
       tags:
       - "Universe"
       summary: "Get stargate information"
-      description: "Get information on a stargate\n\n---\nAlternate route: `/dev/universe/stargates/{stargate_id}/`\n\
-        \nAlternate route: `/legacy/universe/stargates/{stargate_id}/`\n\nAlternate\
-        \ route: `/v1/universe/stargates/{stargate_id}/`\n\n---\nThis route expires\
-        \ daily at 11:05"
+      description: "Get information on a stargate\n\n---\nAlternate route: `/legacy/universe/stargates/{stargate_id}/`\n\
+        \nAlternate route: `/v1/universe/stargates/{stargate_id}/`\n\n---\nThis route\
+        \ expires daily at 11:05"
       operationId: "get_universe_stargates_stargate_id"
       parameters:
       - name: "datasource"
@@ -26650,7 +26587,6 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "legacy"
       - "v1"
   /universe/stars/{star_id}/:
@@ -26658,9 +26594,9 @@ paths:
       tags:
       - "Universe"
       summary: "Get star information"
-      description: "Get information on a star\n\n---\nAlternate route: `/dev/universe/stars/{star_id}/`\n\
-        \nAlternate route: `/legacy/universe/stars/{star_id}/`\n\nAlternate route:\
-        \ `/v1/universe/stars/{star_id}/`\n\n---\nThis route expires daily at 11:05"
+      description: "Get information on a star\n\n---\nAlternate route: `/legacy/universe/stars/{star_id}/`\n\
+        \nAlternate route: `/v1/universe/stars/{star_id}/`\n\n---\nThis route expires\
+        \ daily at 11:05"
       operationId: "get_universe_stars_star_id"
       parameters:
       - name: "datasource"
@@ -26765,7 +26701,6 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "legacy"
       - "v1"
   /universe/stations/{station_id}/:
@@ -27037,8 +26972,8 @@ paths:
       summary: "Get structure information"
       description: "Returns information on requested structure if you are on the ACL.\
         \ Otherwise, returns \"Forbidden\" for all inputs.\n\n---\nAlternate route:\
-        \ `/dev/universe/structures/{structure_id}/`\n\nAlternate route: `/v2/universe/structures/{structure_id}/`\n\
-        \n---\nThis route is cached for up to 3600 seconds"
+        \ `/v2/universe/structures/{structure_id}/`\n\n---\nThis route is cached for\
+        \ up to 3600 seconds"
       operationId: "get_universe_structures_structure_id"
       parameters:
       - name: "datasource"
@@ -27168,7 +27103,6 @@ paths:
       - evesso:
         - "esi-universe.read_structures.v1"
       x-alternate-versions:
-      - "dev"
       - "v2"
       x-cached-seconds: 3600
   /universe/system_jumps/:
@@ -27178,9 +27112,9 @@ paths:
       summary: "Get system jumps"
       description: "Get the number of jumps in solar systems within the last hour\
         \ ending at the timestamp of the Last-Modified header, excluding wormhole\
-        \ space. Only systems with jumps will be listed\n\n---\nAlternate route: `/dev/universe/system_jumps/`\n\
-        \nAlternate route: `/legacy/universe/system_jumps/`\n\nAlternate route: `/v1/universe/system_jumps/`\n\
-        \n---\nThis route is cached for up to 3600 seconds"
+        \ space. Only systems with jumps will be listed\n\n---\nAlternate route: `/legacy/universe/system_jumps/`\n\
+        \nAlternate route: `/v1/universe/system_jumps/`\n\n---\nThis route is cached\
+        \ for up to 3600 seconds"
       operationId: "get_universe_system_jumps"
       parameters:
       - name: "datasource"
@@ -27277,7 +27211,6 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "legacy"
       - "v1"
       x-cached-seconds: 3600
@@ -27289,8 +27222,8 @@ paths:
       description: "Get the number of ship, pod and NPC kills per solar system within\
         \ the last hour ending at the timestamp of the Last-Modified header, excluding\
         \ wormhole space. Only systems with kills will be listed\n\n---\nAlternate\
-        \ route: `/dev/universe/system_kills/`\n\nAlternate route: `/v2/universe/system_kills/`\n\
-        \n---\nThis route is cached for up to 3600 seconds"
+        \ route: `/v2/universe/system_kills/`\n\n---\nThis route is cached for up\
+        \ to 3600 seconds"
       operationId: "get_universe_system_kills"
       parameters:
       - name: "datasource"
@@ -27389,7 +27322,6 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "v2"
       x-cached-seconds: 3600
   /universe/systems/:
@@ -27675,9 +27607,9 @@ paths:
       tags:
       - "Universe"
       summary: "Get types"
-      description: "Get a list of type ids\n\n---\nAlternate route: `/dev/universe/types/`\n\
-        \nAlternate route: `/legacy/universe/types/`\n\nAlternate route: `/v1/universe/types/`\n\
-        \n---\nThis route expires daily at 11:05"
+      description: "Get a list of type ids\n\n---\nAlternate route: `/legacy/universe/types/`\n\
+        \nAlternate route: `/v1/universe/types/`\n\n---\nThis route expires daily\
+        \ at 11:05"
       operationId: "get_universe_types"
       parameters:
       - name: "datasource"
@@ -27792,7 +27724,6 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
       - "legacy"
       - "v1"
   /universe/types/{type_id}/:
@@ -32143,11 +32074,6 @@ definitions:
         title: "get_characters_character_id_titles_title_id"
     description: "200 ok object"
   get_characters_character_id_wallet_journal_200_ok:
-    required:
-    - "date"
-    - "description"
-    - "id"
-    - "ref_type"
     properties:
       amount:
         type: "number"
@@ -32217,130 +32143,11 @@ definitions:
       ref_type:
         type: "string"
         description: "\"The transaction type for the given. transaction. Different\
-          \ transaction types will populate different attributes.\""
+          \ transaction types will populate different attributes. Note: If you have\
+          \ an existing XML API application that is using ref_types, you will need\
+          \ to know which string ESI ref_type maps to which integer. You can look\
+          \ at the following file to see string->int mappings: github.com/ccpgames/eve-glue/blob/master/eve_glue/wallet_journal_ref.py\""
         title: "get_characters_character_id_wallet_journal_ref_type"
-        enum:
-        - "acceleration_gate_fee"
-        - "advertisement_listing_fee"
-        - "agent_donation"
-        - "agent_location_services"
-        - "agent_miscellaneous"
-        - "agent_mission_collateral_paid"
-        - "agent_mission_collateral_refunded"
-        - "agent_mission_reward"
-        - "agent_mission_reward_corporation_tax"
-        - "agent_mission_time_bonus_reward"
-        - "agent_mission_time_bonus_reward_corporation_tax"
-        - "agent_security_services"
-        - "agent_services_rendered"
-        - "agents_preward"
-        - "alliance_maintainance_fee"
-        - "alliance_registration_fee"
-        - "asset_safety_recovery_tax"
-        - "bounty"
-        - "bounty_prize"
-        - "bounty_prize_corporation_tax"
-        - "bounty_prizes"
-        - "bounty_reimbursement"
-        - "bounty_surcharge"
-        - "brokers_fee"
-        - "clone_activation"
-        - "clone_transfer"
-        - "contraband_fine"
-        - "contract_auction_bid"
-        - "contract_auction_bid_corp"
-        - "contract_auction_bid_refund"
-        - "contract_auction_sold"
-        - "contract_brokers_fee"
-        - "contract_brokers_fee_corp"
-        - "contract_collateral"
-        - "contract_collateral_deposited_corp"
-        - "contract_collateral_payout"
-        - "contract_collateral_refund"
-        - "contract_deposit"
-        - "contract_deposit_corp"
-        - "contract_deposit_refund"
-        - "contract_deposit_sales_tax"
-        - "contract_price"
-        - "contract_price_payment_corp"
-        - "contract_reversal"
-        - "contract_reward"
-        - "contract_reward_deposited"
-        - "contract_reward_deposited_corp"
-        - "contract_reward_refund"
-        - "contract_sales_tax"
-        - "copying"
-        - "corporate_reward_payout"
-        - "corporate_reward_tax"
-        - "corporation_account_withdrawal"
-        - "corporation_bulk_payment"
-        - "corporation_dividend_payment"
-        - "corporation_liquidation"
-        - "corporation_logo_change_cost"
-        - "corporation_payment"
-        - "corporation_registration_fee"
-        - "courier_mission_escrow"
-        - "cspa"
-        - "cspaofflinerefund"
-        - "datacore_fee"
-        - "dna_modification_fee"
-        - "docking_fee"
-        - "duel_wager_escrow"
-        - "duel_wager_payment"
-        - "duel_wager_refund"
-        - "ess_escrow_transfer"
-        - "factory_slot_rental_fee"
-        - "gm_cash_transfer"
-        - "industry_job_tax"
-        - "infrastructure_hub_maintenance"
-        - "inheritance"
-        - "insurance"
-        - "item_trader_payment"
-        - "jump_clone_activation_fee"
-        - "jump_clone_installation_fee"
-        - "kill_right_fee"
-        - "lp_store"
-        - "manufacturing"
-        - "market_escrow"
-        - "market_fine_paid"
-        - "market_transaction"
-        - "medal_creation"
-        - "medal_issued"
-        - "mission_completion"
-        - "mission_cost"
-        - "mission_expiration"
-        - "mission_reward"
-        - "office_rental_fee"
-        - "operation_bonus"
-        - "opportunity_reward"
-        - "planetary_construction"
-        - "planetary_export_tax"
-        - "planetary_import_tax"
-        - "player_donation"
-        - "player_trading"
-        - "project_discovery_reward"
-        - "project_discovery_tax"
-        - "reaction"
-        - "release_of_impounded_property"
-        - "repair_bill"
-        - "reprocessing_tax"
-        - "researching_material_productivity"
-        - "researching_technology"
-        - "researching_time_productivity"
-        - "resource_wars_reward"
-        - "reverse_engineering"
-        - "security_processing_fee"
-        - "shares"
-        - "skill_purchase"
-        - "sovereignity_bill"
-        - "store_purchase"
-        - "store_purchase_refund"
-        - "structure_gate_jump"
-        - "transaction_tax"
-        - "upkeep_adjustment_fee"
-        - "war_ally_contract"
-        - "war_fee"
-        - "war_fee_surrender"
       second_party_id:
         type: "integer"
         format: "int32"
@@ -33156,6 +32963,7 @@ definitions:
         - "Pilot"
         - "PlanetSurface"
         - "QuafeBay"
+        - "QuantumCoreRoom"
         - "Reward"
         - "RigSlot0"
         - "RigSlot1"
@@ -33521,6 +33329,7 @@ definitions:
         - "Pilot"
         - "PlanetSurface"
         - "QuafeBay"
+        - "QuantumCoreRoom"
         - "Reward"
         - "RigSlot0"
         - "RigSlot1"
@@ -36111,11 +35920,6 @@ definitions:
         maximum: 7
     description: "200 ok object"
   get_corporations_corporation_id_wallets_division_journal_200_ok:
-    required:
-    - "date"
-    - "description"
-    - "id"
-    - "ref_type"
     properties:
       amount:
         type: "number"
@@ -36188,130 +35992,8 @@ definitions:
           \ transaction types will populate different attributes. Note: If you have\
           \ an existing XML API application that is using ref_types, you will need\
           \ to know which string ESI ref_type maps to which integer. You can look\
-          \ at the following file to see string->int mappings: https://github.com/ccpgames/eve-glue/blob/master/eve_glue/wallet_journal_ref.py\""
+          \ at the following file to see string->int mappings: github.com/ccpgames/eve-glue/blob/master/eve_glue/wallet_journal_ref.py\""
         title: "get_corporations_corporation_id_wallets_division_journal_ref_type"
-        enum:
-        - "acceleration_gate_fee"
-        - "advertisement_listing_fee"
-        - "agent_donation"
-        - "agent_location_services"
-        - "agent_miscellaneous"
-        - "agent_mission_collateral_paid"
-        - "agent_mission_collateral_refunded"
-        - "agent_mission_reward"
-        - "agent_mission_reward_corporation_tax"
-        - "agent_mission_time_bonus_reward"
-        - "agent_mission_time_bonus_reward_corporation_tax"
-        - "agent_security_services"
-        - "agent_services_rendered"
-        - "agents_preward"
-        - "alliance_maintainance_fee"
-        - "alliance_registration_fee"
-        - "asset_safety_recovery_tax"
-        - "bounty"
-        - "bounty_prize"
-        - "bounty_prize_corporation_tax"
-        - "bounty_prizes"
-        - "bounty_reimbursement"
-        - "bounty_surcharge"
-        - "brokers_fee"
-        - "clone_activation"
-        - "clone_transfer"
-        - "contraband_fine"
-        - "contract_auction_bid"
-        - "contract_auction_bid_corp"
-        - "contract_auction_bid_refund"
-        - "contract_auction_sold"
-        - "contract_brokers_fee"
-        - "contract_brokers_fee_corp"
-        - "contract_collateral"
-        - "contract_collateral_deposited_corp"
-        - "contract_collateral_payout"
-        - "contract_collateral_refund"
-        - "contract_deposit"
-        - "contract_deposit_corp"
-        - "contract_deposit_refund"
-        - "contract_deposit_sales_tax"
-        - "contract_price"
-        - "contract_price_payment_corp"
-        - "contract_reversal"
-        - "contract_reward"
-        - "contract_reward_deposited"
-        - "contract_reward_deposited_corp"
-        - "contract_reward_refund"
-        - "contract_sales_tax"
-        - "copying"
-        - "corporate_reward_payout"
-        - "corporate_reward_tax"
-        - "corporation_account_withdrawal"
-        - "corporation_bulk_payment"
-        - "corporation_dividend_payment"
-        - "corporation_liquidation"
-        - "corporation_logo_change_cost"
-        - "corporation_payment"
-        - "corporation_registration_fee"
-        - "courier_mission_escrow"
-        - "cspa"
-        - "cspaofflinerefund"
-        - "datacore_fee"
-        - "dna_modification_fee"
-        - "docking_fee"
-        - "duel_wager_escrow"
-        - "duel_wager_payment"
-        - "duel_wager_refund"
-        - "ess_escrow_transfer"
-        - "factory_slot_rental_fee"
-        - "gm_cash_transfer"
-        - "industry_job_tax"
-        - "infrastructure_hub_maintenance"
-        - "inheritance"
-        - "insurance"
-        - "item_trader_payment"
-        - "jump_clone_activation_fee"
-        - "jump_clone_installation_fee"
-        - "kill_right_fee"
-        - "lp_store"
-        - "manufacturing"
-        - "market_escrow"
-        - "market_fine_paid"
-        - "market_transaction"
-        - "medal_creation"
-        - "medal_issued"
-        - "mission_completion"
-        - "mission_cost"
-        - "mission_expiration"
-        - "mission_reward"
-        - "office_rental_fee"
-        - "operation_bonus"
-        - "opportunity_reward"
-        - "planetary_construction"
-        - "planetary_export_tax"
-        - "planetary_import_tax"
-        - "player_donation"
-        - "player_trading"
-        - "project_discovery_reward"
-        - "project_discovery_tax"
-        - "reaction"
-        - "release_of_impounded_property"
-        - "repair_bill"
-        - "reprocessing_tax"
-        - "researching_material_productivity"
-        - "researching_technology"
-        - "researching_time_productivity"
-        - "resource_wars_reward"
-        - "reverse_engineering"
-        - "security_processing_fee"
-        - "shares"
-        - "skill_purchase"
-        - "sovereignity_bill"
-        - "store_purchase"
-        - "store_purchase_refund"
-        - "structure_gate_jump"
-        - "transaction_tax"
-        - "upkeep_adjustment_fee"
-        - "war_ally_contract"
-        - "war_fee"
-        - "war_fee_surrender"
       second_party_id:
         type: "integer"
         format: "int32"

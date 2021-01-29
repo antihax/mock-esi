@@ -17,7 +17,6 @@ func GetCharactersCharacterIdWalletJournal(w http.ResponseWriter, r *http.Reques
 		err         error
 		characterId int32
 		datasource  string
-		page        int32
 		token       string
 	)
 	// shut up warnings
@@ -54,14 +53,6 @@ func GetCharactersCharacterIdWalletJournal(w http.ResponseWriter, r *http.Reques
 			return
 		}
 		datasource = localV.(string)
-	}
-	if r.Form.Get("page") != "" {
-		localV, err = processParameters(page, r.Form.Get("page"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		page = localV.(int32)
 	}
 	if r.Form.Get("token") != "" {
 		localV, err = processParameters(token, r.Form.Get("token"))

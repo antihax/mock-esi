@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "An OpenAPI for EVE Online"
-  version: "1.7.2"
+  version: "1.7.14"
   title: "EVE Swagger Interface"
 host: "esi.evetech.net"
 basePath: "/v7"
@@ -22,8 +22,7 @@ paths:
         \n---\nAlternate route: `/dev/characters/{character_id}/wallet/journal/`\n\
         \nAlternate route: `/latest/characters/{character_id}/wallet/journal/`\n\n\
         Alternate route: `/v6/characters/{character_id}/wallet/journal/`\n\n---\n\
-        This route is cached for up to 3600 seconds\n\n---\n[Diff of the upcoming\
-        \ changes](https://esi.evetech.net/diff/v7/dev/#GET-/characters/{character_id}/wallet/journal/)"
+        This route is cached for up to 3600 seconds"
       operationId: "get_characters_character_id_wallet_journal"
       parameters:
       - name: "character_id"
@@ -42,7 +41,6 @@ paths:
         default: "tranquility"
         enum:
         - "tranquility"
-        - "singularity"
         x-exportParamName: "Datasource"
       - name: "If-None-Match"
         in: "header"
@@ -379,7 +377,6 @@ parameters:
     default: "tranquility"
     enum:
     - "tranquility"
-    - "singularity"
     x-exportParamName: "Datasource"
   page:
     name: "page"
