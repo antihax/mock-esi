@@ -33,7 +33,7 @@ type GetCharactersCharacterIdWalletJournal200Ok struct {
 	 The user stated reason for the transaction. Only applies to some ref_types */
 	Reason string `json:"reason,omitempty"`
 	/*
-	 \"The transaction type for the given. transaction. Different transaction types will populate different attributes. Note: If you have an existing XML API application that is using ref_types, you will need to know which string ESI ref_type maps to which integer. You can look at the following file to see string->int mappings: github.com/ccpgames/eve-glue/blob/master/eve_glue/wallet_journal_ref.py\" */
+	 \"The transaction type for the given. transaction. Different transaction types will populate different attributes.\" */
 	RefType string `json:"ref_type,omitempty"`
 	/*
 	 The id of the second party involved in the transaction. This attribute has no consistency and is different or non existant for particular ref_types. The description attribute will help make sense of what this attribute means. For more info about the given ID it can be dropped into the /universe/names/ ESI route to determine its type and name */

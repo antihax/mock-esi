@@ -9613,10 +9613,9 @@ paths:
       - "Wallet"
       summary: "Get a character's wallet balance"
       description: "Returns a character's wallet balance\n\n---\nAlternate route:\
-        \ `/dev/characters/{character_id}/wallet/`\n\nAlternate route: `/legacy/characters/{character_id}/wallet/`\n\
-        \nAlternate route: `/v1/characters/{character_id}/wallet/`\n\nAlternate route:\
-        \ `/v2/characters/{character_id}/wallet/`\n\n---\nThis route is cached for\
-        \ up to 120 seconds"
+        \ `/legacy/characters/{character_id}/wallet/`\n\nAlternate route: `/v1/characters/{character_id}/wallet/`\n\
+        \n---\nThis route is cached for up to 120 seconds\n\n---\n[Diff of the upcoming\
+        \ changes](https://esi.evetech.net/diff/latest/dev/#GET-/characters/{character_id}/wallet/)"
       operationId: "get_characters_character_id_wallet"
       parameters:
       - name: "character_id"
@@ -9740,10 +9739,8 @@ paths:
       - evesso:
         - "esi-wallet.read_character_wallet.v1"
       x-alternate-versions:
-      - "dev"
       - "legacy"
       - "v1"
-      - "v2"
       x-cached-seconds: 120
   /characters/{character_id}/wallet/journal/:
     get:
@@ -9752,9 +9749,8 @@ paths:
       summary: "Get character wallet journal"
       description: "Retrieve the given character's wallet journal going 30 days back\n\
         \n---\nAlternate route: `/dev/characters/{character_id}/wallet/journal/`\n\
-        \nAlternate route: `/v6/characters/{character_id}/wallet/journal/`\n\nAlternate\
-        \ route: `/v7/characters/{character_id}/wallet/journal/`\n\n---\nThis route\
-        \ is cached for up to 3600 seconds"
+        \nAlternate route: `/v6/characters/{character_id}/wallet/journal/`\n\n---\n\
+        This route is cached for up to 3600 seconds"
       operationId: "get_characters_character_id_wallet_journal"
       parameters:
       - name: "character_id"
@@ -9781,6 +9777,15 @@ paths:
         required: false
         type: "string"
         x-exportParamName: "IfNoneMatch"
+      - name: "page"
+        in: "query"
+        description: "Which page of results to return"
+        required: false
+        type: "integer"
+        default: 1
+        minimum: 1
+        format: "int32"
+        x-exportParamName: "Page"
       - name: "token"
         in: "query"
         description: "Access token to use if unable to set a header"
@@ -9822,6 +9827,11 @@ paths:
             Last-Modified:
               type: "string"
               description: "RFC7231 formatted datetime string"
+            X-Pages:
+              type: "integer"
+              format: "int32"
+              description: "Maximum page number"
+              default: 1
         304:
           description: "Not modified"
           headers:
@@ -9892,19 +9902,17 @@ paths:
       x-alternate-versions:
       - "dev"
       - "v6"
-      - "v7"
       x-cached-seconds: 3600
   /characters/{character_id}/wallet/transactions/:
     get:
       tags:
       - "Wallet"
       summary: "Get wallet transactions"
-      description: "Get wallet transactions of a character going 30 days back\n\n\
-        ---\nAlternate route: `/dev/characters/{character_id}/wallet/transactions/`\n\
-        \nAlternate route: `/legacy/characters/{character_id}/wallet/transactions/`\n\
-        \nAlternate route: `/v1/characters/{character_id}/wallet/transactions/`\n\n\
-        Alternate route: `/v2/characters/{character_id}/wallet/transactions/`\n\n\
-        ---\nThis route is cached for up to 3600 seconds"
+      description: "Get wallet transactions of a character\n\n---\nAlternate route:\
+        \ `/dev/characters/{character_id}/wallet/transactions/`\n\nAlternate route:\
+        \ `/legacy/characters/{character_id}/wallet/transactions/`\n\nAlternate route:\
+        \ `/v1/characters/{character_id}/wallet/transactions/`\n\n---\nThis route\
+        \ is cached for up to 3600 seconds"
       operationId: "get_characters_character_id_wallet_transactions"
       parameters:
       - name: "character_id"
@@ -10051,7 +10059,6 @@ paths:
       - "dev"
       - "legacy"
       - "v1"
-      - "v2"
       x-cached-seconds: 3600
   /contracts/public/bids/{contract_id}/:
     get:
@@ -16999,12 +17006,12 @@ paths:
     get:
       tags:
       - "Wallet"
-      summary: "Get corporations wallet journal"
-      description: "Retrieve the given character's wallet journal going 30 days back\n\
-        \n---\nAlternate route: `/dev/corporations/{corporation_id}/wallets/{division}/journal/`\n\
+      summary: "Get corporation wallet journal"
+      description: "Retrieve the given corporation's wallet journal for the given\
+        \ division going 30 days back\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/wallets/{division}/journal/`\n\
         \nAlternate route: `/v4/corporations/{corporation_id}/wallets/{division}/journal/`\n\
-        \nAlternate route: `/v5/corporations/{corporation_id}/wallets/{division}/journal/`\n\
-        \n---\nThis route is cached for up to 3600 seconds"
+        \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
+        \ the following EVE corporation role(s): Accountant, Junior_Accountant\n"
       operationId: "get_corporations_corporation_id_wallets_division_journal"
       parameters:
       - name: "corporation_id"
@@ -17060,23 +17067,24 @@ paths:
           description: "Journal entries"
           schema:
             type: "array"
-            description: "Wallet journal entries"
+            description: "Journal entries"
             title: "get_corporations_corporation_id_wallets_division_journal_ok"
             items:
               $ref: "#/definitions/get_corporations_corporation_id_wallets_division_journal_200_ok"
             maxItems: 2500
           examples:
             application/json:
-            - amount: -100000
-              balance: 500000.4316
-              context_id: 4
-              context_id_type: "contract_id"
-              date: "2018-02-23T14:31:32Z"
-              description: "Contract Deposit"
-              first_party_id: 2112625428
-              id: 89
-              ref_type: "contract_deposit"
-              second_party_id: 1000132
+            - amount: -1000
+              balance: 100000.0
+              context_id: 2112625428
+              context_id_type: "character_id"
+              date: "2016-10-24T09:00:00Z"
+              description: "CCP Zoetrope transferred cash from C C P's corporate account\
+                \ to CCP SnowedIn's account"
+              first_party_id: 109299958
+              id: 1234567890
+              ref_type: "corporation_account_withdrawal"
+              second_party_id: 95538921
           headers:
             Cache-Control:
               type: "string"
@@ -17165,18 +17173,19 @@ paths:
       x-alternate-versions:
       - "dev"
       - "v4"
-      - "v5"
       x-cached-seconds: 3600
+      x-required-roles:
+      - "Accountant"
+      - "Junior_Accountant"
   /corporations/{corporation_id}/wallets/{division}/transactions/:
     get:
       tags:
       - "Wallet"
       summary: "Get corporation wallet transactions"
-      description: "Get wallet transactions of a corporation going 30 days back\n\n\
-        ---\nAlternate route: `/dev/corporations/{corporation_id}/wallets/{division}/transactions/`\n\
-        \nAlternate route: `/legacy/corporations/{corporation_id}/wallets/{division}/transactions/`\n\
+      description: "Get wallet transactions of a corporation\n\n---\nAlternate route:\
+        \ `/dev/corporations/{corporation_id}/wallets/{division}/transactions/`\n\n\
+        Alternate route: `/legacy/corporations/{corporation_id}/wallets/{division}/transactions/`\n\
         \nAlternate route: `/v1/corporations/{corporation_id}/wallets/{division}/transactions/`\n\
-        \nAlternate route: `/v2/corporations/{corporation_id}/wallets/{division}/transactions/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
         \ the following EVE corporation role(s): Accountant, Junior_Accountant\n"
       operationId: "get_corporations_corporation_id_wallets_division_transactions"
@@ -17333,7 +17342,6 @@ paths:
       - "dev"
       - "legacy"
       - "v1"
-      - "v2"
       x-cached-seconds: 3600
       x-required-roles:
       - "Accountant"
@@ -32074,6 +32082,11 @@ definitions:
         title: "get_characters_character_id_titles_title_id"
     description: "200 ok object"
   get_characters_character_id_wallet_journal_200_ok:
+    required:
+    - "date"
+    - "description"
+    - "id"
+    - "ref_type"
     properties:
       amount:
         type: "number"
@@ -32143,11 +32156,130 @@ definitions:
       ref_type:
         type: "string"
         description: "\"The transaction type for the given. transaction. Different\
-          \ transaction types will populate different attributes. Note: If you have\
-          \ an existing XML API application that is using ref_types, you will need\
-          \ to know which string ESI ref_type maps to which integer. You can look\
-          \ at the following file to see string->int mappings: github.com/ccpgames/eve-glue/blob/master/eve_glue/wallet_journal_ref.py\""
+          \ transaction types will populate different attributes.\""
         title: "get_characters_character_id_wallet_journal_ref_type"
+        enum:
+        - "acceleration_gate_fee"
+        - "advertisement_listing_fee"
+        - "agent_donation"
+        - "agent_location_services"
+        - "agent_miscellaneous"
+        - "agent_mission_collateral_paid"
+        - "agent_mission_collateral_refunded"
+        - "agent_mission_reward"
+        - "agent_mission_reward_corporation_tax"
+        - "agent_mission_time_bonus_reward"
+        - "agent_mission_time_bonus_reward_corporation_tax"
+        - "agent_security_services"
+        - "agent_services_rendered"
+        - "agents_preward"
+        - "alliance_maintainance_fee"
+        - "alliance_registration_fee"
+        - "asset_safety_recovery_tax"
+        - "bounty"
+        - "bounty_prize"
+        - "bounty_prize_corporation_tax"
+        - "bounty_prizes"
+        - "bounty_reimbursement"
+        - "bounty_surcharge"
+        - "brokers_fee"
+        - "clone_activation"
+        - "clone_transfer"
+        - "contraband_fine"
+        - "contract_auction_bid"
+        - "contract_auction_bid_corp"
+        - "contract_auction_bid_refund"
+        - "contract_auction_sold"
+        - "contract_brokers_fee"
+        - "contract_brokers_fee_corp"
+        - "contract_collateral"
+        - "contract_collateral_deposited_corp"
+        - "contract_collateral_payout"
+        - "contract_collateral_refund"
+        - "contract_deposit"
+        - "contract_deposit_corp"
+        - "contract_deposit_refund"
+        - "contract_deposit_sales_tax"
+        - "contract_price"
+        - "contract_price_payment_corp"
+        - "contract_reversal"
+        - "contract_reward"
+        - "contract_reward_deposited"
+        - "contract_reward_deposited_corp"
+        - "contract_reward_refund"
+        - "contract_sales_tax"
+        - "copying"
+        - "corporate_reward_payout"
+        - "corporate_reward_tax"
+        - "corporation_account_withdrawal"
+        - "corporation_bulk_payment"
+        - "corporation_dividend_payment"
+        - "corporation_liquidation"
+        - "corporation_logo_change_cost"
+        - "corporation_payment"
+        - "corporation_registration_fee"
+        - "courier_mission_escrow"
+        - "cspa"
+        - "cspaofflinerefund"
+        - "datacore_fee"
+        - "dna_modification_fee"
+        - "docking_fee"
+        - "duel_wager_escrow"
+        - "duel_wager_payment"
+        - "duel_wager_refund"
+        - "ess_escrow_transfer"
+        - "factory_slot_rental_fee"
+        - "gm_cash_transfer"
+        - "industry_job_tax"
+        - "infrastructure_hub_maintenance"
+        - "inheritance"
+        - "insurance"
+        - "item_trader_payment"
+        - "jump_clone_activation_fee"
+        - "jump_clone_installation_fee"
+        - "kill_right_fee"
+        - "lp_store"
+        - "manufacturing"
+        - "market_escrow"
+        - "market_fine_paid"
+        - "market_transaction"
+        - "medal_creation"
+        - "medal_issued"
+        - "mission_completion"
+        - "mission_cost"
+        - "mission_expiration"
+        - "mission_reward"
+        - "office_rental_fee"
+        - "operation_bonus"
+        - "opportunity_reward"
+        - "planetary_construction"
+        - "planetary_export_tax"
+        - "planetary_import_tax"
+        - "player_donation"
+        - "player_trading"
+        - "project_discovery_reward"
+        - "project_discovery_tax"
+        - "reaction"
+        - "release_of_impounded_property"
+        - "repair_bill"
+        - "reprocessing_tax"
+        - "researching_material_productivity"
+        - "researching_technology"
+        - "researching_time_productivity"
+        - "resource_wars_reward"
+        - "reverse_engineering"
+        - "security_processing_fee"
+        - "shares"
+        - "skill_purchase"
+        - "sovereignity_bill"
+        - "store_purchase"
+        - "store_purchase_refund"
+        - "structure_gate_jump"
+        - "transaction_tax"
+        - "upkeep_adjustment_fee"
+        - "war_ally_contract"
+        - "war_fee"
+        - "war_fee_surrender"
       second_party_id:
         type: "integer"
         format: "int32"
@@ -35920,6 +36052,11 @@ definitions:
         maximum: 7
     description: "200 ok object"
   get_corporations_corporation_id_wallets_division_journal_200_ok:
+    required:
+    - "date"
+    - "description"
+    - "id"
+    - "ref_type"
     properties:
       amount:
         type: "number"
@@ -35992,8 +36129,130 @@ definitions:
           \ transaction types will populate different attributes. Note: If you have\
           \ an existing XML API application that is using ref_types, you will need\
           \ to know which string ESI ref_type maps to which integer. You can look\
-          \ at the following file to see string->int mappings: github.com/ccpgames/eve-glue/blob/master/eve_glue/wallet_journal_ref.py\""
+          \ at the following file to see string->int mappings: https://github.com/ccpgames/eve-glue/blob/master/eve_glue/wallet_journal_ref.py\""
         title: "get_corporations_corporation_id_wallets_division_journal_ref_type"
+        enum:
+        - "acceleration_gate_fee"
+        - "advertisement_listing_fee"
+        - "agent_donation"
+        - "agent_location_services"
+        - "agent_miscellaneous"
+        - "agent_mission_collateral_paid"
+        - "agent_mission_collateral_refunded"
+        - "agent_mission_reward"
+        - "agent_mission_reward_corporation_tax"
+        - "agent_mission_time_bonus_reward"
+        - "agent_mission_time_bonus_reward_corporation_tax"
+        - "agent_security_services"
+        - "agent_services_rendered"
+        - "agents_preward"
+        - "alliance_maintainance_fee"
+        - "alliance_registration_fee"
+        - "asset_safety_recovery_tax"
+        - "bounty"
+        - "bounty_prize"
+        - "bounty_prize_corporation_tax"
+        - "bounty_prizes"
+        - "bounty_reimbursement"
+        - "bounty_surcharge"
+        - "brokers_fee"
+        - "clone_activation"
+        - "clone_transfer"
+        - "contraband_fine"
+        - "contract_auction_bid"
+        - "contract_auction_bid_corp"
+        - "contract_auction_bid_refund"
+        - "contract_auction_sold"
+        - "contract_brokers_fee"
+        - "contract_brokers_fee_corp"
+        - "contract_collateral"
+        - "contract_collateral_deposited_corp"
+        - "contract_collateral_payout"
+        - "contract_collateral_refund"
+        - "contract_deposit"
+        - "contract_deposit_corp"
+        - "contract_deposit_refund"
+        - "contract_deposit_sales_tax"
+        - "contract_price"
+        - "contract_price_payment_corp"
+        - "contract_reversal"
+        - "contract_reward"
+        - "contract_reward_deposited"
+        - "contract_reward_deposited_corp"
+        - "contract_reward_refund"
+        - "contract_sales_tax"
+        - "copying"
+        - "corporate_reward_payout"
+        - "corporate_reward_tax"
+        - "corporation_account_withdrawal"
+        - "corporation_bulk_payment"
+        - "corporation_dividend_payment"
+        - "corporation_liquidation"
+        - "corporation_logo_change_cost"
+        - "corporation_payment"
+        - "corporation_registration_fee"
+        - "courier_mission_escrow"
+        - "cspa"
+        - "cspaofflinerefund"
+        - "datacore_fee"
+        - "dna_modification_fee"
+        - "docking_fee"
+        - "duel_wager_escrow"
+        - "duel_wager_payment"
+        - "duel_wager_refund"
+        - "ess_escrow_transfer"
+        - "factory_slot_rental_fee"
+        - "gm_cash_transfer"
+        - "industry_job_tax"
+        - "infrastructure_hub_maintenance"
+        - "inheritance"
+        - "insurance"
+        - "item_trader_payment"
+        - "jump_clone_activation_fee"
+        - "jump_clone_installation_fee"
+        - "kill_right_fee"
+        - "lp_store"
+        - "manufacturing"
+        - "market_escrow"
+        - "market_fine_paid"
+        - "market_transaction"
+        - "medal_creation"
+        - "medal_issued"
+        - "mission_completion"
+        - "mission_cost"
+        - "mission_expiration"
+        - "mission_reward"
+        - "office_rental_fee"
+        - "operation_bonus"
+        - "opportunity_reward"
+        - "planetary_construction"
+        - "planetary_export_tax"
+        - "planetary_import_tax"
+        - "player_donation"
+        - "player_trading"
+        - "project_discovery_reward"
+        - "project_discovery_tax"
+        - "reaction"
+        - "release_of_impounded_property"
+        - "repair_bill"
+        - "reprocessing_tax"
+        - "researching_material_productivity"
+        - "researching_technology"
+        - "researching_time_productivity"
+        - "resource_wars_reward"
+        - "reverse_engineering"
+        - "security_processing_fee"
+        - "shares"
+        - "skill_purchase"
+        - "sovereignity_bill"
+        - "store_purchase"
+        - "store_purchase_refund"
+        - "structure_gate_jump"
+        - "transaction_tax"
+        - "upkeep_adjustment_fee"
+        - "war_ally_contract"
+        - "war_fee"
+        - "war_fee_surrender"
       second_party_id:
         type: "integer"
         format: "int32"

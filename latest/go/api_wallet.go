@@ -84,6 +84,7 @@ func GetCharactersCharacterIdWalletJournal(w http.ResponseWriter, r *http.Reques
 		err         error
 		characterId int32
 		datasource  string
+		page        int32
 		token       string
 	)
 	// shut up warnings
@@ -120,6 +121,14 @@ func GetCharactersCharacterIdWalletJournal(w http.ResponseWriter, r *http.Reques
 			return
 		}
 		datasource = localV.(string)
+	}
+	if r.Form.Get("page") != "" {
+		localV, err = processParameters(page, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		page = localV.(int32)
 	}
 	if r.Form.Get("token") != "" {
 		localV, err = processParameters(token, r.Form.Get("token"))
@@ -346,16 +355,16 @@ func GetCorporationsCorporationIdWalletsDivisionJournal(w http.ResponseWriter, r
 	err = err
 
 	j := `[ {
-  "amount" : -100000,
-  "balance" : 500000.4316,
-  "context_id" : 4,
-  "context_id_type" : "contract_id",
-  "date" : "2018-02-23T14:31:32Z",
-  "description" : "Contract Deposit",
-  "first_party_id" : 2112625428,
-  "id" : 89,
-  "ref_type" : "contract_deposit",
-  "second_party_id" : 1000132
+  "amount" : -1000,
+  "balance" : 100000.0,
+  "context_id" : 2112625428,
+  "context_id_type" : "character_id",
+  "date" : "2016-10-24T09:00:00Z",
+  "description" : "CCP Zoetrope transferred cash from C C P's corporate account to CCP SnowedIn's account",
+  "first_party_id" : 109299958,
+  "id" : 1234567890,
+  "ref_type" : "corporation_account_withdrawal",
+  "second_party_id" : 95538921
 } ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(corporationId, vars["corporation_id"])

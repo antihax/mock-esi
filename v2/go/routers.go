@@ -675,27 +675,6 @@ func init() {
 		PostUiAutopilotWaypoint,
 	)
 
-	mockesi.NewRoute(
-		"GetCharactersCharacterIdWallet",
-		"Get",
-		"/v2/characters/{character_id}/wallet/",
-		GetCharactersCharacterIdWallet,
-	)
-
-	mockesi.NewRoute(
-		"GetCharactersCharacterIdWalletTransactions",
-		"Get",
-		"/v2/characters/{character_id}/wallet/transactions/",
-		GetCharactersCharacterIdWalletTransactions,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsCorporationIdWalletsDivisionTransactions",
-		"Get",
-		"/v2/corporations/{corporation_id}/wallets/{division}/transactions/",
-		GetCorporationsCorporationIdWalletsDivisionTransactions,
-	)
-
 }
 
 func errorOut(w http.ResponseWriter, r *http.Request, e error) {

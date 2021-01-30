@@ -7785,10 +7785,9 @@ paths:
       - "Wallet"
       summary: "Get a character's wallet balance"
       description: "Returns a character's wallet balance\n\n---\nAlternate route:\
-        \ `/dev/characters/{character_id}/wallet/`\n\nAlternate route: `/latest/characters/{character_id}/wallet/`\n\
-        \nAlternate route: `/legacy/characters/{character_id}/wallet/`\n\nAlternate\
-        \ route: `/v2/characters/{character_id}/wallet/`\n\n---\nThis route is cached\
-        \ for up to 120 seconds"
+        \ `/latest/characters/{character_id}/wallet/`\n\nAlternate route: `/legacy/characters/{character_id}/wallet/`\n\
+        \n---\nThis route is cached for up to 120 seconds\n\n---\n[Diff of the upcoming\
+        \ changes](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/wallet/)"
       operationId: "get_characters_character_id_wallet"
       parameters:
       - name: "character_id"
@@ -7912,22 +7911,19 @@ paths:
       - evesso:
         - "esi-wallet.read_character_wallet.v1"
       x-alternate-versions:
-      - "dev"
       - "latest"
       - "legacy"
-      - "v2"
       x-cached-seconds: 120
   /characters/{character_id}/wallet/transactions/:
     get:
       tags:
       - "Wallet"
       summary: "Get wallet transactions"
-      description: "Get wallet transactions of a character going 30 days back\n\n\
-        ---\nAlternate route: `/dev/characters/{character_id}/wallet/transactions/`\n\
-        \nAlternate route: `/latest/characters/{character_id}/wallet/transactions/`\n\
-        \nAlternate route: `/legacy/characters/{character_id}/wallet/transactions/`\n\
-        \nAlternate route: `/v2/characters/{character_id}/wallet/transactions/`\n\n\
-        ---\nThis route is cached for up to 3600 seconds"
+      description: "Get wallet transactions of a character\n\n---\nAlternate route:\
+        \ `/dev/characters/{character_id}/wallet/transactions/`\n\nAlternate route:\
+        \ `/latest/characters/{character_id}/wallet/transactions/`\n\nAlternate route:\
+        \ `/legacy/characters/{character_id}/wallet/transactions/`\n\n---\nThis route\
+        \ is cached for up to 3600 seconds"
       operationId: "get_characters_character_id_wallet_transactions"
       parameters:
       - name: "character_id"
@@ -8074,7 +8070,6 @@ paths:
       - "dev"
       - "latest"
       - "legacy"
-      - "v2"
       x-cached-seconds: 3600
   /contracts/public/bids/{contract_id}/:
     get:
@@ -14233,11 +14228,10 @@ paths:
       tags:
       - "Wallet"
       summary: "Get corporation wallet transactions"
-      description: "Get wallet transactions of a corporation going 30 days back\n\n\
-        ---\nAlternate route: `/dev/corporations/{corporation_id}/wallets/{division}/transactions/`\n\
-        \nAlternate route: `/latest/corporations/{corporation_id}/wallets/{division}/transactions/`\n\
+      description: "Get wallet transactions of a corporation\n\n---\nAlternate route:\
+        \ `/dev/corporations/{corporation_id}/wallets/{division}/transactions/`\n\n\
+        Alternate route: `/latest/corporations/{corporation_id}/wallets/{division}/transactions/`\n\
         \nAlternate route: `/legacy/corporations/{corporation_id}/wallets/{division}/transactions/`\n\
-        \nAlternate route: `/v2/corporations/{corporation_id}/wallets/{division}/transactions/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
         \ the following EVE corporation role(s): Accountant, Junior_Accountant\n"
       operationId: "get_corporations_corporation_id_wallets_division_transactions"
@@ -14394,7 +14388,6 @@ paths:
       - "dev"
       - "latest"
       - "legacy"
-      - "v2"
       x-cached-seconds: 3600
       x-required-roles:
       - "Accountant"
