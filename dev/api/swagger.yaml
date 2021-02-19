@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "An OpenAPI for EVE Online"
-  version: "1.7.14"
+  version: "1.7.15"
   title: "EVE Swagger Interface"
 host: "esi.evetech.net"
 basePath: "/dev"
@@ -8675,10 +8675,11 @@ paths:
         description: "Language to use in the response"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -8736,10 +8737,11 @@ paths:
         description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -8790,8 +8792,8 @@ paths:
               type: "string"
               description: "The language used in the response"
               enum:
+              - "en"
               - "de"
-              - "en-us"
               - "fr"
               - "ja"
               - "ru"
@@ -16340,10 +16342,11 @@ paths:
         description: "Language to use in the response"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -16378,10 +16381,11 @@ paths:
         description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -16429,8 +16433,8 @@ paths:
               type: "string"
               description: "The language used in the response"
               enum:
+              - "en"
               - "de"
-              - "en-us"
               - "fr"
               - "ja"
               - "ru"
@@ -18024,10 +18028,11 @@ paths:
         description: "Language to use in the response"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -18061,10 +18066,11 @@ paths:
         description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -18106,8 +18112,8 @@ paths:
               type: "string"
               description: "The language used in the response"
               enum:
+              - "en"
               - "de"
-              - "en-us"
               - "fr"
               - "ja"
               - "ru"
@@ -18768,10 +18774,11 @@ paths:
         description: "Language to use in the response"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -18805,10 +18812,11 @@ paths:
         description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -18845,8 +18853,8 @@ paths:
               type: "string"
               description: "The language used in the response"
               enum:
+              - "en"
               - "de"
-              - "en-us"
               - "fr"
               - "ja"
               - "ru"
@@ -20478,10 +20486,11 @@ paths:
         description: "Language to use in the response"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -20508,10 +20517,11 @@ paths:
         description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -20542,8 +20552,8 @@ paths:
               type: "string"
               description: "The language used in the response"
               enum:
+              - "en"
               - "de"
-              - "en-us"
               - "fr"
               - "ja"
               - "ru"
@@ -21025,10 +21035,11 @@ paths:
         description: "Language to use in the response"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -21055,10 +21066,11 @@ paths:
         description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -21093,8 +21105,8 @@ paths:
               type: "string"
               description: "The language used in the response"
               enum:
+              - "en"
               - "de"
-              - "en-us"
               - "fr"
               - "ja"
               - "ru"
@@ -22024,10 +22036,11 @@ paths:
         description: "Language to use in the response"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -22061,10 +22074,11 @@ paths:
         description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -22093,8 +22107,8 @@ paths:
               type: "string"
               description: "The language used in the response"
               enum:
+              - "en"
               - "de"
-              - "en-us"
               - "fr"
               - "ja"
               - "ru"
@@ -22575,10 +22589,11 @@ paths:
         description: "Language to use in the response"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -22627,10 +22642,11 @@ paths:
         description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -22675,8 +22691,8 @@ paths:
               type: "string"
               description: "The language used in the response"
               enum:
+              - "en"
               - "de"
-              - "en-us"
               - "fr"
               - "ja"
               - "ru"
@@ -23684,10 +23700,11 @@ paths:
         description: "Language to use in the response"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -23714,10 +23731,11 @@ paths:
         description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -23748,8 +23766,8 @@ paths:
               type: "string"
               description: "The language used in the response"
               enum:
+              - "en"
               - "de"
-              - "en-us"
               - "fr"
               - "ja"
               - "ru"
@@ -23946,10 +23964,11 @@ paths:
         description: "Language to use in the response"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -23976,10 +23995,11 @@ paths:
         description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -24016,8 +24036,8 @@ paths:
               type: "string"
               description: "The language used in the response"
               enum:
+              - "en"
               - "de"
-              - "en-us"
               - "fr"
               - "ja"
               - "ru"
@@ -24205,10 +24225,11 @@ paths:
         description: "Language to use in the response"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -24242,10 +24263,11 @@ paths:
         description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -24273,8 +24295,8 @@ paths:
               type: "string"
               description: "The language used in the response"
               enum:
+              - "en"
               - "de"
-              - "en-us"
               - "fr"
               - "ja"
               - "ru"
@@ -24468,10 +24490,11 @@ paths:
         description: "Language to use in the response"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -24505,10 +24528,11 @@ paths:
         description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -24539,8 +24563,8 @@ paths:
               type: "string"
               description: "The language used in the response"
               enum:
+              - "en"
               - "de"
-              - "en-us"
               - "fr"
               - "ja"
               - "ru"
@@ -24628,10 +24652,11 @@ paths:
         description: "Language to use in the response"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -24658,10 +24683,11 @@ paths:
         description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -24696,8 +24722,8 @@ paths:
               type: "string"
               description: "The language used in the response"
               enum:
+              - "en"
               - "de"
-              - "en-us"
               - "fr"
               - "ja"
               - "ru"
@@ -25125,10 +25151,11 @@ paths:
         description: "Language to use in the response"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -25162,10 +25189,11 @@ paths:
         description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -25194,8 +25222,8 @@ paths:
               type: "string"
               description: "The language used in the response"
               enum:
+              - "en"
               - "de"
-              - "en-us"
               - "fr"
               - "ja"
               - "ru"
@@ -25287,10 +25315,11 @@ paths:
         description: "Language to use in the response"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -25310,10 +25339,11 @@ paths:
         description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -25356,8 +25386,8 @@ paths:
               type: "string"
               description: "The language used in the response"
               enum:
+              - "en"
               - "de"
-              - "en-us"
               - "fr"
               - "ja"
               - "ru"
@@ -25752,10 +25782,11 @@ paths:
         description: "Language to use in the response"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -25782,10 +25813,11 @@ paths:
         description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -25815,8 +25847,8 @@ paths:
               type: "string"
               description: "The language used in the response"
               enum:
+              - "en"
               - "de"
-              - "en-us"
               - "fr"
               - "ja"
               - "ru"
@@ -26005,10 +26037,11 @@ paths:
         description: "Language to use in the response"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -26035,10 +26068,11 @@ paths:
         description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -26072,8 +26106,8 @@ paths:
               type: "string"
               description: "The language used in the response"
               enum:
+              - "en"
               - "de"
-              - "en-us"
               - "fr"
               - "ja"
               - "ru"
@@ -27242,10 +27276,11 @@ paths:
         description: "Language to use in the response"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -27272,10 +27307,11 @@ paths:
         description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -27320,8 +27356,8 @@ paths:
               type: "string"
               description: "The language used in the response"
               enum:
+              - "en"
               - "de"
-              - "en-us"
               - "fr"
               - "ja"
               - "ru"
@@ -27532,10 +27568,11 @@ paths:
         description: "Language to use in the response"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -27562,10 +27599,11 @@ paths:
         description: "Language to use in the response, takes precedence over Accept-Language"
         required: false
         type: "string"
-        default: "en-us"
+        default: "en"
         enum:
-        - "de"
+        - "en"
         - "en-us"
+        - "de"
         - "fr"
         - "ja"
         - "ru"
@@ -27598,8 +27636,8 @@ paths:
               type: "string"
               description: "The language used in the response"
               enum:
+              - "en"
               - "de"
-              - "en-us"
               - "fr"
               - "ja"
               - "ru"
@@ -40235,10 +40273,11 @@ parameters:
     description: "Language to use in the response"
     required: false
     type: "string"
-    default: "en-us"
+    default: "en"
     enum:
-    - "de"
+    - "en"
     - "en-us"
+    - "de"
     - "fr"
     - "ja"
     - "ru"
@@ -40295,10 +40334,11 @@ parameters:
     description: "Language to use in the response, takes precedence over Accept-Language"
     required: false
     type: "string"
-    default: "en-us"
+    default: "en"
     enum:
-    - "de"
+    - "en"
     - "en-us"
+    - "de"
     - "fr"
     - "ja"
     - "ru"
