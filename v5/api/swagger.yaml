@@ -602,8 +602,8 @@ paths:
       - "Corporation"
       summary: "Get corporation information"
       description: "Public information about a corporation\n\n---\nAlternate route:\
-        \ `/dev/corporations/{corporation_id}/`\n\n---\nThis route is cached for up\
-        \ to 3600 seconds"
+        \ `/latest/corporations/{corporation_id}/`\n\n---\nThis route is cached for\
+        \ up to 3600 seconds\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v5/dev/#GET-/corporations/{corporation_id}/)"
       operationId: "get_corporations_corporation_id"
       parameters:
       - name: "corporation_id"
@@ -719,7 +719,7 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
+      - "latest"
       x-cached-seconds: 3600
   /corporations/{corporation_id}/assets/:
     get:
@@ -1235,6 +1235,8 @@ definitions:
         - "DustAppAcceptedMsg"
         - "ESSMainBankLink"
         - "EntosisCaptureStarted"
+        - "ExpertSystemExpired"
+        - "ExpertSystemExpiryImminent"
         - "FWAllianceKickMsg"
         - "FWAllianceWarningMsg"
         - "FWCharKickMsg"

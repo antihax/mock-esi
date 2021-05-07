@@ -4678,7 +4678,7 @@ paths:
             title: "get_characters_character_id_skillqueue_ok"
             items:
               $ref: "#/definitions/get_characters_character_id_skillqueue_200_ok"
-            maxItems: 51
+            maxItems: 100
           examples:
             application/json:
             - finish_date: "2016-06-29T10:47:00Z"
@@ -5066,8 +5066,8 @@ paths:
       tags:
       - "Corporation"
       summary: "Get npc corporations"
-      description: "Get a list of npc corporations\n\n---\nAlternate route: `/dev/corporations/npccorps/`\n\
-        \n---\nThis route expires daily at 11:05"
+      description: "Get a list of npc corporations\n\n---\nAlternate route: `/latest/corporations/npccorps/`\n\
+        \n---\nThis route expires daily at 11:05\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/npccorps/)"
       operationId: "get_corporations_npccorps"
       parameters:
       - name: "datasource"
@@ -5168,15 +5168,16 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
+      - "latest"
   /corporations/{corporation_id}/alliancehistory/:
     get:
       tags:
       - "Corporation"
       summary: "Get alliance history"
       description: "Get a list of all the alliances a corporation has been a member\
-        \ of\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/alliancehistory/`\n\
-        \n---\nThis route is cached for up to 3600 seconds"
+        \ of\n\n---\nAlternate route: `/legacy/corporations/{corporation_id}/alliancehistory/`\n\
+        \n---\nThis route is cached for up to 3600 seconds\n\n---\nWarning: This route\
+        \ is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/alliancehistory/)"
       operationId: "get_corporations_corporation_id_alliancehistory"
       parameters:
       - name: "corporation_id"
@@ -5284,8 +5285,9 @@ paths:
           examples:
             application/json:
               error: "Gateway timeout message"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
+      - "legacy"
       x-cached-seconds: 3600
   /corporations/{corporation_id}/assets/locations/:
     post:
@@ -5423,9 +5425,10 @@ paths:
       - "Corporation"
       summary: "Get corporation blueprints"
       description: "Returns a list of blueprints the corporation owns\n\n---\nAlternate\
-        \ route: `/latest/corporations/{corporation_id}/blueprints/`\n\n---\nThis\
+        \ route: `/legacy/corporations/{corporation_id}/blueprints/`\n\n---\nThis\
         \ route is cached for up to 3600 seconds\n\n---\nRequires one of the following\
-        \ EVE corporation role(s): Director\n"
+        \ EVE corporation role(s): Director\n\n\n---\nWarning: This route is deprecated\n\
+        \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/blueprints/)"
       operationId: "get_corporations_corporation_id_blueprints"
       parameters:
       - name: "corporation_id"
@@ -5572,8 +5575,9 @@ paths:
       security:
       - evesso:
         - "esi-corporations.read_blueprints.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
+      - "legacy"
       x-cached-seconds: 3600
       x-required-roles:
       - "Director"
@@ -5739,9 +5743,10 @@ paths:
       summary: "Get all corporation ALSC logs"
       description: "Returns logs recorded in the past seven days from all audit log\
         \ secure containers (ALSC) owned by a given corporation\n\n---\nAlternate\
-        \ route: `/latest/corporations/{corporation_id}/containers/logs/`\n\n---\n\
+        \ route: `/legacy/corporations/{corporation_id}/containers/logs/`\n\n---\n\
         This route is cached for up to 600 seconds\n\n---\nRequires one of the following\
-        \ EVE corporation role(s): Director\n"
+        \ EVE corporation role(s): Director\n\n\n---\nWarning: This route is deprecated\n\
+        \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/containers/logs/)"
       operationId: "get_corporations_corporation_id_containers_logs"
       parameters:
       - name: "corporation_id"
@@ -5906,8 +5911,9 @@ paths:
       security:
       - evesso:
         - "esi-corporations.read_container_logs.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
+      - "legacy"
       x-cached-seconds: 600
       x-required-roles:
       - "Director"
@@ -5917,9 +5923,10 @@ paths:
       - "Corporation"
       summary: "Get corporation divisions"
       description: "Return corporation hangar and wallet division names, only show\
-        \ if a division is not using the default name\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/divisions/`\n\
+        \ if a division is not using the default name\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/divisions/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
-        \ the following EVE corporation role(s): Director\n"
+        \ the following EVE corporation role(s): Director\n\n\n---\n[Diff of the upcoming\
+        \ changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/divisions/)"
       operationId: "get_corporations_corporation_id_divisions"
       parameters:
       - name: "corporation_id"
@@ -6046,7 +6053,7 @@ paths:
       - evesso:
         - "esi-corporations.read_divisions.v1"
       x-alternate-versions:
-      - "dev"
+      - "latest"
       x-cached-seconds: 3600
       x-required-roles:
       - "Director"
@@ -6055,9 +6062,10 @@ paths:
       tags:
       - "Corporation"
       summary: "Get corporation facilities"
-      description: "Return a corporation's facilities\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/facilities/`\n\
+      description: "Return a corporation's facilities\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/facilities/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
-        \ the following EVE corporation role(s): Factory_Manager\n"
+        \ the following EVE corporation role(s): Factory_Manager\n\n\n---\n[Diff of\
+        \ the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/facilities/)"
       operationId: "get_corporations_corporation_id_facilities"
       parameters:
       - name: "corporation_id"
@@ -6186,7 +6194,7 @@ paths:
       - evesso:
         - "esi-corporations.read_facilities.v1"
       x-alternate-versions:
-      - "dev"
+      - "latest"
       x-cached-seconds: 3600
       x-required-roles:
       - "Factory_Manager"
@@ -6340,8 +6348,9 @@ paths:
       tags:
       - "Corporation"
       summary: "Get corporation icon"
-      description: "Get the icon urls for a corporation\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/icons/`\n\
-        \n---\nThis route is cached for up to 3600 seconds"
+      description: "Get the icon urls for a corporation\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/icons/`\n\
+        \n---\nThis route is cached for up to 3600 seconds\n\n---\n[Diff of the upcoming\
+        \ changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/icons/)"
       operationId: "get_corporations_corporation_id_icons"
       parameters:
       - name: "corporation_id"
@@ -6449,15 +6458,16 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
-      - "dev"
+      - "latest"
       x-cached-seconds: 3600
   /corporations/{corporation_id}/medals/:
     get:
       tags:
       - "Corporation"
       summary: "Get corporation medals"
-      description: "Returns a corporation's medals\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/medals/`\n\
-        \n---\nThis route is cached for up to 3600 seconds"
+      description: "Returns a corporation's medals\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/medals/`\n\
+        \n---\nThis route is cached for up to 3600 seconds\n\n---\n[Diff of the upcoming\
+        \ changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/medals/)"
       operationId: "get_corporations_corporation_id_medals"
       parameters:
       - name: "corporation_id"
@@ -6602,7 +6612,7 @@ paths:
       - evesso:
         - "esi-corporations.read_medals.v1"
       x-alternate-versions:
-      - "dev"
+      - "latest"
       x-cached-seconds: 3600
       x-required-roles: []
   /corporations/{corporation_id}/medals/issued/:
@@ -6611,9 +6621,9 @@ paths:
       - "Corporation"
       summary: "Get corporation issued medals"
       description: "Returns medals issued by a corporation\n\n---\nAlternate route:\
-        \ `/dev/corporations/{corporation_id}/medals/issued/`\n\n---\nThis route is\
-        \ cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
-        \ corporation role(s): Director\n"
+        \ `/latest/corporations/{corporation_id}/medals/issued/`\n\n---\nThis route\
+        \ is cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
+        \ corporation role(s): Director\n\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/medals/issued/)"
       operationId: "get_corporations_corporation_id_medals_issued"
       parameters:
       - name: "corporation_id"
@@ -6759,158 +6769,20 @@ paths:
       - evesso:
         - "esi-corporations.read_medals.v1"
       x-alternate-versions:
-      - "dev"
+      - "latest"
       x-cached-seconds: 3600
       x-required-roles:
       - "Director"
-  /corporations/{corporation_id}/members/:
-    get:
-      tags:
-      - "Corporation"
-      summary: "Get corporation members"
-      description: "Read the current list of members if the calling character is a\
-        \ member.\n\n---\nAlternate route: `/legacy/corporations/{corporation_id}/members/`\n\
-        \n---\nThis route is cached for up to 3600 seconds\n\n---\nWarning: This route\
-        \ is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/members/)"
-      operationId: "get_corporations_corporation_id_members"
-      parameters:
-      - name: "corporation_id"
-        in: "path"
-        description: "An EVE corporation ID"
-        required: true
-        type: "integer"
-        minimum: 1
-        format: "int32"
-        x-exportParamName: "CorporationId"
-      - name: "datasource"
-        in: "query"
-        description: "The server name you would like data from"
-        required: false
-        type: "string"
-        default: "tranquility"
-        enum:
-        - "tranquility"
-        x-exportParamName: "Datasource"
-      - name: "If-None-Match"
-        in: "header"
-        description: "ETag from a previous request. A 304 will be returned if this\
-          \ matches the current ETag"
-        required: false
-        type: "string"
-        x-exportParamName: "IfNoneMatch"
-      - name: "token"
-        in: "query"
-        description: "Access token to use if unable to set a header"
-        required: false
-        type: "string"
-        x-exportParamName: "Token"
-      responses:
-        200:
-          description: "List of member character IDs"
-          schema:
-            type: "array"
-            description: "200 ok array"
-            title: "get_corporations_corporation_id_members_ok"
-            items:
-              $ref: "#/definitions/get_corporations_corporation_id_members_200_ok"
-            maxItems: 12601
-          examples:
-            application/json:
-            - character_id: 90000001
-            - character_id: 90000002
-          headers:
-            Cache-Control:
-              type: "string"
-              description: "The caching mechanism used"
-            ETag:
-              type: "string"
-              description: "RFC7232 compliant entity tag"
-            Expires:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-            Last-Modified:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-        304:
-          description: "Not modified"
-          headers:
-            Cache-Control:
-              type: "string"
-              description: "The caching mechanism used"
-            ETag:
-              type: "string"
-              description: "RFC7232 compliant entity tag"
-            Expires:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-            Last-Modified:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-        400:
-          description: "Bad request"
-          schema:
-            $ref: "#/definitions/bad_request"
-          examples:
-            application/json:
-              error: "Bad request message"
-        401:
-          description: "Unauthorized"
-          schema:
-            $ref: "#/definitions/unauthorized"
-          examples:
-            application/json:
-              error: "Unauthorized message"
-        403:
-          description: "Forbidden"
-          schema:
-            $ref: "#/definitions/forbidden"
-          examples:
-            application/json:
-              error: "Forbidden message"
-        420:
-          description: "Error limited"
-          schema:
-            $ref: "#/definitions/error_limited"
-          examples:
-            application/json:
-              error: "Error limited message"
-        500:
-          description: "Internal server error"
-          schema:
-            $ref: "#/definitions/internal_server_error"
-          examples:
-            application/json:
-              error: "Internal server error message"
-        503:
-          description: "Service unavailable"
-          schema:
-            $ref: "#/definitions/service_unavailable"
-          examples:
-            application/json:
-              error: "Service unavailable message"
-        504:
-          description: "Gateway timeout"
-          schema:
-            $ref: "#/definitions/gateway_timeout"
-          examples:
-            application/json:
-              error: "Gateway timeout message"
-      security:
-      - evesso:
-        - "esi-corporations.read_corporation_membership.v1"
-      deprecated: true
-      x-alternate-versions:
-      - "legacy"
-      x-cached-seconds: 3600
   /corporations/{corporation_id}/members/limit/:
     get:
       tags:
       - "Corporation"
       summary: "Get corporation member limit"
       description: "Return a corporation's member limit, not including CEO himself\n\
-        \n---\nAlternate route: `/dev/corporations/{corporation_id}/members/limit/`\n\
+        \n---\nAlternate route: `/latest/corporations/{corporation_id}/members/limit/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
-        \ the following EVE corporation role(s): Director\n"
+        \ the following EVE corporation role(s): Director\n\n\n---\n[Diff of the upcoming\
+        \ changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/members/limit/)"
       operationId: "get_corporations_corporation_id_members_limit"
       parameters:
       - name: "corporation_id"
@@ -7034,7 +6906,7 @@ paths:
       - evesso:
         - "esi-corporations.track_members.v1"
       x-alternate-versions:
-      - "dev"
+      - "latest"
       x-cached-seconds: 3600
       x-required-roles:
       - "Director"
@@ -7044,9 +6916,9 @@ paths:
       - "Corporation"
       summary: "Get corporation's members' titles"
       description: "Returns a corporation's members' titles\n\n---\nAlternate route:\
-        \ `/dev/corporations/{corporation_id}/members/titles/`\n\n---\nThis route\
+        \ `/latest/corporations/{corporation_id}/members/titles/`\n\n---\nThis route\
         \ is cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
-        \ corporation role(s): Director\n"
+        \ corporation role(s): Director\n\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/members/titles/)"
       operationId: "get_corporations_corporation_id_members_titles"
       parameters:
       - name: "corporation_id"
@@ -7174,7 +7046,7 @@ paths:
       - evesso:
         - "esi-corporations.read_titles.v1"
       x-alternate-versions:
-      - "dev"
+      - "latest"
       x-cached-seconds: 3600
       x-required-roles:
       - "Director"
@@ -7184,9 +7056,10 @@ paths:
       - "Corporation"
       summary: "Track corporation members"
       description: "Returns additional information about a corporation's members which\
-        \ helps tracking their activities\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/membertracking/`\n\
+        \ helps tracking their activities\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/membertracking/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
-        \ the following EVE corporation role(s): Director\n"
+        \ the following EVE corporation role(s): Director\n\n\n---\n[Diff of the upcoming\
+        \ changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/membertracking/)"
       operationId: "get_corporations_corporation_id_membertracking"
       parameters:
       - name: "corporation_id"
@@ -7324,7 +7197,7 @@ paths:
       - evesso:
         - "esi-corporations.track_members.v1"
       x-alternate-versions:
-      - "dev"
+      - "latest"
       x-cached-seconds: 3600
       x-required-roles:
       - "Director"
@@ -7675,8 +7548,9 @@ paths:
       - "Corporation"
       summary: "Get corporation member roles"
       description: "Return the roles of all members if the character has the personnel\
-        \ manager role or any grantable role.\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/roles/`\n\
-        \n---\nThis route is cached for up to 3600 seconds"
+        \ manager role or any grantable role.\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/roles/`\n\
+        \n---\nThis route is cached for up to 3600 seconds\n\n---\n[Diff of the upcoming\
+        \ changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/roles/)"
       operationId: "get_corporations_corporation_id_roles"
       parameters:
       - name: "corporation_id"
@@ -7806,7 +7680,7 @@ paths:
       - evesso:
         - "esi-corporations.read_corporation_membership.v1"
       x-alternate-versions:
-      - "dev"
+      - "latest"
       x-cached-seconds: 3600
   /corporations/{corporation_id}/roles/history/:
     get:
@@ -7814,9 +7688,10 @@ paths:
       - "Corporation"
       summary: "Get corporation member roles history"
       description: "Return how roles have changed for a coporation's members, up to\
-        \ a month\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/roles/history/`\n\
+        \ a month\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/roles/history/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
-        \ the following EVE corporation role(s): Director\n"
+        \ the following EVE corporation role(s): Director\n\n\n---\n[Diff of the upcoming\
+        \ changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/roles/history/)"
       operationId: "get_corporations_corporation_id_roles_history"
       parameters:
       - name: "corporation_id"
@@ -7964,7 +7839,7 @@ paths:
       - evesso:
         - "esi-corporations.read_corporation_membership.v1"
       x-alternate-versions:
-      - "dev"
+      - "latest"
       x-cached-seconds: 3600
       x-required-roles:
       - "Director"
@@ -7974,8 +7849,9 @@ paths:
       - "Corporation"
       summary: "Get corporation standings"
       description: "Return corporation standings from agents, NPC corporations, and\
-        \ factions\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/standings/`\n\
-        \n---\nThis route is cached for up to 3600 seconds"
+        \ factions\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/standings/`\n\
+        \n---\nThis route is cached for up to 3600 seconds\n\n---\n[Diff of the upcoming\
+        \ changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/standings/)"
       operationId: "get_corporations_corporation_id_standings"
       parameters:
       - name: "corporation_id"
@@ -8124,7 +8000,7 @@ paths:
       - evesso:
         - "esi-corporations.read_standings.v1"
       x-alternate-versions:
-      - "dev"
+      - "latest"
       x-cached-seconds: 3600
       x-required-roles: []
   /corporations/{corporation_id}/starbases/:
@@ -8133,9 +8009,9 @@ paths:
       - "Corporation"
       summary: "Get corporation starbases (POSes)"
       description: "Returns list of corporation starbases (POSes)\n\n---\nAlternate\
-        \ route: `/dev/corporations/{corporation_id}/starbases/`\n\n---\nThis route\
+        \ route: `/latest/corporations/{corporation_id}/starbases/`\n\n---\nThis route\
         \ is cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
-        \ corporation role(s): Director\n"
+        \ corporation role(s): Director\n\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/starbases/)"
       operationId: "get_corporations_corporation_id_starbases"
       parameters:
       - name: "corporation_id"
@@ -8276,9 +8152,9 @@ paths:
               error: "Gateway timeout message"
       security:
       - evesso:
-        - "esi-corporations.read_starbases.v2"
+        - "esi-corporations.read_starbases.v1"
       x-alternate-versions:
-      - "dev"
+      - "latest"
       x-cached-seconds: 3600
       x-required-roles:
       - "Director"
@@ -8288,9 +8164,10 @@ paths:
       - "Corporation"
       summary: "Get starbase (POS) detail"
       description: "Returns various settings and fuels of a starbase (POS)\n\n---\n\
-        Alternate route: `/dev/corporations/{corporation_id}/starbases/{starbase_id}/`\n\
+        Alternate route: `/latest/corporations/{corporation_id}/starbases/{starbase_id}/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
-        \ the following EVE corporation role(s): Director\n"
+        \ the following EVE corporation role(s): Director\n\n\n---\n[Diff of the upcoming\
+        \ changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/starbases/{starbase_id}/)"
       operationId: "get_corporations_corporation_id_starbases_starbase_id"
       parameters:
       - name: "corporation_id"
@@ -8436,224 +8313,19 @@ paths:
       - evesso:
         - "esi-corporations.read_starbases.v1"
       x-alternate-versions:
-      - "dev"
+      - "latest"
       x-cached-seconds: 3600
       x-required-roles:
       - "Director"
-  /corporations/{corporation_id}/structures/:
-    get:
-      tags:
-      - "Corporation"
-      summary: "Get corporation structures"
-      description: "Get a list of corporation structures. This route's version includes\
-        \ the changes to structures detailed in this blog: https://www.eveonline.com/article/upwell-2.0-structures-changes-coming-on-february-13th\
-        \ Note: this route will not return any flex structures owned by a corporation,\
-        \ use the v3 route to have those included in the response. A list of FLEX\
-        \ structures can be found here: https://support.eveonline.com/hc/en-us/articles/213021829-Upwell-Structures\n\
-        \n---\nAlternate route: `/legacy/corporations/{corporation_id}/structures/`\n\
-        \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
-        \ the following EVE corporation role(s): Station_Manager\n\n\n---\nWarning:\
-        \ This route is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/structures/)"
-      operationId: "get_corporations_corporation_id_structures"
-      parameters:
-      - name: "Accept-Language"
-        in: "header"
-        description: "Language to use in the response"
-        required: false
-        type: "string"
-        default: "en"
-        enum:
-        - "en"
-        - "en-us"
-        - "de"
-        - "fr"
-        - "ja"
-        - "ru"
-        - "ko"
-        x-exportParamName: "AcceptLanguage"
-      - name: "corporation_id"
-        in: "path"
-        description: "An EVE corporation ID"
-        required: true
-        type: "integer"
-        minimum: 1
-        format: "int32"
-        x-exportParamName: "CorporationId"
-      - name: "datasource"
-        in: "query"
-        description: "The server name you would like data from"
-        required: false
-        type: "string"
-        default: "tranquility"
-        enum:
-        - "tranquility"
-        x-exportParamName: "Datasource"
-      - name: "If-None-Match"
-        in: "header"
-        description: "ETag from a previous request. A 304 will be returned if this\
-          \ matches the current ETag"
-        required: false
-        type: "string"
-        x-exportParamName: "IfNoneMatch"
-      - name: "language"
-        in: "query"
-        description: "Language to use in the response, takes precedence over Accept-Language"
-        required: false
-        type: "string"
-        default: "en"
-        enum:
-        - "en"
-        - "en-us"
-        - "de"
-        - "fr"
-        - "ja"
-        - "ru"
-        - "ko"
-        x-exportParamName: "Language"
-      - name: "page"
-        in: "query"
-        description: "Which page of results to return"
-        required: false
-        type: "integer"
-        default: 1
-        minimum: 1
-        format: "int32"
-        x-exportParamName: "Page"
-      - name: "token"
-        in: "query"
-        description: "Access token to use if unable to set a header"
-        required: false
-        type: "string"
-        x-exportParamName: "Token"
-      responses:
-        200:
-          description: "List of corporation structures' information"
-          schema:
-            type: "array"
-            description: "200 ok array"
-            title: "get_corporations_corporation_id_structures_ok"
-            items:
-              $ref: "#/definitions/get_corporations_corporation_id_structures_200_ok"
-            maxItems: 1000
-          examples:
-            application/json:
-            - corporation_id: 667531913
-              profile_id: 11237
-              reinforce_hour: 22
-              reinforce_weekday: 2
-              state: "shield_vulnerable"
-              structure_id: 1021975535893
-              system_id: 30004763
-              type_id: 35833
-          headers:
-            Cache-Control:
-              type: "string"
-              description: "The caching mechanism used"
-            Content-Language:
-              type: "string"
-              description: "The language used in the response"
-              enum:
-              - "en"
-              - "de"
-              - "fr"
-              - "ja"
-              - "ru"
-              - "ko"
-            ETag:
-              type: "string"
-              description: "RFC7232 compliant entity tag"
-            Expires:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-            Last-Modified:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-            X-Pages:
-              type: "integer"
-              format: "int32"
-              description: "Maximum page number"
-              default: 1
-        304:
-          description: "Not modified"
-          headers:
-            Cache-Control:
-              type: "string"
-              description: "The caching mechanism used"
-            ETag:
-              type: "string"
-              description: "RFC7232 compliant entity tag"
-            Expires:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-            Last-Modified:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-        400:
-          description: "Bad request"
-          schema:
-            $ref: "#/definitions/bad_request"
-          examples:
-            application/json:
-              error: "Bad request message"
-        401:
-          description: "Unauthorized"
-          schema:
-            $ref: "#/definitions/unauthorized"
-          examples:
-            application/json:
-              error: "Unauthorized message"
-        403:
-          description: "Forbidden"
-          schema:
-            $ref: "#/definitions/forbidden"
-          examples:
-            application/json:
-              error: "Forbidden message"
-        420:
-          description: "Error limited"
-          schema:
-            $ref: "#/definitions/error_limited"
-          examples:
-            application/json:
-              error: "Error limited message"
-        500:
-          description: "Internal server error"
-          schema:
-            $ref: "#/definitions/internal_server_error"
-          examples:
-            application/json:
-              error: "Internal server error message"
-        503:
-          description: "Service unavailable"
-          schema:
-            $ref: "#/definitions/service_unavailable"
-          examples:
-            application/json:
-              error: "Service unavailable message"
-        504:
-          description: "Gateway timeout"
-          schema:
-            $ref: "#/definitions/gateway_timeout"
-          examples:
-            application/json:
-              error: "Gateway timeout message"
-      security:
-      - evesso:
-        - "esi-corporations.read_structures.v1"
-      deprecated: true
-      x-alternate-versions:
-      - "legacy"
-      x-cached-seconds: 3600
-      x-required-roles:
-      - "Station_Manager"
   /corporations/{corporation_id}/titles/:
     get:
       tags:
       - "Corporation"
       summary: "Get corporation titles"
-      description: "Returns a corporation's titles\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/titles/`\n\
+      description: "Returns a corporation's titles\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/titles/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
-        \ the following EVE corporation role(s): Director\n"
+        \ the following EVE corporation role(s): Director\n\n\n---\n[Diff of the upcoming\
+        \ changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/titles/)"
       operationId: "get_corporations_corporation_id_titles"
       parameters:
       - name: "corporation_id"
@@ -8784,7 +8456,7 @@ paths:
       - evesso:
         - "esi-corporations.read_titles.v1"
       x-alternate-versions:
-      - "dev"
+      - "latest"
       x-cached-seconds: 3600
       x-required-roles:
       - "Director"
@@ -13037,8 +12709,6 @@ securityDefinitions:
       esi-corporations.read_medals.v1: "EVE SSO scope esi-corporations.read_medals.v1"
       esi-corporations.read_standings.v1: "EVE SSO scope esi-corporations.read_standings.v1"
       esi-corporations.read_starbases.v1: "EVE SSO scope esi-corporations.read_starbases.v1"
-      esi-corporations.read_starbases.v2: "EVE SSO scope esi-corporations.read_starbases.v2"
-      esi-corporations.read_structures.v1: "EVE SSO scope esi-corporations.read_structures.v1"
       esi-corporations.read_titles.v1: "EVE SSO scope esi-corporations.read_titles.v1"
       esi-corporations.track_members.v1: "EVE SSO scope esi-corporations.track_members.v1"
       esi-fittings.read_fittings.v1: "EVE SSO scope esi-fittings.read_fittings.v1"
@@ -15517,16 +15187,6 @@ definitions:
         - "private"
         - "public"
     description: "200 ok object"
-  get_corporations_corporation_id_members_200_ok:
-    required:
-    - "character_id"
-    properties:
-      character_id:
-        type: "integer"
-        format: "int32"
-        description: "character_id integer"
-        title: "get_corporations_corporation_id_members_character_id"
-    description: "200 ok object"
   get_corporations_corporation_id_members_titles_200_ok:
     required:
     - "character_id"
@@ -16638,146 +16298,6 @@ definitions:
         description: "True if the starbase (POS) is using alliance standings, otherwise\
           \ using corporation's"
         title: "get_corporations_corporation_id_starbases_starbase_id_use_alliance_standings"
-    description: "200 ok object"
-  get_corporations_corporation_id_structures_service:
-    required:
-    - "name"
-    - "state"
-    properties:
-      name:
-        type: "string"
-        description: "name string"
-        title: "get_corporations_corporation_id_structures_name"
-      state:
-        type: "string"
-        description: "state string"
-        title: "get_corporations_corporation_id_structures_service_state"
-        enum:
-        - "online"
-        - "offline"
-        - "cleanup"
-    description: "service object"
-  get_corporations_corporation_id_structures_200_ok:
-    required:
-    - "corporation_id"
-    - "profile_id"
-    - "reinforce_hour"
-    - "reinforce_weekday"
-    - "state"
-    - "structure_id"
-    - "system_id"
-    - "type_id"
-    properties:
-      corporation_id:
-        type: "integer"
-        format: "int32"
-        description: "ID of the corporation that owns the structure"
-        title: "get_corporations_corporation_id_structures_corporation_id"
-      fuel_expires:
-        type: "string"
-        format: "date-time"
-        description: "Date on which the structure will run out of fuel"
-        title: "get_corporations_corporation_id_structures_fuel_expires"
-      next_reinforce_apply:
-        type: "string"
-        format: "date-time"
-        description: "The date and time when the structure's newly requested reinforcement\
-          \ times (e.g. next_reinforce_hour and next_reinforce_day) will take effect"
-        title: "get_corporations_corporation_id_structures_next_reinforce_apply"
-      next_reinforce_hour:
-        type: "integer"
-        format: "int32"
-        description: "The requested change to reinforce_hour that will take effect\
-          \ at the time shown by next_reinforce_apply"
-        title: "get_corporations_corporation_id_structures_next_reinforce_hour"
-        minimum: 0
-        maximum: 23
-      next_reinforce_weekday:
-        type: "integer"
-        format: "int32"
-        description: "The requested change to reinforce_weekday that will take effect\
-          \ at the time shown by next_reinforce_apply"
-        title: "get_corporations_corporation_id_structures_next_reinforce_weekday"
-        minimum: 0
-        maximum: 6
-      profile_id:
-        type: "integer"
-        format: "int32"
-        description: "The id of the ACL profile for this citadel"
-        title: "get_corporations_corporation_id_structures_profile_id"
-      reinforce_hour:
-        type: "integer"
-        format: "int32"
-        description: "The hour of day that determines the four hour window when the\
-          \ structure will randomly exit its reinforcement periods and become vulnerable\
-          \ to attack against its armor and/or hull. The structure will become vulnerable\
-          \ at a random time that is +/- 2 hours centered on the value of this property"
-        title: "get_corporations_corporation_id_structures_reinforce_hour"
-        minimum: 0
-        maximum: 23
-      reinforce_weekday:
-        type: "integer"
-        format: "int32"
-        description: "The day of the week when the structure exits its final reinforcement\
-          \ period and becomes vulnerable to attack against its hull. Monday is 0\
-          \ and Sunday is 6"
-        title: "get_corporations_corporation_id_structures_reinforce_weekday"
-        minimum: 0
-        maximum: 6
-      services:
-        type: "array"
-        description: "Contains a list of service upgrades, and their state"
-        title: "get_corporations_corporation_id_structures_services"
-        items:
-          $ref: "#/definitions/get_corporations_corporation_id_structures_service"
-        maxItems: 10
-      state:
-        type: "string"
-        description: "state string"
-        title: "get_corporations_corporation_id_structures_state"
-        enum:
-        - "anchor_vulnerable"
-        - "anchoring"
-        - "armor_reinforce"
-        - "armor_vulnerable"
-        - "fitting_invulnerable"
-        - "hull_reinforce"
-        - "hull_vulnerable"
-        - "online_deprecated"
-        - "onlining_vulnerable"
-        - "shield_vulnerable"
-        - "unanchored"
-        - "unknown"
-      state_timer_end:
-        type: "string"
-        format: "date-time"
-        description: "Date at which the structure will move to it's next state"
-        title: "get_corporations_corporation_id_structures_state_timer_end"
-      state_timer_start:
-        type: "string"
-        format: "date-time"
-        description: "Date at which the structure entered it's current state"
-        title: "get_corporations_corporation_id_structures_state_timer_start"
-      structure_id:
-        type: "integer"
-        format: "int64"
-        description: "The Item ID of the structure"
-        title: "get_corporations_corporation_id_structures_structure_id"
-      system_id:
-        type: "integer"
-        format: "int32"
-        description: "The solar system the structure is in"
-        title: "get_corporations_corporation_id_structures_system_id"
-      type_id:
-        type: "integer"
-        format: "int32"
-        description: "The type id of the structure"
-        title: "get_corporations_corporation_id_structures_type_id"
-      unanchors_at:
-        type: "string"
-        format: "date-time"
-        description: "Date at which the structure will unanchor"
-        title: "get_corporations_corporation_id_structures_unanchors_at"
     description: "200 ok object"
   get_corporations_corporation_id_titles_200_ok:
     properties:

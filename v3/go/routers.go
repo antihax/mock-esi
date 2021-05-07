@@ -74,13 +74,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCorporationsCorporationId",
-		"Get",
-		"/v3/corporations/{corporation_id}/",
-		GetCorporationsCorporationId,
-	)
-
-	mockesi.NewRoute(
 		"GetCorporationsCorporationIdAlliancehistory",
 		"Get",
 		"/v3/corporations/{corporation_id}/alliancehistory/",

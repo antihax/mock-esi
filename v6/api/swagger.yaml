@@ -530,6 +530,8 @@ definitions:
         - "DustAppAcceptedMsg"
         - "ESSMainBankLink"
         - "EntosisCaptureStarted"
+        - "ExpertSystemExpired"
+        - "ExpertSystemExpiryImminent"
         - "FWAllianceKickMsg"
         - "FWAllianceWarningMsg"
         - "FWCharKickMsg"

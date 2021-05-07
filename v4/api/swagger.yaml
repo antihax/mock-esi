@@ -1239,8 +1239,9 @@ paths:
       - "Corporation"
       summary: "Get corporation information"
       description: "Public information about a corporation\n\n---\nAlternate route:\
-        \ `/latest/corporations/{corporation_id}/`\n\n---\nThis route is cached for\
-        \ up to 3600 seconds"
+        \ `/legacy/corporations/{corporation_id}/`\n\n---\nThis route is cached for\
+        \ up to 3600 seconds\n\n---\nWarning: This route is deprecated\n\n---\n[Diff\
+        \ of the upcoming changes](https://esi.evetech.net/diff/v4/dev/#GET-/corporations/{corporation_id}/)"
       operationId: "get_corporations_corporation_id"
       parameters:
       - name: "corporation_id"
@@ -1355,8 +1356,9 @@ paths:
           examples:
             application/json:
               error: "Gateway timeout message"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
+      - "legacy"
       x-cached-seconds: 3600
   /corporations/{corporation_id}/assets/:
     get:
@@ -1526,8 +1528,9 @@ paths:
       - "Corporation"
       summary: "Get corporation members"
       description: "Return the current member list of a corporation, the token's character\
-        \ need to be a member of the corporation.\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/members/`\n\
-        \n---\nThis route is cached for up to 3600 seconds"
+        \ need to be a member of the corporation.\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/members/`\n\
+        \n---\nThis route is cached for up to 3600 seconds\n\n---\n[Diff of the upcoming\
+        \ changes](https://esi.evetech.net/diff/v4/dev/#GET-/corporations/{corporation_id}/members/)"
       operationId: "get_corporations_corporation_id_members"
       parameters:
       - name: "corporation_id"
@@ -1658,7 +1661,7 @@ paths:
       - evesso:
         - "esi-corporations.read_corporation_membership.v1"
       x-alternate-versions:
-      - "dev"
+      - "latest"
       x-cached-seconds: 3600
   /corporations/{corporation_id}/structures/:
     get:
@@ -1667,9 +1670,10 @@ paths:
       summary: "Get corporation structures"
       description: "Get a list of corporation structures. This route's version includes\
         \ the changes to structures detailed in this blog: https://www.eveonline.com/article/upwell-2.0-structures-changes-coming-on-february-13th\n\
-        \n---\nAlternate route: `/dev/corporations/{corporation_id}/structures/`\n\
+        \n---\nAlternate route: `/latest/corporations/{corporation_id}/structures/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
-        \ the following EVE corporation role(s): Station_Manager\n"
+        \ the following EVE corporation role(s): Station_Manager\n\n\n---\n[Diff of\
+        \ the upcoming changes](https://esi.evetech.net/diff/v4/dev/#GET-/corporations/{corporation_id}/structures/)"
       operationId: "get_corporations_corporation_id_structures"
       parameters:
       - name: "Accept-Language"
@@ -1754,6 +1758,7 @@ paths:
           examples:
             application/json:
             - corporation_id: 667531913
+              name: "example name"
               profile_id: 11237
               reinforce_hour: 22
               state: "shield_vulnerable"
@@ -1856,7 +1861,7 @@ paths:
       - evesso:
         - "esi-corporations.read_structures.v1"
       x-alternate-versions:
-      - "dev"
+      - "latest"
       x-cached-seconds: 3600
       x-required-roles:
       - "Station_Manager"
@@ -3271,7 +3276,7 @@ definitions:
       name:
         type: "string"
         description: "name string"
-        title: "get_corporations_corporation_id_structures_name"
+        title: "get_corporations_corporation_id_structures_service_name"
       state:
         type: "string"
         description: "state string"
@@ -3300,6 +3305,10 @@ definitions:
         format: "date-time"
         description: "Date on which the structure will run out of fuel"
         title: "get_corporations_corporation_id_structures_fuel_expires"
+      name:
+        type: "string"
+        description: "The structure name"
+        title: "get_corporations_corporation_id_structures_name"
       next_reinforce_apply:
         type: "string"
         format: "date-time"

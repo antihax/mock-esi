@@ -25,11 +25,11 @@ func GetCorporationsCorporationId(w http.ResponseWriter, r *http.Request) {
 	j := `{
   "alliance_id" : 434243723,
   "ceo_id" : 180548812,
-  "corporation_description" : "This is a corporation description, it's basically just a string",
-  "corporation_name" : "C C P",
-  "creation_date" : "2004-11-28T16:42:51Z",
   "creator_id" : 180548812,
+  "date_founded" : "2004-11-28T16:42:51Z",
+  "description" : "This is a corporation description, it's basically just a string",
   "member_count" : 656,
+  "name" : "C C P",
   "tax_rate" : 0.256,
   "ticker" : "-CCP-",
   "url" : "http://www.eveonline.com"
@@ -95,10 +95,8 @@ func GetCorporationsCorporationIdAlliancehistory(w http.ResponseWriter, r *http.
 	err = err
 
 	j := `[ {
-  "alliance" : {
-    "alliance_id" : 99000006,
-    "is_deleted" : false
-  },
+  "alliance_id" : 99000006,
+  "is_deleted" : true,
   "record_id" : 23,
   "start_date" : "2016-10-25T14:46:00Z"
 }, {
@@ -412,12 +410,15 @@ func GetCorporationsCorporationIdDivisions(w http.ResponseWriter, r *http.Reques
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -483,12 +484,15 @@ func GetCorporationsCorporationIdFacilities(w http.ResponseWriter, r *http.Reque
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -545,12 +549,15 @@ func GetCorporationsCorporationIdIcons(w http.ResponseWriter, r *http.Request) {
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -627,12 +634,15 @@ func GetCorporationsCorporationIdMedals(w http.ResponseWriter, r *http.Request) 
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -710,12 +720,15 @@ func GetCorporationsCorporationIdMedalsIssued(w http.ResponseWriter, r *http.Req
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -736,11 +749,7 @@ func GetCorporationsCorporationIdMembers(w http.ResponseWriter, r *http.Request)
 	localV = localV
 	err = err
 
-	j := `[ {
-  "character_id" : 90000001
-}, {
-  "character_id" : 90000002
-} ]`
+	j := `[ 90000001, 90000002 ]`
 	vars := mux.Vars(r)
 	localV, err = processParameters(corporationId, vars["corporation_id"])
 	if err != nil {
@@ -851,12 +860,15 @@ func GetCorporationsCorporationIdMembersLimit(w http.ResponseWriter, r *http.Req
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -921,12 +933,15 @@ func GetCorporationsCorporationIdMembersTitles(w http.ResponseWriter, r *http.Re
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -1002,12 +1017,15 @@ func GetCorporationsCorporationIdMembertracking(w http.ResponseWriter, r *http.R
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -1072,12 +1090,15 @@ func GetCorporationsCorporationIdRoles(w http.ResponseWriter, r *http.Request) {
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -1155,12 +1176,15 @@ func GetCorporationsCorporationIdRolesHistory(w http.ResponseWriter, r *http.Req
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -1335,12 +1359,15 @@ func GetCorporationsCorporationIdStandings(w http.ResponseWriter, r *http.Reques
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -1415,12 +1442,15 @@ func GetCorporationsCorporationIdStarbases(w http.ResponseWriter, r *http.Reques
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -1507,12 +1537,15 @@ func GetCorporationsCorporationIdStarbasesStarbaseId(w http.ResponseWriter, r *h
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -1675,12 +1708,15 @@ func GetCorporationsCorporationIdTitles(w http.ResponseWriter, r *http.Request) 
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -1725,12 +1761,15 @@ func GetCorporationsNpccorps(w http.ResponseWriter, r *http.Request) {
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)

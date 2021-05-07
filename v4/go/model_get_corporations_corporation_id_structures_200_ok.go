@@ -12,6 +12,9 @@ type GetCorporationsCorporationIdStructures200Ok struct {
 	 Date on which the structure will run out of fuel */
 	FuelExpires time.Time `json:"fuel_expires,omitempty"`
 	/*
+	 The structure name */
+	Name string `json:"name,omitempty"`
+	/*
 	 The date and time when the structure's newly requested reinforcement times (e.g. next_reinforce_hour and next_reinforce_day) will take effect */
 	NextReinforceApply time.Time `json:"next_reinforce_apply,omitempty"`
 	/*

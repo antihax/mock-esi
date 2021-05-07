@@ -3755,7 +3755,7 @@ paths:
             title: "get_characters_character_id_contracts_contract_id_bids_ok"
             items:
               $ref: "#/definitions/get_characters_character_id_contracts_contract_id_bids_200_ok"
-            maxItems: 2000
+            maxItems: 5000
           examples:
             application/json:
             - amount: 1.23
@@ -3913,7 +3913,7 @@ paths:
             title: "get_characters_character_id_contracts_contract_id_items_ok"
             items:
               $ref: "#/definitions/get_characters_character_id_contracts_contract_id_items_200_ok"
-            maxItems: 2000
+            maxItems: 5000
           examples:
             application/json:
             - is_included: true
@@ -9106,7 +9106,7 @@ paths:
             title: "get_characters_character_id_skillqueue_ok"
             items:
               $ref: "#/definitions/get_characters_character_id_skillqueue_200_ok"
-            maxItems: 51
+            maxItems: 100
           examples:
             application/json:
             - finish_date: "2016-06-29T10:47:00Z"
@@ -11056,9 +11056,9 @@ paths:
       tags:
       - "Corporation"
       summary: "Get npc corporations"
-      description: "Get a list of npc corporations\n\n---\nAlternate route: `/latest/corporations/npccorps/`\n\
-        \nAlternate route: `/v1/corporations/npccorps/`\n\n---\nThis route expires\
-        \ daily at 11:05\n\n---\nWarning: This is a legacy route"
+      description: "Get a list of npc corporations\n\n---\nAlternate route: `/v1/corporations/npccorps/`\n\
+        \n---\nThis route expires daily at 11:05\n\n---\nWarning: This route is deprecated\n\
+        \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#GET-/corporations/npccorps/)"
       operationId: "get_corporations_npccorps"
       parameters:
       - name: "datasource"
@@ -11158,8 +11158,8 @@ paths:
           examples:
             application/json:
               error: "Gateway timeout message"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
       - "v1"
   /corporations/{corporation_id}/:
     get:
@@ -11167,7 +11167,7 @@ paths:
       - "Corporation"
       summary: "Get corporation information"
       description: "Public information about a corporation\n\n---\nAlternate route:\
-        \ `/v3/corporations/{corporation_id}/`\n\n---\nThis route is cached for up\
+        \ `/v4/corporations/{corporation_id}/`\n\n---\nThis route is cached for up\
         \ to 3600 seconds\n\n---\nWarning: This route is deprecated\n\n---\n[Diff\
         \ of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#GET-/corporations/{corporation_id}/)"
       operationId: "get_corporations_corporation_id"
@@ -11198,19 +11198,19 @@ paths:
         x-exportParamName: "IfNoneMatch"
       responses:
         200:
-          description: "Public data about a corporation"
+          description: "Public information about a corporation"
           schema:
             $ref: "#/definitions/get_corporations_corporation_id_ok"
           examples:
             application/json:
               alliance_id: 434243723
               ceo_id: 180548812
-              corporation_description: "This is a corporation description, it's basically\
-                \ just a string"
-              corporation_name: "C C P"
-              creation_date: "2004-11-28T16:42:51Z"
               creator_id: 180548812
+              date_founded: "2004-11-28T16:42:51Z"
+              description: "This is a corporation description, it's basically just\
+                \ a string"
               member_count: 656
+              name: "C C P"
               tax_rate: 0.256
               ticker: "-CCP-"
               url: "http://www.eveonline.com"
@@ -11286,7 +11286,7 @@ paths:
               error: "Gateway timeout message"
       deprecated: true
       x-alternate-versions:
-      - "v3"
+      - "v4"
       x-cached-seconds: 3600
   /corporations/{corporation_id}/alliancehistory/:
     get:
@@ -11294,7 +11294,7 @@ paths:
       - "Corporation"
       summary: "Get alliance history"
       description: "Get a list of all the alliances a corporation has been a member\
-        \ of\n\n---\nAlternate route: `/v1/corporations/{corporation_id}/alliancehistory/`\n\
+        \ of\n\n---\nAlternate route: `/v2/corporations/{corporation_id}/alliancehistory/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nWarning: This route\
         \ is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#GET-/corporations/{corporation_id}/alliancehistory/)"
       operationId: "get_corporations_corporation_id_alliancehistory"
@@ -11335,9 +11335,8 @@ paths:
             maxItems: 10000
           examples:
             application/json:
-            - alliance:
-                alliance_id: 99000006
-                is_deleted: false
+            - alliance_id: 99000006
+              is_deleted: true
               record_id: 23
               start_date: "2016-10-25T14:46:00Z"
             - record_id: 1
@@ -11407,7 +11406,7 @@ paths:
               error: "Gateway timeout message"
       deprecated: true
       x-alternate-versions:
-      - "v1"
+      - "v2"
       x-cached-seconds: 3600
   /corporations/{corporation_id}/assets/:
     get:
@@ -11836,7 +11835,7 @@ paths:
       - "Corporation"
       summary: "Get corporation blueprints"
       description: "Returns a list of blueprints the corporation owns\n\n---\nAlternate\
-        \ route: `/v1/corporations/{corporation_id}/blueprints/`\n\n---\nThis route\
+        \ route: `/v2/corporations/{corporation_id}/blueprints/`\n\n---\nThis route\
         \ is cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
         \ corporation role(s): Director\n\n\n---\nWarning: This route is deprecated\n\
         \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#GET-/corporations/{corporation_id}/blueprints/)"
@@ -11988,7 +11987,7 @@ paths:
         - "esi-corporations.read_blueprints.v1"
       deprecated: true
       x-alternate-versions:
-      - "v1"
+      - "v2"
       x-cached-seconds: 3600
       x-required-roles:
       - "Director"
@@ -12627,7 +12626,7 @@ paths:
       summary: "Get all corporation ALSC logs"
       description: "Returns logs recorded in the past seven days from all audit log\
         \ secure containers (ALSC) owned by a given corporation\n\n---\nAlternate\
-        \ route: `/v1/corporations/{corporation_id}/containers/logs/`\n\n---\nThis\
+        \ route: `/v2/corporations/{corporation_id}/containers/logs/`\n\n---\nThis\
         \ route is cached for up to 600 seconds\n\n---\nRequires one of the following\
         \ EVE corporation role(s): Director\n\n\n---\nWarning: This route is deprecated\n\
         \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#GET-/corporations/{corporation_id}/containers/logs/)"
@@ -12797,7 +12796,7 @@ paths:
         - "esi-corporations.read_container_logs.v1"
       deprecated: true
       x-alternate-versions:
-      - "v1"
+      - "v2"
       x-cached-seconds: 600
       x-required-roles:
       - "Director"
@@ -13207,7 +13206,7 @@ paths:
             title: "get_corporations_corporation_id_contracts_contract_id_items_ok"
             items:
               $ref: "#/definitions/get_corporations_corporation_id_contracts_contract_id_items_200_ok"
-            maxItems: 2000
+            maxItems: 5000
           examples:
             application/json:
             - is_included: true
@@ -13490,10 +13489,10 @@ paths:
       - "Corporation"
       summary: "Get corporation divisions"
       description: "Return corporation hangar and wallet division names, only show\
-        \ if a division is not using the default name\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/divisions/`\n\
-        \nAlternate route: `/v1/corporations/{corporation_id}/divisions/`\n\n---\n\
-        This route is cached for up to 3600 seconds\n\n---\nRequires one of the following\
-        \ EVE corporation role(s): Director\n\n\n---\nWarning: This is a legacy route"
+        \ if a division is not using the default name\n\n---\nAlternate route: `/v1/corporations/{corporation_id}/divisions/`\n\
+        \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
+        \ the following EVE corporation role(s): Director\n\n\n---\nWarning: This\
+        \ route is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#GET-/corporations/{corporation_id}/divisions/)"
       operationId: "get_corporations_corporation_id_divisions"
       parameters:
       - name: "corporation_id"
@@ -13619,8 +13618,8 @@ paths:
       security:
       - evesso:
         - "esi-corporations.read_divisions.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
       - "v1"
       x-cached-seconds: 3600
       x-required-roles:
@@ -13630,11 +13629,10 @@ paths:
       tags:
       - "Corporation"
       summary: "Get corporation facilities"
-      description: "Return a corporation's facilities\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/facilities/`\n\
-        \nAlternate route: `/v1/corporations/{corporation_id}/facilities/`\n\n---\n\
-        This route is cached for up to 3600 seconds\n\n---\nRequires one of the following\
-        \ EVE corporation role(s): Factory_Manager\n\n\n---\nWarning: This is a legacy\
-        \ route"
+      description: "Return a corporation's facilities\n\n---\nAlternate route: `/v1/corporations/{corporation_id}/facilities/`\n\
+        \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
+        \ the following EVE corporation role(s): Factory_Manager\n\n\n---\nWarning:\
+        \ This route is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#GET-/corporations/{corporation_id}/facilities/)"
       operationId: "get_corporations_corporation_id_facilities"
       parameters:
       - name: "corporation_id"
@@ -13762,8 +13760,8 @@ paths:
       security:
       - evesso:
         - "esi-corporations.read_facilities.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
       - "v1"
       x-cached-seconds: 3600
       x-required-roles:
@@ -13919,10 +13917,9 @@ paths:
       tags:
       - "Corporation"
       summary: "Get corporation icon"
-      description: "Get the icon urls for a corporation\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/icons/`\n\
-        \nAlternate route: `/v1/corporations/{corporation_id}/icons/`\n\n---\nThis\
-        \ route is cached for up to 3600 seconds\n\n---\nWarning: This is a legacy\
-        \ route"
+      description: "Get the icon urls for a corporation\n\n---\nAlternate route: `/v1/corporations/{corporation_id}/icons/`\n\
+        \n---\nThis route is cached for up to 3600 seconds\n\n---\nWarning: This route\
+        \ is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#GET-/corporations/{corporation_id}/icons/)"
       operationId: "get_corporations_corporation_id_icons"
       parameters:
       - name: "corporation_id"
@@ -14029,8 +14026,8 @@ paths:
           examples:
             application/json:
               error: "Gateway timeout message"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
       - "v1"
       x-cached-seconds: 3600
   /corporations/{corporation_id}/industry/jobs/:
@@ -14379,10 +14376,9 @@ paths:
       tags:
       - "Corporation"
       summary: "Get corporation medals"
-      description: "Returns a corporation's medals\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/medals/`\n\
-        \nAlternate route: `/v1/corporations/{corporation_id}/medals/`\n\n---\nThis\
-        \ route is cached for up to 3600 seconds\n\n---\nWarning: This is a legacy\
-        \ route"
+      description: "Returns a corporation's medals\n\n---\nAlternate route: `/v1/corporations/{corporation_id}/medals/`\n\
+        \n---\nThis route is cached for up to 3600 seconds\n\n---\nWarning: This route\
+        \ is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#GET-/corporations/{corporation_id}/medals/)"
       operationId: "get_corporations_corporation_id_medals"
       parameters:
       - name: "corporation_id"
@@ -14526,8 +14522,8 @@ paths:
       security:
       - evesso:
         - "esi-corporations.read_medals.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
       - "v1"
       x-cached-seconds: 3600
       x-required-roles: []
@@ -14537,10 +14533,10 @@ paths:
       - "Corporation"
       summary: "Get corporation issued medals"
       description: "Returns medals issued by a corporation\n\n---\nAlternate route:\
-        \ `/latest/corporations/{corporation_id}/medals/issued/`\n\nAlternate route:\
         \ `/v1/corporations/{corporation_id}/medals/issued/`\n\n---\nThis route is\
         \ cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
-        \ corporation role(s): Director\n\n\n---\nWarning: This is a legacy route"
+        \ corporation role(s): Director\n\n\n---\nWarning: This route is deprecated\n\
+        \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#GET-/corporations/{corporation_id}/medals/issued/)"
       operationId: "get_corporations_corporation_id_medals_issued"
       parameters:
       - name: "corporation_id"
@@ -14685,8 +14681,8 @@ paths:
       security:
       - evesso:
         - "esi-corporations.read_medals.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
       - "v1"
       x-cached-seconds: 3600
       x-required-roles:
@@ -14696,8 +14692,8 @@ paths:
       tags:
       - "Corporation"
       summary: "Get corporation members"
-      description: "Read the current list of members if the calling character is a\
-        \ member.\n\n---\nAlternate route: `/v2/corporations/{corporation_id}/members/`\n\
+      description: "Return the current member list of a corporation, the token's character\
+        \ need to be a member of the corporation.\n\n---\nAlternate route: `/v3/corporations/{corporation_id}/members/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nWarning: This route\
         \ is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#GET-/corporations/{corporation_id}/members/)"
       operationId: "get_corporations_corporation_id_members"
@@ -14737,15 +14733,18 @@ paths:
           description: "List of member character IDs"
           schema:
             type: "array"
-            description: "200 ok array"
+            description: "A list of character IDs"
             title: "get_corporations_corporation_id_members_ok"
             items:
-              $ref: "#/definitions/get_corporations_corporation_id_members_200_ok"
+              type: "integer"
+              format: "int32"
+              description: "200 ok integer"
+              title: "get_corporations_corporation_id_members_200_ok"
             maxItems: 12601
           examples:
             application/json:
-            - character_id: 90000001
-            - character_id: 90000002
+            - 90000001
+            - 90000002
           headers:
             Cache-Control:
               type: "string"
@@ -14828,7 +14827,7 @@ paths:
         - "esi-corporations.read_corporation_membership.v1"
       deprecated: true
       x-alternate-versions:
-      - "v2"
+      - "v3"
       x-cached-seconds: 3600
   /corporations/{corporation_id}/members/limit/:
     get:
@@ -14836,11 +14835,10 @@ paths:
       - "Corporation"
       summary: "Get corporation member limit"
       description: "Return a corporation's member limit, not including CEO himself\n\
-        \n---\nAlternate route: `/latest/corporations/{corporation_id}/members/limit/`\n\
-        \nAlternate route: `/v1/corporations/{corporation_id}/members/limit/`\n\n\
-        ---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of the\
-        \ following EVE corporation role(s): Director\n\n\n---\nWarning: This is a\
-        \ legacy route"
+        \n---\nAlternate route: `/v1/corporations/{corporation_id}/members/limit/`\n\
+        \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
+        \ the following EVE corporation role(s): Director\n\n\n---\nWarning: This\
+        \ route is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#GET-/corporations/{corporation_id}/members/limit/)"
       operationId: "get_corporations_corporation_id_members_limit"
       parameters:
       - name: "corporation_id"
@@ -14963,8 +14961,8 @@ paths:
       security:
       - evesso:
         - "esi-corporations.track_members.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
       - "v1"
       x-cached-seconds: 3600
       x-required-roles:
@@ -14975,10 +14973,10 @@ paths:
       - "Corporation"
       summary: "Get corporation's members' titles"
       description: "Returns a corporation's members' titles\n\n---\nAlternate route:\
-        \ `/latest/corporations/{corporation_id}/members/titles/`\n\nAlternate route:\
         \ `/v1/corporations/{corporation_id}/members/titles/`\n\n---\nThis route is\
         \ cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
-        \ corporation role(s): Director\n\n\n---\nWarning: This is a legacy route"
+        \ corporation role(s): Director\n\n\n---\nWarning: This route is deprecated\n\
+        \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#GET-/corporations/{corporation_id}/members/titles/)"
       operationId: "get_corporations_corporation_id_members_titles"
       parameters:
       - name: "corporation_id"
@@ -15105,8 +15103,8 @@ paths:
       security:
       - evesso:
         - "esi-corporations.read_titles.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
       - "v1"
       x-cached-seconds: 3600
       x-required-roles:
@@ -15117,11 +15115,10 @@ paths:
       - "Corporation"
       summary: "Track corporation members"
       description: "Returns additional information about a corporation's members which\
-        \ helps tracking their activities\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/membertracking/`\n\
-        \nAlternate route: `/v1/corporations/{corporation_id}/membertracking/`\n\n\
-        ---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of the\
-        \ following EVE corporation role(s): Director\n\n\n---\nWarning: This is a\
-        \ legacy route"
+        \ helps tracking their activities\n\n---\nAlternate route: `/v1/corporations/{corporation_id}/membertracking/`\n\
+        \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
+        \ the following EVE corporation role(s): Director\n\n\n---\nWarning: This\
+        \ route is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#GET-/corporations/{corporation_id}/membertracking/)"
       operationId: "get_corporations_corporation_id_membertracking"
       parameters:
       - name: "corporation_id"
@@ -15258,8 +15255,8 @@ paths:
       security:
       - evesso:
         - "esi-corporations.track_members.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
       - "v1"
       x-cached-seconds: 3600
       x-required-roles:
@@ -15610,10 +15607,9 @@ paths:
       - "Corporation"
       summary: "Get corporation member roles"
       description: "Return the roles of all members if the character has the personnel\
-        \ manager role or any grantable role.\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/roles/`\n\
-        \nAlternate route: `/v1/corporations/{corporation_id}/roles/`\n\n---\nThis\
-        \ route is cached for up to 3600 seconds\n\n---\nWarning: This is a legacy\
-        \ route"
+        \ manager role or any grantable role.\n\n---\nAlternate route: `/v1/corporations/{corporation_id}/roles/`\n\
+        \n---\nThis route is cached for up to 3600 seconds\n\n---\nWarning: This route\
+        \ is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#GET-/corporations/{corporation_id}/roles/)"
       operationId: "get_corporations_corporation_id_roles"
       parameters:
       - name: "corporation_id"
@@ -15742,8 +15738,8 @@ paths:
       security:
       - evesso:
         - "esi-corporations.read_corporation_membership.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
       - "v1"
       x-cached-seconds: 3600
   /corporations/{corporation_id}/roles/history/:
@@ -15752,11 +15748,10 @@ paths:
       - "Corporation"
       summary: "Get corporation member roles history"
       description: "Return how roles have changed for a coporation's members, up to\
-        \ a month\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/roles/history/`\n\
-        \nAlternate route: `/v1/corporations/{corporation_id}/roles/history/`\n\n\
-        ---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of the\
-        \ following EVE corporation role(s): Director\n\n\n---\nWarning: This is a\
-        \ legacy route"
+        \ a month\n\n---\nAlternate route: `/v1/corporations/{corporation_id}/roles/history/`\n\
+        \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
+        \ the following EVE corporation role(s): Director\n\n\n---\nWarning: This\
+        \ route is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#GET-/corporations/{corporation_id}/roles/history/)"
       operationId: "get_corporations_corporation_id_roles_history"
       parameters:
       - name: "corporation_id"
@@ -15903,8 +15898,8 @@ paths:
       security:
       - evesso:
         - "esi-corporations.read_corporation_membership.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
       - "v1"
       x-cached-seconds: 3600
       x-required-roles:
@@ -16083,10 +16078,9 @@ paths:
       - "Corporation"
       summary: "Get corporation standings"
       description: "Return corporation standings from agents, NPC corporations, and\
-        \ factions\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/standings/`\n\
-        \nAlternate route: `/v1/corporations/{corporation_id}/standings/`\n\n---\n\
-        This route is cached for up to 3600 seconds\n\n---\nWarning: This is a legacy\
-        \ route"
+        \ factions\n\n---\nAlternate route: `/v1/corporations/{corporation_id}/standings/`\n\
+        \n---\nThis route is cached for up to 3600 seconds\n\n---\nWarning: This route\
+        \ is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#GET-/corporations/{corporation_id}/standings/)"
       operationId: "get_corporations_corporation_id_standings"
       parameters:
       - name: "corporation_id"
@@ -16234,8 +16228,8 @@ paths:
       security:
       - evesso:
         - "esi-corporations.read_standings.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
       - "v1"
       x-cached-seconds: 3600
       x-required-roles: []
@@ -16245,10 +16239,10 @@ paths:
       - "Corporation"
       summary: "Get corporation starbases (POSes)"
       description: "Returns list of corporation starbases (POSes)\n\n---\nAlternate\
-        \ route: `/latest/corporations/{corporation_id}/starbases/`\n\nAlternate route:\
-        \ `/v1/corporations/{corporation_id}/starbases/`\n\n---\nThis route is cached\
-        \ for up to 3600 seconds\n\n---\nRequires one of the following EVE corporation\
-        \ role(s): Director\n\n\n---\nWarning: This is a legacy route"
+        \ route: `/v1/corporations/{corporation_id}/starbases/`\n\n---\nThis route\
+        \ is cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
+        \ corporation role(s): Director\n\n\n---\nWarning: This route is deprecated\n\
+        \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#GET-/corporations/{corporation_id}/starbases/)"
       operationId: "get_corporations_corporation_id_starbases"
       parameters:
       - name: "corporation_id"
@@ -16390,8 +16384,8 @@ paths:
       security:
       - evesso:
         - "esi-corporations.read_starbases.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
       - "v1"
       x-cached-seconds: 3600
       x-required-roles:
@@ -16402,11 +16396,10 @@ paths:
       - "Corporation"
       summary: "Get starbase (POS) detail"
       description: "Returns various settings and fuels of a starbase (POS)\n\n---\n\
-        Alternate route: `/latest/corporations/{corporation_id}/starbases/{starbase_id}/`\n\
-        \nAlternate route: `/v1/corporations/{corporation_id}/starbases/{starbase_id}/`\n\
+        Alternate route: `/v1/corporations/{corporation_id}/starbases/{starbase_id}/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
         \ the following EVE corporation role(s): Director\n\n\n---\nWarning: This\
-        \ is a legacy route"
+        \ route is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#GET-/corporations/{corporation_id}/starbases/{starbase_id}/)"
       operationId: "get_corporations_corporation_id_starbases_starbase_id"
       parameters:
       - name: "corporation_id"
@@ -16551,8 +16544,8 @@ paths:
       security:
       - evesso:
         - "esi-corporations.read_starbases.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
       - "v1"
       x-cached-seconds: 3600
       x-required-roles:
@@ -16563,11 +16556,8 @@ paths:
       - "Corporation"
       summary: "Get corporation structures"
       description: "Get a list of corporation structures. This route's version includes\
-        \ the changes to structures detailed in this blog: https://www.eveonline.com/article/upwell-2.0-structures-changes-coming-on-february-13th\
-        \ Note: this route will not return any flex structures owned by a corporation,\
-        \ use the v3 route to have those included in the response. A list of FLEX\
-        \ structures can be found here: https://support.eveonline.com/hc/en-us/articles/213021829-Upwell-Structures\n\
-        \n---\nAlternate route: `/v2/corporations/{corporation_id}/structures/`\n\n\
+        \ the changes to structures detailed in this blog: https://www.eveonline.com/article/upwell-2.0-structures-changes-coming-on-february-13th\n\
+        \n---\nAlternate route: `/v3/corporations/{corporation_id}/structures/`\n\n\
         ---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of the\
         \ following EVE corporation role(s): Station_Manager\n\n\n---\nWarning: This\
         \ route is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#GET-/corporations/{corporation_id}/structures/)"
@@ -16759,7 +16749,7 @@ paths:
         - "esi-corporations.read_structures.v1"
       deprecated: true
       x-alternate-versions:
-      - "v2"
+      - "v3"
       x-cached-seconds: 3600
       x-required-roles:
       - "Station_Manager"
@@ -16768,10 +16758,10 @@ paths:
       tags:
       - "Corporation"
       summary: "Get corporation titles"
-      description: "Returns a corporation's titles\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/titles/`\n\
-        \nAlternate route: `/v1/corporations/{corporation_id}/titles/`\n\n---\nThis\
-        \ route is cached for up to 3600 seconds\n\n---\nRequires one of the following\
-        \ EVE corporation role(s): Director\n\n\n---\nWarning: This is a legacy route"
+      description: "Returns a corporation's titles\n\n---\nAlternate route: `/v1/corporations/{corporation_id}/titles/`\n\
+        \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
+        \ the following EVE corporation role(s): Director\n\n\n---\nWarning: This\
+        \ route is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/legacy/latest/#GET-/corporations/{corporation_id}/titles/)"
       operationId: "get_corporations_corporation_id_titles"
       parameters:
       - name: "corporation_id"
@@ -16901,8 +16891,8 @@ paths:
       security:
       - evesso:
         - "esi-corporations.read_titles.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
       - "v1"
       x-cached-seconds: 3600
       x-required-roles:
@@ -30308,7 +30298,7 @@ definitions:
         items:
           $ref: "#/definitions/get_characters_character_id_mail_recipient"
         maxItems: 52
-        minItems: 1
+        minItems: 0
       subject:
         type: "string"
         description: "Mail subject"
@@ -30530,7 +30520,7 @@ definitions:
         items:
           $ref: "#/definitions/get_characters_character_id_mail_mail_id_recipient"
         maxItems: 52
-        minItems: 1
+        minItems: 0
       subject:
         type: "string"
         description: "Mail subject"
@@ -32115,56 +32105,60 @@ definitions:
   get_corporations_corporation_id_ok:
     required:
     - "ceo_id"
-    - "corporation_description"
-    - "corporation_name"
     - "creator_id"
     - "member_count"
+    - "name"
     - "tax_rate"
     - "ticker"
-    - "url"
     properties:
       alliance_id:
         type: "integer"
         format: "int32"
-        description: "id of alliance that corporation is a member of, if any"
+        description: "ID of the alliance that corporation is a member of, if any"
         title: "get_corporations_corporation_id_alliance_id"
       ceo_id:
         type: "integer"
         format: "int32"
         description: "ceo_id integer"
         title: "get_corporations_corporation_id_ceo_id"
-      corporation_description:
-        type: "string"
-        description: "corporation_description string"
-        title: "get_corporations_corporation_id_corporation_description"
-      corporation_name:
-        type: "string"
-        description: "the full name of the corporation"
-        title: "get_corporations_corporation_id_corporation_name"
-      creation_date:
-        type: "string"
-        format: "date-time"
-        description: "creation_date string"
-        title: "get_corporations_corporation_id_creation_date"
       creator_id:
         type: "integer"
         format: "int32"
         description: "creator_id integer"
         title: "get_corporations_corporation_id_creator_id"
-      faction:
+      date_founded:
         type: "string"
-        description: "faction string"
-        title: "get_corporations_corporation_id_faction"
-        enum:
-        - "Minmatar"
-        - "Gallente"
-        - "Caldari"
-        - "Amarr"
+        format: "date-time"
+        description: "date_founded string"
+        title: "get_corporations_corporation_id_date_founded"
+      description:
+        type: "string"
+        description: "description string"
+        title: "get_corporations_corporation_id_description"
+      faction_id:
+        type: "integer"
+        format: "int32"
+        description: "faction_id integer"
+        title: "get_corporations_corporation_id_faction_id"
+      home_station_id:
+        type: "integer"
+        format: "int32"
+        description: "home_station_id integer"
+        title: "get_corporations_corporation_id_home_station_id"
       member_count:
         type: "integer"
         format: "int32"
         description: "member_count integer"
         title: "get_corporations_corporation_id_member_count"
+      name:
+        type: "string"
+        description: "the full name of the corporation"
+        title: "get_corporations_corporation_id_name"
+      shares:
+        type: "integer"
+        format: "int64"
+        description: "shares integer"
+        title: "get_corporations_corporation_id_shares"
       tax_rate:
         type: "number"
         format: "float"
@@ -32180,6 +32174,10 @@ definitions:
         type: "string"
         description: "url string"
         title: "get_corporations_corporation_id_url"
+      war_eligible:
+        type: "boolean"
+        description: "war_eligible boolean"
+        title: "get_corporations_corporation_id_war_eligible"
     description: "200 ok object"
   get_corporations_corporation_id_not_found:
     properties:
@@ -32188,10 +32186,10 @@ definitions:
         description: "Not found message"
         title: "get_corporations_corporation_id_404_not_found"
     description: "Not found"
-  get_corporations_corporation_id_alliancehistory_alliance:
+  get_corporations_corporation_id_alliancehistory_200_ok:
     required:
-    - "alliance_id"
-    - "is_deleted"
+    - "record_id"
+    - "start_date"
     properties:
       alliance_id:
         type: "integer"
@@ -32200,16 +32198,8 @@ definitions:
         title: "get_corporations_corporation_id_alliancehistory_alliance_id"
       is_deleted:
         type: "boolean"
-        description: "True if the alliance has been deleted"
+        description: "True if the alliance has been closed"
         title: "get_corporations_corporation_id_alliancehistory_is_deleted"
-    description: "alliance object"
-  get_corporations_corporation_id_alliancehistory_200_ok:
-    required:
-    - "record_id"
-    - "start_date"
-    properties:
-      alliance:
-        $ref: "#/definitions/get_corporations_corporation_id_alliancehistory_alliance"
       record_id:
         type: "integer"
         format: "int32"
@@ -32497,6 +32487,7 @@ definitions:
         - "FighterTube3"
         - "FighterTube4"
         - "FleetHangar"
+        - "FrigateEscapeBay"
         - "Hangar"
         - "HangarAll"
         - "HiSlot0"
@@ -32507,7 +32498,7 @@ definitions:
         - "HiSlot5"
         - "HiSlot6"
         - "HiSlot7"
-        - "HiddenModifers"
+        - "HiddenModifiers"
         - "Implant"
         - "Impounded"
         - "JunkyardReprocessed"
@@ -32533,6 +32524,7 @@ definitions:
         - "Pilot"
         - "PlanetSurface"
         - "QuafeBay"
+        - "QuantumCoreRoom"
         - "Reward"
         - "RigSlot0"
         - "RigSlot1"
@@ -32573,6 +32565,7 @@ definitions:
         - "StructureFuel"
         - "StructureInactive"
         - "StructureOffline"
+        - "SubSystemBay"
         - "SubSystemSlot0"
         - "SubSystemSlot1"
         - "SubSystemSlot2"
@@ -32581,7 +32574,6 @@ definitions:
         - "SubSystemSlot5"
         - "SubSystemSlot6"
         - "SubSystemSlot7"
-        - "SubsystemBay"
         - "Unlocked"
         - "Wallet"
         - "Wardrobe"
@@ -32856,6 +32848,7 @@ definitions:
         - "FighterTube3"
         - "FighterTube4"
         - "FleetHangar"
+        - "FrigateEscapeBay"
         - "Hangar"
         - "HangarAll"
         - "HiSlot0"
@@ -32866,7 +32859,7 @@ definitions:
         - "HiSlot5"
         - "HiSlot6"
         - "HiSlot7"
-        - "HiddenModifers"
+        - "HiddenModifiers"
         - "Implant"
         - "Impounded"
         - "JunkyardReprocessed"
@@ -32892,6 +32885,7 @@ definitions:
         - "Pilot"
         - "PlanetSurface"
         - "QuafeBay"
+        - "QuantumCoreRoom"
         - "Reward"
         - "RigSlot0"
         - "RigSlot1"
@@ -32932,6 +32926,7 @@ definitions:
         - "StructureFuel"
         - "StructureInactive"
         - "StructureOffline"
+        - "SubSystemBay"
         - "SubSystemSlot0"
         - "SubSystemSlot1"
         - "SubSystemSlot2"
@@ -32940,7 +32935,6 @@ definitions:
         - "SubSystemSlot5"
         - "SubSystemSlot6"
         - "SubSystemSlot7"
-        - "SubsystemBay"
         - "Unlocked"
         - "Wallet"
         - "Wardrobe"
@@ -33704,16 +33698,6 @@ definitions:
         enum:
         - "private"
         - "public"
-    description: "200 ok object"
-  get_corporations_corporation_id_members_200_ok:
-    required:
-    - "character_id"
-    properties:
-      character_id:
-        type: "integer"
-        format: "int32"
-        description: "character_id integer"
-        title: "get_corporations_corporation_id_members_character_id"
     description: "200 ok object"
   get_corporations_corporation_id_members_titles_200_ok:
     required:
@@ -34869,7 +34853,6 @@ definitions:
     - "corporation_id"
     - "profile_id"
     - "reinforce_hour"
-    - "reinforce_weekday"
     - "state"
     - "structure_id"
     - "system_id"
@@ -34947,6 +34930,7 @@ definitions:
         - "anchoring"
         - "armor_reinforce"
         - "armor_vulnerable"
+        - "deploy_vulnerable"
         - "fitting_invulnerable"
         - "hull_reinforce"
         - "hull_vulnerable"
