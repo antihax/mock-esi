@@ -1,4 +1,4 @@
-package esiv3
+package esiv5
 
 import "time"
 
@@ -6,8 +6,8 @@ import "time"
 200 ok object */
 type GetCharactersCharacterIdOk struct {
 	/*
-	 ancestry_id integer */
-	AncestryId int32 `json:"ancestry_id,omitempty"`
+	 The character's alliance ID */
+	AllianceId int32 `json:"alliance_id,omitempty"`
 	/*
 	 Creation date of the character */
 	Birthday time.Time `json:"birthday,omitempty"`
@@ -21,10 +21,13 @@ type GetCharactersCharacterIdOk struct {
 	 description string */
 	Description string `json:"description,omitempty"`
 	/*
+	 ID of the faction the character is fighting for, if the character is enlisted in Factional Warfare */
+	FactionId int32 `json:"faction_id,omitempty"`
+	/*
 	 gender string */
 	Gender string `json:"gender,omitempty"`
 	/*
-	 The name of the character */
+	 name string */
 	Name string `json:"name,omitempty"`
 	/*
 	 race_id integer */
@@ -32,4 +35,7 @@ type GetCharactersCharacterIdOk struct {
 	/*
 	 security_status number */
 	SecurityStatus float32 `json:"security_status,omitempty"`
+	/*
+	 The individual title of the character */
+	Title string `json:"title,omitempty"`
 }

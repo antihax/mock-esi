@@ -9,7 +9,7 @@ type GetCharactersCharacterIdContracts200Ok struct {
 	 Who will accept the contract */
 	AcceptorId int32 `json:"acceptor_id,omitempty"`
 	/*
-	 ID to whom the contract is assigned, can be corporation or character ID */
+	 ID to whom the contract is assigned, can be alliance, corporation or character ID */
 	AssigneeId int32 `json:"assignee_id,omitempty"`
 	/*
 	 To whom the contract is available */

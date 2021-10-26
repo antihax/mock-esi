@@ -9,9 +9,6 @@ type GetCharactersCharacterIdOk struct {
 	 The character's alliance ID */
 	AllianceId int32 `json:"alliance_id,omitempty"`
 	/*
-	 ancestry_id integer */
-	AncestryId int32 `json:"ancestry_id,omitempty"`
-	/*
 	 Creation date of the character */
 	Birthday time.Time `json:"birthday,omitempty"`
 	/*

@@ -1,5 +1,6 @@
 #!/bin/bash
-go get github.com/sqs/goreturns
+go install golang.org/x/tools/cmd/goimports@latest
+go install github.com/sqs/goreturns@latest
 set -e
 curl -s https://esi.evetech.net/versions/ | grep -Po '[a-z0-9]+' | {
     imports=()

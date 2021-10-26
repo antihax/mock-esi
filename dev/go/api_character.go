@@ -23,7 +23,6 @@ func GetCharactersCharacterId(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "ancestry_id" : 19,
   "birthday" : "2015-03-24T11:37:00Z",
   "bloodline_id" : 3,
   "corporation_id" : 109299958,

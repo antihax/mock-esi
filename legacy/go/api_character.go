@@ -23,14 +23,14 @@ func GetCharactersCharacterId(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "ancestry_id" : 19,
   "birthday" : "2015-03-24T11:37:00Z",
   "bloodline_id" : 3,
   "corporation_id" : 109299958,
   "description" : "",
   "gender" : "male",
   "name" : "CCP Bartender",
-  "race_id" : 2
+  "race_id" : 2,
+  "title" : "All round pretty awesome guy"
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
@@ -64,15 +64,12 @@ func GetCharactersCharacterId(w http.ResponseWriter, r *http.Request) {
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
-			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
-
-	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -140,12 +137,15 @@ func GetCharactersCharacterIdAgentsResearch(w http.ResponseWriter, r *http.Reque
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -160,6 +160,7 @@ func GetCharactersCharacterIdBlueprints(w http.ResponseWriter, r *http.Request) 
 		err         error
 		characterId int32
 		datasource  string
+		page        int32
 		token       string
 	)
 	// shut up warnings
@@ -194,6 +195,14 @@ func GetCharactersCharacterIdBlueprints(w http.ResponseWriter, r *http.Request) 
 			return
 		}
 		datasource = localV.(string)
+	}
+	if r.Form.Get("page") != "" {
+		localV, err = processParameters(page, r.Form.Get("page"))
+		if err != nil {
+			errorOut(w, r, err)
+			return
+		}
+		page = localV.(int32)
 	}
 	if r.Form.Get("token") != "" {
 		localV, err = processParameters(token, r.Form.Get("token"))
@@ -286,12 +295,15 @@ func GetCharactersCharacterIdCorporationhistory(w http.ResponseWriter, r *http.R
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -357,12 +369,15 @@ func GetCharactersCharacterIdFatigue(w http.ResponseWriter, r *http.Request) {
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -449,12 +464,15 @@ func GetCharactersCharacterIdMedals(w http.ResponseWriter, r *http.Request) {
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -600,12 +618,15 @@ func GetCharactersCharacterIdNotificationsContacts(w http.ResponseWriter, r *htt
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -692,7 +713,9 @@ func GetCharactersCharacterIdRoles(w http.ResponseWriter, r *http.Request) {
 	localV = localV
 	err = err
 
-	j := `[ "Director", "Station_Manager" ]`
+	j := `{
+  "roles" : [ "Director", "Station_Manager" ]
+}`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {
@@ -815,12 +838,15 @@ func GetCharactersCharacterIdStandings(w http.ResponseWriter, r *http.Request) {
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -885,12 +911,15 @@ func GetCharactersCharacterIdTitles(w http.ResponseWriter, r *http.Request) {
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -939,12 +968,15 @@ func PostCharactersAffiliation(w http.ResponseWriter, r *http.Request) {
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -965,9 +997,7 @@ func PostCharactersCharacterIdCspa(w http.ResponseWriter, r *http.Request) {
 	localV = localV
 	err = err
 
-	j := `{
-  "cost" : 295000
-}`
+	j := `2950.0`
 	vars := mux.Vars(r)
 	localV, err = processParameters(characterId, vars["character_id"])
 	if err != nil {

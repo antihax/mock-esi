@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "An OpenAPI for EVE Online"
-  version: "1.7.15"
+  version: "1.8.2"
   title: "EVE Swagger Interface"
 host: "esi.evetech.net"
 basePath: "/v2"
@@ -522,8 +522,9 @@ paths:
       - "Character"
       summary: "Character affiliation"
       description: "Bulk lookup of character IDs to corporation, alliance and faction\n\
-        \n---\nAlternate route: `/dev/characters/affiliation/`\n\n---\nThis route\
-        \ is cached for up to 3600 seconds"
+        \n---\nAlternate route: `/dev/characters/affiliation/`\n\nAlternate route:\
+        \ `/latest/characters/affiliation/`\n\n---\nThis route is cached for up to\
+        \ 3600 seconds"
       operationId: "post_characters_affiliation"
       parameters:
       - in: "body"
@@ -602,6 +603,7 @@ paths:
               error: "Gateway timeout message"
       x-alternate-versions:
       - "dev"
+      - "latest"
       x-cached-seconds: 3600
   /characters/{character_id}/agents_research/:
     get:
@@ -612,7 +614,8 @@ paths:
         \ The formula for finding the current research points with an agent is: currentPoints\
         \ = remainderPoints + pointsPerDay * days(currentTime - researchStartDate)\n\
         \n---\nAlternate route: `/dev/characters/{character_id}/agents_research/`\n\
-        \n---\nThis route is cached for up to 3600 seconds"
+        \nAlternate route: `/latest/characters/{character_id}/agents_research/`\n\n\
+        ---\nThis route is cached for up to 3600 seconds"
       operationId: "get_characters_character_id_agents_research"
       parameters:
       - name: "character_id"
@@ -744,6 +747,7 @@ paths:
         - "esi-characters.read_agents_research.v1"
       x-alternate-versions:
       - "dev"
+      - "latest"
       x-cached-seconds: 3600
   /characters/{character_id}/assets/locations/:
     post:
@@ -871,8 +875,9 @@ paths:
       - "Character"
       summary: "Get blueprints"
       description: "Return a list of blueprints the character owns\n\n---\nAlternate\
-        \ route: `/latest/characters/{character_id}/blueprints/`\n\n---\nThis route\
-        \ is cached for up to 3600 seconds"
+        \ route: `/legacy/characters/{character_id}/blueprints/`\n\n---\nThis route\
+        \ is cached for up to 3600 seconds\n\n---\nWarning: This route is deprecated\n\
+        \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/characters/{character_id}/blueprints/)"
       operationId: "get_characters_character_id_blueprints"
       parameters:
       - name: "character_id"
@@ -1019,8 +1024,9 @@ paths:
       security:
       - evesso:
         - "esi-characters.read_blueprints.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
+      - "legacy"
       x-cached-seconds: 3600
   /characters/{character_id}/bookmarks/:
     get:
@@ -2345,6 +2351,7 @@ paths:
       summary: "Get corporation history"
       description: "Get a list of all the corporations a character has been a member\
         \ of\n\n---\nAlternate route: `/dev/characters/{character_id}/corporationhistory/`\n\
+        \nAlternate route: `/latest/characters/{character_id}/corporationhistory/`\n\
         \n---\nThis route is cached for up to 86400 seconds"
       operationId: "get_characters_character_id_corporationhistory"
       parameters:
@@ -2456,6 +2463,7 @@ paths:
               error: "Gateway timeout message"
       x-alternate-versions:
       - "dev"
+      - "latest"
       x-cached-seconds: 86400
   /characters/{character_id}/fatigue/:
     get:
@@ -2463,8 +2471,9 @@ paths:
       - "Character"
       summary: "Get jump fatigue"
       description: "Return a character's jump activation and fatigue information\n\
-        \n---\nAlternate route: `/dev/characters/{character_id}/fatigue/`\n\n---\n\
-        This route is cached for up to 300 seconds"
+        \n---\nAlternate route: `/dev/characters/{character_id}/fatigue/`\n\nAlternate\
+        \ route: `/latest/characters/{character_id}/fatigue/`\n\n---\nThis route is\
+        \ cached for up to 300 seconds"
       operationId: "get_characters_character_id_fatigue"
       parameters:
       - name: "character_id"
@@ -2589,6 +2598,7 @@ paths:
         - "esi-characters.read_fatigue.v1"
       x-alternate-versions:
       - "dev"
+      - "latest"
       x-cached-seconds: 300
   /characters/{character_id}/fittings/:
     get:
@@ -3659,8 +3669,8 @@ paths:
       - "Character"
       summary: "Get medals"
       description: "Return a list of medals the character has\n\n---\nAlternate route:\
-        \ `/dev/characters/{character_id}/medals/`\n\n---\nThis route is cached for\
-        \ up to 3600 seconds"
+        \ `/dev/characters/{character_id}/medals/`\n\nAlternate route: `/latest/characters/{character_id}/medals/`\n\
+        \n---\nThis route is cached for up to 3600 seconds"
       operationId: "get_characters_character_id_medals"
       parameters:
       - name: "character_id"
@@ -3808,6 +3818,7 @@ paths:
         - "esi-characters.read_medals.v1"
       x-alternate-versions:
       - "dev"
+      - "latest"
       x-cached-seconds: 3600
   /characters/{character_id}/notifications/contacts/:
     get:
@@ -3816,6 +3827,7 @@ paths:
       summary: "Get new contact notifications"
       description: "Return notifications about having been added to someone's contact\
         \ list\n\n---\nAlternate route: `/dev/characters/{character_id}/notifications/contacts/`\n\
+        \nAlternate route: `/latest/characters/{character_id}/notifications/contacts/`\n\
         \n---\nThis route is cached for up to 600 seconds"
       operationId: "get_characters_character_id_notifications_contacts"
       parameters:
@@ -3948,6 +3960,7 @@ paths:
         - "esi-characters.read_notifications.v1"
       x-alternate-versions:
       - "dev"
+      - "latest"
       x-cached-seconds: 600
   /characters/{character_id}/online/:
     get:
@@ -4362,8 +4375,9 @@ paths:
       - "Character"
       summary: "Get character corporation roles"
       description: "Returns a character's corporation roles\n\n---\nAlternate route:\
-        \ `/latest/characters/{character_id}/roles/`\n\n---\nThis route is cached\
-        \ for up to 3600 seconds"
+        \ `/legacy/characters/{character_id}/roles/`\n\n---\nThis route is cached\
+        \ for up to 3600 seconds\n\n---\nWarning: This route is deprecated\n\n---\n\
+        [Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/characters/{character_id}/roles/)"
       operationId: "get_characters_character_id_roles"
       parameters:
       - name: "character_id"
@@ -4486,8 +4500,9 @@ paths:
       security:
       - evesso:
         - "esi-characters.read_corporation_roles.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
+      - "legacy"
       x-cached-seconds: 3600
   /characters/{character_id}/ship/:
     get:
@@ -4678,7 +4693,7 @@ paths:
             title: "get_characters_character_id_skillqueue_ok"
             items:
               $ref: "#/definitions/get_characters_character_id_skillqueue_200_ok"
-            maxItems: 100
+            maxItems: 150
           examples:
             application/json:
             - finish_date: "2016-06-29T10:47:00Z"
@@ -4788,7 +4803,8 @@ paths:
       summary: "Get standings"
       description: "Return character standings from agents, NPC corporations, and\
         \ factions\n\n---\nAlternate route: `/dev/characters/{character_id}/standings/`\n\
-        \n---\nThis route is cached for up to 3600 seconds"
+        \nAlternate route: `/latest/characters/{character_id}/standings/`\n\n---\n\
+        This route is cached for up to 3600 seconds"
       operationId: "get_characters_character_id_standings"
       parameters:
       - name: "character_id"
@@ -4924,6 +4940,7 @@ paths:
         - "esi-characters.read_standings.v1"
       x-alternate-versions:
       - "dev"
+      - "latest"
       x-cached-seconds: 3600
   /characters/{character_id}/titles/:
     get:
@@ -4931,7 +4948,8 @@ paths:
       - "Character"
       summary: "Get character corporation titles"
       description: "Returns a character's titles\n\n---\nAlternate route: `/dev/characters/{character_id}/titles/`\n\
-        \n---\nThis route is cached for up to 3600 seconds"
+        \nAlternate route: `/latest/characters/{character_id}/titles/`\n\n---\nThis\
+        \ route is cached for up to 3600 seconds"
       operationId: "get_characters_character_id_titles"
       parameters:
       - name: "character_id"
@@ -5060,14 +5078,16 @@ paths:
         - "esi-characters.read_titles.v1"
       x-alternate-versions:
       - "dev"
+      - "latest"
       x-cached-seconds: 3600
   /corporations/npccorps/:
     get:
       tags:
       - "Corporation"
       summary: "Get npc corporations"
-      description: "Get a list of npc corporations\n\n---\nAlternate route: `/latest/corporations/npccorps/`\n\
-        \n---\nThis route expires daily at 11:05\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/npccorps/)"
+      description: "Get a list of npc corporations\n\n---\nAlternate route: `/dev/corporations/npccorps/`\n\
+        \nAlternate route: `/latest/corporations/npccorps/`\n\n---\nThis route expires\
+        \ daily at 11:05"
       operationId: "get_corporations_npccorps"
       parameters:
       - name: "datasource"
@@ -5168,6 +5188,7 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
+      - "dev"
       - "latest"
   /corporations/{corporation_id}/alliancehistory/:
     get:
@@ -5923,10 +5944,10 @@ paths:
       - "Corporation"
       summary: "Get corporation divisions"
       description: "Return corporation hangar and wallet division names, only show\
-        \ if a division is not using the default name\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/divisions/`\n\
-        \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
-        \ the following EVE corporation role(s): Director\n\n\n---\n[Diff of the upcoming\
-        \ changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/divisions/)"
+        \ if a division is not using the default name\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/divisions/`\n\
+        \nAlternate route: `/latest/corporations/{corporation_id}/divisions/`\n\n\
+        ---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of the\
+        \ following EVE corporation role(s): Director\n"
       operationId: "get_corporations_corporation_id_divisions"
       parameters:
       - name: "corporation_id"
@@ -6053,6 +6074,7 @@ paths:
       - evesso:
         - "esi-corporations.read_divisions.v1"
       x-alternate-versions:
+      - "dev"
       - "latest"
       x-cached-seconds: 3600
       x-required-roles:
@@ -6062,10 +6084,10 @@ paths:
       tags:
       - "Corporation"
       summary: "Get corporation facilities"
-      description: "Return a corporation's facilities\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/facilities/`\n\
-        \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
-        \ the following EVE corporation role(s): Factory_Manager\n\n\n---\n[Diff of\
-        \ the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/facilities/)"
+      description: "Return a corporation's facilities\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/facilities/`\n\
+        \nAlternate route: `/latest/corporations/{corporation_id}/facilities/`\n\n\
+        ---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of the\
+        \ following EVE corporation role(s): Factory_Manager\n"
       operationId: "get_corporations_corporation_id_facilities"
       parameters:
       - name: "corporation_id"
@@ -6194,6 +6216,7 @@ paths:
       - evesso:
         - "esi-corporations.read_facilities.v1"
       x-alternate-versions:
+      - "dev"
       - "latest"
       x-cached-seconds: 3600
       x-required-roles:
@@ -6348,9 +6371,9 @@ paths:
       tags:
       - "Corporation"
       summary: "Get corporation icon"
-      description: "Get the icon urls for a corporation\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/icons/`\n\
-        \n---\nThis route is cached for up to 3600 seconds\n\n---\n[Diff of the upcoming\
-        \ changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/icons/)"
+      description: "Get the icon urls for a corporation\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/icons/`\n\
+        \nAlternate route: `/latest/corporations/{corporation_id}/icons/`\n\n---\n\
+        This route is cached for up to 3600 seconds"
       operationId: "get_corporations_corporation_id_icons"
       parameters:
       - name: "corporation_id"
@@ -6458,6 +6481,7 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
+      - "dev"
       - "latest"
       x-cached-seconds: 3600
   /corporations/{corporation_id}/medals/:
@@ -6465,9 +6489,9 @@ paths:
       tags:
       - "Corporation"
       summary: "Get corporation medals"
-      description: "Returns a corporation's medals\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/medals/`\n\
-        \n---\nThis route is cached for up to 3600 seconds\n\n---\n[Diff of the upcoming\
-        \ changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/medals/)"
+      description: "Returns a corporation's medals\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/medals/`\n\
+        \nAlternate route: `/latest/corporations/{corporation_id}/medals/`\n\n---\n\
+        This route is cached for up to 3600 seconds"
       operationId: "get_corporations_corporation_id_medals"
       parameters:
       - name: "corporation_id"
@@ -6612,6 +6636,7 @@ paths:
       - evesso:
         - "esi-corporations.read_medals.v1"
       x-alternate-versions:
+      - "dev"
       - "latest"
       x-cached-seconds: 3600
       x-required-roles: []
@@ -6621,9 +6646,10 @@ paths:
       - "Corporation"
       summary: "Get corporation issued medals"
       description: "Returns medals issued by a corporation\n\n---\nAlternate route:\
+        \ `/dev/corporations/{corporation_id}/medals/issued/`\n\nAlternate route:\
         \ `/latest/corporations/{corporation_id}/medals/issued/`\n\n---\nThis route\
         \ is cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
-        \ corporation role(s): Director\n\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/medals/issued/)"
+        \ corporation role(s): Director\n"
       operationId: "get_corporations_corporation_id_medals_issued"
       parameters:
       - name: "corporation_id"
@@ -6769,6 +6795,7 @@ paths:
       - evesso:
         - "esi-corporations.read_medals.v1"
       x-alternate-versions:
+      - "dev"
       - "latest"
       x-cached-seconds: 3600
       x-required-roles:
@@ -6779,10 +6806,10 @@ paths:
       - "Corporation"
       summary: "Get corporation member limit"
       description: "Return a corporation's member limit, not including CEO himself\n\
-        \n---\nAlternate route: `/latest/corporations/{corporation_id}/members/limit/`\n\
+        \n---\nAlternate route: `/dev/corporations/{corporation_id}/members/limit/`\n\
+        \nAlternate route: `/latest/corporations/{corporation_id}/members/limit/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
-        \ the following EVE corporation role(s): Director\n\n\n---\n[Diff of the upcoming\
-        \ changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/members/limit/)"
+        \ the following EVE corporation role(s): Director\n"
       operationId: "get_corporations_corporation_id_members_limit"
       parameters:
       - name: "corporation_id"
@@ -6906,6 +6933,7 @@ paths:
       - evesso:
         - "esi-corporations.track_members.v1"
       x-alternate-versions:
+      - "dev"
       - "latest"
       x-cached-seconds: 3600
       x-required-roles:
@@ -6916,9 +6944,10 @@ paths:
       - "Corporation"
       summary: "Get corporation's members' titles"
       description: "Returns a corporation's members' titles\n\n---\nAlternate route:\
+        \ `/dev/corporations/{corporation_id}/members/titles/`\n\nAlternate route:\
         \ `/latest/corporations/{corporation_id}/members/titles/`\n\n---\nThis route\
         \ is cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
-        \ corporation role(s): Director\n\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/members/titles/)"
+        \ corporation role(s): Director\n"
       operationId: "get_corporations_corporation_id_members_titles"
       parameters:
       - name: "corporation_id"
@@ -7046,6 +7075,7 @@ paths:
       - evesso:
         - "esi-corporations.read_titles.v1"
       x-alternate-versions:
+      - "dev"
       - "latest"
       x-cached-seconds: 3600
       x-required-roles:
@@ -7056,10 +7086,10 @@ paths:
       - "Corporation"
       summary: "Track corporation members"
       description: "Returns additional information about a corporation's members which\
-        \ helps tracking their activities\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/membertracking/`\n\
+        \ helps tracking their activities\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/membertracking/`\n\
+        \nAlternate route: `/latest/corporations/{corporation_id}/membertracking/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
-        \ the following EVE corporation role(s): Director\n\n\n---\n[Diff of the upcoming\
-        \ changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/membertracking/)"
+        \ the following EVE corporation role(s): Director\n"
       operationId: "get_corporations_corporation_id_membertracking"
       parameters:
       - name: "corporation_id"
@@ -7197,6 +7227,7 @@ paths:
       - evesso:
         - "esi-corporations.track_members.v1"
       x-alternate-versions:
+      - "dev"
       - "latest"
       x-cached-seconds: 3600
       x-required-roles:
@@ -7548,9 +7579,9 @@ paths:
       - "Corporation"
       summary: "Get corporation member roles"
       description: "Return the roles of all members if the character has the personnel\
-        \ manager role or any grantable role.\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/roles/`\n\
-        \n---\nThis route is cached for up to 3600 seconds\n\n---\n[Diff of the upcoming\
-        \ changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/roles/)"
+        \ manager role or any grantable role.\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/roles/`\n\
+        \nAlternate route: `/latest/corporations/{corporation_id}/roles/`\n\n---\n\
+        This route is cached for up to 3600 seconds"
       operationId: "get_corporations_corporation_id_roles"
       parameters:
       - name: "corporation_id"
@@ -7680,6 +7711,7 @@ paths:
       - evesso:
         - "esi-corporations.read_corporation_membership.v1"
       x-alternate-versions:
+      - "dev"
       - "latest"
       x-cached-seconds: 3600
   /corporations/{corporation_id}/roles/history/:
@@ -7688,10 +7720,10 @@ paths:
       - "Corporation"
       summary: "Get corporation member roles history"
       description: "Return how roles have changed for a coporation's members, up to\
-        \ a month\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/roles/history/`\n\
+        \ a month\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/roles/history/`\n\
+        \nAlternate route: `/latest/corporations/{corporation_id}/roles/history/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
-        \ the following EVE corporation role(s): Director\n\n\n---\n[Diff of the upcoming\
-        \ changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/roles/history/)"
+        \ the following EVE corporation role(s): Director\n"
       operationId: "get_corporations_corporation_id_roles_history"
       parameters:
       - name: "corporation_id"
@@ -7839,6 +7871,7 @@ paths:
       - evesso:
         - "esi-corporations.read_corporation_membership.v1"
       x-alternate-versions:
+      - "dev"
       - "latest"
       x-cached-seconds: 3600
       x-required-roles:
@@ -7849,9 +7882,9 @@ paths:
       - "Corporation"
       summary: "Get corporation standings"
       description: "Return corporation standings from agents, NPC corporations, and\
-        \ factions\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/standings/`\n\
-        \n---\nThis route is cached for up to 3600 seconds\n\n---\n[Diff of the upcoming\
-        \ changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/standings/)"
+        \ factions\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/standings/`\n\
+        \nAlternate route: `/latest/corporations/{corporation_id}/standings/`\n\n\
+        ---\nThis route is cached for up to 3600 seconds"
       operationId: "get_corporations_corporation_id_standings"
       parameters:
       - name: "corporation_id"
@@ -8000,6 +8033,7 @@ paths:
       - evesso:
         - "esi-corporations.read_standings.v1"
       x-alternate-versions:
+      - "dev"
       - "latest"
       x-cached-seconds: 3600
       x-required-roles: []
@@ -8009,9 +8043,10 @@ paths:
       - "Corporation"
       summary: "Get corporation starbases (POSes)"
       description: "Returns list of corporation starbases (POSes)\n\n---\nAlternate\
-        \ route: `/latest/corporations/{corporation_id}/starbases/`\n\n---\nThis route\
-        \ is cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
-        \ corporation role(s): Director\n\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/starbases/)"
+        \ route: `/dev/corporations/{corporation_id}/starbases/`\n\nAlternate route:\
+        \ `/latest/corporations/{corporation_id}/starbases/`\n\n---\nThis route is\
+        \ cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
+        \ corporation role(s): Director\n"
       operationId: "get_corporations_corporation_id_starbases"
       parameters:
       - name: "corporation_id"
@@ -8154,6 +8189,7 @@ paths:
       - evesso:
         - "esi-corporations.read_starbases.v1"
       x-alternate-versions:
+      - "dev"
       - "latest"
       x-cached-seconds: 3600
       x-required-roles:
@@ -8164,10 +8200,10 @@ paths:
       - "Corporation"
       summary: "Get starbase (POS) detail"
       description: "Returns various settings and fuels of a starbase (POS)\n\n---\n\
-        Alternate route: `/latest/corporations/{corporation_id}/starbases/{starbase_id}/`\n\
+        Alternate route: `/dev/corporations/{corporation_id}/starbases/{starbase_id}/`\n\
+        \nAlternate route: `/latest/corporations/{corporation_id}/starbases/{starbase_id}/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
-        \ the following EVE corporation role(s): Director\n\n\n---\n[Diff of the upcoming\
-        \ changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/starbases/{starbase_id}/)"
+        \ the following EVE corporation role(s): Director\n"
       operationId: "get_corporations_corporation_id_starbases_starbase_id"
       parameters:
       - name: "corporation_id"
@@ -8313,6 +8349,7 @@ paths:
       - evesso:
         - "esi-corporations.read_starbases.v1"
       x-alternate-versions:
+      - "dev"
       - "latest"
       x-cached-seconds: 3600
       x-required-roles:
@@ -8322,10 +8359,10 @@ paths:
       tags:
       - "Corporation"
       summary: "Get corporation titles"
-      description: "Returns a corporation's titles\n\n---\nAlternate route: `/latest/corporations/{corporation_id}/titles/`\n\
-        \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
-        \ the following EVE corporation role(s): Director\n\n\n---\n[Diff of the upcoming\
-        \ changes](https://esi.evetech.net/diff/v2/dev/#GET-/corporations/{corporation_id}/titles/)"
+      description: "Returns a corporation's titles\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/titles/`\n\
+        \nAlternate route: `/latest/corporations/{corporation_id}/titles/`\n\n---\n\
+        This route is cached for up to 3600 seconds\n\n---\nRequires one of the following\
+        \ EVE corporation role(s): Director\n"
       operationId: "get_corporations_corporation_id_titles"
       parameters:
       - name: "corporation_id"
@@ -8456,6 +8493,7 @@ paths:
       - evesso:
         - "esi-corporations.read_titles.v1"
       x-alternate-versions:
+      - "dev"
       - "latest"
       x-cached-seconds: 3600
       x-required-roles:
@@ -9354,7 +9392,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "AcceptLanguage"
       - name: "categories"
         in: "query"
@@ -9407,7 +9447,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "Language"
       - name: "search"
         in: "query"
@@ -9453,7 +9495,9 @@ paths:
               - "fr"
               - "ja"
               - "ru"
+              - "zh"
               - "ko"
+              - "es"
             ETag:
               type: "string"
               description: "RFC7232 compliant entity tag"
@@ -9753,7 +9797,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "AcceptLanguage"
       - name: "datasource"
         in: "query"
@@ -9784,7 +9830,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "Language"
       responses:
         200:
@@ -9816,7 +9864,9 @@ paths:
               - "fr"
               - "ja"
               - "ru"
+              - "zh"
               - "ko"
+              - "es"
             ETag:
               type: "string"
               description: "RFC7232 compliant entity tag"
@@ -10017,7 +10067,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "AcceptLanguage"
       - name: "datasource"
         in: "query"
@@ -10048,7 +10100,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "Language"
       responses:
         200:
@@ -10086,7 +10140,9 @@ paths:
               - "fr"
               - "ja"
               - "ru"
+              - "zh"
               - "ko"
+              - "es"
             ETag:
               type: "string"
               description: "RFC7232 compliant entity tag"
@@ -10278,7 +10334,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "AcceptLanguage"
       - name: "category_id"
         in: "path"
@@ -10316,7 +10374,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "Language"
       responses:
         200:
@@ -10345,7 +10405,9 @@ paths:
               - "fr"
               - "ja"
               - "ru"
+              - "zh"
               - "ko"
+              - "es"
             ETag:
               type: "string"
               description: "RFC7232 compliant entity tag"
@@ -10543,7 +10605,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "AcceptLanguage"
       - name: "constellation_id"
         in: "path"
@@ -10581,7 +10645,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "Language"
       responses:
         200:
@@ -10613,7 +10679,9 @@ paths:
               - "fr"
               - "ja"
               - "ru"
+              - "zh"
               - "ko"
+              - "es"
             ETag:
               type: "string"
               description: "RFC7232 compliant entity tag"
@@ -10705,7 +10773,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "AcceptLanguage"
       - name: "datasource"
         in: "query"
@@ -10736,7 +10806,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "Language"
       responses:
         200:
@@ -10772,7 +10844,9 @@ paths:
               - "fr"
               - "ja"
               - "ru"
+              - "zh"
               - "ko"
+              - "es"
             ETag:
               type: "string"
               description: "RFC7232 compliant entity tag"
@@ -11529,7 +11603,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "AcceptLanguage"
       - name: "datasource"
         in: "query"
@@ -11560,7 +11636,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "Language"
       - name: "region_id"
         in: "path"
@@ -11595,7 +11673,9 @@ paths:
               - "fr"
               - "ja"
               - "ru"
+              - "zh"
               - "ko"
+              - "es"
             ETag:
               type: "string"
               description: "RFC7232 compliant entity tag"
@@ -12540,7 +12620,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "AcceptLanguage"
       - name: "datasource"
         in: "query"
@@ -12571,7 +12653,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "Language"
       - name: "type_id"
         in: "path"
@@ -12605,7 +12689,9 @@ paths:
               - "fr"
               - "ja"
               - "ru"
+              - "zh"
               - "ko"
+              - "es"
             ETag:
               type: "string"
               description: "RFC7232 compliant entity tag"
@@ -18709,7 +18795,9 @@ parameters:
     - "fr"
     - "ja"
     - "ru"
+    - "zh"
     - "ko"
+    - "es"
     x-exportParamName: "AcceptLanguage"
   If-None-Match:
     name: "If-None-Match"
@@ -18770,7 +18858,9 @@ parameters:
     - "fr"
     - "ja"
     - "ru"
+    - "zh"
     - "ko"
+    - "es"
     x-exportParamName: "Language"
   page:
     name: "page"

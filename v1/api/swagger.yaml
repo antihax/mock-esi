@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "An OpenAPI for EVE Online"
-  version: "1.7.15"
+  version: "1.8.2"
   title: "EVE Swagger Interface"
 host: "esi.evetech.net"
 basePath: "/v1"
@@ -664,9 +664,9 @@ paths:
       - "Character"
       summary: "Character affiliation"
       description: "Bulk lookup of character IDs to corporation, alliance and faction\n\
-        \n---\nAlternate route: `/latest/characters/affiliation/`\n\nAlternate route:\
-        \ `/legacy/characters/affiliation/`\n\n---\nThis route is cached for up to\
-        \ 3600 seconds\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#POST-/characters/affiliation/)"
+        \n---\nAlternate route: `/legacy/characters/affiliation/`\n\n---\nThis route\
+        \ is cached for up to 3600 seconds\n\n---\nWarning: This route is deprecated\n\
+        \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#POST-/characters/affiliation/)"
       operationId: "post_characters_affiliation"
       parameters:
       - in: "body"
@@ -750,8 +750,8 @@ paths:
           examples:
             application/json:
               error: "Gateway timeout message"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
       - "legacy"
       x-cached-seconds: 3600
   /characters/{character_id}/agents_research/:
@@ -762,9 +762,9 @@ paths:
       description: "Return a list of agents research information for a character.\
         \ The formula for finding the current research points with an agent is: currentPoints\
         \ = remainderPoints + pointsPerDay * days(currentTime - researchStartDate)\n\
-        \n---\nAlternate route: `/latest/characters/{character_id}/agents_research/`\n\
-        \nAlternate route: `/legacy/characters/{character_id}/agents_research/`\n\n\
-        ---\nThis route is cached for up to 3600 seconds"
+        \n---\nAlternate route: `/legacy/characters/{character_id}/agents_research/`\n\
+        \n---\nThis route is cached for up to 3600 seconds\n\n---\nWarning: This route\
+        \ is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/agents_research/)"
       operationId: "get_characters_character_id_agents_research"
       parameters:
       - name: "character_id"
@@ -894,8 +894,8 @@ paths:
       security:
       - evesso:
         - "esi-characters.read_agents_research.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
       - "legacy"
       x-cached-seconds: 3600
   /characters/{character_id}/assets/locations/:
@@ -1274,151 +1274,6 @@ paths:
       - "latest"
       - "legacy"
       x-cached-seconds: 120
-  /characters/{character_id}/blueprints/:
-    get:
-      tags:
-      - "Character"
-      summary: "Get blueprints"
-      description: "Return a list of blueprints the character has\n\n---\nAlternate\
-        \ route: `/legacy/characters/{character_id}/blueprints/`\n\n---\nThis route\
-        \ is cached for up to 3600 seconds\n\n---\nWarning: This route is deprecated\n\
-        \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/blueprints/)"
-      operationId: "get_characters_character_id_blueprints"
-      parameters:
-      - name: "character_id"
-        in: "path"
-        description: "An EVE character ID"
-        required: true
-        type: "integer"
-        minimum: 1
-        format: "int32"
-        x-exportParamName: "CharacterId"
-      - name: "datasource"
-        in: "query"
-        description: "The server name you would like data from"
-        required: false
-        type: "string"
-        default: "tranquility"
-        enum:
-        - "tranquility"
-        x-exportParamName: "Datasource"
-      - name: "If-None-Match"
-        in: "header"
-        description: "ETag from a previous request. A 304 will be returned if this\
-          \ matches the current ETag"
-        required: false
-        type: "string"
-        x-exportParamName: "IfNoneMatch"
-      - name: "token"
-        in: "query"
-        description: "Access token to use if unable to set a header"
-        required: false
-        type: "string"
-        x-exportParamName: "Token"
-      responses:
-        200:
-          description: "A list of blueprints"
-          schema:
-            type: "array"
-            description: "200 ok array"
-            title: "get_characters_character_id_blueprints_ok"
-            items:
-              $ref: "#/definitions/get_characters_character_id_blueprints_200_ok"
-            maxItems: 10000
-          examples:
-            application/json:
-            - item_id: 1000000010495
-              location_flag: "Hangar"
-              location_id: 60014719
-              material_efficiency: 0
-              quantity: 1
-              runs: -1
-              time_efficiency: 0
-              type_id: 691
-          headers:
-            Cache-Control:
-              type: "string"
-              description: "The caching mechanism used"
-            ETag:
-              type: "string"
-              description: "RFC7232 compliant entity tag"
-            Expires:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-            Last-Modified:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-        304:
-          description: "Not modified"
-          headers:
-            Cache-Control:
-              type: "string"
-              description: "The caching mechanism used"
-            ETag:
-              type: "string"
-              description: "RFC7232 compliant entity tag"
-            Expires:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-            Last-Modified:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-        400:
-          description: "Bad request"
-          schema:
-            $ref: "#/definitions/bad_request"
-          examples:
-            application/json:
-              error: "Bad request message"
-        401:
-          description: "Unauthorized"
-          schema:
-            $ref: "#/definitions/unauthorized"
-          examples:
-            application/json:
-              error: "Unauthorized message"
-        403:
-          description: "Forbidden"
-          schema:
-            $ref: "#/definitions/forbidden"
-          examples:
-            application/json:
-              error: "Forbidden message"
-        420:
-          description: "Error limited"
-          schema:
-            $ref: "#/definitions/error_limited"
-          examples:
-            application/json:
-              error: "Error limited message"
-        500:
-          description: "Internal server error"
-          schema:
-            $ref: "#/definitions/internal_server_error"
-          examples:
-            application/json:
-              error: "Internal server error message"
-        503:
-          description: "Service unavailable"
-          schema:
-            $ref: "#/definitions/service_unavailable"
-          examples:
-            application/json:
-              error: "Service unavailable message"
-        504:
-          description: "Gateway timeout"
-          schema:
-            $ref: "#/definitions/gateway_timeout"
-          examples:
-            application/json:
-              error: "Gateway timeout message"
-      security:
-      - evesso:
-        - "esi-characters.read_blueprints.v1"
-      deprecated: true
-      x-alternate-versions:
-      - "legacy"
-      x-cached-seconds: 3600
   /characters/{character_id}/bookmarks/:
     get:
       tags:
@@ -3188,9 +3043,9 @@ paths:
       - "Character"
       summary: "Get corporation history"
       description: "Get a list of all the corporations a character has been a member\
-        \ of\n\n---\nAlternate route: `/latest/characters/{character_id}/corporationhistory/`\n\
-        \nAlternate route: `/legacy/characters/{character_id}/corporationhistory/`\n\
-        \n---\nThis route is cached for up to 86400 seconds"
+        \ of\n\n---\nAlternate route: `/legacy/characters/{character_id}/corporationhistory/`\n\
+        \n---\nThis route is cached for up to 86400 seconds\n\n---\nWarning: This\
+        \ route is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/corporationhistory/)"
       operationId: "get_characters_character_id_corporationhistory"
       parameters:
       - name: "character_id"
@@ -3299,8 +3154,8 @@ paths:
           examples:
             application/json:
               error: "Gateway timeout message"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
       - "legacy"
       x-cached-seconds: 86400
   /characters/{character_id}/fatigue/:
@@ -3309,9 +3164,9 @@ paths:
       - "Character"
       summary: "Get jump fatigue"
       description: "Return a character's jump activation and fatigue information\n\
-        \n---\nAlternate route: `/latest/characters/{character_id}/fatigue/`\n\nAlternate\
-        \ route: `/legacy/characters/{character_id}/fatigue/`\n\n---\nThis route is\
-        \ cached for up to 300 seconds"
+        \n---\nAlternate route: `/legacy/characters/{character_id}/fatigue/`\n\n---\n\
+        This route is cached for up to 300 seconds\n\n---\nWarning: This route is\
+        \ deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/fatigue/)"
       operationId: "get_characters_character_id_fatigue"
       parameters:
       - name: "character_id"
@@ -3434,8 +3289,8 @@ paths:
       security:
       - evesso:
         - "esi-characters.read_fatigue.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
       - "legacy"
       x-cached-seconds: 300
   /characters/{character_id}/fittings/:
@@ -5845,8 +5700,9 @@ paths:
       - "Character"
       summary: "Get medals"
       description: "Return a list of medals the character has\n\n---\nAlternate route:\
-        \ `/latest/characters/{character_id}/medals/`\n\nAlternate route: `/legacy/characters/{character_id}/medals/`\n\
-        \n---\nThis route is cached for up to 3600 seconds"
+        \ `/legacy/characters/{character_id}/medals/`\n\n---\nThis route is cached\
+        \ for up to 3600 seconds\n\n---\nWarning: This route is deprecated\n\n---\n\
+        [Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/medals/)"
       operationId: "get_characters_character_id_medals"
       parameters:
       - name: "character_id"
@@ -5992,8 +5848,8 @@ paths:
       security:
       - evesso:
         - "esi-characters.read_medals.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
       - "legacy"
       x-cached-seconds: 3600
   /characters/{character_id}/mining/:
@@ -6163,9 +6019,9 @@ paths:
       - "Character"
       summary: "Get new contact notifications"
       description: "Return notifications about having been added to someone's contact\
-        \ list\n\n---\nAlternate route: `/latest/characters/{character_id}/notifications/contacts/`\n\
-        \nAlternate route: `/legacy/characters/{character_id}/notifications/contacts/`\n\
-        \n---\nThis route is cached for up to 600 seconds"
+        \ list\n\n---\nAlternate route: `/legacy/characters/{character_id}/notifications/contacts/`\n\
+        \n---\nThis route is cached for up to 600 seconds\n\n---\nWarning: This route\
+        \ is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/notifications/contacts/)"
       operationId: "get_characters_character_id_notifications_contacts"
       parameters:
       - name: "character_id"
@@ -6295,8 +6151,8 @@ paths:
       security:
       - evesso:
         - "esi-characters.read_notifications.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
       - "legacy"
       x-cached-seconds: 600
   /characters/{character_id}/online/:
@@ -7166,197 +7022,6 @@ paths:
       x-alternate-versions:
       - "legacy"
       x-cached-seconds: 3600
-  /characters/{character_id}/roles/:
-    get:
-      tags:
-      - "Character"
-      summary: "Get character corporation roles"
-      description: "Returns a character's corporation roles\n\n---\nAlternate route:\
-        \ `/legacy/characters/{character_id}/roles/`\n\n---\nThis route is cached\
-        \ for up to 3600 seconds\n\n---\nWarning: This route is deprecated\n\n---\n\
-        [Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/roles/)"
-      operationId: "get_characters_character_id_roles"
-      parameters:
-      - name: "character_id"
-        in: "path"
-        description: "An EVE character ID"
-        required: true
-        type: "integer"
-        minimum: 1
-        format: "int32"
-        x-exportParamName: "CharacterId"
-      - name: "datasource"
-        in: "query"
-        description: "The server name you would like data from"
-        required: false
-        type: "string"
-        default: "tranquility"
-        enum:
-        - "tranquility"
-        x-exportParamName: "Datasource"
-      - name: "If-None-Match"
-        in: "header"
-        description: "ETag from a previous request. A 304 will be returned if this\
-          \ matches the current ETag"
-        required: false
-        type: "string"
-        x-exportParamName: "IfNoneMatch"
-      - name: "token"
-        in: "query"
-        description: "Access token to use if unable to set a header"
-        required: false
-        type: "string"
-        x-exportParamName: "Token"
-      responses:
-        200:
-          description: "The character's roles in thier corporation"
-          schema:
-            type: "array"
-            description: "200 ok array"
-            title: "get_characters_character_id_roles_ok"
-            uniqueItems: true
-            items:
-              type: "string"
-              description: "200 ok string"
-              title: "get_characters_character_id_roles_200_ok"
-              enum:
-              - "Account_Take_1"
-              - "Account_Take_2"
-              - "Account_Take_3"
-              - "Account_Take_4"
-              - "Account_Take_5"
-              - "Account_Take_6"
-              - "Account_Take_7"
-              - "Accountant"
-              - "Auditor"
-              - "Communications_Officer"
-              - "Config_Equipment"
-              - "Config_Starbase_Equipment"
-              - "Container_Take_1"
-              - "Container_Take_2"
-              - "Container_Take_3"
-              - "Container_Take_4"
-              - "Container_Take_5"
-              - "Container_Take_6"
-              - "Container_Take_7"
-              - "Contract_Manager"
-              - "Diplomat"
-              - "Director"
-              - "Factory_Manager"
-              - "Fitting_Manager"
-              - "Hangar_Query_1"
-              - "Hangar_Query_2"
-              - "Hangar_Query_3"
-              - "Hangar_Query_4"
-              - "Hangar_Query_5"
-              - "Hangar_Query_6"
-              - "Hangar_Query_7"
-              - "Hangar_Take_1"
-              - "Hangar_Take_2"
-              - "Hangar_Take_3"
-              - "Hangar_Take_4"
-              - "Hangar_Take_5"
-              - "Hangar_Take_6"
-              - "Hangar_Take_7"
-              - "Junior_Accountant"
-              - "Personnel_Manager"
-              - "Rent_Factory_Facility"
-              - "Rent_Office"
-              - "Rent_Research_Facility"
-              - "Security_Officer"
-              - "Starbase_Defense_Operator"
-              - "Starbase_Fuel_Technician"
-              - "Station_Manager"
-              - "Trader"
-            maxItems: 50
-          examples:
-            application/json:
-            - "Director"
-            - "Station_Manager"
-          headers:
-            Cache-Control:
-              type: "string"
-              description: "The caching mechanism used"
-            ETag:
-              type: "string"
-              description: "RFC7232 compliant entity tag"
-            Expires:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-            Last-Modified:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-        304:
-          description: "Not modified"
-          headers:
-            Cache-Control:
-              type: "string"
-              description: "The caching mechanism used"
-            ETag:
-              type: "string"
-              description: "RFC7232 compliant entity tag"
-            Expires:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-            Last-Modified:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-        400:
-          description: "Bad request"
-          schema:
-            $ref: "#/definitions/bad_request"
-          examples:
-            application/json:
-              error: "Bad request message"
-        401:
-          description: "Unauthorized"
-          schema:
-            $ref: "#/definitions/unauthorized"
-          examples:
-            application/json:
-              error: "Unauthorized message"
-        403:
-          description: "Forbidden"
-          schema:
-            $ref: "#/definitions/forbidden"
-          examples:
-            application/json:
-              error: "Forbidden message"
-        420:
-          description: "Error limited"
-          schema:
-            $ref: "#/definitions/error_limited"
-          examples:
-            application/json:
-              error: "Error limited message"
-        500:
-          description: "Internal server error"
-          schema:
-            $ref: "#/definitions/internal_server_error"
-          examples:
-            application/json:
-              error: "Internal server error message"
-        503:
-          description: "Service unavailable"
-          schema:
-            $ref: "#/definitions/service_unavailable"
-          examples:
-            application/json:
-              error: "Service unavailable message"
-        504:
-          description: "Gateway timeout"
-          schema:
-            $ref: "#/definitions/gateway_timeout"
-          examples:
-            application/json:
-              error: "Gateway timeout message"
-      security:
-      - evesso:
-        - "esi-characters.read_corporation_roles.v1"
-      deprecated: true
-      x-alternate-versions:
-      - "legacy"
-      x-cached-seconds: 3600
   /characters/{character_id}/ship/:
     get:
       tags:
@@ -7501,9 +7166,9 @@ paths:
       - "Character"
       summary: "Get standings"
       description: "Return character standings from agents, NPC corporations, and\
-        \ factions\n\n---\nAlternate route: `/latest/characters/{character_id}/standings/`\n\
-        \nAlternate route: `/legacy/characters/{character_id}/standings/`\n\n---\n\
-        This route is cached for up to 3600 seconds"
+        \ factions\n\n---\nAlternate route: `/legacy/characters/{character_id}/standings/`\n\
+        \n---\nThis route is cached for up to 3600 seconds\n\n---\nWarning: This route\
+        \ is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/standings/)"
       operationId: "get_characters_character_id_standings"
       parameters:
       - name: "character_id"
@@ -7637,8 +7302,8 @@ paths:
       security:
       - evesso:
         - "esi-characters.read_standings.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
       - "legacy"
       x-cached-seconds: 3600
   /characters/{character_id}/titles/:
@@ -7646,9 +7311,9 @@ paths:
       tags:
       - "Character"
       summary: "Get character corporation titles"
-      description: "Returns a character's titles\n\n---\nAlternate route: `/latest/characters/{character_id}/titles/`\n\
-        \nAlternate route: `/legacy/characters/{character_id}/titles/`\n\n---\nThis\
-        \ route is cached for up to 3600 seconds"
+      description: "Returns a character's titles\n\n---\nAlternate route: `/legacy/characters/{character_id}/titles/`\n\
+        \n---\nThis route is cached for up to 3600 seconds\n\n---\nWarning: This route\
+        \ is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v1/dev/#GET-/characters/{character_id}/titles/)"
       operationId: "get_characters_character_id_titles"
       parameters:
       - name: "character_id"
@@ -7775,8 +7440,8 @@ paths:
       security:
       - evesso:
         - "esi-characters.read_titles.v1"
+      deprecated: true
       x-alternate-versions:
-      - "latest"
       - "legacy"
       x-cached-seconds: 3600
   /characters/{character_id}/wallet/:
@@ -14796,7 +14461,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "AcceptLanguage"
       - name: "datasource"
         in: "query"
@@ -14834,7 +14501,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "Language"
       - name: "token"
         in: "query"
@@ -14877,7 +14546,9 @@ paths:
               - "fr"
               - "ja"
               - "ru"
+              - "zh"
               - "ko"
+              - "es"
             ETag:
               type: "string"
               description: "RFC7232 compliant entity tag"
@@ -15542,7 +15213,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "AcceptLanguage"
       - name: "datasource"
         in: "query"
@@ -15580,7 +15253,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "Language"
       - name: "token"
         in: "query"
@@ -15618,7 +15293,9 @@ paths:
               - "fr"
               - "ja"
               - "ru"
+              - "zh"
               - "ko"
+              - "es"
             ETag:
               type: "string"
               description: "RFC7232 compliant entity tag"
@@ -17140,7 +16817,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "AcceptLanguage"
       - name: "datasource"
         in: "query"
@@ -17171,7 +16850,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "Language"
       responses:
         200:
@@ -17203,7 +16884,9 @@ paths:
               - "fr"
               - "ja"
               - "ru"
+              - "zh"
               - "ko"
+              - "es"
             ETag:
               type: "string"
               description: "RFC7232 compliant entity tag"
@@ -17689,7 +17372,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "AcceptLanguage"
       - name: "datasource"
         in: "query"
@@ -17720,7 +17405,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "Language"
       - name: "market_group_id"
         in: "path"
@@ -17756,7 +17443,9 @@ paths:
               - "fr"
               - "ja"
               - "ru"
+              - "zh"
               - "ko"
+              - "es"
             ETag:
               type: "string"
               description: "RFC7232 compliant entity tag"
@@ -18691,7 +18380,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "AcceptLanguage"
       - name: "datasource"
         in: "query"
@@ -18729,7 +18420,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "Language"
       responses:
         200:
@@ -18759,7 +18452,9 @@ paths:
               - "fr"
               - "ja"
               - "ru"
+              - "zh"
               - "ko"
+              - "es"
             ETag:
               type: "string"
               description: "RFC7232 compliant entity tag"
@@ -20063,7 +19758,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "AcceptLanguage"
       - name: "datasource"
         in: "query"
@@ -20094,7 +19791,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "Language"
       responses:
         200:
@@ -20126,7 +19825,9 @@ paths:
               - "fr"
               - "ja"
               - "ru"
+              - "zh"
               - "ko"
+              - "es"
             ETag:
               type: "string"
               description: "RFC7232 compliant entity tag"
@@ -20331,7 +20032,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "AcceptLanguage"
       - name: "datasource"
         in: "query"
@@ -20362,7 +20065,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "Language"
       responses:
         200:
@@ -20400,7 +20105,9 @@ paths:
               - "fr"
               - "ja"
               - "ru"
+              - "zh"
               - "ko"
+              - "es"
             ETag:
               type: "string"
               description: "RFC7232 compliant entity tag"
@@ -20596,7 +20303,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "AcceptLanguage"
       - name: "category_id"
         in: "path"
@@ -20634,7 +20343,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "Language"
       responses:
         200:
@@ -20663,7 +20374,9 @@ paths:
               - "fr"
               - "ja"
               - "ru"
+              - "zh"
               - "ko"
+              - "es"
             ETag:
               type: "string"
               description: "RFC7232 compliant entity tag"
@@ -20865,7 +20578,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "AcceptLanguage"
       - name: "constellation_id"
         in: "path"
@@ -20903,7 +20618,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "Language"
       responses:
         200:
@@ -20935,7 +20652,9 @@ paths:
               - "fr"
               - "ja"
               - "ru"
+              - "zh"
               - "ko"
+              - "es"
             ETag:
               type: "string"
               description: "RFC7232 compliant entity tag"
@@ -21028,7 +20747,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "AcceptLanguage"
       - name: "datasource"
         in: "query"
@@ -21059,7 +20780,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "Language"
       responses:
         200:
@@ -21095,7 +20818,9 @@ paths:
               - "fr"
               - "ja"
               - "ru"
+              - "zh"
               - "ko"
+              - "es"
             ETag:
               type: "string"
               description: "RFC7232 compliant entity tag"
@@ -21532,7 +21257,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "AcceptLanguage"
       - name: "datasource"
         in: "query"
@@ -21570,7 +21297,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "Language"
       responses:
         200:
@@ -21600,7 +21329,9 @@ paths:
               - "fr"
               - "ja"
               - "ru"
+              - "zh"
               - "ko"
+              - "es"
             ETag:
               type: "string"
               description: "RFC7232 compliant entity tag"
@@ -21696,7 +21427,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "AcceptLanguage"
       - name: "datasource"
         in: "query"
@@ -21720,7 +21453,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "Language"
       - in: "body"
         name: "names"
@@ -21764,7 +21499,9 @@ paths:
               - "fr"
               - "ja"
               - "ru"
+              - "zh"
               - "ko"
+              - "es"
         400:
           description: "Bad request"
           schema:
@@ -22068,7 +21805,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "AcceptLanguage"
       - name: "datasource"
         in: "query"
@@ -22099,7 +21838,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "Language"
       responses:
         200:
@@ -22130,7 +21871,9 @@ paths:
               - "fr"
               - "ja"
               - "ru"
+              - "zh"
               - "ko"
+              - "es"
             ETag:
               type: "string"
               description: "RFC7232 compliant entity tag"
@@ -22326,7 +22069,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "AcceptLanguage"
       - name: "datasource"
         in: "query"
@@ -22357,7 +22102,9 @@ paths:
         - "fr"
         - "ja"
         - "ru"
+        - "zh"
         - "ko"
+        - "es"
         x-exportParamName: "Language"
       - name: "region_id"
         in: "path"
@@ -22392,7 +22139,9 @@ paths:
               - "fr"
               - "ja"
               - "ru"
+              - "zh"
               - "ko"
+              - "es"
             ETag:
               type: "string"
               description: "RFC7232 compliant entity tag"
@@ -24045,9 +23794,7 @@ securityDefinitions:
       esi-bookmarks.read_corporation_bookmarks.v1: "EVE SSO scope esi-bookmarks.read_corporation_bookmarks.v1"
       esi-calendar.read_calendar_events.v1: "EVE SSO scope esi-calendar.read_calendar_events.v1"
       esi-characters.read_agents_research.v1: "EVE SSO scope esi-characters.read_agents_research.v1"
-      esi-characters.read_blueprints.v1: "EVE SSO scope esi-characters.read_blueprints.v1"
       esi-characters.read_contacts.v1: "EVE SSO scope esi-characters.read_contacts.v1"
-      esi-characters.read_corporation_roles.v1: "EVE SSO scope esi-characters.read_corporation_roles.v1"
       esi-characters.read_fatigue.v1: "EVE SSO scope esi-characters.read_fatigue.v1"
       esi-characters.read_fw_stats.v1: "EVE SSO scope esi-characters.read_fw_stats.v1"
       esi-characters.read_loyalty.v1: "EVE SSO scope esi-characters.read_loyalty.v1"
@@ -24397,148 +24144,6 @@ definitions:
         description: "willpower integer"
         title: "get_characters_character_id_attributes_willpower"
     description: "200 ok object"
-  get_characters_character_id_blueprints_200_ok:
-    required:
-    - "item_id"
-    - "location_flag"
-    - "location_id"
-    - "material_efficiency"
-    - "quantity"
-    - "runs"
-    - "time_efficiency"
-    - "type_id"
-    properties:
-      item_id:
-        type: "integer"
-        format: "int64"
-        description: "Unique ID for this item. The ID of an item is stable if that\
-          \ item is not repackaged, stacked, detached from a stack, assembled, or\
-          \ otherwise altered. If an item is changed in one of these ways, then the\
-          \ ID will also change."
-        title: "get_characters_character_id_blueprints_item_id"
-      location_flag:
-        type: "string"
-        description: "Indicates something about this item's storage location. The\
-          \ flag is used to differentiate between hangar divisions, drone bay, fitting\
-          \ location, and similar."
-        title: "get_characters_character_id_blueprints_location_flag"
-        enum:
-        - "AutoFit"
-        - "Cargo"
-        - "CorpseBay"
-        - "DroneBay"
-        - "FleetHangar"
-        - "Deliveries"
-        - "HiddenModifiers"
-        - "Hangar"
-        - "HangarAll"
-        - "LoSlot0"
-        - "LoSlot1"
-        - "LoSlot2"
-        - "LoSlot3"
-        - "LoSlot4"
-        - "LoSlot5"
-        - "LoSlot6"
-        - "LoSlot7"
-        - "MedSlot0"
-        - "MedSlot1"
-        - "MedSlot2"
-        - "MedSlot3"
-        - "MedSlot4"
-        - "MedSlot5"
-        - "MedSlot6"
-        - "MedSlot7"
-        - "HiSlot0"
-        - "HiSlot1"
-        - "HiSlot2"
-        - "HiSlot3"
-        - "HiSlot4"
-        - "HiSlot5"
-        - "HiSlot6"
-        - "HiSlot7"
-        - "AssetSafety"
-        - "Locked"
-        - "Unlocked"
-        - "Implant"
-        - "QuafeBay"
-        - "RigSlot0"
-        - "RigSlot1"
-        - "RigSlot2"
-        - "RigSlot3"
-        - "RigSlot4"
-        - "RigSlot5"
-        - "RigSlot6"
-        - "RigSlot7"
-        - "ShipHangar"
-        - "SpecializedFuelBay"
-        - "SpecializedOreHold"
-        - "SpecializedGasHold"
-        - "SpecializedMineralHold"
-        - "SpecializedSalvageHold"
-        - "SpecializedShipHold"
-        - "SpecializedSmallShipHold"
-        - "SpecializedMediumShipHold"
-        - "SpecializedLargeShipHold"
-        - "SpecializedIndustrialShipHold"
-        - "SpecializedAmmoHold"
-        - "SpecializedCommandCenterHold"
-        - "SpecializedPlanetaryCommoditiesHold"
-        - "SpecializedMaterialBay"
-        - "SubSystemSlot0"
-        - "SubSystemSlot1"
-        - "SubSystemSlot2"
-        - "SubSystemSlot3"
-        - "SubSystemSlot4"
-        - "SubSystemSlot5"
-        - "SubSystemSlot6"
-        - "SubSystemSlot7"
-        - "FighterBay"
-        - "FighterTube0"
-        - "FighterTube1"
-        - "FighterTube2"
-        - "FighterTube3"
-        - "FighterTube4"
-        - "Module"
-      location_id:
-        type: "integer"
-        format: "int64"
-        description: "References a station, a ship or an item_id if this blueprint\
-          \ is located within a container. If an item_id the Character - AssetList\
-          \ API must be queried to find the container using the item_id, from which\
-          \ the correct location of the Blueprint can be derived."
-        title: "get_characters_character_id_blueprints_location_id"
-      material_efficiency:
-        type: "integer"
-        format: "int32"
-        description: "Material Efficiency Level of the blueprint, can be any integer\
-          \ between 0 and 10."
-        title: "get_characters_character_id_blueprints_material_efficiency"
-      quantity:
-        type: "integer"
-        format: "int32"
-        description: "Typically will be -1 or -2 designating a singleton item, where\
-          \ -1 is an original and -2 is a copy. It can be a positive integer if it\
-          \ is a stack of blueprint originals fresh from the market (no activities\
-          \ performed on them yet)."
-        title: "get_characters_character_id_blueprints_quantity"
-      runs:
-        type: "integer"
-        format: "int32"
-        description: "Number of runs remaining if the blueprint is a copy, -1 if it\
-          \ is an original."
-        title: "get_characters_character_id_blueprints_runs"
-      time_efficiency:
-        type: "integer"
-        format: "int32"
-        description: "Time Efficiency Level of the blueprint, can be any even integer\
-          \ between 0 and 20."
-        title: "get_characters_character_id_blueprints_time_efficiency"
-      type_id:
-        type: "integer"
-        format: "int32"
-        description: "type_id integer"
-        title: "get_characters_character_id_blueprints_type_id"
-    description: "200 ok object"
   get_characters_character_id_bookmarks_coordinates:
     required:
     - "x"
@@ -24786,8 +24391,8 @@ definitions:
       assignee_id:
         type: "integer"
         format: "int32"
-        description: "ID to whom the contract is assigned, can be corporation or character\
-          \ ID"
+        description: "ID to whom the contract is assigned, can be alliance, corporation\
+          \ or character ID"
         title: "get_characters_character_id_contracts_assignee_id"
       availability:
         type: "string"
@@ -32709,7 +32314,9 @@ parameters:
     - "fr"
     - "ja"
     - "ru"
+    - "zh"
     - "ko"
+    - "es"
     x-exportParamName: "AcceptLanguage"
   If-None-Match:
     name: "If-None-Match"
@@ -32770,7 +32377,9 @@ parameters:
     - "fr"
     - "ja"
     - "ru"
+    - "zh"
     - "ko"
+    - "es"
     x-exportParamName: "Language"
   page:
     name: "page"
