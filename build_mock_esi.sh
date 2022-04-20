@@ -1,6 +1,4 @@
 #!/bin/bash
-go install golang.org/x/tools/cmd/goimports@latest
-go install github.com/sqs/goreturns@latest
 set -e
 curl -s https://esi.evetech.net/versions/ | grep -Po '[a-z0-9]+' | {
     imports=()
@@ -21,7 +19,6 @@ curl -s https://esi.evetech.net/versions/ | grep -Po '[a-z0-9]+' | {
     sed "s#IMPORTS#$imp#" < ./mock-esi-template/main.go.template > ./main.go
 }
 
-goreturns -w .
 gofmt -s -w .
 
 go test ./...
