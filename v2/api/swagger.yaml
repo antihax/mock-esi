@@ -749,6 +749,126 @@ paths:
       - "dev"
       - "latest"
       x-cached-seconds: 3600
+  /characters/{character_id}/assets/locations/:
+    post:
+      tags:
+      - "Assets"
+      summary: "Get character asset locations"
+      description: "Return locations for a set of item ids, which you can get from\
+        \ character assets endpoint. Coordinates for items in hangars or stations\
+        \ are set to (0,0,0)\n\n---\nAlternate route: `/dev/characters/{character_id}/assets/locations/`\n\
+        \nAlternate route: `/latest/characters/{character_id}/assets/locations/`\n"
+      operationId: "post_characters_character_id_assets_locations"
+      parameters:
+      - name: "character_id"
+        in: "path"
+        description: "An EVE character ID"
+        required: true
+        type: "integer"
+        minimum: 1
+        format: "int32"
+        x-exportParamName: "CharacterId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        x-exportParamName: "Datasource"
+      - in: "body"
+        name: "item_ids"
+        description: "A list of item ids"
+        required: true
+        schema:
+          title: "post_characters_character_id_assets_locations_item_ids"
+          type: "array"
+          description: "item_ids array"
+          items:
+            type: "integer"
+            format: "int64"
+            description: "item_id integer"
+            title: "post_characters_character_id_assets_locations_item_id"
+        x-exportParamName: "ItemIds"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      responses:
+        200:
+          description: "List of asset locations"
+          schema:
+            type: "array"
+            description: "200 ok array"
+            title: "post_characters_character_id_assets_locations_ok"
+            items:
+              $ref: "#/definitions/post_characters_character_id_assets_locations_200_ok"
+            maxItems: 1000
+          examples:
+            application/json:
+            - item_id: 12345
+              position:
+                x: 1.2
+                y: 2.3
+                z: -3.4
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
+      security:
+      - evesso:
+        - "esi-assets.read_assets.v1"
+      x-alternate-versions:
+      - "dev"
+      - "latest"
   /characters/{character_id}/blueprints/:
     get:
       tags:
@@ -5190,6 +5310,136 @@ paths:
       x-alternate-versions:
       - "legacy"
       x-cached-seconds: 3600
+  /corporations/{corporation_id}/assets/locations/:
+    post:
+      tags:
+      - "Assets"
+      summary: "Get corporation asset locations"
+      description: "Return locations for a set of item ids, which you can get from\
+        \ corporation assets endpoint. Coordinates for items in hangars or stations\
+        \ are set to (0,0,0)\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/assets/locations/`\n\
+        \nAlternate route: `/latest/corporations/{corporation_id}/assets/locations/`\n\
+        \n\n---\nRequires one of the following EVE corporation role(s): Director\n"
+      operationId: "post_corporations_corporation_id_assets_locations"
+      parameters:
+      - name: "corporation_id"
+        in: "path"
+        description: "An EVE corporation ID"
+        required: true
+        type: "integer"
+        minimum: 1
+        format: "int32"
+        x-exportParamName: "CorporationId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        x-exportParamName: "Datasource"
+      - in: "body"
+        name: "item_ids"
+        description: "A list of item ids"
+        required: true
+        schema:
+          title: "post_corporations_corporation_id_assets_locations_item_ids"
+          type: "array"
+          description: "item_ids array"
+          items:
+            type: "integer"
+            format: "int64"
+            description: "item_id integer"
+            title: "post_corporations_corporation_id_assets_locations_item_id"
+        x-exportParamName: "ItemIds"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      responses:
+        200:
+          description: "List of asset locations"
+          schema:
+            type: "array"
+            description: "200 ok array"
+            title: "post_corporations_corporation_id_assets_locations_ok"
+            items:
+              $ref: "#/definitions/post_corporations_corporation_id_assets_locations_200_ok"
+            maxItems: 1000
+          examples:
+            application/json:
+            - item_id: 12345
+              position:
+                x: 1.2
+                y: 2.3
+                z: -3.4
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        404:
+          description: "Invalid IDs"
+          schema:
+            $ref: "#/definitions/post_corporations_corporation_id_assets_locations_not_found"
+          examples:
+            application/json:
+              error: "Not found message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
+      security:
+      - evesso:
+        - "esi-assets.read_corporation_assets.v1"
+      x-alternate-versions:
+      - "dev"
+      - "latest"
+      x-required-roles:
+      - "Director"
   /corporations/{corporation_id}/blueprints/:
     get:
       tags:
@@ -12518,6 +12768,8 @@ securityDefinitions:
     flow: "implicit"
     scopes:
       esi-alliances.read_contacts.v1: "EVE SSO scope esi-alliances.read_contacts.v1"
+      esi-assets.read_assets.v1: "EVE SSO scope esi-assets.read_assets.v1"
+      esi-assets.read_corporation_assets.v1: "EVE SSO scope esi-assets.read_corporation_assets.v1"
       esi-bookmarks.read_character_bookmarks.v1: "EVE SSO scope esi-bookmarks.read_character_bookmarks.v1"
       esi-calendar.read_calendar_events.v1: "EVE SSO scope esi-calendar.read_calendar_events.v1"
       esi-characters.read_agents_research.v1: "EVE SSO scope esi-characters.read_agents_research.v1"
@@ -12748,6 +13000,41 @@ definitions:
         format: "date-time"
         description: "started_at string"
         title: "get_characters_character_id_agents_research_started_at"
+    description: "200 ok object"
+  post_characters_character_id_assets_locations_position:
+    required:
+    - "x"
+    - "y"
+    - "z"
+    properties:
+      x:
+        type: "number"
+        format: "double"
+        description: "x number"
+        title: "post_characters_character_id_assets_locations_x"
+      y:
+        type: "number"
+        format: "double"
+        description: "y number"
+        title: "post_characters_character_id_assets_locations_y"
+      z:
+        type: "number"
+        format: "double"
+        description: "z number"
+        title: "post_characters_character_id_assets_locations_z"
+    description: "position object"
+  post_characters_character_id_assets_locations_200_ok:
+    required:
+    - "item_id"
+    - "position"
+    properties:
+      item_id:
+        type: "integer"
+        format: "int64"
+        description: "item_id integer"
+        title: "post_characters_character_id_assets_locations_item_id"
+      position:
+        $ref: "#/definitions/post_characters_character_id_assets_locations_position"
     description: "200 ok object"
   get_characters_character_id_blueprints_200_ok:
     required:
@@ -14281,6 +14568,48 @@ definitions:
         description: "start_date string"
         title: "get_corporations_corporation_id_alliancehistory_start_date"
     description: "200 ok object"
+  post_corporations_corporation_id_assets_locations_position:
+    required:
+    - "x"
+    - "y"
+    - "z"
+    properties:
+      x:
+        type: "number"
+        format: "double"
+        description: "x number"
+        title: "post_corporations_corporation_id_assets_locations_x"
+      y:
+        type: "number"
+        format: "double"
+        description: "y number"
+        title: "post_corporations_corporation_id_assets_locations_y"
+      z:
+        type: "number"
+        format: "double"
+        description: "z number"
+        title: "post_corporations_corporation_id_assets_locations_z"
+    description: "position object"
+  post_corporations_corporation_id_assets_locations_200_ok:
+    required:
+    - "item_id"
+    - "position"
+    properties:
+      item_id:
+        type: "integer"
+        format: "int64"
+        description: "item_id integer"
+        title: "post_corporations_corporation_id_assets_locations_item_id"
+      position:
+        $ref: "#/definitions/post_corporations_corporation_id_assets_locations_position"
+    description: "200 ok object"
+  post_corporations_corporation_id_assets_locations_not_found:
+    properties:
+      error:
+        type: "string"
+        description: "Not found message"
+        title: "post_corporations_corporation_id_assets_locations_404_not_found"
+    description: "Not found"
   get_corporations_corporation_id_blueprints_200_ok:
     required:
     - "item_id"

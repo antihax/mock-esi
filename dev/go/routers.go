@@ -39,6 +39,48 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdAssets",
+		"Get",
+		"/dev/characters/{character_id}/assets/",
+		GetCharactersCharacterIdAssets,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdAssets",
+		"Get",
+		"/dev/corporations/{corporation_id}/assets/",
+		GetCorporationsCorporationIdAssets,
+	)
+
+	mockesi.NewRoute(
+		"PostCharactersCharacterIdAssetsLocations",
+		"Post",
+		"/dev/characters/{character_id}/assets/locations/",
+		PostCharactersCharacterIdAssetsLocations,
+	)
+
+	mockesi.NewRoute(
+		"PostCharactersCharacterIdAssetsNames",
+		"Post",
+		"/dev/characters/{character_id}/assets/names/",
+		PostCharactersCharacterIdAssetsNames,
+	)
+
+	mockesi.NewRoute(
+		"PostCorporationsCorporationIdAssetsLocations",
+		"Post",
+		"/dev/corporations/{corporation_id}/assets/locations/",
+		PostCorporationsCorporationIdAssetsLocations,
+	)
+
+	mockesi.NewRoute(
+		"PostCorporationsCorporationIdAssetsNames",
+		"Post",
+		"/dev/corporations/{corporation_id}/assets/names/",
+		PostCorporationsCorporationIdAssetsNames,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdBookmarks",
 		"Get",
 		"/dev/characters/{character_id}/bookmarks/",
