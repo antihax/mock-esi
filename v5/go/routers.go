@@ -11,6 +11,20 @@ import (
 func init() {
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdAssets",
+		"Get",
+		"/v5/characters/{character_id}/assets/",
+		GetCharactersCharacterIdAssets,
+	)
+
+	mockesi.NewRoute(
+		"GetCorporationsCorporationIdAssets",
+		"Get",
+		"/v5/corporations/{corporation_id}/assets/",
+		GetCorporationsCorporationIdAssets,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterId",
 		"Get",
 		"/v5/characters/{character_id}/",
