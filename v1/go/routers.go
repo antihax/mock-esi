@@ -1145,13 +1145,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"PostUniverseIds",
-		"Post",
-		"/v1/universe/ids/",
-		PostUniverseIds,
-	)
-
-	mockesi.NewRoute(
 		"PostUiOpenwindowContract",
 		"Post",
 		"/v1/ui/openwindow/contract/",
