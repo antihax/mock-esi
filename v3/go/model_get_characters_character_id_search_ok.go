@@ -1,8 +1,8 @@
-package esilegacy
+package esiv3
 
 /*
 200 ok object */
-type GetSearchOk struct {
+type GetCharactersCharacterIdSearchOk struct {
 	/*
 	 agent array */
 	Agent []int32 `json:"agent,omitempty"`
@@ -33,4 +33,7 @@ type GetSearchOk struct {
 	/*
 	 station array */
 	Station []int32 `json:"station,omitempty"`
+	/*
+	 structure array */
+	Structure []int64 `json:"structure,omitempty"`
 }

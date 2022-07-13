@@ -1075,6 +1075,13 @@ func init() {
 	)
 
 	mockesi.NewRoute(
+		"GetCharactersCharacterIdSearch",
+		"Get",
+		"/latest/characters/{character_id}/search/",
+		GetCharactersCharacterIdSearch,
+	)
+
+	mockesi.NewRoute(
 		"GetCharactersCharacterIdAttributes",
 		"Get",
 		"/latest/characters/{character_id}/attributes/",
@@ -1317,6 +1324,13 @@ func init() {
 		"Get",
 		"/latest/universe/types/{type_id}/",
 		GetUniverseTypesTypeId,
+	)
+
+	mockesi.NewRoute(
+		"PostUniverseIds",
+		"Post",
+		"/latest/universe/ids/",
+		PostUniverseIds,
 	)
 
 	mockesi.NewRoute(

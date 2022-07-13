@@ -1082,13 +1082,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetSearch",
-		"Get",
-		"/legacy/search/",
-		GetSearch,
-	)
-
-	mockesi.NewRoute(
 		"GetCharactersCharacterIdAttributes",
 		"Get",
 		"/legacy/characters/{character_id}/attributes/",

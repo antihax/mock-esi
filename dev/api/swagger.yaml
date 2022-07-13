@@ -8676,6 +8676,232 @@ paths:
       - "latest"
       - "v3"
       x-cached-seconds: 3600
+  /characters/{character_id}/search/:
+    get:
+      tags:
+      - "Search"
+      summary: "Search on a string"
+      description: "Search for entities that match a given sub-string.\n\n---\nAlternate\
+        \ route: `/latest/characters/{character_id}/search/`\n\nAlternate route: `/legacy/characters/{character_id}/search/`\n\
+        \nAlternate route: `/v3/characters/{character_id}/search/`\n\n---\nThis route\
+        \ is cached for up to 3600 seconds"
+      operationId: "get_characters_character_id_search"
+      parameters:
+      - name: "Accept-Language"
+        in: "header"
+        description: "Language to use in the response"
+        required: false
+        type: "string"
+        default: "en"
+        enum:
+        - "en"
+        - "en-us"
+        - "de"
+        - "fr"
+        - "ja"
+        - "ru"
+        - "zh"
+        - "ko"
+        - "es"
+        x-exportParamName: "AcceptLanguage"
+      - name: "categories"
+        in: "query"
+        description: "Type of entities to search for"
+        required: true
+        type: "array"
+        items:
+          type: "string"
+          enum:
+          - "agent"
+          - "alliance"
+          - "character"
+          - "constellation"
+          - "corporation"
+          - "faction"
+          - "inventory_type"
+          - "region"
+          - "solar_system"
+          - "station"
+          - "structure"
+        maxItems: 11
+        minItems: 1
+        uniqueItems: true
+        x-exportParamName: "Categories"
+      - name: "character_id"
+        in: "path"
+        description: "An EVE character ID"
+        required: true
+        type: "integer"
+        minimum: 1
+        format: "int32"
+        x-exportParamName: "CharacterId"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        x-exportParamName: "Datasource"
+      - name: "If-None-Match"
+        in: "header"
+        description: "ETag from a previous request. A 304 will be returned if this\
+          \ matches the current ETag"
+        required: false
+        type: "string"
+        x-exportParamName: "IfNoneMatch"
+      - name: "language"
+        in: "query"
+        description: "Language to use in the response, takes precedence over Accept-Language"
+        required: false
+        type: "string"
+        default: "en"
+        enum:
+        - "en"
+        - "en-us"
+        - "de"
+        - "fr"
+        - "ja"
+        - "ru"
+        - "zh"
+        - "ko"
+        - "es"
+        x-exportParamName: "Language"
+      - name: "search"
+        in: "query"
+        description: "The string to search on"
+        required: true
+        type: "string"
+        minLength: 3
+        x-exportParamName: "Search"
+      - name: "strict"
+        in: "query"
+        description: "Whether the search should be a strict match"
+        required: false
+        type: "boolean"
+        default: false
+        x-exportParamName: "Strict"
+      - name: "token"
+        in: "query"
+        description: "Access token to use if unable to set a header"
+        required: false
+        type: "string"
+        x-exportParamName: "Token"
+      responses:
+        200:
+          description: "A list of search results"
+          schema:
+            $ref: "#/definitions/get_characters_character_id_search_ok"
+          examples:
+            application/json:
+              solar_system:
+              - 30002510
+              station:
+              - 60004588
+              - 60004594
+              - 60005725
+              - 60009106
+              - 60012721
+              - 60012724
+              - 60012727
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            Content-Language:
+              type: "string"
+              description: "The language used in the response"
+              enum:
+              - "en"
+              - "de"
+              - "fr"
+              - "ja"
+              - "ru"
+              - "zh"
+              - "ko"
+              - "es"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        304:
+          description: "Not modified"
+          headers:
+            Cache-Control:
+              type: "string"
+              description: "The caching mechanism used"
+            ETag:
+              type: "string"
+              description: "RFC7232 compliant entity tag"
+            Expires:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+            Last-Modified:
+              type: "string"
+              description: "RFC7231 formatted datetime string"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        401:
+          description: "Unauthorized"
+          schema:
+            $ref: "#/definitions/unauthorized"
+          examples:
+            application/json:
+              error: "Unauthorized message"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/forbidden"
+          examples:
+            application/json:
+              error: "Forbidden message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
+      security:
+      - evesso:
+        - "esi-search.search_structures.v1"
+      x-alternate-versions:
+      - "latest"
+      - "legacy"
+      - "v3"
+      x-cached-seconds: 3600
   /characters/{character_id}/ship/:
     get:
       tags:
@@ -25026,6 +25252,145 @@ paths:
       - "latest"
       - "legacy"
       - "v1"
+  /universe/ids/:
+    post:
+      tags:
+      - "Universe"
+      summary: "Bulk names to IDs"
+      description: "Resolve a set of names to IDs in the following categories: agents,\
+        \ alliances, characters, constellations, corporations factions, inventory_types,\
+        \ regions, stations, and systems. Only exact matches will be returned. All\
+        \ names searched for are cached for 12 hours\n\n---\nAlternate route: `/latest/universe/ids/`\n\
+        \nAlternate route: `/legacy/universe/ids/`\n\nAlternate route: `/v1/universe/ids/`\n"
+      operationId: "post_universe_ids"
+      parameters:
+      - name: "Accept-Language"
+        in: "header"
+        description: "Language to use in the response"
+        required: false
+        type: "string"
+        default: "en"
+        enum:
+        - "en"
+        - "en-us"
+        - "de"
+        - "fr"
+        - "ja"
+        - "ru"
+        - "zh"
+        - "ko"
+        - "es"
+        x-exportParamName: "AcceptLanguage"
+      - name: "datasource"
+        in: "query"
+        description: "The server name you would like data from"
+        required: false
+        type: "string"
+        default: "tranquility"
+        enum:
+        - "tranquility"
+        x-exportParamName: "Datasource"
+      - name: "language"
+        in: "query"
+        description: "Language to use in the response, takes precedence over Accept-Language"
+        required: false
+        type: "string"
+        default: "en"
+        enum:
+        - "en"
+        - "en-us"
+        - "de"
+        - "fr"
+        - "ja"
+        - "ru"
+        - "zh"
+        - "ko"
+        - "es"
+        x-exportParamName: "Language"
+      - in: "body"
+        name: "names"
+        description: "The names to resolve"
+        required: true
+        schema:
+          title: "post_universe_ids_names"
+          type: "array"
+          description: "names array"
+          items:
+            type: "string"
+            description: "name string"
+            title: "post_universe_ids_name"
+            minLength: 1
+            maxLength: 100
+          example: "[\"CCP Zoetrope\"]"
+        x-exportParamName: "Names"
+      responses:
+        200:
+          description: "List of id/name associations for a set of names divided by\
+            \ category. Any name passed in that did not have a match will be ommitted"
+          schema:
+            $ref: "#/definitions/post_universe_ids_ok"
+          examples:
+            application/json:
+              characters:
+              - id: 95465499
+                name: "CCP Bartender"
+              - id: 2112625428
+                name: "CCP Zoetrope"
+              systems:
+              - id: 30000142
+                name: "Jita"
+          headers:
+            Content-Language:
+              type: "string"
+              description: "The language used in the response"
+              enum:
+              - "en"
+              - "de"
+              - "fr"
+              - "ja"
+              - "ru"
+              - "zh"
+              - "ko"
+              - "es"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/bad_request"
+          examples:
+            application/json:
+              error: "Bad request message"
+        420:
+          description: "Error limited"
+          schema:
+            $ref: "#/definitions/error_limited"
+          examples:
+            application/json:
+              error: "Error limited message"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/internal_server_error"
+          examples:
+            application/json:
+              error: "Internal server error message"
+        503:
+          description: "Service unavailable"
+          schema:
+            $ref: "#/definitions/service_unavailable"
+          examples:
+            application/json:
+              error: "Service unavailable message"
+        504:
+          description: "Gateway timeout"
+          schema:
+            $ref: "#/definitions/gateway_timeout"
+          examples:
+            application/json:
+              error: "Gateway timeout message"
+      x-alternate-versions:
+      - "latest"
+      - "legacy"
+      - "v1"
   /universe/moons/{moon_id}/:
     get:
       tags:
@@ -27781,6 +28146,7 @@ securityDefinitions:
       esi-markets.structure_markets.v1: "EVE SSO scope esi-markets.structure_markets.v1"
       esi-planets.manage_planets.v1: "EVE SSO scope esi-planets.manage_planets.v1"
       esi-planets.read_customs_offices.v1: "EVE SSO scope esi-planets.read_customs_offices.v1"
+      esi-search.search_structures.v1: "EVE SSO scope esi-search.search_structures.v1"
       esi-skills.read_skillqueue.v1: "EVE SSO scope esi-skills.read_skillqueue.v1"
       esi-skills.read_skills.v1: "EVE SSO scope esi-skills.read_skills.v1"
       esi-ui.open_window.v1: "EVE SSO scope esi-ui.open_window.v1"
@@ -31250,6 +31616,119 @@ definitions:
           - "Station_Manager"
           - "Trader"
         maxItems: 50
+    description: "200 ok object"
+  get_characters_character_id_search_ok:
+    properties:
+      agent:
+        type: "array"
+        description: "agent array"
+        title: "get_characters_character_id_search_agent"
+        items:
+          type: "integer"
+          format: "int32"
+          description: "agent integer"
+          title: "get_characters_character_id_search_agent_agent"
+        maxItems: 500
+      alliance:
+        type: "array"
+        description: "alliance array"
+        title: "get_characters_character_id_search_alliance"
+        items:
+          type: "integer"
+          format: "int32"
+          description: "alliance integer"
+          title: "get_characters_character_id_search_alliance_alliance"
+        maxItems: 500
+      character:
+        type: "array"
+        description: "character array"
+        title: "get_characters_character_id_search_character"
+        items:
+          type: "integer"
+          format: "int32"
+          description: "character integer"
+          title: "get_characters_character_id_search_character_character"
+        maxItems: 500
+      constellation:
+        type: "array"
+        description: "constellation array"
+        title: "get_characters_character_id_search_constellation"
+        items:
+          type: "integer"
+          format: "int32"
+          description: "constellation integer"
+          title: "get_characters_character_id_search_constellation_constellation"
+        maxItems: 500
+      corporation:
+        type: "array"
+        description: "corporation array"
+        title: "get_characters_character_id_search_corporation"
+        items:
+          type: "integer"
+          format: "int32"
+          description: "corporation integer"
+          title: "get_characters_character_id_search_corporation_corporation"
+        maxItems: 500
+      faction:
+        type: "array"
+        description: "faction array"
+        title: "get_characters_character_id_search_faction"
+        items:
+          type: "integer"
+          format: "int32"
+          description: "faction integer"
+          title: "get_characters_character_id_search_faction_faction"
+        maxItems: 500
+      inventory_type:
+        type: "array"
+        description: "inventory_type array"
+        title: "get_characters_character_id_search_inventory_type"
+        items:
+          type: "integer"
+          format: "int32"
+          description: "inventory_type integer"
+          title: "get_characters_character_id_search_inventory_type_inventory_type"
+        maxItems: 500
+      region:
+        type: "array"
+        description: "region array"
+        title: "get_characters_character_id_search_region"
+        items:
+          type: "integer"
+          format: "int32"
+          description: "region integer"
+          title: "get_characters_character_id_search_region_region"
+        maxItems: 500
+      solar_system:
+        type: "array"
+        description: "solar_system array"
+        title: "get_characters_character_id_search_solar_system"
+        items:
+          type: "integer"
+          format: "int32"
+          description: "solar_system integer"
+          title: "get_characters_character_id_search_solar_system_solar_system"
+        maxItems: 500
+      station:
+        type: "array"
+        description: "station array"
+        title: "get_characters_character_id_search_station"
+        items:
+          type: "integer"
+          format: "int32"
+          description: "station integer"
+          title: "get_characters_character_id_search_station_station"
+        maxItems: 500
+      structure:
+        type: "array"
+        description: "structure array"
+        title: "get_characters_character_id_search_structure"
+        items:
+          type: "integer"
+          format: "int64"
+          description: "structure integer"
+          title: "get_characters_character_id_search_structure_structure"
+        maxItems: 500
     description: "200 ok object"
   get_characters_character_id_ship_ok:
     required:
@@ -38414,6 +38893,199 @@ definitions:
         description: "Not found message"
         title: "get_universe_groups_group_id_404_not_found"
     description: "Not found"
+  post_universe_ids_agent:
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+        description: "id integer"
+        title: "post_universe_ids_id"
+      name:
+        type: "string"
+        description: "name string"
+        title: "post_universe_ids_name"
+    description: "agent object"
+  post_universe_ids_alliance:
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+        description: "id integer"
+        title: "post_universe_ids_alliance_id"
+      name:
+        type: "string"
+        description: "name string"
+        title: "post_universe_ids_alliance_name"
+    description: "alliance object"
+  post_universe_ids_character:
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+        description: "id integer"
+        title: "post_universe_ids_character_id"
+      name:
+        type: "string"
+        description: "name string"
+        title: "post_universe_ids_character_name"
+    description: "character object"
+  post_universe_ids_constellation:
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+        description: "id integer"
+        title: "post_universe_ids_constellation_id"
+      name:
+        type: "string"
+        description: "name string"
+        title: "post_universe_ids_constellation_name"
+    description: "constellation object"
+  post_universe_ids_corporation:
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+        description: "id integer"
+        title: "post_universe_ids_corporation_id"
+      name:
+        type: "string"
+        description: "name string"
+        title: "post_universe_ids_corporation_name"
+    description: "corporation object"
+  post_universe_ids_faction:
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+        description: "id integer"
+        title: "post_universe_ids_faction_id"
+      name:
+        type: "string"
+        description: "name string"
+        title: "post_universe_ids_faction_name"
+    description: "faction object"
+  post_universe_ids_inventory_type:
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+        description: "id integer"
+        title: "post_universe_ids_inventory_type_id"
+      name:
+        type: "string"
+        description: "name string"
+        title: "post_universe_ids_inventory_type_name"
+    description: "inventory_type object"
+  post_universe_ids_region:
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+        description: "id integer"
+        title: "post_universe_ids_region_id"
+      name:
+        type: "string"
+        description: "name string"
+        title: "post_universe_ids_region_name"
+    description: "region object"
+  post_universe_ids_station:
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+        description: "id integer"
+        title: "post_universe_ids_station_id"
+      name:
+        type: "string"
+        description: "name string"
+        title: "post_universe_ids_station_name"
+    description: "station object"
+  post_universe_ids_system:
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+        description: "id integer"
+        title: "post_universe_ids_system_id"
+      name:
+        type: "string"
+        description: "name string"
+        title: "post_universe_ids_system_name"
+    description: "system object"
+  post_universe_ids_ok:
+    properties:
+      agents:
+        type: "array"
+        description: "agents array"
+        title: "post_universe_ids_agents"
+        items:
+          $ref: "#/definitions/post_universe_ids_agent"
+        maxItems: 500
+      alliances:
+        type: "array"
+        description: "alliances array"
+        title: "post_universe_ids_alliances"
+        items:
+          $ref: "#/definitions/post_universe_ids_alliance"
+        maxItems: 500
+      characters:
+        type: "array"
+        description: "characters array"
+        title: "post_universe_ids_characters"
+        items:
+          $ref: "#/definitions/post_universe_ids_character"
+        maxItems: 500
+      constellations:
+        type: "array"
+        description: "constellations array"
+        title: "post_universe_ids_constellations"
+        items:
+          $ref: "#/definitions/post_universe_ids_constellation"
+        maxItems: 500
+      corporations:
+        type: "array"
+        description: "corporations array"
+        title: "post_universe_ids_corporations"
+        items:
+          $ref: "#/definitions/post_universe_ids_corporation"
+        maxItems: 500
+      factions:
+        type: "array"
+        description: "factions array"
+        title: "post_universe_ids_factions"
+        items:
+          $ref: "#/definitions/post_universe_ids_faction"
+        maxItems: 500
+      inventory_types:
+        type: "array"
+        description: "inventory_types array"
+        title: "post_universe_ids_inventory_types"
+        items:
+          $ref: "#/definitions/post_universe_ids_inventory_type"
+        maxItems: 500
+      regions:
+        type: "array"
+        description: "regions array"
+        title: "post_universe_ids_regions"
+        items:
+          $ref: "#/definitions/post_universe_ids_region"
+        maxItems: 500
+      stations:
+        type: "array"
+        description: "stations array"
+        title: "post_universe_ids_stations"
+        items:
+          $ref: "#/definitions/post_universe_ids_station"
+        maxItems: 500
+      systems:
+        type: "array"
+        description: "systems array"
+        title: "post_universe_ids_systems"
+        items:
+          $ref: "#/definitions/post_universe_ids_system"
+        maxItems: 500
+    description: "200 ok object"
   get_universe_moons_moon_id_position:
     required:
     - "x"
