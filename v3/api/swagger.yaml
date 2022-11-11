@@ -4117,7 +4117,7 @@ definitions:
           format: "int32"
           description: "implant integer"
           title: "get_characters_character_id_clones_implant"
-        maxItems: 11
+        maxItems: 64
       jump_clone_id:
         type: "integer"
         format: "int32"
@@ -4152,7 +4152,7 @@ definitions:
         title: "get_characters_character_id_clones_jump_clones"
         items:
           $ref: "#/definitions/get_characters_character_id_clones_jump_clone"
-        maxItems: 10
+        maxItems: 64
       last_clone_jump_date:
         type: "string"
         format: "date-time"
