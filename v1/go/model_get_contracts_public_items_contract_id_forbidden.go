@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-Forbidden */
+Forbidden
+*/
 type GetContractsPublicItemsContractIdForbidden struct {
 	/*
 	 Forbidden message */

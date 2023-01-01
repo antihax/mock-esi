@@ -1,7 +1,8 @@
 package esidev
 
 /*
-link object */
+link object
+*/
 type GetCharactersCharacterIdPlanetsPlanetIdLink struct {
 	/*
 	 destination_pin_id integer */

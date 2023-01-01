@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-system object */
+system object
+*/
 type PostUniverseIdsSystem struct {
 	/*
 	 id integer */

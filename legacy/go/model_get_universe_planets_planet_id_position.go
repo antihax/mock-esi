@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-position object */
+position object
+*/
 type GetUniversePlanetsPlanetIdPosition struct {
 	/*
 	 x number */

@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetUniverseBloodlines200Ok struct {
 	/*
 	 bloodline_id integer */

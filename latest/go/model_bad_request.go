@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-Bad request model */
+Bad request model
+*/
 type BadRequest struct {
 	/*
 	 Bad request message */

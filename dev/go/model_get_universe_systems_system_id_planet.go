@@ -1,7 +1,8 @@
 package esidev
 
 /*
-planet object */
+planet object
+*/
 type GetUniverseSystemsSystemIdPlanet struct {
 	/*
 	 asteroid_belts array */

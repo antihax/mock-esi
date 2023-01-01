@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-Unprocessable entity */
+Unprocessable entity
+*/
 type GetMarketsRegionIdOrdersUnprocessableEntity struct {
 	/*
 	 Unprocessable entity message */

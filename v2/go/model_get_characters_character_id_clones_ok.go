@@ -3,7 +3,8 @@ package esiv2
 import "time"
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCharactersCharacterIdClonesOk struct {
 	/* */
 	HomeLocation GetCharactersCharacterIdClonesHomeLocation `json:"home_location,omitempty"`

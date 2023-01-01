@@ -3,7 +3,8 @@ package esilatest
 import "time"
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCharactersCharacterIdMailMailIdOk struct {
 	/*
 	 Mail's body */

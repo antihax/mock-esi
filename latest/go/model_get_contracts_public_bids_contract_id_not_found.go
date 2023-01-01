@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-Not found */
+Not found
+*/
 type GetContractsPublicBidsContractIdNotFound struct {
 	/*
 	 Not found message */

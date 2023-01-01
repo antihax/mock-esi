@@ -3,7 +3,8 @@ package esilatest
 import "time"
 
 /*
-wallet transaction */
+wallet transaction
+*/
 type GetCorporationsCorporationIdWalletsDivisionTransactions200Ok struct {
 	/*
 	 client_id integer */

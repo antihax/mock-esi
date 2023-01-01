@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-position object */
+position object
+*/
 type GetUniverseSystemsSystemIdPosition struct {
 	/*
 	 x number */

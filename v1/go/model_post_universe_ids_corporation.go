@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-corporation object */
+corporation object
+*/
 type PostUniverseIdsCorporation struct {
 	/*
 	 id integer */

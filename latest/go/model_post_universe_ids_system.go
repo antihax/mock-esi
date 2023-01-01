@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-system object */
+system object
+*/
 type PostUniverseIdsSystem struct {
 	/*
 	 id integer */

@@ -1,7 +1,8 @@
 package esiv4
 
 /*
-Not found */
+Not found
+*/
 type GetCorporationsCorporationIdNotFound struct {
 	/*
 	 Not found message */

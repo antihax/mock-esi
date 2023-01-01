@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-item object */
+item object
+*/
 type GetKillmailsKillmailIdKillmailHashItemsItem struct {
 	/*
 	 flag integer */

@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-dogma_effect object */
+dogma_effect object
+*/
 type GetUniverseTypesTypeIdDogmaEffect struct {
 	/*
 	 effect_id integer */

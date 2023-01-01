@@ -3,7 +3,8 @@ package esidev
 import "time"
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCharactersCharacterIdSkillqueue200Ok struct {
 	/*
 	 Date on which training of the skill will complete. Omitted if the skill queue is paused. */

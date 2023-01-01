@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-graphic object */
+graphic object
+*/
 type GetCharactersCharacterIdMedalsGraphic struct {
 	/*
 	 color integer */

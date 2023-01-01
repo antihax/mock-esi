@@ -1,7 +1,8 @@
 package esiv5
 
 /*
-Gateway timeout model */
+Gateway timeout model
+*/
 type GatewayTimeout struct {
 	/*
 	 Gateway timeout message */

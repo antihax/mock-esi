@@ -1,7 +1,8 @@
 package esiv2
 
 /*
-Top 4 rankings of factions by victory points from yesterday, last week and in total */
+Top 4 rankings of factions by victory points from yesterday, last week and in total
+*/
 type GetFwLeaderboardsVictoryPoints struct {
 	/*
 	 Top 4 ranking of factions active in faction warfare by total victory points. A faction is considered \"active\" if they have participated in faction warfare in the past 14 days */

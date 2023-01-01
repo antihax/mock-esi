@@ -1,7 +1,8 @@
 package esiv2
 
 /*
-200 ok object */
+200 ok object
+*/
 type PostUniverseNames200Ok struct {
 	/*
 	 category string */

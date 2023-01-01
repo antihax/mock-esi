@@ -1,7 +1,8 @@
 package esiv3
 
 /*
-position object */
+position object
+*/
 type GetUniverseSystemsSystemIdPosition struct {
 	/*
 	 x number */

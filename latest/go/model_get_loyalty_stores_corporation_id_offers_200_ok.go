@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetLoyaltyStoresCorporationIdOffers200Ok struct {
 	/*
 	 Analysis kredit cost */

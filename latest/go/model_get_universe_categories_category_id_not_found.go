@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-Not found */
+Not found
+*/
 type GetUniverseCategoriesCategoryIdNotFound struct {
 	/*
 	 Not found message */

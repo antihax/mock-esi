@@ -3,7 +3,8 @@ package esilatest
 import "time"
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCharactersCharacterIdMedals200Ok struct {
 	/*
 	 corporation_id integer */

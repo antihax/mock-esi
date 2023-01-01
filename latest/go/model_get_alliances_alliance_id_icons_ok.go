@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetAlliancesAllianceIdIconsOk struct {
 	/*
 	 px128x128 string */

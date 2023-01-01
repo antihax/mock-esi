@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-422 unprocessable entity object */
+422 unprocessable entity object
+*/
 type PutFleetsFleetIdMembersMemberIdUnprocessableEntity struct {
 	/*
 	 error message */

@@ -3,7 +3,8 @@ package esiv1
 import "time"
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCorporationsCorporationIdOrdersHistory200Ok struct {
 	/*
 	 Number of days the order was valid for (starting from the issued date). An order expires at time issued + duration */

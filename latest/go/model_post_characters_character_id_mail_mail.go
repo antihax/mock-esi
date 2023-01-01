@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-mail object */
+mail object
+*/
 type PostCharactersCharacterIdMailMail struct {
 	/*
 	 approved_cost integer */

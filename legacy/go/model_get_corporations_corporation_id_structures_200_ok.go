@@ -3,7 +3,8 @@ package esilegacy
 import "time"
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCorporationsCorporationIdStructures200Ok struct {
 	/*
 	 ID of the corporation that owns the structure */

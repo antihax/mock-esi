@@ -1,7 +1,8 @@
 package esidev
 
 /*
-Colony not found */
+Colony not found
+*/
 type GetCharactersCharacterIdPlanetsPlanetIdNotFound struct {
 	/*
 	 error message */

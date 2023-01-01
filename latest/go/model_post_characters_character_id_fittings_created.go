@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-201 created object */
+201 created object
+*/
 type PostCharactersCharacterIdFittingsCreated struct {
 	/*
 	 fitting_id integer */

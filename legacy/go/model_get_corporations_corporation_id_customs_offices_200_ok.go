@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCorporationsCorporationIdCustomsOffices200Ok struct {
 	/*
 	 Only present if alliance access is allowed */

@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-Schematic not found */
+Schematic not found
+*/
 type GetUniverseSchematicsSchematicIdNotFound struct {
 	/*
 	 error message */

@@ -1,7 +1,8 @@
 package esiv5
 
 /*
-Service unavailable model */
+Service unavailable model
+*/
 type ServiceUnavailable struct {
 	/*
 	 Service unavailable message */

@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-target object */
+target object
+*/
 type GetCharactersCharacterIdBookmarksTarget struct {
 	/* */
 	Coordinates GetCharactersCharacterIdBookmarksCoordinates `json:"coordinates,omitempty"`

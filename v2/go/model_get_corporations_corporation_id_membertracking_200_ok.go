@@ -3,7 +3,8 @@ package esiv2
 import "time"
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCorporationsCorporationIdMembertracking200Ok struct {
 	/*
 	 base_id integer */

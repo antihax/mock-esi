@@ -1,7 +1,8 @@
 package esiv3
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetUniverseStructuresStructureIdOk struct {
 	/*
 	 The full name of the structure */

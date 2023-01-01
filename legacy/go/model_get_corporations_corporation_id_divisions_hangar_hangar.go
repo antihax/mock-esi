@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-hangar object */
+hangar object
+*/
 type GetCorporationsCorporationIdDivisionsHangarHangar struct {
 	/*
 	 division integer */

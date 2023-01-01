@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-new_mail object */
+new_mail object
+*/
 type PostUiOpenwindowNewmailNewMail struct {
 	/*
 	 body string */

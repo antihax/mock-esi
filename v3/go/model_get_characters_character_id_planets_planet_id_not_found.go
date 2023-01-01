@@ -1,7 +1,8 @@
 package esiv3
 
 /*
-Colony not found */
+Colony not found
+*/
 type GetCharactersCharacterIdPlanetsPlanetIdNotFound struct {
 	/*
 	 error message */

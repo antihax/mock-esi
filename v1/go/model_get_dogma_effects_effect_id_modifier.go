@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-modifier object */
+modifier object
+*/
 type GetDogmaEffectsEffectIdModifier struct {
 	/*
 	 domain string */

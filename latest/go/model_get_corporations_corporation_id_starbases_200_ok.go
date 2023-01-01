@@ -3,7 +3,8 @@ package esilatest
 import "time"
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCorporationsCorporationIdStarbases200Ok struct {
 	/*
 	 The moon this starbase (POS) is anchored on, unanchored POSes do not have this information */

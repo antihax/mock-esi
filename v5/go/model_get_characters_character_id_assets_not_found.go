@@ -1,7 +1,8 @@
 package esiv5
 
 /*
-Requested page does not exist */
+Requested page does not exist
+*/
 type GetCharactersCharacterIdAssetsNotFound struct {
 	/*
 	 error message */

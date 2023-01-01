@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-No image server for this datasource */
+No image server for this datasource
+*/
 type GetCharactersCharacterIdPortraitNotFound struct {
 	/*
 	 error message */

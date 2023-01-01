@@ -1,7 +1,8 @@
 package esidev
 
 /*
-422 unprocessable entity object */
+422 unprocessable entity object
+*/
 type PostFleetsFleetIdMembersUnprocessableEntity struct {
 	/*
 	 error message */

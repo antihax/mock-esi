@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-new_settings object */
+new_settings object
+*/
 type PutFleetsFleetIdNewSettings struct {
 	/*
 	 Should free-move be enabled in the fleet */

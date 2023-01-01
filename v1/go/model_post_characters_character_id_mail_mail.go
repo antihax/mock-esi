@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-mail object */
+mail object
+*/
 type PostCharactersCharacterIdMailMail struct {
 	/*
 	 approved_cost integer */

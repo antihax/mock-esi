@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-agent object */
+agent object
+*/
 type PostUniverseIdsAgent struct {
 	/*
 	 id integer */

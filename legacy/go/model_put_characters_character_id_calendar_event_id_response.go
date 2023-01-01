@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-response object */
+response object
+*/
 type PutCharactersCharacterIdCalendarEventIdResponse struct {
 	/*
 	 response string */

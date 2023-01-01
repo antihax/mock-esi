@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetIncursions200Ok struct {
 	/*
 	 The constellation id in which this incursion takes place */

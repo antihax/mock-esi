@@ -3,7 +3,8 @@ package esiv5
 import "time"
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCharactersCharacterIdNotifications200Ok struct {
 	/*
 	 is_read boolean */

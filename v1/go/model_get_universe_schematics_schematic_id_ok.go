@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetUniverseSchematicsSchematicIdOk struct {
 	/*
 	 Time in seconds to process a run */

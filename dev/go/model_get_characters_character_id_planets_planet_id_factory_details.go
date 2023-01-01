@@ -1,7 +1,8 @@
 package esidev
 
 /*
-factory_details object */
+factory_details object
+*/
 type GetCharactersCharacterIdPlanetsPlanetIdFactoryDetails struct {
 	/*
 	 schematic_id integer */

@@ -3,7 +3,8 @@ package esidev
 import "time"
 
 /*
-wallet transaction */
+wallet transaction
+*/
 type GetCharactersCharacterIdWalletTransactions200Ok struct {
 	/*
 	 client_id integer */

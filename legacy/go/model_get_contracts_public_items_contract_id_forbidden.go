@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-Forbidden */
+Forbidden
+*/
 type GetContractsPublicItemsContractIdForbidden struct {
 	/*
 	 Forbidden message */

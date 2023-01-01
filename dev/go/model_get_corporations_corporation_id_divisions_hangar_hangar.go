@@ -1,7 +1,8 @@
 package esidev
 
 /*
-hangar object */
+hangar object
+*/
 type GetCorporationsCorporationIdDivisionsHangarHangar struct {
 	/*
 	 division integer */

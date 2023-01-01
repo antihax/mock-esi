@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetIndustryFacilities200Ok struct {
 	/*
 	 ID of the facility */

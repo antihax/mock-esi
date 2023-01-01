@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-extractor_details object */
+extractor_details object
+*/
 type GetCharactersCharacterIdPlanetsPlanetIdExtractorDetails struct {
 	/*
 	 in seconds */

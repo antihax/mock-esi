@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-target object */
+target object
+*/
 type GetCharactersCharacterIdBookmarksTarget struct {
 	/* */
 	Coordinates GetCharactersCharacterIdBookmarksCoordinates `json:"coordinates,omitempty"`

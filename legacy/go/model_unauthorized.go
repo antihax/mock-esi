@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-Unauthorized model */
+Unauthorized model
+*/
 type Unauthorized struct {
 	/*
 	 Unauthorized message */

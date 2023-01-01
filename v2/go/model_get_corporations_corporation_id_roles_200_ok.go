@@ -1,7 +1,8 @@
 package esiv2
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCorporationsCorporationIdRoles200Ok struct {
 	/*
 	 character_id integer */

@@ -1,7 +1,8 @@
 package esidev
 
 /*
-item object */
+item object
+*/
 type GetKillmailsKillmailIdKillmailHashItemsItem struct {
 	/*
 	 flag integer */

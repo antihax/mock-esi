@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-naming object */
+naming object
+*/
 type PutFleetsFleetIdSquadsSquadIdNaming struct {
 	/*
 	 name string */

@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-Gateway timeout model */
+Gateway timeout model
+*/
 type GatewayTimeout struct {
 	/*
 	 Gateway timeout message */

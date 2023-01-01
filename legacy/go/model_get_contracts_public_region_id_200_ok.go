@@ -3,7 +3,8 @@ package esilegacy
 import "time"
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetContractsPublicRegionId200Ok struct {
 	/*
 	 Buyout price (for Auctions only) */

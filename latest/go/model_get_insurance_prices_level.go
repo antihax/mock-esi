@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-level object */
+level object
+*/
 type GetInsurancePricesLevel struct {
 	/*
 	 cost number */

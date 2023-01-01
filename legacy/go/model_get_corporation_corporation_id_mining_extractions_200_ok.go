@@ -3,7 +3,8 @@ package esilegacy
 import "time"
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCorporationCorporationIdMiningExtractions200Ok struct {
 	/*
 	 The time at which the chunk being extracted will arrive and can be fractured by the moon mining drill.  */

@@ -1,7 +1,8 @@
 package esidev
 
 /*
-graphic object */
+graphic object
+*/
 type GetCharactersCharacterIdMedalsGraphic struct {
 	/*
 	 color integer */

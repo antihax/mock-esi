@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-Not found */
+Not found
+*/
 type GetUniverseConstellationsConstellationIdNotFound struct {
 	/*
 	 Not found message */

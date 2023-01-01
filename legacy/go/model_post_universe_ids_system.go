@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-system object */
+system object
+*/
 type PostUniverseIdsSystem struct {
 	/*
 	 id integer */

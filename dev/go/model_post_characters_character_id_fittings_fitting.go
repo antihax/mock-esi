@@ -1,7 +1,8 @@
 package esidev
 
 /*
-fitting object */
+fitting object
+*/
 type PostCharactersCharacterIdFittingsFitting struct {
 	/*
 	 description string */

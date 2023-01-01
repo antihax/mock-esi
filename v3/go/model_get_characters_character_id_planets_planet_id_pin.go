@@ -3,7 +3,8 @@ package esiv3
 import "time"
 
 /*
-pin object */
+pin object
+*/
 type GetCharactersCharacterIdPlanetsPlanetIdPin struct {
 	/*
 	 contents array */

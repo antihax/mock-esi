@@ -1,7 +1,8 @@
 package esiv2
 
 /*
-home_location object */
+home_location object
+*/
 type GetCharactersCharacterIdClonesHomeLocation struct {
 	/*
 	 location_id integer */

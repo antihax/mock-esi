@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-cost_indice object */
+cost_indice object
+*/
 type GetIndustrySystemsCostIndice struct {
 	/*
 	 activity string */

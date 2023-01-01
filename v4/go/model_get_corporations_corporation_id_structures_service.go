@@ -1,7 +1,8 @@
 package esiv4
 
 /*
-service object */
+service object
+*/
 type GetCorporationsCorporationIdStructuresService struct {
 	/*
 	 name string */

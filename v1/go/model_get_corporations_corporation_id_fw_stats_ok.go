@@ -3,7 +3,8 @@ package esiv1
 import "time"
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCorporationsCorporationIdFwStatsOk struct {
 	/*
 	 The enlistment date of the given corporation into faction warfare. Will not be included if corporation is not enlisted in faction warfare */

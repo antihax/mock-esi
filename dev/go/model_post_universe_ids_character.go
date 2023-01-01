@@ -1,7 +1,8 @@
 package esidev
 
 /*
-character object */
+character object
+*/
 type PostUniverseIdsCharacter struct {
 	/*
 	 id integer */

@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetUniversePlanetsPlanetIdOk struct {
 	/*
 	 name string */

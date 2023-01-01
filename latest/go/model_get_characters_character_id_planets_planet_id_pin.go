@@ -3,7 +3,8 @@ package esilatest
 import "time"
 
 /*
-pin object */
+pin object
+*/
 type GetCharactersCharacterIdPlanetsPlanetIdPin struct {
 	/*
 	 contents array */

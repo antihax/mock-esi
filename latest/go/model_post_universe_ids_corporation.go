@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-corporation object */
+corporation object
+*/
 type PostUniverseIdsCorporation struct {
 	/*
 	 id integer */

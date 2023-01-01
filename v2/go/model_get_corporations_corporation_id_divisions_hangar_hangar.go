@@ -1,7 +1,8 @@
 package esiv2
 
 /*
-hangar object */
+hangar object
+*/
 type GetCorporationsCorporationIdDivisionsHangarHangar struct {
 	/*
 	 division integer */

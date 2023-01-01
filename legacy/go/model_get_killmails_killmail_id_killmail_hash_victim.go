@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-victim object */
+victim object
+*/
 type GetKillmailsKillmailIdKillmailHashVictim struct {
 	/*
 	 alliance_id integer */

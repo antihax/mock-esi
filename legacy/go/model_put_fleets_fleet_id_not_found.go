@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-Not found */
+Not found
+*/
 type PutFleetsFleetIdNotFound struct {
 	/*
 	 Not found message */

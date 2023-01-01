@@ -1,7 +1,8 @@
 package esidev
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCharactersCharacterIdBlueprints200Ok struct {
 	/*
 	 Unique ID for this item. */

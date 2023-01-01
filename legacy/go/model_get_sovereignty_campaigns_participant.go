@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-participant object */
+participant object
+*/
 type GetSovereigntyCampaignsParticipant struct {
 	/*
 	 alliance_id integer */

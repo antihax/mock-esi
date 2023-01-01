@@ -1,7 +1,8 @@
 package esiv4
 
 /*
-planet object */
+planet object
+*/
 type GetUniverseSystemsSystemIdPlanet struct {
 	/*
 	 asteroid_belts array */

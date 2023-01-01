@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-faction object */
+faction object
+*/
 type PostUniverseIdsFaction struct {
 	/*
 	 id integer */

@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCharactersCharacterIdLoyaltyPoints200Ok struct {
 	/*
 	 corporation_id integer */

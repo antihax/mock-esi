@@ -3,7 +3,8 @@ package esiv1
 import "time"
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCharactersCharacterIdMail200Ok struct {
 	/*
 	 From whom the mail was sent */

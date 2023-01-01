@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-dogma_attribute object */
+dogma_attribute object
+*/
 type GetDogmaDynamicItemsTypeIdItemIdDogmaAttribute struct {
 	/*
 	 attribute_id integer */

@@ -3,7 +3,8 @@ package esiv1
 import "time"
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetContractsPublicBidsContractId200Ok struct {
 	/*
 	 The amount bid, in ISK */

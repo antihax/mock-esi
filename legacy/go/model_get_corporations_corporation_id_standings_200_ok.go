@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCorporationsCorporationIdStandings200Ok struct {
 	/*
 	 from_id integer */

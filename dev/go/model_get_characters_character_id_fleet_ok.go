@@ -1,7 +1,8 @@
 package esidev
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCharactersCharacterIdFleetOk struct {
 	/*
 	 Character ID of the current fleet boss */

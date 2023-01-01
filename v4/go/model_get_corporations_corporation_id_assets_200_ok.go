@@ -1,7 +1,8 @@
 package esiv4
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCorporationsCorporationIdAssets200Ok struct {
 	/*
 	 is_blueprint_copy boolean */

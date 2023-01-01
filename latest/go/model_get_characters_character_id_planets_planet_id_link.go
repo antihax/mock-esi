@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-link object */
+link object
+*/
 type GetCharactersCharacterIdPlanetsPlanetIdLink struct {
 	/*
 	 destination_pin_id integer */

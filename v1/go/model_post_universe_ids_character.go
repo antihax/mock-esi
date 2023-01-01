@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-character object */
+character object
+*/
 type PostUniverseIdsCharacter struct {
 	/*
 	 id integer */

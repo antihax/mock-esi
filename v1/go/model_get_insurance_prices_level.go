@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-level object */
+level object
+*/
 type GetInsurancePricesLevel struct {
 	/*
 	 cost number */

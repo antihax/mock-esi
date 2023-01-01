@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-victim object */
+victim object
+*/
 type GetKillmailsKillmailIdKillmailHashVictim struct {
 	/*
 	 alliance_id integer */

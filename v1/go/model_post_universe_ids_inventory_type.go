@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-inventory_type object */
+inventory_type object
+*/
 type PostUniverseIdsInventoryType struct {
 	/*
 	 id integer */

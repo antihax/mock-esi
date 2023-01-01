@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-recipient object */
+recipient object
+*/
 type GetCharactersCharacterIdMailRecipient struct {
 	/*
 	 recipient_id integer */

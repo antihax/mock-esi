@@ -3,7 +3,8 @@ package esilegacy
 import "time"
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCharactersCharacterIdCorporationhistory200Ok struct {
 	/*
 	 corporation_id integer */

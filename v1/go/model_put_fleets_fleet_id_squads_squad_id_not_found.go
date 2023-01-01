@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-Not found */
+Not found
+*/
 type PutFleetsFleetIdSquadsSquadIdNotFound struct {
 	/*
 	 Not found message */

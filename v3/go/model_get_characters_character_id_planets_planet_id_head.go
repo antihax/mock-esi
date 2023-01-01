@@ -1,7 +1,8 @@
 package esiv3
 
 /*
-head object */
+head object
+*/
 type GetCharactersCharacterIdPlanetsPlanetIdHead struct {
 	/*
 	 head_id integer */

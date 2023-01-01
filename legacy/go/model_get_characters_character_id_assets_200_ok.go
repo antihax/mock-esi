@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCharactersCharacterIdAssets200Ok struct {
 	/*
 	 is_blueprint_copy boolean */

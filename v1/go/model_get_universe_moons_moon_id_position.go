@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-position object */
+position object
+*/
 type GetUniverseMoonsMoonIdPosition struct {
 	/*
 	 x number */

@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetUniverseConstellationsConstellationIdOk struct {
 	/*
 	 constellation_id integer */

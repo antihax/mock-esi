@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-skill object */
+skill object
+*/
 type GetCharactersCharacterIdSkillsSkill struct {
 	/*
 	 current_skill_level integer */

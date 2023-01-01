@@ -1,7 +1,8 @@
 package esidev
 
 /*
-inventory_type object */
+inventory_type object
+*/
 type PostUniverseIdsInventoryType struct {
 	/*
 	 id integer */

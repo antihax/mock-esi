@@ -1,7 +1,8 @@
 package esiv3
 
 /*
-label object */
+label object
+*/
 type GetCharactersCharacterIdMailLabelsLabel struct {
 	/*
 	 color string */

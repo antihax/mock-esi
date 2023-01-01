@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-Unprocessable entity */
+Unprocessable entity
+*/
 type GetKillmailsKillmailIdKillmailHashUnprocessableEntity struct {
 	/*
 	 Unprocessable entity message */

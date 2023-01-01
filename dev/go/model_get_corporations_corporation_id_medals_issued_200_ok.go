@@ -3,7 +3,8 @@ package esidev
 import "time"
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCorporationsCorporationIdMedalsIssued200Ok struct {
 	/*
 	 ID of the character who was rewarded this medal */

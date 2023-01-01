@@ -1,7 +1,8 @@
 package esidev
 
 /*
-The aggressor corporation or alliance that declared this war, only contains either corporation_id or alliance_id */
+The aggressor corporation or alliance that declared this war, only contains either corporation_id or alliance_id
+*/
 type GetWarsWarIdAggressor struct {
 	/*
 	 Alliance ID if and only if the aggressor is an alliance */

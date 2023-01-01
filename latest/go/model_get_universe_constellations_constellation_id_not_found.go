@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-Not found */
+Not found
+*/
 type GetUniverseConstellationsConstellationIdNotFound struct {
 	/*
 	 Not found message */

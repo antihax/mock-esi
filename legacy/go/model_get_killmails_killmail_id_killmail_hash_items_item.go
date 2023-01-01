@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-item object */
+item object
+*/
 type GetKillmailsKillmailIdKillmailHashItemsItem struct {
 	/*
 	 flag integer */

@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-attacker object */
+attacker object
+*/
 type GetKillmailsKillmailIdKillmailHashAttacker struct {
 	/*
 	 alliance_id integer */

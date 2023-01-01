@@ -1,7 +1,8 @@
 package esidev
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCharactersCharacterIdMailLists200Ok struct {
 	/*
 	 Mailing list ID */

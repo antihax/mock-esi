@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-agent object */
+agent object
+*/
 type PostUniverseIdsAgent struct {
 	/*
 	 id integer */

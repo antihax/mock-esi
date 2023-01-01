@@ -1,7 +1,8 @@
 package esidev
 
 /*
-position object */
+position object
+*/
 type GetUniverseSystemsSystemIdPosition struct {
 	/*
 	 x number */

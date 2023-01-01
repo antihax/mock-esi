@@ -1,7 +1,8 @@
 package esiv3
 
 /*
-Unauthorized model */
+Unauthorized model
+*/
 type Unauthorized struct {
 	/*
 	 Unauthorized message */

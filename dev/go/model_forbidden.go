@@ -1,7 +1,8 @@
 package esidev
 
 /*
-Forbidden model */
+Forbidden model
+*/
 type Forbidden struct {
 	/*
 	 Forbidden message */

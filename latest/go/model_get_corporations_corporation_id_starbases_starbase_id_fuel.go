@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-fuel object */
+fuel object
+*/
 type GetCorporationsCorporationIdStarbasesStarbaseIdFuel struct {
 	/*
 	 quantity integer */

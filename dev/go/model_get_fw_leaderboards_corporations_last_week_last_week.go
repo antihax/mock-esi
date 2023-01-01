@@ -1,7 +1,8 @@
 package esidev
 
 /*
-last_week object */
+last_week object
+*/
 type GetFwLeaderboardsCorporationsLastWeekLastWeek struct {
 	/*
 	 Amount of kills */

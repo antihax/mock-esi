@@ -3,7 +3,8 @@ package esiv1
 import "time"
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCharactersCharacterIdIndustryJobs200Ok struct {
 	/*
 	 Job activity ID */

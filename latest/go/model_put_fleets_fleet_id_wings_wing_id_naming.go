@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-naming object */
+naming object
+*/
 type PutFleetsFleetIdWingsWingIdNaming struct {
 	/*
 	 name string */

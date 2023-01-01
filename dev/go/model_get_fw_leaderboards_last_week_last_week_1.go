@@ -1,7 +1,8 @@
 package esidev
 
 /*
-last_week object */
+last_week object
+*/
 type GetFwLeaderboardsLastWeekLastWeek1 struct {
 	/*
 	 Amount of victory points */

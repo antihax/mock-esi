@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-wallet object */
+wallet object
+*/
 type GetCorporationsCorporationIdDivisionsWalletWallet struct {
 	/*
 	 division integer */

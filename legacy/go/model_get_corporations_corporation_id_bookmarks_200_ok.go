@@ -3,7 +3,8 @@ package esilegacy
 import "time"
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCorporationsCorporationIdBookmarks200Ok struct {
 	/*
 	 bookmark_id integer */

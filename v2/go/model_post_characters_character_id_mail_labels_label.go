@@ -1,7 +1,8 @@
 package esiv2
 
 /*
-label object */
+label object
+*/
 type PostCharactersCharacterIdMailLabelsLabel struct {
 	/*
 	 Hexadecimal string representing label color, in RGB format */

@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-corporation object */
+corporation object
+*/
 type PostUniverseIdsCorporation struct {
 	/*
 	 id integer */

@@ -1,7 +1,8 @@
 package esiv3
 
 /*
-content object */
+content object
+*/
 type GetCharactersCharacterIdPlanetsPlanetIdContent struct {
 	/*
 	 amount integer */

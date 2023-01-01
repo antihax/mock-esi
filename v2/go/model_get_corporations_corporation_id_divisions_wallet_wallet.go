@@ -1,7 +1,8 @@
 package esiv2
 
 /*
-wallet object */
+wallet object
+*/
 type GetCorporationsCorporationIdDivisionsWalletWallet struct {
 	/*
 	 division integer */

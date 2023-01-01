@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCorporationsCorporationIdBlueprints200Ok struct {
 	/*
 	 Unique ID for this item. */

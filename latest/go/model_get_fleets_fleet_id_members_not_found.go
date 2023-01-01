@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-Not found */
+Not found
+*/
 type GetFleetsFleetIdMembersNotFound struct {
 	/*
 	 Not found message */

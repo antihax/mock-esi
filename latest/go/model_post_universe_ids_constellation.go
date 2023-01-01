@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-constellation object */
+constellation object
+*/
 type PostUniverseIdsConstellation struct {
 	/*
 	 id integer */

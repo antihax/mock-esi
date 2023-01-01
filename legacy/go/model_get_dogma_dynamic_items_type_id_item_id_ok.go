@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetDogmaDynamicItemsTypeIdItemIdOk struct {
 	/*
 	 The ID of the character who created the item */

@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-invitation object */
+invitation object
+*/
 type PostFleetsFleetIdMembersInvitation struct {
 	/*
 	 The character you want to invite */

@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetUniverseAsteroidBeltsAsteroidBeltIdOk struct {
 	/*
 	 name string */

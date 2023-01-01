@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-alliance object */
+alliance object
+*/
 type PostUniverseIdsAlliance struct {
 	/*
 	 id integer */

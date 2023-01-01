@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-required_item object */
+required_item object
+*/
 type GetLoyaltyStoresCorporationIdOffersRequiredItem struct {
 	/*
 	 quantity integer */

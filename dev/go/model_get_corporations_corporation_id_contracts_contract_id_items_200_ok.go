@@ -1,7 +1,8 @@
 package esidev
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCorporationsCorporationIdContractsContractIdItems200Ok struct {
 	/*
 	 true if the contract issuer has submitted this item with the contract, false if the isser is asking for this item in the contract */

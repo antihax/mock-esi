@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-fuel object */
+fuel object
+*/
 type GetCorporationsCorporationIdStarbasesStarbaseIdFuel struct {
 	/*
 	 quantity integer */

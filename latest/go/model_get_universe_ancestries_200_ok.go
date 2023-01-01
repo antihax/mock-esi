@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetUniverseAncestries200Ok struct {
 	/*
 	 The bloodline associated with this ancestry */

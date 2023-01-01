@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetOpportunitiesGroupsGroupIdOk struct {
 	/*
 	 The groups that are connected to this group on the opportunities map */

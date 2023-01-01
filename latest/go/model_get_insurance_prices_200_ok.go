@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetInsurancePrices200Ok struct {
 	/*
 	 A list of a available insurance levels for this ship type */

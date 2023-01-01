@@ -1,7 +1,8 @@
 package esidev
 
 /*
-constellation object */
+constellation object
+*/
 type PostUniverseIdsConstellation struct {
 	/*
 	 id integer */

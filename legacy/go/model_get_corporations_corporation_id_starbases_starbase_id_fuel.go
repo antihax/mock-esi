@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-fuel object */
+fuel object
+*/
 type GetCorporationsCorporationIdStarbasesStarbaseIdFuel struct {
 	/*
 	 quantity integer */

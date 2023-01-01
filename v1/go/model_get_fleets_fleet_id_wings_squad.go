@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-squad object */
+squad object
+*/
 type GetFleetsFleetIdWingsSquad struct {
 	/*
 	 id integer */

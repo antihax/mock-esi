@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-faction object */
+faction object
+*/
 type PostUniverseIdsFaction struct {
 	/*
 	 id integer */

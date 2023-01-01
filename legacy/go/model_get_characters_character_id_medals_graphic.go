@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-graphic object */
+graphic object
+*/
 type GetCharactersCharacterIdMedalsGraphic struct {
 	/*
 	 color integer */

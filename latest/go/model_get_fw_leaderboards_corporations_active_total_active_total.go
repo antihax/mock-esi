@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-active_total object */
+active_total object
+*/
 type GetFwLeaderboardsCorporationsActiveTotalActiveTotal struct {
 	/*
 	 Amount of kills */

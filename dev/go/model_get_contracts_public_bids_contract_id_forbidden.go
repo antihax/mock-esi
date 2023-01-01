@@ -1,7 +1,8 @@
 package esidev
 
 /*
-Forbidden */
+Forbidden
+*/
 type GetContractsPublicBidsContractIdForbidden struct {
 	/*
 	 Forbidden message */

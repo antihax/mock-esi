@@ -1,7 +1,8 @@
 package esiv2
 
 /*
-Summary of kills done by the given corporation against enemy factions */
+Summary of kills done by the given corporation against enemy factions
+*/
 type GetCorporationsCorporationIdFwStatsKills struct {
 	/*
 	 Last week's total number of kills by members of the given corporation against enemy factions */

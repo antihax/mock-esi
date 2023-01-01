@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-Forbidden */
+Forbidden
+*/
 type GetContractsPublicItemsContractIdForbidden struct {
 	/*
 	 Forbidden message */

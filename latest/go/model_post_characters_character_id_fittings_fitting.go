@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-fitting object */
+fitting object
+*/
 type PostCharactersCharacterIdFittingsFitting struct {
 	/*
 	 description string */

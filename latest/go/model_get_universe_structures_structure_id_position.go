@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-Coordinates of the structure in Cartesian space relative to the Sun, in metres.  */
+Coordinates of the structure in Cartesian space relative to the Sun, in metres.
+*/
 type GetUniverseStructuresStructureIdPosition struct {
 	/*
 	 x number */

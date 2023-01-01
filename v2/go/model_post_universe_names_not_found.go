@@ -1,7 +1,8 @@
 package esiv2
 
 /*
-Not found */
+Not found
+*/
 type PostUniverseNamesNotFound struct {
 	/*
 	 Not found message */

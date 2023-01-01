@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-squad object */
+squad object
+*/
 type GetFleetsFleetIdWingsSquad struct {
 	/*
 	 id integer */

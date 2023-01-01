@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-yesterday object */
+yesterday object
+*/
 type GetFwLeaderboardsCorporationsYesterdayYesterday struct {
 	/*
 	 Amount of kills */

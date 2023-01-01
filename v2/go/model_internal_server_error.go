@@ -1,7 +1,8 @@
 package esiv2
 
 /*
-Internal server error model */
+Internal server error model
+*/
 type InternalServerError struct {
 	/*
 	 Internal server error message */

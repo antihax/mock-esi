@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-Not found */
+Not found
+*/
 type GetUniverseGraphicsGraphicIdNotFound struct {
 	/*
 	 Not found message */

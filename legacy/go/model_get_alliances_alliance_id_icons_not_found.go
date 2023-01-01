@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-No image server for this datasource */
+No image server for this datasource
+*/
 type GetAlliancesAllianceIdIconsNotFound struct {
 	/*
 	 error message */

@@ -1,7 +1,8 @@
 package esidev
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetUniverseRaces200Ok struct {
 	/*
 	 The alliance generally associated with this race */

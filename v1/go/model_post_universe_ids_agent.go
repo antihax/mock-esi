@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-agent object */
+agent object
+*/
 type PostUniverseIdsAgent struct {
 	/*
 	 id integer */

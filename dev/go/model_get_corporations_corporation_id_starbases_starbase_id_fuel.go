@@ -1,7 +1,8 @@
 package esidev
 
 /*
-fuel object */
+fuel object
+*/
 type GetCorporationsCorporationIdStarbasesStarbaseIdFuel struct {
 	/*
 	 quantity integer */

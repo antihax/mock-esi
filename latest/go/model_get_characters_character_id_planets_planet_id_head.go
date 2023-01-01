@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-head object */
+head object
+*/
 type GetCharactersCharacterIdPlanetsPlanetIdHead struct {
 	/*
 	 head_id integer */

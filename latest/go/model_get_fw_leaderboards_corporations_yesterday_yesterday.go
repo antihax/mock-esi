@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-yesterday object */
+yesterday object
+*/
 type GetFwLeaderboardsCorporationsYesterdayYesterday struct {
 	/*
 	 Amount of kills */

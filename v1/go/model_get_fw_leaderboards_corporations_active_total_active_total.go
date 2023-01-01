@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-active_total object */
+active_total object
+*/
 type GetFwLeaderboardsCorporationsActiveTotalActiveTotal struct {
 	/*
 	 Amount of kills */

@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-The defending corporation or alliance that declared this war, only contains either corporation_id or alliance_id */
+The defending corporation or alliance that declared this war, only contains either corporation_id or alliance_id
+*/
 type GetWarsWarIdDefender struct {
 	/*
 	 Alliance ID if and only if the defender is an alliance */

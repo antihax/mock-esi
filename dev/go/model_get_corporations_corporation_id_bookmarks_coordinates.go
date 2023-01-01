@@ -1,7 +1,8 @@
 package esidev
 
 /*
-Optional object that is returned if a bookmark was made on a planet or a random location in space. */
+Optional object that is returned if a bookmark was made on a planet or a random location in space.
+*/
 type GetCorporationsCorporationIdBookmarksCoordinates struct {
 	/*
 	 x number */

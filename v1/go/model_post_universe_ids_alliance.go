@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-alliance object */
+alliance object
+*/
 type PostUniverseIdsAlliance struct {
 	/*
 	 id integer */

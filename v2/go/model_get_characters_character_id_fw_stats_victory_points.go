@@ -1,7 +1,8 @@
 package esiv2
 
 /*
-Summary of victory points gained by the given character for the enlisted faction */
+Summary of victory points gained by the given character for the enlisted faction
+*/
 type GetCharactersCharacterIdFwStatsVictoryPoints struct {
 	/*
 	 Last week's victory points gained by the given character */

@@ -1,7 +1,8 @@
 package esidev
 
 /*
-service object */
+service object
+*/
 type GetCorporationsCorporationIdStructuresService struct {
 	/*
 	 name string */

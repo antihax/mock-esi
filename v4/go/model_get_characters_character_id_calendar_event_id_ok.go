@@ -3,7 +3,8 @@ package esiv4
 import "time"
 
 /*
-Full details of a specific event */
+Full details of a specific event
+*/
 type GetCharactersCharacterIdCalendarEventIdOk struct {
 	/*
 	 date string */

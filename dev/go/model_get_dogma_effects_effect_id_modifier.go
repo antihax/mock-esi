@@ -1,7 +1,8 @@
 package esidev
 
 /*
-modifier object */
+modifier object
+*/
 type GetDogmaEffectsEffectIdModifier struct {
 	/*
 	 domain string */

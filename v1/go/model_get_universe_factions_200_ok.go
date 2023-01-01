@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetUniverseFactions200Ok struct {
 	/*
 	 corporation_id integer */

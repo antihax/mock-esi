@@ -1,7 +1,8 @@
 package esidev
 
 /*
-dogma_effect object */
+dogma_effect object
+*/
 type GetDogmaDynamicItemsTypeIdItemIdDogmaEffect struct {
 	/*
 	 effect_id integer */

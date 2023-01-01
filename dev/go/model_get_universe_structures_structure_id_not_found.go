@@ -1,7 +1,8 @@
 package esidev
 
 /*
-Not found */
+Not found
+*/
 type GetUniverseStructuresStructureIdNotFound struct {
 	/*
 	 Not found message */

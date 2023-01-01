@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-fitting object */
+fitting object
+*/
 type PostCharactersCharacterIdFittingsFitting struct {
 	/*
 	 description string */

@@ -1,7 +1,8 @@
 package esiv3
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetFwSystems200Ok struct {
 	/*
 	 contested string */

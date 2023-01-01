@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCharactersCharacterIdPortraitOk struct {
 	/*
 	 128x128 string */

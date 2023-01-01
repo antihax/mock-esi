@@ -1,7 +1,8 @@
 package esiv3
 
 /*
-Not found */
+Not found
+*/
 type GetUniverseStructuresStructureIdNotFound struct {
 	/*
 	 Not found message */

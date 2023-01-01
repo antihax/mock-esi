@@ -1,7 +1,8 @@
 package esiv3
 
 /*
-Not found */
+Not found
+*/
 type GetCharactersCharacterIdCalendarEventIdNotFound struct {
 	/*
 	 Not found message */

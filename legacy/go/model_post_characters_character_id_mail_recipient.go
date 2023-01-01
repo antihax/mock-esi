@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-recipient object */
+recipient object
+*/
 type PostCharactersCharacterIdMailRecipient struct {
 	/*
 	 recipient_id integer */

@@ -1,7 +1,8 @@
 package esiv5
 
 /*
-Not found */
+Not found
+*/
 type GetCharactersCharacterIdNotFound struct {
 	/*
 	 Not found message */

@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-label object */
+label object
+*/
 type GetCharactersCharacterIdMailLabelsLabel struct {
 	/*
 	 color string */

@@ -1,7 +1,8 @@
 package esiv2
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCharactersCharacterIdTitles200Ok struct {
 	/*
 	 name string */

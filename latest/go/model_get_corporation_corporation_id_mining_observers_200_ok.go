@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCorporationCorporationIdMiningObservers200Ok struct {
 	/*
 	 last_updated string */

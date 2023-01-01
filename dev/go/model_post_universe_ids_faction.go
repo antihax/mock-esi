@@ -1,7 +1,8 @@
 package esidev
 
 /*
-faction object */
+faction object
+*/
 type PostUniverseIdsFaction struct {
 	/*
 	 id integer */

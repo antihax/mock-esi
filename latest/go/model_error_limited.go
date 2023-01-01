@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-Error limited model */
+Error limited model
+*/
 type ErrorLimited struct {
 	/*
 	 Error limited message */

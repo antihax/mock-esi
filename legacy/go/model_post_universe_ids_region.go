@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-region object */
+region object
+*/
 type PostUniverseIdsRegion struct {
 	/*
 	 id integer */

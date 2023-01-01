@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetMarketsPrices200Ok struct {
 	/*
 	 adjusted_price number */

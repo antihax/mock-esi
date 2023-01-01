@@ -1,7 +1,8 @@
 package esidev
 
 /*
-position object */
+position object
+*/
 type PostCorporationsCorporationIdAssetsLocationsPosition struct {
 	/*
 	 x number */

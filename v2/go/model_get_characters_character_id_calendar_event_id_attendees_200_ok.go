@@ -1,7 +1,8 @@
 package esiv2
 
 /*
-character_id and response of an attendee */
+character_id and response of an attendee
+*/
 type GetCharactersCharacterIdCalendarEventIdAttendees200Ok struct {
 	/*
 	 character_id integer */

@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-last_week object */
+last_week object
+*/
 type GetFwLeaderboardsLastWeekLastWeek struct {
 	/*
 	 Amount of kills */

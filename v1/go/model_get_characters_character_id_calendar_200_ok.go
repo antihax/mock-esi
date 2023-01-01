@@ -3,7 +3,8 @@ package esiv1
 import "time"
 
 /*
-event */
+event
+*/
 type GetCharactersCharacterIdCalendar200Ok struct {
 	/*
 	 event_date string */

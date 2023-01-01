@@ -1,7 +1,8 @@
 package esidev
 
 /*
-Unprocessable entity */
+Unprocessable entity
+*/
 type DeleteCharactersCharacterIdMailLabelsLabelIdUnprocessableEntity struct {
 	/*
 	 Unprocessable entity message */

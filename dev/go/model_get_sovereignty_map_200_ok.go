@@ -1,7 +1,8 @@
 package esidev
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetSovereigntyMap200Ok struct {
 	/*
 	 alliance_id integer */

@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-Optional object that is returned if a bookmark was made on a particular item. */
+Optional object that is returned if a bookmark was made on a particular item.
+*/
 type GetCharactersCharacterIdBookmarksItem struct {
 	/*
 	 item_id integer */

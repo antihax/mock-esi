@@ -3,7 +3,8 @@ package esilegacy
 import "time"
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCharactersCharacterIdFwStatsOk struct {
 	/*
 	 The given character's current faction rank */

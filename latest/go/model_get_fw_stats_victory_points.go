@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-Summary of victory points gained for the given faction */
+Summary of victory points gained for the given faction
+*/
 type GetFwStatsVictoryPoints struct {
 	/*
 	 Last week's victory points gained */

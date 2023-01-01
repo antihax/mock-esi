@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetUniverseStationsStationIdOk struct {
 	/*
 	 solar_system_id integer */

@@ -1,7 +1,8 @@
 package esidev
 
 /*
-No image server for this datasource */
+No image server for this datasource
+*/
 type GetCorporationsCorporationIdIconsNotFound struct {
 	/*
 	 error message */

@@ -1,7 +1,8 @@
 package esidev
 
 /*
-route object */
+route object
+*/
 type GetCharactersCharacterIdPlanetsPlanetIdRoute struct {
 	/*
 	 content_type_id integer */

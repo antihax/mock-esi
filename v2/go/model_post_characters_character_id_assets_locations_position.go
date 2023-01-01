@@ -1,7 +1,8 @@
 package esiv2
 
 /*
-position object */
+position object
+*/
 type PostCharactersCharacterIdAssetsLocationsPosition struct {
 	/*
 	 x number */

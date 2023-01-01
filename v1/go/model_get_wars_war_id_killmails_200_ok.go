@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetWarsWarIdKillmails200Ok struct {
 	/*
 	 A hash of this killmail */

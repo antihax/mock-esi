@@ -1,7 +1,8 @@
 package esidev
 
 /*
-yesterday object */
+yesterday object
+*/
 type GetFwLeaderboardsCharactersYesterdayYesterday1 struct {
 	/*
 	 Amount of victory points */

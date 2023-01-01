@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCorporationCorporationIdMiningObserversObserverId200Ok struct {
 	/*
 	 The character that did the mining  */

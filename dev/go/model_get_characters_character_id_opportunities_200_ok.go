@@ -3,7 +3,8 @@ package esidev
 import "time"
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCharactersCharacterIdOpportunities200Ok struct {
 	/*
 	 completed_at string */

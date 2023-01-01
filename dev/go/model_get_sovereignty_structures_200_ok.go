@@ -3,7 +3,8 @@ package esidev
 import "time"
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetSovereigntyStructures200Ok struct {
 	/*
 	 The alliance that owns the structure.  */

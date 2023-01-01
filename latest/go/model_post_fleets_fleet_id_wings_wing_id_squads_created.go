@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-201 created object */
+201 created object
+*/
 type PostFleetsFleetIdWingsWingIdSquadsCreated struct {
 	/*
 	 The squad_id of the newly created squad */

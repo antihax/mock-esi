@@ -1,7 +1,8 @@
 package esiv4
 
 /*
-jump_clone object */
+jump_clone object
+*/
 type GetCharactersCharacterIdClonesJumpClone struct {
 	/*
 	 implants array */

@@ -1,7 +1,8 @@
 package esiv2
 
 /*
-dogma_attribute object */
+dogma_attribute object
+*/
 type GetUniverseTypesTypeIdDogmaAttribute struct {
 	/*
 	 attribute_id integer */

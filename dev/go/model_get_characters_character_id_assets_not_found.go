@@ -1,7 +1,8 @@
 package esidev
 
 /*
-Requested page does not exist */
+Requested page does not exist
+*/
 type GetCharactersCharacterIdAssetsNotFound struct {
 	/*
 	 error message */

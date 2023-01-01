@@ -1,7 +1,8 @@
 package esidev
 
 /*
-ally object */
+ally object
+*/
 type GetWarsWarIdAlly struct {
 	/*
 	 Alliance ID if and only if this ally is an alliance */

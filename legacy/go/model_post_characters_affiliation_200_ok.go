@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-200 ok object */
+200 ok object
+*/
 type PostCharactersAffiliation200Ok struct {
 	/*
 	 The character's alliance ID, if their corporation is in an alliance */

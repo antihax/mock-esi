@@ -3,7 +3,8 @@ package esidev
 import "time"
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetSovereigntyCampaigns200Ok struct {
 	/*
 	 Score for all attacking parties, only present in Defense Events.  */

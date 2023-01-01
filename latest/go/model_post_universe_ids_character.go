@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-character object */
+character object
+*/
 type PostUniverseIdsCharacter struct {
 	/*
 	 id integer */

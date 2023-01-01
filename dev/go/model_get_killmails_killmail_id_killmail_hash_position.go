@@ -1,7 +1,8 @@
 package esidev
 
 /*
-Coordinates of the victim in Cartesian space relative to the Sun  */
+Coordinates of the victim in Cartesian space relative to the Sun
+*/
 type GetKillmailsKillmailIdKillmailHashPosition struct {
 	/*
 	 x number */

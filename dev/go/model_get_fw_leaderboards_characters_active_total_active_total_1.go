@@ -1,7 +1,8 @@
 package esidev
 
 /*
-active_total object */
+active_total object
+*/
 type GetFwLeaderboardsCharactersActiveTotalActiveTotal1 struct {
 	/*
 	 Amount of victory points */

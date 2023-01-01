@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-item object */
+item object
+*/
 type GetCharactersCharacterIdFittingsItem struct {
 	/*
 	 flag integer */

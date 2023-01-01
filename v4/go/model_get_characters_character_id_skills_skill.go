@@ -1,7 +1,8 @@
 package esiv4
 
 /*
-skill object */
+skill object
+*/
 type GetCharactersCharacterIdSkillsSkill struct {
 	/*
 	 active_skill_level integer */

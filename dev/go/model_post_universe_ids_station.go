@@ -1,7 +1,8 @@
 package esidev
 
 /*
-station object */
+station object
+*/
 type PostUniverseIdsStation struct {
 	/*
 	 id integer */

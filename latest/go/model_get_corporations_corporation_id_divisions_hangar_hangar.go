@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-hangar object */
+hangar object
+*/
 type GetCorporationsCorporationIdDivisionsHangarHangar struct {
 	/*
 	 division integer */

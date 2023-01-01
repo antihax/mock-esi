@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-yesterday object */
+yesterday object
+*/
 type GetFwLeaderboardsCorporationsYesterdayYesterday struct {
 	/*
 	 Amount of kills */

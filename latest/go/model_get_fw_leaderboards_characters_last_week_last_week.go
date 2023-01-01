@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-last_week object */
+last_week object
+*/
 type GetFwLeaderboardsCharactersLastWeekLastWeek struct {
 	/*
 	 Amount of kills */

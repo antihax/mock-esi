@@ -1,7 +1,8 @@
 package esidev
 
 /*
-skill object */
+skill object
+*/
 type GetCharactersCharacterIdSkillsSkill struct {
 	/*
 	 active_skill_level integer */

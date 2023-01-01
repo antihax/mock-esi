@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-squad object */
+squad object
+*/
 type GetFleetsFleetIdWingsSquad struct {
 	/*
 	 id integer */

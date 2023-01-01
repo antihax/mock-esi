@@ -1,7 +1,8 @@
 package esiv5
 
 /*
-Bad request model */
+Bad request model
+*/
 type BadRequest struct {
 	/*
 	 Bad request message */

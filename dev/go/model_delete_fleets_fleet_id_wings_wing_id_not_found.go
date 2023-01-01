@@ -1,7 +1,8 @@
 package esidev
 
 /*
-Not found */
+Not found
+*/
 type DeleteFleetsFleetIdWingsWingIdNotFound struct {
 	/*
 	 Not found message */

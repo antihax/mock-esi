@@ -1,7 +1,8 @@
 package esidev
 
 /*
-Not found */
+Not found
+*/
 type GetMarketsGroupsMarketGroupIdNotFound struct {
 	/*
 	 Not found message */

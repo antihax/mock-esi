@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-naming object */
+naming object
+*/
 type PutFleetsFleetIdWingsWingIdNaming struct {
 	/*
 	 name string */

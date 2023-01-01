@@ -1,7 +1,8 @@
 package esidev
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetUniverseStationsStationIdOk struct {
 	/*
 	 max_dockable_ship_volume number */

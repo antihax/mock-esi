@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-last_week object */
+last_week object
+*/
 type GetFwLeaderboardsCharactersLastWeekLastWeek1 struct {
 	/*
 	 Amount of victory points */

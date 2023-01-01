@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-coordinates object */
+coordinates object
+*/
 type GetCharactersCharacterIdBookmarksCoordinates struct {
 	/*
 	 x number */

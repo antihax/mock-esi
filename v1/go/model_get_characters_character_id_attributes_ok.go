@@ -3,7 +3,8 @@ package esiv1
 import "time"
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCharactersCharacterIdAttributesOk struct {
 	/*
 	 Neural remapping cooldown after a character uses remap accrued over time */

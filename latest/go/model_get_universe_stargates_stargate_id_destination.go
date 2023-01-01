@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-destination object */
+destination object
+*/
 type GetUniverseStargatesStargateIdDestination struct {
 	/*
 	 The stargate this stargate connects to */

@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetUniverseSystemKills200Ok struct {
 	/*
 	 Number of NPC ships killed in this system */

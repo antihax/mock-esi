@@ -1,7 +1,8 @@
 package esiv4
 
 /*
-Forbidden model */
+Forbidden model
+*/
 type Forbidden struct {
 	/*
 	 Forbidden message */

@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-content object */
+content object
+*/
 type GetCharactersCharacterIdPlanetsPlanetIdContent struct {
 	/*
 	 amount integer */

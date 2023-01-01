@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCharactersCharacterIdKillmailsRecent200Ok struct {
 	/*
 	 A hash of this killmail */

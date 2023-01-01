@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-graphic object */
+graphic object
+*/
 type GetCharactersCharacterIdMedalsGraphic struct {
 	/*
 	 color integer */

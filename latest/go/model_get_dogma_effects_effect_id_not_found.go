@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-Not found */
+Not found
+*/
 type GetDogmaEffectsEffectIdNotFound struct {
 	/*
 	 Not found message */

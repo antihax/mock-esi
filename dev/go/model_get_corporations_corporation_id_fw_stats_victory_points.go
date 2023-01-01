@@ -1,7 +1,8 @@
 package esidev
 
 /*
-Summary of victory points gained by the given corporation for the enlisted faction */
+Summary of victory points gained by the given corporation for the enlisted faction
+*/
 type GetCorporationsCorporationIdFwStatsVictoryPoints struct {
 	/*
 	 Last week's victory points gained by members of the given corporation */

@@ -1,7 +1,8 @@
 package esiv2
 
 /*
-item object */
+item object
+*/
 type PostCharactersCharacterIdFittingsItem struct {
 	/*
 	 Fitting location for the item. Entries placed in 'Invalid' will be discarded. If this leaves the fitting with nothing, it will cause an error. */

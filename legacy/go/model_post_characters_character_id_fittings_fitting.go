@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-fitting object */
+fitting object
+*/
 type PostCharactersCharacterIdFittingsFitting struct {
 	/*
 	 description string */

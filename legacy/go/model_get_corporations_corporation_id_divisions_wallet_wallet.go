@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-wallet object */
+wallet object
+*/
 type GetCorporationsCorporationIdDivisionsWalletWallet struct {
 	/*
 	 division integer */

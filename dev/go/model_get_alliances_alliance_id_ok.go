@@ -3,7 +3,8 @@ package esidev
 import "time"
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetAlliancesAllianceIdOk struct {
 	/*
 	 ID of the corporation that created the alliance */

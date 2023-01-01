@@ -3,7 +3,8 @@ package esilatest
 import "time"
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCharactersCharacterIdOrders200Ok struct {
 	/*
 	 Number of days for which order is valid (starting from the issued date). An order expires at time issued + duration */

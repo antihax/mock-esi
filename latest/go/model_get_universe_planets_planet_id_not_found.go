@@ -1,7 +1,8 @@
 package esilatest
 
 /*
-Not found */
+Not found
+*/
 type GetUniversePlanetsPlanetIdNotFound struct {
 	/*
 	 Not found message */

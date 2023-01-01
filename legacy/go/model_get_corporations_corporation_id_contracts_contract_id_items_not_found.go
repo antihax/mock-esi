@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-Not found */
+Not found
+*/
 type GetCorporationsCorporationIdContractsContractIdItemsNotFound struct {
 	/*
 	 Not found message */

@@ -1,7 +1,8 @@
 package esiv2
 
 /*
-200 ok object */
+200 ok object
+*/
 type GetCorporationsCorporationIdStarbasesStarbaseIdOk struct {
 	/*
 	 allow_alliance_members boolean */

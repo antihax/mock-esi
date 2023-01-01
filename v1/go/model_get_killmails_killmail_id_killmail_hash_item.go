@@ -1,7 +1,8 @@
 package esiv1
 
 /*
-item object */
+item object
+*/
 type GetKillmailsKillmailIdKillmailHashItem struct {
 	/*
 	 Flag for the location of the item  */

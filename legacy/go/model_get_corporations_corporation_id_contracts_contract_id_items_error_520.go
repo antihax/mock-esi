@@ -1,7 +1,8 @@
 package esilegacy
 
 /*
-Error 520 */
+Error 520
+*/
 type GetCorporationsCorporationIdContractsContractIdItemsError520 struct {
 	/*
 	 Error 520 message */
