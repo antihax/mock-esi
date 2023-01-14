@@ -879,7 +879,7 @@ paths:
       description: "Public information about a character\n\n---\nAlternate route:\
         \ `/dev/characters/{character_id}/`\n\nAlternate route: `/legacy/characters/{character_id}/`\n\
         \nAlternate route: `/v5/characters/{character_id}/`\n\n---\nThis route is\
-        \ cached for up to 86400 seconds"
+        \ cached for up to 604800 seconds"
       operationId: "get_characters_character_id"
       parameters:
       - name: "character_id"
@@ -995,7 +995,7 @@ paths:
       - "dev"
       - "legacy"
       - "v5"
-      x-cached-seconds: 86400
+      x-cached-seconds: 604800
   /characters/{character_id}/agents_research/:
     get:
       tags:
