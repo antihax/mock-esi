@@ -21,7 +21,7 @@ paths:
       description: "Public information about a character\n\n---\nAlternate route:\
         \ `/dev/characters/{character_id}/`\n\nAlternate route: `/latest/characters/{character_id}/`\n\
         \nAlternate route: `/legacy/characters/{character_id}/`\n\n---\nThis route\
-        \ is cached for up to 86400 seconds"
+        \ is cached for up to 604800 seconds"
       operationId: "get_characters_character_id"
       parameters:
       - name: "character_id"
@@ -137,7 +137,7 @@ paths:
       - "dev"
       - "latest"
       - "legacy"
-      x-cached-seconds: 86400
+      x-cached-seconds: 604800
   /characters/{character_id}/assets/:
     get:
       tags:
@@ -1204,6 +1204,7 @@ definitions:
         - "AutoFit"
         - "BoosterBay"
         - "Cargo"
+        - "CorporationGoalDeliveries"
         - "CorpseBay"
         - "Deliveries"
         - "DroneBay"
@@ -1244,6 +1245,7 @@ definitions:
         - "MedSlot5"
         - "MedSlot6"
         - "MedSlot7"
+        - "MobileDepotHold"
         - "QuafeBay"
         - "RigSlot0"
         - "RigSlot1"
@@ -1434,6 +1436,9 @@ definitions:
         - "CorpWarInvalidatedMsg"
         - "CorpWarRetractedMsg"
         - "CorpWarSurrenderMsg"
+        - "CorporationGoalClosed"
+        - "CorporationGoalCompleted"
+        - "CorporationGoalCreated"
         - "CustomsMsg"
         - "DeclareWar"
         - "DistrictAttacked"
@@ -1554,6 +1559,7 @@ definitions:
         - "StructureLostArmor"
         - "StructureLostShields"
         - "StructureOnline"
+        - "StructurePaintPurchased"
         - "StructureServicesOffline"
         - "StructureUnanchoring"
         - "StructureUnderAttack"
@@ -1924,6 +1930,7 @@ definitions:
         - "CorpSAG5"
         - "CorpSAG6"
         - "CorpSAG7"
+        - "CorporationGoalDeliveries"
         - "CrateLoot"
         - "Deliveries"
         - "DroneBay"
@@ -1969,6 +1976,7 @@ definitions:
         - "MedSlot5"
         - "MedSlot6"
         - "MedSlot7"
+        - "MobileDepotHold"
         - "OfficeFolder"
         - "Pilot"
         - "PlanetSurface"
