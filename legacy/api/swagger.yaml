@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "An OpenAPI for EVE Online"
-  version: "1.21"
+  version: "1.24"
   title: "EVE Swagger Interface"
 host: "esi.evetech.net"
 basePath: "/legacy"
@@ -22129,6 +22129,13 @@ paths:
           examples:
             application/json:
               error: "Bad request message"
+        404:
+          description: "Not found"
+          schema:
+            $ref: "#/definitions/get_markets_region_id_types_not_found"
+          examples:
+            application/json:
+              error: "Not found message"
         420:
           description: "Error limited"
           schema:
@@ -31148,6 +31155,7 @@ definitions:
           - "Account_Take_7"
           - "Accountant"
           - "Auditor"
+          - "Brand_Manager"
           - "Communications_Officer"
           - "Config_Equipment"
           - "Config_Starbase_Equipment"
@@ -31159,6 +31167,9 @@ definitions:
           - "Container_Take_6"
           - "Container_Take_7"
           - "Contract_Manager"
+          - "Deliveries_Container_Take"
+          - "Deliveries_Query"
+          - "Deliveries_Take"
           - "Diplomat"
           - "Director"
           - "Factory_Manager"
@@ -31189,7 +31200,7 @@ definitions:
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
           - "Trader"
-        maxItems: 50
+        maxItems: 100
       roles_at_base:
         type: "array"
         description: "roles_at_base array"
@@ -31208,6 +31219,7 @@ definitions:
           - "Account_Take_7"
           - "Accountant"
           - "Auditor"
+          - "Brand_Manager"
           - "Communications_Officer"
           - "Config_Equipment"
           - "Config_Starbase_Equipment"
@@ -31219,6 +31231,9 @@ definitions:
           - "Container_Take_6"
           - "Container_Take_7"
           - "Contract_Manager"
+          - "Deliveries_Container_Take"
+          - "Deliveries_Query"
+          - "Deliveries_Take"
           - "Diplomat"
           - "Director"
           - "Factory_Manager"
@@ -31249,7 +31264,7 @@ definitions:
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
           - "Trader"
-        maxItems: 50
+        maxItems: 100
       roles_at_hq:
         type: "array"
         description: "roles_at_hq array"
@@ -31268,6 +31283,7 @@ definitions:
           - "Account_Take_7"
           - "Accountant"
           - "Auditor"
+          - "Brand_Manager"
           - "Communications_Officer"
           - "Config_Equipment"
           - "Config_Starbase_Equipment"
@@ -31279,6 +31295,9 @@ definitions:
           - "Container_Take_6"
           - "Container_Take_7"
           - "Contract_Manager"
+          - "Deliveries_Container_Take"
+          - "Deliveries_Query"
+          - "Deliveries_Take"
           - "Diplomat"
           - "Director"
           - "Factory_Manager"
@@ -31309,7 +31328,7 @@ definitions:
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
           - "Trader"
-        maxItems: 50
+        maxItems: 100
       roles_at_other:
         type: "array"
         description: "roles_at_other array"
@@ -31328,6 +31347,7 @@ definitions:
           - "Account_Take_7"
           - "Accountant"
           - "Auditor"
+          - "Brand_Manager"
           - "Communications_Officer"
           - "Config_Equipment"
           - "Config_Starbase_Equipment"
@@ -31339,6 +31359,9 @@ definitions:
           - "Container_Take_6"
           - "Container_Take_7"
           - "Contract_Manager"
+          - "Deliveries_Container_Take"
+          - "Deliveries_Query"
+          - "Deliveries_Take"
           - "Diplomat"
           - "Director"
           - "Factory_Manager"
@@ -31369,7 +31392,7 @@ definitions:
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
           - "Trader"
-        maxItems: 50
+        maxItems: 100
     description: "200 ok object"
   get_characters_character_id_search_ok:
     properties:
@@ -34103,6 +34126,7 @@ definitions:
           - "Account_Take_7"
           - "Accountant"
           - "Auditor"
+          - "Brand_Manager"
           - "Communications_Officer"
           - "Config_Equipment"
           - "Config_Starbase_Equipment"
@@ -34114,6 +34138,9 @@ definitions:
           - "Container_Take_6"
           - "Container_Take_7"
           - "Contract_Manager"
+          - "Deliveries_Container_Take"
+          - "Deliveries_Query"
+          - "Deliveries_Take"
           - "Diplomat"
           - "Director"
           - "Factory_Manager"
@@ -34144,7 +34171,7 @@ definitions:
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
           - "Trader"
-        maxItems: 50
+        maxItems: 100
       grantable_roles_at_base:
         type: "array"
         description: "grantable_roles_at_base array"
@@ -34163,6 +34190,7 @@ definitions:
           - "Account_Take_7"
           - "Accountant"
           - "Auditor"
+          - "Brand_Manager"
           - "Communications_Officer"
           - "Config_Equipment"
           - "Config_Starbase_Equipment"
@@ -34174,6 +34202,9 @@ definitions:
           - "Container_Take_6"
           - "Container_Take_7"
           - "Contract_Manager"
+          - "Deliveries_Container_Take"
+          - "Deliveries_Query"
+          - "Deliveries_Take"
           - "Diplomat"
           - "Director"
           - "Factory_Manager"
@@ -34204,7 +34235,7 @@ definitions:
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
           - "Trader"
-        maxItems: 50
+        maxItems: 100
       grantable_roles_at_hq:
         type: "array"
         description: "grantable_roles_at_hq array"
@@ -34223,6 +34254,7 @@ definitions:
           - "Account_Take_7"
           - "Accountant"
           - "Auditor"
+          - "Brand_Manager"
           - "Communications_Officer"
           - "Config_Equipment"
           - "Config_Starbase_Equipment"
@@ -34234,6 +34266,9 @@ definitions:
           - "Container_Take_6"
           - "Container_Take_7"
           - "Contract_Manager"
+          - "Deliveries_Container_Take"
+          - "Deliveries_Query"
+          - "Deliveries_Take"
           - "Diplomat"
           - "Director"
           - "Factory_Manager"
@@ -34264,7 +34299,7 @@ definitions:
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
           - "Trader"
-        maxItems: 50
+        maxItems: 100
       grantable_roles_at_other:
         type: "array"
         description: "grantable_roles_at_other array"
@@ -34283,6 +34318,7 @@ definitions:
           - "Account_Take_7"
           - "Accountant"
           - "Auditor"
+          - "Brand_Manager"
           - "Communications_Officer"
           - "Config_Equipment"
           - "Config_Starbase_Equipment"
@@ -34294,6 +34330,9 @@ definitions:
           - "Container_Take_6"
           - "Container_Take_7"
           - "Contract_Manager"
+          - "Deliveries_Container_Take"
+          - "Deliveries_Query"
+          - "Deliveries_Take"
           - "Diplomat"
           - "Director"
           - "Factory_Manager"
@@ -34324,7 +34363,7 @@ definitions:
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
           - "Trader"
-        maxItems: 50
+        maxItems: 100
       roles:
         type: "array"
         description: "roles array"
@@ -34343,6 +34382,7 @@ definitions:
           - "Account_Take_7"
           - "Accountant"
           - "Auditor"
+          - "Brand_Manager"
           - "Communications_Officer"
           - "Config_Equipment"
           - "Config_Starbase_Equipment"
@@ -34354,6 +34394,9 @@ definitions:
           - "Container_Take_6"
           - "Container_Take_7"
           - "Contract_Manager"
+          - "Deliveries_Container_Take"
+          - "Deliveries_Query"
+          - "Deliveries_Take"
           - "Diplomat"
           - "Director"
           - "Factory_Manager"
@@ -34384,7 +34427,7 @@ definitions:
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
           - "Trader"
-        maxItems: 50
+        maxItems: 100
       roles_at_base:
         type: "array"
         description: "roles_at_base array"
@@ -34403,6 +34446,7 @@ definitions:
           - "Account_Take_7"
           - "Accountant"
           - "Auditor"
+          - "Brand_Manager"
           - "Communications_Officer"
           - "Config_Equipment"
           - "Config_Starbase_Equipment"
@@ -34414,6 +34458,9 @@ definitions:
           - "Container_Take_6"
           - "Container_Take_7"
           - "Contract_Manager"
+          - "Deliveries_Container_Take"
+          - "Deliveries_Query"
+          - "Deliveries_Take"
           - "Diplomat"
           - "Director"
           - "Factory_Manager"
@@ -34444,7 +34491,7 @@ definitions:
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
           - "Trader"
-        maxItems: 50
+        maxItems: 100
       roles_at_hq:
         type: "array"
         description: "roles_at_hq array"
@@ -34463,6 +34510,7 @@ definitions:
           - "Account_Take_7"
           - "Accountant"
           - "Auditor"
+          - "Brand_Manager"
           - "Communications_Officer"
           - "Config_Equipment"
           - "Config_Starbase_Equipment"
@@ -34474,6 +34522,9 @@ definitions:
           - "Container_Take_6"
           - "Container_Take_7"
           - "Contract_Manager"
+          - "Deliveries_Container_Take"
+          - "Deliveries_Query"
+          - "Deliveries_Take"
           - "Diplomat"
           - "Director"
           - "Factory_Manager"
@@ -34504,7 +34555,7 @@ definitions:
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
           - "Trader"
-        maxItems: 50
+        maxItems: 100
       roles_at_other:
         type: "array"
         description: "roles_at_other array"
@@ -34523,6 +34574,7 @@ definitions:
           - "Account_Take_7"
           - "Accountant"
           - "Auditor"
+          - "Brand_Manager"
           - "Communications_Officer"
           - "Config_Equipment"
           - "Config_Starbase_Equipment"
@@ -34534,6 +34586,9 @@ definitions:
           - "Container_Take_6"
           - "Container_Take_7"
           - "Contract_Manager"
+          - "Deliveries_Container_Take"
+          - "Deliveries_Query"
+          - "Deliveries_Take"
           - "Diplomat"
           - "Director"
           - "Factory_Manager"
@@ -34564,7 +34619,7 @@ definitions:
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
           - "Trader"
-        maxItems: 50
+        maxItems: 100
     description: "200 ok object"
   get_corporations_corporation_id_roles_history_200_ok:
     required:
@@ -34608,6 +34663,7 @@ definitions:
           - "Account_Take_7"
           - "Accountant"
           - "Auditor"
+          - "Brand_Manager"
           - "Communications_Officer"
           - "Config_Equipment"
           - "Config_Starbase_Equipment"
@@ -34619,6 +34675,9 @@ definitions:
           - "Container_Take_6"
           - "Container_Take_7"
           - "Contract_Manager"
+          - "Deliveries_Container_Take"
+          - "Deliveries_Query"
+          - "Deliveries_Take"
           - "Diplomat"
           - "Director"
           - "Factory_Manager"
@@ -34668,6 +34727,7 @@ definitions:
           - "Account_Take_7"
           - "Accountant"
           - "Auditor"
+          - "Brand_Manager"
           - "Communications_Officer"
           - "Config_Equipment"
           - "Config_Starbase_Equipment"
@@ -34679,6 +34739,9 @@ definitions:
           - "Container_Take_6"
           - "Container_Take_7"
           - "Contract_Manager"
+          - "Deliveries_Container_Take"
+          - "Deliveries_Query"
+          - "Deliveries_Take"
           - "Diplomat"
           - "Director"
           - "Factory_Manager"
@@ -35118,6 +35181,7 @@ definitions:
           - "Account_Take_7"
           - "Accountant"
           - "Auditor"
+          - "Brand_Manager"
           - "Communications_Officer"
           - "Config_Equipment"
           - "Config_Starbase_Equipment"
@@ -35129,6 +35193,9 @@ definitions:
           - "Container_Take_6"
           - "Container_Take_7"
           - "Contract_Manager"
+          - "Deliveries_Container_Take"
+          - "Deliveries_Query"
+          - "Deliveries_Take"
           - "Diplomat"
           - "Director"
           - "Factory_Manager"
@@ -35178,6 +35245,7 @@ definitions:
           - "Account_Take_7"
           - "Accountant"
           - "Auditor"
+          - "Brand_Manager"
           - "Communications_Officer"
           - "Config_Equipment"
           - "Config_Starbase_Equipment"
@@ -35189,6 +35257,9 @@ definitions:
           - "Container_Take_6"
           - "Container_Take_7"
           - "Contract_Manager"
+          - "Deliveries_Container_Take"
+          - "Deliveries_Query"
+          - "Deliveries_Take"
           - "Diplomat"
           - "Director"
           - "Factory_Manager"
@@ -35238,6 +35309,7 @@ definitions:
           - "Account_Take_7"
           - "Accountant"
           - "Auditor"
+          - "Brand_Manager"
           - "Communications_Officer"
           - "Config_Equipment"
           - "Config_Starbase_Equipment"
@@ -35249,6 +35321,9 @@ definitions:
           - "Container_Take_6"
           - "Container_Take_7"
           - "Contract_Manager"
+          - "Deliveries_Container_Take"
+          - "Deliveries_Query"
+          - "Deliveries_Take"
           - "Diplomat"
           - "Director"
           - "Factory_Manager"
@@ -35298,6 +35373,7 @@ definitions:
           - "Account_Take_7"
           - "Accountant"
           - "Auditor"
+          - "Brand_Manager"
           - "Communications_Officer"
           - "Config_Equipment"
           - "Config_Starbase_Equipment"
@@ -35309,6 +35385,9 @@ definitions:
           - "Container_Take_6"
           - "Container_Take_7"
           - "Contract_Manager"
+          - "Deliveries_Container_Take"
+          - "Deliveries_Query"
+          - "Deliveries_Take"
           - "Diplomat"
           - "Director"
           - "Factory_Manager"
@@ -35362,6 +35441,7 @@ definitions:
           - "Account_Take_7"
           - "Accountant"
           - "Auditor"
+          - "Brand_Manager"
           - "Communications_Officer"
           - "Config_Equipment"
           - "Config_Starbase_Equipment"
@@ -35373,6 +35453,9 @@ definitions:
           - "Container_Take_6"
           - "Container_Take_7"
           - "Contract_Manager"
+          - "Deliveries_Container_Take"
+          - "Deliveries_Query"
+          - "Deliveries_Take"
           - "Diplomat"
           - "Director"
           - "Factory_Manager"
@@ -35422,6 +35505,7 @@ definitions:
           - "Account_Take_7"
           - "Accountant"
           - "Auditor"
+          - "Brand_Manager"
           - "Communications_Officer"
           - "Config_Equipment"
           - "Config_Starbase_Equipment"
@@ -35433,6 +35517,9 @@ definitions:
           - "Container_Take_6"
           - "Container_Take_7"
           - "Contract_Manager"
+          - "Deliveries_Container_Take"
+          - "Deliveries_Query"
+          - "Deliveries_Take"
           - "Diplomat"
           - "Director"
           - "Factory_Manager"
@@ -35482,6 +35569,7 @@ definitions:
           - "Account_Take_7"
           - "Accountant"
           - "Auditor"
+          - "Brand_Manager"
           - "Communications_Officer"
           - "Config_Equipment"
           - "Config_Starbase_Equipment"
@@ -35493,6 +35581,9 @@ definitions:
           - "Container_Take_6"
           - "Container_Take_7"
           - "Contract_Manager"
+          - "Deliveries_Container_Take"
+          - "Deliveries_Query"
+          - "Deliveries_Take"
           - "Diplomat"
           - "Director"
           - "Factory_Manager"
@@ -35542,6 +35633,7 @@ definitions:
           - "Account_Take_7"
           - "Accountant"
           - "Auditor"
+          - "Brand_Manager"
           - "Communications_Officer"
           - "Config_Equipment"
           - "Config_Starbase_Equipment"
@@ -35553,6 +35645,9 @@ definitions:
           - "Container_Take_6"
           - "Container_Take_7"
           - "Contract_Manager"
+          - "Deliveries_Container_Take"
+          - "Deliveries_Query"
+          - "Deliveries_Take"
           - "Diplomat"
           - "Director"
           - "Factory_Manager"
@@ -37905,6 +38000,13 @@ definitions:
         description: "Unprocessable entity message"
         title: "get_markets_region_id_orders_422_unprocessable_entity"
     description: "Unprocessable entity"
+  get_markets_region_id_types_not_found:
+    properties:
+      error:
+        type: "string"
+        description: "Not found message"
+        title: "get_markets_region_id_types_404_not_found"
+    description: "Not found"
   get_opportunities_groups_group_id_ok:
     required:
     - "connected_groups"

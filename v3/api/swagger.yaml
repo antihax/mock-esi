@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "An OpenAPI for EVE Online"
-  version: "1.21"
+  version: "1.24"
   title: "EVE Swagger Interface"
 host: "esi.evetech.net"
 basePath: "/v3"
@@ -4538,6 +4538,7 @@ definitions:
           - "Account_Take_7"
           - "Accountant"
           - "Auditor"
+          - "Brand_Manager"
           - "Communications_Officer"
           - "Config_Equipment"
           - "Config_Starbase_Equipment"
@@ -4549,6 +4550,9 @@ definitions:
           - "Container_Take_6"
           - "Container_Take_7"
           - "Contract_Manager"
+          - "Deliveries_Container_Take"
+          - "Deliveries_Query"
+          - "Deliveries_Take"
           - "Diplomat"
           - "Director"
           - "Factory_Manager"
@@ -4579,7 +4583,7 @@ definitions:
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
           - "Trader"
-        maxItems: 50
+        maxItems: 100
       roles_at_base:
         type: "array"
         description: "roles_at_base array"
@@ -4598,6 +4602,7 @@ definitions:
           - "Account_Take_7"
           - "Accountant"
           - "Auditor"
+          - "Brand_Manager"
           - "Communications_Officer"
           - "Config_Equipment"
           - "Config_Starbase_Equipment"
@@ -4609,6 +4614,9 @@ definitions:
           - "Container_Take_6"
           - "Container_Take_7"
           - "Contract_Manager"
+          - "Deliveries_Container_Take"
+          - "Deliveries_Query"
+          - "Deliveries_Take"
           - "Diplomat"
           - "Director"
           - "Factory_Manager"
@@ -4639,7 +4647,7 @@ definitions:
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
           - "Trader"
-        maxItems: 50
+        maxItems: 100
       roles_at_hq:
         type: "array"
         description: "roles_at_hq array"
@@ -4658,6 +4666,7 @@ definitions:
           - "Account_Take_7"
           - "Accountant"
           - "Auditor"
+          - "Brand_Manager"
           - "Communications_Officer"
           - "Config_Equipment"
           - "Config_Starbase_Equipment"
@@ -4669,6 +4678,9 @@ definitions:
           - "Container_Take_6"
           - "Container_Take_7"
           - "Contract_Manager"
+          - "Deliveries_Container_Take"
+          - "Deliveries_Query"
+          - "Deliveries_Take"
           - "Diplomat"
           - "Director"
           - "Factory_Manager"
@@ -4699,7 +4711,7 @@ definitions:
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
           - "Trader"
-        maxItems: 50
+        maxItems: 100
       roles_at_other:
         type: "array"
         description: "roles_at_other array"
@@ -4718,6 +4730,7 @@ definitions:
           - "Account_Take_7"
           - "Accountant"
           - "Auditor"
+          - "Brand_Manager"
           - "Communications_Officer"
           - "Config_Equipment"
           - "Config_Starbase_Equipment"
@@ -4729,6 +4742,9 @@ definitions:
           - "Container_Take_6"
           - "Container_Take_7"
           - "Contract_Manager"
+          - "Deliveries_Container_Take"
+          - "Deliveries_Query"
+          - "Deliveries_Take"
           - "Diplomat"
           - "Director"
           - "Factory_Manager"
@@ -4759,7 +4775,7 @@ definitions:
           - "Starbase_Fuel_Technician"
           - "Station_Manager"
           - "Trader"
-        maxItems: 50
+        maxItems: 100
     description: "200 ok object"
   get_characters_character_id_search_ok:
     properties:
