@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "An OpenAPI for EVE Online"
-  version: "1.24"
+  version: "1.25"
   title: "EVE Swagger Interface"
 host: "esi.evetech.net"
 basePath: "/v5"
@@ -1570,6 +1570,8 @@ definitions:
         - "StructureItemsMovedToSafety"
         - "StructureLostArmor"
         - "StructureLostShields"
+        - "StructureLowReagentsAlert"
+        - "StructureNoReagentsAlert"
         - "StructureOnline"
         - "StructurePaintPurchased"
         - "StructureServicesOffline"
