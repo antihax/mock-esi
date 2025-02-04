@@ -6297,7 +6297,8 @@ paths:
       description: "Return a list of tasks finished by a character\n\n---\nAlternate\
         \ route: `/dev/characters/{character_id}/opportunities/`\n\nAlternate route:\
         \ `/latest/characters/{character_id}/opportunities/`\n\nAlternate route: `/legacy/characters/{character_id}/opportunities/`\n\
-        \n---\nThis route is cached for up to 3600 seconds"
+        \n---\nThis route is cached for up to 3600 seconds\n\n---\nWarning: This route\
+        \ is deprecated"
       operationId: "get_characters_character_id_opportunities"
       parameters:
       - name: "character_id"
@@ -6424,6 +6425,7 @@ paths:
       security:
       - evesso:
         - "esi-characters.read_opportunities.v1"
+      deprecated: true
       x-alternate-versions:
       - "dev"
       - "latest"
@@ -18258,7 +18260,7 @@ paths:
       description: "Return a list of opportunities groups\n\n---\nAlternate route:\
         \ `/dev/opportunities/groups/`\n\nAlternate route: `/latest/opportunities/groups/`\n\
         \nAlternate route: `/legacy/opportunities/groups/`\n\n---\nThis route expires\
-        \ daily at 11:05"
+        \ daily at 11:05\n\n---\nWarning: This route is deprecated"
       operationId: "get_opportunities_groups"
       parameters:
       - name: "datasource"
@@ -18359,6 +18361,7 @@ paths:
           examples:
             application/json:
               error: "Gateway timeout message"
+      deprecated: true
       x-alternate-versions:
       - "dev"
       - "latest"
@@ -18371,7 +18374,7 @@ paths:
       description: "Return information of an opportunities group\n\n---\nAlternate\
         \ route: `/dev/opportunities/groups/{group_id}/`\n\nAlternate route: `/latest/opportunities/groups/{group_id}/`\n\
         \nAlternate route: `/legacy/opportunities/groups/{group_id}/`\n\n---\nThis\
-        \ route expires daily at 11:05"
+        \ route expires daily at 11:05\n\n---\nWarning: This route is deprecated"
       operationId: "get_opportunities_groups_group_id"
       parameters:
       - name: "Accept-Language"
@@ -18521,6 +18524,7 @@ paths:
           examples:
             application/json:
               error: "Gateway timeout message"
+      deprecated: true
       x-alternate-versions:
       - "dev"
       - "latest"
@@ -18533,7 +18537,7 @@ paths:
       description: "Return a list of opportunities tasks\n\n---\nAlternate route:\
         \ `/dev/opportunities/tasks/`\n\nAlternate route: `/latest/opportunities/tasks/`\n\
         \nAlternate route: `/legacy/opportunities/tasks/`\n\n---\nThis route expires\
-        \ daily at 11:05"
+        \ daily at 11:05\n\n---\nWarning: This route is deprecated"
       operationId: "get_opportunities_tasks"
       parameters:
       - name: "datasource"
@@ -18634,6 +18638,7 @@ paths:
           examples:
             application/json:
               error: "Gateway timeout message"
+      deprecated: true
       x-alternate-versions:
       - "dev"
       - "latest"
@@ -18646,7 +18651,7 @@ paths:
       description: "Return information of an opportunities task\n\n---\nAlternate\
         \ route: `/dev/opportunities/tasks/{task_id}/`\n\nAlternate route: `/latest/opportunities/tasks/{task_id}/`\n\
         \nAlternate route: `/legacy/opportunities/tasks/{task_id}/`\n\n---\nThis route\
-        \ expires daily at 11:05"
+        \ expires daily at 11:05\n\n---\nWarning: This route is deprecated"
       operationId: "get_opportunities_tasks_task_id"
       parameters:
       - name: "datasource"
@@ -18746,6 +18751,7 @@ paths:
           examples:
             application/json:
               error: "Gateway timeout message"
+      deprecated: true
       x-alternate-versions:
       - "dev"
       - "latest"

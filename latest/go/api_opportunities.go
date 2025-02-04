@@ -67,12 +67,15 @@ func GetCharactersCharacterIdOpportunities(w http.ResponseWriter, r *http.Reques
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -117,12 +120,15 @@ func GetOpportunitiesGroups(w http.ResponseWriter, r *http.Request) {
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -191,12 +197,15 @@ func GetOpportunitiesGroupsGroupId(w http.ResponseWriter, r *http.Request) {
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -241,12 +250,15 @@ func GetOpportunitiesTasks(w http.ResponseWriter, r *http.Request) {
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -304,12 +316,15 @@ func GetOpportunitiesTasksTaskId(w http.ResponseWriter, r *http.Request) {
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
+			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
+
+	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
