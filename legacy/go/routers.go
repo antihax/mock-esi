@@ -81,34 +81,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCharactersCharacterIdBookmarks",
-		"Get",
-		"/legacy/characters/{character_id}/bookmarks/",
-		GetCharactersCharacterIdBookmarks,
-	)
-
-	mockesi.NewRoute(
-		"GetCharactersCharacterIdBookmarksFolders",
-		"Get",
-		"/legacy/characters/{character_id}/bookmarks/folders/",
-		GetCharactersCharacterIdBookmarksFolders,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsCorporationIdBookmarks",
-		"Get",
-		"/legacy/corporations/{corporation_id}/bookmarks/",
-		GetCorporationsCorporationIdBookmarks,
-	)
-
-	mockesi.NewRoute(
-		"GetCorporationsCorporationIdBookmarksFolders",
-		"Get",
-		"/legacy/corporations/{corporation_id}/bookmarks/folders/",
-		GetCorporationsCorporationIdBookmarksFolders,
-	)
-
-	mockesi.NewRoute(
 		"GetCharactersCharacterIdCalendar",
 		"Get",
 		"/legacy/characters/{character_id}/calendar/",
