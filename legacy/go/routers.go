@@ -984,41 +984,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCharactersCharacterIdOpportunities",
-		"Get",
-		"/legacy/characters/{character_id}/opportunities/",
-		GetCharactersCharacterIdOpportunities,
-	)
-
-	mockesi.NewRoute(
-		"GetOpportunitiesGroups",
-		"Get",
-		"/legacy/opportunities/groups/",
-		GetOpportunitiesGroups,
-	)
-
-	mockesi.NewRoute(
-		"GetOpportunitiesGroupsGroupId",
-		"Get",
-		"/legacy/opportunities/groups/{group_id}/",
-		GetOpportunitiesGroupsGroupId,
-	)
-
-	mockesi.NewRoute(
-		"GetOpportunitiesTasks",
-		"Get",
-		"/legacy/opportunities/tasks/",
-		GetOpportunitiesTasks,
-	)
-
-	mockesi.NewRoute(
-		"GetOpportunitiesTasksTaskId",
-		"Get",
-		"/legacy/opportunities/tasks/{task_id}/",
-		GetOpportunitiesTasksTaskId,
-	)
-
-	mockesi.NewRoute(
 		"GetCharactersCharacterIdPlanets",
 		"Get",
 		"/legacy/characters/{character_id}/planets/",
