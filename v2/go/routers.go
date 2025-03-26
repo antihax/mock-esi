@@ -424,13 +424,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCharactersCharacterIdMailLabels",
-		"Get",
-		"/v2/characters/{character_id}/mail/labels/",
-		GetCharactersCharacterIdMailLabels,
-	)
-
-	mockesi.NewRoute(
 		"PostCharactersCharacterIdMailLabels",
 		"Post",
 		"/v2/characters/{character_id}/mail/labels/",
@@ -519,13 +512,6 @@ func init() {
 		"Get",
 		"/v2/universe/constellations/{constellation_id}/",
 		GetUniverseConstellationsConstellationId,
-	)
-
-	mockesi.NewRoute(
-		"GetUniverseFactions",
-		"Get",
-		"/v2/universe/factions/",
-		GetUniverseFactions,
 	)
 
 	mockesi.NewRoute(

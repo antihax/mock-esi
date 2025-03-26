@@ -513,9 +513,9 @@ func GetCorporationsCorporationIdIcons(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
-  "px128x128" : "https://imageserver.eveonline.com/Corporation/1000010_128.png",
-  "px256x256" : "https://imageserver.eveonline.com/Corporation/1000010_256.png",
-  "px64x64" : "https://imageserver.eveonline.com/Corporation/1000010_64.png"
+  "px128x128" : "https://images.evetech.net/corporations/1000010/logo?tenant=tranquility&size=128",
+  "px256x256" : "https://images.evetech.net/corporations/1000010/logo?tenant=tranquility&size=256",
+  "px64x64" : "https://images.evetech.net/corporations/1000010/logo?tenant=tranquility&size=64"
 }`
 	vars := mux.Vars(r)
 	localV, err = processParameters(corporationId, vars["corporation_id"])
@@ -549,15 +549,12 @@ func GetCorporationsCorporationIdIcons(w http.ResponseWriter, r *http.Request) {
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
-			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
-
-	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -1515,103 +1512,6 @@ func GetCorporationsCorporationIdStarbasesStarbaseId(w http.ResponseWriter, r *h
 	if err != nil {
 		errorOut(w, r, err)
 		return
-	}
-	if r.Form.Get("token") != "" {
-		localV, err = processParameters(token, r.Form.Get("token"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		token = localV.(string)
-	}
-
-	if r.Form.Get("page") != "" {
-		var (
-			localPage    int32
-			localIntPage interface{}
-		)
-		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		localPage = localIntPage.(int32)
-		if localPage > 1 {
-			w.Header().Set("warning", "299 - This route is deprecated.")
-			w.Header().Set("Content-Type", "application/json")
-			w.WriteHeader(http.StatusOK)
-			w.Write([]byte("[]"))
-			return
-		}
-	}
-
-	w.Header().Set("warning", "299 - This route is deprecated.")
-
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
-
-	w.Write([]byte(j))
-}
-
-func GetCorporationsCorporationIdStructures(w http.ResponseWriter, r *http.Request) {
-
-	var (
-		localV        interface{}
-		err           error
-		corporationId int32
-		datasource    string
-		language      string
-		page          int32
-		token         string
-	)
-	// shut up warnings
-	localV = localV
-	err = err
-
-	j := `[ {
-  "corporation_id" : 667531913,
-  "profile_id" : 11237,
-  "reinforce_hour" : 22,
-  "reinforce_weekday" : 2,
-  "state" : "shield_vulnerable",
-  "structure_id" : 1021975535893,
-  "system_id" : 30004763,
-  "type_id" : 35833
-} ]`
-	vars := mux.Vars(r)
-	localV, err = processParameters(corporationId, vars["corporation_id"])
-	if err != nil {
-		errorOut(w, r, err)
-		return
-	}
-	corporationId = localV.(int32)
-	if err := r.ParseForm(); err != nil {
-		errorOut(w, r, err)
-		return
-	}
-	if r.Form.Get("datasource") != "" {
-		localV, err = processParameters(datasource, r.Form.Get("datasource"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		datasource = localV.(string)
-	}
-	if r.Form.Get("language") != "" {
-		localV, err = processParameters(language, r.Form.Get("language"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		language = localV.(string)
-	}
-	if r.Form.Get("page") != "" {
-		localV, err = processParameters(page, r.Form.Get("page"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		page = localV.(int32)
 	}
 	if r.Form.Get("token") != "" {
 		localV, err = processParameters(token, r.Form.Get("token"))

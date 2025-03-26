@@ -88,13 +88,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCorporationsCorporationIdStructures",
-		"Get",
-		"/v3/corporations/{corporation_id}/structures/",
-		GetCorporationsCorporationIdStructures,
-	)
-
-	mockesi.NewRoute(
 		"GetFwSystems",
 		"Get",
 		"/v3/fw/systems/",
@@ -155,13 +148,6 @@ func init() {
 		"Get",
 		"/v3/universe/system_kills/",
 		GetUniverseSystemKills,
-	)
-
-	mockesi.NewRoute(
-		"GetUniverseSystemsSystemId",
-		"Get",
-		"/v3/universe/systems/{system_id}/",
-		GetUniverseSystemsSystemId,
 	)
 
 	mockesi.NewRoute(

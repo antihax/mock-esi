@@ -542,15 +542,12 @@ func GetCharactersCharacterIdNotifications(w http.ResponseWriter, r *http.Reques
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
-			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
-
-	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -604,72 +601,6 @@ func GetCharactersCharacterIdNotificationsContacts(w http.ResponseWriter, r *htt
 			return
 		}
 		token = localV.(string)
-	}
-
-	if r.Form.Get("page") != "" {
-		var (
-			localPage    int32
-			localIntPage interface{}
-		)
-		localIntPage, err := processParameters(localPage, r.Form.Get("page"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		localPage = localIntPage.(int32)
-		if localPage > 1 {
-			w.Header().Set("warning", "299 - This route is deprecated.")
-			w.Header().Set("Content-Type", "application/json")
-			w.WriteHeader(http.StatusOK)
-			w.Write([]byte("[]"))
-			return
-		}
-	}
-
-	w.Header().Set("warning", "299 - This route is deprecated.")
-
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
-
-	w.Write([]byte(j))
-}
-
-func GetCharactersCharacterIdPortrait(w http.ResponseWriter, r *http.Request) {
-
-	var (
-		localV      interface{}
-		err         error
-		characterId int32
-		datasource  string
-	)
-	// shut up warnings
-	localV = localV
-	err = err
-
-	j := `{
-  "128x128" : "https://images.evetech.net/Character/95465499_128.jpg",
-  "256x256" : "https://images.evetech.net/Character/95465499_256.jpg",
-  "512x512" : "https://images.evetech.net/Character/95465499_512.jpg",
-  "64x64" : "https://images.evetech.net/Character/95465499_64.jpg"
-}`
-	vars := mux.Vars(r)
-	localV, err = processParameters(characterId, vars["character_id"])
-	if err != nil {
-		errorOut(w, r, err)
-		return
-	}
-	characterId = localV.(int32)
-	if err := r.ParseForm(); err != nil {
-		errorOut(w, r, err)
-		return
-	}
-	if r.Form.Get("datasource") != "" {
-		localV, err = processParameters(datasource, r.Form.Get("datasource"))
-		if err != nil {
-			errorOut(w, r, err)
-			return
-		}
-		datasource = localV.(string)
 	}
 
 	if r.Form.Get("page") != "" {
@@ -968,15 +899,12 @@ func PostCharactersAffiliation(w http.ResponseWriter, r *http.Request) {
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
-			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
-
-	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)

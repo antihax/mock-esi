@@ -26,11 +26,17 @@ type GetUniverseTypesTypeIdOk struct {
 	 icon_id integer */
 	IconId int32 `json:"icon_id,omitempty"`
 	/*
+	 This only exists for types that can be put on the market */
+	MarketGroupId int32 `json:"market_group_id,omitempty"`
+	/*
 	 mass number */
 	Mass float32 `json:"mass,omitempty"`
 	/*
 	 name string */
 	Name string `json:"name,omitempty"`
+	/*
+	 packaged_volume number */
+	PackagedVolume float32 `json:"packaged_volume,omitempty"`
 	/*
 	 portion_size integer */
 	PortionSize int32 `json:"portion_size,omitempty"`

@@ -246,6 +246,7 @@ func GetCharactersCharacterIdFleet(w http.ResponseWriter, r *http.Request) {
 	err = err
 
 	j := `{
+  "fleet_boss_id" : 2112000001,
   "fleet_id" : 1234567890,
   "role" : "fleet_commander",
   "squad_id" : -1,

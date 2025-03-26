@@ -5,6 +5,9 @@ package esilatest
 */
 type GetCharactersCharacterIdFleetOk struct {
 	/*
+	 Character ID of the current fleet boss */
+	FleetBossId int64 `json:"fleet_boss_id,omitempty"`
+	/*
 	 The character's current fleet ID */
 	FleetId int64 `json:"fleet_id,omitempty"`
 	/*

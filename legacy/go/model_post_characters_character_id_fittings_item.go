@@ -5,8 +5,8 @@ item object
 */
 type PostCharactersCharacterIdFittingsItem struct {
 	/*
-	 flag integer */
-	Flag int32 `json:"flag,omitempty"`
+	 Fitting location for the item. Entries placed in 'Invalid' will be discarded. If this leaves the fitting with nothing, it will cause an error. */
+	Flag string `json:"flag,omitempty"`
 	/*
 	 quantity integer */
 	Quantity int32 `json:"quantity,omitempty"`

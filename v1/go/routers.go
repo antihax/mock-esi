@@ -32,24 +32,10 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"PostCharactersCharacterIdAssetsLocations",
-		"Post",
-		"/v1/characters/{character_id}/assets/locations/",
-		PostCharactersCharacterIdAssetsLocations,
-	)
-
-	mockesi.NewRoute(
 		"PostCharactersCharacterIdAssetsNames",
 		"Post",
 		"/v1/characters/{character_id}/assets/names/",
 		PostCharactersCharacterIdAssetsNames,
-	)
-
-	mockesi.NewRoute(
-		"PostCorporationsCorporationIdAssetsLocations",
-		"Post",
-		"/v1/corporations/{corporation_id}/assets/locations/",
-		PostCorporationsCorporationIdAssetsLocations,
 	)
 
 	mockesi.NewRoute(
@@ -109,13 +95,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCharactersCharacterIdPortrait",
-		"Get",
-		"/v1/characters/{character_id}/portrait/",
-		GetCharactersCharacterIdPortrait,
-	)
-
-	mockesi.NewRoute(
 		"GetCharactersCharacterIdStandings",
 		"Get",
 		"/v1/characters/{character_id}/standings/",
@@ -151,24 +130,10 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetAlliancesAllianceIdContacts",
-		"Get",
-		"/v1/alliances/{alliance_id}/contacts/",
-		GetAlliancesAllianceIdContacts,
-	)
-
-	mockesi.NewRoute(
 		"GetAlliancesAllianceIdContactsLabels",
 		"Get",
 		"/v1/alliances/{alliance_id}/contacts/labels/",
 		GetAlliancesAllianceIdContactsLabels,
-	)
-
-	mockesi.NewRoute(
-		"GetCharactersCharacterIdContacts",
-		"Get",
-		"/v1/characters/{character_id}/contacts/",
-		GetCharactersCharacterIdContacts,
 	)
 
 	mockesi.NewRoute(
@@ -179,31 +144,10 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCorporationsCorporationIdContacts",
-		"Get",
-		"/v1/corporations/{corporation_id}/contacts/",
-		GetCorporationsCorporationIdContacts,
-	)
-
-	mockesi.NewRoute(
 		"GetCorporationsCorporationIdContactsLabels",
 		"Get",
 		"/v1/corporations/{corporation_id}/contacts/labels/",
 		GetCorporationsCorporationIdContactsLabels,
-	)
-
-	mockesi.NewRoute(
-		"PostCharactersCharacterIdContacts",
-		"Post",
-		"/v1/characters/{character_id}/contacts/",
-		PostCharactersCharacterIdContacts,
-	)
-
-	mockesi.NewRoute(
-		"PutCharactersCharacterIdContacts",
-		"Put",
-		"/v1/characters/{character_id}/contacts/",
-		PutCharactersCharacterIdContacts,
 	)
 
 	mockesi.NewRoute(
@@ -410,13 +354,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetDogmaEffectsEffectId",
-		"Get",
-		"/v1/dogma/effects/{effect_id}/",
-		GetDogmaEffectsEffectId,
-	)
-
-	mockesi.NewRoute(
 		"GetCharactersCharacterIdFwStats",
 		"Get",
 		"/v1/characters/{character_id}/fw/stats/",
@@ -470,13 +407,6 @@ func init() {
 		"Delete",
 		"/v1/characters/{character_id}/fittings/{fitting_id}/",
 		DeleteCharactersCharacterIdFittingsFittingId,
-	)
-
-	mockesi.NewRoute(
-		"GetCharactersCharacterIdFittings",
-		"Get",
-		"/v1/characters/{character_id}/fittings/",
-		GetCharactersCharacterIdFittings,
 	)
 
 	mockesi.NewRoute(
@@ -767,13 +697,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCharactersCharacterIdOrders",
-		"Get",
-		"/v1/characters/{character_id}/orders/",
-		GetCharactersCharacterIdOrders,
-	)
-
-	mockesi.NewRoute(
 		"GetCharactersCharacterIdOrdersHistory",
 		"Get",
 		"/v1/characters/{character_id}/orders/history/",
@@ -949,13 +872,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetUniverseFactions",
-		"Get",
-		"/v1/universe/factions/",
-		GetUniverseFactions,
-	)
-
-	mockesi.NewRoute(
 		"GetUniverseGraphics",
 		"Get",
 		"/v1/universe/graphics/",
@@ -1033,13 +949,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetUniverseStationsStationId",
-		"Get",
-		"/v1/universe/stations/{station_id}/",
-		GetUniverseStationsStationId,
-	)
-
-	mockesi.NewRoute(
 		"GetUniverseStructures",
 		"Get",
 		"/v1/universe/structures/",
@@ -1058,13 +967,6 @@ func init() {
 		"Get",
 		"/v1/universe/system_jumps/",
 		GetUniverseSystemJumps,
-	)
-
-	mockesi.NewRoute(
-		"GetUniverseSystemKills",
-		"Get",
-		"/v1/universe/system_kills/",
-		GetUniverseSystemKills,
 	)
 
 	mockesi.NewRoute(

@@ -144,9 +144,10 @@ paths:
       - "Assets"
       summary: "Get character assets"
       description: "Return a list of the characters assets\n\n---\nAlternate route:\
-        \ `/legacy/characters/{character_id}/assets/`\n\n---\nThis route is cached\
-        \ for up to 3600 seconds\n\n---\nWarning: This route is deprecated\n\n---\n\
-        [Diff of the upcoming changes](https://esi.evetech.net/diff/v4/dev/#GET-/characters/{character_id}/assets/)"
+        \ `/dev/characters/{character_id}/assets/`\n\nAlternate route: `/latest/characters/{character_id}/assets/`\n\
+        \nAlternate route: `/legacy/characters/{character_id}/assets/`\n\nAlternate\
+        \ route: `/v5/characters/{character_id}/assets/`\n\n---\nThis route is cached\
+        \ for up to 3600 seconds"
       operationId: "get_characters_character_id_assets"
       parameters:
       - name: "character_id"
@@ -262,6 +263,13 @@ paths:
           examples:
             application/json:
               error: "Forbidden message"
+        404:
+          description: "Requested page does not exist"
+          schema:
+            $ref: "#/definitions/get_characters_character_id_assets_not_found"
+          examples:
+            application/json:
+              error: "Requested page does not exist"
         420:
           description: "Error limited"
           schema:
@@ -293,9 +301,11 @@ paths:
       security:
       - evesso:
         - "esi-assets.read_assets.v1"
-      deprecated: true
       x-alternate-versions:
+      - "dev"
+      - "latest"
       - "legacy"
+      - "v5"
       x-cached-seconds: 3600
   /characters/{character_id}/calendar/{event_id}/:
     get:
@@ -578,8 +588,9 @@ paths:
       summary: "Get clones"
       description: "A list of the character's clones\n\n---\nAlternate route: `/dev/characters/{character_id}/clones/`\n\
         \nAlternate route: `/latest/characters/{character_id}/clones/`\n\nAlternate\
-        \ route: `/v3/characters/{character_id}/clones/`\n\n---\nThis route is cached\
-        \ for up to 120 seconds"
+        \ route: `/legacy/characters/{character_id}/clones/`\n\nAlternate route: `/v2/characters/{character_id}/clones/`\n\
+        \nAlternate route: `/v3/characters/{character_id}/clones/`\n\n---\nThis route\
+        \ is cached for up to 120 seconds"
       operationId: "get_characters_character_id_clones"
       parameters:
       - name: "character_id"
@@ -711,6 +722,8 @@ paths:
       x-alternate-versions:
       - "dev"
       - "latest"
+      - "legacy"
+      - "v2"
       - "v3"
       x-cached-seconds: 120
   /characters/{character_id}/cspa/:
@@ -831,9 +844,12 @@ paths:
       tags:
       - "Character"
       summary: "Get character notifications"
-      description: "Return character notifications\n\n---\nAlternate route: `/legacy/characters/{character_id}/notifications/`\n\
-        \n---\nThis route is cached for up to 600 seconds\n\n---\nWarning: This route\
-        \ is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v4/dev/#GET-/characters/{character_id}/notifications/)"
+      description: "Return character notifications\n\n---\nAlternate route: `/dev/characters/{character_id}/notifications/`\n\
+        \nAlternate route: `/latest/characters/{character_id}/notifications/`\n\n\
+        Alternate route: `/legacy/characters/{character_id}/notifications/`\n\nAlternate\
+        \ route: `/v5/characters/{character_id}/notifications/`\n\nAlternate route:\
+        \ `/v6/characters/{character_id}/notifications/`\n\n---\nThis route is cached\
+        \ for up to 600 seconds"
       operationId: "get_characters_character_id_notifications"
       parameters:
       - name: "character_id"
@@ -966,9 +982,12 @@ paths:
       security:
       - evesso:
         - "esi-characters.read_notifications.v1"
-      deprecated: true
       x-alternate-versions:
+      - "dev"
+      - "latest"
       - "legacy"
+      - "v5"
+      - "v6"
       x-cached-seconds: 600
   /characters/{character_id}/skills/:
     get:
@@ -1244,10 +1263,11 @@ paths:
       - "Assets"
       summary: "Get corporation assets"
       description: "Return a list of the corporation assets\n\n---\nAlternate route:\
-        \ `/legacy/corporations/{corporation_id}/assets/`\n\n---\nThis route is cached\
-        \ for up to 3600 seconds\n\n---\nRequires one of the following EVE corporation\
-        \ role(s): Director\n\n\n---\nWarning: This route is deprecated\n\n---\n[Diff\
-        \ of the upcoming changes](https://esi.evetech.net/diff/v4/dev/#GET-/corporations/{corporation_id}/assets/)"
+        \ `/dev/corporations/{corporation_id}/assets/`\n\nAlternate route: `/latest/corporations/{corporation_id}/assets/`\n\
+        \nAlternate route: `/legacy/corporations/{corporation_id}/assets/`\n\nAlternate\
+        \ route: `/v5/corporations/{corporation_id}/assets/`\n\n---\nThis route is\
+        \ cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
+        \ corporation role(s): Director\n"
       operationId: "get_corporations_corporation_id_assets"
       parameters:
       - name: "corporation_id"
@@ -1394,9 +1414,11 @@ paths:
       security:
       - evesso:
         - "esi-assets.read_corporation_assets.v1"
-      deprecated: true
       x-alternate-versions:
+      - "dev"
+      - "latest"
       - "legacy"
+      - "v5"
       x-cached-seconds: 3600
       x-required-roles:
       - "Director"
@@ -1759,6 +1781,8 @@ paths:
       description: "Retrieve the given corporation's wallet journal for the given\
         \ division going 30 days back\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/wallets/{division}/journal/`\n\
         \nAlternate route: `/latest/corporations/{corporation_id}/wallets/{division}/journal/`\n\
+        \nAlternate route: `/legacy/corporations/{corporation_id}/wallets/{division}/journal/`\n\
+        \nAlternate route: `/v3/corporations/{corporation_id}/wallets/{division}/journal/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
         \ the following EVE corporation role(s): Accountant, Junior_Accountant\n"
       operationId: "get_corporations_corporation_id_wallets_division_journal"
@@ -1922,6 +1946,8 @@ paths:
       x-alternate-versions:
       - "dev"
       - "latest"
+      - "legacy"
+      - "v3"
       x-cached-seconds: 3600
       x-required-roles:
       - "Accountant"
@@ -2278,6 +2304,7 @@ definitions:
         - "AutoFit"
         - "BoosterBay"
         - "Cargo"
+        - "CorporationGoalDeliveries"
         - "CorpseBay"
         - "Deliveries"
         - "DroneBay"
@@ -2301,6 +2328,7 @@ definitions:
         - "HiSlot7"
         - "HiddenModifiers"
         - "Implant"
+        - "InfrastructureHangar"
         - "LoSlot0"
         - "LoSlot1"
         - "LoSlot2"
@@ -2318,6 +2346,8 @@ definitions:
         - "MedSlot5"
         - "MedSlot6"
         - "MedSlot7"
+        - "MobileDepotHold"
+        - "MoonMaterialBay"
         - "QuafeBay"
         - "RigSlot0"
         - "RigSlot1"
@@ -2330,9 +2360,11 @@ definitions:
         - "ShipHangar"
         - "Skill"
         - "SpecializedAmmoHold"
+        - "SpecializedAsteroidHold"
         - "SpecializedCommandCenterHold"
         - "SpecializedFuelBay"
         - "SpecializedGasHold"
+        - "SpecializedIceHold"
         - "SpecializedIndustrialShipHold"
         - "SpecializedLargeShipHold"
         - "SpecializedMaterialBay"
@@ -2343,6 +2375,7 @@ definitions:
         - "SpecializedSalvageHold"
         - "SpecializedShipHold"
         - "SpecializedSmallShipHold"
+        - "StructureDeedBay"
         - "SubSystemBay"
         - "SubSystemSlot0"
         - "SubSystemSlot1"
@@ -2379,6 +2412,13 @@ definitions:
         description: "type_id integer"
         title: "get_characters_character_id_assets_type_id"
     description: "200 ok object"
+  get_characters_character_id_assets_not_found:
+    properties:
+      error:
+        type: "string"
+        description: "error message"
+        title: "get_characters_character_id_assets_error"
+    description: "Requested page does not exist"
   get_characters_character_id_calendar_event_id_ok:
     required:
     - "date"
@@ -2592,6 +2632,7 @@ definitions:
         enum:
         - "AcceptedAlly"
         - "AcceptedSurrender"
+        - "AgentRetiredTrigravian"
         - "AllAnchoringMsg"
         - "AllMaintenanceBillMsg"
         - "AllStrucInvulnerableMsg"
@@ -2602,6 +2643,7 @@ definitions:
         - "AllWarRetractedMsg"
         - "AllWarSurrenderMsg"
         - "AllianceCapitalChanged"
+        - "AllianceWarDeclaredV2"
         - "AllyContractCancelled"
         - "AllyJoinedWarAggressorMsg"
         - "AllyJoinedWarAllyMsg"
@@ -2632,12 +2674,14 @@ definitions:
         - "ContactAdd"
         - "ContactEdit"
         - "ContainerPasswordMsg"
+        - "ContractRegionChangedToPochven"
         - "CorpAllBillMsg"
         - "CorpAppAcceptMsg"
         - "CorpAppInvitedMsg"
         - "CorpAppNewMsg"
         - "CorpAppRejectCustomMsg"
         - "CorpAppRejectMsg"
+        - "CorpBecameWarEligible"
         - "CorpDividendMsg"
         - "CorpFriendlyFireDisableTimerCompleted"
         - "CorpFriendlyFireDisableTimerStarted"
@@ -2647,22 +2691,34 @@ definitions:
         - "CorpLiquidationMsg"
         - "CorpNewCEOMsg"
         - "CorpNewsMsg"
+        - "CorpNoLongerWarEligible"
         - "CorpOfficeExpirationMsg"
         - "CorpStructLostMsg"
         - "CorpTaxChangeMsg"
         - "CorpVoteCEORevokedMsg"
         - "CorpVoteMsg"
         - "CorpWarDeclaredMsg"
+        - "CorpWarDeclaredV2"
         - "CorpWarFightingLegalMsg"
         - "CorpWarInvalidatedMsg"
         - "CorpWarRetractedMsg"
         - "CorpWarSurrenderMsg"
+        - "CorporationGoalClosed"
+        - "CorporationGoalCompleted"
+        - "CorporationGoalCreated"
+        - "CorporationGoalExpired"
+        - "CorporationGoalLimitReached"
+        - "CorporationGoalNameChange"
+        - "CorporationLeft"
         - "CustomsMsg"
+        - "DailyItemRewardAutoClaimed"
         - "DeclareWar"
         - "DistrictAttacked"
         - "DustAppAcceptedMsg"
         - "ESSMainBankLink"
         - "EntosisCaptureStarted"
+        - "ExpertSystemExpired"
+        - "ExpertSystemExpiryImminent"
         - "FWAllianceKickMsg"
         - "FWAllianceWarningMsg"
         - "FWCharKickMsg"
@@ -2696,6 +2752,9 @@ definitions:
         - "InsuranceInvalidatedMsg"
         - "InsuranceIssuedMsg"
         - "InsurancePayoutMsg"
+        - "InvasionCompletedMsg"
+        - "InvasionSystemLogin"
+        - "InvasionSystemStart"
         - "JumpCloneDeletedMsg1"
         - "JumpCloneDeletedMsg2"
         - "KillReportFinalBlow"
@@ -2706,9 +2765,15 @@ definitions:
         - "KillRightUnavailable"
         - "KillRightUnavailableOpen"
         - "KillRightUsed"
+        - "LPAutoRedeemed"
         - "LocateCharMsg"
         - "MadeWarMutual"
+        - "MercOfferRetractedMsg"
         - "MercOfferedNegotiationMsg"
+        - "MercenaryDenAttacked"
+        - "MercenaryDenNewMTO"
+        - "MercenaryDenReinforced"
+        - "MissionCanceledTriglavian"
         - "MissionOfferExpirationMsg"
         - "MissionTimeoutMsg"
         - "MoonminingAutomaticFracture"
@@ -2716,19 +2781,35 @@ definitions:
         - "MoonminingExtractionFinished"
         - "MoonminingExtractionStarted"
         - "MoonminingLaserFired"
+        - "MutualWarExpired"
+        - "MutualWarInviteAccepted"
+        - "MutualWarInviteRejected"
+        - "MutualWarInviteSent"
         - "NPCStandingsGained"
         - "NPCStandingsLost"
+        - "OfferToAllyRetracted"
         - "OfferedSurrender"
         - "OfferedToAlly"
+        - "OfficeLeaseCanceledInsufficientStandings"
         - "OldLscMessages"
         - "OperationFinished"
         - "OrbitalAttacked"
         - "OrbitalReinforced"
         - "OwnershipTransferred"
+        - "RaffleCreated"
+        - "RaffleExpired"
+        - "RaffleFinished"
         - "ReimbursementMsg"
         - "ResearchMissionAvailableMsg"
         - "RetractsWar"
+        - "SPAutoRedeemed"
         - "SeasonalChallengeCompleted"
+        - "SkinSequencingCompleted"
+        - "SkyhookDeployed"
+        - "SkyhookDestroyed"
+        - "SkyhookLostShields"
+        - "SkyhookOnline"
+        - "SkyhookUnderAttack"
         - "SovAllClaimAquiredMsg"
         - "SovAllClaimLostMsg"
         - "SovCommandNodeEventStarted"
@@ -2755,11 +2836,15 @@ definitions:
         - "StructureCourierContractChanged"
         - "StructureDestroyed"
         - "StructureFuelAlert"
+        - "StructureImpendingAbandonmentAssetsAtRisk"
         - "StructureItemsDelivered"
         - "StructureItemsMovedToSafety"
         - "StructureLostArmor"
         - "StructureLostShields"
+        - "StructureLowReagentsAlert"
+        - "StructureNoReagentsAlert"
         - "StructureOnline"
+        - "StructurePaintPurchased"
         - "StructureServicesOffline"
         - "StructureUnanchoring"
         - "StructureUnderAttack"
@@ -2772,7 +2857,17 @@ definitions:
         - "TowerResourceAlertMsg"
         - "TransactionReversalMsg"
         - "TutorialMsg"
+        - "WarAdopted "
+        - "WarAllyInherited"
         - "WarAllyOfferDeclinedMsg"
+        - "WarConcordInvalidates"
+        - "WarDeclared"
+        - "WarEndedHqSecurityDrop"
+        - "WarHQRemovedFromSpace"
+        - "WarInherited"
+        - "WarInvalid"
+        - "WarRetracted"
+        - "WarRetractedByConcord"
         - "WarSurrenderDeclinedMsg"
         - "WarSurrenderOfferMsg"
     description: "200 ok object"
@@ -2954,6 +3049,7 @@ definitions:
         - "CorpSAG5"
         - "CorpSAG6"
         - "CorpSAG7"
+        - "CorporationGoalDeliveries"
         - "CrateLoot"
         - "Deliveries"
         - "DroneBay"
@@ -2980,6 +3076,7 @@ definitions:
         - "HiddenModifiers"
         - "Implant"
         - "Impounded"
+        - "InfrastructureHangar"
         - "JunkyardReprocessed"
         - "JunkyardTrashed"
         - "LoSlot0"
@@ -2999,6 +3096,8 @@ definitions:
         - "MedSlot5"
         - "MedSlot6"
         - "MedSlot7"
+        - "MobileDepotHold"
+        - "MoonMaterialBay"
         - "OfficeFolder"
         - "Pilot"
         - "PlanetSurface"
@@ -3027,9 +3126,11 @@ definitions:
         - "Skill"
         - "SkillInTraining"
         - "SpecializedAmmoHold"
+        - "SpecializedAsteroidHold"
         - "SpecializedCommandCenterHold"
         - "SpecializedFuelBay"
         - "SpecializedGasHold"
+        - "SpecializedIceHold"
         - "SpecializedIndustrialShipHold"
         - "SpecializedLargeShipHold"
         - "SpecializedMaterialBay"

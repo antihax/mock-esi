@@ -671,9 +671,10 @@ paths:
       tags:
       - "Alliance"
       summary: "Get alliance icon"
-      description: "Get the icon urls for a alliance\n\n---\nAlternate route: `/legacy/alliances/{alliance_id}/icons/`\n\
-        \nAlternate route: `/v1/alliances/{alliance_id}/icons/`\n\n---\nThis route\
-        \ expires daily at 11:05\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/alliances/{alliance_id}/icons/)"
+      description: "Get the icon urls for a alliance\n\n---\nAlternate route: `/dev/alliances/{alliance_id}/icons/`\n\
+        \nAlternate route: `/legacy/alliances/{alliance_id}/icons/`\n\nAlternate route:\
+        \ `/v1/alliances/{alliance_id}/icons/`\n\nAlternate route: `/v2/alliances/{alliance_id}/icons/`\n\
+        \n---\nThis route expires daily at 11:05"
       operationId: "get_alliances_alliance_id_icons"
       parameters:
       - name: "alliance_id"
@@ -707,8 +708,8 @@ paths:
             $ref: "#/definitions/get_alliances_alliance_id_icons_ok"
           examples:
             application/json:
-              px128x128: "https://images.evetech.net/Alliance/503818424_128.png"
-              px64x64: "https://images.evetech.net/Alliance/503818424_64.png"
+              px128x128: "https://images.evetech.net/alliances/503818424/logo?tenant=tranquility&size=128"
+              px64x64: "https://images.evetech.net/alliances/503818424/logo?tenant=tranquility&size=64"
           headers:
             Cache-Control:
               type: "string"
@@ -780,8 +781,10 @@ paths:
             application/json:
               error: "Gateway timeout message"
       x-alternate-versions:
+      - "dev"
       - "legacy"
       - "v1"
+      - "v2"
   /characters/affiliation/:
     post:
       tags:
@@ -789,8 +792,9 @@ paths:
       summary: "Character affiliation"
       description: "Bulk lookup of character IDs to corporation, alliance and faction\n\
         \n---\nAlternate route: `/dev/characters/affiliation/`\n\nAlternate route:\
-        \ `/v2/characters/affiliation/`\n\n---\nThis route is cached for up to 3600\
-        \ seconds"
+        \ `/legacy/characters/affiliation/`\n\nAlternate route: `/v1/characters/affiliation/`\n\
+        \nAlternate route: `/v2/characters/affiliation/`\n\n---\nThis route is cached\
+        \ for up to 3600 seconds"
       operationId: "post_characters_affiliation"
       parameters:
       - in: "body"
@@ -869,6 +873,8 @@ paths:
               error: "Gateway timeout message"
       x-alternate-versions:
       - "dev"
+      - "legacy"
+      - "v1"
       - "v2"
       x-cached-seconds: 3600
   /characters/{character_id}/:
@@ -1146,8 +1152,10 @@ paths:
       - "Assets"
       summary: "Get character assets"
       description: "Return a list of the characters assets\n\n---\nAlternate route:\
-        \ `/dev/characters/{character_id}/assets/`\n\nAlternate route: `/v5/characters/{character_id}/assets/`\n\
-        \n---\nThis route is cached for up to 3600 seconds"
+        \ `/dev/characters/{character_id}/assets/`\n\nAlternate route: `/legacy/characters/{character_id}/assets/`\n\
+        \nAlternate route: `/v4/characters/{character_id}/assets/`\n\nAlternate route:\
+        \ `/v5/characters/{character_id}/assets/`\n\n---\nThis route is cached for\
+        \ up to 3600 seconds"
       operationId: "get_characters_character_id_assets"
       parameters:
       - name: "character_id"
@@ -1303,6 +1311,8 @@ paths:
         - "esi-assets.read_assets.v1"
       x-alternate-versions:
       - "dev"
+      - "legacy"
+      - "v4"
       - "v5"
       x-cached-seconds: 3600
   /characters/{character_id}/assets/locations/:
@@ -2434,9 +2444,10 @@ paths:
       - "Clones"
       summary: "Get clones"
       description: "A list of the character's clones\n\n---\nAlternate route: `/dev/characters/{character_id}/clones/`\n\
-        \nAlternate route: `/v3/characters/{character_id}/clones/`\n\nAlternate route:\
-        \ `/v4/characters/{character_id}/clones/`\n\n---\nThis route is cached for\
-        \ up to 120 seconds"
+        \nAlternate route: `/legacy/characters/{character_id}/clones/`\n\nAlternate\
+        \ route: `/v2/characters/{character_id}/clones/`\n\nAlternate route: `/v3/characters/{character_id}/clones/`\n\
+        \nAlternate route: `/v4/characters/{character_id}/clones/`\n\n---\nThis route\
+        \ is cached for up to 120 seconds"
       operationId: "get_characters_character_id_clones"
       parameters:
       - name: "character_id"
@@ -2567,6 +2578,8 @@ paths:
         - "esi-clones.read_clones.v1"
       x-alternate-versions:
       - "dev"
+      - "legacy"
+      - "v2"
       - "v3"
       - "v4"
       x-cached-seconds: 120
@@ -3011,7 +3024,8 @@ paths:
       - "Contacts"
       summary: "Delete contacts"
       description: "Bulk delete contacts\n\n---\nAlternate route: `/dev/characters/{character_id}/contacts/`\n\
-        \nAlternate route: `/v2/characters/{character_id}/contacts/`\n"
+        \nAlternate route: `/legacy/characters/{character_id}/contacts/`\n\nAlternate\
+        \ route: `/v1/characters/{character_id}/contacts/`\n\nAlternate route: `/v2/characters/{character_id}/contacts/`\n"
       operationId: "delete_characters_character_id_contacts"
       parameters:
       - name: "character_id"
@@ -3105,6 +3119,8 @@ paths:
         - "esi-characters.write_contacts.v1"
       x-alternate-versions:
       - "dev"
+      - "legacy"
+      - "v1"
       - "v2"
   /characters/{character_id}/contacts/labels/:
     get:
@@ -4254,7 +4270,8 @@ paths:
       - "Fittings"
       summary: "Create fitting"
       description: "Save a new fitting for a character\n\n---\nAlternate route: `/dev/characters/{character_id}/fittings/`\n\
-        \nAlternate route: `/v2/characters/{character_id}/fittings/`\n"
+        \nAlternate route: `/legacy/characters/{character_id}/fittings/`\n\nAlternate\
+        \ route: `/v1/characters/{character_id}/fittings/`\n\nAlternate route: `/v2/characters/{character_id}/fittings/`\n"
       operationId: "post_characters_character_id_fittings"
       parameters:
       - name: "character_id"
@@ -4349,6 +4366,8 @@ paths:
         - "esi-fittings.write_fittings.v1"
       x-alternate-versions:
       - "dev"
+      - "legacy"
+      - "v1"
       - "v2"
   /characters/{character_id}/fittings/{fitting_id}/:
     delete:
@@ -4455,9 +4474,10 @@ paths:
       - "Fleets"
       summary: "Get character fleet info"
       description: "Return the fleet ID the character is in, if any.\n\n---\nAlternate\
-        \ route: `/legacy/characters/{character_id}/fleet/`\n\nAlternate route: `/v1/characters/{character_id}/fleet/`\n\
-        \n---\nThis route is cached for up to 60 seconds\n\n---\nWarning: This route\
-        \ has an upgrade available\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/latest/dev/#GET-/characters/{character_id}/fleet/)"
+        \ route: `/dev/characters/{character_id}/fleet/`\n\nAlternate route: `/legacy/characters/{character_id}/fleet/`\n\
+        \nAlternate route: `/v1/characters/{character_id}/fleet/`\n\nAlternate route:\
+        \ `/v2/characters/{character_id}/fleet/`\n\n---\nThis route is cached for\
+        \ up to 60 seconds"
       operationId: "get_characters_character_id_fleet"
       parameters:
       - name: "character_id"
@@ -4497,6 +4517,7 @@ paths:
             $ref: "#/definitions/get_characters_character_id_fleet_ok"
           examples:
             application/json:
+              fleet_boss_id: 2112000001
               fleet_id: 1234567890
               role: "fleet_commander"
               squad_id: -1
@@ -4589,8 +4610,10 @@ paths:
       - evesso:
         - "esi-fleets.read_fleet.v1"
       x-alternate-versions:
+      - "dev"
       - "legacy"
       - "v1"
+      - "v2"
       x-cached-seconds: 60
   /characters/{character_id}/fw/stats/:
     get:
@@ -6940,9 +6963,11 @@ paths:
       - "Character"
       summary: "Get character notifications"
       description: "Return character notifications\n\n---\nAlternate route: `/dev/characters/{character_id}/notifications/`\n\
-        \nAlternate route: `/v5/characters/{character_id}/notifications/`\n\nAlternate\
-        \ route: `/v6/characters/{character_id}/notifications/`\n\n---\nThis route\
-        \ is cached for up to 600 seconds"
+        \nAlternate route: `/legacy/characters/{character_id}/notifications/`\n\n\
+        Alternate route: `/v4/characters/{character_id}/notifications/`\n\nAlternate\
+        \ route: `/v5/characters/{character_id}/notifications/`\n\nAlternate route:\
+        \ `/v6/characters/{character_id}/notifications/`\n\n---\nThis route is cached\
+        \ for up to 600 seconds"
       operationId: "get_characters_character_id_notifications"
       parameters:
       - name: "character_id"
@@ -7077,6 +7102,8 @@ paths:
         - "esi-characters.read_notifications.v1"
       x-alternate-versions:
       - "dev"
+      - "legacy"
+      - "v4"
       - "v5"
       - "v6"
       x-cached-seconds: 600
@@ -9299,8 +9326,10 @@ paths:
       summary: "Get character wallet journal"
       description: "Retrieve the given character's wallet journal going 30 days back\n\
         \n---\nAlternate route: `/dev/characters/{character_id}/wallet/journal/`\n\
-        \nAlternate route: `/v6/characters/{character_id}/wallet/journal/`\n\n---\n\
-        This route is cached for up to 3600 seconds"
+        \nAlternate route: `/legacy/characters/{character_id}/wallet/journal/`\n\n\
+        Alternate route: `/v5/characters/{character_id}/wallet/journal/`\n\nAlternate\
+        \ route: `/v6/characters/{character_id}/wallet/journal/`\n\n---\nThis route\
+        \ is cached for up to 3600 seconds"
       operationId: "get_characters_character_id_wallet_journal"
       parameters:
       - name: "character_id"
@@ -9451,6 +9480,8 @@ paths:
         - "esi-wallet.read_character_wallet.v1"
       x-alternate-versions:
       - "dev"
+      - "legacy"
+      - "v5"
       - "v6"
       x-cached-seconds: 3600
   /characters/{character_id}/wallet/transactions/:
@@ -10932,9 +10963,11 @@ paths:
       - "Assets"
       summary: "Get corporation assets"
       description: "Return a list of the corporation assets\n\n---\nAlternate route:\
-        \ `/dev/corporations/{corporation_id}/assets/`\n\nAlternate route: `/v5/corporations/{corporation_id}/assets/`\n\
-        \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
-        \ the following EVE corporation role(s): Director\n"
+        \ `/dev/corporations/{corporation_id}/assets/`\n\nAlternate route: `/legacy/corporations/{corporation_id}/assets/`\n\
+        \nAlternate route: `/v4/corporations/{corporation_id}/assets/`\n\nAlternate\
+        \ route: `/v5/corporations/{corporation_id}/assets/`\n\n---\nThis route is\
+        \ cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
+        \ corporation role(s): Director\n"
       operationId: "get_corporations_corporation_id_assets"
       parameters:
       - name: "corporation_id"
@@ -11083,6 +11116,8 @@ paths:
         - "esi-assets.read_corporation_assets.v1"
       x-alternate-versions:
       - "dev"
+      - "legacy"
+      - "v4"
       - "v5"
       x-cached-seconds: 3600
       x-required-roles:
@@ -13100,8 +13135,9 @@ paths:
       - "Corporation"
       summary: "Get corporation icon"
       description: "Get the icon urls for a corporation\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/icons/`\n\
-        \nAlternate route: `/v2/corporations/{corporation_id}/icons/`\n\n---\nThis\
-        \ route is cached for up to 3600 seconds"
+        \nAlternate route: `/legacy/corporations/{corporation_id}/icons/`\n\nAlternate\
+        \ route: `/v1/corporations/{corporation_id}/icons/`\n\nAlternate route: `/v2/corporations/{corporation_id}/icons/`\n\
+        \n---\nThis route is cached for up to 3600 seconds"
       operationId: "get_corporations_corporation_id_icons"
       parameters:
       - name: "corporation_id"
@@ -13210,6 +13246,8 @@ paths:
               error: "Gateway timeout message"
       x-alternate-versions:
       - "dev"
+      - "legacy"
+      - "v1"
       - "v2"
       x-cached-seconds: 3600
   /corporations/{corporation_id}/industry/jobs/:
@@ -14449,9 +14487,10 @@ paths:
       summary: "List open orders from a corporation"
       description: "List open market orders placed on behalf of a corporation\n\n\
         ---\nAlternate route: `/dev/corporations/{corporation_id}/orders/`\n\nAlternate\
-        \ route: `/v3/corporations/{corporation_id}/orders/`\n\n---\nThis route is\
-        \ cached for up to 1200 seconds\n\n---\nRequires one of the following EVE\
-        \ corporation role(s): Accountant, Trader\n"
+        \ route: `/legacy/corporations/{corporation_id}/orders/`\n\nAlternate route:\
+        \ `/v2/corporations/{corporation_id}/orders/`\n\nAlternate route: `/v3/corporations/{corporation_id}/orders/`\n\
+        \n---\nThis route is cached for up to 1200 seconds\n\n---\nRequires one of\
+        \ the following EVE corporation role(s): Accountant, Trader\n"
       operationId: "get_corporations_corporation_id_orders"
       parameters:
       - name: "corporation_id"
@@ -14607,6 +14646,8 @@ paths:
         - "esi-markets.read_corporation_orders.v1"
       x-alternate-versions:
       - "dev"
+      - "legacy"
+      - "v2"
       - "v3"
       x-cached-seconds: 1200
       x-required-roles:
@@ -14619,9 +14660,11 @@ paths:
       summary: "List historical orders from a corporation"
       description: "List cancelled and expired market orders placed on behalf of a\
         \ corporation up to 90 days in the past.\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/orders/history/`\n\
-        \nAlternate route: `/v2/corporations/{corporation_id}/orders/history/`\n\n\
-        ---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of the\
-        \ following EVE corporation role(s): Accountant, Trader\n"
+        \nAlternate route: `/legacy/corporations/{corporation_id}/orders/history/`\n\
+        \nAlternate route: `/v1/corporations/{corporation_id}/orders/history/`\n\n\
+        Alternate route: `/v2/corporations/{corporation_id}/orders/history/`\n\n---\n\
+        This route is cached for up to 3600 seconds\n\n---\nRequires one of the following\
+        \ EVE corporation role(s): Accountant, Trader\n"
       operationId: "get_corporations_corporation_id_orders_history"
       parameters:
       - name: "corporation_id"
@@ -14779,6 +14822,8 @@ paths:
         - "esi-markets.read_corporation_orders.v1"
       x-alternate-versions:
       - "dev"
+      - "legacy"
+      - "v1"
       - "v2"
       x-cached-seconds: 3600
       x-required-roles:
@@ -16249,6 +16294,8 @@ paths:
       summary: "Get corporation wallet journal"
       description: "Retrieve the given corporation's wallet journal for the given\
         \ division going 30 days back\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/wallets/{division}/journal/`\n\
+        \nAlternate route: `/legacy/corporations/{corporation_id}/wallets/{division}/journal/`\n\
+        \nAlternate route: `/v3/corporations/{corporation_id}/wallets/{division}/journal/`\n\
         \nAlternate route: `/v4/corporations/{corporation_id}/wallets/{division}/journal/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
         \ the following EVE corporation role(s): Accountant, Junior_Accountant\n"
@@ -16412,6 +16459,8 @@ paths:
         - "esi-wallet.read_corporation_wallets.v1"
       x-alternate-versions:
       - "dev"
+      - "legacy"
+      - "v3"
       - "v4"
       x-cached-seconds: 3600
       x-required-roles:
@@ -23444,165 +23493,6 @@ paths:
       x-alternate-versions:
       - "legacy"
       - "v1"
-  /universe/factions/:
-    get:
-      tags:
-      - "Universe"
-      summary: "Get factions"
-      description: "Get a list of factions\n\n---\nAlternate route: `/dev/universe/factions/`\n\
-        \nAlternate route: `/v2/universe/factions/`\n\n---\nThis route expires daily\
-        \ at 11:05"
-      operationId: "get_universe_factions"
-      parameters:
-      - name: "Accept-Language"
-        in: "header"
-        description: "Language to use in the response"
-        required: false
-        type: "string"
-        default: "en"
-        enum:
-        - "en"
-        - "en-us"
-        - "de"
-        - "fr"
-        - "ja"
-        - "ru"
-        - "zh"
-        - "ko"
-        - "es"
-        x-exportParamName: "AcceptLanguage"
-      - name: "datasource"
-        in: "query"
-        description: "The server name you would like data from"
-        required: false
-        type: "string"
-        default: "tranquility"
-        enum:
-        - "tranquility"
-        x-exportParamName: "Datasource"
-      - name: "If-None-Match"
-        in: "header"
-        description: "ETag from a previous request. A 304 will be returned if this\
-          \ matches the current ETag"
-        required: false
-        type: "string"
-        x-exportParamName: "IfNoneMatch"
-      - name: "language"
-        in: "query"
-        description: "Language to use in the response, takes precedence over Accept-Language"
-        required: false
-        type: "string"
-        default: "en"
-        enum:
-        - "en"
-        - "en-us"
-        - "de"
-        - "fr"
-        - "ja"
-        - "ru"
-        - "zh"
-        - "ko"
-        - "es"
-        x-exportParamName: "Language"
-      responses:
-        200:
-          description: "A list of factions"
-          schema:
-            type: "array"
-            description: "200 ok array"
-            title: "get_universe_factions_ok"
-            items:
-              $ref: "#/definitions/get_universe_factions_200_ok"
-            maxItems: 10000
-          examples:
-            application/json:
-            - corporation_id: 456
-              description: "blah blah"
-              faction_id: 1
-              is_unique: true
-              name: "Faction"
-              size_factor: 1.0
-              solar_system_id: 123
-              station_count: 1000
-              station_system_count: 100
-          headers:
-            Cache-Control:
-              type: "string"
-              description: "The caching mechanism used"
-            Content-Language:
-              type: "string"
-              description: "The language used in the response"
-              enum:
-              - "en"
-              - "de"
-              - "fr"
-              - "ja"
-              - "ru"
-              - "zh"
-              - "ko"
-              - "es"
-            ETag:
-              type: "string"
-              description: "RFC7232 compliant entity tag"
-            Expires:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-            Last-Modified:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-        304:
-          description: "Not modified"
-          headers:
-            Cache-Control:
-              type: "string"
-              description: "The caching mechanism used"
-            ETag:
-              type: "string"
-              description: "RFC7232 compliant entity tag"
-            Expires:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-            Last-Modified:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-        400:
-          description: "Bad request"
-          schema:
-            $ref: "#/definitions/bad_request"
-          examples:
-            application/json:
-              error: "Bad request message"
-        420:
-          description: "Error limited"
-          schema:
-            $ref: "#/definitions/error_limited"
-          examples:
-            application/json:
-              error: "Error limited message"
-        500:
-          description: "Internal server error"
-          schema:
-            $ref: "#/definitions/internal_server_error"
-          examples:
-            application/json:
-              error: "Internal server error message"
-        503:
-          description: "Service unavailable"
-          schema:
-            $ref: "#/definitions/service_unavailable"
-          examples:
-            application/json:
-              error: "Service unavailable message"
-        504:
-          description: "Gateway timeout"
-          schema:
-            $ref: "#/definitions/gateway_timeout"
-          examples:
-            application/json:
-              error: "Gateway timeout message"
-      x-alternate-versions:
-      - "dev"
-      - "v2"
   /universe/graphics/:
     get:
       tags:
@@ -24388,6 +24278,7 @@ paths:
       description: "Resolve a set of IDs to names and categories. Supported ID's for\
         \ resolving are: Characters, Corporations, Alliances, Stations, Solar Systems,\
         \ Constellations, Regions, Types, Factions\n\n---\nAlternate route: `/dev/universe/names/`\n\
+        \nAlternate route: `/legacy/universe/names/`\n\nAlternate route: `/v2/universe/names/`\n\
         \nAlternate route: `/v3/universe/names/`\n"
       operationId: "post_universe_names"
       parameters:
@@ -24478,6 +24369,8 @@ paths:
               error: "Gateway timeout message"
       x-alternate-versions:
       - "dev"
+      - "legacy"
+      - "v2"
       - "v3"
   /universe/planets/{planet_id}/:
     get:
@@ -25654,8 +25547,9 @@ paths:
       summary: "Get structure information"
       description: "Returns information on requested structure if you are on the ACL.\
         \ Otherwise, returns \"Forbidden\" for all inputs.\n\n---\nAlternate route:\
-        \ `/v2/universe/structures/{structure_id}/`\n\n---\nThis route is cached for\
-        \ up to 3600 seconds"
+        \ `/legacy/universe/structures/{structure_id}/`\n\nAlternate route: `/v1/universe/structures/{structure_id}/`\n\
+        \nAlternate route: `/v2/universe/structures/{structure_id}/`\n\n---\nThis\
+        \ route is cached for up to 3600 seconds"
       operationId: "get_universe_structures_structure_id"
       parameters:
       - name: "datasource"
@@ -25785,6 +25679,8 @@ paths:
       - evesso:
         - "esi-universe.read_structures.v1"
       x-alternate-versions:
+      - "legacy"
+      - "v1"
       - "v2"
       x-cached-seconds: 3600
   /universe/system_jumps/:
@@ -26422,8 +26318,9 @@ paths:
       - "Universe"
       summary: "Get type information"
       description: "Get information on a type\n\n---\nAlternate route: `/dev/universe/types/{type_id}/`\n\
-        \nAlternate route: `/v3/universe/types/{type_id}/`\n\n---\nThis route expires\
-        \ daily at 11:05"
+        \nAlternate route: `/legacy/universe/types/{type_id}/`\n\nAlternate route:\
+        \ `/v2/universe/types/{type_id}/`\n\nAlternate route: `/v3/universe/types/{type_id}/`\n\
+        \n---\nThis route expires daily at 11:05"
       operationId: "get_universe_types_type_id"
       parameters:
       - name: "Accept-Language"
@@ -26579,6 +26476,8 @@ paths:
               error: "Gateway timeout message"
       x-alternate-versions:
       - "dev"
+      - "legacy"
+      - "v2"
       - "v3"
   /wars/:
     get:
@@ -28524,11 +28423,17 @@ definitions:
     description: "201 created object"
   get_characters_character_id_fleet_ok:
     required:
+    - "fleet_boss_id"
     - "fleet_id"
     - "role"
     - "squad_id"
     - "wing_id"
     properties:
+      fleet_boss_id:
+        type: "integer"
+        format: "int64"
+        description: "Character ID of the current fleet boss"
+        title: "get_characters_character_id_fleet_fleet_boss_id"
       fleet_id:
         type: "integer"
         format: "int64"
@@ -37519,64 +37424,6 @@ definitions:
         description: "Not found message"
         title: "get_universe_constellations_constellation_id_404_not_found"
     description: "Not found"
-  get_universe_factions_200_ok:
-    required:
-    - "description"
-    - "faction_id"
-    - "is_unique"
-    - "name"
-    - "size_factor"
-    - "station_count"
-    - "station_system_count"
-    properties:
-      corporation_id:
-        type: "integer"
-        format: "int32"
-        description: "corporation_id integer"
-        title: "get_universe_factions_corporation_id"
-      description:
-        type: "string"
-        description: "description string"
-        title: "get_universe_factions_description"
-      faction_id:
-        type: "integer"
-        format: "int32"
-        description: "faction_id integer"
-        title: "get_universe_factions_faction_id"
-      is_unique:
-        type: "boolean"
-        description: "is_unique boolean"
-        title: "get_universe_factions_is_unique"
-      militia_corporation_id:
-        type: "integer"
-        format: "int32"
-        description: "militia_corporation_id integer"
-        title: "get_universe_factions_militia_corporation_id"
-      name:
-        type: "string"
-        description: "name string"
-        title: "get_universe_factions_name"
-      size_factor:
-        type: "number"
-        format: "float"
-        description: "size_factor number"
-        title: "get_universe_factions_size_factor"
-      solar_system_id:
-        type: "integer"
-        format: "int32"
-        description: "solar_system_id integer"
-        title: "get_universe_factions_solar_system_id"
-      station_count:
-        type: "integer"
-        format: "int32"
-        description: "station_count integer"
-        title: "get_universe_factions_station_count"
-      station_system_count:
-        type: "integer"
-        format: "int32"
-        description: "station_system_count integer"
-        title: "get_universe_factions_station_system_count"
-    description: "200 ok object"
   get_universe_graphics_graphic_id_ok:
     required:
     - "graphic_id"

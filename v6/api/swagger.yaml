@@ -20,8 +20,10 @@ paths:
       summary: "Get character notifications"
       description: "Return character notifications\n\n---\nAlternate route: `/dev/characters/{character_id}/notifications/`\n\
         \nAlternate route: `/latest/characters/{character_id}/notifications/`\n\n\
-        Alternate route: `/v5/characters/{character_id}/notifications/`\n\n---\nThis\
-        \ route is cached for up to 600 seconds"
+        Alternate route: `/legacy/characters/{character_id}/notifications/`\n\nAlternate\
+        \ route: `/v4/characters/{character_id}/notifications/`\n\nAlternate route:\
+        \ `/v5/characters/{character_id}/notifications/`\n\n---\nThis route is cached\
+        \ for up to 600 seconds"
       operationId: "get_characters_character_id_notifications"
       parameters:
       - name: "character_id"
@@ -157,6 +159,8 @@ paths:
       x-alternate-versions:
       - "dev"
       - "latest"
+      - "legacy"
+      - "v4"
       - "v5"
       x-cached-seconds: 600
   /characters/{character_id}/wallet/journal/:
@@ -167,7 +171,9 @@ paths:
       description: "Retrieve the given character's wallet journal going 30 days back\n\
         \n---\nAlternate route: `/dev/characters/{character_id}/wallet/journal/`\n\
         \nAlternate route: `/latest/characters/{character_id}/wallet/journal/`\n\n\
-        ---\nThis route is cached for up to 3600 seconds"
+        Alternate route: `/legacy/characters/{character_id}/wallet/journal/`\n\nAlternate\
+        \ route: `/v5/characters/{character_id}/wallet/journal/`\n\n---\nThis route\
+        \ is cached for up to 3600 seconds"
       operationId: "get_characters_character_id_wallet_journal"
       parameters:
       - name: "character_id"
@@ -319,6 +325,8 @@ paths:
       x-alternate-versions:
       - "dev"
       - "latest"
+      - "legacy"
+      - "v5"
       x-cached-seconds: 3600
 securityDefinitions:
   evesso:

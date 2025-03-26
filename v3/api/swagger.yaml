@@ -578,8 +578,9 @@ paths:
       summary: "Get clones"
       description: "A list of the character's clones\n\n---\nAlternate route: `/dev/characters/{character_id}/clones/`\n\
         \nAlternate route: `/latest/characters/{character_id}/clones/`\n\nAlternate\
-        \ route: `/v4/characters/{character_id}/clones/`\n\n---\nThis route is cached\
-        \ for up to 120 seconds"
+        \ route: `/legacy/characters/{character_id}/clones/`\n\nAlternate route: `/v2/characters/{character_id}/clones/`\n\
+        \nAlternate route: `/v4/characters/{character_id}/clones/`\n\n---\nThis route\
+        \ is cached for up to 120 seconds"
       operationId: "get_characters_character_id_clones"
       parameters:
       - name: "character_id"
@@ -711,6 +712,8 @@ paths:
       x-alternate-versions:
       - "dev"
       - "latest"
+      - "legacy"
+      - "v2"
       - "v4"
       x-cached-seconds: 120
   /characters/{character_id}/mail/labels/:
@@ -2354,9 +2357,10 @@ paths:
       summary: "List open orders from a corporation"
       description: "List open market orders placed on behalf of a corporation\n\n\
         ---\nAlternate route: `/dev/corporations/{corporation_id}/orders/`\n\nAlternate\
-        \ route: `/latest/corporations/{corporation_id}/orders/`\n\n---\nThis route\
-        \ is cached for up to 1200 seconds\n\n---\nRequires one of the following EVE\
-        \ corporation role(s): Accountant, Trader\n"
+        \ route: `/latest/corporations/{corporation_id}/orders/`\n\nAlternate route:\
+        \ `/legacy/corporations/{corporation_id}/orders/`\n\nAlternate route: `/v2/corporations/{corporation_id}/orders/`\n\
+        \n---\nThis route is cached for up to 1200 seconds\n\n---\nRequires one of\
+        \ the following EVE corporation role(s): Accountant, Trader\n"
       operationId: "get_corporations_corporation_id_orders"
       parameters:
       - name: "corporation_id"
@@ -2513,232 +2517,24 @@ paths:
       x-alternate-versions:
       - "dev"
       - "latest"
+      - "legacy"
+      - "v2"
       x-cached-seconds: 1200
       x-required-roles:
       - "Accountant"
       - "Trader"
-  /corporations/{corporation_id}/structures/:
-    get:
-      tags:
-      - "Corporation"
-      summary: "Get corporation structures"
-      description: "Get a list of corporation structures. This route's version includes\
-        \ the changes to structures detailed in this blog: https://www.eveonline.com/article/upwell-2.0-structures-changes-coming-on-february-13th\n\
-        \n---\nAlternate route: `/legacy/corporations/{corporation_id}/structures/`\n\
-        \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
-        \ the following EVE corporation role(s): Station_Manager\n\n\n---\nWarning:\
-        \ This route is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v3/dev/#GET-/corporations/{corporation_id}/structures/)"
-      operationId: "get_corporations_corporation_id_structures"
-      parameters:
-      - name: "Accept-Language"
-        in: "header"
-        description: "Language to use in the response"
-        required: false
-        type: "string"
-        default: "en"
-        enum:
-        - "en"
-        - "en-us"
-        - "de"
-        - "fr"
-        - "ja"
-        - "ru"
-        - "zh"
-        - "ko"
-        - "es"
-        x-exportParamName: "AcceptLanguage"
-      - name: "corporation_id"
-        in: "path"
-        description: "An EVE corporation ID"
-        required: true
-        type: "integer"
-        minimum: 1
-        format: "int32"
-        x-exportParamName: "CorporationId"
-      - name: "datasource"
-        in: "query"
-        description: "The server name you would like data from"
-        required: false
-        type: "string"
-        default: "tranquility"
-        enum:
-        - "tranquility"
-        x-exportParamName: "Datasource"
-      - name: "If-None-Match"
-        in: "header"
-        description: "ETag from a previous request. A 304 will be returned if this\
-          \ matches the current ETag"
-        required: false
-        type: "string"
-        x-exportParamName: "IfNoneMatch"
-      - name: "language"
-        in: "query"
-        description: "Language to use in the response, takes precedence over Accept-Language"
-        required: false
-        type: "string"
-        default: "en"
-        enum:
-        - "en"
-        - "en-us"
-        - "de"
-        - "fr"
-        - "ja"
-        - "ru"
-        - "zh"
-        - "ko"
-        - "es"
-        x-exportParamName: "Language"
-      - name: "page"
-        in: "query"
-        description: "Which page of results to return"
-        required: false
-        type: "integer"
-        default: 1
-        minimum: 1
-        format: "int32"
-        x-exportParamName: "Page"
-      - name: "token"
-        in: "query"
-        description: "Access token to use if unable to set a header"
-        required: false
-        type: "string"
-        x-exportParamName: "Token"
-      responses:
-        200:
-          description: "List of corporation structures' information"
-          schema:
-            type: "array"
-            description: "200 ok array"
-            title: "get_corporations_corporation_id_structures_ok"
-            items:
-              $ref: "#/definitions/get_corporations_corporation_id_structures_200_ok"
-            maxItems: 1000
-          examples:
-            application/json:
-            - corporation_id: 667531913
-              profile_id: 11237
-              reinforce_hour: 22
-              reinforce_weekday: 2
-              state: "shield_vulnerable"
-              structure_id: 1021975535893
-              system_id: 30004763
-              type_id: 35833
-          headers:
-            Cache-Control:
-              type: "string"
-              description: "The caching mechanism used"
-            Content-Language:
-              type: "string"
-              description: "The language used in the response"
-              enum:
-              - "en"
-              - "de"
-              - "fr"
-              - "ja"
-              - "ru"
-              - "zh"
-              - "ko"
-              - "es"
-            ETag:
-              type: "string"
-              description: "RFC7232 compliant entity tag"
-            Expires:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-            Last-Modified:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-            X-Pages:
-              type: "integer"
-              format: "int32"
-              description: "Maximum page number"
-              default: 1
-        304:
-          description: "Not modified"
-          headers:
-            Cache-Control:
-              type: "string"
-              description: "The caching mechanism used"
-            ETag:
-              type: "string"
-              description: "RFC7232 compliant entity tag"
-            Expires:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-            Last-Modified:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-        400:
-          description: "Bad request"
-          schema:
-            $ref: "#/definitions/bad_request"
-          examples:
-            application/json:
-              error: "Bad request message"
-        401:
-          description: "Unauthorized"
-          schema:
-            $ref: "#/definitions/unauthorized"
-          examples:
-            application/json:
-              error: "Unauthorized message"
-        403:
-          description: "Forbidden"
-          schema:
-            $ref: "#/definitions/forbidden"
-          examples:
-            application/json:
-              error: "Forbidden message"
-        420:
-          description: "Error limited"
-          schema:
-            $ref: "#/definitions/error_limited"
-          examples:
-            application/json:
-              error: "Error limited message"
-        500:
-          description: "Internal server error"
-          schema:
-            $ref: "#/definitions/internal_server_error"
-          examples:
-            application/json:
-              error: "Internal server error message"
-        503:
-          description: "Service unavailable"
-          schema:
-            $ref: "#/definitions/service_unavailable"
-          examples:
-            application/json:
-              error: "Service unavailable message"
-        504:
-          description: "Gateway timeout"
-          schema:
-            $ref: "#/definitions/gateway_timeout"
-          examples:
-            application/json:
-              error: "Gateway timeout message"
-      security:
-      - evesso:
-        - "esi-corporations.read_structures.v1"
-      deprecated: true
-      x-alternate-versions:
-      - "legacy"
-      x-cached-seconds: 3600
-      x-required-roles:
-      - "Station_Manager"
   /corporations/{corporation_id}/wallets/{division}/journal/:
     get:
       tags:
       - "Wallet"
       summary: "Get corporation wallet journal"
       description: "Retrieve the given corporation's wallet journal for the given\
-        \ division going 30 days back. Note: any journal records having to do with\
-        \ the new navigation structures from the release of Onslaught will not show\
-        \ up in this version. To see those, use the v4 version of this route.\n\n\
-        ---\nAlternate route: `/legacy/corporations/{corporation_id}/wallets/{division}/journal/`\n\
+        \ division going 30 days back\n\n---\nAlternate route: `/dev/corporations/{corporation_id}/wallets/{division}/journal/`\n\
+        \nAlternate route: `/latest/corporations/{corporation_id}/wallets/{division}/journal/`\n\
+        \nAlternate route: `/legacy/corporations/{corporation_id}/wallets/{division}/journal/`\n\
+        \nAlternate route: `/v4/corporations/{corporation_id}/wallets/{division}/journal/`\n\
         \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
-        \ the following EVE corporation role(s): Accountant, Junior_Accountant\n\n\
-        \n---\nWarning: This route is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v3/dev/#GET-/corporations/{corporation_id}/wallets/{division}/journal/)"
+        \ the following EVE corporation role(s): Accountant, Junior_Accountant\n"
       operationId: "get_corporations_corporation_id_wallets_division_journal"
       parameters:
       - name: "corporation_id"
@@ -2897,9 +2693,11 @@ paths:
       security:
       - evesso:
         - "esi-wallet.read_corporation_wallets.v1"
-      deprecated: true
       x-alternate-versions:
+      - "dev"
+      - "latest"
       - "legacy"
+      - "v4"
       x-cached-seconds: 3600
       x-required-roles:
       - "Accountant"
@@ -3026,7 +2824,8 @@ paths:
       description: "Resolve a set of IDs to names and categories. Supported ID's for\
         \ resolving are: Characters, Corporations, Alliances, Stations, Solar Systems,\
         \ Constellations, Regions, Types, Factions\n\n---\nAlternate route: `/dev/universe/names/`\n\
-        \nAlternate route: `/latest/universe/names/`\n"
+        \nAlternate route: `/latest/universe/names/`\n\nAlternate route: `/legacy/universe/names/`\n\
+        \nAlternate route: `/v2/universe/names/`\n"
       operationId: "post_universe_names"
       parameters:
       - name: "datasource"
@@ -3117,6 +2916,8 @@ paths:
       x-alternate-versions:
       - "dev"
       - "latest"
+      - "legacy"
+      - "v2"
   /universe/structures/{structure_id}/:
     get:
       tags:
@@ -3367,191 +3168,15 @@ paths:
       x-alternate-versions:
       - "dev"
       x-cached-seconds: 3600
-  /universe/systems/{system_id}/:
-    get:
-      tags:
-      - "Universe"
-      summary: "Get solar system information"
-      description: "Get information on a solar system. NOTE: This route does not work\
-        \ with abyssal systems.\n\n---\nAlternate route: `/legacy/universe/systems/{system_id}/`\n\
-        \n---\nThis route expires daily at 11:05\n\n---\nWarning: This route is deprecated\n\
-        \n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v3/dev/#GET-/universe/systems/{system_id}/)"
-      operationId: "get_universe_systems_system_id"
-      parameters:
-      - name: "Accept-Language"
-        in: "header"
-        description: "Language to use in the response"
-        required: false
-        type: "string"
-        default: "en"
-        enum:
-        - "en"
-        - "en-us"
-        - "de"
-        - "fr"
-        - "ja"
-        - "ru"
-        - "zh"
-        - "ko"
-        - "es"
-        x-exportParamName: "AcceptLanguage"
-      - name: "datasource"
-        in: "query"
-        description: "The server name you would like data from"
-        required: false
-        type: "string"
-        default: "tranquility"
-        enum:
-        - "tranquility"
-        x-exportParamName: "Datasource"
-      - name: "If-None-Match"
-        in: "header"
-        description: "ETag from a previous request. A 304 will be returned if this\
-          \ matches the current ETag"
-        required: false
-        type: "string"
-        x-exportParamName: "IfNoneMatch"
-      - name: "language"
-        in: "query"
-        description: "Language to use in the response, takes precedence over Accept-Language"
-        required: false
-        type: "string"
-        default: "en"
-        enum:
-        - "en"
-        - "en-us"
-        - "de"
-        - "fr"
-        - "ja"
-        - "ru"
-        - "zh"
-        - "ko"
-        - "es"
-        x-exportParamName: "Language"
-      - name: "system_id"
-        in: "path"
-        description: "system_id integer"
-        required: true
-        type: "integer"
-        format: "int32"
-        x-exportParamName: "SystemId"
-      responses:
-        200:
-          description: "Information about a solar system"
-          schema:
-            $ref: "#/definitions/get_universe_systems_system_id_ok"
-          examples:
-            application/json:
-              constellation_id: 20000001
-              name: "Akpivem"
-              planets:
-              - moons:
-                - 40000042
-                planet_id: 40000041
-              - planet_id: 40000043
-              position:
-                x: -91174141133075340
-                y: 43938227486247170
-                z: -56482824383339900
-              security_class: "B"
-              security_status: 0.8462923765182495
-              star_id: 40000040
-              stargates:
-              - 50000342
-              system_id: 30000003
-          headers:
-            Cache-Control:
-              type: "string"
-              description: "The caching mechanism used"
-            Content-Language:
-              type: "string"
-              description: "The language used in the response"
-              enum:
-              - "en"
-              - "de"
-              - "fr"
-              - "ja"
-              - "ru"
-              - "zh"
-              - "ko"
-              - "es"
-            ETag:
-              type: "string"
-              description: "RFC7232 compliant entity tag"
-            Expires:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-            Last-Modified:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-        304:
-          description: "Not modified"
-          headers:
-            Cache-Control:
-              type: "string"
-              description: "The caching mechanism used"
-            ETag:
-              type: "string"
-              description: "RFC7232 compliant entity tag"
-            Expires:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-            Last-Modified:
-              type: "string"
-              description: "RFC7231 formatted datetime string"
-        400:
-          description: "Bad request"
-          schema:
-            $ref: "#/definitions/bad_request"
-          examples:
-            application/json:
-              error: "Bad request message"
-        404:
-          description: "Solar system not found"
-          schema:
-            $ref: "#/definitions/get_universe_systems_system_id_not_found"
-          examples:
-            application/json:
-              error: "Not found message"
-        420:
-          description: "Error limited"
-          schema:
-            $ref: "#/definitions/error_limited"
-          examples:
-            application/json:
-              error: "Error limited message"
-        500:
-          description: "Internal server error"
-          schema:
-            $ref: "#/definitions/internal_server_error"
-          examples:
-            application/json:
-              error: "Internal server error message"
-        503:
-          description: "Service unavailable"
-          schema:
-            $ref: "#/definitions/service_unavailable"
-          examples:
-            application/json:
-              error: "Service unavailable message"
-        504:
-          description: "Gateway timeout"
-          schema:
-            $ref: "#/definitions/gateway_timeout"
-          examples:
-            application/json:
-              error: "Gateway timeout message"
-      deprecated: true
-      x-alternate-versions:
-      - "legacy"
   /universe/types/{type_id}/:
     get:
       tags:
       - "Universe"
       summary: "Get type information"
       description: "Get information on a type\n\n---\nAlternate route: `/dev/universe/types/{type_id}/`\n\
-        \nAlternate route: `/latest/universe/types/{type_id}/`\n\n---\nThis route\
-        \ expires daily at 11:05"
+        \nAlternate route: `/latest/universe/types/{type_id}/`\n\nAlternate route:\
+        \ `/legacy/universe/types/{type_id}/`\n\nAlternate route: `/v2/universe/types/{type_id}/`\n\
+        \n---\nThis route expires daily at 11:05"
       operationId: "get_universe_types_type_id"
       parameters:
       - name: "Accept-Language"
@@ -3708,6 +3333,8 @@ paths:
       x-alternate-versions:
       - "dev"
       - "latest"
+      - "legacy"
+      - "v2"
 securityDefinitions:
   evesso:
     type: "oauth2"
@@ -3722,7 +3349,6 @@ securityDefinitions:
       esi-corporations.read_blueprints.v1: "EVE SSO scope esi-corporations.read_blueprints.v1"
       esi-corporations.read_container_logs.v1: "EVE SSO scope esi-corporations.read_container_logs.v1"
       esi-corporations.read_corporation_membership.v1: "EVE SSO scope esi-corporations.read_corporation_membership.v1"
-      esi-corporations.read_structures.v1: "EVE SSO scope esi-corporations.read_structures.v1"
       esi-location.read_online.v1: "EVE SSO scope esi-location.read_online.v1"
       esi-mail.read_mail.v1: "EVE SSO scope esi-mail.read_mail.v1"
       esi-markets.read_corporation_orders.v1: "EVE SSO scope esi-markets.read_corporation_orders.v1"
@@ -5435,146 +5061,6 @@ definitions:
         minimum: 1
         maximum: 7
     description: "200 ok object"
-  get_corporations_corporation_id_structures_service:
-    required:
-    - "name"
-    - "state"
-    properties:
-      name:
-        type: "string"
-        description: "name string"
-        title: "get_corporations_corporation_id_structures_name"
-      state:
-        type: "string"
-        description: "state string"
-        title: "get_corporations_corporation_id_structures_service_state"
-        enum:
-        - "online"
-        - "offline"
-        - "cleanup"
-    description: "service object"
-  get_corporations_corporation_id_structures_200_ok:
-    required:
-    - "corporation_id"
-    - "profile_id"
-    - "reinforce_hour"
-    - "state"
-    - "structure_id"
-    - "system_id"
-    - "type_id"
-    properties:
-      corporation_id:
-        type: "integer"
-        format: "int32"
-        description: "ID of the corporation that owns the structure"
-        title: "get_corporations_corporation_id_structures_corporation_id"
-      fuel_expires:
-        type: "string"
-        format: "date-time"
-        description: "Date on which the structure will run out of fuel"
-        title: "get_corporations_corporation_id_structures_fuel_expires"
-      next_reinforce_apply:
-        type: "string"
-        format: "date-time"
-        description: "The date and time when the structure's newly requested reinforcement\
-          \ times (e.g. next_reinforce_hour and next_reinforce_day) will take effect"
-        title: "get_corporations_corporation_id_structures_next_reinforce_apply"
-      next_reinforce_hour:
-        type: "integer"
-        format: "int32"
-        description: "The requested change to reinforce_hour that will take effect\
-          \ at the time shown by next_reinforce_apply"
-        title: "get_corporations_corporation_id_structures_next_reinforce_hour"
-        minimum: 0
-        maximum: 23
-      next_reinforce_weekday:
-        type: "integer"
-        format: "int32"
-        description: "The requested change to reinforce_weekday that will take effect\
-          \ at the time shown by next_reinforce_apply"
-        title: "get_corporations_corporation_id_structures_next_reinforce_weekday"
-        minimum: 0
-        maximum: 6
-      profile_id:
-        type: "integer"
-        format: "int32"
-        description: "The id of the ACL profile for this citadel"
-        title: "get_corporations_corporation_id_structures_profile_id"
-      reinforce_hour:
-        type: "integer"
-        format: "int32"
-        description: "The hour of day that determines the four hour window when the\
-          \ structure will randomly exit its reinforcement periods and become vulnerable\
-          \ to attack against its armor and/or hull. The structure will become vulnerable\
-          \ at a random time that is +/- 2 hours centered on the value of this property"
-        title: "get_corporations_corporation_id_structures_reinforce_hour"
-        minimum: 0
-        maximum: 23
-      reinforce_weekday:
-        type: "integer"
-        format: "int32"
-        description: "The day of the week when the structure exits its final reinforcement\
-          \ period and becomes vulnerable to attack against its hull. Monday is 0\
-          \ and Sunday is 6"
-        title: "get_corporations_corporation_id_structures_reinforce_weekday"
-        minimum: 0
-        maximum: 6
-      services:
-        type: "array"
-        description: "Contains a list of service upgrades, and their state"
-        title: "get_corporations_corporation_id_structures_services"
-        items:
-          $ref: "#/definitions/get_corporations_corporation_id_structures_service"
-        maxItems: 10
-      state:
-        type: "string"
-        description: "state string"
-        title: "get_corporations_corporation_id_structures_state"
-        enum:
-        - "anchor_vulnerable"
-        - "anchoring"
-        - "armor_reinforce"
-        - "armor_vulnerable"
-        - "deploy_vulnerable"
-        - "fitting_invulnerable"
-        - "hull_reinforce"
-        - "hull_vulnerable"
-        - "online_deprecated"
-        - "onlining_vulnerable"
-        - "shield_vulnerable"
-        - "unanchored"
-        - "unknown"
-      state_timer_end:
-        type: "string"
-        format: "date-time"
-        description: "Date at which the structure will move to it's next state"
-        title: "get_corporations_corporation_id_structures_state_timer_end"
-      state_timer_start:
-        type: "string"
-        format: "date-time"
-        description: "Date at which the structure entered it's current state"
-        title: "get_corporations_corporation_id_structures_state_timer_start"
-      structure_id:
-        type: "integer"
-        format: "int64"
-        description: "The Item ID of the structure"
-        title: "get_corporations_corporation_id_structures_structure_id"
-      system_id:
-        type: "integer"
-        format: "int32"
-        description: "The solar system the structure is in"
-        title: "get_corporations_corporation_id_structures_system_id"
-      type_id:
-        type: "integer"
-        format: "int32"
-        description: "The type id of the structure"
-        title: "get_corporations_corporation_id_structures_type_id"
-      unanchors_at:
-        type: "string"
-        format: "date-time"
-        description: "Date at which the structure will unanchor"
-        title: "get_corporations_corporation_id_structures_unanchors_at"
-    description: "200 ok object"
   get_corporations_corporation_id_wallets_division_journal_200_ok:
     required:
     - "date"
@@ -5672,6 +5158,7 @@ definitions:
         - "agents_preward"
         - "alliance_maintainance_fee"
         - "alliance_registration_fee"
+        - "allignment_based_gate_toll"
         - "asset_safety_recovery_tax"
         - "bounty"
         - "bounty_prize"
@@ -5715,21 +5202,41 @@ definitions:
         - "corporation_logo_change_cost"
         - "corporation_payment"
         - "corporation_registration_fee"
+        - "cosmetic_market_component_item_purchase"
+        - "cosmetic_market_skin_purchase"
+        - "cosmetic_market_skin_sale"
+        - "cosmetic_market_skin_sale_broker_fee"
+        - "cosmetic_market_skin_sale_tax"
+        - "cosmetic_market_skin_transaction"
         - "courier_mission_escrow"
         - "cspa"
         - "cspaofflinerefund"
+        - "daily_challenge_reward"
+        - "daily_goal_payouts"
+        - "daily_goal_payouts_tax"
         - "datacore_fee"
         - "dna_modification_fee"
         - "docking_fee"
         - "duel_wager_escrow"
         - "duel_wager_payment"
         - "duel_wager_refund"
+        - "ess_escrow_transfer"
+        - "external_trade_delivery"
+        - "external_trade_freeze"
+        - "external_trade_thaw"
         - "factory_slot_rental_fee"
+        - "flux_payout"
+        - "flux_tax"
+        - "flux_ticket_repayment"
+        - "flux_ticket_sale"
         - "gm_cash_transfer"
         - "industry_job_tax"
         - "infrastructure_hub_maintenance"
         - "inheritance"
         - "insurance"
+        - "insurgency_corruption_contribution_reward"
+        - "insurgency_suppression_contribution_reward"
+        - "item_trader_payment"
         - "jump_clone_activation_fee"
         - "jump_clone_installation_fee"
         - "kill_right_fee"
@@ -5737,9 +5244,11 @@ definitions:
         - "manufacturing"
         - "market_escrow"
         - "market_fine_paid"
+        - "market_provider_tax"
         - "market_transaction"
         - "medal_creation"
         - "medal_issued"
+        - "milestone_reward_payment"
         - "mission_completion"
         - "mission_cost"
         - "mission_expiration"
@@ -5754,7 +5263,9 @@ definitions:
         - "player_trading"
         - "project_discovery_reward"
         - "project_discovery_tax"
+        - "project_payouts"
         - "reaction"
+        - "redeemed_isk_token"
         - "release_of_impounded_property"
         - "repair_bill"
         - "reprocessing_tax"
@@ -5763,12 +5274,16 @@ definitions:
         - "researching_time_productivity"
         - "resource_wars_reward"
         - "reverse_engineering"
+        - "season_challenge_reward"
         - "security_processing_fee"
         - "shares"
+        - "skill_purchase"
         - "sovereignity_bill"
         - "store_purchase"
         - "store_purchase_refund"
+        - "structure_gate_jump"
         - "transaction_tax"
+        - "under_construction"
         - "upkeep_adjustment_fee"
         - "war_ally_contract"
         - "war_fee"
@@ -5961,133 +5476,6 @@ definitions:
         description: "system_id integer"
         title: "get_universe_system_kills_system_id"
     description: "200 ok object"
-  get_universe_systems_system_id_planet:
-    required:
-    - "planet_id"
-    properties:
-      asteroid_belts:
-        type: "array"
-        description: "asteroid_belts array"
-        title: "get_universe_systems_system_id_asteroid_belts"
-        items:
-          type: "integer"
-          format: "int32"
-          description: "asteroid_belt integer"
-          title: "get_universe_systems_system_id_asteroid_belt"
-        maxItems: 100
-      moons:
-        type: "array"
-        description: "moons array"
-        title: "get_universe_systems_system_id_moons"
-        items:
-          type: "integer"
-          format: "int32"
-          description: "moon integer"
-          title: "get_universe_systems_system_id_moon"
-        maxItems: 1000
-      planet_id:
-        type: "integer"
-        format: "int32"
-        description: "planet_id integer"
-        title: "get_universe_systems_system_id_planet_id"
-    description: "planet object"
-  get_universe_systems_system_id_position:
-    required:
-    - "x"
-    - "y"
-    - "z"
-    properties:
-      x:
-        type: "number"
-        format: "double"
-        description: "x number"
-        title: "get_universe_systems_system_id_x"
-      y:
-        type: "number"
-        format: "double"
-        description: "y number"
-        title: "get_universe_systems_system_id_y"
-      z:
-        type: "number"
-        format: "double"
-        description: "z number"
-        title: "get_universe_systems_system_id_z"
-    description: "position object"
-  get_universe_systems_system_id_ok:
-    required:
-    - "constellation_id"
-    - "name"
-    - "planets"
-    - "position"
-    - "security_status"
-    - "star_id"
-    - "system_id"
-    properties:
-      constellation_id:
-        type: "integer"
-        format: "int32"
-        description: "The constellation this solar system is in"
-        title: "get_universe_systems_system_id_constellation_id"
-      name:
-        type: "string"
-        description: "name string"
-        title: "get_universe_systems_system_id_name"
-      planets:
-        type: "array"
-        description: "planets array"
-        title: "get_universe_systems_system_id_planets"
-        items:
-          $ref: "#/definitions/get_universe_systems_system_id_planet"
-        maxItems: 1000
-      position:
-        $ref: "#/definitions/get_universe_systems_system_id_position"
-      security_class:
-        type: "string"
-        description: "security_class string"
-        title: "get_universe_systems_system_id_security_class"
-      security_status:
-        type: "number"
-        format: "float"
-        description: "security_status number"
-        title: "get_universe_systems_system_id_security_status"
-      star_id:
-        type: "integer"
-        format: "int32"
-        description: "star_id integer"
-        title: "get_universe_systems_system_id_star_id"
-      stargates:
-        type: "array"
-        description: "stargates array"
-        title: "get_universe_systems_system_id_stargates"
-        items:
-          type: "integer"
-          format: "int32"
-          description: "stargate integer"
-          title: "get_universe_systems_system_id_stargate"
-        maxItems: 25
-      stations:
-        type: "array"
-        description: "stations array"
-        title: "get_universe_systems_system_id_stations"
-        items:
-          type: "integer"
-          format: "int32"
-          description: "station integer"
-          title: "get_universe_systems_system_id_station"
-        maxItems: 25
-      system_id:
-        type: "integer"
-        format: "int32"
-        description: "system_id integer"
-        title: "get_universe_systems_system_id_system_id"
-    description: "200 ok object"
-  get_universe_systems_system_id_not_found:
-    properties:
-      error:
-        type: "string"
-        description: "Not found message"
-        title: "get_universe_systems_system_id_404_not_found"
-    description: "Not found"
   get_universe_types_type_id_dogma_attribute:
     required:
     - "attribute_id"

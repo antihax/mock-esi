@@ -145,7 +145,9 @@ paths:
       summary: "Get character assets"
       description: "Return a list of the characters assets\n\n---\nAlternate route:\
         \ `/dev/characters/{character_id}/assets/`\n\nAlternate route: `/latest/characters/{character_id}/assets/`\n\
-        \n---\nThis route is cached for up to 3600 seconds"
+        \nAlternate route: `/legacy/characters/{character_id}/assets/`\n\nAlternate\
+        \ route: `/v4/characters/{character_id}/assets/`\n\n---\nThis route is cached\
+        \ for up to 3600 seconds"
       operationId: "get_characters_character_id_assets"
       parameters:
       - name: "character_id"
@@ -302,6 +304,8 @@ paths:
       x-alternate-versions:
       - "dev"
       - "latest"
+      - "legacy"
+      - "v4"
       x-cached-seconds: 3600
   /characters/{character_id}/cspa/:
     post:
@@ -423,8 +427,10 @@ paths:
       summary: "Get character notifications"
       description: "Return character notifications\n\n---\nAlternate route: `/dev/characters/{character_id}/notifications/`\n\
         \nAlternate route: `/latest/characters/{character_id}/notifications/`\n\n\
-        Alternate route: `/v6/characters/{character_id}/notifications/`\n\n---\nThis\
-        \ route is cached for up to 600 seconds"
+        Alternate route: `/legacy/characters/{character_id}/notifications/`\n\nAlternate\
+        \ route: `/v4/characters/{character_id}/notifications/`\n\nAlternate route:\
+        \ `/v6/characters/{character_id}/notifications/`\n\n---\nThis route is cached\
+        \ for up to 600 seconds"
       operationId: "get_characters_character_id_notifications"
       parameters:
       - name: "character_id"
@@ -560,6 +566,8 @@ paths:
       x-alternate-versions:
       - "dev"
       - "latest"
+      - "legacy"
+      - "v4"
       - "v6"
       x-cached-seconds: 600
   /characters/{character_id}/wallet/journal/:
@@ -568,9 +576,11 @@ paths:
       - "Wallet"
       summary: "Get character wallet journal"
       description: "Retrieve the given character's wallet journal going 30 days back\n\
-        \n---\nAlternate route: `/legacy/characters/{character_id}/wallet/journal/`\n\
-        \n---\nThis route is cached for up to 3600 seconds\n\n---\nWarning: This route\
-        \ is deprecated\n\n---\n[Diff of the upcoming changes](https://esi.evetech.net/diff/v5/dev/#GET-/characters/{character_id}/wallet/journal/)"
+        \n---\nAlternate route: `/dev/characters/{character_id}/wallet/journal/`\n\
+        \nAlternate route: `/latest/characters/{character_id}/wallet/journal/`\n\n\
+        Alternate route: `/legacy/characters/{character_id}/wallet/journal/`\n\nAlternate\
+        \ route: `/v6/characters/{character_id}/wallet/journal/`\n\n---\nThis route\
+        \ is cached for up to 3600 seconds"
       operationId: "get_characters_character_id_wallet_journal"
       parameters:
       - name: "character_id"
@@ -719,9 +729,11 @@ paths:
       security:
       - evesso:
         - "esi-wallet.read_character_wallet.v1"
-      deprecated: true
       x-alternate-versions:
+      - "dev"
+      - "latest"
       - "legacy"
+      - "v6"
       x-cached-seconds: 3600
   /corporations/{corporation_id}/:
     get:
@@ -856,8 +868,10 @@ paths:
       summary: "Get corporation assets"
       description: "Return a list of the corporation assets\n\n---\nAlternate route:\
         \ `/dev/corporations/{corporation_id}/assets/`\n\nAlternate route: `/latest/corporations/{corporation_id}/assets/`\n\
-        \n---\nThis route is cached for up to 3600 seconds\n\n---\nRequires one of\
-        \ the following EVE corporation role(s): Director\n"
+        \nAlternate route: `/legacy/corporations/{corporation_id}/assets/`\n\nAlternate\
+        \ route: `/v4/corporations/{corporation_id}/assets/`\n\n---\nThis route is\
+        \ cached for up to 3600 seconds\n\n---\nRequires one of the following EVE\
+        \ corporation role(s): Director\n"
       operationId: "get_corporations_corporation_id_assets"
       parameters:
       - name: "corporation_id"
@@ -1007,6 +1021,8 @@ paths:
       x-alternate-versions:
       - "dev"
       - "latest"
+      - "legacy"
+      - "v4"
       x-cached-seconds: 3600
       x-required-roles:
       - "Director"
@@ -1700,6 +1716,7 @@ definitions:
         - "agents_preward"
         - "alliance_maintainance_fee"
         - "alliance_registration_fee"
+        - "allignment_based_gate_toll"
         - "asset_safety_recovery_tax"
         - "bounty"
         - "bounty_prize"
@@ -1743,21 +1760,41 @@ definitions:
         - "corporation_logo_change_cost"
         - "corporation_payment"
         - "corporation_registration_fee"
+        - "cosmetic_market_component_item_purchase"
+        - "cosmetic_market_skin_purchase"
+        - "cosmetic_market_skin_sale"
+        - "cosmetic_market_skin_sale_broker_fee"
+        - "cosmetic_market_skin_sale_tax"
+        - "cosmetic_market_skin_transaction"
         - "courier_mission_escrow"
         - "cspa"
         - "cspaofflinerefund"
+        - "daily_challenge_reward"
+        - "daily_goal_payouts"
+        - "daily_goal_payouts_tax"
         - "datacore_fee"
         - "dna_modification_fee"
         - "docking_fee"
         - "duel_wager_escrow"
         - "duel_wager_payment"
         - "duel_wager_refund"
+        - "ess_escrow_transfer"
+        - "external_trade_delivery"
+        - "external_trade_freeze"
+        - "external_trade_thaw"
         - "factory_slot_rental_fee"
+        - "flux_payout"
+        - "flux_tax"
+        - "flux_ticket_repayment"
+        - "flux_ticket_sale"
         - "gm_cash_transfer"
         - "industry_job_tax"
         - "infrastructure_hub_maintenance"
         - "inheritance"
         - "insurance"
+        - "insurgency_corruption_contribution_reward"
+        - "insurgency_suppression_contribution_reward"
+        - "item_trader_payment"
         - "jump_clone_activation_fee"
         - "jump_clone_installation_fee"
         - "kill_right_fee"
@@ -1765,9 +1802,11 @@ definitions:
         - "manufacturing"
         - "market_escrow"
         - "market_fine_paid"
+        - "market_provider_tax"
         - "market_transaction"
         - "medal_creation"
         - "medal_issued"
+        - "milestone_reward_payment"
         - "mission_completion"
         - "mission_cost"
         - "mission_expiration"
@@ -1782,7 +1821,9 @@ definitions:
         - "player_trading"
         - "project_discovery_reward"
         - "project_discovery_tax"
+        - "project_payouts"
         - "reaction"
+        - "redeemed_isk_token"
         - "release_of_impounded_property"
         - "repair_bill"
         - "reprocessing_tax"
@@ -1791,13 +1832,16 @@ definitions:
         - "researching_time_productivity"
         - "resource_wars_reward"
         - "reverse_engineering"
+        - "season_challenge_reward"
         - "security_processing_fee"
         - "shares"
+        - "skill_purchase"
         - "sovereignity_bill"
         - "store_purchase"
         - "store_purchase_refund"
         - "structure_gate_jump"
         - "transaction_tax"
+        - "under_construction"
         - "upkeep_adjustment_fee"
         - "war_ally_contract"
         - "war_fee"
