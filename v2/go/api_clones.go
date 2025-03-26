@@ -30,12 +30,9 @@ func GetCharactersCharacterIdClones(w http.ResponseWriter, r *http.Request) {
   },
   "jump_clones" : [ {
     "implants" : [ 22118 ],
+    "jump_clone_id" : 12345,
     "location_id" : 60003463,
     "location_type" : "station"
-  }, {
-    "implants" : [ ],
-    "location_id" : 1021348135816,
-    "location_type" : "structure"
   } ]
 }`
 	vars := mux.Vars(r)
@@ -78,15 +75,12 @@ func GetCharactersCharacterIdClones(w http.ResponseWriter, r *http.Request) {
 		}
 		localPage = localIntPage.(int32)
 		if localPage > 1 {
-			w.Header().Set("warning", "299 - This route is deprecated.")
 			w.Header().Set("Content-Type", "application/json")
 			w.WriteHeader(http.StatusOK)
 			w.Write([]byte("[]"))
 			return
 		}
 	}
-
-	w.Header().Set("warning", "299 - This route is deprecated.")
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)

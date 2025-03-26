@@ -732,13 +732,6 @@ func init() {
 	)
 
 	mockesi.NewRoute(
-		"GetCharactersCharacterIdOnline",
-		"Get",
-		"/legacy/characters/{character_id}/online/",
-		GetCharactersCharacterIdOnline,
-	)
-
-	mockesi.NewRoute(
 		"GetCharactersCharacterIdShip",
 		"Get",
 		"/legacy/characters/{character_id}/ship/",
@@ -939,13 +932,6 @@ func init() {
 		"Get",
 		"/legacy/characters/{character_id}/skillqueue/",
 		GetCharactersCharacterIdSkillqueue,
-	)
-
-	mockesi.NewRoute(
-		"GetCharactersCharacterIdSkills",
-		"Get",
-		"/legacy/characters/{character_id}/skills/",
-		GetCharactersCharacterIdSkills,
 	)
 
 	mockesi.NewRoute(
